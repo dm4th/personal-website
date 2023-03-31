@@ -52,14 +52,15 @@
 }
 
 .question {
-  background-color: #f0f0f0;
+  background-color: #f6f6ff;
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .answer {
-  background-color: #e0e0e0;
+  /* background-color: a light shade of green; */
+  background-color: #f6fff6;
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
