@@ -65,3 +65,26 @@
   border-radius: 8px;
   margin-bottom: 1rem;
 }
+
+.gpt4 {
+  /* background-color: a light shade of yellow; */
+  background-color: lightyellow;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  /* background-color: a light gray; */
+  background-color: #2d2d2d;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: #bbbbbb;
+}
+
+.preStyle {
+  display: block;
+  white-space: pre;
+  overflow: auto;
+}

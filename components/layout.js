@@ -4,7 +4,7 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'DM4th';
+const name = 'Dan Mathieson';
 export const siteTitle = 'Dan\'s Personal Website';
 
 export default function Layout({ children, home }) {
@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
           <>
             <Image
               priority
-              src="/images/pfp.jpg"
+              src="/images/headshot.jpg"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
@@ -43,7 +43,7 @@ export default function Layout({ children, home }) {
             <Link href="/">
               <Image
                 priority
-                src="/images/pfp.jpg"
+                src="/images/headshot.jpg"
                 className={utilStyles.borderCircle}
                 height={108}
                 width={108}
