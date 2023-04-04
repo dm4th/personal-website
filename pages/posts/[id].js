@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/date';
-import ContentWrapper from '../../components/ContentWrapper';
 import utilStyles from '../../styles/utils.module.css';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import richTextRendererOptions from '../../lib/richTextRenderer';
+import richTextRendererOptions from '../../lib/blogRichTextRenderer';
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -44,13 +43,8 @@ export default function Post({ postData }) {
           {documentToReactComponents(postData.takeaways, richTextRendererOptions)}
         </div>
         <div>
-          <h1>Contents</h1>
-          {documentToReactComponents(postData.contents, richTextRendererOptions)}
-        </div>
-        <div>
-          <ContentWrapper utilStyles={utilStyles} richTextRendererOptions={richTextRendererOptions}>
-            {documentToReactComponents(postData.body, richTextRendererOptions)}
-          </ContentWrapper>
+          <h1>Conversations</h1>
+          {documentToReactComponents(postData.conversations, richTextRendererOptions)}
         </div>
       </article>
     </Layout>
