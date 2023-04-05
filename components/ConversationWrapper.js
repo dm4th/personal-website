@@ -116,9 +116,7 @@ const ConversationWrapper = ({ children }) => {
             return <CodeBlock text={text}/>
           },
         },
-    }
-
-    console.log(children);
+    };
 
     return (
         <div className='conversation-wrapper'>
