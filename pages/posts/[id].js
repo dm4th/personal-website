@@ -34,14 +34,23 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
+        <br></br>
         <div>
           <h1>Intro</h1>
+          <br></br>
           {documentToReactComponents(postData.intro, richTextRendererOptions)}
+          <br></br>
+          <hr></hr>
         </div>
+        <br></br>
         <div>
           <h1>Takeaways</h1>
+          <br></br>
           {documentToReactComponents(postData.takeaways, richTextRendererOptions)}
+          <br></br>
+          <hr></hr>
         </div>
+        <br></br>
         <div>
           <h1>Conversations</h1>
           {documentToReactComponents(postData.conversations, richTextRendererOptions)}
