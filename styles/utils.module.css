@@ -74,6 +74,14 @@
   margin-bottom: 1rem;
 }
 
+.gpt3 {
+  /* background-color: a light shade of orange; */
+  background-color: #fff6f6;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
 .codeBlock {
   /* background-color: a light gray; */
   background-color: #2d2d2d;
