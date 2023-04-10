@@ -12,12 +12,14 @@ const ConversationWrapper = ({ children }) => {
         '[start-question]',
         '[start-answer]',
         '[start-gpt4]',
+        '[start-gpt3]',
     ]
 
     const conversationEndTags = [
         '[end-question]',
         '[end-answer]',
         '[end-gpt4]',
+        '[end-gpt3]',
     ]
 
     // Loop over children looking for start and end blocks, building the tree as you go
@@ -137,6 +139,12 @@ const ConversationWrapper = ({ children }) => {
                     } else if (branch.tag === 'gpt4') {
                         return (
                             <div className={utilStyles.gpt4}>
+                                {documentToReactComponents(branch.document, options)}
+                            </div>
+                        )
+                    } else if (branch.tag === 'gpt3') {
+                        return (
+                            <div className={utilStyles.gpt3}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
