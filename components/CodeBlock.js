@@ -47,12 +47,12 @@ const retriveveLanguage = (text) => {
 
 export default function CodeBlock({ text }) {
 
-const { language, grammar, value } = retriveveLanguage(text);
-const html = Prism.highlight(value, grammar, language);
+    const { language, grammar, value } = retriveveLanguage(text);
+    const html = Prism.highlight(value, grammar, language);
 
-return (
-<div className={`language-${language} ${utilStyles.codeBlock} ${utilStyles.preStyle}`}
-    dangerouslySetInnerHTML={{ __html: html }}
-/>
+    return (
+    <div className={`language-${language} ${utilStyles.codeBlock} ${utilStyles.preStyle}`}
+        dangerouslySetInnerHTML={{ __html: html }}
+    />
 );  
 }
