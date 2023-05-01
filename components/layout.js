@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/layout.module.css';
@@ -6,10 +7,30 @@ import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
 
+import { useSupaUser } from '@/lib/SupaContextProvider';
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
+
 const name = 'Dan Mathieson';
 export const siteTitle = "Dan's Personal Website";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, allPostsData }) {
+    const { user, loggedInRole, supabaseClient } = useSupaUser();
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleLogin = (role) => {
+        setShowModal(true);
+    };
+
+    const handleClose = () => {
+        setShowModal(false);
+    };
+
+    useEffect(() => {
+        handleClose();
+    }, [user]);
+
     return (
         <div>
             <Head>
@@ -27,7 +48,7 @@ export default function Layout({ children, home }) {
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <Header />
+            <Header allPostsData={allPostsData} onLogin={handleLogin}/>
             <div className={styles.container}>
                 <div className={styles.title}>
                     {home ? (
@@ -67,6 +88,23 @@ export default function Layout({ children, home }) {
                 </main>
             </div>
             <Footer home={home} />
+            {showModal && (
+                <div className={`${styles.modal}`}>
+                    <div className={`${styles.modalCenter}`}>
+                        <div className={`${styles.modalContent}`}>
+                            <button onClick={handleClose} className={`${styles.closeButton}`}>
+                                X
+                            </button>
+                            <Auth
+                                appearance={{ theme: ThemeSupa }}
+                                theme="light"
+                                providers={[]}
+                                supabaseClient={supabaseClient}
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

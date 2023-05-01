@@ -22,6 +22,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    border-radius: 8px;
 }
 
 .dropbtn {
@@ -36,12 +37,14 @@
 
 .dropbtn:hover {
     background-color: #e0e0e0;
+    border-radius: 8px;
 }
 
 .dropdownContent {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
+    border-radius: 8px;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -57,10 +60,12 @@
 
 .dropdownContent a:hover {
     background-color: #ddd;
+    border-radius: 8px;
 }
 
 .dropdown:hover .dropdownContent {
     display: block;
+    border-radius: 8px;
 }
 
 .loginStatus {
@@ -71,6 +76,7 @@
     border: none;
     cursor: pointer;
     outline: none;
+    border-radius: 8px;
 }
 
 .loginStatus:hover {

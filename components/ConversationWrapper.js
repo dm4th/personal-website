@@ -1,4 +1,3 @@
-// components/ConversationWrapper.js
 import React from 'react';
 import utilStyles from '../styles/utils.module.css';
 import CodeBlock from './CodeBlock';
@@ -113,44 +112,56 @@ const ConversationWrapper = ({ children }) => {
     // Add rich text options
     const options = {
         renderMark: {
-          [MARKS.BOLD]: (text) => <BoldText>{text}</BoldText>,
-          [MARKS.CODE]: (text) => {
-            return <CodeBlock text={text}/>
-          },
+            [MARKS.BOLD]: (text) => <BoldText>{text}</BoldText>,
+            [MARKS.CODE]: (text) => {
+                return <CodeBlock text={text} />;
+            },
+        },
+        renderNode: {
+            [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
+            [BLOCKS.HEADING_1]: (node, children) => <h1>{children}</h1>,
+            [BLOCKS.HEADING_2]: (node, children) => <h2>{children}</h2>,
+            [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
+            [BLOCKS.HEADING_4]: (node, children) => <h4>{children}</h4>,
+            [BLOCKS.HEADING_5]: (node, children) => <h5>{children}</h5>,
+            [BLOCKS.HEADING_6]: (node, children) => <h6>{children}</h6>,
+            [BLOCKS.UL_LIST]: (node, children) => <ul>{children}</ul>,
+            [BLOCKS.CODE]: (node, children) => <Code>{children}</Code>,
         },
     };
+    
 
     return (
         <div className='conversation-wrapper'>
             {
-                createConversationTree(children).map((branch) => {
+                createConversationTree(children).map((branch, index) => {
                     if (branch.tag === 'question') {
                         return (
-                            <div className={utilStyles.question}>
+                            <div key={`conversation-${index}`} className={utilStyles.question}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
                     } else if (branch.tag === 'answer') {
                         return (
-                            <div className={utilStyles.answer}>
+                            <div key={`conversation-${index}`} className={utilStyles.answer}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
                     } else if (branch.tag === 'gpt4') {
                         return (
-                            <div className={utilStyles.gpt4}>
+                            <div key={`conversation-${index}`} className={utilStyles.gpt4}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
                     } else if (branch.tag === 'gpt3') {
                         return (
-                            <div className={utilStyles.gpt3}>
+                            <div key={`conversation-${index}`} className={utilStyles.gpt3}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
                     } else {
                         return (
-                            <div>
+                            <div key={`conversation-${index}`}>
                                 {documentToReactComponents(branch.document, options)}
                             </div>
                         )
