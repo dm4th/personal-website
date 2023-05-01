@@ -8,6 +8,9 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.3",
     "@microsoft/fetch-event-source": "^2.0.1",
+    "@supabase/auth-helpers-nextjs": "^0.6.1",
+    "@supabase/auth-helpers-react": "^0.3.1",
+    "@supabase/auth-ui-react": "^0.3.5",
     "@supabase/supabase-js": "^2.21.0",
     "airtable": "^0.11.6",
     "contentful": "^9.3.5",
@@ -21,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.6",
     "react-syntax-highlighter": "^15.5.0",
+    "react-transition-group": "^4.4.5",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "remark-parse": "^10.0.1",

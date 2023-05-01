@@ -15,6 +15,10 @@ const Footer = ({ home }) => {
                 Website template is sourced from{' '}
                 <a href="https://nextjs.org/learn">this Next.js tutorial</a>
             </p>
+            <p className={utilStyles.lightText}>
+                SupaBase Auth is sourced from{' '}
+                <a href="https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs">this SupaBase tutorial</a>
+            </p>
         </footer>
     );
 };

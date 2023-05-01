@@ -2,6 +2,6 @@
 
 ### Created with NextJS and deployed on Vercel
 
-Thanks to the nExtJS tutorial on their website.
+Thanks to the NextJS tutorial on their website.
 
 https://nextjs.org/docs/getting-started
