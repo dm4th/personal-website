@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import Date from '../components/date';
+import LoginButtons from '@/components/LoginButtons';
 import utilStyles from '../styles/utils.module.css';
 
 import { getSortedPostsData } from '../lib/posts';
@@ -23,12 +24,8 @@ export default function Home({ allPostsData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hi! I'm Dan - Welcome to my Personal Website</p>
-        <p>
-          (Website template is sourced from {' '}
-          <a href="https://nextjs.org/learn">this Next.js tutorial</a>.)
-        </p>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+      {/* <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blogs</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
@@ -39,6 +36,10 @@ export default function Home({ allPostsData }) {
             </li>
           ))}
         </ul>
+      </section> */}
+      <section>
+        <h2 className={utilStyles.headingLg}>Log in to Chat with Me</h2>
+        <LoginButtons />
       </section>
     </Layout>
   );
