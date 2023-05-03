@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
+import Avatar from '@/components/Avatar';
 import { useSupaUser } from '@/lib/SupaContextProvider';
 import { getSortedPostsData } from '@/lib/promptingBlogs';
 import loginRoles from '@/lib/loginRoles';
@@ -18,7 +19,7 @@ export async function getStaticProps() {
 }
 
 export default function Account({ allPostsData }) {
-    const { user, userDetails, chatRole, availableChatRoles, isLoading, supabaseClient } = useSupaUser();
+    const { user, userDetails, chatRole, availableChatRoles, isLoading, updateUserDetails, updateChatRole, updateAvailableChatRoles, supabaseClient } = useSupaUser();
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [fullName, setFullName] = useState(''); 
@@ -60,7 +61,7 @@ export default function Account({ allPostsData }) {
 
     const handleProfileSubmit = async (event) => {
         event.preventDefault();
-        setUpdateStatus('Updating...');
+        setUpdateStatus('Updating Profile...');
         if (username === '') setUsername(userDetails.username);
         if (fullName === '') setFullName(userDetails.full_name);
         if (email === '') setEmail(userDetails.email);
@@ -77,6 +78,7 @@ export default function Account({ allPostsData }) {
             setUpdateStatus('Error');
             console.log(error);
         } else {
+            updateUserDetails();
             setUpdateStatus('Success');
         }
 
@@ -86,6 +88,7 @@ export default function Account({ allPostsData }) {
         event.preventDefault();
         try {
             setUploadingAvatar(true);
+            setUpdateStatus('Uploading Image...');
             // Check if user has selected a file
             if (!avatarFile) throw new Error('You must select a file first!');
 
@@ -116,6 +119,7 @@ export default function Account({ allPostsData }) {
             if (profilesError) throw profilesError;
 
             setUploadingAvatar(false);
+            updateUserDetails();
             setUpdateStatus('Success');
         } catch (error) {
             setUploadingAvatar(false);
@@ -124,8 +128,45 @@ export default function Account({ allPostsData }) {
         }
     };
 
-    const addChatRole = (role) => {
-        console.log(role);
+    const changeChatRole = async (role) => {
+        setUpdateStatus('Changing Role...');
+        try {
+            updateChatRole(role);
+            setCurrentRole(role[0].toUpperCase() + role.slice(1));
+            setUpdateStatus('Success');
+        } catch (error) {
+            setUpdateStatus('Error');
+            console.log(error);
+        }
+    };
+
+    const addChatRole = async (role) => {
+        setUpdateStatus('Adding Role...');
+
+        // Check if role is already added
+        if (addedRoles.includes(role)) {
+            setUpdateStatus('Error');
+            return console.log('Role already added!');
+        } else {
+            // Add role to DB
+            const updates = {
+                user_id: user.id,
+                role: role,
+                created_at: new Date()
+            }
+            let { error } = await supabaseClient.from('chat_roles').upsert(updates)
+            if (error) {
+                setUpdateStatus('Error');
+                console.log(error);
+            } else {
+                setUpdateStatus('Success');
+                updateAvailableChatRoles();
+                updateChatRole(role);
+                setCurrentRole(role[0].toUpperCase() + role.slice(1));
+            }
+
+
+        }
     };
 
     
@@ -145,7 +186,7 @@ export default function Account({ allPostsData }) {
                 <div className={styles.roleSection}>
                     <h5 className={styles.roleSectionHeader}>Added Roles</h5>
                     {addedRoles && addedRoles.map((role) => (
-                        <button key={role} className={`${styles.roleButton} ${styles.addedRoleButton}`} >
+                        <button key={role} className={`${styles.roleButton} ${styles.addedRoleButton}`} onClick={() => changeChatRole(role)}>
                             {role[0].toUpperCase() + role.slice(1)}
                         </button>
                     ))}
@@ -224,7 +265,7 @@ export default function Account({ allPostsData }) {
                 <h2 className={utilStyles.headingLg}>Avatar Image</h2>
                 {avatarUrl ? (
                     <div>
-                        <img src={userDetails.avatar_url} alt="User Avatar" width="100" height="100" />
+                        <Avatar url={avatarUrl} avatarClass={styles.avatar} noAvatarClass={styles.noAvatar} />
                         <p>Would you like to change your avatar?</p>
                     </div>
                 ) : (
