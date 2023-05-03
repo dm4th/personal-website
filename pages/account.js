@@ -25,6 +25,7 @@ export default function Account({ allPostsData }) {
     const [email, setEmail] = useState('');
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [avatarFile, setAvatarFile] = useState(null);
+    const [uploadingAvatar, setUploadingAvatar] = useState(false);
     const [currentRole, setCurrentRole] = useState(null);
     const [addedRoles, setAddedRoles] = useState(null);
     const [updateStatus, setUpdateStatus] = useState(null);
@@ -66,11 +67,11 @@ export default function Account({ allPostsData }) {
         const updates = {
             id: user.id,
             updated_at: new Date(),
-            username: username ?? userDetails.username,
-            full_name: fullName ?? userDetails.full_name,
-            email: email ?? userDetails.email,
+            username: username,
+            full_name: fullName,
+            email: email,
+            avatar_url: userDetails.avatar_url
         };
-        console.log(updates);
         let { error } = await supabaseClient.from('profiles').upsert(updates)
         if (error) {
             setUpdateStatus('Error');
@@ -81,8 +82,46 @@ export default function Account({ allPostsData }) {
 
     };
 
-    const handleAvatarUpload = (event) => {
+    const handleAvatarUpload = async (event) => {
         event.preventDefault();
+        try {
+            setUploadingAvatar(true);
+            // Check if user has selected a file
+            if (!avatarFile) throw new Error('You must select a file first!');
+
+            // Check if file is an image
+            const fileExt = avatarFile.name.split('.').pop();
+            const fileName = `${user.id}.${fileExt}`;
+            const filePath = `avatars/${fileName}`;
+
+            // Upload image to Supabase Storage bucket
+            const { error: uploadError } = await supabaseClient.storage
+                .from('avatars')
+                .upload(filePath, avatarFile, { upsert: true });
+
+            // Check for upload error
+            if (uploadError) throw uploadError;
+
+            // Update user avatar in Supabase 'profiles' table
+            const updates = {
+                id: user.id,
+                updated_at: new Date(),
+                avatar_url: filePath,
+                username: userDetails.username,
+                full_name: userDetails.full_name,
+                email: userDetails.email
+            };
+            console.log(updates);
+            let { error: profilesError } = await supabaseClient.from('profiles').upsert(updates);
+            if (profilesError) throw profilesError;
+
+            setUploadingAvatar(false);
+            setUpdateStatus('Success');
+        } catch (error) {
+            setUploadingAvatar(false);
+            setUpdateStatus('Error');
+            console.log(error);
+        }
     };
 
     const addChatRole = (role) => {
@@ -197,6 +236,7 @@ export default function Account({ allPostsData }) {
                     name="avatar"
                     accept="image/*"
                     onChange={(e) => setAvatarFile(e.target.files[0])}
+                    disabled={uploadingAvatar}
                 />
                 <div className={styles.submitButtonWrapper}>
                     <button onClick={handleAvatarUpload} className={styles.submitButton}>Upload Avatar</button>
