@@ -8,7 +8,7 @@ const Footer = ({ home }) => {
         <footer className={styles.footer}>
             {!home && (
                 <div className={styles.backToHome}>
-                    <Link href="/">← Back to home</Link>
+                    <Link href="/">← Back to Chat</Link>
                 </div>
             )}
             <p className={utilStyles.lightText}>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Date from '@/components/date';
 import styles from '@/styles/Header.module.css';
 import utilStyles from '@/styles/utils.module.css';
-import loginRoles from '@/lib/loginRoles';
 import { getSortedPostsData } from '@/lib/promptingBlogs';
 import { useSupaUser } from '@/lib/SupaContextProvider';
 
@@ -16,7 +16,7 @@ export async function getStaticProps() {
 }
 
 const Header = ({ allPostsData, onLogin }) => {
-    const { loggedInRole, supabaseClient } = useSupaUser();
+    const { user, userDetails, supabaseClient } = useSupaUser();
 
     const [showDropdown, setShowDropdown] = useState(null);
 
@@ -67,21 +67,22 @@ const Header = ({ allPostsData, onLogin }) => {
                     ))}
                 </Dropdown>
             </div>
+                {user ? (
             <div className={styles.right}>
-                {loggedInRole ? (
+                    <Link href="/account" className={styles.loginStatus}>
+                        Account
+                    </Link>
                     <button className={styles.loginStatus} onClick={() => supabaseClient.auth.signOut()}>
-                        Logged in as: {loggedInRole.charAt(0).toUpperCase() + loggedInRole.slice(1)}
+                        Logout
                     </button>
+                    </div>
                 ) : (
-                    <Dropdown title="Login">
-                        {loginRoles.all_but_admin.map((role) => (
-                            <a key={role} href="#" onClick={() => onLogin(role)}>
-                                {role.charAt(0).toUpperCase() + role.slice(1)}
-                            </a>
-                        ))}
-                    </Dropdown>
-                )}
+                    <div className={styles.right}>
+                    <button className={styles.loginStatus} onClick={() => onLogin()}>
+                        Login
+                    </button>
             </div>
+                )}
         </header>
     );
 };

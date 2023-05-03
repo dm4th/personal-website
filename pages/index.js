@@ -19,11 +19,14 @@ export default function Home({ allPostsData }) {
                 <title>{siteTitle}</title>
             </Head>
             <section className={utilStyles.headingMd}>
-                <p>Hi! I'm Dan - Welcome to my Personal Website</p>
+                <small>Hi! I'm Dan - Welcome to my Personal Website</small>
+                <br></br>
+                <small>You can chat with me using the below interface.</small>
+                <br></br>
+                <small>If you'd like a more customized experience, including saving chats and chatting with different roles of myself, please login and edit your account.</small>
             </section>
             <section className={utilStyles.headingMd}>
                 <h2 className={utilStyles.headingLg}>Chat with Me</h2>
-                <p>Create an account to save chat history</p>
             </section>
         </Layout>
     );

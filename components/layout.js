@@ -19,7 +19,7 @@ export default function Layout({ children, home, allPostsData }) {
 
     const [showModal, setShowModal] = useState(false);
 
-    const handleLogin = (role) => {
+    const handleLogin = () => {
         setShowModal(true);
     };
 
