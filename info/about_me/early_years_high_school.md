@@ -10,7 +10,7 @@ I grew up in Pittsburgh, PA in a suburb of the city called Fox Chapel. I spent a
 
 I have 3 siblings, an older sister and two younger brothers, all very close in age. We would go on plenty of vacations to different areas of the world growing up (Ireland for a summer, Africa, Peru just to name a few). We had 2 dogs and a cat... I always loved the dogs more. We spent a lot of time together as a family, and I hope to have a similar family of my own someday.
 
-My parents didn't get divorced until I was already out of college, and even then I’d consider our family to be pretty close. We still get together frequently for holidays and vacations over the summers, but as we've gotten older it has definitely been more difficult to do so.
+My parents didn't get divorced until I was already out of college, and even then I’d consider our family to be pretty close. We still get together frequently for holidays and vacations over the summers, but as we've gotten older it has definitely been more difficult to do so. My dad spends most of his time in Bozemand, MT and my mom lives in Asheville, NC now. 
 
 
 ## High School
