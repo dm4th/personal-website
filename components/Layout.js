@@ -14,7 +14,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 const name = 'Dan Mathieson';
 export const siteTitle = "Dan's Personal Website";
 
-export default function Layout({ children, home, allPostsData }) {
+export default function Layout({ children, home, allPostsData, allInfoData }) {
     const { user, loggedInRole, supabaseClient } = useSupaUser();
 
     const [showModal, setShowModal] = useState(false);
@@ -48,7 +48,7 @@ export default function Layout({ children, home, allPostsData }) {
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <Header allPostsData={allPostsData} onLogin={handleLogin}/>
+            <Header allPostsData={allPostsData} allInfoData={allInfoData} onLogin={handleLogin}/>
             <div className={styles.container}>
                 <div className={styles.title}>
                     {home ? (
