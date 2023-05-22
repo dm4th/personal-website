@@ -3,19 +3,10 @@ import Link from 'next/link';
 import Date from '@/components/date';
 import styles from '@/styles/Header.module.css';
 import utilStyles from '@/styles/utils.module.css';
-import { getSortedPostsData } from '@/lib/promptingBlogs';
 import { useSupaUser } from '@/lib/SupaContextProvider';
 
-export async function getStaticProps() {
-    const allPostsData = await getSortedPostsData();
-    return {
-        props: {
-            allPostsData,
-        },
-    };
-}
 
-const Header = ({ allPostsData, onLogin }) => {
+const Header = ({ allPostsData, allInfoData, onLogin }) => {
     const { user, userDetails, supabaseClient } = useSupaUser();
 
     const [showDropdown, setShowDropdown] = useState(null);
@@ -38,25 +29,27 @@ const Header = ({ allPostsData, onLogin }) => {
         </div>
     );
 
+    console.log('allInfoData');
+    console.log(allInfoData);
+    for (const info of allInfoData) {
+        console.log(info.subDirectory);
+        console.log(info.allSubInfoData);
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.left}>
-                <Dropdown title="About Me">
-                    <a href="#">Submenu 1</a>
-                    <a href="#">Submenu 2</a>
-                </Dropdown>
-                <Dropdown title="AI/ML">
-                    <a href="#">Submenu 1</a>
-                    <a href="#">Submenu 2</a>
-                </Dropdown>
-                <Dropdown title="Web3">
-                    <a href="#">Submenu 1</a>
-                    <a href="#">Submenu 2</a>
-                </Dropdown>
-                <Dropdown title="Trackers">
-                    <a href="#">Submenu 1</a>
-                    <a href="#">Submenu 2</a>
-                </Dropdown>
+                {allInfoData.map(({ subDirectory, allSubInfoData, dropdownTitle }) => (
+                    <Dropdown title={dropdownTitle}>
+                        {allSubInfoData.map(({ file, Start, Title, End }) => (
+                            <a key={`info-${file}`} href={`/info/${subDirectory}/${file}`}>
+                                {Title}
+                                <br />
+                                <small className={utilStyles.lightText}>{Start}{End && ` - ${End}`}</small>
+                            </a>
+                        ))}
+                    </Dropdown>
+                ))}
                 <Dropdown title="Prompting">
                     {allPostsData.map(({ id, date, title }) => (
                         <a key={`prompting-${id}`} href={`/prompting/${id}`}>

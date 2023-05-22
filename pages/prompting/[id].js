@@ -3,16 +3,19 @@ import Layout from '@/components/Layout';
 import Date from '@/components/date';
 import utilStyles from '@/styles/utils.module.css';
 import { getSortedPostsData, getAllPostIds, getPostData } from '@/lib/promptingBlogs';
+import { getSortedInfo } from '@/lib/infoDocs';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import richTextRendererOptions from '@/lib/blogRichTextRenderer';
 
 export async function getStaticProps({ params }) {
     const allPostsData = await getSortedPostsData();
     const postData = await getPostData(params.id);
+    const allInfoData = getSortedInfo();
     return {
         props: {
             allPostsData,
             postData,
+            allInfoData,
         },
     };
 }
@@ -25,9 +28,9 @@ export async function getStaticPaths() {
     };
 }
 
-export default function Post({ allPostsData, postData }) {
+export default function Post({ allPostsData, postData, allInfoData }) {
     return (
-        <Layout allPostsData={allPostsData}>
+        <Layout allPostsData={allPostsData} allInfoData={allInfoData}>
             <Head>
                 <title>{postData.title}</title>
             </Head>

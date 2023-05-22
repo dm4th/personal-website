@@ -2,19 +2,22 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '@/components/Layout';
 import utilStyles from '@/styles/utils.module.css';
 import { getSortedPostsData } from '@/lib/promptingBlogs';
+import { getSortedInfo } from '@/lib/infoDocs';
 
 export async function getStaticProps() {
     const allPostsData = await getSortedPostsData();
+    const allInfoData = getSortedInfo();
     return {
         props: {
             allPostsData,
+            allInfoData,
         },
     };
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData, allInfoData }) {
     return (
-        <Layout home allPostsData={allPostsData}>
+        <Layout home allPostsData={allPostsData} allInfoData={allInfoData} >
             <Head>
                 <title>{siteTitle}</title>
             </Head>
