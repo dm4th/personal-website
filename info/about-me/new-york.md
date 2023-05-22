@@ -5,23 +5,23 @@ End: December, 2019
 ---
 
 
-## Moving to New York City
+# Moving to New York City
 
 
-Going through college I was pretty open to working anywhere but NYC. I grew up in a smaller city, went to college in an very small town, and I just thought that I'd get burned out if I tried to live in the city that never sleeps. Well an offer from my dream job changed those thoughts very quickly in the summer of 2016. I accepted a job while I was visiting family in San Francisco and was moving in with other family members in northern New Jersey two weeks later.
+After completing college, I was initially open to the idea of working anywhere but New York City. Coming from a smaller city and attending college in a small town, I had concerns about living in the bustling city that never sleeps. However, everything changed when I received a job offer from my dream company in the summer of 2016. I accepted the offer while visiting family in San Francisco and soon found myself moving to northern New Jersey to live with relatives, just a few weeks later.
 
-I lived in Northern NJ for about 4 months before the commute got to be too much for me on a daily basis. I moved in with my previous college roommate in the Murray Hill area of Manhattan in December of 2016, just a few blocks walk from where the FanDuel offices were located in the Gramercy Park / Madison Square Park area.
-
-
-## Early Years
+I resided in northern New Jersey for approximately four months before the daily commute to the city became too burdensome. At that point, I decided to move in with my former college roommate in the Murray Hill area of Manhattan in December 2016. Our apartment was conveniently located within walking distance of the FanDuel offices, situated around the Gramercy Park and Madison Square Park areas.
 
 
-NYC turned into the ultimate work-hard environment for me while I was there. You could feel the energy, and my roommate Zach was working so hard that he motivated me to keep up. Living in Murray Hill I was nearby to a few of my other good friends from college, and we had a lot of fun exploring the city together. I didn't get out of Manhattan very much outside of visiting family for holidays and summers. 
+# Early Years
 
 
-## The East Village
+Living in New York City, particularly in Murray Hill, provided me with an environment that demanded hard work and fostered a strong sense of energy. My roommate Zach's dedication and work ethic motivated me to keep pace. Additionally, I was fortunate to have a few close friends from college in the area, which made exploring the city together a lot of fun. Although I didn't venture outside of Manhattan frequently, I did visit my family during holidays and summers.
 
 
-After about 2 years in the Murray Hill area Zach and I moved to the East Village to get a new experience. The apartment was a bit smaller and it definitely felt small once his girlfriend Cass moved in later on in our stay there, but I loved that aparatment. It ws sitll close to the office for me so I walked without having to take a subway every morning, and now that I understood the subways a bit better I could get anywhere from Union Square Park stations to the rest of NYC.
+# The East Village
 
-After a year and a half though, I was starting to miss some things. NYC was all about where you were eating and what bar you were going to after. I never really got outside in nature and I missed that a lot. As I was going through some career changes, meeting Maggie (my girlfriend), and my roommate was moving out, it felt like the perfect time to explore new oppotunities somewhere else. When a job in the Bay Area presented itself it was perfect for me, more outdoors but still a rather big city in San Francisco. I jumped on the chance to have Google pay to move me across the country and never looked back. I loved my time in NYC, but I think I like SF more :).
+
+After spending two years in Murray Hill, Zach and I decided to seek a new experience and moved to the East Village. Although the apartment was smaller, I developed a fondness for it. It was still conveniently located near my workplace, allowing me to walk to the office without relying on the subway every morning. With a better understanding of the subway system, I could easily access various parts of the city from the Union Square Park stations.
+
+However, after a year and a half in the East Village, I started to miss certain aspects of life. New York City was centered around dining out and visiting bars, but I yearned for more outdoor experiences and a connection with nature. As I underwent career changes, met my girlfriend Maggie, and my roommate prepared to move out, I saw it as an opportune time to explore new possibilities elsewhere. When a job opportunity arose in the Bay Area, it seemed perfect—a place that offered more outdoor opportunities while still being a vibrant city like San Francisco. I seized the chance to have Google cover my relocation expenses and never looked back. Although I cherished my time in NYC, I must admit that I prefer San Francisco.

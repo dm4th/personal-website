@@ -5,52 +5,50 @@ End: February, 2021
 ---
 
 
-## Onboarding in Office
+# Onboarding in Office
 
 
-My initial plan after moving to the Bay Area was to live in corporate sponsored housing for as long as they'd let me before moving up to SF and commuting down to the office daily. This meant for the first few months I'd be biking distance from the google cloud campus, the perfect onboarding situation. I was super excited to work at such an important, large company, and really learn how things are done in tech.
-
-The first few months were quite slow. There really wasn't a whole lot of work for me to do in the beginning, so I just spent my time digging through my coworkers' queries and dashboards, getting a sense for how subscription businesses work and what the key driving factors for performance were. I loved having the free time in the office though... who wouldn't at a campus like Google's?? I took advatnage of all the food, the gym, even the proximity to Sunnyvale was super nice. After 3 months my time in Sunnyvale was ending though, and not a moment too soon as I was getting kind of bored in a sleepier suburb and something else major was just around the corner...
+Upon relocating to the Bay Area, my initial plan was to reside in corporate-sponsored housing near the Google Cloud campus. This proximity offered an ideal onboarding situation, allowing me to immerse myself in the company's culture and learn the ins and outs of working in the tech industry. During the early months, the pace was relatively slow, and I found myself with ample free time to explore my colleagues' queries and dashboards. This period provided me with valuable insights into subscription businesses and the key drivers of performance. Additionally, I took full advantage of the various perks Google had to offer, from the incredible food options to the state-of-the-art gym facilities. However, my time in Sunnyvale was short-lived, as a significant turning point was just around the corner.
 
 
-## COVID Lockdowns
+# COVID Lockdowns
 
 
-Right as I moved up to San Francisco, COVID locked down everything. The timing was so perfect that I cleaned out my desk on Friday, cleaned out my apartment the next day, and never once had to commute down to the south bay for my time at Google. The transition was difficult though, and I missed the perks and easy access to coworkers' knowledge of the office. In fact I felt rather useless for the first month or two - although that may have been a more widespread thought across more than just new people. I got my first chance to take over a projet about a month in to COVID though, as I took over some headcount planning work that was left by a coworker going on carer's leave.
+Soon after I transitioned to San Francisco, the COVID-19 pandemic hit, resulting in widespread lockdowns and a sudden shift to remote work. While the timing was impeccable, allowing me to seamlessly transition from office to remote work without having to commute, adapting to the new normal presented its own set of challenges. Initially, I, along with many others, felt somewhat uncertain and unsure of how to contribute effectively. However, after a month or two, an opportunity arose for me to take on a project related to headcount planning, left by a colleague going on caregiver's leave.
 
-#### Contractor Headcount Planning
-###### Key Technologies
+### Contractor Headcount Planning
+#### Key Technologies
 - Google Sheets
 - Google Slides
-###### Description
-This was my first real project at Google, and it involved doing a lot of deep digging on different contractor rates for work in various countries. A big problem teams were having early on in COVID was making sure they weren't spending too much money on short-term contractors to fill in gaps that were left by full-time employees needing to take time off. Even though I was brought in for a revenue forecasting role, I enjoyed learning about the cost side of a large business. The model was quite simple, but it allowed flexibility for product owners to comprise their team of different numbers of headcounts in different regions around the globe depending on what they needed.
+#### Description
+This project marked my first substantial undertaking at Google. It involved extensive research on contractor rates across different countries. As teams grappled with the challenge of managing costs associated with short-term contractors during the early stages of the pandemic, I delved into the cost side of the business, complementing my revenue forecasting role. The model I developed allowed product owners to flexibly adjust headcounts in various regions based on their specific requirements.
 
-#### Forecast Cube Automation
-###### Key Technologies
+### Forecast Cube Automation
+#### Key Technologies
 - Google Sheets
 - Google Apps Script
 - SAP
-###### Description
-During COVID while we were all separated and couldn;t meet in person, it became increasingly clear that we needed better ways to communicate what effects we expected COVID to have on the google cloud top and botto line. During this time central finance rolled out a new platform to load forecasts into for the whole company, making it difficult for our team to stay complaint with formats for what the rest of Google needed for our forecasts. I took the time to build a google sheet that could take our current formats for forecasts and put them into the new format using Google Apps Script and the internal SQL engine at Google. It was a relatively simple project, but gave the rest of the team some breathing room for not needing to re-build their models just for a format change.
+#### Description
+As the pandemic persisted and in-person meetings became increasingly impractical, it became evident that we needed better communication channels to articulate the projected effects of COVID-19 on Google Cloud's top and bottom line. To address this, central finance introduced a new platform for forecasting across the company. However, this posed a challenge for our team, as it necessitated aligning our forecasts with the prescribed format. To streamline the process, I built a Google Sheet that transformed our existing forecast formats into the new standard using Google Apps Script and the internal SQL engine at Google. Although relatively straightforward, this project provided the team with more flexibility and alleviated the burden of rebuilding models to accommodate the format change.
 
 
-## Fall of COVID Lockdowns
+# Fall of COVID Lockdowns
 
 
-After months of working from home for COVID reasons, we fell into a rhythm on daily tasks, and people started to accept the fact that we needed to really start working on our longer term projects more seriously. I was also starting to feel much more confident in my abilities working with teh internal GoogleSQL language and the additional plugins it came with, so I took on a few larger projects at this point. 
+As we settled into a routine with remote work, we began to shift our focus to longer-term projects and the realization that our daily tasks required more serious attention. By this point, I had gained confidence in working with the internal GoogleSQL language and its associated plugins. Consequently, I undertook several larger projects.
 
-#### Product P&L Statements
-###### Key Technologies
+### Product P&L Statements
+#### Key Technologies
 - SQL
 - GoogleSQL
 - Google Sheets
 - Google Slides
 - Internal Google Tooling
-###### Description
-One issue we had with the financial system migration is that it broke a lot of our backend P&L reporting infrastructure. We knew what our actual performance was on some dimensions, and what forecasts were on another dimension, but we couldn't really connect the two in an intelligent way and display it to business owners without a ton of caveats. Well I flexed a bit of the SQL muscle I learned at FanDuel and worked to fix that alongside some of the financial data engineering team. It was a very tough project and it was quite dfficult to explain once I did fix it all together, but the end result was actually quite useful from what people said. Most of the work was in GoogleSQL, building macros and functions to make sure definitions were the same not just for when I queried the data, but also my teammates as well. Google also had tools to import a view of teh data into google sheets, so that's where the "front end" lived.
+#### Description
+During the financial system migration, our backend P&L reporting infrastructure encountered issues. While we had access to actual performance data on some dimensions and forecast data on others, integrating the two in a meaningful way for business owners proved challenging, necessitating numerous caveats. Leveraging my SQL skills acquired at FanDuel, I collaborated with the financial data engineering team to address this issue. The project was demanding, and conveying the solution proved difficult, but the end result received positive feedback. The majority of the work involved GoogleSQL, including the development of macros and functions to ensure consistent definitions not only in my queries but also among my teammates. The "front end" of the project resided in Google Sheets, which allowed for data import and presentation.
 
-#### GSuite Product Revenue Forecasting
-###### Key Technologies
+### GSuite Product Revenue Forecasting
+#### Key Technologies
 - SQL
 - GoogleSQL
 - Python
@@ -62,18 +60,19 @@ One issue we had with the financial system migration is that it broke a lot of o
 - Google Sheets
 - Google Slides
 - Internal Google Tooling
-###### Description
-At this time I also took over forecasting for GSuite revenue. The system what was in place already was pretty solid and I didn't deviate from it much at the end of the day, but I did build a quick machine learning model alongside the old model just to validate and make sure of the numbers. There were definitely some hiccups from time to time, and having to explain those to central finance was a great learning experience in relaying information, but for the most part I was within reasonable limits for all of the months I forecasted. The model I built was using internal Google tooling again, where all you needed was a time series and some key factors for performance I found using a PCA exercise. It was embedded right in the SQL and ran automatically along with the other pipelines we had going. It was a really cool project to work on, but the tooling made it so easy that I don;t really even think anything other than the PCA is supar applicable to other projects I've done.
+#### Description
+During this period, I assumed responsibility for forecasting GSuite revenue. While the existing forecasting system was robust and required minimal modifications, I decided to build a machine learning model in parallel to validate and enhance the accuracy of the numbers. Although occasional challenges emerged, explaining the discrepancies to central finance provided valuable experience in conveying information effectively. The model I developed utilized internal Google tooling, leveraging time series data and key performance factors identified through a PCA exercise. These components were seamlessly integrated into the SQL pipeline, which ran automatically alongside other data processes. This project was intellectually stimulating, and while the majority of the tools used were specific to Google, the PCA methodology holds broader applicability.
 
-#### Google Apps Script Teaching
-###### Key Technologies
+### Google Apps Script Teaching
+#### Key Technologies
 - Google Apps Script
 - Google Slides
 - Google Sheets
-###### DescriptionThe rest of the team was very skilled at google sheets and financanial modeling, and some people were also extremely skilled at SQL and dashboard building, but no one knew how to script. Google Apps Script is a super convenient way to fun asynchronous jobs within a google sheet and can make a sheet feel like a web dashboard. After building some cool automations like the forecast cube and some work ont eh P&L's, the team wanted to learn a bit more about how they could use it in their models. I put together a short course to teach them how I built some of the stuff I built. It was a gerat way to teach someone already familiar with Excel/Sheets how to script because its an environment native to them and they understand what the end goal is and how the process should look. I have definitely used similar concepts later on to teach other team members how to script.
+#### Description
+While my team excelled in Google Sheets and financial modeling, scripting skills were lacking. Google Apps Script provided a convenient means to run asynchronous jobs within a Google Sheet, transforming it into a dynamic web dashboard. After successfully automating various tasks, such as the forecast cube and P&L work, team members expressed interest in learning more about how to leverage this tool in their own models. In response, I developed a concise training course to teach them the process behind my creations. The familiarity of the Google Sheets environment enabled the team to grasp the concepts easily and appreciate the potential of scripting. This teaching experience served as a foundation for future instances where I shared my knowledge and skills with colleagues.
 
 
-## Leaving Google
+# Leaving Google
 
 
-After a year or so working at Google, and 9 months working from home, I know Google was not going to be the long-term stop for my career that I hoped it would be when I first joined. I missed the start-up feel FanDuel had. I love the ability to own something, amke mistakes, and be recognized for going above and beyond. Google never gave me that opportunity, granted I probably wasn't there long enough to let them give me taht chance. I also thought I was ready to lead a team myself, and when an opportunity presented itself to go back to sports betting in a leadership role, I took it full-steam ahead. I don;t regret going to or leaving Google when I did. I learned a good bit there about what I like, and a lot more about what I don't like. I would recommend people working in tech take a year or two to work at a big tech giant to see what processes look like at scale and what world-class programs looke like.
+After working at Google for approximately a year, including nine months of remote work during the COVID-19 pandemic, I realized that Google was not the long-term destination for my career that I had initially envisioned. I yearned for the startup atmosphere and the opportunity to take ownership, make mistakes, and be recognized for going above and beyond. While Google did not afford me that chance, I don't regret my decision to join or leave the company. My time at Google taught me invaluable lessons about my preferences and dislikes. I would recommend anyone in the tech industry to spend a year or two at a tech giant to gain insights into large-scale processes and witness world-class programs in action.
