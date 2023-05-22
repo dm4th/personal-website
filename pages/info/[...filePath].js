@@ -39,7 +39,7 @@ export default function Info({ allPostsData, allInfoData, infoData }) {
                     {infoData.Start} - {infoData.End}
                 </div>
                 <br></br>
-                <div dangerouslySetInnerHTML={{ __html: infoData.contentHtml }} />
+                <div className={utilStyles.contentHtml} dangerouslySetInnerHTML={{ __html: infoData.contentHtml }} />
             </article>
         </Layout>
     );

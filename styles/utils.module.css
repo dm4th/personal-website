@@ -116,3 +116,13 @@
   background-color: #f6f6f6;
   border-color: #666;
 }
+
+.contentHtml h1 {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.contentHtml ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
