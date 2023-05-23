@@ -5,20 +5,23 @@ import Layout from '@/components/Layout';
 import Avatar from '@/components/Avatar';
 import { useSupaUser } from '@/lib/SupaContextProvider';
 import { getSortedPostsData } from '@/lib/promptingBlogs';
+import { getSortedInfo } from '@/lib/infoDocs';
 import loginRoles from '@/lib/loginRoles';
 import styles from '@/styles/Account.module.css';
 import utilStyles from '@/styles/utils.module.css';
 
 export async function getStaticProps() {
     const allPostsData = await getSortedPostsData();
+    const allInfoData = getSortedInfo();
     return {
         props: {
             allPostsData,
+            allInfoData,
         },
     };
 }
 
-export default function Account({ allPostsData }) {
+export default function Account({ allPostsData, allInfoData }) {
     const { user, userDetails, chatRole, availableChatRoles, isLoading, updateUserDetails, updateChatRole, updateAvailableChatRoles, supabaseClient } = useSupaUser();
     const router = useRouter();
     const [username, setUsername] = useState('');
@@ -213,7 +216,7 @@ export default function Account({ allPostsData }) {
 
 
     return (
-        <Layout allPostsData={allPostsData}>
+        <Layout allPostsData={allPostsData} allInfoData={allInfoData}>
             <Head>
                 <title>Account</title>
             </Head>
