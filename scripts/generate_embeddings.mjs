@@ -77,26 +77,25 @@ async function generateEmbeddings() {
             const subSections = section.split(/(?=^### )/gm).filter((subSection) => subSection.length > 0);
             return subSections.map((subSection) => {
                 let subSectionTitle = subSection.split('\n')[0].replace('### ', '');
-                if (subSectionTitle.replace('# ', '') === sectionTitle) subSectionTitle = 'Intro';
-                const infoData = {
+                if (subSectionTitle.replace('# ', '') === sectionTitle) subSectionTitle = null;
+                return {
                     path: path,
                     subDirectory: subDirectory,
                     file: file,
                     sectionTitle: sectionTitle,
-                    subSectionTitle: subSectionTitle??'Intro',
+                    subSectionTitle: subSectionTitle,
                     text: subSection,
                     hash: createHash('sha256').update(subSection).digest('hex'),
-                };
-
-                // check if the section already exists in the database, retrieve the checksum if it does
-                const existingSection = supabaseClient
-                    .from('page')
-                    .select('hash')
-                    .eq('hash', infoData.hash);
+                };                
             });
         });
+        console.log(fileSectionsWithSubSections);
 
         // retrieve the checksums from the database
+        // const existingSection = supabaseClient
+        //     .from('page')
+        //     .select('hash')
+        //     .eq('hash', infoData.hash);
 
         
 
