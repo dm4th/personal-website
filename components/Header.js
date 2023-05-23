@@ -29,13 +29,6 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
         </div>
     );
 
-    console.log('allInfoData');
-    console.log(allInfoData);
-    for (const info of allInfoData) {
-        console.log(info.subDirectory);
-        console.log(info.allSubInfoData);
-    }
-
     return (
         <header className={styles.header}>
             <div className={styles.left}>

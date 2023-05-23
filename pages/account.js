@@ -56,7 +56,6 @@ export default function Account({ allPostsData, allInfoData }) {
     }, [availableChatRoles]);
 
     useEffect(() => {
-        console.log(userDetails);
         if (!user && !isLoading) router.push('/');
     }, [user, router]);
 
@@ -79,7 +78,7 @@ export default function Account({ allPostsData, allInfoData }) {
         let { error } = await supabaseClient.from('profiles').upsert(updates)
         if (error) {
             setUpdateStatus('Error');
-            console.log(error);
+            console.error(error);
         } else {
             updateUserDetails();
             setUpdateStatus('Success');
@@ -117,7 +116,6 @@ export default function Account({ allPostsData, allInfoData }) {
                 full_name: userDetails.full_name,
                 email: userDetails.email
             };
-            console.log(updates);
             let { error: profilesError } = await supabaseClient.from('profiles').upsert(updates);
             if (profilesError) throw profilesError;
 
@@ -127,7 +125,7 @@ export default function Account({ allPostsData, allInfoData }) {
         } catch (error) {
             setUploadingAvatar(false);
             setUpdateStatus('Error');
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -139,7 +137,7 @@ export default function Account({ allPostsData, allInfoData }) {
             setUpdateStatus('Success');
         } catch (error) {
             setUpdateStatus('Error');
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -149,7 +147,6 @@ export default function Account({ allPostsData, allInfoData }) {
         // Check if role is already added
         if (addedRoles.includes(role)) {
             setUpdateStatus('Error');
-            return console.log('Role already added!');
         } else {
             // Add role to DB
             const updates = {
@@ -160,7 +157,7 @@ export default function Account({ allPostsData, allInfoData }) {
             let { error } = await supabaseClient.from('chat_roles').upsert(updates)
             if (error) {
                 setUpdateStatus('Error');
-                console.log(error);
+                console.error(error);
             } else {
                 setUpdateStatus('Success');
                 updateAvailableChatRoles();
