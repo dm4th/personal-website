@@ -53,7 +53,6 @@ async function openAiEmbedding(text) {
     // // create embedding for each chunk
     const embeddings = [];
     for (const chunk of chunks) {
-        console.log(`Chunk: ${chunk}`);
         const response = await openai.createEmbedding({
             model: 'text-embedding-ada-002',
             input: chunk,
@@ -72,13 +71,13 @@ async function generateMarkdownEmbeddings() {
     console.log(`Full Refresh: ${shouldRefresh}`)
 
     // Check for required environment variables
-    if (!process.env.OPENAI_API_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    if (!process.env.OPENAI_API_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SERVICE_ROLE_KEY) {
         console.error('Missing environment variables');
         return;
     }
 
     // Create supabase client
-    const supabaseClient = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+    const supabaseClient = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SERVICE_ROLE_KEY);
     console.log('Supabase Client Created');
 
     // Retrieve all of the md files in the info directory using the walkFiles function
@@ -112,7 +111,7 @@ async function generateMarkdownEmbeddings() {
     for (const { path, file, subDirectory } of infoFiles) {
 
         // retrieve the text from the files
-        console.log(`\n\nProcessing ${subDirectory}/${file}`);
+        console.log(`\n\n\n\nProcessing ${subDirectory}/${file}`);
         const fileText = fs.readFileSync(path, 'utf8');
         const fileTextWithoutHeader = fileText.split('---')[2];
         const fileSections = fileTextWithoutHeader.split(/(?=^# )/gm).filter((section) => section.length > 0).slice(1);
@@ -129,14 +128,13 @@ async function generateMarkdownEmbeddings() {
                     path: path,
                     subDirectory: subDirectory,
                     file: file,
-                    sectionTitle: sectionTitle,
-                    subSectionTitle: subSectionTitle,
+                    sectionTitle: sectionTitle ? sectionTitle.toLowerCase().replaceAll(' ', '-').replaceAll('.', '') : null,
+                    subSectionTitle: subSectionTitle ? subSectionTitle.toLowerCase().replaceAll(' ', '-').replaceAll('.', '') : null,
                     text: subSection,
                     hash: createHash('sha256').update(subSection).digest('hex'),
                 };                
             });
         });
-        // console.log(fileSectionsWithSubSections);
 
         // Loop over file sections & subsections
         // retrieve the checksums from the database
@@ -145,7 +143,7 @@ async function generateMarkdownEmbeddings() {
         for (const fileObject of fileSectionsWithSubSections) {
             for (const fileSection of fileObject) {
                 // retrieve the checksums from the database
-                console.log(`Processing ${fileSection.subDirectory}/${fileSection.file}/${fileSection.sectionTitle}/${fileSection.subSectionTitle}`)
+                console.log(`\n\nProcessing ${fileSection.subDirectory}/${fileSection.file}/${fileSection.sectionTitle}/${fileSection.subSectionTitle}`)
                 const { data: pageData, error: pageError } = await supabaseClient
                     .from('page')
                     .select('id, checksum')

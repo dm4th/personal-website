@@ -34,7 +34,7 @@ Overall, the Computer Engineering program at Bucknell was exceptional. It offere
 #### Description
 This course served as the practical application of my knowledge. With a talented instructor, I found the topics of multiprocessing and threading particularly intriguing.
 
-### Data Structures & Algorithms
+### Data Structures and Algorithms
 #### Key Technologies
 - Python
 - Advanced Data Structures
@@ -46,7 +46,7 @@ This course provided a deeper understanding of how systems operate at a fundamen
 #### Description 
 This course emphasized the importance of execution alongside ideation. Working with a group of non-engineers in a startup pitch competition, I assumed sole responsibility for the technical aspects. Although I may not have fully comprehended the complexities of our pitch at the time, it proved to be an invaluable learning experience.
 
-### Digital Systems & Circuits
+### Digital Systems and Circuits
 #### Key Technologies
 - Verilog
 - FPGA Development

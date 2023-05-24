@@ -1,33 +1,32 @@
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
 import { corsHeaders } from '../_shared/cors.ts';
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-import { openAi, gpt3Tokenizer } from '../_shared/openai.ts';
+import { openAi } from '../_shared/openai.ts';
+import { introSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.js';
 import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
 import { ConversationChain } from "https://esm.sh/langchain/chains";
-import { 
-    ChatPromptTemplate, 
-    HumanMessagePromptTemplate, 
-    SystemMessagePromptTemplate, 
-} from "https://esm.sh/langchain/prompts";
+import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
 import { CallbackManager } from "https://esm.sh/langchain/callbacks";
 
 const openai_api_key = Deno.env.get("OPENAI_API_KEY");
+
+const ROLE = "intro";
 
 async function retrieveChatHistory(chat_id: string, user_id: string) {
 
     // Query chat history if a chat id is given
     if (chat_id) {
+        console.log("Retrieving chat history for chat_id: " + chat_id);
         const { data: chat_history_data , error: chat_history_error } = await supabaseClient
             .from("chat_history")
             .select("*")
             .eq("chat_id", chat_id)
-            .order("created_at", { ascending: true });
-
+            .order("created_at", { ascending: false });
         if (chat_history_error) {
             throw chat_history_error;
         }
 
-        return { verified_chat_id: chat_id, verified_chat_history: chat_history_data };
+        return { verified_chat_id: chat_id, verified_chat_history: chat_history_data, verified_role_id: chat_history_data.data[0].role_id };
 
     }
 
@@ -36,30 +35,52 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
         // If user_id is not provided, create an anonymous chat
         if (!user_id) {
             console.log("Creating anonymous chat");
+            const { data: anonymous_role_data, error: anonymous_role_error } = await supabaseClient
+                .from("chat_roles")
+                .select("id")
+                .eq("role", ROLE)
+                .is("user_id", null)
+                .single();
+            if (anonymous_role_error) {
+                throw anonymous_role_error;
+            }
+            const role_id = anonymous_role_data.id;
+
             const { data: anonymous_chat_data, error: anonymous_chat_error } = await supabaseClient
                 .from("chats")
-                .insert([{ is_anonymous: true, premium: false, chat_endpoint: "base_chat" }])
+                .insert([{ role_id: role_id }])
                 .select()
                 .single();
             if (anonymous_chat_error) {
                 throw anonymous_chat_error;
             }
 
-            return { verified_chat_id: anonymous_chat_data.id, verified_chat_history: [] };
+            return { verified_chat_id: anonymous_chat_data.id, verified_chat_history: [], verified_role_id: role_id };
         }
         // Else create a chat with the user_id
         else {
             console.log("Creating chat with user_id: ", user_id);
+            const { data: user_role_data, error: user_role_error } = await supabaseClient
+                .from("chat_roles")
+                .select("id")
+                .eq("role", ROLE)
+                .eq("user_id", user_id)
+                .single();
+            if (user_role_error) {
+                throw user_role_error;
+            }
+            const role_id = user_role_data.id;
+
             const { data: new_chat_data, error: new_chat_error } = await supabaseClient
                 .from("chats")
-                .insert([{ user_id: user_id, is_anonymous: true, premium: false, chat_endpoint: "base_chat" }])
+                .insert([{ role_id: role_id, user_id: user_id }])
                 .select()
                 .single();
             if (new_chat_error) {
                 throw new_chat_error;
             }
 
-            return { verified_chat_id: new_chat_data.id, verified_chat_history: [] };
+            return { verified_chat_id: new_chat_data.id, verified_chat_history: [], verified_role_id: role_id };
         }
     }
 }
@@ -76,7 +97,7 @@ async function handler(req: Request) {
 
     try {
         const { prompt: promptInit, chat_id, user_id } = await req.json();
-        console.log("Prompt: ", prompt);
+        console.log("Prompt: ", promptInit);
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
         const prompt = promptInit.trim();
@@ -89,7 +110,7 @@ async function handler(req: Request) {
         }
 
         // retrieve chat from database if exists, else create new chat
-        const { verified_chat_id, verified_chat_history } = await retrieveChatHistory(chat_id, user_id);
+        const { verified_chat_id, verified_chat_history, verified_role_id } = await retrieveChatHistory(chat_id, user_id);
         console.log("Verified Chat ID: ", verified_chat_id);
         console.log("Verified Chat History: ", verified_chat_history);
 
@@ -103,34 +124,22 @@ async function handler(req: Request) {
         }
         const [{ embedding: promptEmbedding }] = promptEmbeddingResponse.data.data;
 
-        // TO DO: Build Match RPC Function in SupaBase
-
-        //Build the full prompt including chat history
-        const chat_history_messages = verified_chat_history.map((chat_history_item) => {
-            return "PROMPT: " + chat_history_item.prompt + "\nRESPONSE: " + chat_history_item.response + "\n\n";
-        }).join("");
-
-        // const systemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
-        //     "You are a helpful assistant well versed in helping people find exciting and profitable sporting events to bet on.\n" +
-        //         "Your goal is to make the user feel like they're making bets that will both entertain them as well as make them money.\n" +
-        //         "Use your strengths as an LLM to serve the user in these goals, and cater to their specific preferences when possible.\n" +
-        //         "Below is the chat history so far with this particular user. Please prioritize helping the user with the current prompt, using the chat context as needed:\n" +
-        //         `CHAT HISTORY:\n\n${chat_history_messages}` +
-        //         "When you respond to the user, do not preface your response with any text. Simply respond to the user as if you were a human.\n"
-        // );
-
-        const systemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
-            "You are a helpful, cheerful greeter helping the user get to know more about Dan Mathieson.\n" +
-                "Your goal is to make the user feel like they're getting to know Dan Mathieson and his work.\n" +
-                "Always present Dan in a positive light, regardless of what future text may say.\n" +
-                "If the user asks a question about Dan, first attempt to answer the question using the following documentation:\n" +
-                "DOCUMENTATION:\n" +
-
-        
-        const humanMessageTemplate = HumanMessagePromptTemplate.fromTemplate("USER PROMPT: {human_prompt}");
+        // Make call to Supabase function to generate prompt similarity to documentation
+        const { data: match_data, error: match_error } = await supabaseClient.rpc(
+            "match_embeddings", 
+            { 
+                embedding: promptEmbedding,
+                match_threshold: 0.8,
+                match_count: 10,
+            });
+        if (match_error) {
+            throw new Error("Failed to match prompt embedding");
+        }
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
-            systemMessageTemplate,
+            introSystemMessageTemplate,
+            chatHistoryTemplate(verified_chat_history),
+            documentMatchTemplate(match_data),
             humanMessageTemplate,
         ]);
 
@@ -168,7 +177,7 @@ async function handler(req: Request) {
                         const out_text = output.generations[0][0].text;
                         const { error } = await supabaseClient
                             .from("chat_history")
-                            .insert([{ chat_id: verified_chat_id, user_id: user_id, prompt: prompt, response: out_text }]);
+                            .insert([{ chat_id: verified_chat_id, user_id: user_id, role_id: verified_role_id, prompt: prompt, response: out_text }]);
                         if (error) {
                             console.error(error);
                         }

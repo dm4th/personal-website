@@ -37,7 +37,7 @@ As the pandemic persisted and in-person meetings became increasingly impractical
 
 As we settled into a routine with remote work, we began to shift our focus to longer-term projects and the realization that our daily tasks required more serious attention. By this point, I had gained confidence in working with the internal GoogleSQL language and its associated plugins. Consequently, I undertook several larger projects.
 
-### Product P&L Statements
+### Product PL Statements
 #### Key Technologies
 - SQL
 - GoogleSQL
