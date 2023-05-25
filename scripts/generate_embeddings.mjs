@@ -142,22 +142,41 @@ async function generateMarkdownEmbeddings() {
         // if the checksums don't match, generate the openai embeddings and insert into the database
         for (const fileObject of fileSectionsWithSubSections) {
             for (const fileSection of fileObject) {
+                let pageData;
                 // retrieve the checksums from the database
-                console.log(`\n\nProcessing ${fileSection.subDirectory}/${fileSection.file}/${fileSection.sectionTitle}/${fileSection.subSectionTitle}`)
-                const { data: pageData, error: pageError } = await supabaseClient
-                    .from('page')
-                    .select('id, checksum')
-                    .eq('directory', fileSection.subDirectory)
-                    .eq('page_name', fileSection.file)
-                    .eq('section', fileSection.sectionTitle)
-                    .eq('sub_section', fileSection.subSectionTitle);
-                if (pageError) {
-                    console.error(pageError);
-                    return;
+                if (fileSection.subSectionTitle === null) {
+                    console.log(`\n\nProcessing ${fileSection.subDirectory}/${fileSection.file}/${fileSection.sectionTitle}`)
+                    const { data: pageDataA, error: pageError } = await supabaseClient
+                        .from('page')
+                        .select('id, checksum')
+                        .eq('directory', fileSection.subDirectory)
+                        .eq('page_name', fileSection.file)
+                        .eq('section', fileSection.sectionTitle);
+                    if (pageError) {
+                        console.error(pageError);
+                        return;
+                    }
+                    pageData = pageDataA;
+                } else {
+                    console.log(`\n\nProcessing ${fileSection.subDirectory}/${fileSection.file}/${fileSection.sectionTitle}/${fileSection.subSectionTitle}`)
+                    const { data: pageDataB, error: pageError } = await supabaseClient
+                        .from('page')
+                        .select('id, checksum')
+                        .eq('directory', fileSection.subDirectory)
+                        .eq('page_name', fileSection.file)
+                        .eq('section', fileSection.sectionTitle)
+                        .eq('sub_section', fileSection.subSectionTitle);
+                    if (pageError) {
+                        console.error(pageError);
+                        return;
+                    }
+                    pageData = pageDataB;
                 }
 
                 // if the checksums match, skip the section
-                if (pageData.length > 0 && pageData[0].hash === fileSection.hash) {
+                console.log(`\t\t${pageData.length > 0 ? pageData[0].checksum : 'No Checksums Found'}`);
+                console.log(`\t\t${fileSection.hash}`);
+                if ((pageData.length > 0) && (pageData[0].checksum === fileSection.hash)) {
                     console.log('\tChecksums Match -- Skipping Section')
                     continue;
                 }
@@ -176,7 +195,7 @@ async function generateMarkdownEmbeddings() {
                                 id: pageData[0].id, 
                                 checksum: fileSection.hash, 
                                 last_updated: new Date().toISOString(),
-                            })
+                            }, {onConflict: 'id'})
                             .select();
                         if (upsertError) {
                             console.error(upsertError);

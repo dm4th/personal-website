@@ -1,8 +1,13 @@
-import { serve } from 'https://deno.land/std@0.177.0/http/server.ts'
+import { serve } from 'https://deno.land/std@0.182.0/http/server.ts'
+console
 import { corsHeaders } from '../_shared/cors.ts';
+console.log('cors done');
 import { supabaseClient } from '../_shared/supabaseClient.ts';
+console.log('supabaseClient done');
 import { openAi } from '../_shared/openai.ts';
+console.log('openai done');
 import { introSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.js';
+console.log('promptTemplates done');
 import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
 import { ConversationChain } from "https://esm.sh/langchain/chains";
 import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
