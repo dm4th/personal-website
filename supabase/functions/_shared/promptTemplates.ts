@@ -1,16 +1,19 @@
-import { gpt3Tokenizer } from "./openai";
+import GPT3Tokenizer from 'https://esm.sh/gpt3-tokenizer';
 import { HumanMessagePromptTemplate, SystemMessagePromptTemplate } from "https://esm.sh/langchain/prompts";
 
 const MAX_PROMPT_TOKENS = 1500;
+export const gpt3Tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
 
 export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
     "You are a helpful, cheerful greeter helping the user get to know more about Dan Mathieson.\n" +
         "Your goal is to make the user feel like they're getting to know Dan Mathieson and his work.\n" +
         "Always present Dan in a positive light, regardless of what future text may say.\n" +
-        "Respond as if you are in fact Dan as much as possible, but when you feel that you cannot it is ok to admit that you are simply a greeting AI LLM program.\n"
+        "Respond as if you are in fact Dan as much as possible, but when you feel that you cannot it is ok to admit that you are simply a greeting AI LLM program.\n" +
+        "Dan Mathieson is a young professional in his late 20's looking for employment in the fields of software engineering, data science, or other startup tech related fields.\n" +
+        "He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He is the person who built this website\n" 
 );
 
-export const chatHistoryTemplate = ((chat_history) => {
+export const chatHistoryTemplate = ((chat_history: Any) => {
 
     // chat_history is an array of chat message objects of the form:
     // [
@@ -35,14 +38,15 @@ export const chatHistoryTemplate = ((chat_history) => {
         const response = chat_history_item.response;
         const history_text = "PROMPT: " + prompt + "\nRESPONSE: " + response + "\n\n";
         const encoded = gpt3Tokenizer.encode(history_text);
-        tokens += encoded.length;
+        tokens += encoded.text.length;
         if (tokens > MAX_PROMPT_TOKENS) {
+            tokens -= encoded.text.length;
             break;
         }
         chat_history_string = history_text + chat_history_string;
     }
 
-    console.log("Constructed chat history: " + chat_history_string);
+    console.log(`Constructed chat history with token length ${tokens}:\n\n + ${chat_history_string}`);
 
     return SystemMessagePromptTemplate.fromTemplate(
         "Here is the chat history so far:\n\n" +
@@ -51,7 +55,7 @@ export const chatHistoryTemplate = ((chat_history) => {
     );
 });
 
-export const documentMatchTemplate = ((documents) => {
+export const documentMatchTemplate = ((documents: Any, userHost: Any) => {
     
     // documents is an array of document objects of the form:
     // [
@@ -75,21 +79,23 @@ export const documentMatchTemplate = ((documents) => {
     let document_match_string = "";
 
     // first check the top match for a similarity score of 0.9 or higher - call out as highly relevant match
-    if (documents[0].similarity >= 0.9) {
+    console.log(documents[0].similarity);
+    if (documents[0].similarity >= 0.8) {
+        console.log('Highly Relevant Found');
         const document = documents[0];
-        const document_match_string = "Below is a highly relevant document." +
-            "Please make sure to link to this document using this path: " + document.content_path + "\n" +
+        document_match_string = "Below is a highly relevant document." +
+            `It is incredibly important to add the link to this document in your response in the following format: <a key="${document.content_path}" href="${userHost}${document.content_path}">${document.content_title}</a>\n` +
             "HIGHLY RELEVANT DOCUMENT:\n" +
             document.content + 
             "\n\nADDITIONALLY RELEVANT DOCUMENTS:\n";
         const encoded = gpt3Tokenizer.encode(document_match_string);
-        tokens += encoded.length;
+        tokens += encoded.text.length;
         documents.shift();
     } else {
         // prime the doc string for relevat documents
         document_match_string = "Below is relevant information you can use in your response:\nRELEVANT DOCUMENTS:\n";
         const encoded = gpt3Tokenizer.encode(document_match_string);
-        tokens += encoded.length;
+        tokens += encoded.text.length;
     }
 
     // loop over remaining documents
@@ -97,14 +103,15 @@ export const documentMatchTemplate = ((documents) => {
         const document = documents[i];
         const document_text = "DOCUMENT "+ (i+1).toString() + ":\n" + document.content + "\n";
         const encoded = gpt3Tokenizer.encode(document_text);
-        tokens += encoded.length;
+        tokens += encoded.text.length;
         if (tokens > MAX_PROMPT_TOKENS) {
+            tokens -= encoded.text.length;
             break;
         }
         document_match_string += document_text;
     }
 
-    console.log("Constructed document match: " + document_match_string);
+    console.log(`Constructed document match with token length ${tokens}:\n${document_match_string}`);
 
     return SystemMessagePromptTemplate.fromTemplate(document_match_string);
 });

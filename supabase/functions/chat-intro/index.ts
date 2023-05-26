@@ -1,13 +1,7 @@
-import { serve } from 'https://deno.land/std@0.182.0/http/server.ts'
-console
+import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
-console.log('cors done');
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-console.log('supabaseClient done');
-import { openAi } from '../_shared/openai.ts';
-console.log('openai done');
-import { introSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.js';
-console.log('promptTemplates done');
+import { introSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.ts';
 import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
 import { ConversationChain } from "https://esm.sh/langchain/chains";
 import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
@@ -31,7 +25,7 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
             throw chat_history_error;
         }
 
-        return { verified_chat_id: chat_id, verified_chat_history: chat_history_data, verified_role_id: chat_history_data.data[0].role_id };
+        return { verified_chat_id: chat_id, verified_chat_history: chat_history_data, verified_role_id: chat_history_data[0].role_id };
 
     }
 
@@ -49,6 +43,7 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
             if (anonymous_role_error) {
                 throw anonymous_role_error;
             }
+            console.log(anonymous_role_data);
             const role_id = anonymous_role_data.id;
 
             const { data: anonymous_chat_data, error: anonymous_chat_error } = await supabaseClient
@@ -101,18 +96,36 @@ async function handler(req: Request) {
     } 
 
     try {
+        const userHost = req.headers.get("host");
         const { prompt: promptInit, chat_id, user_id } = await req.json();
-        console.log("Prompt: ", promptInit);
+        const prompt = promptInit.trim();
+        console.log("Prompt: ", prompt);
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
-        const prompt = promptInit.trim();
 
         // check that the prompt passes openAi moderation checks
-        const moderationResponse = await openAi.createModeration({ input: prompt });
-        const [ moderationResults ] = moderationResponse.data.results;
+        const moderationUrl = "https://api.openai.com/v1/moderations";
+        const moderationHeaders = {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${openai_api_key}`
+        };
+        const moderationBody = JSON.stringify({
+            "input": prompt,
+        });
+        const moderationResponse = await fetch(moderationUrl, {
+            method: "POST",
+            headers: moderationHeaders,
+            body: moderationBody
+        });
+        if (moderationResponse.status !== 200) {
+            throw new Error("Failed to check prompt against moderation");
+        }
+        const moderationJson = await moderationResponse.json();
+        const [ moderationResults ] = moderationJson.results;
         if (moderationResults.flagged) {
             throw new Error("Prompt failed moderation checks");
         }
+        console.log("Prompt passed moderation checks");
 
         // retrieve chat from database if exists, else create new chat
         const { verified_chat_id, verified_chat_history, verified_role_id } = await retrieveChatHistory(chat_id, user_id);
@@ -120,31 +133,43 @@ async function handler(req: Request) {
         console.log("Verified Chat History: ", verified_chat_history);
 
         // generate embedding for the user prompt
-        const promptEmbeddingResponse = await openAi.createEmbedding({ 
-            input: prompt,
-            model: "text-embedding-ada-002"
+        const embeddingUrl = "https://api.openai.com/v1/embeddings";
+        const embeddingHeaders = {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${openai_api_key}`
+        };
+        const embeddingBody = JSON.stringify({
+            "input": prompt,
+            "model": "text-embedding-ada-002",
         });
-        if (promptEmbeddingResponse.status !== 200) {
-            throw new Error("Failed to generate prompt embedding");
+        const embeddingResponse = await fetch(embeddingUrl, {
+            method: "POST",
+            headers: embeddingHeaders,
+            body: embeddingBody
+        });
+        if (embeddingResponse.status !== 200) {
+            throw new Error("Failed to generate prompt embeddings");
         }
-        const [{ embedding: promptEmbedding }] = promptEmbeddingResponse.data.data;
+        const embeddingJson = await embeddingResponse.json();
+        const promptEmbedding = embeddingJson.data[0].embedding;
 
-        // Make call to Supabase function to generate prompt similarity to documentation
+        // find similarities to stored documents
         const { data: match_data, error: match_error } = await supabaseClient.rpc(
-            "match_embeddings", 
+            "document_similarity", 
             { 
                 embedding: promptEmbedding,
-                match_threshold: 0.8,
+                match_threshold: 0.6,
                 match_count: 10,
             });
         if (match_error) {
+            console.error(match_error);
             throw new Error("Failed to match prompt embedding");
         }
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
             introSystemMessageTemplate,
             chatHistoryTemplate(verified_chat_history),
-            documentMatchTemplate(match_data),
+            documentMatchTemplate(match_data, userHost),
             humanMessageTemplate,
         ]);
 
@@ -248,6 +273,7 @@ async function handler(req: Request) {
         }
 
     } catch (error) {
+        console.error(error);
         const headers = new Headers(corsHeaders);
         headers.set("Content-Type", "application/json");
         return new Response(JSON.stringify({ error: error.message }), {
