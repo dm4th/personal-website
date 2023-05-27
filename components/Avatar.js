@@ -21,16 +21,16 @@ export default function Avatar({ url, avatarClass, noAvatarClass }) {
     }
 
     return (
-    <div>
-        {avatarUrl ? (
-            <img
-                src={avatarUrl}
-                alt="Avatar"
-                className={avatarClass}
-            />
-        ) : (
-            <div className={noAvatarClass} />
-        )}
-    </div>
+        <div>
+            {avatarUrl ? (
+                <img
+                    src={avatarUrl}
+                    alt="Avatar"
+                    className={avatarClass}
+                />
+            ) : (
+                <div className={noAvatarClass} />
+            )}
+        </div>
     )
 }

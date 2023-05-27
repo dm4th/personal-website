@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '@/components/Layout';
+import ChatInterface from '@/components/ChatInterface.js';
 import utilStyles from '@/styles/utils.module.css';
 import { getSortedPostsData } from '@/lib/promptingBlogs';
 import { getSortedInfo } from '@/lib/infoDocs';
@@ -29,7 +30,7 @@ export default function Home({ allPostsData, allInfoData }) {
                 <small>If you'd like a more customized experience, including saving chats and chatting with different roles of myself, please login and edit your account.</small>
             </section>
             <section className={utilStyles.headingMd}>
-                <h2 className={utilStyles.headingLg}>Chat with Me</h2>
+                <ChatInterface />
             </section>
         </Layout>
     );

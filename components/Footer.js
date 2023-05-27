@@ -19,6 +19,9 @@ const Footer = ({ home }) => {
                 SupaBase Auth is sourced from{' '}
                 <a href="https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs">this SupaBase tutorial</a>
             </p>
+            <p className={utilStyles.lightText}>
+                <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by feen - Flaticon</a>
+            </p>
         </footer>
     );
 };

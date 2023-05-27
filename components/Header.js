@@ -33,7 +33,7 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
         <header className={styles.header}>
             <div className={styles.left}>
                 {allInfoData.map(({ subDirectory, allSubInfoData, dropdownTitle }) => (
-                    <Dropdown title={dropdownTitle}>
+                    <Dropdown key={subDirectory} title={dropdownTitle}>
                         {allSubInfoData.map(({ file, Start, Title, End }) => (
                             <a key={`info-${file}`} href={`/info/${subDirectory}/${file}`}>
                                 {Title}
