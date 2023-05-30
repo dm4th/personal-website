@@ -25,9 +25,9 @@ export default function Home({ allPostsData, allInfoData }) {
             <section className={utilStyles.headingMd}>
                 <small>Hi! I'm Dan - Welcome to my Personal Website</small>
                 <br></br>
-                <small>You can chat with me using the below interface.</small>
+                <small>You can chat with my resume & projects using the below interface.</small>
                 <br></br>
-                <small>If you'd like a more customized experience, including saving chats and chatting with different roles of myself, please login and edit your account.</small>
+                <small>If you'd like a more customized experience, including saving chats and chatting with different roles of the assistant describing my background, please login and edit your account.</small>
             </section>
             <section className={utilStyles.headingMd}>
                 <ChatInterface />

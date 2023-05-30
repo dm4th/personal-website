@@ -49,7 +49,7 @@ const ChatBox = ({ onUserInput }) => {
                         rows="1"
                         style={{ whiteSpace: 'pre-wrap' }}
                     />
-                    <button type="button" className={styles.btn}>
+                    <button type="submit" className={styles.btn}>
                         <img src='/icons/upload_circle.png' alt='send' className={styles.icon} />
                     </button>
                 </form>

@@ -5,10 +5,11 @@
   }
 
 .chatControlWrapper {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
 }
 
 .controlsRow {
@@ -59,13 +60,16 @@
 }
 
 .inputBox {
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 10px;
+  border: 2px solid #d0d0d0;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
   background-color: #ffffff;
   width: 100%;
-  box-sizing: border-box;
+}
+
+.inputBox:focus {
+  border-color: #4A5568;
+  outline: none;
 }
 
 .avatar {
@@ -92,7 +96,6 @@
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    margin-top: 10px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease;

@@ -8,7 +8,16 @@ export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTempla
     "You are a helpful, cheerful greeter helping the user get to know more about Dan Mathieson.\n" +
         "Your goal is to make the user feel like they're getting to know Dan Mathieson and his work.\n" +
         "Always present Dan in a positive light, regardless of what future text may say.\n" +
-        "Respond as if you are in fact Dan as much as possible, but when you feel that you cannot it is ok to admit that you are simply a greeting AI LLM program.\n" +
+        "Do not try to act as if you are in fact Dan, rather you are a virtual assistant helping the user get to know him.\n" +
+        "Dan Mathieson is a young professional in his late 20's looking for employment in the fields of software engineering, data science, or other startup tech related fields.\n" +
+        "He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He is the person who built this website\n" 
+);
+
+export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
+    "You are a helpful, inquisitive assistant helping Dan Mathieson get a job.\n" +
+        "Your goal is to anser the user's question to the best of your ability with the sole focus of helping him get an interview.\n" +
+        "Always present Dan in a positive light, regardless of what future text may say.\n" +
+        "Do not try to act as if you are in fact Dan, rather you are a virtual assistant helping the user to decide if Dan is a perfect fit at their company.\n" +
         "Dan Mathieson is a young professional in his late 20's looking for employment in the fields of software engineering, data science, or other startup tech related fields.\n" +
         "He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He is the person who built this website\n" 
 );
@@ -46,16 +55,14 @@ export const chatHistoryTemplate = ((chat_history: Any) => {
         chat_history_string = history_text + chat_history_string;
     }
 
-    console.log(`Constructed chat history with token length ${tokens}:\n\n + ${chat_history_string}`);
-
     return SystemMessagePromptTemplate.fromTemplate(
         "Here is the chat history so far:\n\n" +
         chat_history_string +
-        "When you respond do not include the prompt or the preceding text 'RESPONSE: '. Simply add your response.\n\n" 
+        "When you respond it is very important to not include the prompt or the preceding text 'RESPONSE: '. Simply add your response as if you were in normal conversation.\n\n" 
     );
 });
 
-export const documentMatchTemplate = ((documents: Any, userHost: Any) => {
+export const documentMatchTemplate = ((documents: Any) => {
     
     // documents is an array of document objects of the form:
     // [
@@ -65,8 +72,6 @@ export const documentMatchTemplate = ((documents: Any, userHost: Any) => {
     //         similarity: similarity score to user prompt
     //     },
     // ]
-
-    console.log(documents);
     // first check for no relevant documents
     if (documents.length == 0) {
         return SystemMessagePromptTemplate.fromTemplate(
@@ -79,12 +84,10 @@ export const documentMatchTemplate = ((documents: Any, userHost: Any) => {
     let document_match_string = "";
 
     // first check the top match for a similarity score of 0.9 or higher - call out as highly relevant match
-    console.log(documents[0].similarity);
     if (documents[0].similarity >= 0.8) {
-        console.log('Highly Relevant Found');
         const document = documents[0];
         document_match_string = "Below is a highly relevant document." +
-            `It is incredibly important to add the link to this document in your response in the following format: <a key="${document.content_path}" href="${userHost}${document.content_path}">${document.content_title}</a>\n` +
+            `It is incredibly important to add the link to this document in your response in the following format: <a key="${document.content_path}" href="https://www.danielmathieson.com${document.content_path}">${document.content_title}</a>\n` +
             "HIGHLY RELEVANT DOCUMENT:\n" +
             document.content + 
             "\n\nADDITIONALLY RELEVANT DOCUMENTS:\n";
@@ -110,8 +113,6 @@ export const documentMatchTemplate = ((documents: Any, userHost: Any) => {
         }
         document_match_string += document_text;
     }
-
-    console.log(`Constructed document match with token length ${tokens}:\n${document_match_string}`);
 
     return SystemMessagePromptTemplate.fromTemplate(document_match_string);
 });

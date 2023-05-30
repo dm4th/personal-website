@@ -2,7 +2,7 @@ import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
 import { timezoneOptions } from '../_shared/timezone.ts';
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-import { introSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.ts';
+import { employerSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.ts';
 import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
 import { ConversationChain } from "https://esm.sh/langchain/chains";
 import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
@@ -10,7 +10,7 @@ import { CallbackManager } from "https://esm.sh/langchain/callbacks";
 
 const openai_api_key = Deno.env.get("OPENAI_API_KEY");
 
-const ROLE = "intro";
+const ROLE = "employer";
 
 async function retrieveChatHistory(chat_id: string, user_id: string) {
 
@@ -74,7 +74,7 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
 
             const { data: new_chat_data, error: new_chat_error } = await supabaseClient
                 .from("chats")
-                .insert([{ role_id: role_id, user_id: user_id, title: "Intro Chat - " + new Date().toLocaleString("en-US", timezoneOptions)}])
+                .insert([{ role_id: role_id, user_id: user_id, title: "Employer Chat - " + new Date().toLocaleString("en-US", timezoneOptions) }])
                 .select()
                 .single();
             if (new_chat_error) {
@@ -168,7 +168,7 @@ async function handler(req: Request) {
         }
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
-            introSystemMessageTemplate,
+            employerSystemMessageTemplate,
             chatHistoryTemplate(verified_chat_history),
             documentMatchTemplate(match_data),
             humanMessageTemplate,

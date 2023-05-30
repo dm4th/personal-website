@@ -1,0 +1,79 @@
+.convoHistoryContainer {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 0.75rem;
+    background: white;
+}
+
+.convoBlock {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background: #f3f4f6;
+}
+
+.convoImg {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}
+
+.convoPromptText {
+    color: #4b5563;
+}
+
+.convoRespText {
+    color: #6b7280;
+}
+
+.convoDiv {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.promptDiv {
+    color: #6b7280;
+}
+
+.respDiv {
+    color: #4c51bf;
+}
+
+.convoRespWait {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    position: relative;
+}
+
+.convoRespWait img {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    animation: circle 2s infinite linear;
+    will-change: transform;
+}
+
+@keyframes circle {
+    0% {
+        transform: translate(0, -5px);
+    }
+    25% {
+        transform: translate(5px, 0);
+    }
+    50% {
+        transform: translate(0, 5px);
+    }
+    75% {
+        transform: translate(-5px, 0);
+    }
+    100% {
+        transform: translate(0, -5px);
+    }
+}

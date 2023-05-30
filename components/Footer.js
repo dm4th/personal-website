@@ -22,6 +22,12 @@ const Footer = ({ home }) => {
             <p className={utilStyles.lightText}>
                 <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by feen - Flaticon</a>
             </p>
+            <p className={utilStyles.lightText}>
+                <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Chanut - Flaticon</a> 
+            </p>
+            <p className={utilStyles.lightText}>
+                <a href="https://www.flaticon.com/free-icons/bot" title="bot icons">Bot icons created by Smashicons - Flaticon</a>
+            </p>
         </footer>
     );
 };
