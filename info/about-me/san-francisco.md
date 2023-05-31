@@ -14,7 +14,7 @@ In early 2020, I made the move to the Bay Area with the assistance of a moving s
 
 I moved into a house in the Mission neighborhood with three roommates, including my younger cousin Drew, as well as Chris and Tarek. We quickly formed a strong bond during the months we spent together in lockdown. Despite the challenges brought about by COVID-19, I adapted well to living in a new city because everyone else was also confined to their homes. Maintaining long-distance communication with old friends became easier, and my girlfriend Maggie joined me in San Francisco, living just a few blocks away in the Castro neighborhood. Having her by my side made the transition and life during this time much more enjoyable.
 
-I lived with these roommates for two years, appreciating the youthful energy they brought into my daily routine. However, by August 2022, I felt the need for more privacy and moved out, coinciding with a decline in motivation at my job at Action. I truly loved the Mission neighborhood, and I highly recommend it to anyone considering a move to San Francisco from out of town.
+I lived with these roommates for two years, appreciating the youthful energy they brought into my daily routine. However, by August 2022, I felt the need for more privacy and moved out. I truly loved the Mission neighborhood.
 
 
 # The Richmond and Maggie
