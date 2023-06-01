@@ -20,7 +20,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     const paths = getInfoFilePaths();
-    console.log(paths);
     return {
         paths,
         fallback: false,

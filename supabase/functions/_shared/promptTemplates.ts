@@ -1,8 +1,10 @@
 import GPT3Tokenizer from 'https://esm.sh/gpt3-tokenizer';
-import { HumanMessagePromptTemplate, SystemMessagePromptTemplate } from "https://esm.sh/langchain/prompts";
+import { HumanMessagePromptTemplate, SystemMessagePromptTemplate, PromptTemplate } from "https://esm.sh/langchain/prompts";
 
 const MAX_PROMPT_TOKENS = 1500;
 export const gpt3Tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
+
+// Conversational Templates
 
 export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
     "You are a helpful, cheerful greeter helping the user get to know more about Dan Mathieson.\n" +
@@ -118,3 +120,38 @@ export const documentMatchTemplate = ((documents: Any) => {
 });
 
 export const humanMessageTemplate = HumanMessagePromptTemplate.fromTemplate("USER PROMPT: {human_prompt}");
+
+// Helper Templates
+
+export const questionSummaryTemplate = ((chat_history: Any) => {
+    
+        // chat_history is an array of chat message objects of the form:
+        // [
+        //     {
+        //         prompt: string,
+        //         response: string
+        //     },
+        // ]
+
+        let tokens = 0;
+        let chat_history_string = "";
+        for (let i=0; i<chat_history.length; i++) {
+            const chat_history_item = chat_history[i];
+            const prompt = chat_history_item.prompt;
+            const response = chat_history_item.response;
+            const history_text = "PROMPT: " + prompt + "\nRESPONSE: " + response + "\n\n";
+            const encoded = gpt3Tokenizer.encode(history_text);
+            tokens += encoded.text.length;
+            if (tokens > MAX_PROMPT_TOKENS) {
+                tokens -= encoded.text.length;
+                break;
+            }
+            chat_history_string = history_text + chat_history_string;
+        }
+    
+        return PromptTemplate.fromTemplate(
+            "Create a new question using the new prompt from the user below that incorporates the given chat history in a maximum of three sentences.:\n\n" +
+            chat_history_string +
+            "NEW PROMPT: {original_prompt}\n\n"
+        );
+    });

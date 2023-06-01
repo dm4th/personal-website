@@ -2,9 +2,15 @@ import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
 import { timezoneOptions } from '../_shared/timezone.ts';
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-import { employerSystemMessageTemplate, humanMessageTemplate, chatHistoryTemplate, documentMatchTemplate } from '../_shared/promptTemplates.ts';
+import { employerSystemMessageTemplate, 
+    humanMessageTemplate, 
+    chatHistoryTemplate, 
+    documentMatchTemplate,
+    questionSummaryTemplate
+} from '../_shared/promptTemplates.ts';
 import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
-import { ConversationChain } from "https://esm.sh/langchain/chains";
+import { OpenAI } from "https://esm.sh/langchain/llms/openai";
+import { ConversationChain, LLMChain } from "https://esm.sh/langchain/chains";
 import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
 import { CallbackManager } from "https://esm.sh/langchain/callbacks";
 
@@ -86,6 +92,29 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
     }
 }
 
+async function summarizeChatHistory(chat_history: string, prompt: string) {
+    // Generate embedding for the given prompt including the chat history for improved similarity search
+    // Do this by asking a different LLM to generate a new prompt given the chat history and the original prompt
+    // Then use the new prompt to generate an embedding
+
+    // if chat_history is empty, return the original prompt
+    if (chat_history.length === 0) {
+        console.log("Chat history is empty. Embedding original prompt.")
+        return prompt; 
+    }
+    const summaryPrompt = questionSummaryTemplate(chat_history);
+    const model = new OpenAI({
+        openAIApiKey: openai_api_key,
+        temperature: 0,
+        maxTokens: 1000,
+        modelName: "gpt-3.5-turbo",
+    });
+    const llmChain = new LLMChain({llm: model, prompt: summaryPrompt});
+    const summary = await llmChain.call({original_prompt: prompt})
+    console.log("New Prompt for Embedding: ", summary.text);
+    return summary.text;
+}
+
 async function handler(req: Request) {
     // First Check for CORS request
     console.log("New request received at ", new Date().toISOString());
@@ -140,7 +169,7 @@ async function handler(req: Request) {
             "Authorization": `Bearer ${openai_api_key}`
         };
         const embeddingBody = JSON.stringify({
-            "input": prompt,
+            "input": await summarizeChatHistory(verified_chat_history, prompt),
             "model": "text-embedding-ada-002",
         });
         const embeddingResponse = await fetch(embeddingUrl, {
