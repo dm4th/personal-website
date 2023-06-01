@@ -15,10 +15,10 @@ const Footer = ({ home }) => {
                 <div className={styles.footerColumn}>
                     <h3 className={utilStyles.headingMd}>Contact Info</h3>
                     <p className={utilStyles.lightText}>
-                        Email: <a href="mailto:your-email@example.com">your-email@example.com</a>
+                        Email: <a href="mailto:danny.mathieson233@gmail.com">danny.mathieson233@gmail.com</a>
                     </p>
                     <p className={utilStyles.lightText}>
-                        Cell: <a href="tel:1234567890">123-456-7890</a>
+                        Cell: <a href="tel:4125089696">(412) 508-9696</a>
                     </p>
                     <p className={utilStyles.lightText}>
                         <a href="https://www.linkedin.com/in/daniel-mathieson-572b7958/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
