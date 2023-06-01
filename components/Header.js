@@ -7,7 +7,7 @@ import { useSupaUser } from '@/lib/SupaContextProvider';
 
 
 const Header = ({ allPostsData, allInfoData, onLogin }) => {
-    const { user, userDetails, supabaseClient } = useSupaUser();
+    const { user, supabaseClient } = useSupaUser();
 
     const [showDropdown, setShowDropdown] = useState(null);
 
@@ -35,39 +35,39 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
                 {allInfoData.map(({ subDirectory, allSubInfoData, dropdownTitle }) => (
                     <Dropdown key={subDirectory} title={dropdownTitle}>
                         {allSubInfoData.map(({ file, Start, Title, End }) => (
-                            <a key={`info-${file}`} href={`/info/${subDirectory}/${file}`}>
+                            <Link key={`info-${file}`} href={`/info/${subDirectory}/${file}`}>
                                 {Title}
                                 <br />
                                 <small className={utilStyles.lightText}>{Start}{End && ` - ${End}`}</small>
-                            </a>
+                            </Link>
                         ))}
                     </Dropdown>
                 ))}
                 <Dropdown title="Prompting">
                     {allPostsData.map(({ id, date, title }) => (
-                        <a key={`prompting-${id}`} href={`/prompting/${id}`}>
+                        <Link key={`prompting-${id}`} href={`/prompting/${id}`}>
                             {title}
                             <br />
                             <small className={utilStyles.lightText}><Date dateString={date} /></small>
-                        </a>
+                        </Link>
                     ))}
                 </Dropdown>
             </div>
                 {user ? (
-            <div className={styles.right}>
-                    <Link href="/account" className={styles.loginStatus}>
-                        Account
-                    </Link>
-                    <button className={styles.loginStatus} onClick={() => supabaseClient.auth.signOut()}>
-                        Logout
-                    </button>
+                    <div className={styles.right}>
+                        <Link href="/account" className={styles.loginStatus}>
+                            Account
+                        </Link>
+                        <button className={styles.loginStatus} onClick={() => supabaseClient.auth.signOut()}>
+                            Logout
+                        </button>
                     </div>
                 ) : (
                     <div className={styles.right}>
-                    <button className={styles.loginStatus} onClick={() => onLogin()}>
-                        Login
-                    </button>
-            </div>
+                        <button className={styles.loginStatus} onClick={() => onLogin()}>
+                            Login
+                        </button>
+                    </div>
                 )}
         </header>
     );

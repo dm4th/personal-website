@@ -33,7 +33,7 @@ const ChatControl = ({ }) => {
 
     const handleChangeChatRole = async (event) => {
         await updateChatRole(event.target.value);
-        setLocalChatTitle(chat.title);
+        setLocalChatTitle('');
     };
 
     const handleChangeChat = (event) => {

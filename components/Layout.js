@@ -15,7 +15,7 @@ const name = 'Dan Mathieson';
 export const siteTitle = "Dan's Personal Website";
 
 export default function Layout({ children, home, allPostsData, allInfoData }) {
-    const { user, loggedInRole, supabaseClient } = useSupaUser();
+    const { user, supabaseClient } = useSupaUser();
 
     const [showModal, setShowModal] = useState(false);
 
