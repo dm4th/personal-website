@@ -14,7 +14,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 const name = 'Dan Mathieson';
 export const siteTitle = "Dan's Personal Website";
 
-export default function Layout({ children, home, allPostsData, allInfoData }) {
+export default function Layout({ children, home, none, allPostsData, allInfoData }) {
     const { user, supabaseClient } = useSupaUser();
 
     const [showModal, setShowModal] = useState(false);
@@ -62,6 +62,10 @@ export default function Layout({ children, home, allPostsData, allInfoData }) {
                                 alt=""
                             />
                             <h1 className={utilStyles.heading2Xl}>{name}</h1>
+                        </>
+                    ) : none ? (
+                        <>
+                            <Link href="/">← Back to Chat</Link>
                         </>
                     ) : (
                         <>

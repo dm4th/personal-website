@@ -58,14 +58,26 @@
     font-size: 0.8rem;
 }
 
-.dropdownContent a:hover {
+.dropdownContent .dropdownMd:hover {
     background-color: #ddd;
+    border-radius: 8px;
+}
+
+.dropdownContent .dropdownPdf:hover {
+    background-color: #ffdddd;
     border-radius: 8px;
 }
 
 .dropdown:hover .dropdownContent {
     display: block;
     border-radius: 8px;
+}
+
+.dropdownMd {
+}
+
+.dropdownPdf {
+    background-color: #ffeeee;
 }
 
 .loginStatus {

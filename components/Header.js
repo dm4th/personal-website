@@ -18,6 +18,7 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
             setShowDropdown(dropdown);
         }
     };
+
     const Dropdown = ({ title, children }) => (
         <div className={styles.dropdown}>
             <button className={styles.dropbtn} onClick={() => toggleDropdown(title)}>
@@ -29,17 +30,34 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
         </div>
     );
 
+    const dropdownSelection = (subDirectory, file, type, Start, Title, End) => {
+        if (type === 'md') {
+            return (
+                <Link key={`info-${file}`} href={`/info/${subDirectory}/${file}`} className={styles.dropdownMd} >
+                    {Title}
+                    <br />
+                    <small className={utilStyles.lightText}>{Start}{End && ` - ${End}`}</small>
+                </Link>
+            );
+        } else if (type === 'pdf') {
+            const pageName = file.replace('-',' ');
+            // Capitalize first letter of each word
+            const pageTitle = pageName.replace(/\b\w/g, l => l.toUpperCase()).replace('Ai','AI');
+            return (
+                <Link key={`info-${file}`} href={`/info/${subDirectory}/${file}`} className={styles.dropdownPdf} >
+                    {pageTitle}
+                </Link>
+            );
+        }
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.left}>
                 {allInfoData.map(({ subDirectory, allSubInfoData, dropdownTitle }) => (
                     <Dropdown key={subDirectory} title={dropdownTitle}>
-                        {allSubInfoData.map(({ file, Start, Title, End }) => (
-                            <Link key={`info-${file}`} href={`/info/${subDirectory}/${file}`}>
-                                {Title}
-                                <br />
-                                <small className={utilStyles.lightText}>{Start}{End && ` - ${End}`}</small>
-                            </Link>
+                        {allSubInfoData.map(({ file, type, Start, Title, End }) => (
+                            dropdownSelection(subDirectory, file, type, Start, Title, End)
                         ))}
                     </Dropdown>
                 ))}
