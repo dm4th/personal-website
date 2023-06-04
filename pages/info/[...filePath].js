@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Document, Page } from 'react-pdf';
+import Image from 'next/image';
 import Layout from '@/components/Layout';
 import utilStyles from '@/styles/utils.module.css';
 
@@ -30,12 +30,6 @@ export async function getStaticPaths() {
 }
 
 export default function Info({ allPostsData, allInfoData, infoData }) {
-    const [numPages, setNumPages] = useState(null);
-
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
-    }
-
     if (infoData.type === 'md') {
         return (
             <Layout allPostsData={allPostsData} allInfoData={allInfoData} >
@@ -63,11 +57,16 @@ export default function Info({ allPostsData, allInfoData, infoData }) {
                 <Head>
                     <title>{pageTitle}</title>
                 </Head>
-                <Document file={infoData.pdfPath} onLoadSuccess={onDocumentLoadSuccess} renderAnnotationLayer={false}>
-                    {Array.from(new Array(numPages), (el, index) => (
-                        <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-                    ))}
-                </Document>
+                {infoData.imgArray.map((img, index) => (
+                    <Image 
+                        key={`${pageName}-${index+1}`} 
+                        src={img.imgPath} 
+                        alt={`PDF Preview Page ${index+1} for ${pageTitle}`} 
+                        width={img.width} 
+                        height={img.height} 
+                        priority={index === 0 ? true : false}
+                    />    
+                ))}
             </Layout>
         );
     }

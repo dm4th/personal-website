@@ -22,11 +22,18 @@ async function walkFiles(dir, filelist = []) {
         if (dirent.isDirectory()) {
             filelist = await walkFiles(dirFile, filelist);
         } else {
-            filelist.push({
-                path: dirFile,
-                file: file.replace(/\.md$/, ''),
-                subDirectory: dir.split('/').pop(),
-            });
+            // only add files with a .md or .pdf extension
+            if (!file.match(/\.md$/) && !file.match(/\.pdf$/)) {
+                continue;
+            }
+            else {
+                filelist.push({
+                    path: dirFile,
+                    file: file.replace(/\.md$/, '').replace(/\.pdf$/, ''),
+                    subDirectory: dir.split('/').pop(),
+                    fileType: file.match(/\.md$/) ? 'md' : 'pdf',
+                });
+            }
         }
     }
     return filelist;
