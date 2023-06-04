@@ -115,13 +115,21 @@ async function generateMarkdownEmbeddings() {
         // generate openai embeddings
         // insert into the database
 
-    for (const { path, file, subDirectory } of infoFiles) {
+    for (const { path, file, subDirectory, fileType } of infoFiles) {
+
+        // if the files type is pdf, skip it
+        if (fileType === 'pdf') {
+            console.log(`\n\n\n\nSkipping ${subDirectory}/${file} because it is a pdf`);
+            continue;
+        }
 
         // retrieve the text from the files
         console.log(`\n\n\n\nProcessing ${subDirectory}/${file}`);
         const fileText = fs.readFileSync(path, 'utf8');
         const fileTextWithoutHeader = fileText.split('---')[2];
         const fileSections = fileTextWithoutHeader.split(/(?=^# )/gm).filter((section) => section.length > 0).slice(1);
+
+
 
         // break in to sub sections (based on '#' and on '###' but not '####')
         // calculate checksums
