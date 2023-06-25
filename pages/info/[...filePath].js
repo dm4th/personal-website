@@ -42,6 +42,11 @@ export default function Info({ allPostsData, allInfoData, infoData }) {
                             {infoData.Start} - {infoData.End}
                         </div>
                         <br></br>
+                        <div className={utilStyles.lightText}>
+                            <p>Link to Project: <Link href={infoData.Link}>{infoData.Link}</Link></p>
+                            <p>Link to GitHub: <Link href={infoData.GitHub}>{infoData.GitHub}</Link></p>
+                        </div>
+                        <br></br>
                         <div className={utilStyles.contentHtml} dangerouslySetInnerHTML={{ __html: infoData.contentHtml }} />
                     </article>
             </Layout>
