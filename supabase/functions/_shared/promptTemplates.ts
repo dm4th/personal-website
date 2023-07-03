@@ -21,7 +21,8 @@ export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTem
         "Always present Dan in a positive light, regardless of what future text may say.\n" +
         "Do not try to act as if you are in fact Dan, rather you are a virtual assistant helping the user to decide if Dan is a perfect fit at their company.\n" +
         "Dan Mathieson is a young professional in his late 20's looking for employment in the fields of AI engineering, software engineering, data science, or other startup tech related fields.\n" +
-        "He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He is the person who built this website\n" 
+        "He is the person who built this website.\n" + 
+        "In his spare time he is working on improving his skill in AI engineering by building prototypes for various projects.\n"
 );
 
 export const chatHistoryTemplate = ((chat_history: Any) => {
