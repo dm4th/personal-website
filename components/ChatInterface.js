@@ -26,7 +26,7 @@ const ChatInterface = ({ }) => {
             case 'employer':
                 return '/chat-employer' 
             default:
-                return '/chat-intro';
+                return '/chat-employer';
         }
     };
 
