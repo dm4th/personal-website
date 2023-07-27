@@ -61,7 +61,7 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
                         ))}
                     </Dropdown>
                 ))}
-                <Dropdown title="Prompting">
+                {/* <Dropdown title="Prompting">
                     {allPostsData.map(({ id, date, title }) => (
                         <Link key={`prompting-${id}`} href={`/prompting/${id}`} className={styles.dropdownMd} >
                             {title}
@@ -69,7 +69,7 @@ const Header = ({ allPostsData, allInfoData, onLogin }) => {
                             <small className={utilStyles.lightText}><Date dateString={date} /></small>
                         </Link>
                     ))}
-                </Dropdown>
+                </Dropdown> */}
             </div>
                 {user ? (
                     <div className={styles.right}>
