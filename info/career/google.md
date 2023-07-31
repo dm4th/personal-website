@@ -47,6 +47,18 @@ As we settled into a routine with remote work, we began to shift our focus to lo
 #### Description
 During the financial system migration, our backend P&L reporting infrastructure encountered issues. While we had access to actual performance data on some dimensions and forecast data on others, integrating the two in a meaningful way for business owners proved challenging, necessitating numerous caveats. Leveraging my SQL skills acquired at FanDuel, I collaborated with the financial data engineering team to address this issue. The project was demanding, and conveying the solution proved difficult, but the end result received positive feedback. The majority of the work involved GoogleSQL, including the development of macros and functions to ensure consistent definitions not only in my queries but also among my teammates. The "front end" of the project resided in Google Sheets, which allowed for data import and presentation.
 
+### Sales Finance Alignment and Bookings Forecasting
+#### Key Technologies
+- SQL
+- GoogleSQL
+- Google Sheets
+- Google Slides
+- Internal Google Dasboard & Pipeline Tooling
+#### Description
+While individuals around the world all use GSuite for their personal productivity needs, it is no surprise that the majority of revenue for GSuite comes from business sales. As the lead revenue analyst for GSuite it was imperative for me to ahve a good relationship with the sales team, particularly their finance department. The sales finance team developed bookings forecasts based off of feedback from the sales team on the ground and passed those forecasts to me to incorporate into our revenue forecasts. I'd then show the split between new bookings driven revenue and retained customer revenue to product leaders. 
+
+The most important part of the problem was staying on the same page with sales finance, making sure that the numbers we were reporting stayed consistent across leadership. To accomplish this we collaborated on creating one unified dashboard rather than trying to create a unified dataset and multiple dashboards on top of it. Creating one dashboard, while less flexible from a reporting standpoint, ensured that there were no miscommunications between the teams.
+
 ### GSuite Product Revenue Forecasting
 #### Key Technologies
 - SQL
