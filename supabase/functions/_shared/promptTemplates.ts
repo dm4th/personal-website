@@ -79,15 +79,20 @@ export const documentMatchTemplate = ((documents: Any) => {
     if (documents.length == 0) {
         return SystemMessagePromptTemplate.fromTemplate(
             "There are no relevant documents." +
-            "There is no need to let the user know you found no relevant information, unless they specifically asked for it."
+            "There is no need to let the user know you found no relevant information, unless they specifically asked for it." +
+            "Simply respond to the user's prompt as if you were in normal conversation. Do not make up any information, and be sure to let the user know that you did not find any relevant information pertaining to their query.\n\n"
         );
     }
 
-    let tokens = 0;
+    const documentEndString = "\n\nWhen you respond it is very important to not include the preceding text 'DOCUMENT #:' or the document content. Simply add your response as if you were in normal conversation.\n" + 
+    "Additionally, please be sure to cite specific information from the documents listed above in your response. Do not try to create new stories from the information to fit the user's prompt.\n\n";
+
+    const endEncoded = gpt3Tokenizer.encode(documentEndString);
+    let tokens = endEncoded.text.length;
     let document_match_string = "";
 
     // first check the top match for a similarity score of 0.9 or higher - call out as highly relevant match
-    if (documents[0].similarity >= 0.8) {
+    if (documents[0].similarity >= 0.82) {
         const document = documents[0];
         document_match_string = "Below is a highly relevant document." +
             `It is incredibly important to add the link to this document in your response in the following format: <a key="${document.content_path}" href="https://www.danielmathieson.com${document.content_path}">${document.content_title}</a>\n` +
@@ -115,9 +120,9 @@ export const documentMatchTemplate = ((documents: Any) => {
             break;
         }
         document_match_string += document_text;
-    }
+    }    
 
-    return SystemMessagePromptTemplate.fromTemplate(document_match_string);
+    return SystemMessagePromptTemplate.fromTemplate(document_match_string + documentEndString);
 });
 
 export const humanMessageTemplate = HumanMessagePromptTemplate.fromTemplate("USER PROMPT: {human_prompt}");

@@ -106,7 +106,7 @@ async function summarizeChatHistory(chat_history: string, prompt: string) {
     const model = new OpenAI({
         openAIApiKey: openai_api_key,
         temperature: 0,
-        maxTokens: 1000,
+        maxTokens: 200,
         modelName: "gpt-3.5-turbo",
     });
     const llmChain = new LLMChain({llm: model, prompt: summaryPrompt});
@@ -188,7 +188,7 @@ async function handler(req: Request) {
             "document_similarity", 
             { 
                 embedding: promptEmbedding,
-                match_threshold: 0.6,
+                match_threshold: 0.75,
                 match_count: 10,
             });
         if (match_error) {
@@ -217,7 +217,7 @@ async function handler(req: Request) {
             const chat_model = new ChatOpenAI({
                 openAIApiKey: openai_api_key,
                 temperature: 0.3,
-                maxTokens: 1000,
+                maxTokens: 200,
                 modelName: "gpt-3.5-turbo",
                 streaming: streaming,
                 callbackManager: CallbackManager.fromHandlers({
