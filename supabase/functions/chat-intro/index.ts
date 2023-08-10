@@ -189,7 +189,7 @@ async function handler(req: Request) {
             { 
                 embedding: promptEmbedding,
                 match_threshold: 0.6,
-                match_count: 10,
+                match_count: 3,
             });
         if (match_error) {
             console.error(match_error);
@@ -217,7 +217,6 @@ async function handler(req: Request) {
             const chat_model = new ChatOpenAI({
                 openAIApiKey: openai_api_key,
                 temperature: 0.3,
-                maxTokens: 1000,
                 modelName: "gpt-3.5-turbo",
                 streaming: streaming,
                 callbackManager: CallbackManager.fromHandlers({
@@ -275,7 +274,6 @@ async function handler(req: Request) {
             const chat_model = new ChatOpenAI({
                 openAIApiKey: openai_api_key,
                 temperature: 0.3,
-                maxTokens: 1000,
                 modelName: "gpt-3.5-turbo"
             });
 
