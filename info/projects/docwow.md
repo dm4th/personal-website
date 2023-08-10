@@ -1,8 +1,8 @@
 ---
 Title: DocWoW
 Start: June, 2023
-Link: https://main.d1v3r3l45ocapu.amplifyapp.com/
-GitHub: https://github.com/dm4th/personal-website
+Link: https://doc-iug984t8j-dm4th.vercel.app/
+GitHub: https://github.com/dm4th/DocWow
 ---
 
 
@@ -35,6 +35,7 @@ There was one solution we found that elegantly solved all of these issues. From 
 - AWS Amplify
 - React
 - NextJS
+- OpenAI API
 #### Description
 The elegant solution we found to our problem of scanned PDFs was using OCR technology provided by Amazon. We went with Textract primarily due to their support for different data types that the algorithm can look for (text, tables, and key-value pairs) as well as flexible pricing for each data type. Initially a user has to upload their document to S3 as any docuemnt larger than a very small limit needs to be in S3 for Textract to work. Automatically the app then kicks off the Textract processing job on the document using an AWS Step Function made available thorugh an API Gateway. The step function loops over a lambda function in a state machine. 
 
@@ -52,17 +53,18 @@ In a future iteration, I'd probably create a new lambda function or EC2 instance
 - Supabase PostgreSQL
 - Supabase Edge Functions
 - Supabase Storage
+- OpenAI API
 - OpenAI Embeddings API
 - OpenAI Text Completion API
 - LangChain
 - Prompt Engineering - Role, Objective, Task, Output
 - Prompt Engineering - Markdown Tables
 #### Description
-Once the document has been OCR'd and the blocks of information have been sent back to the client, it's time to create citable pieces of text for a chat interface. To complete this, I set up 3 separate Supabase Edge functions, one for each Textract processing algorithm (text, tables, and key-value pairs). Each of these edge functions took blocks as input, and generated a large markdown table in text that described the information found on the page. This created a structured dataset out of the unstructured dataset that could be fed to a Large Language Model for summarization. I picked markdown as the format for the structured data describing the OCR output because of [this blog post](https://github.com/brexhq/prompt-engineering/blob/main/README.md#markdown-tables) that believes OpenAI's models read a lot of GitHub readme files. 
+Once the document has been OCR'd and the blocks of information have been sent back to the client, it's time to create citable pieces of text for a chat interface. To complete this, I set up 3 separate Supabase Edge functions, one for each Textract processing algorithm (text, tables, and key-value pairs). Each of these edge functions took blocks as input, and generated a large markdown table in text that described the information found on the page. This created a structured dataset out of the unstructured dataset that could be fed to a Large Language Model through the OpenAI API for summarization. I picked markdown as the format for the structured data describing the OCR output because of [this blog post](https://github.com/brexhq/prompt-engineering/blob/main/README.md#markdown-tables) that believes OpenAI's models read a lot of GitHub readme files. 
 
-After feeding the structured data to the LLM, I had it create a title and summary for the information it was seeing in the page. Having the model create a title was an effective way to have it come up with a concise description before moving on to sumamrizing. Without the title, the model was prone to various hallucinations like making up information and ignoring other key pieces despite my best efforts to prompt it to only use information it could explicitly cite.
+After feeding the structured data to the LLM through the OpenAI API, I had it create a title and summary for the information it was seeing in the page. Having the model create a title was an effective way to have it come up with a concise description before moving on to sumamrizing. Without the title, the model was prone to various hallucinations like making up information and ignoring other key pieces despite my best efforts to prompt it to only use information it could explicitly cite.
 
-I then embedded the title and summary together to improve the chances that keywords found in titles later match user prompts. I stored the title, summary, embedding, coordinates of the information on each page, and other metadata like page numbers and document information in the Supabase PostgreSQL database for later retrieval.
+I then embedded the title and summary together using the OpenAI API embeddings model to improve the chances that keywords found in titles later match user prompts. I stored the title, summary, embedding, coordinates of the information on each page, and other metadata like page numbers and document information in the Supabase PostgreSQL database for later retrieval.
 
 ### Building the Chat and Citation Interface
 #### Key Technologies
@@ -75,12 +77,13 @@ I then embedded the title and summary together to improve the chances that keywo
 - Supabase PostgreSQL
 - Supabase Edge Functions
 - Supabase Storage
+- OpenAI API
 - OpenAI Embeddings API
 - OpenAI Text Completion API
 - LangChain
 - Prompt Engineering - Parsing Citations
 #### Description
-Having the parsed information ready for retrieval in a PostgreSQL database made the chat interface rather simple. All I had to do at this point ws send the user prompt to an edge function, embed it, and check it's similarity against the document embeddings. Once I knew which citations were most similar to the prompt, I simply injected the text (title and summary) into a prompt to OpenAI's text completion API and had it respond to the user prompt. The most similar citations were also added to a new entry in a database for chat history for later retrieval. I streamed the LLM response back to the client so that the user saw in real time how the LLM was responding with factual information about the scanned document.
+Having the parsed information ready for retrieval in a PostgreSQL database made the chat interface rather simple. All I had to do at this point ws send the user prompt to an edge function, embed it, and check it's similarity against the document embeddings. Once I knew which citations were most similar to the prompt, I simply injected the text (title and summary) into a prompt to OpenAI's text completion API and had it respond to the user prompt. The most similar citations were also added to a new entry in a database for chat history for later retrieval. I streamed the LLM response back usign the streaming option on the OpenAI API to the client so that the user saw in real time how the LLM was responding with factual information about the scanned document.
 
 From here the rest of the work was all on the UI. Based on the initial specifications for the prototype, I needed a way to actually show where in the document the information was coming from. I used the coordinates provided by Textract and stored in the processing steps above to also return the coordinates for cited areas fo teh document back to the client. These coordinates as well as a link to the stored PDF file are then sent to the React-PDF worker librrary with the highlighter plug-in enabled to take users to actual cited parts of the document. The user can select which citation they would like to see from the chat UI and it will appear in the PDF UI.
 
@@ -100,6 +103,6 @@ The benefits of this added approach are actually two-fold. First, this is a much
 # Version 2 - Generating Output
 
 
-The current phase of the project is a much higher step up from the previous version. Adding roles and goals to the input step was a very large improvement to overall UX for the product, but it doesn't go quite far enough. The next phase is to add output examples and allow the LLM to generate a similar example given certain inputs. For example, if the overall goal of the back-office worker is to generate an appeal letter to a medical insurance claim denial, shouldn;t the LLM be able to achieve that task as well? 
+The current phase of the project is a much higher step up from the previous version. Adding roles and goals to the input step was a very large improvement to overall UX for the product, but it doesn't go quite far enough. The next phase is to add output examples and allow the LLM to generate a similar example given certain inputs. For example, if the overall goal of the back-office worker is to generate an appeal letter to a medical insurance claim denial, shouldn't the LLM be able to achieve that task as well? 
 
 Currently I'm working on this in a siloed input, i.e. I'm only thinking of one potential use case as a proof-of-concept. If you think you have a good use case for this technology, please feel free to reach out!

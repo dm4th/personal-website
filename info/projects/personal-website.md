@@ -83,7 +83,7 @@ I also added usernames and avatar pictures to accounts using supabase storage. I
 - PostgreSQL 
 - pgVector
 - Markdown
-- OpenAI
+- OpenAI API
 - OpenAI Embeddings API
 - GPT3 Tokenizer
 - ChatGPT
@@ -91,7 +91,7 @@ I also added usernames and avatar pictures to accounts using supabase storage. I
 #### Description
 The really powerful part about LLMs in my opinion is that they deal with text. For hundred, even thousands of years text has been the primary interface for people to share information more broadly than a conversation. With great power comes great responsibility though, and without a ton of written text to prompt and pull into an LLM the tool can become unwieldy quite quickly. So I spent a good 50% of the week and half I took to focus on and build this project just writing text about myself to pull from. I naturally used GPT4 to generate longer versions of what I wrote to include as much context as possible.
 
-After finally writing a sufficient amount of text, the next step was building a script that would read my text and split it up into logical chunks to to referenced later. For instance, the current chunk you're reading starts at the header text “Generating Content and Storing Embeddings" and will end at the next section header. The script loops over every markdown file in the gray drop downs in the header above, chunks it, and embeds the words using the OpenAI ada-002 embedding algorithm. I then write that section of text along with the embedding and some extra metadata about the text (like how to link to it in later prompts) to my Supabase backend. We'll get into why I have to embed the text in a later section. 
+After finally writing a sufficient amount of text, the next step was building a script that would read my text and split it up into logical chunks to to referenced later. For instance, the current chunk you're reading starts at the header text “Generating Content and Storing Embeddings" and will end at the next section header. The script loops over every markdown file in the gray drop downs in the header above, chunks it, and embeds the words using the OpenAI API (specifically the OpenAI ada-002 embedding algorithm). I then write that section of text along with the embedding and some extra metadata about the text (like how to link to it in later prompts) to my Supabase backend. We'll get into why I have to embed the text in a later section. 
 If you're curious about what embeddings are, [here is a great overview](https://towardsdatascience.com/neural-network-embeddings-explained-4d028e6f0526)
 .
 
@@ -108,14 +108,14 @@ Once all of the text was written, chunked, and embedded, all that was left was u
 - Fetch Event Streams
 - PostgreSQL 
 - pgVector
-- OpenAI
+- OpenAI API
 - OpenAI Embeddings API
 #### Description
 The way I think about chat UX is that you want the chat input to be the center of focus, and everything should span out from there. This being a relatively simple interface, I broke the main UX into 3 components: a control interface above the chat input, and the chat history below the input. The control allows a logged in user to switch chat roles (explained above) and switch that instances as well. The history starts with the most recent message on top (closest to the chat input) and then scrolls down for older messages.
 
-I also think that streaming tokens from the server back to the client on a chat request is much faster and appealing for the user then waiting for all of the tokens to finish. To enable text streaming as part of the response from the server, I used Microsoft's fetch event source JavaScript package that allows for the server to write tokens to a text buffer that can be read by the client.
+I also think that streaming tokens from the server back to the client on a chat request is much faster and appealing for the user then waiting for all of the tokens to finish. To enable text streaming as part of the response from the server, I used Microsoft's fetch event source JavaScript package that allows for the server to write tokens to a text buffer that can be read by the client. You can then use the streaming option in the OpenAI API to return tokens as their generated rather than having to wait for all of them before responding.
 
-Chat history is stored in the Supabase database as well, and I actually also embed each chat using OpenAI's ada-002 model as well. It's important to ensure that the correct historical chat context is added to the prompt for the LLM, and embedding chats is the best way to do that.
+Chat history is stored in the Supabase database as well, and I actually also embed each chat using the OpenAI API (OpenAI's ada-002 model) as well. It's important to ensure that the correct historical chat context is added to the prompt for the LLM, and embedding chats is the best way to do that.
 
 ### Server Side Chat - Prompt Engineering
 #### Key Technologies
@@ -125,20 +125,20 @@ Chat history is stored in the Supabase database as well, and I actually also emb
 - Supabase Database 
 - Supabase Edge Functions
 - pgVector
-- OpenAI
+- OpenAI API
 - GPT3 Tokenizer
 - ChatGPT
 - LangChain
 #### Description
-Once the user submits a prompt, that prompt is immediately sent to a Supabase Edge Function (using Deno runtime and written in typescript) and the rest is done on the server. Upon receiving the prompt the first thing the server does is embed the prompt. This is important so that we can retrieve the most semantically similar chunks of both written text by me and chat history from the user. By first embedding the prompt, we can actually run the database similarity searches asynchronously while we begin to build the prompt that we will send to GPT 3.5 turbo.
+Once the user submits a prompt, that prompt is immediately sent to a Supabase Edge Function (using Deno runtime and written in typescript) and the rest is done on the server. Upon receiving the prompt the first thing the server does is embed the prompt. This is important so that we can retrieve the most semantically similar chunks of both written text by me and chat history from the user. By first embedding the prompt, we can actually run the database similarity searches asynchronously while we begin to build the prompt that we will send to the OpenAI API (GPT 3.5 turbo).
 
 The prompt starts with a system message that provides context for the role the assistant is to play in the conversation. This role maps to the [chat roles](#supabase-user-accounts-&-chat-roles) discussed earlier. The rest of the system message is mostly filler for making sure the assistant doesn't hallucinate or say anything negative.
 
-Next is injecting relevant context into the prompt. The dot product between the embedded initial prompt from the user and each of the embeddings of text I generated is calculated. The highest value (already normalized between one and zero based on the ada-002 algorithm) is the "most relevant text". I also added that it text scores above a 0.82 it is "highly relevant" and the assistant will cite the place it got the information from. If nothing scores above a 0.75, a generic passage of text is injected in its place. Typically I'll include about 4 chunks of relevant text per prompt, but it depends on how much fits in 2000 tokens (the amount I allotted for relevant text).
+Next is injecting relevant context into the prompt. The dot product between the embedded initial prompt from the user and each of the embeddings of text I generated is calculated. The highest value (already normalized between one and zero based on the ada-002 algorithm) is the "most relevant text". I also added that it text scores above a 0.82 it is "highly relevant" and the assistant will cite the place it got the information from. If nothing scores above a 0.70, a generic passage of text is injected in its place. Originally I'd include about 4 chunks of relevant text per prompt, but I realized that adding more than 3 really made responses too general for my use case, so I capped it off at 3 maximum.
 
-Next, I retrieve both the 5 most recent chat messages in this chat (or up to 1000 tokens) and the most relevant chat in the chat history (minimum score of 0.75). Those are also injected as that memory. I couldn't use the LangChain memory buffer for conversations because each time the edge function is called I'd technically be creating a new chat.
+Next, I retrieve both the 5 most recent chat messages in this chat (or up to 1000 tokens) and the most relevant chat in the chat history (minimum score of 0.70). Those are also injected as that memory. I couldn't use the LangChain memory buffer for conversations because each time the edge function is called I'd technically be creating a new chat.
 
-Between role, relevant text, recent chat history, and relevant chat history, the prompt that goes to the OpenAI LLM is much more nuanced than what the user entered. There is a significant amount of record keeping between the edge function and the database that happens to keep context, but overall LangChain makes it rather easy to work with LLM’s in this way.
+Between role, relevant text, recent chat history, and relevant chat history, the prompt that goes to the OpenAI API is much more nuanced than what the user entered. There is a significant amount of record keeping between the edge function and the database that happens to keep context, but overall LangChain makes it rather easy to work with LLM’s in this way.
 
 
 # Future Work
