@@ -1,13 +1,6 @@
 ---
-Title: Next Chapter
-Start: May, 2023
+Title: Strengths and Weaknesses
 ---
-
-
-# What I Am Seeking
-
-
-Above all, I aspire to contribute to a company or project that instills a sense of excitement in me every day. Throughout my career, and particularly in the last few months, I have cultivated a diverse array of skills at varying levels of proficiency. Although my skills in data analysis are top-notch, I acknowledge that my expertise in machine learning and artificial intelligence isn't as strong as my abilities in SQL and modeling. Recently, I've gained significant insights into full-stack development, blockchain engineering, and the intricacies of launching a product, even though I lack formal career experience in these areas. The key takeaway from this site should be my readiness to think creatively and contribute to your objectives in any way I can. I hope this project effectively demonstrates that readiness.
 
 
 # Strengths
