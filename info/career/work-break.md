@@ -54,11 +54,31 @@ Having this journal was very important later on in my work break as I graduated 
 #### Key Technologies
 - Airtable
 #### Description
-As I got deeper into building applications using AI/ML and Blockchain, and simultaneously decided to start building this website, I needed a better way to start tracking what I was spending my time working on. By this point I knew that Blockshain was not going to be my future career path, although I did like building the applications much more than watching YouTube videos about ML algorithms. To better understand how I was splitting my time between courses and personal projects/passions I began to track my daily creative hours using a separate Airtable base that was linked to each day in my journal.
+As I got deeper into building applications using AI/ML and Blockchain, and simultaneously decided to start building this website, I needed a better way to start tracking what I was spending my time working on. By this point I knew that Blockchain was not going to be my future career path, although I did like building the applications much more than watching YouTube videos about ML algorithms. To better understand how I was splitting my time between courses and personal projects/passions I began to track my daily creative hours using a separate Airtable base that was linked to each day in my journal.
 
 
-In the beginning I simply tracked when I started working on something, what that something was (i.e. the project or course I was spending my time on) and what the nature of that work was
+In the beginning I simply tracked when I started working on something, what that something was (i.e. the project or course I was spending my time on) and what the nature of that work was, whether it be watching a video, coding, writing, etc. This eventually evolved into keeping track of how I spend my time in 3 different areas: learning, teaching, and building. I’ll get into the reasoning behind this split in another post. The goal is to be pacing towards 2000 combined hours between each of those 3 categories in a 365 day period, 1500 for building and 500 combined for the other 2. This is definitely a stretch goal but feels like I should be pushing myself like this at this age.
 
+
+The nice part about this new data set I was collecting is that it connects perfectly into my existing journal project. I plan to add New connections to my journal in the future well so that I can get a holistic view on how my work affects my overall state of being from a data driven perspective and not just anecdotal evidence.
+
+
+### Media Consumption Tracker
+#### Key Technologies
+- Airtable
+#### Description
+The other activity I spent a lot of my time doing was working on things around the apartment and walking our dog Winnie. With my commitment to learning I started to get really into podcasts about all sorts of new subjects I was learning about. I really waited to make sure I was actually spending my time with informative content rather than just sports or other ephemeral content, so I started to track this time spent much like my creative hours. I didn't have a goal for this tracking though, rather I was just curious how the numbers would look compared to my other tracking.
+
+
+
+
+# AI/ML Bootcamp - Cal Tech
+
+
+
+Throughout my career to this point I had spent most of my time working with rather large datasets, doing analyses that 90% of other people could not do themselves. There was always a small subset of problems I would come across though that I feel I needed a bit more training to do well. From my understanding I knew I didn't know enough technical algorithms and have the hard skills needed to truly be great at what I was doing before. I also knew AI/ML was what I needed to learn to take that next step,  and it didn't hurt that the field was quite popular at The time too.
+
+I did some research and landed on a bootcamp for quite honestly the worst reasons.i didn't want a long term commitment because I didn't want to be out of the workforce for too long. I also didn't think I have the work ethic required to teach myself through YouTube videos and the online courses. I did some research online and found a great 6-month bootcamp through Cal Tech that seemed like the perfect fit. I should have trusted myself with free courses though. The bootcamp was fine, and it kept me honest, but the projects were too restrictive and there was too much stuff in the beginning of the course that I could have skipped over if I was self-pacing.
 
 
 (WORK IN PROGRESS)
