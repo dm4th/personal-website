@@ -15,10 +15,10 @@ End: September, 2023
 Throughout my career to this point I had enough knowledge of technical topics to hold my own when talking to engineers. My background in computer engineering, big data, and basic scripting in Python helped me to communicate ideas effectively to anyone at any technical level. As I transitioned into a leadership role at Action, I found myself needing to spend an inordinate amount of time building to keep my technical skills sharp and stay on top of technical issues. I started to lose the time to simply explore new topics for the sake of exploring. I still felt like I was in an early enough stage of my career that growth potential should be the ultimate deciding factor in my career decisions. Growth was why I joined Google and Action in the first place, and at 28 I wanted to optimize for the future. With how quickly I decided to leave Action, I didn't have another job lined up and I was planning on taking a few months to decide what to do next. I had jumped head first into my previous career decisions and I wanted this to be different.
 
 
-While I took time to reflect, I decided to upskill myself. I was extremely curious about Artificial Intelligence and Machine Learning due to my time at Google and in analytics. I was already using a lot of the underlying technologies (Python, Pandas), I just needed a bit of direction on how and when to use different techniques and algorithms. I decided to take a bootcamp at SimpliLearn through CalTech, and I've written about that experience in another piece that you can find in the navigation bar on my website.
+While I took time to reflect, I decided to upskill myself. I was extremely curious about Artificial Intelligence and Machine Learning due to my time at Google and in analytics. I was already using a lot of the underlying technologies (Python, Pandas), I just needed a bit of direction on how and when to use different techniques and algorithms. I decided to take a bootcamp at SimpliLearn through CalTech, and I've written about that experience in [another piece](http://www.danielmathieson.com/info/ai-ml/cal-tech) that you can find in the navigation bar on my website.
 
 
-I was also curious about Blockchain after the bull markets of 2021-2022 and figured I'd have the time to learn smart contract programming as well. And hey, if the bull markets continued I'd have a very desirable skill. I've written more about my experience at the Metana Web3 Bootcamp in a separate piece that you can find in the navigation bar on my website.
+I was also curious about Blockchain after the bull markets of 2021-2022 and figured I'd have the time to learn smart contract programming as well. And hey, if the bull markets continued I'd have a very desirable skill. I've written more about my experience at the Metana Web3 Bootcamp in a [separate piece]() that you can find in the navigation bar on my website.
 
 
 
@@ -68,17 +68,5 @@ The nice part about this new data set I was collecting is that it connects perfe
 - Airtable
 #### Description
 The other activity I spent a lot of my time doing was working on things around the apartment and walking our dog Winnie. With my commitment to learning I started to get really into podcasts about all sorts of new subjects I was learning about. I really waited to make sure I was actually spending my time with informative content rather than just sports or other ephemeral content, so I started to track this time spent much like my creative hours. I didn't have a goal for this tracking though, rather I was just curious how the numbers would look compared to my other tracking.
-
-
-
-
-# AI/ML Bootcamp - Cal Tech
-
-
-
-Throughout my career to this point I had spent most of my time working with rather large datasets, doing analyses that 90% of other people could not do themselves. There was always a small subset of problems I would come across though that I feel I needed a bit more training to do well. From my understanding I knew I didn't know enough technical algorithms and have the hard skills needed to truly be great at what I was doing before. I also knew AI/ML was what I needed to learn to take that next step,  and it didn't hurt that the field was quite popular at The time too.
-
-I did some research and landed on a bootcamp for quite honestly the worst reasons.i didn't want a long term commitment because I didn't want to be out of the workforce for too long. I also didn't think I have the work ethic required to teach myself through YouTube videos and the online courses. I did some research online and found a great 6-month bootcamp through Cal Tech that seemed like the perfect fit. I should have trusted myself with free courses though. The bootcamp was fine, and it kept me honest, but the projects were too restrictive and there was too much stuff in the beginning of the course that I could have skipped over if I was self-pacing.
-
 
 (WORK IN PROGRESS)
