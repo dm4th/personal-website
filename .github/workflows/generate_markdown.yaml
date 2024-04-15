@@ -30,6 +30,8 @@ jobs:
 
       # If your script makes changes to files and you want to commit them:
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
