@@ -1,4 +1,3 @@
-yaml
 name: Generate Markdown from PDFs
 
 on:
