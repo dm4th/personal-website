@@ -6,12 +6,14 @@ on:
       - main  # or any other branch you want to trigger the workflow
 
 jobs:
-  convert-pdfs-to-md:
+  Convert PDFs to Markdown and Generate Embeddings:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -38,13 +40,6 @@ jobs:
           git add .
           git commit -m "Automated changes by GitHub Actions" -a || echo "No changes to commit"
           git push
-
-  generate-embeddings:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
