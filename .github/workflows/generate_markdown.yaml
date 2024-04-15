@@ -6,7 +6,7 @@ on:
       - main  # or any other branch you want to trigger the workflow
 
 jobs:
-  Convert PDFs to Markdown and Generate Embeddings:
+  convert-pdfs-to-markdown-and-generate-embeddings:
     runs-on: ubuntu-latest
 
     steps:
