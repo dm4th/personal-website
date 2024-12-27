@@ -50,4 +50,8 @@ jobs:
         run: npm install
 
       - name: Generate Embeddings
-        run: node scripts/generate_embeddings.mjs
+        run: |
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+          NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} \
+          SERVICE_ROLE_KEY=${{ secrets.SERVICE_ROLE_KEY }} \
+          node scripts/generate_embeddings.mjs
