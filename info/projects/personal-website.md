@@ -1,6 +1,7 @@
 ---
 Title: Personal Website
 Start: April, 2023
+End: Current
 Link: http://www.danielmathieson.com
 GitHub: https://github.com/dm4th/personal-website
 ---

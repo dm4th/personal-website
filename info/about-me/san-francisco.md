@@ -1,11 +1,11 @@
 ---
 Title: Living in San Francisco
 Start: January, 2020
+End: Current
 ---
 
 
 # Moving to the Bay Area
-
 
 In early 2020, I made the move to the Bay Area with the assistance of a moving stipend from Google. Initially, I lived in Sunnyvale, near the Google Cloud campus. I enjoyed the autonomy that came with living there, but being hours away from anyone became isolating. After three months, which was the maximum duration Google would cover for corporate housing, I decided to relocate to San Francisco, just as the COVID-19 pandemic was starting to impact the world.
 
@@ -18,7 +18,6 @@ I lived with these roommates for two years, appreciating the youthful energy the
 
 
 # The Richmond and Maggie
-
 
 In August 2022, my girlfriend Maggie, our beloved dog Winnie (a delightful border collie), and I embarked on a new chapter in our lives as we moved into our current home in the picturesque Richmond neighborhood, nestled close to Clement Street. This area turned out to be the perfect location for us, offering a unique blend of tranquility and urban convenience. With Golden Gate Park and the majestic Presidio nearby, we found ourselves surrounded by natural beauty, providing endless opportunities for leisurely strolls and outdoor adventures.
 
@@ -44,3 +43,9 @@ Typically students will start with [Scratch](https://scratch.mit.edu/), a drag-a
 As the students get a bit older, we transition them to learning Python. In most cases, the barrier for a student to move from Scratch is not actually their understanding of programming, rather, it's the student's ability to type that is the main barrier. I find that concepts are also usually pretty easy to teach to students; they intuitively understand the need for conditional statements, variables, and even functions. Syntax, however, can become a significant issue, which is why Python is so great with its minimal syntax (tabs and spaces are very difficult for them to understand though). We start with learning about data types and variables, aggregate data types like lists and dictionaries, then we move to conditionals, while loops, for loops, and functions in that order. I've found you can really get quite far with just these core concepts, building projects like a game of Hangman, memory matching games, slot machines, and choose-your-own-adventure text-based games. 
 
 We typically don't ever get past this point, but the next concepts I start to teach are classes and object-oriented programming. Python offers a great interface for teaching these concepts in particular because every core data type in Python is implemented as a class under the hood, providing many great examples to draw from in teaching. My favorite projects to do with students doing OOP are building a deck of cards with multiple different games to play with them, and simulating Pokemon battles.
+
+
+# Proposal, Wedding Planning, and Getting Married
+
+After nearly two years living together in the Richmond in San Francisco, I proposed to Maggie in early August of 2024. She said yes, and that was the happiest I've ever been. We're planning to be married outside of San Luis Obispo on September 20, 2025. Until then we will be hard at work planning the best party California has ever seen!
+

@@ -1,0 +1,193 @@
+{
+  "main": {
+    "id": "ae755e8abdbe1833",
+    "type": "split",
+    "children": [
+      {
+        "id": "f0595518a8f2902a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "14bb8659b30dd68f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "info/career/thoughtful.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "thoughtful"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "47cc0f897922fcc2",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "63bff2ae2743de4d",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "919eb7f483f71632",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "b365d75a2b2b6090",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "e85b634ab63c2e04",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "62add8bb192ff14e",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "0daa8ff076877d1b",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "info/career/thoughtful.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "e06a4df21fea5279",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "info/career/thoughtful.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "f1c6d7d71d1c2c3d",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "info/career/thoughtful.md"
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "14bb8659b30dd68f",
+  "lastOpenFiles": [
+    "info/about-me/san-francisco.md",
+    "info/career/thoughtful.md",
+    "info/projects/docwow.md",
+    "info/projects/personal-website.md",
+    "info/career/action-network.md",
+    "info/career/google.md",
+    "info/career/work-break.md",
+    "info/Untitled",
+    "pages/info/[...filePath].js",
+    "pages/prompting/[id].js",
+    "pages/account.js",
+    "pages/info",
+    "pages/index.js",
+    "pages/prompting",
+    "pages/_app.js",
+    "pages",
+    "lib/loginRoles.js",
+    "README.md",
+    "public/ai-certificate-images/ai-certificate-0.jpg",
+    "public/icons/magnifying-glass.png",
+    "public/icons/upload_circle.png",
+    "public/icons/user.png",
+    "public/icons/bot.png",
+    "public/solidity-certificate-images/solidity-certificate-0.jpg",
+    "public/images/headshot.jpg",
+    "public/resume-images/resume-0.jpg",
+    "info/ai-ml/cal-tech.md",
+    "info/about-me/new-york.md",
+    "info/about-me/early-years-high-school.md",
+    "info/about-me/strengths-and-weaknesses.md",
+    "info/about-me/college.md",
+    "info/projects/metana.md",
+    "info/career/fanduel.md",
+    "posts/ssg-ssr.md",
+    "posts/intro-post.md",
+    "posts/airtable-link.md",
+    "posts/pre-rendering.md",
+    "2024-12-22.md",
+    "Untitled.canvas",
+    "action-network.md"
+  ]
+}
