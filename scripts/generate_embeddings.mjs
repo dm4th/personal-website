@@ -3,11 +3,11 @@ import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 import { createHash } from 'crypto';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
 dotenv.config({ path: '.env.local' });
 
-const openAiConfiguration = new Configuration({
+const openai = new OpenAI({
     organization: process.env.OPENAI_ORG_KEY,
     apiKey: process.env.OPENAI_API_KEY,
 });
@@ -54,18 +54,15 @@ async function openAiEmbedding(text) {
     // first split text into 1500 word chunks delimited by spaces or newline characters
     const chunks = chunkText(text, 1500);
 
-    // instantiate openai client
-    const openai = new OpenAIApi(openAiConfiguration);
-
-    // // create embedding for each chunk
+    // create embedding for each chunk
     const embeddings = [];
     for (const chunk of chunks) {
-        const response = await openai.createEmbedding({
-            model: 'text-embedding-ada-002',
+        const response = await openai.embeddings.create({
+            model: 'text-embedding-3-small',
             input: chunk,
         });
         embeddings.push({
-            embedding: response.data.data[0].embedding,
+            embedding: response.data[0].embedding,
             text: chunk,
         });
     }
