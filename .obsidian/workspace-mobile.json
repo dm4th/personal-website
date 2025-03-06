@@ -36,7 +36,8 @@
         "state": {
           "type": "file-explorer",
           "state": {
-            "sortOrder": "alphabetical"
+            "sortOrder": "alphabetical",
+            "autoReveal": false
           },
           "icon": "lucide-folder-closed",
           "title": "Files"
@@ -149,11 +150,13 @@
   },
   "active": "14bb8659b30dd68f",
   "lastOpenFiles": [
-    "info/about-me/san-francisco.md",
+    "info/career/action-network.md",
+    "info/ai-ml/cal-tech.md",
+    "info/ai-ml/ai-certificate.pdf",
     "info/career/thoughtful.md",
+    "info/about-me/san-francisco.md",
     "info/projects/docwow.md",
     "info/projects/personal-website.md",
-    "info/career/action-network.md",
     "info/career/google.md",
     "info/career/work-break.md",
     "info/Untitled",
@@ -165,7 +168,6 @@
     "pages/prompting",
     "pages/_app.js",
     "pages",
-    "lib/loginRoles.js",
     "README.md",
     "public/ai-certificate-images/ai-certificate-0.jpg",
     "public/icons/magnifying-glass.png",
@@ -175,7 +177,6 @@
     "public/solidity-certificate-images/solidity-certificate-0.jpg",
     "public/images/headshot.jpg",
     "public/resume-images/resume-0.jpg",
-    "info/ai-ml/cal-tech.md",
     "info/about-me/new-york.md",
     "info/about-me/early-years-high-school.md",
     "info/about-me/strengths-and-weaknesses.md",

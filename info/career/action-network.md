@@ -22,7 +22,7 @@ Making the transition from Google was challenging, even though it was the right 
 Drawing upon my experiences at FanDuel, I started developing daily and weekly reports to facilitate a better understanding of core metrics among business leaders. By capitalizing on the groundwork laid by other analysts and relentlessly questioning metrics definitions, I was able to establish an effective onboarding process. Creating visible, frequent reports provided a thorough comprehension of what drives the metrics, illuminating any inconsistencies and gaps, and offering quick solutions. 
 
 
-# Sale to Better Collective and Immediate Afttermath
+# Sale to Better Collective and Immediate Aftermath
 
 
 Only a month into my tenure at [Action Network](#https://www.actionnetwork.com/), things felt somewhat amiss. I was involved in high-level strategy meetings for our burgeoning affiliate business, but the leadership dynamics were unclear. Unbeknownst to me, negotiations were ongoing to sell the company to [Better Collective](#https://bettercollective.com/), a European sports betting affiliate platform. After the successful sale, Ari left for Fanatics, leaving me without a mentor and creating confusion about my reporting line and priorities. Despite this trying period, I managed to push through and learned invaluable lessons about self-advocacy and taking the initiative.
