@@ -8,11 +8,11 @@ import { introSystemMessageTemplate,
     documentMatchTemplate,
     questionSummaryTemplate
 } from '../_shared/promptTemplates.ts';
-import { ChatOpenAI } from "https://esm.sh/langchain/chat_models/openai";
-import { OpenAI } from "https://esm.sh/langchain/llms/openai";
-import { ConversationChain, LLMChain } from "https://esm.sh/langchain/chains";
-import { ChatPromptTemplate } from "https://esm.sh/langchain/prompts";
-import { CallbackManager } from "https://esm.sh/langchain/callbacks";
+import { ChatOpenAI } from "npm:langchain@0.0.171/chat_models/openai";
+import { OpenAI } from "npm:langchain@0.0.171/llms/openai";
+import { ConversationChain, LLMChain } from "npm:langchain@0.0.171/chains";
+import { ChatPromptTemplate } from "npm:langchain@0.0.171/prompts";
+import { CallbackManager } from "npm:langchain@0.0.171/callbacks";
 
 const openai_api_key = Deno.env.get("OPENAI_API_KEY");
 
@@ -127,11 +127,12 @@ async function handler(req: Request) {
     } 
 
     try {
-        const { prompt: promptInit, chat_id, user_id } = await req.json();
+        const { prompt: promptInit, chat_id, user_id, include_sources = false } = await req.json();
         const prompt = promptInit.trim();
         console.log("Prompt: ", prompt);
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
+        console.log("Include Sources: ", include_sources);
 
         // check that the prompt passes openAi moderation checks
         const moderationUrl = "https://api.openai.com/v1/moderations";
@@ -183,18 +184,21 @@ async function handler(req: Request) {
         const embeddingJson = await embeddingResponse.json();
         const promptEmbedding = embeddingJson.data[0].embedding;
 
-        // find similarities to stored documents
+        // find similarities to stored documents - increasing match count to capture more potential relevant sources
         const { data: match_data, error: match_error } = await supabaseClient.rpc(
             "document_similarity", 
             { 
                 embedding: promptEmbedding,
-                match_threshold: 0.6,
-                match_count: 3,
+                match_threshold: 0.6,  // Keep the threshold at 0.6 for LLM context
+                match_count: 5,        // Increase match count to find more potential sources
             });
         if (match_error) {
             console.error(match_error);
             throw new Error("Failed to match prompt embedding");
         }
+        
+        // Store sources with similarity above 0.7 to send back to the client
+        const relevantSources = include_sources ? match_data.filter(doc => doc.similarity >= 0.7) : [];
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
             introSystemMessageTemplate,
@@ -223,6 +227,12 @@ async function handler(req: Request) {
                     handleLLMStart: async () => {
                         await writer.ready;
                         await writer.write(encoder.encode(`data: ${JSON.stringify({ chat_id: verified_chat_id })}\n\n`));
+                        
+                        // If include_sources is true and we have relevant sources, send them
+                        if (include_sources && relevantSources.length > 0) {
+                            await writer.ready;
+                            await writer.write(encoder.encode(`data: ${JSON.stringify({ sources: relevantSources })}\n\n`));
+                        }
                     },
                     handleLLMNewToken: async (token) => {
                         await writer.ready;
@@ -234,9 +244,22 @@ async function handler(req: Request) {
 
                         // update chat history for this chat id
                         const out_text = output.generations[0][0].text;
+                        
+                        // Create metadata with sources if include_sources is true
+                        const metadata = include_sources && relevantSources.length > 0 
+                            ? { sources: relevantSources } 
+                            : null;
+                            
                         const { error } = await supabaseClient
                             .from("chat_history")
-                            .insert([{ chat_id: verified_chat_id, user_id: user_id, role_id: verified_role_id, prompt: prompt, response: out_text }]);
+                            .insert([{ 
+                                chat_id: verified_chat_id, 
+                                user_id: user_id, 
+                                role_id: verified_role_id, 
+                                prompt: prompt, 
+                                response: out_text,
+                                metadata: metadata
+                            }]);
                         if (error) {
                             console.error(error);
                         }

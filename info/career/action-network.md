@@ -8,7 +8,7 @@ End: October, 2022
 # Making the Leap
 
 
-Making the transition from Google was challenging, even though it was the right time for a change. I had promised myself a minimum of two years at Google before contemplating a move, and I would have honored that commitment if the next opportunity hadn't been so enticing. Ari, a highly regarded senior from my FanDuel days, presented an irresistible pitch - a chance to play a pivotal role in a sports betting media startup desperately needing analytics support, [The Action Network](#https://www.actionnetwork.com/). As his right-hand man, I'd be leading a small team of analysts, charged with developing reporting infrastructure across the media and affiliate branches of the business. Although I didn't feel as productive initially due to my short tenure, I managed to initiate some small projects that demonstrated my capabilities.
+Making the transition from Google was challenging, even though it was the right time for a change. I had promised myself a minimum of two years at Google before contemplating a move, and I would have honored that commitment if the next opportunity hadn't been so enticing. Ari, a highly regarded senior from my FanDuel days, presented an irresistible pitch - a chance to play a pivotal role in a sports betting media startup desperately needing analytics support, [The Action Network](https://www.actionnetwork.com/). As his right-hand man, I'd be leading a small team of analysts, charged with developing reporting infrastructure across the media and affiliate branches of the business. Although I didn't feel as productive initially due to my short tenure, I managed to initiate some small projects that demonstrated my capabilities.
 
 ### Analytics Daily and Weekly Recaps
 #### Key Technologies
@@ -25,7 +25,7 @@ Drawing upon my experiences at FanDuel, I started developing daily and weekly re
 # Sale to Better Collective and Immediate Aftermath
 
 
-Only a month into my tenure at [Action Network](#https://www.actionnetwork.com/), things felt somewhat amiss. I was involved in high-level strategy meetings for our burgeoning affiliate business, but the leadership dynamics were unclear. Unbeknownst to me, negotiations were ongoing to sell the company to [Better Collective](#https://bettercollective.com/), a European sports betting affiliate platform. After the successful sale, Ari left for Fanatics, leaving me without a mentor and creating confusion about my reporting line and priorities. Despite this trying period, I managed to push through and learned invaluable lessons about self-advocacy and taking the initiative.
+Only a month into my tenure at [Action Network](https://www.actionnetwork.com/), things felt somewhat amiss. I was involved in high-level strategy meetings for our burgeoning affiliate business, but the leadership dynamics were unclear. Unbeknownst to me, negotiations were ongoing to sell the company to [Better Collective](https://bettercollective.com/), a European sports betting affiliate platform. After the successful sale, Ari left for Fanatics, leaving me without a mentor and creating confusion about my reporting line and priorities. Despite this trying period, I managed to push through and learned invaluable lessons about self-advocacy and taking the initiative.
 
 ### Daily KPI Dashboard
 #### Key Technologies
@@ -48,7 +48,7 @@ I encountered a significant mismatch between our top-of-funnel KPI reporting (Go
 - Google Analytics API
 - Tableau
 #### Description
-With audience as the core KPI since the company's inception, demonstrating its growth and the expansion of the sports betting audience in the USA was essential. As we were preparing for acquisition by [Better Collective](#https://bettercollective.com/), a company specializing in affiliate conversion, we had to improve our audience tracking methods. I introduced the DAU/MAU ratio and began monitoring platform performance differences, focusing on high-value, high-intent sessions rather than repetitive users.
+With audience as the core KPI since the company's inception, demonstrating its growth and the expansion of the sports betting audience in the USA was essential. As we were preparing for acquisition by [Better Collective](https://bettercollective.com/), a company specializing in affiliate conversion, we had to improve our audience tracking methods. I introduced the DAU/MAU ratio and began monitoring platform performance differences, focusing on high-value, high-intent sessions rather than repetitive users.
 
 
 # The First Year Post-Ari
@@ -93,7 +93,7 @@ More importantly, it forced me to attentively listen to a large team's needs and
 - Google Apps Script
 - Google Analytics
 #### Description
-As the Director of Analytics, the teams at [Better Collective](#https://bettercollective.com/) in Denmark naturally approached me to gain access to our data. While we didn't have a system in place to fully operationalize this data sharing, I undertook some work to automate daily reporting for their financial stack. This early encounter with Better Collective allowed me to experience the contrast between a startup's "move fast and break things" mentality and the more structured, deadline-driven approach of "I need this report on my desk in this specific format by tomorrow morning."
+As the Director of Analytics, the teams at [Better Collective](https://bettercollective.com/) in Denmark naturally approached me to gain access to our data. While we didn't have a system in place to fully operationalize this data sharing, I undertook some work to automate daily reporting for their financial stack. This early encounter with Better Collective allowed me to experience the contrast between a startup's "move fast and break things" mentality and the more structured, deadline-driven approach of "I need this report on my desk in this specific format by tomorrow morning."
 
 ### Affiliate Performance Reporting
 #### Key Technologies
@@ -105,13 +105,13 @@ As the Director of Analytics, the teams at [Better Collective](#https://betterco
 - Google Apps Script
 - Google Data Studio
 #### Description
-Our acquisition by [Better Collective](#https://bettercollective.com/) was driven by a strong growth in affiliate-driven revenue over the previous year. As this growth continued, it became clear that our systems for tracking performance across all of our affiliate partners wouldn't scale if we continued to grow at the same pace. April advocated to hire Amanda, and they, along with Billy, played a pivotal role in developing infrastructure to automate the scraping and cleaning of data from nearly two dozen partners. They also presented the data in a way that resolved numerous issues for both Better Collective and Action management. During this project, I learned how to navigate high-pressure leadership situations and the importance of trusting my team to deliver high-quality products. This experience as a manager taught me valuable lessons that would inform my future leadership style.
+Our acquisition by [Better Collective](https://bettercollective.com/) was driven by a strong growth in affiliate-driven revenue over the previous year. As this growth continued, it became clear that our systems for tracking performance across all of our affiliate partners wouldn't scale if we continued to grow at the same pace. April advocated to hire Amanda, and they, along with Billy, played a pivotal role in developing infrastructure to automate the scraping and cleaning of data from nearly two dozen partners. They also presented the data in a way that resolved numerous issues for both Better Collective and Action management. During this project, I learned how to navigate high-pressure leadership situations and the importance of trusting my team to deliver high-quality products. This experience as a manager taught me valuable lessons that would inform my future leadership style.
 
 
 # Year 2 Post-Merger
 
 
-In the wake of the merger with [Better Collective](#https://bettercollective.com/), our team was faced with the monumental task of meeting the revenue targets set as part of the deal. Alongside our own internal forecasts, we now had to answer to these higher expectations. However, by February of 2022, a sobering reality had set in - we weren't hitting our targets. The stress from this underperformance added pressure to our daily operations and pushed us to aggressively seek out additional affiliate partnerships.
+In the wake of the merger with [Better Collective](https://bettercollective.com/), our team was faced with the monumental task of meeting the revenue targets set as part of the deal. Alongside our own internal forecasts, we now had to answer to these higher expectations. However, by February of 2022, a sobering reality had set in - we weren't hitting our targets. The stress from this underperformance added pressure to our daily operations and pushed us to aggressively seek out additional affiliate partnerships.
 
 I was mindful of the need to give the teams room to breathe, but the urgency of our situation left little room for reprieve. The immense strain we were under began to show, and morale within the company plummeted. This pressure eventually led to the departure of key team members. When Kristin, our Head of People, decided to leave, it marked the beginning of a mass exodus. Over a span of just five months, we lost a significant part of our team.
 
@@ -196,7 +196,7 @@ As the 2022 football season commenced, we were expanding our analytics team to s
 
 The revised forecast revealed an unsettling short-term outlook. Even after significant adjustments by the finance team, we had to make several cuts, including headcount reduction, to stay afloat, given the drastic changes to our business model and general underperformance. A week after the 2023-2026 forecast completion, I was asked to let go of a recently hired analyst. Considering our previous struggles with headcount reduction and the already extended working hours of the team, I found this demand unacceptable and consequently resigned the next day.
 
-Despite the challenging circumstances, I value my tenure at [Action Network](#https://www.actionnetwork.com/) and [Better Collective](#https://bettercollective.com/). It was a rich learning ground for leadership, team management during tough times, and the importance of resilience. While I regret not advocating more for my team, I am proud of the complex data projects we completed and the insight gained in explaining intricate machine learning concepts to business stakeholders.
+Despite the challenging circumstances, I value my tenure at [Action Network](https://www.actionnetwork.com/) and [Better Collective](https://bettercollective.com/). It was a rich learning ground for leadership, team management during tough times, and the importance of resilience. While I regret not advocating more for my team, I am proud of the complex data projects we completed and the insight gained in explaining intricate machine learning concepts to business stakeholders.
 
 ### Engagement Reporting for Other Better Collective Sites
 #### Key Technologies
@@ -207,7 +207,7 @@ Despite the challenging circumstances, I value my tenure at [Action Network](#ht
 - Google Analytics
 - Google Analytics Reporting API
 #### Description
-As I started working on the revenue forecast for all of [Better Collective](#https://bettercollective.com/), it was essential to gain a thorough understanding of the audience patterns across our other properties. I set up custom Airflow pipelines to ingest daily user reporting into a single Redshift instance, aggregating all information into one master-level Redshift view. This view was then reported to Google Sheets for temporary usage.
+As I started working on the revenue forecast for all of [Better Collective](https://bettercollective.com/), it was essential to gain a thorough understanding of the audience patterns across our other properties. I set up custom Airflow pipelines to ingest daily user reporting into a single Redshift instance, aggregating all information into one master-level Redshift view. This view was then reported to Google Sheets for temporary usage.
 
 This project involved engaging with various property owners, each with their own vested interests. They desired positive portrayals to Better Collective management, which led to challenging discussions when their growth expectations didn't match the reality portrayed by the data.
 

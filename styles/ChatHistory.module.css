@@ -25,6 +25,12 @@
     color: #4b5563;
 }
 
+.convoRespContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .convoRespText {
     color: #6b7280;
 }

@@ -3,13 +3,13 @@ import { useSupaUser } from '@/lib/SupaContextProvider';
 
 // Component Imports
 import Avatar from '@/components/Avatar';
+import SourceReferences from '@/components/SourceReferences';
 
 // Styles Imports
 import styles from '@/styles/ChatHistory.module.css';
 import utilStyles from '@/styles/utils.module.css';
 
-const ChatHistory = ({ messages, latestUserMessage, latestResponse }) => {
-
+const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSources }) => {
     const { userDetails } = useSupaUser();
 
     const userAvatarDisp = () => {
@@ -35,12 +35,15 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse }) => {
         );
     }
 
-    const botMessageDisp = (response, key) => {
+    const botMessageDisp = (response, key, sources) => {
         if (response.length > 0) {
             return (
                 <div className={`${styles.convoDiv} ${styles.respDiv}`}>
                     <img src='/icons/bot.png' alt='bot' className={styles.convoImg} />
-                    <div key={key} className={styles.convoRespText} dangerouslySetInnerHTML={{__html: response}}></div>
+                    <div className={styles.convoRespContainer}>
+                        <div key={key} className={styles.convoRespText} dangerouslySetInnerHTML={{__html: response}}></div>
+                        {sources && <SourceReferences sources={sources} />}
+                    </div>
                 </div>
             )
         } else {
@@ -57,10 +60,17 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse }) => {
 
     const latestMessageDisp = () => {
         if (latestUserMessage === '') return null;
+        
+        // In development, we might have sources stored in a global window variable
+        // This ensures we don't lose sources between state updates
+        const sourcesToUse = latestSources && latestSources.length > 0 
+            ? latestSources 
+            : (typeof window !== 'undefined' && window.lastSources ? window.lastSources : []);
+        
         return (
             <div className={styles.convoBlock}>
                 {userMessageDisp(latestUserMessage, 'u')}
-                {botMessageDisp(latestResponse, 'm')}
+                {botMessageDisp(latestResponse, 'm', sourcesToUse)}
             </div>
         );
     }
@@ -75,7 +85,7 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse }) => {
             {messages.slice().reverse().map((message, index) => (
                 <div key={`c-${index}`} className={styles.convoBlock}>
                     {userMessageDisp(message.user.text, `u-${index}`)}
-                    {botMessageDisp(message.model.text, `m-${index}`)}
+                    {botMessageDisp(message.model.text, `m-${index}`, message.model.sources)}
                 </div>
             ))}
         </div>
