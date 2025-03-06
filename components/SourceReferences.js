@@ -5,9 +5,11 @@ const SourceReferences = ({ sources }) => {
     if (!sources || sources.length === 0) {
         return null;
     }
-
-    // Only show sources with similarity above 0.7
-    const relevantSources = sources.filter(source => source.similarity >= 0.7);
+    
+    // Display sources with similarity > 0.4, sorted by similarity
+    const relevantSources = [...sources]
+        .filter(source => source.similarity >= 0.4)
+        .sort((a, b) => b.similarity - a.similarity);
     
     if (relevantSources.length === 0) {
         return null;

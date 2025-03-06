@@ -1,8 +1,11 @@
-import GPT3Tokenizer from 'npm:gpt3-tokenizer@1.1.5';
 import { HumanMessagePromptTemplate, SystemMessagePromptTemplate, PromptTemplate } from "npm:langchain@0.0.171/prompts";
 
 const MAX_PROMPT_TOKENS = 1500;
-export const gpt3Tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
+
+// Simple token counter function (approximately 4 chars per token)
+export const tokenCount = (text: string): number => {
+  return Math.ceil(text.length / 4);
+};
 
 // Conversational Templates
 
@@ -33,7 +36,7 @@ export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTem
         "When discussing technical topics, provide appropriate depth based on the technical nature of the question.\n"
 );
 
-export const chatHistoryTemplate = ((chat_history: Any) => {
+export const chatHistoryTemplate = ((chat_history: any) => {
 
     // chat_history is an array of chat message objects of the form:
     // [
@@ -57,10 +60,10 @@ export const chatHistoryTemplate = ((chat_history: Any) => {
         const prompt = chat_history_item.prompt;
         const response = chat_history_item.response;
         const history_text = "PROMPT: " + prompt + "\nRESPONSE: " + response + "\n\n";
-        const encoded = gpt3Tokenizer.encode(history_text);
-        tokens += encoded.text.length;
+        const tokenEstimate = tokenCount(history_text);
+        tokens += tokenEstimate;
         if (tokens > MAX_PROMPT_TOKENS) {
-            tokens -= encoded.text.length;
+            tokens -= tokenEstimate;
             break;
         }
         chat_history_string = history_text + chat_history_string;
@@ -76,7 +79,7 @@ export const chatHistoryTemplate = ((chat_history: Any) => {
     );
 });
 
-export const documentMatchTemplate = ((documents: Any) => {
+export const documentMatchTemplate = ((documents: any) => {
     
     // documents is an array of document objects of the form:
     // [
@@ -102,8 +105,8 @@ export const documentMatchTemplate = ((documents: Any) => {
     "Adjust technical depth based on the user's question - provide more detailed technical information for technical queries.\n" +
     "Be concise and focused, prioritizing the most relevant information from the documents to answer the user's specific question.\n\n";
 
-    const endEncoded = gpt3Tokenizer.encode(documentEndString);
-    let tokens = endEncoded.text.length;
+    const endTokens = tokenCount(documentEndString);
+    let tokens = endTokens;
     let document_match_string = "";
 
     // first check the top match for a similarity score of 0.82 or higher - call out as highly relevant match
@@ -114,24 +117,24 @@ export const documentMatchTemplate = ((documents: Any) => {
             "HIGHLY RELEVANT DOCUMENT:\n" +
             document.content + 
             "\n\nADDITIONAL RELEVANT INFORMATION:\n";
-        const encoded = gpt3Tokenizer.encode(document_match_string);
-        tokens += encoded.text.length;
+        const docTokens = tokenCount(document_match_string);
+        tokens += docTokens;
         documents.shift();
     } else {
         // prime the doc string for relevant documents
         document_match_string = "Here is relevant information about Dan that addresses the user's question:\nRELEVANT DOCUMENTS:\n";
-        const encoded = gpt3Tokenizer.encode(document_match_string);
-        tokens += encoded.text.length;
+        const docTokens = tokenCount(document_match_string);
+        tokens += docTokens;
     }
 
     // loop over remaining documents
     for (let i=0; i<documents.length; i++) {
         const document = documents[i];
         const document_text = "DOCUMENT "+ (i+1).toString() + ":\n" + document.content + "\n";
-        const encoded = gpt3Tokenizer.encode(document_text);
-        tokens += encoded.text.length;
+        const docTextTokens = tokenCount(document_text);
+        tokens += docTextTokens;
         if (tokens > MAX_PROMPT_TOKENS) {
-            tokens -= encoded.text.length;
+            tokens -= docTextTokens;
             break;
         }
         document_match_string += document_text;
@@ -144,7 +147,7 @@ export const humanMessageTemplate = HumanMessagePromptTemplate.fromTemplate("USE
 
 // Helper Templates
 
-export const questionSummaryTemplate = ((chat_history: Any) => {
+export const questionSummaryTemplate = ((chat_history: any) => {
     
         // chat_history is an array of chat message objects of the form:
         // [
@@ -161,10 +164,10 @@ export const questionSummaryTemplate = ((chat_history: Any) => {
             const prompt = chat_history_item.prompt;
             const response = chat_history_item.response;
             const history_text = "PROMPT: " + prompt + "\nRESPONSE: " + response + "\n\n";
-            const encoded = gpt3Tokenizer.encode(history_text);
-            tokens += encoded.text.length;
+            const historyTokens = tokenCount(history_text);
+            tokens += historyTokens;
             if (tokens > MAX_PROMPT_TOKENS) {
-                tokens -= encoded.text.length;
+                tokens -= historyTokens;
                 break;
             }
             chat_history_string = history_text + chat_history_string;

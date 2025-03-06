@@ -171,7 +171,7 @@ async function handler(req: Request) {
         };
         const embeddingBody = JSON.stringify({
             "input": await summarizeChatHistory(verified_chat_history, prompt),
-            "model": "text-embedding-ada-002",
+            "model": "text-embedding-3-small", // Match the model used for document embeddings
         });
         const embeddingResponse = await fetch(embeddingUrl, {
             method: "POST",
@@ -185,20 +185,29 @@ async function handler(req: Request) {
         const promptEmbedding = embeddingJson.data[0].embedding;
 
         // find similarities to stored documents - increasing match count to capture more potential relevant sources
+        console.log("Searching for similar documents with embedding length:", promptEmbedding.length);
         const { data: match_data, error: match_error } = await supabaseClient.rpc(
             "document_similarity", 
             { 
                 embedding: promptEmbedding,
-                match_threshold: 0.6,  // Keep the threshold at 0.6 for LLM context
-                match_count: 5,        // Increase match count to find more potential sources
+                match_threshold: 0.4,  // Lower threshold to capture more matches
+                match_count: 10,       // Increase match count to find more potential sources
             });
         if (match_error) {
-            console.error(match_error);
+            console.error("Document similarity error:", match_error);
             throw new Error("Failed to match prompt embedding");
         }
         
-        // Store sources with similarity above 0.7 to send back to the client
-        const relevantSources = include_sources ? match_data.filter(doc => doc.similarity >= 0.7) : [];
+        console.log("Document similarity results count:", match_data ? match_data.length : 0);
+        if (match_data && match_data.length > 0) {
+            console.log("Top matches similarity scores:");
+            match_data.slice(0, 3).forEach((match, i) => {
+                console.log(`Match ${i+1}: Score=${match.similarity.toFixed(4)}, Path=${match.content_path}`);
+            });
+        }
+        
+        // Store all sources to send back to the client (no filtering)
+        const relevantSources = include_sources ? match_data : [];
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
             introSystemMessageTemplate,
@@ -284,6 +293,11 @@ async function handler(req: Request) {
             headers.set("Content-Type", "text/event-stream");
             headers.set("Cache-Control", "no-cache");
             headers.set("Connection", "keep-alive");
+            // Ensure CORS headers are properly set
+            headers.set("Access-Control-Allow-Origin", "*");
+            headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+            headers.set("Access-Control-Allow-Credentials", "true");
 
             return new Response(stream.readable, {
                 status: 200,
@@ -309,15 +323,48 @@ async function handler(req: Request) {
             const llmResponse = await llmChain.call({ human_prompt: prompt });
             const responseText = await llmResponse.text();
             
+            // Save the response to the database with metadata
+            const metadata = include_sources && relevantSources.length > 0 
+                ? { sources: relevantSources } 
+                : null;
+                
+            console.log("Saving non-streaming response with metadata:", metadata ? "yes" : "no");
+            
+            const { error: insertError } = await supabaseClient
+                .from("chat_history")
+                .insert([{ 
+                    chat_id: verified_chat_id, 
+                    user_id: user_id, 
+                    role_id: verified_role_id, 
+                    prompt: prompt, 
+                    response: responseText,
+                    metadata: metadata
+                }]);
+                
+            if (insertError) {
+                console.error("Error saving chat history:", insertError);
+            }
+            
             const headers = new Headers(corsHeaders);
             headers.set("Content-Type", "application/json");
-            // headers.set("Cache-Control", "no-cache");
-            // headers.set("Connection", "keep-alive");
+            headers.set("Cache-Control", "no-cache");
+            headers.set("Connection", "keep-alive");
+            // Ensure CORS headers are properly set
+            headers.set("Access-Control-Allow-Origin", "*");
+            headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+            headers.set("Access-Control-Allow-Credentials", "true");
 
             // console.log("Response: ", response);
             // console.log("Headers: ", headers);
 
-            return new Response(JSON.stringify({data: responseText}), {
+            // Include sources in the response
+            const responseData = {
+                data: responseText,
+                sources: include_sources ? relevantSources : []
+            };
+            
+            return new Response(JSON.stringify(responseData), {
                 status: 200,
                 headers: headers
             });
@@ -327,6 +374,12 @@ async function handler(req: Request) {
         console.error(error);
         const headers = new Headers(corsHeaders);
         headers.set("Content-Type", "application/json");
+        // Ensure CORS headers are properly set for error responses
+        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+        headers.set("Access-Control-Allow-Credentials", "true");
+        
         return new Response(JSON.stringify({ error: error.message }), {
             status: 500,
             headers: headers
