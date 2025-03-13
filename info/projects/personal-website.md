@@ -142,19 +142,44 @@ Next, I retrieve both the 5 most recent chat messages in this chat (or up to 100
 Between role, relevant text, recent chat history, and relevant chat history, the prompt that goes to the OpenAI API is much more nuanced than what the user entered. There is a significant amount of record keeping between the edge function and the database that happens to keep context, but overall LangChain makes it rather easy to work with LLM’s in this way.
 
 
-# Future Work
+# Using Claude Code and Cursor
 
+In March 2025, Anthropic released Claude Code, a revolutionary AI-powered development assistant that dramatically enhanced my coding efficiency. As a busy solutions architect, software engineer, and product manager at Thoughtful AI, I had limited time for personal projects. Claude Code enabled me to implement sophisticated features and documentation that would have otherwise remained on my "someday" list.
 
-The next thing I want to do is to allow the assistant to pull context from my personal Airtable trackers for specific roles. This would require some agent programming as I'd quickly run out of context window is I tried to inject Airtable records into prompts with relevant text chunks, but I should have probably used agents already anyway.
+### LLM Guessing Game
+#### Key Technologies
+- Next.js
+- React
+- JavaScript
+- CSS Modules
+- Supabase
+- OpenAI API
+- Anthropic Claude API
+- Replicate API (for Llama models)
+- Server-Sent Events (SSE)
+- React State Management
+#### Description
+With Claude Code's assistance, I implemented an engaging educational feature that challenges users to identify which AI model generated a particular response. This "LLM Guessing Game" showcases the subtle stylistic differences between major language models like GPT-4, Claude, and Llama.
 
-I'd also like to add a Hot Takes feature where I could write out some personal opinions of mine (pretty much all sports related) and have a bit more personality added to users' conversations.
+The implementation required complex state management to handle multiple simultaneous API streams from different model providers. Each model receives the same prompt, and one is randomly selected as the "correct" answer that users need to identify. After guessing, users can browse all model responses to the same prompt, gaining insight into how different models approach content generation.
 
+The most challenging aspect was coordinating asynchronous responses while maintaining a seamless user experience. I developed a system that properly tracks user scores, caches responses, and provides intuitive navigation between different models' outputs. The interface allows users to toggle between game mode and direct model selection, giving them the flexibility to either test their knowledge or explicitly explore each model's unique characteristics.
 
+This feature has both entertainment and educational value, helping users understand the nuances of different AI models in an interactive way. The project showcases advanced React state management techniques and API integration, demonstrating how multiple AI services can be coordinated within a single cohesive interface.
 
+### Thoughtful AI Documentation
+#### Key Technologies
+- Markdown
+- Technical Writing
+- AI Prompt Engineering
+- Knowledge Extraction
+- Information Organization
+#### Description
+Claude Code also helped me document my professional experience at Thoughtful AI over the past year and a half. While I had been deeply involved in numerous projects, translating that work into clear, structured documentation had been challenging due to time constraints.
 
+Using Claude's ability to ask targeted questions and organize information, I was able to articulate my contributions to Thoughtful's AI products, including my work on fine-tuning models, implementing efficient vector search solutions, and developing robust data pipelines. Claude guided me through structured reflection on technical challenges I had overcome and lessons learned.
 
+The resulting documentation provides a comprehensive overview of my professional growth during this period, highlighting both technical skills acquired and broader insights about AI product development. This content not only enhanced my personal website but also helped me refine how I communicate my professional experience to potential employers and collaborators.
 
-
-
-
+The process demonstrated how AI assistants can help bridge the gap between lived professional experience and formal documentation, making it easier to maintain an up-to-date record of career accomplishments even during busy periods.
 
