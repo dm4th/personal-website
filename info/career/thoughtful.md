@@ -140,3 +140,70 @@ This project provided invaluable lessons about setting realistic expectations, t
 
 The technical knowledge gained about diverse eligibility portals and the project management experience in handling challenging customer relationships proved invaluable for future implementations and helped establish more rigorous pre-sales technical assessment processes.
 
+
+# Lead Technical Product Manager
+
+My success as a Customer Engineer created an unexpected challenge for Thoughtful's leadership: how to scale the role as the company grew. Despite extensive recruiting efforts to "find more people like Danny," leadership realized that the breadth of skills required—deep technical knowledge, customer relationship management, and healthcare domain expertise—was exceptionally rare in a single individual.
+
+This realization prompted a strategic restructuring of the Customer Engineer role into three specialized positions. The Customer Success Analyst (CSA) would interface directly with clients, providing roadmaps to achieve ROI goals and managing day-to-day relationships. The Technical Product Manager (TPM) would drive timely product delivery, designing automation agents after extensive customer consultation. The Forward-Deployed Engineer would handle the technical implementation, developing the agents according to specifications.
+
+I transitioned to the TPM role as it represented the intersection of technical expertise and customer understanding. In this position, I quickly became the trusted technical advisor to both CSAs and the sales team, helping translate complex customer needs into viable technical solutions. While assuming this strategic role, I maintained a full delivery load as we continued our rapid scaling, serving as a critical bridge between our evolving organizational structure and our expanding customer base.
+
+### Value Realization and Human Time Savings Calculations
+#### Key Technologies
+- Quicksight
+- Python
+- Google Sheets
+- AWS
+- Jupyter Notebook
+- Statistical Modeling
+
+#### Description
+Beyond my formal responsibilities, I undertook a comprehensive revamp of our value delivery measurement framework, starting with the telemetry data collected from our automation agents. Recognizing that we lacked a coherent model for demonstrating ROI, I developed an end-to-end simulation of a customer's revenue cycle management process—from eligibility verification through denials management to payment posting.
+
+Using Python in Jupyter Notebook, I constructed a sophisticated statistical model that incorporated random probability distributions for various success and failure scenarios throughout the lifetime of patient encounters and claims. This simulation allowed us to project the impact of our automation solutions with unprecedented accuracy, accounting for the complex interdependencies in healthcare billing processes.
+
+I designed and implemented specialized dashboards for each agent in our portfolio, highlighting their specific efficacy metrics within this simulated environment. These visualizations clearly demonstrated key performance indicators like time savings, error reduction, and denial prevention rates. The most impactful deliverable was an overarching executive dashboard that translated technical performance into business outcomes, showing cumulative staff time saved and revenue protected through reduced denials.
+
+This data modeling and visualization initiative became particularly valuable for our sales team, dramatically enhancing their ability to articulate our value proposition to prospective clients. Healthcare executives could now see concrete projections of how our automation suite would impact their specific workflows and financial outcomes. The analytics framework and associated demos I developed became instrumental tools in maintaining our company's accelerating growth trajectory, helping convert technical capabilities into compelling business cases for potential customers.
+
+### Taking over Leading the Team
+#### Key Technologies
+- Leadership
+- Management
+- Cross-functional Team Coordination
+- Strategic Planning
+- Process Optimization
+
+#### Description
+After the restructuring, Thoughtful experimented with various leadership configurations for the three specialized teams. Despite bringing in experienced managers from outside, these leadership attempts encountered consistent challenges. The fundamental issue became apparent: external leaders struggled to grasp the intricate relationship between customer needs, healthcare domain complexities, and our technical capabilities—knowledge that had been organically developed by those of us who had been in the trenches since the beginning.
+
+As these leadership challenges threatened to disrupt our delivery momentum, the executive team approached me to step in as team lead during what was initially framed as a transitional period. As one of the most senior members with comprehensive knowledge spanning customer relationships, technical implementation, and healthcare domain expertise, I reluctantly accepted the responsibility despite my previous hesitation to move into management.
+
+The interim role quickly became permanent as I demonstrated an ability to maintain delivery quality while establishing processes that allowed our growing team to scale effectively. I strategically redistributed my project portfolio, maintaining ownership of the most complex implementations while delegating others to give myself bandwidth for leadership responsibilities. 
+
+This leadership transition occurred at a critical inflection point in the company's growth, requiring me to balance tactical execution with strategic vision-setting. While I had intentionally avoided management roles earlier in my career to focus on technical development, I recognized that stepping into this leadership position was essential to preserving the company's momentum and the trust we had built with our customers. The experience proved invaluable, teaching me to build and guide high-performing technical teams while maintaining the hands-on involvement that had been central to our success.
+
+### Saving Struggling Accounts
+#### Key Technologies
+- Leadership
+- Management
+- Notion
+- Markdown Formatting
+- Python
+- Google Sheets
+- AWS
+- Quicksight
+- Crisis Management
+- Customer Relationship Recovery
+
+#### Description
+Our rapid growth trajectory, while exciting for the business, created significant operational challenges when combined with several mis-alignments in our hiring strategy. The consequences became apparent as multiple customer implementations began showing signs of distress simultaneously—faltering without proper technical leadership and oversight. As these situations threatened both our reputation and renewal prospects, I identified this emerging crisis as requiring immediate intervention.
+
+I voluntarily assumed responsibility for three times my standard implementation load, personally stepping in to stabilize troubled accounts that had been left adrift. This required an intensive diagnostic process for each account: reviewing project histories, identifying critical gaps in both technical implementation and customer expectations, and developing tailored recovery plans. For each account, I created comprehensive remediation roadmaps in Notion with clearly defined success metrics, timeline projections, and technical specifications.
+
+This effort demanded extraordinary commitment, often requiring 80+ hour work weeks and frequent after-hours calls with anxious customers. I leveraged data visualization through Quicksight dashboards to provide transparent progress updates, helping rebuild trust with skeptical stakeholders. I prioritized interventions based on both account risk and potential business impact, using custom-built Python analysis tools to assess implementation health across all accounts in my expanded portfolio.
+
+While I successfully stabilized most troubled implementations, one account had deteriorated beyond recovery before my intervention. Despite this single loss, the initiative prevented what could have been a catastrophic wave of customer departures during a critical growth phase. The experience, though tremendously demanding both mentally and emotionally, provided invaluable lessons about sustainable scaling practices, early warning signs of implementation distress, and techniques for rebuilding fractured customer relationships.
+
+This intense period crystallized my understanding of high-growth startup environments—balancing the excitement of rapid expansion with the operational discipline required to deliver consistent quality. The experience significantly influenced my leadership approach, emphasizing the importance of scalable processes and proactive risk management in fast-moving organizations.
