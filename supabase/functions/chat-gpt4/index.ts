@@ -17,9 +17,9 @@ import { CallbackManager } from "npm:langchain@0.0.171/callbacks";
 const openai_api_key = Deno.env.get("OPENAI_API_KEY");
 
 const ROLE = "intro";
+const MODEL_NAME = "gpt-4-turbo"; // Using GPT-4 Turbo - latest model
 
 async function retrieveChatHistory(chat_id: string, user_id: string) {
-
     // Query chat history if a chat id is given
     if (chat_id) {
         console.log("Retrieving chat history for chat_id: " + chat_id);
@@ -33,7 +33,6 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
         }
 
         return { verified_chat_id: chat_id, verified_chat_history: chat_history_data, verified_role_id: chat_history_data[0].role_id };
-
     }
 
     // If no chat_id is given create a new chat
@@ -107,7 +106,7 @@ async function summarizeChatHistory(chat_history: string, prompt: string) {
         openAIApiKey: openai_api_key,
         temperature: 0,
         maxTokens: 1000,
-        modelName: "gpt-3.5-turbo",
+        modelName: "gpt-4-turbo", // Using GPT-4 for better summarization
     });
     const llmChain = new LLMChain({llm: model, prompt: summaryPrompt});
     const summary = await llmChain.call({original_prompt: prompt})
@@ -133,6 +132,7 @@ async function handler(req: Request) {
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
         console.log("Include Sources: ", include_sources);
+        console.log("Using GPT-4 Turbo Model for this request");
 
         // check that the prompt passes openAi moderation checks
         const moderationUrl = "https://api.openai.com/v1/moderations";
@@ -171,7 +171,7 @@ async function handler(req: Request) {
         };
         const embeddingBody = JSON.stringify({
             "input": await summarizeChatHistory(verified_chat_history, prompt),
-            "model": "text-embedding-3-small", // Match the model used for document embeddings
+            "model": "text-embedding-3-small", // Latest embedding model
         });
         const embeddingResponse = await fetch(embeddingUrl, {
             method: "POST",
@@ -229,8 +229,8 @@ async function handler(req: Request) {
 
             const chat_model = new ChatOpenAI({
                 openAIApiKey: openai_api_key,
-                temperature: 0.3,
-                modelName: "gpt-4-turbo",
+                temperature: 0.5, // Slightly higher temp for more creative responses
+                modelName: MODEL_NAME, // Using GPT-4
                 streaming: streaming,
                 callbackManager: CallbackManager.fromHandlers({
                     handleLLMStart: async () => {
@@ -256,8 +256,8 @@ async function handler(req: Request) {
                         
                         // Create metadata with sources if include_sources is true
                         const metadata = include_sources && relevantSources.length > 0 
-                            ? { sources: relevantSources } 
-                            : null;
+                            ? { sources: relevantSources, modelName: MODEL_NAME } 
+                            : { modelName: MODEL_NAME };
                             
                         const { error } = await supabaseClient
                             .from("chat_history")
@@ -290,6 +290,14 @@ async function handler(req: Request) {
             conversationChain.call({ human_prompt: prompt }).catch((error) => console.error(error));
 
             const headers = new Headers(corsHeaders);
+            headers.set("Content-Type", "text/event-stream");
+            headers.set("Cache-Control", "no-cache");
+            headers.set("Connection", "keep-alive");
+            // Ensure CORS headers are properly set
+            headers.set("Access-Control-Allow-Origin", "*");
+            headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+            headers.set("Access-Control-Allow-Credentials", "true");
 
             return new Response(stream.readable, {
                 status: 200,
@@ -302,8 +310,8 @@ async function handler(req: Request) {
             // No need to stream results, just wait for the full response
             const chat_model = new ChatOpenAI({
                 openAIApiKey: openai_api_key,
-                temperature: 0.3,
-                modelName: "gpt-3.5-turbo"
+                temperature: 0.5,
+                modelName: MODEL_NAME // Using GPT-4
             });
 
             const llmChain = new LLMChain({ 
@@ -313,12 +321,12 @@ async function handler(req: Request) {
             });
 
             const llmResponse = await llmChain.call({ human_prompt: prompt });
-            const responseText = llmResponse.text;
+            const responseText = await llmResponse.text();
             
             // Save the response to the database with metadata
             const metadata = include_sources && relevantSources.length > 0 
-                ? { sources: relevantSources } 
-                : null;
+                ? { sources: relevantSources, modelName: MODEL_NAME } 
+                : { modelName: MODEL_NAME };
                 
             console.log("Saving non-streaming response with metadata:", metadata ? "yes" : "no");
             
@@ -338,14 +346,20 @@ async function handler(req: Request) {
             }
             
             const headers = new Headers(corsHeaders);
-
-            // console.log("Response: ", response);
-            // console.log("Headers: ", headers);
+            headers.set("Content-Type", "application/json");
+            headers.set("Cache-Control", "no-cache");
+            headers.set("Connection", "keep-alive");
+            // Ensure CORS headers are properly set
+            headers.set("Access-Control-Allow-Origin", "*");
+            headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+            headers.set("Access-Control-Allow-Credentials", "true");
 
             // Include sources in the response
             const responseData = {
                 data: responseText,
-                sources: include_sources ? relevantSources : []
+                sources: include_sources ? relevantSources : [],
+                model: MODEL_NAME
             };
             
             return new Response(JSON.stringify(responseData), {
@@ -357,6 +371,12 @@ async function handler(req: Request) {
     } catch (error) {
         console.error(error);
         const headers = new Headers(corsHeaders);
+        headers.set("Content-Type", "application/json");
+        // Ensure CORS headers are properly set for error responses
+        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        headers.set("Access-Control-Allow-Headers", "apikey, X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization, accept");
+        headers.set("Access-Control-Allow-Credentials", "true");
         
         return new Response(JSON.stringify({ error: error.message }), {
             status: 500,

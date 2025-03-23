@@ -219,13 +219,6 @@ const ChatInterface = ({ }) => {
         const functionUrl = process.env.NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL;
         const chatUrl = functionUrl + chatEndpoint();
         const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-        const postData = JSON.stringify({ 
-            prompt: userInput, 
-            chat_id: chat?.id, 
-            user_id: user?.id,
-            include_sources: true // Signal to backend we want source references
-        });
-        console.log(postData);
         let tempChatId = null;
         
         // In development, we'll call our test-sources API to get mock sources first
@@ -282,45 +275,39 @@ const ChatInterface = ({ }) => {
             
             console.log(`Selected ${realModel} as the real model for this game round`);
             
-            // Make multiple API calls - one for each model
-            // We'll create separate endpoints for each model on the server side
+            // Make multiple API calls - one for each model directly to their endpoints
             const modelRequests = activeModels.map(async (model) => {
                 try {
                     // Determine the appropriate API endpoint for each model
                     let modelEndpoint;
                     switch (model) {
                         case 'gpt-4':
-                            modelEndpoint = '/api/chat-gpt4'; // We'll create this endpoint
+                            modelEndpoint = '/api/chat-gpt4';
                             break;
                         case 'claude-3':
-                            modelEndpoint = '/api/chat-claude'; // We'll create this endpoint
+                            modelEndpoint = '/api/chat-claude';
                             break;
                         case 'llama-3':
-                            modelEndpoint = '/api/chat-llama'; // We'll create this endpoint
+                            modelEndpoint = '/api/chat-llama';
                             break;
-                        default:
-                            modelEndpoint = chatUrl; // Default API endpoint
                     }
                     
                     console.log(`Calling ${model} API at ${modelEndpoint}`);
                     
-                    // Create a custom postData object with model information
+                    // Create request data for this model
                     const modelPostData = JSON.stringify({
                         prompt: userInput,
                         chat_id: chat?.id,
                         user_id: user?.id,
-                        include_sources: true,
-                        model: model // Pass model information to the API
+                        include_sources: true
                     });
                     
-                    // For demo purposes, we'll simulate different API calls
-                    // In a real implementation, you would have separate endpoints for each model
+                    // Use Promise to handle each model response
                     return new Promise((resolve) => {
-                        // Simulate different response timing
+                        // Add slight timing variation for realism in the game
                         setTimeout(async () => {
-                            // For the demo, we'll use the default API and style the responses differently
                             await fetchEventSource(
-                                chatUrl,
+                                modelEndpoint,
                                 {
                                     method: 'POST',
                                     headers: {
@@ -347,7 +334,7 @@ const ChatInterface = ({ }) => {
                                                 }
                                             }));
                                             
-                                            // If this is the first or randomly selected real model, also update UI
+                                            // If this is the randomly selected real model, also update UI
                                             if (model === realModel) {
                                                 setLatestResponse(collectedResponses[model].text);
                                             }
@@ -374,7 +361,8 @@ const ChatInterface = ({ }) => {
                                         console.log(`${model} API call completed`);
                                         collectedResponses[model].complete = true;
                                         
-                                        // In a real implementation, create a styled response
+                                        // For models that aren't the "real" one, modify their responses to make them 
+                                        // reflect each model's distinct style
                                         if (model !== realModel) {
                                             collectedResponses[model].text = generateFakeResponse(
                                                 collectedResponses[model].text, 
@@ -390,7 +378,6 @@ const ChatInterface = ({ }) => {
                                             responseComplete = true;
                                             
                                             // Create the final responses array for the game
-                                            // When creating the responses array, we need to ensure each model shows its own response
                                             const finalResponses = activeModels.map(modelName => ({
                                                 model: modelName,
                                                 response: collectedResponses[modelName].text,
@@ -423,19 +410,39 @@ const ChatInterface = ({ }) => {
             // Single model mode - use the selected model or default
             const modelToUse = selectedModel !== 'default' ? selectedModel : 'default';
             
-            // Add model information to the request
-            const modelPostData = JSON.stringify({
+            // Determine which endpoint to use based on selected model
+            let endpoint;
+            if (modelToUse === 'default') {
+                // For default, use the standard chat endpoint (intro or employer)
+                endpoint = chatUrl;
+            } else {
+                // For specific models, use their dedicated endpoints
+                switch (modelToUse) {
+                    case 'gpt-4':
+                        endpoint = '/api/chat-gpt4';
+                        break;
+                    case 'claude-3':
+                        endpoint = '/api/chat-claude';
+                        break;
+                    case 'llama-3':
+                        endpoint = '/api/chat-llama';
+                        break;
+                }
+            }
+            
+            console.log(`Using model ${modelToUse} with endpoint ${endpoint}`);
+            
+            // Prepare request data
+            const requestData = JSON.stringify({
                 prompt: userInput,
                 chat_id: chat?.id,
                 user_id: user?.id,
-                include_sources: true,
-                model: modelToUse // Pass model information to the API
+                include_sources: true
             });
             
-            // In a real implementation, you would route to different API endpoints
-            // based on the selected model. For the demo, we'll use the existing endpoint.
+            // Call the appropriate endpoint
             await fetchEventSource(
-                chatUrl,
+                endpoint,
                 {
                     method: 'POST',
                     headers: {
@@ -443,7 +450,7 @@ const ChatInterface = ({ }) => {
                         'Authorization': `Bearer ${anonKey}`,
                         'apikey': anonKey
                     },
-                    body: modelPostData,
+                    body: requestData,
                     onmessage(event) {
                         const data = JSON.parse(event.data);
                         if (data.chat_id) {
@@ -479,16 +486,8 @@ const ChatInterface = ({ }) => {
                     onclose() {
                         responseComplete = true;
                         
-                        // For demo purposes, if a specific model is selected, style the response
-                        if (selectedModel !== 'default') {
-                            const styledResponse = generateFakeResponse(selectedModelResponse, selectedModel);
-                            setLatestResponse(styledResponse);
-                            
-                            // Store the model information for saving to database
-                            window.lastModelName = selectedModel;
-                        } else {
-                            window.lastModelName = 'default';
-                        }
+                        // Store the model information for saving to database
+                        window.lastModelName = modelToUse;
                     }
                 }
             );

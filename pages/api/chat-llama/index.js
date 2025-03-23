@@ -15,12 +15,6 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
-    
-    // Create a message to send to the client to identify the chat_id
-    if (chat_id) {
-      const chatIdMessage = JSON.stringify({ chat_id });
-      res.write(`data: ${chatIdMessage}\n\n`);
-    }
 
     // Initialize Replicate client (for Llama)
     const replicateApiKey = process.env.REPLICATE_API_KEY;
@@ -42,27 +36,123 @@ Be concise but thorough in your responses, prioritizing quality information over
 
     // Start the streaming prediction
     try {
-      // Use Meta's Llama 3 model via Replicate
-      const prediction = await replicate.predictions.create({
-        // Llama 3 8B model
-        version: "meta/meta-llama-3-8b-instruct:2d483e5623c1f7a6e048e51da4e28129d3a68a1da189fe915a9b3dc8c04c12c1",
-        input: {
-          prompt: `<|system|>\n${systemPrompt}</s>\n<|user|>\n${prompt}</s>\n<|assistant|>\n`,
-          temperature: 0.7,
-          max_new_tokens: 1000,
-          repetition_penalty: 1.15,
-          top_p: 0.9,
-          stream: true
+      
+      const createResponse = await fetch('https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${replicateApiKey}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'wait'
         },
-        stream: true,
+        body: JSON.stringify({
+          input: {
+            top_k: 0,
+            top_p: 0.9,
+            prompt: prompt,
+            max_tokens: 1024,
+            min_tokens: 0,
+            temperature: 0.6,
+            system_prompt: systemPrompt,
+            length_penalty: 1,
+            stop_sequences: "<|end_of_text|>,<|eot_id|>",
+            prompt_template: "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+            presence_penalty: 1.15,
+            log_performance_metrics: false
+          }
+        })
       });
+      
+      if (!createResponse.ok) {
+        const errorText = await createResponse.text();
+        console.error("Replicate creation error:", errorText);
+        throw new Error(`Error creating Llama prediction: ${createResponse.status} - ${errorText}`);
+      }
+      
+      const createData = await createResponse.json();
 
-      // Process the streaming output
-      for await (const event of prediction) {
-        if (event && typeof event === 'string') {
-          const message = JSON.stringify({ token: event });
-          res.write(`data: ${message}\n\n`);
+      // Poll for results
+      let isComplete = false;
+      let attempts = 0;
+      const maxAttempts = 40; // 40 seconds timeout
+      let fullResponse = "";
+      let receivedAnyContent = false;
+      
+      // Poll for the result
+      while (!isComplete && attempts < maxAttempts) {
+        attempts++;
+        
+        // Add a delay between poll attempts
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        try {
+          const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${createData.id}`, {
+            headers: {
+              'Authorization': `Bearer ${replicateApiKey}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (!statusResponse.ok) {
+            console.error("Error polling prediction:", await statusResponse.text());
+            continue;
+          }
+          
+          const statusData = await statusResponse.json();
+          
+          if (statusData.status === "succeeded") {
+            isComplete = true;
+            receivedAnyContent = true;
+            
+            if (typeof statusData.output === 'string') {
+              fullResponse = statusData.output;
+            }
+            else if (Array.isArray(statusData.output)) {
+              fullResponse = statusData.output.join("");
+            }
+            else if (statusData.output && typeof statusData.output === 'object') {
+              const possibleFields = ['text', 'content', 'generated_text', 'generation'];
+              for (const field of possibleFields) {
+                if (statusData.output[field]) {
+                  fullResponse = statusData.output[field];
+                  break;
+                }
+              }
+              
+              if (!fullResponse) {
+                fullResponse = JSON.stringify(statusData.output);
+              }
+            }
+          }
+          else if (statusData.status === "failed") {
+            console.error("Prediction failed:", statusData.error);
+            throw new Error(`Prediction failed: ${statusData.error || "Unknown error"}`);
+          }
+          // Continue polling if still processing
         }
+        catch (error) {
+          console.error("Error polling prediction:", error);
+          // Continue polling even if there's an error
+        }
+      }
+      
+      // Stream the response in chunks
+      if (fullResponse) {
+        receivedAnyContent = true;
+        
+        const chunkSize = 10;
+        for (let i = 0; i < fullResponse.length; i += chunkSize) {
+          const chunk = fullResponse.substring(i, i + chunkSize);
+          res.write(`data: ${JSON.stringify({ token: chunk })}\n\n`);
+          
+          // Add a small delay for more natural streaming
+          await new Promise(resolve => setTimeout(resolve, 15));
+        }
+      }
+      
+      // If we didn't get any real content, send a fallback message
+      if (!receivedAnyContent) {
+        console.log("No content received from Llama model, sending fallback");
+        res.write(`data: ${JSON.stringify({ token: "I'm sorry, I couldn't generate a response at this time. Please try again." })}\n\n`);
       }
       
       // Close the response when done
