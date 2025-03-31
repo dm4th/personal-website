@@ -14,10 +14,10 @@ import { ConversationChain, LLMChain } from "npm:langchain@0.0.171/chains";
 import { ChatPromptTemplate } from "npm:langchain@0.0.171/prompts";
 import { CallbackManager } from "npm:langchain@0.0.171/callbacks";
 
-const openai_api_key = Deno.env.get("OPENAI_API_KEY");
+const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 
-const ROLE = "intro";
-const MODEL_NAME = "gpt-4-turbo"; // Using GPT-4 Turbo - latest model
+const ROLE = "employer";
+const MODEL_NAME = "gpt-4-turbo"; 
 
 async function retrieveChatHistory(chat_id: string, user_id: string) {
     // Query chat history if a chat id is given
@@ -32,11 +32,11 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
             throw chat_history_error;
         }
 
-        return { verified_chat_id: chat_id, verified_chat_history: chat_history_data, verified_role_id: chat_history_data[0].role_id };
-    }
-
-    // If no chat_id is given create a new chat
-    else {
+        return { 
+            verified_chat_id: chat_id, 
+            verified_chat_history: chat_history_data, 
+            verified_role_id: chat_history_data[0].role_id };
+    } else {
         // If user_id is not provided, create an anonymous chat
         if (!user_id) {
             console.log("Creating anonymous chat");
@@ -79,14 +79,21 @@ async function retrieveChatHistory(chat_id: string, user_id: string) {
 
             const { data: new_chat_data, error: new_chat_error } = await supabaseClient
                 .from("chats")
-                .insert([{ role_id: role_id, user_id: user_id, title: "Intro Chat - " + new Date().toLocaleString("en-US", timezoneOptions)}])
+                .insert([{ 
+                    role_id: role_id, 
+                    user_id: user_id, 
+                    title: "GPT4 Chat - " + new Date().toLocaleString("en-US", timezoneOptions)}])
                 .select()
                 .single();
             if (new_chat_error) {
                 throw new_chat_error;
             }
 
-            return { verified_chat_id: new_chat_data.id, verified_chat_history: [], verified_role_id: role_id };
+            return { 
+                verified_chat_id: new_chat_data.id, 
+                verified_chat_history: [], 
+                verified_role_id: role_id 
+            };
         }
     }
 }
@@ -103,7 +110,7 @@ async function summarizeChatHistory(chat_history: string, prompt: string) {
     }
     const summaryPrompt = questionSummaryTemplate(chat_history);
     const model = new OpenAI({
-        openAIApiKey: openai_api_key,
+        openAIApiKey:  OPENAI_API_KEY,
         temperature: 0,
         maxTokens: 1000,
         modelName: "gpt-4-turbo", // Using GPT-4 for better summarization
@@ -126,19 +133,18 @@ async function handler(req: Request) {
     } 
 
     try {
-        const { prompt: promptInit, chat_id, user_id, include_sources = false } = await req.json();
+        const { prompt: promptInit, chat_id, user_id } = await req.json();
         const prompt = promptInit.trim();
         console.log("Prompt: ", prompt);
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
-        console.log("Include Sources: ", include_sources);
         console.log("Using GPT-4 Turbo Model for this request");
 
         // check that the prompt passes openAi moderation checks
         const moderationUrl = "https://api.openai.com/v1/moderations";
         const moderationHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const moderationBody = JSON.stringify({
             "input": prompt,
@@ -167,7 +173,7 @@ async function handler(req: Request) {
         const embeddingUrl = "https://api.openai.com/v1/embeddings";
         const embeddingHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const embeddingBody = JSON.stringify({
             "input": await summarizeChatHistory(verified_chat_history, prompt),
@@ -207,7 +213,7 @@ async function handler(req: Request) {
         }
         
         // Store all sources to send back to the client (no filtering)
-        const relevantSources = include_sources ? match_data : [];
+        const relevantSources = match_data ? match_data : [];
         
         const chatPromptTemplate = ChatPromptTemplate.fromPromptMessages([
             introSystemMessageTemplate,
@@ -228,7 +234,7 @@ async function handler(req: Request) {
             const writer = stream.writable.getWriter();
 
             const chat_model = new ChatOpenAI({
-                openAIApiKey: openai_api_key,
+                openAIApiKey: OPENAI_API_KEY,
                 temperature: 0.5, // Slightly higher temp for more creative responses
                 modelName: MODEL_NAME, // Using GPT-4
                 streaming: streaming,
@@ -238,7 +244,7 @@ async function handler(req: Request) {
                         await writer.write(encoder.encode(`data: ${JSON.stringify({ chat_id: verified_chat_id })}\n\n`));
                         
                         // If include_sources is true and we have relevant sources, send them
-                        if (include_sources && relevantSources.length > 0) {
+                        if (relevantSources.length > 0) {
                             await writer.ready;
                             await writer.write(encoder.encode(`data: ${JSON.stringify({ sources: relevantSources })}\n\n`));
                         }
@@ -255,7 +261,7 @@ async function handler(req: Request) {
                         const out_text = output.generations[0][0].text;
                         
                         // Create metadata with sources if include_sources is true
-                        const metadata = include_sources && relevantSources.length > 0 
+                        const metadata = relevantSources.length > 0 
                             ? { sources: relevantSources, modelName: MODEL_NAME } 
                             : { modelName: MODEL_NAME };
                             
@@ -309,7 +315,7 @@ async function handler(req: Request) {
             console.log(prompt);
             // No need to stream results, just wait for the full response
             const chat_model = new ChatOpenAI({
-                openAIApiKey: openai_api_key,
+                openAIApiKey: OPENAI_API_KEY,
                 temperature: 0.5,
                 modelName: MODEL_NAME // Using GPT-4
             });
@@ -324,7 +330,7 @@ async function handler(req: Request) {
             const responseText = await llmResponse.text();
             
             // Save the response to the database with metadata
-            const metadata = include_sources && relevantSources.length > 0 
+            const metadata = relevantSources.length > 0 
                 ? { sources: relevantSources, modelName: MODEL_NAME } 
                 : { modelName: MODEL_NAME };
                 
@@ -358,7 +364,7 @@ async function handler(req: Request) {
             // Include sources in the response
             const responseData = {
                 data: responseText,
-                sources: include_sources ? relevantSources : [],
+                sources: relevantSources ? relevantSources : [],
                 model: MODEL_NAME
             };
             

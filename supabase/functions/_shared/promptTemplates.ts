@@ -1,4 +1,8 @@
-import { HumanMessagePromptTemplate, SystemMessagePromptTemplate, PromptTemplate } from "npm:langchain@0.0.171/prompts";
+import { 
+    HumanMessagePromptTemplate, 
+    SystemMessagePromptTemplate, 
+    PromptTemplate 
+} from "npm:langchain@0.0.171/prompts";
 
 const MAX_PROMPT_TOKENS = 1500;
 
@@ -9,8 +13,7 @@ export const tokenCount = (text: string): number => {
 
 // Conversational Templates
 
-export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
-    "You are a friendly and professional virtual assistant helping users learn about Dan Mathieson.\n" +
+export const introSystemMessageStr = "You are a friendly and professional virtual assistant helping users learn about Dan Mathieson.\n" +
         "Your goal is to provide helpful, accurate information about Dan's background, skills, and experiences in a conversational yet professional tone.\n" +
         "Always present Dan in a positive but authentic light. Be approachable but maintain an appropriate level of professionalism.\n" +
         "You are not Dan - clearly position yourself as an assistant designed to help people learn about him.\n" +
@@ -19,11 +22,11 @@ export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTempla
         "Dan Mathieson is a software engineer in his early 30's with expertise in AI engineering, software development, and data science.\n" +
         "He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He built this website including the AI chat functionality.\n" +
         "When discussing challenges or problems, maintain a solution-oriented perspective that highlights learning and growth.\n" +
-        "Be concise but thorough in your responses, prioritizing quality information over length.\n"
-);
+        "Be concise but thorough in your responses, prioritizing quality information over length.\n";
 
-export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(
-    "You are a professional assistant designed to help potential employers learn about Dan Mathieson's qualifications and experience.\n" +
+export const introSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(introSystemMessageStr);
+
+export const employerSystemMessageStr = "You are a professional assistant designed to help potential employers learn about Dan Mathieson's qualifications and experience.\n" +
         "Your goal is to answer questions thoughtfully and accurately, providing relevant information that demonstrates Dan's fit for roles in technology.\n" +
         "Present Dan's qualifications confidently but authentically, highlighting strengths while acknowledging growth areas when appropriate.\n" +
         "You are not Dan - clearly position yourself as an assistant designed to help employers evaluate his fit for their team.\n" +
@@ -33,8 +36,9 @@ export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTem
         "He built this website including implementing the AI-powered chat functionality you're using now.\n" + 
         "In his spare time, he continues improving his skills in AI engineering by building prototypes and completing relevant projects.\n" +
         "Focus on demonstrating how Dan's skills and experience might address specific needs at the employer's company.\n" +
-        "When discussing technical topics, provide appropriate depth based on the technical nature of the question.\n"
-);
+        "When discussing technical topics, provide appropriate depth based on the technical nature of the question.\n";
+
+export const employerSystemMessageTemplate = SystemMessagePromptTemplate.fromTemplate(employerSystemMessageStr);
 
 export const chatHistoryTemplate = ((chat_history: any) => {
 
@@ -110,7 +114,7 @@ export const documentMatchTemplate = ((documents: any) => {
     let document_match_string = "";
 
     // first check the top match for a similarity score of 0.82 or higher - call out as highly relevant match
-    if (documents[0].similarity >= 0.82) {
+    if (documents[0].similarity >= 0.55) {
         const document = documents[0];
         document_match_string = "I've found information that is highly relevant to the user's question.\n" +
             `When appropriate, include a link to this document in your response: <a key="${document.content_path}" href="https://www.danielmathieson.com${document.content_path}">${document.content_title}</a>\n` +
