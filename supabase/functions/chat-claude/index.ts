@@ -1,142 +1,21 @@
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
-import { timezoneOptions } from '../_shared/timezone.ts';
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-import { OpenAI } from "npm:langchain@0.0.171/llms/openai";
-import { LLMChain } from "npm:langchain@0.0.171/chains";
-import { PromptTemplate } from "npm:langchain@0.0.171/prompts";
+import { 
+    introSystemMessageStr, 
+    employerSystemMessageStr
+} from '../_shared/promptTemplates.ts';
+import { 
+    retrieveChatHistory, 
+    summarizeChatHistory 
+} from '../_shared/chatHelpers.ts';
 
-const openai_api_key = Deno.env.get("OPENAI_API_KEY");
-const anthropic_api_key = Deno.env.get("ANTHROPIC_API_KEY");
+const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
+const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
 
-const ROLE = "intro";
-const MODEL_NAME = "claude-3-7-sonnet-20250219"; // Using Claude 3 Opus - latest, most capable model
-
-// System prompt
-const SYSTEM_PROMPT = `You are a friendly and professional virtual assistant helping users learn about Dan Mathieson.
-Your goal is to provide helpful, accurate information about Dan's background, skills, and experiences in a conversational yet professional tone.
-Always present Dan in a positive but authentic light. Be approachable but maintain an appropriate level of professionalism.
-You are not Dan - clearly position yourself as an assistant designed to help people learn about him.
-Include relevant personal anecdotes when appropriate to make your responses engaging, but keep the focus on providing useful information.
-Adjust your technical depth based on the user's questions - be more detailed with technical topics when appropriate.
-Dan Mathieson is a software engineer in his late 20's with expertise in AI engineering, software development, and data science.
-He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He built this website including the AI chat functionality.
-When discussing challenges or problems, maintain a solution-oriented perspective that highlights learning and growth.
-Be concise but thorough in your responses, prioritizing quality information over length.`;
-
-async function retrieveChatHistory(chat_id: string, user_id: string) {
-    if (chat_id) {
-        console.log("Retrieving chat history for chat_id: " + chat_id);
-        const { data: chat_history_data, error: chat_history_error } = await supabaseClient
-            .from("chat_history")
-            .select("*")
-            .eq("chat_id", chat_id)
-            .order("created_at", { ascending: false });
-        if (chat_history_error) {
-            throw chat_history_error;
-        }
-        return { 
-            verified_chat_id: chat_id, 
-            verified_chat_history: chat_history_data, 
-            verified_role_id: chat_history_data[0].role_id 
-        };
-    } else {
-        if (!user_id) {
-            console.log("Creating anonymous chat");
-            const { data: anonymous_role_data, error: anonymous_role_error } = await supabaseClient
-                .from("chat_roles")
-                .select("id")
-                .eq("role", ROLE)
-                .is("user_id", null)
-                .single();
-            if (anonymous_role_error) {
-                throw anonymous_role_error;
-            }
-            const role_id = anonymous_role_data.id;
-
-            const { data: anonymous_chat_data, error: anonymous_chat_error } = await supabaseClient
-                .from("chats")
-                .insert([{ role_id: role_id }])
-                .select()
-                .single();
-            if (anonymous_chat_error) {
-                throw anonymous_chat_error;
-            }
-            return { 
-                verified_chat_id: anonymous_chat_data.id, 
-                verified_chat_history: [], 
-                verified_role_id: role_id 
-            };
-        } else {
-            console.log("Creating chat with user_id: ", user_id);
-            const { data: user_role_data, error: user_role_error } = await supabaseClient
-                .from("chat_roles")
-                .select("id")
-                .eq("role", ROLE)
-                .eq("user_id", user_id)
-                .single();
-            if (user_role_error) {
-                throw user_role_error;
-            }
-            const role_id = user_role_data.id;
-
-            const { data: new_chat_data, error: new_chat_error } = await supabaseClient
-                .from("chats")
-                .insert([{ 
-                    role_id: role_id, 
-                    user_id: user_id, 
-                    title: "Intro Chat - " + new Date().toLocaleString("en-US", timezoneOptions)
-                }])
-                .select()
-                .single();
-            if (new_chat_error) {
-                throw new_chat_error;
-            }
-            return { 
-                verified_chat_id: new_chat_data.id, 
-                verified_chat_history: [], 
-                verified_role_id: role_id 
-            };
-        }
-    }
-}
-
-async function summarizeChatHistory(chat_history: any, prompt: string) {
-    if (chat_history.length === 0) {
-        console.log("Chat history is empty. Using original prompt.")
-        return prompt; 
-    }
-    
-    let chat_history_string = "";
-    for (let i=0; i < Math.min(chat_history.length, 5); i++) {
-        const chat_history_item = chat_history[i];
-        const prompt_text = chat_history_item.prompt;
-        const response_text = chat_history_item.response;
-        chat_history_string += "PROMPT: " + prompt_text + "\nRESPONSE: " + response_text + "\n\n";
-    }
-    
-    const summaryPromptTemplate = PromptTemplate.fromTemplate(
-        "You are creating a concise, contextual search query to find the most relevant information for the user.\n" +
-        "Review the conversation history below and the user's new prompt.\n" +
-        "Generate a search query that captures the user's current intent while incorporating relevant context from previous exchanges.\n" +
-        "Focus on finding specific information about Dan's experience, skills, and background that addresses the user's question.\n" +
-        "Write a clear, focused query of 1-3 sentences maximum that will help retrieve the most relevant content.\n\n" +
-        chat_history_string +
-        "NEW PROMPT: {original_prompt}\n\n" +
-        "Based on this conversation, the most effective search query would be:\n"
-    );
-    
-    const model = new OpenAI({
-        openAIApiKey: openai_api_key,
-        temperature: 0,
-        maxTokens: 1000,
-        modelName: "gpt-4-turbo", // Using GPT-4 for better summarization
-    });
-    const llmChain = new LLMChain({llm: model, prompt: summaryPromptTemplate});
-    const summary = await llmChain.call({original_prompt: prompt})
-    console.log("New Prompt for Embedding: ", summary.text);
-    return summary.text;
-}
+const DEFAULT_ROLE = "employer";
+const DEFAULT_TITLE = "Claude Chat";
+const MODEL_NAME = "claude-3-5-sonnet-20240620"; 
 
 function formatChatHistory(chat_history: any) {
     if (chat_history.length === 0) {
@@ -194,7 +73,7 @@ function formatDocumentMatches(documents: any) {
     tokens += Math.ceil(docEndString.length / 4);
     
     // Check if top match is highly relevant
-    if (documents[0].similarity >= 0.82) {
+    if (documents[0].similarity >= 0.55) {
         const document = documents[0];
         const highly_relevant = "I've found information that is highly relevant to the user's question.\n" +
             `When appropriate, include a link to this document in your response: <a key="${document.content_path}" href="https://www.danielmathieson.com${document.content_path}">${document.content_title}</a>\n` +
@@ -231,119 +110,124 @@ function formatDocumentMatches(documents: any) {
     return document_string + docEndString;
 }
 
-// Function to call Anthropic API with proper error handling and timeouts
-async function callAnthropicAPI(prompt: string) {
+// Function to call Anthropic API and stream results
+async function callAnthropicAPI(system_prompt: string, prompt: string, onData: (data: string) => void) {
     const url = "https://api.anthropic.com/v1/messages";
     
-    // Using Anthropic's recommended header format
     const headers = {
         "Content-Type": "application/json",
-        "x-api-key": anthropic_api_key,
-        "anthropic-version": "2023-06-01",
-        "Accept": "application/json"
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01"
     };
     
-    // For streaming responses, we need to set stream to false since we're manually chunking
     const body = JSON.stringify({
         "model": MODEL_NAME,
+        "system": system_prompt,
         "messages": [
             {
                 "role": "user",
                 "content": prompt
             }
         ],
-        "max_tokens": 1000,
-        "temperature": 0.5,
-        "stream": false // Changed to false for better control in serverless environment
+        "max_tokens": 1024,
+        "temperature": 0.7,
+        "stream": true
     });
     
     console.log(`Prompt length: ${prompt.length} chars`);
-    console.log("Making request to Anthropic API with stream=false");
-    
-    // Create an AbortController for timeout handling
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-        console.log("Request timed out after 30 seconds");
-    }, 30000); // Increased timeout for potential longer processing
-    
-    try {
-        console.log("Starting non-streaming API call to Anthropic");
-        const response = await fetch(url, {
-            method: "POST",
-            headers: headers,
-            body: body,
-            signal: controller.signal
-        });
-        
-        // Clear the timeout since we got a response
-        clearTimeout(timeoutId);
-        
-        console.log(`Response status: ${response.status}`);
-        
-        if (!response.ok) {
-            const errorBody = await response.text();
-            console.log(`Error response: ${errorBody}`);
-            throw new Error(`Anthropic API error: ${response.status}: ${errorBody}`);
+    console.log("Making request to Anthropic API with stream=true");
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: body
+    });
+
+    if (!response.ok) {
+        const errorBody = await response.text();
+        console.log(`Error response: ${errorBody}`);
+        throw new Error(`Anthropic API error: ${response.status}: ${errorBody}`);
+    } else {
+        const reader = response.body.getReader();   
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let receivedAnyContent = false;
+        let fullResponseText = '';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) {
+                break;
+            }
+
+            const chunk = decoder.decode(value, { stream: true });
+            buffer += chunk;
+
+            const lines = buffer.split('\n');
+            buffer = lines.pop() || '';
+
+            for (const line of lines) {
+                if (line.startsWith('data: ')) {
+                    const eventData = line.slice(6);
+                    if (eventData.trim()) {
+                        try {
+                            if (eventData === "[DONE]") {
+                                break;
+                            }
+                            const data = JSON.parse(eventData);
+                            if (data.type === 'content_block_delta' && data.delta && data.delta.text) {
+                                onData(data.delta.text);
+                                fullResponseText += data.delta.text;
+                                receivedAnyContent = true;
+                            } else if (data.type === 'content_block_start' && data.content_block && data.content_block.text) {
+                                onData(data.content_block.text);
+                                fullResponseText += data.content_block.text;
+                                receivedAnyContent = true;
+                            } else if (data.type === 'message_delta' && data.delta && data.delta.text) {
+                                onData(data.delta.text);
+                                fullResponseText += data.delta.text;
+                                receivedAnyContent = true;
+                            }
+                        } catch (error) {
+                            console.error('Error parsing Claude event data:', error, "Raw data:", eventData);
+                        }
+                    }
+                }
+            }
         }
-        
-        console.log("Parsing response body...");
-        const data = await response.json();
-        
-        // Better error checking on the returned data
-        if (!data || !data.content || !Array.isArray(data.content) || data.content.length === 0) {
-            console.log("Invalid response format:", JSON.stringify(data).substring(0, 200));
-            throw new Error("Invalid response format from Anthropic API");
+
+        if (!receivedAnyContent) {
+            console.log("No content received from Claude API, sending fallback");
+            fullResponseText = "I'm sorry, I couldn't generate a response at this time. Please try again.";
         }
-        
-        console.log(`Successfully received response of length: ${data.content[0].text.length} chars`);
-        
-        return data.content[0].text;
-    } catch (error) {
-        // Clear timeout in case of error
-        clearTimeout(timeoutId);
-        
-        if (error.name === "AbortError") {
-            throw new Error("Request to Anthropic API timed out after 30 seconds");
-        }
-        
-        console.error("API call error:", error.message || error);
-        throw error;
     }
+    
+    return fullResponseText;
 }
 
 // Handler function for the Edge Function
 async function handler(req: Request) {
-    console.log("New request received at ", new Date().toISOString());
+    console.log("New request received at", new Date().toISOString());
     
-    // Handle CORS preflight requests
+    // Handle CORS
     if (req.method === "OPTIONS") {
-        console.log("Handling CORS request");
+        console.log("Handling CORS preflight request");
         return new Response(null, {
             status: 204,
             headers: new Headers(corsHeaders),
         });
     }
-    
-    // For SSE responses
-    const encoder = new TextEncoder();
-    const stream = new TransformStream();
-    const writer = stream.writable.getWriter();
-
+  
     try {
-        // Parse the request body
-        const { prompt: promptInit, chat_id, user_id, include_sources = false } = await req.json();
-        const prompt = promptInit.trim();
-        console.log("Prompt: ", prompt);
-        console.log("Chat ID: ", chat_id);
-        console.log("User ID: ", user_id);
-        console.log("Include Sources: ", include_sources);
+        // Parse request data
+        const { prompt, chat_id, user_id } = await req.json();
+        console.log("Received prompt:", prompt.substring(0, 30) + "...");
         
-        // Moderate the prompt with OpenAI (reused from original code)
+        // check that the prompt passes openAi moderation checks
         const moderationUrl = "https://api.openai.com/v1/moderations";
         const moderationHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const moderationBody = JSON.stringify({
             "input": prompt,
@@ -362,25 +246,20 @@ async function handler(req: Request) {
             throw new Error("Prompt failed moderation checks");
         }
         console.log("Prompt passed moderation checks");
-        
-        // Retrieve or create chat
-        const { verified_chat_id, verified_chat_history, verified_role_id } = 
-            await retrieveChatHistory(chat_id, user_id);
-        console.log("Verified Chat ID: ", verified_chat_id);
-        
-        // Send initial chat_id back to client
-        await writer.ready;
-        await writer.write(encoder.encode(`data: ${JSON.stringify({ chat_id: verified_chat_id })}\n\n`));
-        
-        // Generate embeddings and find similar documents
+
+        // Get chat history
+        const { verified_chat_id, verified_chat_history, verified_role_id } = await retrieveChatHistory(chat_id, user_id, DEFAULT_ROLE, DEFAULT_TITLE);
+        console.log("Using chat ID:", verified_chat_id);
+
+        // generate embedding for the user prompt
         const embeddingUrl = "https://api.openai.com/v1/embeddings";
         const embeddingHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const embeddingBody = JSON.stringify({
             "input": await summarizeChatHistory(verified_chat_history, prompt),
-            "model": "text-embedding-3-small",
+            "model": "text-embedding-3-small", // Latest embedding model
         });
         const embeddingResponse = await fetch(embeddingUrl, {
             method: "POST",
@@ -392,83 +271,178 @@ async function handler(req: Request) {
         }
         const embeddingJson = await embeddingResponse.json();
         const promptEmbedding = embeddingJson.data[0].embedding;
-        
-        // Find similar documents
+
+        // find similarities to stored documents - increasing match count to capture more potential relevant sources
         const { data: match_data, error: match_error } = await supabaseClient.rpc(
             "document_similarity", 
             { 
                 embedding: promptEmbedding,
-                match_threshold: 0.4,
-                match_count: 8,
+                match_threshold: 0.4,  // Lower threshold to capture more matches
+                match_count: 10,       // Increase match count to find more potential sources
             });
         if (match_error) {
             console.error("Document similarity error:", match_error);
             throw new Error("Failed to match prompt embedding");
         }
         
-        // Send sources to client if requested
-        const relevantSources = include_sources ? match_data : [];
-        if (include_sources && relevantSources.length > 0) {
-            await writer.ready;
-            await writer.write(encoder.encode(`data: ${JSON.stringify({ sources: relevantSources })}\n\n`));
+        console.log("Document similarity results count:", match_data ? match_data.length : 0);
+        if (match_data && match_data.length > 0) {
+            console.log("Top matches similarity scores:");
+            match_data.slice(0, 3).forEach((match, i) => {
+                console.log(`Match ${i+1}: Score=${match.similarity.toFixed(4)}, Path=${match.content_path}`);
+            });
         }
+
+        // Store relevant sources with content stripped out to reduce payload size
+        const relevantSources = match_data ? match_data.map(source => ({
+            content_path: source.content_path,
+            content_title: source.content_title,
+            similarity: source.similarity
+            // Content field is intentionally removed to reduce payload size
+        })) : [];
+
+        const systemPrompt = DEFAULT_ROLE === "employer" ? employerSystemMessageStr : introSystemMessageStr;
+        // Use match_data (with full content) for Claude's context
+        const claudePrompt = `CHAT HISTORY: ${formatChatHistory(verified_chat_history)}\n\nRELEVANT DOCUMENTS: ${formatDocumentMatches(match_data)}\n\nUSER PROMPT: ${prompt}`;
         
-        // Format components for Claude prompt
-        const chatHistoryText = formatChatHistory(verified_chat_history);
-        const documentContext = formatDocumentMatches(match_data);
-        const claudePrompt = `${SYSTEM_PROMPT}\n\n${chatHistoryText}\n\n${documentContext}\n\nUSER QUERY: ${prompt}`;
-        
-        // Call Anthropic API and get response
-        try {
-            const response = await callAnthropicAPI(claudePrompt);
-            
-            // Send response to client in chunks
-            console.log(`Response length: ${response.length} chars`);
-            const chunkSize = 10;
-            const totalChunks = Math.ceil(response.length / chunkSize);
-            
-            for (let i = 0; i < response.length; i += chunkSize) {
-                const chunk = response.substring(i, i + chunkSize);
-                const chunkNumber = Math.floor(i / chunkSize) + 1;
+        // Instead of TransformStream, use ReadableStream directly
+        const encoder = new TextEncoder();
+        const stream = new ReadableStream({
+            start(controller) {
+                // Function to send an event
+                const sendEvent = (data: any) => {
+                    try {
+                        const json = JSON.stringify(data);
+                        const encoded = encoder.encode(`data: ${json}\n\n`);
+                        controller.enqueue(encoded);
+                        // console.log(`Sent event: ${Object.keys(data)[0]}`);
+                        return true;
+                    } catch (error) {
+                        // console.error("Error sending event:", error);
+                        return false;
+                    }
+                };
                 
-                if (chunkNumber === 1 || chunkNumber === totalChunks || chunkNumber % 50 === 0) {
-                    console.log(`Sending chunk ${chunkNumber}/${totalChunks}`);
-                }
+                // Send chat ID immediately
+                const chatIdSuccess = sendEvent({ chat_id: verified_chat_id });
+                console.log("Chat ID sent successfully:", chatIdSuccess);
                 
-                await writer.ready;
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ token: chunk })}\n\n`));
+                // Send sources immediately
+                const sourcesSuccess = sendEvent({ sources: relevantSources });
+                console.log("Sources sent successfully:", sourcesSuccess);
+                
+                // Function to process Claude API results
+                const processClaude = async () => {
+                    try {
+                        // Call Claude API
+                        const claudeApi = "https://api.anthropic.com/v1/messages";
+                        console.log("Calling Claude API...");
+                        
+                        const claudeResponse = await fetch(claudeApi, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "x-api-key": ANTHROPIC_API_KEY,
+                                "anthropic-version": "2023-06-01"
+                            },
+                            body: JSON.stringify({
+                                model: "claude-3-5-sonnet-20240620",
+                                system: systemPrompt,
+                                messages: [{ role: "user", content: claudePrompt }],
+                                max_tokens: 1024,
+                                stream: true
+                            })
+                        });
+                        
+                        if (!claudeResponse.ok) {
+                            const errorText = await claudeResponse.text();
+                            console.error("Claude API error:", errorText);
+                            sendEvent({ error: `Claude API error: ${claudeResponse.status}` });
+                            controller.close();
+                            return;
+                        }
+                        
+                        // Process the streamed response
+                        const reader = claudeResponse.body.getReader();
+                        const textDecoder = new TextDecoder();
+                        let buffer = '';
+                        let fullResponseText = '';
+                        
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+                            
+                            // Decode and buffer the chunk
+                            buffer += textDecoder.decode(value, { stream: true });
+                            
+                            // Process complete events in buffer
+                            const lines = buffer.split('\n');
+                            buffer = lines.pop() || '';
+                            
+                            for (const line of lines) {
+                                if (line.startsWith('data: ')) {
+                                    const eventData = line.slice(6);
+                                    if (!eventData.trim() || eventData === "[DONE]") continue;
+                                    
+                                    try {
+                                        const data = JSON.parse(eventData);
+                                        
+                                        // Handle different Claude streaming formats
+                                        if (data.type === 'content_block_delta' && data.delta?.text) {
+                                            sendEvent({ token: data.delta.text });
+                                            fullResponseText += data.delta.text;
+                                        } else if (data.type === 'content_block_start' && data.content_block?.text) {
+                                            sendEvent({ token: data.content_block.text });
+                                            fullResponseText += data.content_block.text;
+                                        } else if (data.type === 'message_delta' && data.delta?.text) {
+                                            sendEvent({ token: data.delta.text });
+                                            fullResponseText += data.delta.text;
+                                        }
+                                    } catch (error) {
+                                        console.error("Error parsing Claude event:", error);
+                                    }
+                                }
+                            }
+                        }
+                        
+                        console.log("Claude streaming complete");
+                        controller.close();
+
+                        // Save to database
+                        const metadata = relevantSources.length > 0 
+                            ? { sources: relevantSources, modelName: MODEL_NAME } 
+                            : { modelName: MODEL_NAME };
+                            
+                        const { error } = await supabaseClient
+                            .from("chat_history")
+                            .insert([{ 
+                                chat_id: verified_chat_id, 
+                                user_id: user_id, 
+                                role_id: verified_role_id, 
+                                prompt: prompt, 
+                                response: fullResponseText,
+                                metadata: metadata
+                            }]);
+                        
+                    } catch (error) {
+                        console.error("Error in Claude processing:", error);
+                        sendEvent({ error: error.message });
+                        controller.close();
+                    }
+                };
+                
+                // Start the Claude processing (no await - we want it to run asynchronously)
+                processClaude().catch(err => {
+                    console.error("Unhandled error in processClaude:", err);
+                    try {
+                        sendEvent({ error: "Internal server error" });
+                        controller.close();
+                    } catch (closeErr) {
+                        console.error("Error closing stream:", closeErr);
+                    }
+                });
             }
-            
-            // Save to database
-            const metadata = include_sources && relevantSources.length > 0 
-                ? { sources: relevantSources, modelName: MODEL_NAME } 
-                : { modelName: MODEL_NAME };
-                
-            const { error } = await supabaseClient
-                .from("chat_history")
-                .insert([{ 
-                    chat_id: verified_chat_id, 
-                    user_id: user_id, 
-                    role_id: verified_role_id, 
-                    prompt: prompt, 
-                    response: response,
-                    metadata: metadata
-                }]);
-                
-            if (error) {
-                console.error("Error saving chat history:", error);
-            }
-            
-            console.log("Response successfully streamed and saved");
-        } catch (error) {
-            console.error("Error with Anthropic API:", error);
-            await writer.ready;
-            await writer.write(encoder.encode(`data: ${JSON.stringify({ error: error.message })}\n\n`));
-        }
-        
-        // Close the writer
-        await writer.ready;
-        await writer.close();
+        });
         
         // Return the stream
         const headers = new Headers(corsHeaders);
@@ -476,31 +450,22 @@ async function handler(req: Request) {
         headers.set("Cache-Control", "no-cache");
         headers.set("Connection", "keep-alive");
         
-        return new Response(stream.readable, {
+        console.log("Returning SSE stream response");
+        return new Response(stream, {
             status: 200,
-            headers: headers
+            headers
         });
+        
     } catch (error) {
-        console.error("Unhandled error:", error);
+        console.error("Error in handler:", error);
         
-        // Try to send error through the stream if it's still open
-        try {
-            if (writer) {
-                await writer.ready;
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ error: error.message })}\n\n`));
-                await writer.close();
-            }
-        } catch (streamError) {
-            console.error("Error writing to stream:", streamError);
-        }
-        
-        // Return a fallback error response
+        // Return error response
         const headers = new Headers(corsHeaders);
         headers.set("Content-Type", "application/json");
         
         return new Response(JSON.stringify({ error: error.message }), {
             status: 500,
-            headers: headers
+            headers
         });
     }
 }

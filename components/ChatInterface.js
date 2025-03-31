@@ -22,50 +22,6 @@ const ChatInterface = ({ }) => {
     // Get Supabase User context
     const { user, chat, chatRole, changeChat, supabaseClient } = useSupaUser();
     
-    // Helper function to generate fake responses with model-specific styling
-    const generateFakeResponse = (realResponse, model) => {
-        let fakeResponse = realResponse;
-        
-        switch (model) {
-            case 'gpt-4':
-                // GPT-4 style: More structured, uses bullet points, more formal
-                fakeResponse = fakeResponse.replaceAll('.', '.\n\n');
-                if (!fakeResponse.includes('•')) {
-                    fakeResponse = fakeResponse.replace(/\n\n([A-Z])/g, '\n\n• $1');
-                }
-                // Add more professional/formal tone
-                fakeResponse = fakeResponse.replace(/I think/gi, 'Based on my analysis');
-                fakeResponse = fakeResponse.replace(/probably/gi, 'likely');
-                break;
-                
-            case 'claude-3':
-                // Claude style: More conversational, slightly longer sentences
-                fakeResponse = fakeResponse.replace(/\./g, ', and.');
-                fakeResponse = fakeResponse.replace(/,\s*and\./g, '.');
-                // Add more "helpful" tone
-                fakeResponse = fakeResponse.replace(/I would/gi, 'I\'d be happy to');
-                fakeResponse = fakeResponse.replace(/you can/gi, 'you might consider');
-                break;
-                
-            case 'llama-3':
-                // Llama style: More concise, direct, sometimes emoji
-                fakeResponse = fakeResponse.replace(/\n\n/g, '\n');
-                fakeResponse = fakeResponse.replace(/([\.\?!]) /g, '$1\n');
-                // Add more casual tone
-                const emojiList = ['👍', '✨', '🚀', '💡'];
-                const randomEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
-                fakeResponse += `\n\n${randomEmoji} Hope that helps!`;
-                break;
-                
-            default:
-                // Minor modifications for other models
-                fakeResponse = fakeResponse.replace(/I/g, 'This model');
-                break;
-        }
-        
-        return fakeResponse;
-    };
-    
     // State to keep track of all guesses in the current session
     const [allGuesses, setAllGuesses] = useState([]);
 
@@ -224,7 +180,6 @@ const ChatInterface = ({ }) => {
         // In development, we'll call our test-sources API to get mock sources first
         if (isDevelopment) {
             try {
-                console.log("Fetching test sources...");
                 const response = await fetch('/api/test-sources', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -361,14 +316,6 @@ const ChatInterface = ({ }) => {
                                         console.log(`${model} API call completed`);
                                         collectedResponses[model].complete = true;
                                         
-                                        // For models that aren't the "real" one, modify their responses to make them 
-                                        // reflect each model's distinct style
-                                        if (model !== realModel) {
-                                            collectedResponses[model].text = generateFakeResponse(
-                                                collectedResponses[model].text, 
-                                                model
-                                            );
-                                        }
                                         
                                         // Check if all models have completed
                                         const allComplete = Object.values(collectedResponses)
@@ -452,13 +399,39 @@ const ChatInterface = ({ }) => {
                     },
                     body: requestData,
                     onmessage(event) {
-                        const data = JSON.parse(event.data);
+                        // Log more specifically based on the endpoint
+                        const apiType = endpoint.includes('llama') ? 'Llama' : 
+                                       endpoint.includes('claude') ? 'Claude' : 'GPT-4';
+                        
+                        // Add better error handling for JSON parsing
+                        let data;
+                        try {
+                            data = JSON.parse(event.data);
+                        } catch (parseError) {
+                            console.error(`Error parsing JSON from ${apiType} API:`, parseError);
+                            console.error('Raw event data that failed to parse:', event.data);
+                            return; // Skip this event
+                        }
+                        
                         if (data.chat_id) {
                             tempChatId = data.chat_id;
                         }
                         if (data.token) {
+                            // Log more detailed information about the token
+                            console.log(`${apiType} token received: "${data.token}" (${data.token.length} chars)`);
+                            console.log(`Response before update: ${selectedModelResponse.length} chars`);
+                            
                             selectedModelResponse += data.token;
+                            console.log(`Setting latest response: "${selectedModelResponse.substring(Math.max(0, selectedModelResponse.length - 50))}"...`);
+                            console.log(`Response after update: ${selectedModelResponse.length} chars`);
+                            
                             setLatestResponse(selectedModelResponse);
+                            
+                            // Force an immediate UI update when token is received
+                            // This can help with browsers that might be buffering state updates
+                            setTimeout(() => {
+                                setLatestResponse(prevResponse => prevResponse); // Re-render with same data
+                            }, 0);
                             
                             // Store the response for this model
                             setModelResponses(prev => ({
@@ -488,7 +461,16 @@ const ChatInterface = ({ }) => {
                         
                         // Store the model information for saving to database
                         window.lastModelName = modelToUse;
-                    }
+                        console.log(`${modelToUse} API connection closed successfully`);
+                    },
+                    onerror(err) {
+                        console.error(`Error with ${modelToUse} API connection:`, err);
+                        // Try to reconnect unless the server explicitly asked to stop
+                        if (err.message.includes('terminated')) {
+                            return true; // Close the connection
+                        }
+                        return false; // Attempt to reconnect
+                    },
                 }
             );
         }
@@ -509,33 +491,17 @@ const ChatInterface = ({ }) => {
                         
                         // Create simulated responses for all models
                         const simulatedResponses = activeModels.map(model => {
-                            if (model === realModel) {
-                                // Use the real response we have
-                                return {
-                                    model,
-                                    response: collectedResponses[model]?.text || "Response unavailable",
-                                    sources: collectedResponses[model]?.sources || [],
-                                    isReal: true
-                                };
-                            } else {
-                                // Generate a fake response
-                                const baseText = collectedResponses[realModel]?.text || "Response unavailable";
-                                return {
-                                    model,
-                                    response: generateFakeResponse(baseText, model),
-                                    sources: collectedResponses[realModel]?.sources || [],
-                                    isReal: false
-                                };
-                            }
+                            return {
+                                model,
+                                response: collectedResponses[model]?.text || "Response unavailable",
+                                sources: collectedResponses[model]?.sources || [],
+                                isReal: model === realModel
+                            };
                         });
                         
                         setMultiLlmResponses(simulatedResponses);
                     }
-                } else if (selectedModel !== 'default' && latestResponse) {
-                    // Style the single model response
-                    const styledResponse = generateFakeResponse(latestResponse, selectedModel);
-                    setLatestResponse(styledResponse);
-                }
+                } 
                 
                 responseComplete = true;
             }
@@ -698,19 +664,28 @@ const ChatInterface = ({ }) => {
                 </div>
             )}
             
-            {/* Show guess history in game mode after current guess is complete */}
             {guessGameEnabled && allGuesses.length > 0 && currentGuessIndex !== null && (
                 <GuessHistory guesses={allGuesses} />
             )}
             
-            {/* Show chat history only when not in game mode or when there's no active waiting/response in game mode */}
-            {(!guessGameEnabled || (multiLlmResponses.length === 0 && !latestUserMessage)) && (
+            {!guessGameEnabled && (
                 <ChatHistory 
                     messages={messages} 
                     latestUserMessage={!guessGameEnabled ? latestUserMessage : ''} 
                     latestResponse={!guessGameEnabled ? latestResponse : ''}
                     latestSources={!guessGameEnabled ? latestSources : []}
                     selectedModel={selectedModel !== 'default' ? selectedModel : null}
+                />
+            )}
+            
+            {/* Show ChatHistory in game mode only when not waiting for a response */}
+            {guessGameEnabled && multiLlmResponses.length === 0 && !latestUserMessage && (
+                <ChatHistory 
+                    messages={messages}
+                    latestUserMessage="" 
+                    latestResponse=""
+                    latestSources={[]}
+                    selectedModel={null}
                 />
             )}
         </div>

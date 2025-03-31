@@ -18,12 +18,6 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
-    
-    // Create a message to send to the client to identify the chat_id
-    if (chat_id) {
-      const chatIdMessage = JSON.stringify({ chat_id });
-      res.write(`data: ${chatIdMessage}\n\n`);
-    }
 
     // Get Supabase configuration
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -49,8 +43,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         prompt,
         chat_id,
-        user_id,
-        include_sources
+        user_id
       })
     });
 

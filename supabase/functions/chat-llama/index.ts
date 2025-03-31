@@ -1,142 +1,21 @@
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
-import { timezoneOptions } from '../_shared/timezone.ts';
 import { supabaseClient } from '../_shared/supabaseClient.ts';
-import { OpenAI } from "npm:langchain@0.0.171/llms/openai";
-import { LLMChain } from "npm:langchain@0.0.171/chains";
-import { PromptTemplate } from "npm:langchain@0.0.171/prompts";
+import { 
+    introSystemMessageStr, 
+    employerSystemMessageStr
+} from '../_shared/promptTemplates.ts';
+import { 
+    retrieveChatHistory, 
+    summarizeChatHistory 
+} from '../_shared/chatHelpers.ts';
 
-const openai_api_key = Deno.env.get("OPENAI_API_KEY");
-const replicate_api_key = Deno.env.get("REPLICATE_API_KEY");
+const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
+const REPLICATE_API_KEY = Deno.env.get("REPLICATE_API_KEY");
 
-const ROLE = "intro";
+const DEFAULT_ROLE = "employer";
+const DEFAULT_TITLE = "Llama Chat";
 const MODEL_NAME = "llama-3-70b-instruct"; // Using Llama 3 70B - large model
-
-// System prompt
-const SYSTEM_PROMPT = `You are a friendly and professional virtual assistant helping users learn about Dan Mathieson.
-Your goal is to provide helpful, accurate information about Dan's background, skills, and experiences in a conversational yet professional tone.
-Always present Dan in a positive but authentic light. Be approachable but maintain an appropriate level of professionalism.
-You are not Dan - clearly position yourself as an assistant designed to help people learn about him.
-Include relevant personal anecdotes when appropriate to make your responses engaging, but keep the focus on providing useful information.
-Adjust your technical depth based on the user's questions - be more detailed with technical topics when appropriate.
-Dan Mathieson is a software engineer in his late 20's with expertise in AI engineering, software development, and data science.
-He lives in San Francisco with his girlfriend Maggie and their dog Winnie. He built this website including the AI chat functionality.
-When discussing challenges or problems, maintain a solution-oriented perspective that highlights learning and growth.
-Be concise but thorough in your responses, prioritizing quality information over length.`;
-
-async function retrieveChatHistory(chat_id: string, user_id: string) {
-    if (chat_id) {
-        console.log("Retrieving chat history for chat_id: " + chat_id);
-        const { data: chat_history_data, error: chat_history_error } = await supabaseClient
-            .from("chat_history")
-            .select("*")
-            .eq("chat_id", chat_id)
-            .order("created_at", { ascending: false });
-        if (chat_history_error) {
-            throw chat_history_error;
-        }
-        return { 
-            verified_chat_id: chat_id, 
-            verified_chat_history: chat_history_data, 
-            verified_role_id: chat_history_data[0].role_id 
-        };
-    } else {
-        if (!user_id) {
-            console.log("Creating anonymous chat");
-            const { data: anonymous_role_data, error: anonymous_role_error } = await supabaseClient
-                .from("chat_roles")
-                .select("id")
-                .eq("role", ROLE)
-                .is("user_id", null)
-                .single();
-            if (anonymous_role_error) {
-                throw anonymous_role_error;
-            }
-            const role_id = anonymous_role_data.id;
-
-            const { data: anonymous_chat_data, error: anonymous_chat_error } = await supabaseClient
-                .from("chats")
-                .insert([{ role_id: role_id }])
-                .select()
-                .single();
-            if (anonymous_chat_error) {
-                throw anonymous_chat_error;
-            }
-            return { 
-                verified_chat_id: anonymous_chat_data.id, 
-                verified_chat_history: [], 
-                verified_role_id: role_id 
-            };
-        } else {
-            console.log("Creating chat with user_id: ", user_id);
-            const { data: user_role_data, error: user_role_error } = await supabaseClient
-                .from("chat_roles")
-                .select("id")
-                .eq("role", ROLE)
-                .eq("user_id", user_id)
-                .single();
-            if (user_role_error) {
-                throw user_role_error;
-            }
-            const role_id = user_role_data.id;
-
-            const { data: new_chat_data, error: new_chat_error } = await supabaseClient
-                .from("chats")
-                .insert([{ 
-                    role_id: role_id, 
-                    user_id: user_id, 
-                    title: "Intro Chat - " + new Date().toLocaleString("en-US", timezoneOptions)
-                }])
-                .select()
-                .single();
-            if (new_chat_error) {
-                throw new_chat_error;
-            }
-            return { 
-                verified_chat_id: new_chat_data.id, 
-                verified_chat_history: [], 
-                verified_role_id: role_id 
-            };
-        }
-    }
-}
-
-async function summarizeChatHistory(chat_history: any, prompt: string) {
-    if (chat_history.length === 0) {
-        console.log("Chat history is empty. Using original prompt.")
-        return prompt; 
-    }
-    
-    let chat_history_string = "";
-    for (let i=0; i < Math.min(chat_history.length, 5); i++) {
-        const chat_history_item = chat_history[i];
-        const prompt_text = chat_history_item.prompt;
-        const response_text = chat_history_item.response;
-        chat_history_string += "PROMPT: " + prompt_text + "\nRESPONSE: " + response_text + "\n\n";
-    }
-    
-    const summaryPromptTemplate = PromptTemplate.fromTemplate(
-        "You are creating a concise, contextual search query to find the most relevant information for the user.\n" +
-        "Review the conversation history below and the user's new prompt.\n" +
-        "Generate a search query that captures the user's current intent while incorporating relevant context from previous exchanges.\n" +
-        "Focus on finding specific information about Dan's experience, skills, and background that addresses the user's question.\n" +
-        "Write a clear, focused query of 1-3 sentences maximum that will help retrieve the most relevant content.\n\n" +
-        chat_history_string +
-        "NEW PROMPT: {original_prompt}\n\n" +
-        "Based on this conversation, the most effective search query would be:\n"
-    );
-    
-    const model = new OpenAI({
-        openAIApiKey: openai_api_key,
-        temperature: 0,
-        maxTokens: 1000,
-        modelName: "gpt-4-turbo", // Using GPT-4 for better summarization
-    });
-    const llmChain = new LLMChain({llm: model, prompt: summaryPromptTemplate});
-    const summary = await llmChain.call({original_prompt: prompt})
-    console.log("New Prompt for Embedding: ", summary.text);
-    return summary.text;
-}
 
 function formatChatHistory(chat_history: any) {
     if (chat_history.length === 0) {
@@ -232,35 +111,14 @@ function formatDocumentMatches(documents: any) {
 }
 
 // Improved Replicate API call with better error handling and timeouts
-async function callReplicateAPI(prompt: string) {
-    const version = "meta/meta-llama-3-70b-instruct:cf19bede4a10db6f227ab515970d542a3b9f5275dcf209c7fb5da052ace98d15";
+async function callReplicateAPI(systemPrompt: string, prompt: string) {
     
-    if (!replicate_api_key) {
+    if (!REPLICATE_API_KEY) {
         throw new Error("REPLICATE_API_KEY is not set");
     }
     
-    // Create a shortened version of the prompt if it's too long
-    // Llama has context length limitations
-    let finalPrompt = prompt;
-    if (prompt.length > 16000) {
-        console.log("Prompt is too long for Llama, shortening...");
-        // Keep system info and the user query, but shorten the middle
-        const systemEnd = SYSTEM_PROMPT.length + 50;
-        const userStart = prompt.lastIndexOf("USER QUERY:");
-        
-        if (userStart > 0) {
-            // Take the system prompt, trimmed middle, and user query
-            finalPrompt = prompt.substring(0, systemEnd) + 
-                "\n\n[CONTEXT TRIMMED DUE TO LENGTH]\n\n" + 
-                prompt.substring(userStart);
-            
-            console.log(`Shortened prompt from ${prompt.length} to ${finalPrompt.length} chars`);
-        }
-    }
-    
     // Step 1: Create the prediction
-    console.log(`Creating prediction with prompt (${finalPrompt.length} chars)`);
-    const createUrl = "https://api.replicate.com/v1/predictions";
+    console.log(`Creating prediction with prompt (${prompt.length} chars)`);
     
     // Setup the request with a timeout
     const controller = new AbortController();
@@ -271,24 +129,30 @@ async function callReplicateAPI(prompt: string) {
     
     try {
         // Create the prediction
-        const createResponse = await fetch(createUrl, {
-            method: "POST",
+        const createResponse = await fetch('https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Token ${replicate_api_key}`
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${REPLICATE_API_KEY}`,
+              'Prefer': 'wait'
             },
             body: JSON.stringify({
-                "version": version,
-                "input": {
-                    "prompt": finalPrompt,
-                    "max_new_tokens": 800, // Reduced from 1000 to avoid context issues
-                    "temperature": 0.5,
-                    "top_p": 0.9,
-                    "repetition_penalty": 1.15,
-                }
-            }),
-            signal: controller.signal
-        });
+              input: {
+                top_k: 0,
+                top_p: 0.9,
+                prompt: prompt,
+                max_tokens: 1024,
+                min_tokens: 0,
+                temperature: 0.6,
+                system_prompt: systemPrompt,
+                length_penalty: 1,
+                stop_sequences: "<|end_of_text|>,<|eot_id|>",
+                prompt_template: "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+                presence_penalty: 1.15,
+                log_performance_metrics: false
+              }
+            })
+          });
         
         // Clear the timeout
         clearTimeout(timeoutId);
@@ -303,15 +167,15 @@ async function callReplicateAPI(prompt: string) {
         // Parse the response to get the prediction ID
         const createData = await createResponse.json();
         const predictionId = createData.id;
-        console.log(`Created prediction with ID: ${predictionId}`);
+        console.log("Created prediction:", createData.id);
+        console.log("FULL CREATE RESPONSE:", JSON.stringify(createData));
         
-        // Step 2: Poll for the result
+        // Poll for the result
         let isComplete = false;
         let attempts = 0;
-        const maxAttempts = 30;
-        let responseText = "";
-        
-        console.log("Polling for prediction result...");
+        const maxAttempts = 60; // Longer timeout (60 seconds)
+        let fullResponse = "";
+        console.log(`Created prediction with ID: ${predictionId}`);
         
         while (!isComplete && attempts < maxAttempts) {
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -329,7 +193,7 @@ async function callReplicateAPI(prompt: string) {
             try {
                 const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${predictionId}`, {
                     headers: {
-                        "Authorization": `Token ${replicate_api_key}`
+                        "Authorization": `Token ${REPLICATE_API_KEY}`
                     },
                     signal: pollController.signal
                 });
@@ -349,13 +213,13 @@ async function callReplicateAPI(prompt: string) {
                 if (statusData.status === "succeeded") {
                     // For Replicate, output is an array of strings
                     if (Array.isArray(statusData.output)) {
-                        responseText = statusData.output.join("");
+                        fullResponse = statusData.output.join("");
                     } else {
-                        responseText = "Unexpected response format from Llama";
+                        fullResponse = "Unexpected response format from Llama";
                         console.log(`Unexpected output format: ${JSON.stringify(statusData.output)}`);
                     }
                     
-                    console.log(`Got response of length: ${responseText.length} chars`);
+                    console.log(`Got response of length: ${fullResponse.length} chars`);
                     isComplete = true;
                 } else if (statusData.status === "failed") {
                     const errorMsg = statusData.error || "Unknown error";
@@ -379,7 +243,7 @@ async function callReplicateAPI(prompt: string) {
             throw new Error(`Timed out waiting for Llama response after ${maxAttempts} attempts`);
         }
         
-        return responseText;
+        return fullResponse;
         
     } catch (error) {
         clearTimeout(timeoutId);
@@ -403,26 +267,20 @@ async function handler(req: Request) {
             headers: new Headers(corsHeaders),
         });
     }
-    
-    // For SSE responses
-    const encoder = new TextEncoder();
-    const stream = new TransformStream();
-    const writer = stream.writable.getWriter();
 
     try {
         // Parse the request body
-        const { prompt: promptInit, chat_id, user_id, include_sources = false } = await req.json();
+        const { prompt: promptInit, chat_id, user_id } = await req.json();
         const prompt = promptInit.trim();
         console.log("Prompt: ", prompt);
         console.log("Chat ID: ", chat_id);
         console.log("User ID: ", user_id);
-        console.log("Include Sources: ", include_sources);
         
         // Moderate the prompt with OpenAI (reused from original code)
         const moderationUrl = "https://api.openai.com/v1/moderations";
         const moderationHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const moderationBody = JSON.stringify({
             "input": prompt,
@@ -442,20 +300,15 @@ async function handler(req: Request) {
         }
         console.log("Prompt passed moderation checks");
         
-        // Retrieve or create chat
-        const { verified_chat_id, verified_chat_history, verified_role_id } = 
-            await retrieveChatHistory(chat_id, user_id);
-        console.log("Verified Chat ID: ", verified_chat_id);
-        
-        // Send initial chat_id back to client
-        await writer.ready;
-        await writer.write(encoder.encode(`data: ${JSON.stringify({ chat_id: verified_chat_id })}\n\n`));
+        // Get chat history
+        const { verified_chat_id, verified_chat_history, verified_role_id } = await retrieveChatHistory(chat_id, user_id, DEFAULT_ROLE, DEFAULT_TITLE);
+        console.log("Using chat ID:", verified_chat_id);
         
         // Generate embeddings and find similar documents
         const embeddingUrl = "https://api.openai.com/v1/embeddings";
         const embeddingHeaders = {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${openai_api_key}`
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
         };
         const embeddingBody = JSON.stringify({
             "input": await summarizeChatHistory(verified_chat_history, prompt),
@@ -478,7 +331,7 @@ async function handler(req: Request) {
             { 
                 embedding: promptEmbedding,
                 match_threshold: 0.4,
-                match_count: 8,
+                match_count: 10,
             });
         if (match_error) {
             console.error("Document similarity error:", match_error);
@@ -486,70 +339,101 @@ async function handler(req: Request) {
         }
         
         // Send sources to client if requested
-        const relevantSources = include_sources ? match_data : [];
-        if (include_sources && relevantSources.length > 0) {
-            await writer.ready;
-            await writer.write(encoder.encode(`data: ${JSON.stringify({ sources: relevantSources })}\n\n`));
-        }
+        const relevantSources = match_data.map(source => ({
+            content_path: source.content_path,
+            content_title: source.content_title,
+            similarity: source.similarity
+        }));
         
         // Format components for Llama prompt
+        const systemPrompt = DEFAULT_ROLE === "intro" ? introSystemMessageStr : employerSystemMessageStr;
         const chatHistoryText = formatChatHistory(verified_chat_history);
         const documentContext = formatDocumentMatches(match_data);
         
         // Format the complete prompt for Llama with the correct format
-        const llamaPrompt = `<|system|>\n${SYSTEM_PROMPT}\n${chatHistoryText}\n${documentContext}</s>\n<|user|>\n${prompt}</s>\n<|assistant|>\n`;
+        const llamaPrompt = `<|system|>\n${systemPrompt}\n${chatHistoryText}\n${documentContext}</s>\n<|user|>\n${prompt}</s>\n<|assistant|>\n`;
         
         // Call Replicate API and get response
-        try {
-            const response = await callReplicateAPI(llamaPrompt);
-            
-            // Send response to client in chunks
-            console.log(`Response length: ${response.length} chars`);
-            const chunkSize = 10;
-            const totalChunks = Math.ceil(response.length / chunkSize);
-            
-            for (let i = 0; i < response.length; i += chunkSize) {
-                const chunk = response.substring(i, i + chunkSize);
-                const chunkNumber = Math.floor(i / chunkSize) + 1;
-                
-                if (chunkNumber === 1 || chunkNumber === totalChunks || chunkNumber % 50 === 0) {
-                    console.log(`Sending chunk ${chunkNumber}/${totalChunks}`);
-                }
-                
-                await writer.ready;
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ token: chunk })}\n\n`));
+        const encoder = new TextEncoder();
+        const stream = new ReadableStream({
+            start(controller) {
+                // Function to send an event
+                const sendEvent = (data: any) => {
+                    try {
+                        const json = JSON.stringify(data);
+                        const encoded = encoder.encode(`data: ${json}\n\n`);
+                        controller.enqueue(encoded);
+                        // console.log(`Sent event: ${Object.keys(data)[0]}`);
+                        return true;
+                    } catch (error) {
+                        // console.error("Error sending event:", error);
+                        return false;
+                    }
+                };
+
+                // Send initial chat_id event
+                const chatIdSuccess = sendEvent({ chat_id: verified_chat_id });
+                console.log("Chat ID sent successfully:", chatIdSuccess);
+
+                // Send sources event if any
+                const sourcesSent = sendEvent({ sources: relevantSources });
+                console.log("Sources sent successfully:", sourcesSent);
+
+                const processLlamaResponse = async () => {
+                    try {
+                        const response = await callReplicateAPI(systemPrompt, llamaPrompt);
+                        
+                        // Send response to client in chunks
+                        console.log(`Response length: ${response.length} chars`);
+                        const chunkSize = 10;
+                        const totalChunks = Math.ceil(response.length / chunkSize);
+                        
+                        for (let i = 0; i < response.length; i += chunkSize) {
+                            const chunk = response.substring(i, i + chunkSize);
+                            const chunkNumber = Math.floor(i / chunkSize) + 1;
+                            
+                            if (chunkNumber === 1 || chunkNumber === totalChunks || chunkNumber % 50 === 0) {
+                                console.log(`Sending chunk ${chunkNumber}/${totalChunks}`);
+                            }
+
+                            sendEvent({ token: chunk });
+                        }
+                        
+                        // Save to database
+                        const metadata = relevantSources.length > 0 
+                            ? { sources: relevantSources, modelName: MODEL_NAME } 
+                            : { modelName: MODEL_NAME };
+                            
+                        const { error } = await supabaseClient
+                            .from("chat_history")
+                            .insert([{ 
+                                chat_id: verified_chat_id, 
+                                user_id: user_id, 
+                                role_id: verified_role_id, 
+                                prompt: prompt, 
+                                response: response,
+                                metadata: metadata
+                            }]);
+                        if (error) {
+                            console.error("Error saving chat history:", error);
+                        }
+                        
+                        console.log("Response successfully streamed and saved");
+                        controller.close();
+                    } catch (error) {
+                        console.error("Error with Replicate API:", error);
+                        sendEvent({ error: error.message });
+                    }
+                };
+
+                // Start processing the response
+                processLlamaResponse().catch(error => {
+                    console.error("Error processing response:", error);
+                    sendEvent({ error: error.message });
+                    controller.close();
+                });
             }
-            
-            // Save to database
-            const metadata = include_sources && relevantSources.length > 0 
-                ? { sources: relevantSources, modelName: MODEL_NAME } 
-                : { modelName: MODEL_NAME };
-                
-            const { error } = await supabaseClient
-                .from("chat_history")
-                .insert([{ 
-                    chat_id: verified_chat_id, 
-                    user_id: user_id, 
-                    role_id: verified_role_id, 
-                    prompt: prompt, 
-                    response: response,
-                    metadata: metadata
-                }]);
-                
-            if (error) {
-                console.error("Error saving chat history:", error);
-            }
-            
-            console.log("Response successfully streamed and saved");
-        } catch (error) {
-            console.error("Error with Replicate API:", error);
-            await writer.ready;
-            await writer.write(encoder.encode(`data: ${JSON.stringify({ error: error.message })}\n\n`));
-        }
-        
-        // Close the writer
-        await writer.ready;
-        await writer.close();
+        });
         
         // Return the stream
         const headers = new Headers(corsHeaders);
@@ -557,31 +441,22 @@ async function handler(req: Request) {
         headers.set("Cache-Control", "no-cache");
         headers.set("Connection", "keep-alive");
         
-        return new Response(stream.readable, {
+        console.log("Returning SSE stream response");
+        return new Response(stream, {
             status: 200,
-            headers: headers
+            headers
         });
+        
     } catch (error) {
-        console.error("Unhandled error:", error);
+        console.error("Error in handler:", error);
         
-        // Try to send error through the stream if it's still open
-        try {
-            if (writer) {
-                await writer.ready;
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ error: error.message })}\n\n`));
-                await writer.close();
-            }
-        } catch (streamError) {
-            console.error("Error writing to stream:", streamError);
-        }
-        
-        // Return a fallback error response
+        // Return error response
         const headers = new Headers(corsHeaders);
         headers.set("Content-Type", "application/json");
         
         return new Response(JSON.stringify({ error: error.message }), {
             status: 500,
-            headers: headers
+            headers
         });
     }
 }
