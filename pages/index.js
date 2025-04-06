@@ -22,12 +22,13 @@ export default function Home({ allPostsData, allInfoData }) {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <section className={utilStyles.headingMd}>
-                <small>Hi! I'm Dan - Welcome to my Personal Website</small>
-                <br></br>
-                <small>You can chat with my resume & projects using the below interface.</small>
-                <br></br>
-                <small>If you'd like a more customized experience, including saving chats and chatting with different roles of the assistant describing my background, please login and edit your account.</small>
+            <section className={`${utilStyles.headingMd} ${utilStyles.centerText} ${utilStyles.welcomeSection}`}>
+                <h3>Hi! I'm Dan - Welcome to my Personal Website</h3>
+                <ul className={`${utilStyles.welcomeList} ${utilStyles.italicText}`}>
+                    <li>You can chat with my resume & projects using the below interface.</li>
+                    <li>Try the LLM Guessing Game - For each question you ask, guess which LLM gave the answer!</li>
+                    <li>For a more customized experience, including saving chats and chatting with different roles of the assistant, please login and edit your account.</li>
+                </ul>
             </section>
             <section className={utilStyles.headingMd}>
                 <ChatInterface />
