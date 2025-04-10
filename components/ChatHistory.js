@@ -12,15 +12,6 @@ import utilStyles from '@/styles/utils.module.css';
 
 const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSources, selectedModel }) => {
     const { userDetails } = useSupaUser();
-    
-    // Debug logging of props
-    console.log("ChatHistory received props:", { 
-        messageCount: messages?.length || 0,
-        latestUserMessage: latestUserMessage ? `${latestUserMessage.substring(0, 20)}...` : 'none',
-        latestResponseLength: latestResponse?.length || 0,
-        latestSourcesCount: latestSources?.length || 0,
-        selectedModel
-    });
 
     const userAvatarDisp = () => {
         if (userDetails && userDetails.avatar_url) {
@@ -63,10 +54,7 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSource
         // Get appropriate image based on selected model
         const imgSrc = modelName ? getModelImage(modelName) : '/icons/bot.png';
         
-        console.log(`botMessageDisp: Called with response length ${response?.length || 0}, model ${modelName || 'default'}`);
-        
         if (response && response.length > 0) {
-            console.log(`botMessageDisp: Displaying response message (first 50 chars): "${response.substring(0, 50)}..."`);
             return (
                 <div className={`${styles.convoDiv} ${styles.respDiv}`}>
                     <img src={imgSrc} alt={modelName || 'bot'} className={styles.convoImg} />
@@ -78,7 +66,6 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSource
                 </div>
             )
         } else {
-            console.log(`botMessageDisp: No response yet, showing loading indicator`);
             return (
                 <div className={`${styles.convoDiv} ${styles.respDiv}`}>
                     <img src={imgSrc} alt={modelName || 'bot'} className={styles.convoImg} />
@@ -92,11 +79,8 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSource
 
     const latestMessageDisp = () => {
         if (latestUserMessage === '') {
-            console.log("latestMessageDisp: No user message, returning null");
             return null;
         }
-        
-        console.log("latestMessageDisp: Displaying message with response length:", latestResponse?.length || 0);
         
         // In development, we might have sources stored in a global window variable
         // This ensures we don't lose sources between state updates
@@ -119,7 +103,7 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSource
         <div className={styles.convoHistoryContainer}>
             <h2 className={utilStyles.headingLg}>Chat History</h2>
             {latestMessageDisp()}
-            {messages.slice().reverse().map((message, index) => (
+            {messages.map((message, index) => (
                 <div key={`c-${index}`} className={styles.convoBlock}>
                     {userMessageDisp(message.user.text, `u-${index}`)}
                     {message.multiLlm ? (
@@ -144,7 +128,7 @@ const ChatHistory = ({ messages, latestUserMessage, latestResponse, latestSource
                         )
                     )}
                 </div>
-            ))}
+            )).reverse()}
         </div>
     );
 };

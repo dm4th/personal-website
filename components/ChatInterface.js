@@ -170,36 +170,10 @@ const ChatInterface = ({ }) => {
             setCurrentGuessIndex(null);
         }
 
-        // Send the user input to the bot, setting up a connection to the server
-        const isDevelopment = process.env.NODE_ENV === 'development';
         const functionUrl = process.env.NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL;
         const chatUrl = functionUrl + chatEndpoint();
         const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
         let tempChatId = null;
-        
-        // In development, we'll call our test-sources API to get mock sources first
-        if (isDevelopment) {
-            try {
-                const response = await fetch('/api/test-sources', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: userInput })
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.sources && data.sources.length > 0) {
-                        console.log("Setting sources from test API:", data.sources);
-                        setLatestSources(data.sources);
-                        
-                        // Store the sources for this chat message specifically in a ref to make sure they're captured
-                        window.lastSources = data.sources;
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching test sources:", error);
-            }
-        }
         
         // Define LLM models we want to get responses from
         const llmModels = ['default', 'gpt-4', 'claude-3', 'llama-3'];
@@ -227,8 +201,6 @@ const ChatInterface = ({ }) => {
             // but we actually make calls to all models
             const realModelIndex = Math.floor(Math.random() * activeModels.length);
             const realModel = activeModels[realModelIndex];
-            
-            console.log(`Selected ${realModel} as the real model for this game round`);
             
             // Make multiple API calls - one for each model directly to their endpoints
             const modelRequests = activeModels.map(async (model) => {
@@ -331,10 +303,6 @@ const ChatInterface = ({ }) => {
                                                 sources: collectedResponses[modelName].sources || [],
                                                 isReal: modelName === realModel
                                             }));
-                                            
-                                            console.log("Final responses for guessing game:", finalResponses.map(r => 
-                                                `${r.model} (real: ${r.isReal}): ${r.response.substring(0, 20)}...`));
-                                            
                                             setMultiLlmResponses(finalResponses);
                                         }
                                         
@@ -417,14 +385,7 @@ const ChatInterface = ({ }) => {
                             tempChatId = data.chat_id;
                         }
                         if (data.token) {
-                            // Log more detailed information about the token
-                            console.log(`${apiType} token received: "${data.token}" (${data.token.length} chars)`);
-                            console.log(`Response before update: ${selectedModelResponse.length} chars`);
-                            
                             selectedModelResponse += data.token;
-                            console.log(`Setting latest response: "${selectedModelResponse.substring(Math.max(0, selectedModelResponse.length - 50))}"...`);
-                            console.log(`Response after update: ${selectedModelResponse.length} chars`);
-                            
                             setLatestResponse(selectedModelResponse);
                             
                             // Force an immediate UI update when token is received
@@ -478,7 +439,6 @@ const ChatInterface = ({ }) => {
         // Backup logic in case onclose doesn't fire (which can happen in some browsers)
         setTimeout(() => {
             if (!responseComplete) {
-                console.log("Backup timer fired - finalizing responses");
                 
                 if (selectedModel === 'game' && Object.keys(collectedResponses).length > 0) {
                     // Create responses from what we have
@@ -597,6 +557,35 @@ const ChatInterface = ({ }) => {
         fetchMessages();
     }, [chat]);
 
+    // Add useEffect for logging state changes
+    useEffect(() => {
+        console.log('Chat Interface State Update:', {
+            messages,
+            latestUserMessage,
+            latestResponse,
+            latestSources,
+            selectedModel,
+            currentSelectedModel,
+            multiLlmResponses,
+            currentGuessIndex,
+            guessStats,
+            modelResponses,
+            allGuesses
+        });
+    }, [
+        messages,
+        latestUserMessage,
+        latestResponse,
+        latestSources,
+        selectedModel,
+        currentSelectedModel,
+        multiLlmResponses,
+        currentGuessIndex,
+        guessStats,
+        modelResponses,
+        allGuesses
+    ]);
+
     return (
         <div>
             <ChatControl />
@@ -642,7 +631,6 @@ const ChatInterface = ({ }) => {
             
             <ChatBox onUserInput={onUserInput} />
             
-            {/* Game component (only in game mode with responses) */}
             {guessGameEnabled && multiLlmResponses.length > 0 && (
                 <LlmGuessGame
                     llmResponses={multiLlmResponses}
@@ -651,7 +639,6 @@ const ChatInterface = ({ }) => {
                 />
             )}
             
-            {/* Show the waiting state when in game mode without responses yet */}
             {guessGameEnabled && multiLlmResponses.length === 0 && latestUserMessage && (
                 <div className={styles.convoHistoryContainer}>
                     <h2 className={utilStyles.headingLg}>Which LLM wrote this?</h2>
@@ -678,7 +665,6 @@ const ChatInterface = ({ }) => {
                 />
             )}
             
-            {/* Show ChatHistory in game mode only when not waiting for a response */}
             {guessGameEnabled && multiLlmResponses.length === 0 && !latestUserMessage && (
                 <ChatHistory 
                     messages={messages}
