@@ -74,6 +74,14 @@ const ChatInterface = ({ }) => {
         'claude-3': { text: '', sources: [] },
         'llama-3': { text: '', sources: [] },
     });
+
+    // Store separate chat ID values for each model in case we want to switch models
+    const [modelChatIds, setModelChatIds] = useState({
+        'default': null,
+        'gpt-4': null,
+        'claude-3': null,
+        'llama-3': null,
+    });
     
     // Computed properties for mode selection
     const guessGameEnabled = selectedModel === 'game';
@@ -98,20 +106,6 @@ const ChatInterface = ({ }) => {
             const currentSources = latestSources || [];
             const currentUserMessage = latestUserMessage;
             
-            // If in game mode with responses but no guess was made, make a random guess
-            if (guessGameEnabled && multiLlmResponses.length > 0 && currentGuessIndex === null) {
-                // Make a random guess
-                const randomGuessIndex = Math.floor(Math.random() * multiLlmResponses.length);
-                handleLlmGuess(randomGuessIndex);
-                
-                // Note: We let handleLlmGuess update allGuesses, but we need to set currentGuessIndex
-                // for the message saving below
-                const correctIndex = multiLlmResponses.findIndex(r => r.isReal);
-                const isCorrect = randomGuessIndex === correctIndex;
-                
-                console.log(`Auto-selected guess: ${multiLlmResponses[randomGuessIndex].model} (correct: ${isCorrect})`);
-            }
-            
             // Determine what to save based on whether guess game is active
             if (guessGameEnabled && multiLlmResponses.length > 0) {
                 // For guess game, save all LLM responses and user's guesses
@@ -122,7 +116,7 @@ const ChatInterface = ({ }) => {
                     {
                         multiLlm: true,
                         models: multiLlmResponses,
-                        guessCorrect: true, // We're either using a user guess or auto-selected one
+                        guessCorrect: true,
                         guessedModel: multiLlmResponses[guessIndex].model,
                         user: {
                             text: currentUserMessage,
@@ -173,7 +167,6 @@ const ChatInterface = ({ }) => {
         const functionUrl = process.env.NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL;
         const chatUrl = functionUrl + chatEndpoint();
         const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-        let tempChatId = null;
         
         // Define LLM models we want to get responses from
         const llmModels = ['default', 'gpt-4', 'claude-3', 'llama-3'];
@@ -193,7 +186,7 @@ const ChatInterface = ({ }) => {
                 collectedResponses[model] = { 
                     text: '', 
                     sources: [],
-                    complete: false 
+                    complete: false
                 };
             });
             
@@ -224,7 +217,7 @@ const ChatInterface = ({ }) => {
                     // Create request data for this model
                     const modelPostData = JSON.stringify({
                         prompt: userInput,
-                        chat_id: chat?.id,
+                        chat_id: modelChatIds[model],
                         user_id: user?.id,
                         include_sources: true
                     });
@@ -245,8 +238,11 @@ const ChatInterface = ({ }) => {
                                     body: modelPostData,
                                     onmessage(event) {
                                         const data = JSON.parse(event.data);
-                                        if (data.chat_id && !tempChatId) {
-                                            tempChatId = data.chat_id;
+                                        if (data.chat_id) {
+                                            setModelChatIds(prev => ({
+                                                ...prev,
+                                                [model]: data.chat_id
+                                            }));
                                         }
                                         if (data.token) {
                                             // Accumulate response for this specific model
@@ -350,7 +346,7 @@ const ChatInterface = ({ }) => {
             // Prepare request data
             const requestData = JSON.stringify({
                 prompt: userInput,
-                chat_id: chat?.id,
+                chat_id: modelChatIds[modelToUse],
                 user_id: user?.id,
                 include_sources: true
             });
@@ -382,7 +378,10 @@ const ChatInterface = ({ }) => {
                         }
                         
                         if (data.chat_id) {
-                            tempChatId = data.chat_id;
+                            setModelChatIds(prev => ({
+                                ...prev,
+                                [modelToUse]: data.chat_id
+                            }));
                         }
                         if (data.token) {
                             selectedModelResponse += data.token;
@@ -469,8 +468,8 @@ const ChatInterface = ({ }) => {
 
         // Set initialized to true
         if (!initialized) {
-            await changeChat(tempChatId);
             setInitialized(true);
+            await changeChat(modelChatIds[selectedModel]);
         }
     };
 
@@ -557,6 +556,13 @@ const ChatInterface = ({ }) => {
         fetchMessages();
     }, [chat]);
 
+    useEffect(() => {
+        const changeSelectedChat = async () => {
+            await changeChat(modelChatIds[selectedModel]);
+        };
+        changeSelectedChat();
+    }, [selectedModel]);
+
     // Add useEffect for logging state changes
     useEffect(() => {
         console.log('Chat Interface State Update:', {
@@ -570,7 +576,8 @@ const ChatInterface = ({ }) => {
             currentGuessIndex,
             guessStats,
             modelResponses,
-            allGuesses
+            allGuesses,
+            modelChatIds
         });
     }, [
         messages,
@@ -583,18 +590,21 @@ const ChatInterface = ({ }) => {
         currentGuessIndex,
         guessStats,
         modelResponses,
-        allGuesses
+        allGuesses,
+        modelChatIds
     ]);
 
     return (
         <div>
             <ChatControl />
             
-            {/* Model selector */}
             <div style={{ margin: '10px 0', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                <label htmlFor="model-selector" style={{ marginRight: '10px', fontSize: '14px' }}>
-                    LLM Model:
-                </label>
+
+            {!initialized && (
+                <div>
+                    <label htmlFor="model-selector" style={{ marginRight: '10px', fontSize: '14px' }}>
+                        LLM Model:
+                    </label>
                 <select
                     id="model-selector"
                     value={selectedModel}
@@ -619,8 +629,10 @@ const ChatInterface = ({ }) => {
                     <option value="default">Default</option>
                     <option value="gpt-4">GPT-4</option>
                     <option value="claude-3">Claude 3</option>
-                    <option value="llama-3">Llama 3</option>
-                </select>
+                        <option value="llama-3">Llama 3</option>
+                    </select>
+                </div>
+            )}
                 
                 {guessGameEnabled && (
                     <div style={{ marginLeft: '15px', fontSize: '14px' }}>
@@ -658,9 +670,9 @@ const ChatInterface = ({ }) => {
             {!guessGameEnabled && (
                 <ChatHistory 
                     messages={messages} 
-                    latestUserMessage={!guessGameEnabled ? latestUserMessage : ''} 
-                    latestResponse={!guessGameEnabled ? latestResponse : ''}
-                    latestSources={!guessGameEnabled ? latestSources : []}
+                    latestUserMessage={latestUserMessage} 
+                    latestResponse={latestResponse}
+                    latestSources={latestSources}
                     selectedModel={selectedModel !== 'default' ? selectedModel : null}
                 />
             )}
