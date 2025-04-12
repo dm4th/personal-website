@@ -305,6 +305,10 @@ async function handler(req: Request) {
         // Use match_data (with full content) for Claude's context
         const claudePrompt = `CHAT HISTORY: ${formatChatHistory(verified_chat_history)}\n\nRELEVANT DOCUMENTS: ${formatDocumentMatches(match_data)}\n\nUSER PROMPT: ${prompt}`;
         
+        const metadata = relevantSources.length > 0 
+            ? { sources: relevantSources, modelName: MODEL_NAME } 
+            : { modelName: MODEL_NAME };
+
         // Instead of TransformStream, use ReadableStream directly
         const encoder = new TextEncoder();
         const stream = new ReadableStream({
@@ -404,16 +408,9 @@ async function handler(req: Request) {
                                 }
                             }
                         }
-                        
-                        console.log("Claude streaming complete");
                         controller.close();
 
-                        // Save to database
-                        const metadata = relevantSources.length > 0 
-                            ? { sources: relevantSources, modelName: MODEL_NAME } 
-                            : { modelName: MODEL_NAME };
-                            
-                        const { error } = await supabaseClient
+                        const { error: insertError } = await supabaseClient
                             .from("chat_history")
                             .insert([{ 
                                 chat_id: verified_chat_id, 
@@ -423,6 +420,11 @@ async function handler(req: Request) {
                                 response: fullResponseText,
                                 metadata: metadata
                             }]);
+                        
+                        if (insertError) {
+                            console.error("Error saving initial message:", insertError);
+                            throw new Error("Failed to save message");
+                        }
                         
                     } catch (error) {
                         console.error("Error in Claude processing:", error);
