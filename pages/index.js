@@ -25,9 +25,8 @@ export default function Home({ allPostsData, allInfoData }) {
             <section className={`${utilStyles.headingMd} ${utilStyles.centerText} ${utilStyles.welcomeSection}`}>
                 <h3>Hi! I'm Dan - Welcome to my Personal Website</h3>
                 <ul className={`${utilStyles.welcomeList} ${utilStyles.italicText}`}>
-                    <li>Try the LLM Guessing Game - For each question you ask, guess which LLM gave the answer!</li>
+                    <li>Try the LLM Guessing Game - For each question you ask, guess which Model gave the answer!</li>
                     <li>For a more customized experience, including saving chats and chatting with different roles of the assistant, please login and edit your account.</li>
-                    <li>Only the GPT4 endpoint is conencted to the backend, so the other LLMs are not able to save your chat history or reference any previous messages.</li>
                 </ul>
             </section>
             <section className={utilStyles.headingMd}>
