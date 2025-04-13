@@ -45,6 +45,14 @@ const projectGitHub = (infoData) => {
     }
 }
 
+const projectCredit = (infoData) => {
+    if (infoData.Credit) {
+        return (
+            <p>Credit: <Link href={infoData.Credit}>{infoData.Credit}</Link></p>
+        )
+    }
+}
+
 const projectLinks = (infoData) => {
     if (infoData.Link || infoData.GitHub) {
         return (
@@ -52,9 +60,39 @@ const projectLinks = (infoData) => {
                 <div className={utilStyles.lightText}>
                     {projectLink(infoData)}
                     {projectGitHub(infoData)}
+                    {projectCredit(infoData)}
                 </div>
                 <br></br>
             </>
+        )
+    }
+}
+
+const projectDates = (infoData) => {
+    if (infoData.Start && infoData.End) {
+        return (
+            <p>{infoData.Start} - {infoData.End}</p>
+        )
+    }
+    else if (infoData.Date) {
+        return (
+            <p>{infoData.Date}</p>
+        )
+    }
+    else if (infoData.Start) {
+        return (
+            <p>{infoData.Start} - Current</p>
+        )
+    }
+    else {
+        return null
+    }
+}
+
+const projectAuthor = (infoData) => {
+    if (infoData.Author) {
+        return (
+            <p>Author: {infoData.Author}</p>
         )
     }
 }
@@ -69,10 +107,13 @@ export default function Info({ allPostsData, allInfoData, infoData }) {
                     <article>
                         <h1 className={utilStyles.headingXl}>{infoData.title}</h1>
                         <div className={utilStyles.lightText}>
-                            {infoData.Start} - {infoData.End}
+                            {projectDates(infoData)}
                         </div>
                         <br></br>
-                        {projectLinks(infoData)}
+                        <div className={utilStyles.lightText}>
+                            {projectLinks(infoData)}
+                            {projectAuthor(infoData)}
+                        </div>
                         <div className={utilStyles.contentHtml} dangerouslySetInnerHTML={{ __html: infoData.contentHtml }} />
                     </article>
             </Layout>
