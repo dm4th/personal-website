@@ -3,9 +3,9 @@ Title: A Day in the Life of a Thoughtful AI Customer Engineer
 Link: https://www.thoughtful.ai/blog/a-day-in-the-life-of-a-thoughtful-ai-customer-engineer
 Author: Chris Williams
 Credit: https://www.thoughtful.ai
-date: 2025-03-12
+Date: March 12, 2025
 ---
-# Intro
+# A Day in the Life of a Thoughtful AI Customer Engineer
 
 At Thoughtful AI, our Customer Engineers are the linchpin in delivering transformative AI solutions that revolutionize healthcare operations. This unique position was created to bridge the gap between complex technical implementations and customer needs, ensuring seamless integration and maximum impact. Today, we dive into the professional life of Danny Mathieson, one of our talented Customer Engineers, to explore how he leverages his engineering expertise to solve complex problems and drive value for our customers.
 
@@ -59,7 +59,7 @@ Before wrapping up, Danny revisits client feedback and prepares for tomorrow's e
 
 Danny also appreciates the variety his role provides. "Each project feels like my own little company," he shares. "I get to sit down with a blank canvas and figure out the best way to solve a problem. The support system around me is geared towards identifying and solving customer issues quickly. It’s rewarding to start at 8 a.m. and look up at 6 p.m. realizing how much we've accomplished."
 
-## The Most Rewarding Parts of the Job
+# The Most Rewarding Parts of the Job
 
 For the Customer Engineering team, the most fulfilling aspect of the role is the tangible impact on the healthcare system. "What we’re doing is really important," Danny says. "It’s detailed work, but these AI agents we build can be used for years. Optimizing the entire revenue cycle management (RCM) process, making it more efficient, is incredibly rewarding."
 
@@ -69,7 +69,7 @@ Chris adds, "Our customers benefit greatly from seeing their revenue, costs, fin
 
 The real "aha" moment, Danny notes, comes when customers see detailed reports of what the AI agent did. "It’s shocking for them to see how much output the agent produces and how much better the results are. We roll out their analytics, and they say, 'Oh my God, you did that 15,000 times in five days?!' They see step-by-step what was accomplished, exactly why and where they failed, who we skipped, and what portal it went to—all of that, which no human employee could track so meticulously. This gives them the ability to understand where processes fail and how they can improve. And from their side, it seems just as easy as flipping a switch."
 
-## Differentiating from Solution Architects
+# Differentiating from Solution Architects
 
 Customer Engineers at Thoughtful AI differ significantly from solution architects. While solution architects operate at a 30,000-foot view, Customer Engineers can dive deep into the technical details. Chris explains, "Solution architects are up there navigating the broader vision, managing teams, and setting up calls. They often come from backgrounds where they managed projects and teams but were not hands-on."
 
@@ -77,7 +77,7 @@ Chris continues, "A solution architect might say, 'We need more user accounts to
 
 This hands-on approach allows Customer Engineers to directly address issues, work on code, and ensure that solutions are implemented effectively. "We don't just create a plan and hand it off; we dive into the actual code and work closely with the engineering team to make it happen," Chris emphasizes.
 
-## Qualities of an Ideal Candidate
+# Qualities of an Ideal Candidate
 
 The ideal candidate for the Customer Engineer role at Thoughtful AI has a strong problem-solving mindset, adaptability, and a customer-focused approach. They must be proactive, comfortable with ambiguity, and technically competent.
 
@@ -88,7 +88,7 @@ The ideal candidate for the Customer Engineer role at Thoughtful AI has a strong
 - **Technical Competence:** "You need to be able to read code to work with the engineers and customers," Danny explains.
 - **Resilience and Persistence:** "One of my favorite parts of the job is when everything seems to be falling apart. Nothing is going right, but I get to dive deep and find a solution," Danny says.
 
-## Looking Ahead
+# Looking Ahead
 
 The role of a Customer Engineer at Thoughtful AI is not just about solving technical problems; it’s about bridging the gap between technology and practical application. Danny's journey highlights the importance of this role in transforming healthcare through AI.
 
