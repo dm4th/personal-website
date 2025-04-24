@@ -564,35 +564,35 @@ const ChatInterface = ({ }) => {
     }, [selectedModel]);
 
     // Add useEffect for logging state changes
-    useEffect(() => {
-        console.log('Chat Interface State Update:', {
-            messages,
-            latestUserMessage,
-            latestResponse,
-            latestSources,
-            selectedModel,
-            currentSelectedModel,
-            multiLlmResponses,
-            currentGuessIndex,
-            guessStats,
-            modelResponses,
-            allGuesses,
-            modelChatIds
-        });
-    }, [
-        messages,
-        latestUserMessage,
-        latestResponse,
-        latestSources,
-        selectedModel,
-        currentSelectedModel,
-        multiLlmResponses,
-        currentGuessIndex,
-        guessStats,
-        modelResponses,
-        allGuesses,
-        modelChatIds
-    ]);
+    // useEffect(() => {
+    //     console.log('Chat Interface State Update:', {
+    //         messages,
+    //         latestUserMessage,
+    //         latestResponse,
+    //         latestSources,
+    //         selectedModel,
+    //         currentSelectedModel,
+    //         multiLlmResponses,
+    //         currentGuessIndex,
+    //         guessStats,
+    //         modelResponses,
+    //         allGuesses,
+    //         modelChatIds
+    //     });
+    // }, [
+    //     messages,
+    //     latestUserMessage,
+    //     latestResponse,
+    //     latestSources,
+    //     selectedModel,
+    //     currentSelectedModel,
+    //     multiLlmResponses,
+    //     currentGuessIndex,
+    //     guessStats,
+    //     modelResponses,
+    //     allGuesses,
+    //     modelChatIds
+    // ]);
 
     return (
         <div>
