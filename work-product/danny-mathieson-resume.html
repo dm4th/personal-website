@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Mathieson - Resume</title>
+  <style>
+    /* ===== BASE STYLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    a { color: #2B4C7E; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.4in 0.5in;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid #2B4C7E;
+    }
+
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-subtitle {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .contact-info {
+      font-size: 8.5pt;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span { white-space: nowrap; }
+    .contact-info .sep { color: #bbb; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    /* ===== SUMMARY ===== */
+    .summary {
+      font-size: 9pt;
+      line-height: 1.45;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    /* ===== TWO-COLUMN LAYOUT FOR PAGE 1 ===== */
+    .page1-content {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .main-col { }
+    .side-col { }
+
+    /* ===== ROLE ENTRIES ===== */
+    .role-entry { margin-bottom: 8px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .role-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .role-period {
+      font-size: 8.5pt;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .role-company {
+      font-size: 9pt;
+      color: #444;
+      margin-bottom: 1px;
+    }
+
+    .role-location {
+      font-size: 8.5pt;
+      color: #666;
+      margin-bottom: 3px;
+    }
+
+    .role-context {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    /* ===== SUBSECTIONS ===== */
+    .subsection-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    /* ===== BULLET GROUPS ===== */
+    .bullet-group {
+      padding-left: 14px;
+      margin-bottom: 2px;
+      list-style-type: '–  ';
+    }
+
+    .bullet-group li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 1.5px;
+      color: #222;
+    }
+
+    .bullet-group li strong {
+      font-weight: 600;
+    }
+
+    /* ===== SIDEBAR METRICS ===== */
+    .sidebar-section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-section-title:first-child {
+      margin-top: 0;
+    }
+
+    .metric-item {
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 8pt;
+      color: #555;
+      line-height: 1.3;
+    }
+
+    .metric-item-sm {
+      margin-bottom: 4px;
+    }
+
+    .metric-value-sm {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      line-height: 1.2;
+    }
+
+    .metric-label-sm {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.2;
+    }
+
+    /* ===== SKILLS (sidebar) ===== */
+    .skill-category {
+      margin-bottom: 4px;
+    }
+
+    .skill-category-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 1px;
+    }
+
+    .skill-category-items {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.35;
+    }
+
+    /* ===== PAGE 2 STYLES ===== */
+    .role-entry-compact { margin-bottom: 7px; }
+
+    .role-entry-compact .bullet-group li {
+      font-size: 8.5pt;
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .edu-entry .edu-name {
+      font-size: 9pt;
+      font-weight: 600;
+    }
+
+    .edu-entry .edu-detail {
+      font-size: 8.5pt;
+      color: #444;
+    }
+
+    .edu-entry .edu-period {
+      font-size: 8.5pt;
+      color: #555;
+    }
+
+    /* ===== SKILLS GRID (page 2) ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 1px 8px;
+      font-size: 8.5pt;
+    }
+
+    .skills-grid dt {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .skills-grid dd {
+      color: #444;
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    @media print {
+      body { background: none; }
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 0.4in 0.5in;
+      }
+      .page-break { page-break-before: always; }
+      a { color: #2B4C7E; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dan Mathieson</h1>
+    <div class="header-subtitle">Director of Sales Engineering | AI Platform Builder | Healthcare RCM</div>
+    <div class="contact-info">
+      <span>danny.mathieson233@gmail.com</span>
+      <span class="sep">|</span>
+      <span>danielmathieson.com</span>
+      <span class="sep">|</span>
+      <span>linkedin.com/in/daniel-mathieson</span>
+      <span class="sep">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    Director of Sales Engineering who built a production-grade AI sales operations platform while managing $31.8M in active healthcare pipeline across ~100 enterprise deals. Shipped 500+ PRs in 7 months as part of a 2-person solutions and sales engineering team covering >95% of new business pipeline. Deep domain expertise in healthcare revenue cycle management, working with customers and prospects across 8+ verticals and 12+ EHR platforms. Track record of excellence in technical execution and delivery success across over a decade of experience.
+  </p>
+
+  <!-- TWO-COLUMN: Experience left, Metrics + Skills right -->
+  <div class="page1-content">
+
+    <!-- LEFT COLUMN: Experience -->
+    <div class="main-col">
+
+      <div class="section-title">Experience</div>
+
+      <!-- ROLE: Director SE -->
+      <div class="role-entry">
+        <div class="role-header">
+          <span class="role-title">Director, Sales Engineering</span>
+          <span class="role-period">2025 - Present</span>
+        </div>
+        <div class="role-company">Smarter Technologies | San Francisco, CA</div>
+        <div class="role-context">Promoted from Lead TPM after sales team insisted on dedicated SE leadership. Result of a PE merger of Thoughtful AI, SmarterDx, Access Healthcare, and Pieces which created a need for technical sales leadership to help new sales executives a myriad of product and solutions offerings.</div>
+
+        <div class="subsection-title">Solutions Platform Engineering</div>
+        <ul class="bullet-group">
+          <li>Built a <strong>production-grade AI sales operations platform</strong> enabling a 2-person SE team to manage ~100 deals and >95% of new business pipeline simultaneously</li>
+          <li>Architected a <strong>multi-agent meeting intelligence pipeline</strong> with 5 specialized agents analyzing every prospect meeting in parallel across sales, delivery, pricing, product, and design partnership dimensions</li>
+          <li>Engineered <strong>ephemeral prospect workspaces</strong> using Git worktrees with automated lifecycle management, bidirectional Notion & SalesForce sync, and structured deal documentation across ~100 prospect directories</li>
+          <li>Orchestrated a <strong>custom demo creation pipeline</strong> for each prospect, enabling a 2-person team to create and deliver demos in minutes instead of hours</li>
+          <li>Created an <strong>internal company agent skills and workflows plugin</strong> to enable Smarter Technologies to leverage agentic capabilities across the company</li>
+        </ul>
+
+        <div class="subsection-title">Pipeline &amp; Deal Execution</div>
+        <ul class="bullet-group">
+          <li>Managed <strong>$31.8M in active pipeline</strong> across 61 deals personally, covering 76 healthcare prospects across hospital systems, behavioral health, PT, vision, dental, and more</li>
+          <li>Closed <strong>$6M in revenue</strong> with active opportunities ranging from $50K to $4M</li>
+          <li><strong>EHR Vendor Partnership</strong> ($1M/yr, 2-year commitment): 37 meetings, ecosystem integration covering 80+ enterprise customers</li>
+          <li><strong>TPA Administrator</strong> ($1.9M Year 1, Closed-Won): 4 AI agents across 4 regions with custom regional pricing</li>
+          <li><strong>Large Regional Health System</strong> ($30-40M potential): cost-takeout consulting engagement for 65,000-employee health system</li>
+        </ul>
+
+        <div class="subsection-title">Commercial Innovation</div>
+        <ul class="bullet-group">
+          <li>Designed <strong>5 pricing architectures</strong>: transaction-based, FTE cost-reduction, fixed+variable hybrid, volume step-down, and risk-sharing/contingency models</li>
+          <li>Built an <strong>automation estimation engine</strong> using payer EDI data, EHR scope, existing agent code, and volume analysis, producing defensible month-by-month projections across 30+ prospects</li>
+          <li>Evaluated <strong>12+ EHR platforms</strong> and scoped automation across <strong>8 product lines</strong> spanning eligibility, prior auth, AR, denials, payment posting, coding, voice AI, and agent automation</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Key Metrics + Skills -->
+    <div class="side-col">
+
+      <div class="sidebar-section-title">Key Metrics<br>(Last 6 Months)</div>
+
+      <div class="metric-item">
+        <div class="metric-value">~100 Deals</div>
+        <div class="metric-label">Managed by 2-person SE team<br>covering >95% of full pipeline</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">$31.8M</div>
+        <div class="metric-label">Active pipeline under<br>director's personal management</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">~$6M</div>
+        <div class="metric-label">Closed-won revenue</div>
+      </div>
+
+      <div class="sidebar-section-title">Technical Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Languages &amp; Frameworks</div>
+        <div class="skill-category-items">Python, SQL, TypeScript, Next.js, React, Tailwind CSS</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">AI &amp; Automation</div>
+        <div class="skill-category-items">Claude Code, Claude Agent SDK, Multi-Agent Systems, LLM Tooling, Prompt Engineering</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Workplace Integrations</div>
+        <div class="skill-category-items">Notion, Fireflies, Google Drive/Sheets, Google Apps Script Slack, GitHub APIs</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Infrastructure</div>
+        <div class="skill-category-items">Git, GitHub Actions, Airflow, Docker, AWS, CI/CD</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Data &amp; Reporting</div>
+        <div class="skill-category-items">pandas, Jupyter Notebooks, QuickSight, Sheets, Excel, Tableau</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Healthcare</div>
+        <div class="skill-category-items">12+ EHR/PM systems, EDI/HL7, FHIR, Enterprise API Programs</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page page-break">
+
+  <div class="section-title">Experience</div>
+
+  <div class="role-entry">
+    <div class="role-header">
+      <span class="role-title">Solutions Architect, Customer Engineer, Lead Technical Program Manager</span>
+      <span class="role-period">2023 - 2025</span>
+    </div>
+    <div class="role-company">Thoughtful AI | San Francisco, CA</div>
+    <div class="role-context">Progressed through 6 roles in 2 years, driving implementation success. Applied to Healthcare AI/RCM automation.</div>
+
+    <ul class="bullet-group">
+      <li>Served as <strong>primary technical advisor</strong> for 60% of completed deliveries in 2024, translating complex customer requirements into scalable technical solutions, driving 3x ARR growth YoY</li>
+      <li>Functioned as the <strong>dedicated technical advisor</strong> in pre-sales, designing and demoing bespoke AI-powered solutions tailored to each prospect's specific business challenges, resulting in a 96% funnel pass-through rate</li>
+      <li>Built and <strong>demonstrated our first generative AI-enabled workflow</strong>, a <strong>hybrid-RAG system</strong>, reducing human-in-the-loop exception rates by 90% and providing maximum observability of model actions</li>
+      <li>Developed <strong>interactive demos and dashboards</strong> to communicate complex AI concepts to non-technical stakeholders, facilitating safer adoption of AI in healthcare revenue cycle management (RCM)</li>
+      <li>Led technical education workshops across multiple teams, scaling team understanding of AI integration during a period of 3x headcount growth</li>
+      <li>Stabilized <strong>3x standard implementation load</strong> of struggling accounts during critical growth phase, preventing wave of customer departures</li>
+      <li>Enabled the company's <strong>pivot to healthcare RCM</strong>, helping Thoughtful achieve product-market fit</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Earlier Experience</div>
+
+  <!-- ROLE: Action Network -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Data Science &amp; Analytics</span>
+      <span class="role-period">02/2021 - 10/2022</span>
+    </div>
+    <div class="role-company">Action Network | Remote</div>
+    <div class="role-location">Sports Betting Media &amp; Analytics</div>
+    <ul class="bullet-group">
+      <li>Successfully architected post-acquisition organizational focus from M&amp;U to revenue, driving over 70% YoY growth in top-line revenue</li>
+      <li>Developed unique KPI and tracking workflows for measuring audience quality, driving a 225%+ YoY increase in revenue per mobile app user, and a 50%+ YoY increase per web user</li>
+      <li>Directed a team of 4 analysts and 3 engineers to develop internal data pipelines using Python, Airflow, Redshift, and Tableau to scrape data from 80+ partner dashboards and reduce reporting times from weeks to hours</li>
+      <li>Built user acquisition forecasting models and affiliate deal financial models evaluating partnerships worth $500K-$2M annually</li>
+    </ul>
+  </div>
+
+  <!-- ROLE: Google -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Revenue Analyst, G-Suite Finance</span>
+      <span class="role-period">01/2020 - 02/2021</span>
+    </div>
+    <div class="role-company">Google | Sunnyvale, CA</div>
+    <div class="role-location">Cloud-Based Productivity Suite Helping Businesses Collaborate</div>
+    <ul class="bullet-group">
+      <li>Created, maintained 670 dashboards &amp; P&amp;L statements with 0.5B SaaS users; interfaced with Director and Product leaders with Google tooling tools</li>
+      <li>Utilized Google AI &amp; ML to improve G-Suite top-line revenue forecast accuracy by 7% on average</li>
+      <li>Built contractor headcount planning model for cross-country resource allocation during COVID-19 transition</li>
+      <li>Automated forecast cube generation using Google Apps Script and SAP integration, reducing manual reporting cycles</li>
+    </ul>
+  </div>
+
+  <!-- ROLE: FanDuel -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Manager, Revenue &amp; Forecasting</span>
+      <span class="role-period">08/2016 - 12/2019</span>
+    </div>
+    <div class="role-company">FanDuel | New York, NY</div>
+    <div class="role-location">Leading Daily Fantasy Sports and Online Sports Betting Company</div>
+    <ul class="bullet-group">
+      <li>Innovated on reporting processes using Python &amp; SQL. Created a Slackbot using multiple APIs, reducing reporting times by 40%</li>
+      <li>Developed a Markov-Chain based Monte-Carlo simulation, forecasting user LTV and revenue of 17 different user-groups to within 2% each</li>
+      <li>Led weekly operations meetings and established cross-functional reporting cadence for executive decision-making</li>
+      <li>Progressed from business analyst to revenue team lead over 3.5 years, building data pipelines and analytics infrastructure</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="edu-entry">
+    <div>
+      <span class="edu-name">B.S. Electrical &amp; Computer Engineering</span>
+      <span class="edu-detail">, Bucknell University</span>
+    </div>
+    <span class="edu-period">08/2012 - 05/2016</span>
+  </div>
+  <div class="edu-entry" style="margin-bottom: 8px;">
+    <div>
+      <span class="edu-name">AI &amp; Machine Learning Professional Certificate</span>
+      <span class="edu-detail">, CalTech / SimpliLearn</span>
+    </div>
+    <span class="edu-period">10/2022 - 04/2023</span>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 Title: Thoughtful
 Start: September, 2023
-End: Current
+End: September, 2025
 ---
 # Discovering Thoughtful
 
@@ -183,6 +183,11 @@ As these leadership challenges threatened to disrupt our delivery momentum, the 
 The interim role quickly became permanent as I demonstrated an ability to maintain delivery quality while establishing processes that allowed our growing team to scale effectively. I strategically redistributed my project portfolio, maintaining ownership of the most complex implementations while delegating others to give myself bandwidth for leadership responsibilities. 
 
 This leadership transition occurred at a critical inflection point in the company's growth, requiring me to balance tactical execution with strategic vision-setting. While I had intentionally avoided management roles earlier in my career to focus on technical development, I recognized that stepping into this leadership position was essential to preserving the company's momentum and the trust we had built with our customers. The experience proved invaluable, teaching me to build and guide high-performing technical teams while maintaining the hands-on involvement that had been central to our success.
+
+
+# The Merger and What Came Next
+
+In September 2025, Thoughtful AI underwent a private equity merger during our Series B fundraising process. We were combined with three other companies—SmarterDx, Access Healthcare, and Pieces—to form [Smarter Technologies](https://www.danielmathieson.com/info/career/smarter-technologies). The merger created a larger, more comprehensive healthcare automation entity, and for me it marked a natural transition point. After two years of building deep domain expertise, technical credibility, and leadership experience across three roles, I stepped into the newly created Director of Sales Engineering position at the combined company. Everything I'd learned at Thoughtful—the healthcare RCM knowledge, the customer-facing instincts, the systems thinking, the leadership lessons—became the foundation for what I built next.
 
 ### Saving Struggling Accounts
 #### Key Technologies
