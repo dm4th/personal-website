@@ -1,0 +1,42 @@
+.bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user .textPart {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.875rem;
+  border-radius: 14px 14px 4px 14px;
+  font-size: 0.875rem;
+  max-width: 85%;
+}
+
+.user .textPart p { margin: 0; }
+
+.assistant .textPart {
+  font-size: 0.875rem;
+  color: #d4d4d4;
+  line-height: 1.65;
+}
+
+.assistant .textPart p { margin: 0 0 0.5rem; }
+.assistant .textPart p:last-child { margin-bottom: 0; }
+
+.assistant .textPart ul,
+.assistant .textPart ol {
+  margin: 0.25rem 0 0.5rem;
+  padding-left: 1.25rem;
+}
+
+.assistant .textPart code {
+  background: var(--surface-2);
+  padding: 0.125em 0.375em;
+  border-radius: 4px;
+  font-size: 0.8125em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.assistant .textPart strong { color: #e5e5e5; }

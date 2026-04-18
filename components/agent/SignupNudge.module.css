@@ -1,0 +1,33 @@
+.nudge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  background: #0f1e30;
+  border: 1px solid #1e4068;
+  border-radius: 8px;
+  margin: 0 0.75rem;
+}
+
+.text {
+  font-size: 0.75rem;
+  color: #93c5fd;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.btn {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.btn:hover { background: var(--accent-hover); }

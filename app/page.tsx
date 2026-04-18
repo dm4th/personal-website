@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getSortedInfo } from '@/lib/content/infoDocs';
 import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
+import AgentPanel from '@/components/agent/AgentPanel';
 import styles from './page.module.css';
 
 const ROLES = [
@@ -159,26 +160,8 @@ export default async function HomePage() {
           </section>
         </main>
 
-        {/* Agent Panel — placeholder for Sub-phase 1.2 */}
         <aside className={styles.agentPanel}>
-          <div className={styles.agentPanelInner}>
-            <div className={styles.agentHeader}>
-              <span className={styles.agentTitle}>Ask the Agent</span>
-              <span className={styles.agentBadge}>Coming soon</span>
-            </div>
-            <div className={styles.agentPlaceholder}>
-              <div className={styles.agentPlaceholderIcon}>⚡</div>
-              <p className={styles.agentPlaceholderText}>
-                An AI agent is being built here. Soon you&apos;ll be able to search my experience, analyze job descriptions, and schedule a meeting — all with visible tool calls.
-              </p>
-              <div className={styles.agentTools}>
-                <span className={styles.agentTool}>🔍 Content search</span>
-                <span className={styles.agentTool}>📄 JD fit analysis</span>
-                <span className={styles.agentTool}>✉️ Email composer</span>
-                <span className={styles.agentTool}>📅 Calendar scheduling</span>
-              </div>
-            </div>
-          </div>
+          <AgentPanel />
         </aside>
       </div>
       <SiteFooter />
