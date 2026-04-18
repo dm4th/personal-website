@@ -40,3 +40,29 @@
 }
 
 .assistant .textPart strong { color: #e5e5e5; }
+
+.feedback {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.bubble:hover .feedback { opacity: 1; }
+
+.thumb {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  cursor: pointer;
+  transition: all 0.12s;
+  line-height: 1.5;
+}
+
+.thumb:hover { border-color: var(--accent); color: var(--accent); }
+.thumbActive { border-color: #22c55e !important; color: #22c55e !important; }
+.thumbDown { border-color: #ef4444 !important; color: #ef4444 !important; }

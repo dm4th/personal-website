@@ -27,6 +27,7 @@ type AgentState = {
   messages: UIMessage[];
   isStreaming: boolean;
   nudgeDismissed: boolean;
+  sessionId: string | null;
   setPanelState: (s: PanelState) => void;
   togglePanel: () => void;
   dismissNudge: () => void;
@@ -41,6 +42,7 @@ export const useAgentStore = create<AgentState>()(
       messages: [],
       isStreaming: false,
       nudgeDismissed: false,
+      sessionId: null,
 
       setPanelState: (s) => set({ panelState: s }),
 
@@ -56,6 +58,19 @@ export const useAgentStore = create<AgentState>()(
       sendMessage: async (prompt: string) => {
         const { messages } = get();
         if (get().isStreaming) return;
+
+        // Ensure we have a session ID
+        let { sessionId } = get();
+        if (!sessionId) {
+          try {
+            const res = await fetch('/api/agent/session', { method: 'POST' });
+            if (res.ok) {
+              const json = await res.json();
+              sessionId = json.sessionId as string;
+              set({ sessionId });
+            }
+          } catch { /* non-blocking */ }
+        }
 
         // Add user message
         const userMsg: UIMessage = {
@@ -167,12 +182,31 @@ export const useAgentStore = create<AgentState>()(
           updateAssistantPart(set, assistantId, [{ type: 'text', text: `Error: ${String(err)}` }]);
         } finally {
           set({ isStreaming: false });
+          // Persist messages to DB (best-effort)
+          const { sessionId: sid } = get();
+          if (sid) {
+            const finalMessages = get().messages;
+            const assistantMsg = finalMessages.find((m) => m.id === assistantId);
+            const assistantText = assistantMsg?.parts
+              .filter((p): p is TextPart => p.type === 'text')
+              .map((p) => p.text)
+              .join('') ?? '';
+            fetch('/api/agent/messages', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ sessionId: sid, userText: prompt, assistantText }),
+            }).catch(() => {});
+          }
         }
       },
     }),
     {
       name: 'agent-store',
-      partialize: (state) => ({ panelState: state.panelState, nudgeDismissed: state.nudgeDismissed }),
+      partialize: (state) => ({
+        panelState: state.panelState,
+        nudgeDismissed: state.nudgeDismissed,
+        sessionId: state.sessionId,
+      }),
     },
   ),
 );

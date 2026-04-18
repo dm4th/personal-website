@@ -1,29 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
+import { SignInButton } from '@clerk/nextjs';
 import { useAgentStore } from '@/stores/agent';
 import MessageList from './MessageList';
 import Composer from './Composer';
+import SuggestionsRail from './SuggestionsRail';
 import SignupNudge from './SignupNudge';
 import styles from './AgentPanel.module.css';
 
+type MemoState = 'idle' | 'saving' | 'saved' | 'error';
+
 export default function AgentPanel() {
-  const { panelState, setPanelState, messages, isStreaming, nudgeDismissed, dismissNudge, sendMessage } =
+  const { panelState, setPanelState, messages, isStreaming, nudgeDismissed, dismissNudge, sendMessage, sessionId } =
     useAgentStore();
   const { isSignedIn } = useAuth();
+  const [memoState, setMemoState] = useState<MemoState>('idle');
+  const [memoId, setMemoId] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && panelState === 'expanded') {
-        setPanelState('sidebar');
-      }
+      if (e.key === 'Escape' && panelState === 'expanded') setPanelState('sidebar');
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [panelState, setPanelState]);
 
   const showNudge = !isSignedIn && !nudgeDismissed && messages.length >= 3;
+  const canSaveMemo = isSignedIn && messages.length >= 2;
+
+  const handleSaveMemo = async () => {
+    if (memoState !== 'idle' && memoState !== 'error') return;
+    setMemoState('saving');
+    try {
+      const textMessages = messages
+        .filter((m) => m.parts.some((p) => p.type === 'text' && p.text.trim()))
+        .map((m) => ({
+          role: m.role,
+          text: m.parts
+            .filter((p) => p.type === 'text')
+            .map((p) => p.text)
+            .join(''),
+        }));
+
+      const res = await fetch('/api/memos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: textMessages, sessionId }),
+      });
+      if (!res.ok) throw new Error('Save failed');
+      const json = await res.json();
+      setMemoId(json.memoId);
+      setMemoState('saved');
+    } catch {
+      setMemoState('error');
+    }
+  };
 
   if (panelState === 'collapsed') {
     return (
@@ -43,6 +76,22 @@ export default function AgentPanel() {
         <div className={styles.header}>
           <span className={styles.title}>Ask the Agent</span>
           <div className={styles.controls}>
+            {canSaveMemo && memoState === 'idle' && (
+              <button className={styles.memoBtn} onClick={handleSaveMemo} title="Save as memo">
+                Save
+              </button>
+            )}
+            {memoState === 'saving' && <span className={styles.memoStatus}>Saving…</span>}
+            {memoState === 'saved' && memoId && (
+              <a href={`/memos/${memoId}`} className={styles.memoLink} target="_blank" rel="noopener noreferrer">
+                Saved ↗
+              </a>
+            )}
+            {memoState === 'error' && (
+              <button className={styles.memoBtn} onClick={handleSaveMemo} title="Retry">
+                Retry
+              </button>
+            )}
             {!isSignedIn && <span className={styles.guestBadge}>Guest</span>}
             <button
               className={styles.controlBtn}
@@ -51,11 +100,7 @@ export default function AgentPanel() {
             >
               {panelState === 'expanded' ? '⊙' : '⤢'}
             </button>
-            <button
-              className={styles.controlBtn}
-              title="Minimize"
-              onClick={() => setPanelState('collapsed')}
-            >
+            <button className={styles.controlBtn} title="Minimize" onClick={() => setPanelState('collapsed')}>
               ×
             </button>
           </div>
@@ -65,11 +110,12 @@ export default function AgentPanel() {
 
         {showNudge && (
           <div className={styles.nudgeRow}>
-            <SignupNudge reason="Want to save this conversation? Create an account." />
+            <SignupNudge reason="Sign up to save this conversation as a memo." />
             <button className={styles.nudgeDismiss} onClick={dismissNudge}>×</button>
           </div>
         )}
 
+        <SuggestionsRail messages={messages} onSend={sendMessage} disabled={isStreaming} />
         <Composer onSend={sendMessage} disabled={isStreaming} />
       </div>
     </>
