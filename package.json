@@ -29,7 +29,7 @@
     "gray-matter": "^4.0.3",
     "image-size": "^1.0.2",
     "markdown-it": "^13.0.1",
-    "next": "^15.2.1",
+    "next": "15.2.8",
     "node-fetch": "^2.7.0",
     "openai": "^4.86.2",
     "package.json": "^0.0.0",
