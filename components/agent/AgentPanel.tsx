@@ -61,7 +61,7 @@ export default function AgentPanel() {
           </div>
         </div>
 
-        <MessageList messages={messages} isStreaming={isStreaming} />
+        <MessageList messages={messages} isStreaming={isStreaming} onSend={sendMessage} />
 
         {showNudge && (
           <div className={styles.nudgeRow}>

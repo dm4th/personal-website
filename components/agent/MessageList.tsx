@@ -5,9 +5,9 @@ import type { UIMessage } from '@/stores/agent';
 import MessageBubble from './MessageBubble';
 import styles from './MessageList.module.css';
 
-type Props = { messages: UIMessage[]; isStreaming: boolean };
+type Props = { messages: UIMessage[]; isStreaming: boolean; onSend?: (prompt: string) => void };
 
-export default function MessageList({ messages, isStreaming }: Props) {
+export default function MessageList({ messages, isStreaming, onSend }: Props) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,9 +19,13 @@ export default function MessageList({ messages, isStreaming }: Props) {
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>Ask me anything about Dan</p>
         <ul className={styles.suggestions}>
-          <li onClick={() => {}} className={styles.suggestion}>What&apos;s Dan&apos;s background in AI?</li>
-          <li className={styles.suggestion}>Paste a job description to check fit →</li>
-          <li className={styles.suggestion}>What projects has Dan shipped?</li>
+          {[
+            "What's Dan's background in AI?",
+            'Paste a job description to check fit →',
+            'What projects has Dan shipped?',
+          ].map((s) => (
+            <li key={s} onClick={() => onSend?.(s)} className={styles.suggestion}>{s}</li>
+          ))}
         </ul>
       </div>
     );

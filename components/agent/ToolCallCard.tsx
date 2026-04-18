@@ -3,12 +3,15 @@
 import React from 'react';
 import type { ToolUsePart } from '@/stores/agent';
 import SearchContentCard from './tool-cards/SearchContentCard';
+import JDFitCard from './tool-cards/JDFitCard';
+import styles from './ToolCallCard.module.css';
 
 export default function ToolCallCard({ part }: { part: ToolUsePart }) {
   if (part.name === 'search_content') return <SearchContentCard part={part} />;
-  // Fallback for future tools
+  if (part.name === 'analyze_jd_fit') return <JDFitCard part={part} />;
+
   return (
-    <div style={{ fontSize: '0.75rem', color: 'var(--muted)', padding: '0.5rem 0.75rem', border: '1px solid var(--border)', borderRadius: '8px' }}>
+    <div className={styles.fallback}>
       <span>{part.status === 'pending' ? '⏳' : '✓'} {part.name}</span>
     </div>
   );

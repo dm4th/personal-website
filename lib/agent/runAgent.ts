@@ -91,7 +91,7 @@ export async function runAgent(
           type: 'tool_result',
           toolUseId: block.id,
           status: result.isError ? 'error' : 'success',
-          summary: result.isError ? 'Tool error' : `${block.name} completed`,
+          summary: result.summary,
           payload: JSON.parse(result.content),
         });
 

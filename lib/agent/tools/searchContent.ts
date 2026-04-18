@@ -16,11 +16,16 @@ export type SearchContentInput =
   | { action: 'read'; path: string }
   | { action: 'grep'; pattern: string; category?: string };
 
-export type SearchContentResult = {
-  ok: boolean;
-  data?: unknown;
-  error?: string;
-};
+export type FileEntry = { name: string; type: 'file' | 'directory'; path: string };
+export type FileMatch = { file: string; line: number; text: string };
+export type SearchContentData =
+  | FileEntry[]
+  | { path: string; content: string }
+  | { pattern: string; matches: FileMatch[] };
+
+export type SearchContentResult =
+  | { ok: true; data: SearchContentData }
+  | { ok: false; error: string };
 
 export async function searchContent(input: SearchContentInput): Promise<SearchContentResult> {
   try {
@@ -37,7 +42,7 @@ export async function searchContent(input: SearchContentInput): Promise<SearchCo
         .filter((e) => !e.name.startsWith('.'))
         .map((e) => ({
           name: e.name,
-          type: e.isDirectory() ? 'directory' : 'file',
+          type: (e.isDirectory() ? 'directory' : 'file') as 'file' | 'directory',
           path: input.category ? `${input.category}/${e.name}` : e.name,
         }));
       return { ok: true, data: files };
