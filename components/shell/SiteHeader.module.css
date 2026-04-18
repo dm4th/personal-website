@@ -1,0 +1,127 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #222;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 56px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.logo:hover {
+  color: #a3a3a3;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: transparent;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dropbtn:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  min-width: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  padding: 4px;
+  margin-top: 4px;
+}
+
+.dropdownMd {
+  display: block;
+  color: #d4d4d4;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  border-radius: 6px;
+  transition: background 0.12s;
+  line-height: 1.4;
+}
+
+.dropdownMd:hover {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.dropdownPdf {
+  display: block;
+  color: #a3a3a3;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+
+.dropdownPdf:hover {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.lightText {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.loginBtn {
+  background: transparent;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  padding: 6px 14px;
+  border: 1px solid #333;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.loginBtn:hover {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #555;
+}

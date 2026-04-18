@@ -1,0 +1,30 @@
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
+  color: #d4d4d4;
+  line-height: 1.75;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0 0 2rem;
+}
+
+.section {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin: 2rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
