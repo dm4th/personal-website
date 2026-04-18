@@ -34,17 +34,14 @@ export default async function PromptingPage({ params }: Props) {
           )}
           <section>
             <h2 className={styles.section}>Intro</h2>
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          {documentToReactComponents(postData.intro as any)}
+            {documentToReactComponents(postData.intro as any)}
           </section>
           <section>
             <h2 className={styles.section}>Takeaways</h2>
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {documentToReactComponents(postData.takeaways as any)}
           </section>
           <section>
             <h2 className={styles.section}>Conversations</h2>
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {documentToReactComponents(postData.conversations as any)}
           </section>
         </article>
