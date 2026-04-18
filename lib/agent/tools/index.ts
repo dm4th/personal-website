@@ -1,10 +1,20 @@
 import { searchContent, searchContentTool, type SearchContentInput } from './searchContent';
 import { analyzeJdFit, analyzeJdFitTool, type JdFitInput } from './analyzeJdFit';
 import { composeEmail, composeEmailTool, type ComposeEmailInput } from './composeEmail';
+import { scheduleMeeting, scheduleMeetingTool, type ScheduleMeetingInput } from './scheduleMeeting';
 
-export const TOOL_DEFINITIONS = [searchContentTool, analyzeJdFitTool, composeEmailTool] as const;
+export const TOOL_DEFINITIONS = [
+  searchContentTool,
+  analyzeJdFitTool,
+  composeEmailTool,
+  scheduleMeetingTool,
+] as const;
 
-export type ToolName = 'search_content' | 'analyze_jd_fit' | 'compose_email_to_danny';
+export type ToolName =
+  | 'search_content'
+  | 'analyze_jd_fit'
+  | 'compose_email_to_danny'
+  | 'schedule_meeting';
 
 export async function runTool(
   name: string,
@@ -25,18 +35,20 @@ export async function runTool(
 
   if (name === 'analyze_jd_fit') {
     const result = await analyzeJdFit(input as JdFitInput);
-    if (result.ok) {
-      return { content: JSON.stringify(result.data), summary: result.summary };
-    }
+    if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
     return { content: JSON.stringify({ error: result.error }), summary: 'Analysis error', isError: true };
   }
 
   if (name === 'compose_email_to_danny') {
     const result = await composeEmail(input as ComposeEmailInput);
-    if (result.ok) {
-      return { content: JSON.stringify(result.data), summary: result.summary };
-    }
+    if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
     return { content: JSON.stringify({ error: result.error }), summary: 'Draft error', isError: true };
+  }
+
+  if (name === 'schedule_meeting') {
+    const result = await scheduleMeeting(input as ScheduleMeetingInput);
+    if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
+    return { content: JSON.stringify({ error: result.error }), summary: 'Scheduling error', isError: true };
   }
 
   return { content: JSON.stringify({ error: `Unknown tool: ${name}` }), summary: 'Unknown tool', isError: true };
