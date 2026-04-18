@@ -1,9 +1,10 @@
 import { searchContent, searchContentTool, type SearchContentInput } from './searchContent';
 import { analyzeJdFit, analyzeJdFitTool, type JdFitInput } from './analyzeJdFit';
+import { composeEmail, composeEmailTool, type ComposeEmailInput } from './composeEmail';
 
-export const TOOL_DEFINITIONS = [searchContentTool, analyzeJdFitTool] as const;
+export const TOOL_DEFINITIONS = [searchContentTool, analyzeJdFitTool, composeEmailTool] as const;
 
-export type ToolName = 'search_content' | 'analyze_jd_fit';
+export type ToolName = 'search_content' | 'analyze_jd_fit' | 'compose_email_to_danny';
 
 export async function runTool(
   name: string,
@@ -28,6 +29,14 @@ export async function runTool(
       return { content: JSON.stringify(result.data), summary: result.summary };
     }
     return { content: JSON.stringify({ error: result.error }), summary: 'Analysis error', isError: true };
+  }
+
+  if (name === 'compose_email_to_danny') {
+    const result = await composeEmail(input as ComposeEmailInput);
+    if (result.ok) {
+      return { content: JSON.stringify(result.data), summary: result.summary };
+    }
+    return { content: JSON.stringify({ error: result.error }), summary: 'Draft error', isError: true };
   }
 
   return { content: JSON.stringify({ error: `Unknown tool: ${name}` }), summary: 'Unknown tool', isError: true };
