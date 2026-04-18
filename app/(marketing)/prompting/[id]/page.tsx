@@ -5,7 +5,6 @@ import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
 import styles from './page.module.css';
 
-// @ts-expect-error - contentful rich-text types
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export async function generateStaticParams() {
@@ -35,15 +34,18 @@ export default async function PromptingPage({ params }: Props) {
           )}
           <section>
             <h2 className={styles.section}>Intro</h2>
-            {documentToReactComponents(postData.intro)}
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {documentToReactComponents(postData.intro as any)}
           </section>
           <section>
             <h2 className={styles.section}>Takeaways</h2>
-            {documentToReactComponents(postData.takeaways)}
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {documentToReactComponents(postData.takeaways as any)}
           </section>
           <section>
             <h2 className={styles.section}>Conversations</h2>
-            {documentToReactComponents(postData.conversations)}
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {documentToReactComponents(postData.conversations as any)}
           </section>
         </article>
       </div>
