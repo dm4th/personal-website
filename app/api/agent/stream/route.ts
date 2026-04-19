@@ -3,7 +3,7 @@ import { runAgent, type AgentMessage } from '@/lib/agent/runAgent';
 import { encodeEvent } from '@/lib/agent/streamProtocol';
 
 export const runtime = 'nodejs';
-export const maxDuration = 120;
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   const { userId } = await auth();
