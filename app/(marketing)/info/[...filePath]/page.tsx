@@ -76,7 +76,7 @@ export default async function InfoPage({ params }: Props) {
             width={img.width ?? 800}
             height={img.height ?? 1035}
             priority={index === 0}
-            style={{ display: 'block', maxWidth: '100%', marginBottom: '1rem' }}
+            style={{ display: 'block', width: '100%', height: 'auto', marginBottom: '1rem' }}
           />
         ))}
       </div>
