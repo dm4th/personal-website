@@ -47,6 +47,19 @@
   animation: fadeIn 0.18s ease-out;
 }
 
+/* Engaged-mode scrim: covers left 33.33%, clickable to collapse panel */
+.engagedScrim {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 33.33vw;
+  height: calc(100vh - var(--header-height));
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  cursor: pointer;
+  animation: fadeIn 0.2s ease-out;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -59,6 +72,18 @@
   height: 100%;
   background: var(--surface);
   overflow: hidden;
+}
+
+/* Engaged mode: 2/3 of viewport from the right, above the partial scrim */
+.panelInner[data-engaged='true'] {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  width: 66.67vw;
+  height: calc(100vh - var(--header-height));
+  z-index: 101;
+  border-left: 1px solid var(--border);
+  animation: slideIn 0.2s ease-out;
 }
 
 /* Expanded mode: fixed overlay on top of scrim */

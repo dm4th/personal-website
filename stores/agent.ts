@@ -28,11 +28,13 @@ type AgentState = {
   isStreaming: boolean;
   nudgeDismissed: boolean;
   sessionId: string | null;
+  engagementExpanded: boolean;
   setPanelState: (s: PanelState) => void;
   togglePanel: () => void;
   dismissNudge: () => void;
   sendMessage: (prompt: string) => Promise<void>;
   clearMessages: () => void;
+  setEngagementExpanded: (v: boolean) => void;
 };
 
 export const useAgentStore = create<AgentState>()(
@@ -43,8 +45,10 @@ export const useAgentStore = create<AgentState>()(
       isStreaming: false,
       nudgeDismissed: false,
       sessionId: null,
+      engagementExpanded: false,
 
       setPanelState: (s) => set({ panelState: s }),
+      setEngagementExpanded: (v) => set({ engagementExpanded: v }),
 
       togglePanel: () =>
         set((state) => ({
@@ -87,7 +91,7 @@ export const useAgentStore = create<AgentState>()(
           parts: [],
         };
 
-        set({ messages: [...messages, userMsg, assistantMsg], isStreaming: true });
+        set({ messages: [...messages, userMsg, assistantMsg], isStreaming: true, engagementExpanded: true });
 
         // Build history for the API (text messages only, no tool parts)
         const history = get()

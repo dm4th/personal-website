@@ -13,8 +13,8 @@ import styles from './AgentPanel.module.css';
 type MemoState = 'idle' | 'saving' | 'saved' | 'error';
 
 export default function AgentPanel() {
-  const { panelState, setPanelState, messages, isStreaming, nudgeDismissed, dismissNudge, sendMessage, sessionId } =
-    useAgentStore();
+  const { panelState, setPanelState, messages, isStreaming, nudgeDismissed, dismissNudge, sendMessage, sessionId,
+    engagementExpanded, setEngagementExpanded } = useAgentStore();
   const { isSignedIn } = useAuth();
   const [memoState, setMemoState] = useState<MemoState>('idle');
   const [memoId, setMemoId] = useState<string | null>(null);
@@ -29,6 +29,7 @@ export default function AgentPanel() {
 
   const showNudge = !isSignedIn && !nudgeDismissed && messages.length >= 3;
   const canSaveMemo = isSignedIn && messages.length >= 2;
+  const isEngaged = engagementExpanded && panelState === 'sidebar' && messages.length > 0;
 
   const handleSaveMemo = async () => {
     if (memoState !== 'idle' && memoState !== 'error') return;
@@ -72,7 +73,10 @@ export default function AgentPanel() {
       {panelState === 'expanded' && (
         <div className={styles.scrim} onClick={() => setPanelState('sidebar')} />
       )}
-      <div className={styles.panelInner} data-expanded={panelState === 'expanded'}>
+      {isEngaged && (
+        <div className={styles.engagedScrim} onClick={() => setEngagementExpanded(false)} />
+      )}
+      <div className={styles.panelInner} data-expanded={panelState === 'expanded'} data-engaged={isEngaged ? 'true' : undefined}>
         <div className={styles.header}>
           <span className={styles.title}>Ask the Agent</span>
           <div className={styles.controls}>
@@ -93,6 +97,15 @@ export default function AgentPanel() {
               </button>
             )}
             {!isSignedIn && <span className={styles.guestBadge}>Guest</span>}
+            {isEngaged && (
+              <button
+                className={styles.controlBtn}
+                title="Collapse panel"
+                onClick={() => setEngagementExpanded(false)}
+              >
+                ›
+              </button>
+            )}
             <button
               className={styles.controlBtn}
               title={panelState === 'expanded' ? 'Exit focus mode' : 'Focus mode'}
