@@ -72,7 +72,7 @@ export default async function HomePage() {
           <section className={styles.hero}>
             <div className={styles.heroLeft}>
               <Image
-                src="/images/headshot.jpg"
+                src="/images/danny-headshot.jpeg"
                 alt="Dan Mathieson"
                 width={96}
                 height={96}

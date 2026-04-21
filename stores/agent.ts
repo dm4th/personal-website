@@ -176,6 +176,13 @@ export const useAgentStore = create<AgentState>()(
                   ),
                 }));
               }
+
+              if (event.type === 'error') {
+                updateAssistant((msg) => ({
+                  ...msg,
+                  parts: [...msg.parts, { type: 'text', text: `Error: ${event.message}` }],
+                }));
+              }
             }
           }
         } catch (err) {
