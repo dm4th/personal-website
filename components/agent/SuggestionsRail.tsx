@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useAuth } from '@clerk/nextjs';
 import type { UIMessage, ToolUsePart } from '@/stores/agent';
 import styles from './SuggestionsRail.module.css';
 
@@ -23,10 +24,15 @@ const TOOL_SUGGESTIONS: Record<string, string[]> = {
   ],
 };
 
-const DEFAULT_SUGGESTIONS = [
+const DEFAULT_SUGGESTIONS_GUEST = [
   "What's Dan's background in AI?",
   'Paste a job description to check fit →',
-  'Schedule a call with Dan →',
+];
+
+const DEFAULT_SUGGESTIONS_AUTHED = [
+  "What's Dan's background in AI?",
+  'Paste a job description to check fit →',
+  'Schedule time with Dan →',
 ];
 
 function getLastToolName(messages: UIMessage[]): string | null {
@@ -48,8 +54,10 @@ type Props = {
 };
 
 export default function SuggestionsRail({ messages, onSend, disabled }: Props) {
+  const { isSignedIn } = useAuth();
+  const defaultSuggestions = isSignedIn ? DEFAULT_SUGGESTIONS_AUTHED : DEFAULT_SUGGESTIONS_GUEST;
   const lastTool = getLastToolName(messages);
-  const suggestions = lastTool ? (TOOL_SUGGESTIONS[lastTool] ?? DEFAULT_SUGGESTIONS) : DEFAULT_SUGGESTIONS;
+  const suggestions = lastTool ? (TOOL_SUGGESTIONS[lastTool] ?? defaultSuggestions) : defaultSuggestions;
 
   if (messages.length === 0) return null;
 

@@ -16,6 +16,7 @@
   font-size: 0.875rem;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
+  min-height: 60px;
   resize: none;
   overflow-y: hidden;
   outline: none;

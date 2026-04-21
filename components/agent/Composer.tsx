@@ -44,7 +44,7 @@ export default function Composer({ onSend, disabled }: Props) {
         onKeyDown={handleKeyDown}
         placeholder="Ask about Dan's experience, paste a job description…"
         disabled={disabled}
-        rows={1}
+        rows={2}
       />
       <button
         className={styles.sendBtn}
