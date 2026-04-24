@@ -7,6 +7,7 @@ export type JdFitInput = {
   jobDescription: string;
   focus?: 'technical' | 'leadership' | 'cultural' | 'all';
   backgroundContext?: string; // Dan's career files, passed in by callers that have already read them
+  outputPerspective?: 'observer' | 'applicant'; // 'observer' = third-person for visitors; 'applicant' = first-person as Dan
 };
 
 export type JdFitEvidence = {
@@ -125,6 +126,8 @@ ${input.jobDescription.slice(0, 8000)}`,
       ? `\nSupporting evidence (grep hits from Dan's files):\n${JSON.stringify(evidenceMap, null, 2)}`
       : '';
 
+    const isApplicant = (input.outputPerspective ?? 'observer') === 'applicant';
+
     const synthesisResp = await client.messages.create({
       model: process.env.AGENT_MODEL ?? 'claude-sonnet-4-6',
       max_tokens: 2048,
@@ -149,6 +152,13 @@ JD Requirements:
 ${JSON.stringify(extracted.requirements, null, 2)}
 ${backgroundSection}${evidenceSection}
 
+${isApplicant ? `Output perspective: APPLICANT (first-person as Dan). Write as if Dan is speaking:
+- strengths: things Dan would say to a hiring manager ("I've led...", "In my time at...", "I built...")
+- gaps: honest acknowledgments Dan would make ("I haven't directly managed X, though I've...")
+- suggestedTalkingPoints: the actual words/phrases Dan would use in an interview, not advice about what to discuss
+- recommendedRoleFraming: the 1-2 sentence pitch Dan would open with` :
+`Output perspective: OBSERVER (third-person). Write as an outside assessor describing Dan's fit.`}
+
 Return ONLY valid JSON (no markdown fences):
 {
   "fitScore": <integer 0-100>,
@@ -158,10 +168,10 @@ Return ONLY valid JSON (no markdown fences):
     { "point": "concise strength (1 sentence)", "evidence": [{ "file": "path/file.md", "excerpt": "relevant excerpt under 100 chars" }] }
   ],
   "gaps": [
-    { "point": "concise gap (1 sentence)", "mitigation": "how Dan could address this" }
+    { "point": "concise gap (1 sentence)", "mitigation": "${isApplicant ? 'how Dan would address this in conversation' : 'how Dan could address this'}" }
   ],
-  "suggestedTalkingPoints": ["3-5 specific talking points for Dan in interviews"],
-  "recommendedRoleFraming": "1-2 sentence recommended positioning for Dan when applying"
+  "suggestedTalkingPoints": ["3-5 ${isApplicant ? 'things Dan would actually say' : 'talking points for Dan'} in interviews"],
+  "recommendedRoleFraming": "1-2 sentence ${isApplicant ? 'pitch Dan would open with' : 'recommended positioning for Dan when applying'}"
 }`,
         },
       ],

@@ -315,11 +315,12 @@ export async function generateApplicationMaterials(
     // Read Dan's career files to ground both fit analysis and cover letter
     const danBackground = await readDanBackground();
 
-    // Run fit analysis with background context so scoring is calibrated against real experience
+    // Run fit analysis with background context — applicant perspective so output is first-person as Dan
     const fitResult = await analyzeJdFit({
       jobDescription: roleText,
       focus: 'all',
       backgroundContext: danBackground,
+      outputPerspective: 'applicant',
     });
     if (!fitResult.ok) return { ok: false, error: fitResult.error };
     const fit = fitResult.data;
