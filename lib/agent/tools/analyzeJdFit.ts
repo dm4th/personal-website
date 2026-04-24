@@ -6,6 +6,7 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 export type JdFitInput = {
   jobDescription: string;
   focus?: 'technical' | 'leadership' | 'cultural' | 'all';
+  backgroundContext?: string; // Dan's career files, passed in by callers that have already read them
 };
 
 export type JdFitEvidence = {
@@ -76,15 +77,18 @@ export async function analyzeJdFit(
       messages: [
         {
           role: 'user',
-          content: `Extract the key requirements from this job description as JSON. Return ONLY valid JSON, no markdown fences:
+          content: `Extract the key requirements from this job description as JSON. Return ONLY valid JSON, no markdown fences.
+
+IMPORTANT: Job postings often begin with a generic "About Us" or company description section. IGNORE that section entirely. Focus exclusively on what THIS SPECIFIC ROLE requires from a candidate — the responsibilities, required skills, experience levels, and expectations for the person in this position.
+
 {
   "roleTitle": "string",
   "company": "string or null",
-  "searchTerms": ["4-6 specific skills/keywords to search for in a candidate's background"],
+  "searchTerms": ["4-8 specific skills/keywords that a candidate for THIS role needs — not generic company traits"],
   "requirements": {
-    "technical": ["technical skills and tools required"],
-    "leadership": ["leadership and management expectations"],
-    "cultural": ["cultural fit and soft skill expectations"]
+    "technical": ["specific technical skills, tools, or domain knowledge required for this role"],
+    "leadership": ["specific leadership and management expectations for this role"],
+    "cultural": ["specific soft skills or ways of working called out for this role"]
   }
 }
 
@@ -114,24 +118,38 @@ ${input.jobDescription.slice(0, 8000)}`,
 
     // Step 3: Synthesize assessment (Sonnet)
     const focus = input.focus ?? 'all';
+    const backgroundSection = input.backgroundContext
+      ? `\nDan's background (primary source of truth — use this to reason about fit):\n${input.backgroundContext.slice(0, 8000)}\n`
+      : '';
+    const evidenceSection = Object.keys(evidenceMap).length > 0
+      ? `\nSupporting evidence (grep hits from Dan's files):\n${JSON.stringify(evidenceMap, null, 2)}`
+      : '';
+
     const synthesisResp = await client.messages.create({
       model: process.env.AGENT_MODEL ?? 'claude-sonnet-4-6',
       max_tokens: 2048,
       messages: [
         {
           role: 'user',
-          content: `You are assessing how well Dan Mathieson fits a job description. Be honest — acknowledge real gaps.
+          content: `You are assessing how well Dan Mathieson fits a job description.
+
+Scoring guidance:
+- 80-100: Strong match — most requirements met, minor gaps only
+- 60-79: Good match — core requirements met, some genuine gaps
+- 40-59: Partial match — relevant background but meaningful gaps
+- 20-39: Weak match — some transferable skills but significant gaps
+- 0-19: Poor match — most requirements unmet
+
+Be calibrated, not pessimistic. If Dan has done this type of work (SE leadership, GTM, enterprise AI), score accordingly. Only score below 40 if there are fundamental missing requirements.
 
 Role: ${extracted.roleTitle}${extracted.company ? ` at ${extracted.company}` : ''}
 Analysis focus: ${focus}
 
 JD Requirements:
 ${JSON.stringify(extracted.requirements, null, 2)}
+${backgroundSection}${evidenceSection}
 
-Evidence from Dan's actual background files:
-${JSON.stringify(evidenceMap, null, 2)}
-
-Return ONLY valid JSON (no markdown fences) with this exact shape:
+Return ONLY valid JSON (no markdown fences):
 {
   "fitScore": <integer 0-100>,
   "roleTitle": "${extracted.roleTitle}",

@@ -2,19 +2,29 @@ import { searchContent, searchContentTool, type SearchContentInput } from './sea
 import { analyzeJdFit, analyzeJdFitTool, type JdFitInput } from './analyzeJdFit';
 import { composeEmail, composeEmailTool, type ComposeEmailInput } from './composeEmail';
 import { scheduleMeeting, scheduleMeetingTool, type ScheduleMeetingInput } from './scheduleMeeting';
+import { submitJobLead, submitJobLeadTool, type SubmitJobLeadInput } from './submitJobLead';
+import {
+  generateApplicationMaterials,
+  generateApplicationMaterialsTool,
+  type GenerateMaterialsInput,
+} from './generateApplicationMaterials';
 
 export const TOOL_DEFINITIONS = [
   searchContentTool,
   analyzeJdFitTool,
   composeEmailTool,
   scheduleMeetingTool,
+  submitJobLeadTool,
+  generateApplicationMaterialsTool,
 ] as const;
 
 export type ToolName =
   | 'search_content'
   | 'analyze_jd_fit'
   | 'compose_email_to_danny'
-  | 'schedule_meeting';
+  | 'schedule_meeting'
+  | 'submit_job_lead'
+  | 'generate_application_materials';
 
 export async function runTool(
   name: string,
@@ -49,6 +59,18 @@ export async function runTool(
     const result = await scheduleMeeting(input as ScheduleMeetingInput);
     if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
     return { content: JSON.stringify({ error: result.error }), summary: 'Scheduling error', isError: true };
+  }
+
+  if (name === 'submit_job_lead') {
+    const result = await submitJobLead(input as SubmitJobLeadInput);
+    if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
+    return { content: JSON.stringify({ error: result.error }), summary: 'Lead submission error', isError: true };
+  }
+
+  if (name === 'generate_application_materials') {
+    const result = await generateApplicationMaterials(input as GenerateMaterialsInput);
+    if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
+    return { content: JSON.stringify({ error: result.error }), summary: 'Materials generation error', isError: true };
   }
 
   return { content: JSON.stringify({ error: `Unknown tool: ${name}` }), summary: 'Unknown tool', isError: true };

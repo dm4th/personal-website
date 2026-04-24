@@ -73,7 +73,7 @@ export async function runAgent(
         emit({ type: 'tool_use_start', toolUseId: block.id, name: block.name, displayInput });
 
         // Auth-gate check: gated tools require userId
-        const GATED_TOOLS = ['send_email_to_danny', 'confirm_meeting'];
+        const GATED_TOOLS = ['send_email_to_danny', 'confirm_meeting', 'generate_application_materials'];
         if (GATED_TOOLS.includes(block.name) && !userId) {
           emit({ type: 'auth_required', reason: 'Sign in to use this feature', toolName: block.name });
           toolResults.push({
