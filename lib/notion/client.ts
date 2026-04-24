@@ -7,7 +7,6 @@ const DS_OPPORTUNITIES = '34bfc8f4-554c-80e5-ab24-000b45a034ef';
 const DS_COMPANIES = '34bfc8f4-554c-8059-bd1d-000b1359b9eb';
 const DS_ENCOUNTERS = '34bfc8f4-554c-80e8-a66f-000b05b2a117';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyProps = Record<string, any>;
 
 function titleText(props: AnyProps, key: string): string {
@@ -35,7 +34,6 @@ export async function findCompanyByName(name: string): Promise<string | null> {
 export async function createCompany(name: string, webPage?: string): Promise<string> {
   const response = await notion.pages.create({
     parent: { data_source_id: DS_COMPANIES, type: 'data_source_id' },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties: {
       Company: { title: [{ text: { content: name } }] },
       ...(webPage ? { 'Web Page': { url: webPage } } : {}),
@@ -61,7 +59,6 @@ export async function createJobOpportunity(params: {
 }): Promise<{ id: string; url: string }> {
   const response = await notion.pages.create({
     parent: { data_source_id: DS_OPPORTUNITIES, type: 'data_source_id' },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties: {
       Opportunity: { title: [{ text: { content: params.title } }] },
       '🏢 Companies': { relation: [{ id: params.companyId }] },
@@ -80,7 +77,6 @@ export async function createJobEncounter(params: {
 }): Promise<string> {
   const response = await notion.pages.create({
     parent: { data_source_id: DS_ENCOUNTERS, type: 'data_source_id' },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties: {
       'Encounter Title': { title: [{ text: { content: params.title } }] },
       Job: { relation: [{ id: params.jobId }] },
@@ -107,7 +103,6 @@ export async function createJobEncounter(params: {
 export async function updateOpportunityScore(pageId: string, fitScore: number): Promise<void> {
   await notion.pages.update({
     page_id: pageId,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties: {
       'Job Fit Score': { number: fitScore },
       'Application Status': { status: { name: 'Fit Scored' } },
@@ -240,7 +235,6 @@ export type ApplicationMaterials = {
   coverLetter: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyBlock = any;
 
 function heading(level: 1 | 2, content: string): AnyBlock {

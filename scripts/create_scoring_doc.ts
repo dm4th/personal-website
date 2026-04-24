@@ -10,7 +10,6 @@ import { Client } from '@notionhq/client';
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const PARENT_PAGE_ID = '34bfc8f4-554c-805b-8a5b-cf894a9c3230';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type B = any;
 
 const h1 = (text: string): B => ({ object: 'block', type: 'heading_1', heading_1: { rich_text: [{ type: 'text', text: { content: text } }] } });
@@ -105,7 +104,6 @@ const blocks: B[] = [
 async function main() {
   const page = await notion.pages.create({
     parent: { page_id: PARENT_PAGE_ID, type: 'page_id' },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties: { title: { title: [{ text: { content: '📊 How Job Scoring Works' } }] } } as any,
     children: blocks.slice(0, 100),
   });
