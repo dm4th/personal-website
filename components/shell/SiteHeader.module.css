@@ -70,7 +70,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   z-index: 200;
   padding: 4px;
-  margin-top: 4px;
 }
 
 .dropdownMd {
@@ -107,6 +106,57 @@
 .lightText {
   color: #666;
   font-size: 0.75rem;
+}
+
+.divider {
+  height: 1px;
+  background: #222;
+  margin: 4px 6px;
+}
+
+.subGroupRow {
+  position: relative;
+}
+
+.subGroupLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #d4d4d4;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  border-radius: 6px;
+  transition: background 0.12s;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.subGroupLabel:hover {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.arrow {
+  color: #666;
+  font-size: 1rem;
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.subMenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  min-width: 240px;
+  max-height: 480px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  padding: 4px;
 }
 
 .loginBtn {

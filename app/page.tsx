@@ -140,22 +140,31 @@ export default async function HomePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Explore</h2>
             <div className={styles.contentGrid}>
-              {allInfoData.map(({ subDirectory, allSubInfoData, dropdownTitle }) => (
-                <div key={subDirectory} className={styles.contentGroup}>
-                  <h3 className={styles.contentGroupTitle}>{dropdownTitle}</h3>
-                  <ul className={styles.contentList}>
-                    {allSubInfoData.map(({ file, Title, type }) => (
-                      <li key={file}>
-                        <Link href={`/info/${subDirectory}/${file}`} className={styles.contentLink}>
-                          {type === 'pdf'
-                            ? file.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())
-                            : (Title ?? file)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {allInfoData.map(({ subDirectory, flatEntries, subGroups, dropdownTitle }) => {
+                const allEntries = [
+                  ...subGroups.map((sg) => ({ file: sg.subDir, Title: sg.displayTitle, type: 'group' as const, isGroup: true })),
+                  ...flatEntries,
+                ];
+                return (
+                  <div key={subDirectory} className={styles.contentGroup}>
+                    <h3 className={styles.contentGroupTitle}>{dropdownTitle}</h3>
+                    <ul className={styles.contentList}>
+                      {allEntries.map(({ file, Title, type }) => (
+                        <li key={file}>
+                          <Link
+                            href={`/info/${subDirectory}/${file}`}
+                            className={styles.contentLink}
+                          >
+                            {type === 'pdf'
+                              ? file.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())
+                              : (Title ?? file)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </section>
         </main>
