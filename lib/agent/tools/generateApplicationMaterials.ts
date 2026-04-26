@@ -217,13 +217,17 @@ function extractRoleContent(text: string): string {
   return `[Company: ${companyIntro}]\n\n${roleContent}`;
 }
 
-// Key career files to read for background context — ordered by relevance to most roles
+// Key career files to read for background context — ordered by relevance to most roles.
+// Smarter Technologies gets multiple sub-files since it's the most recent and detailed role.
 const BACKGROUND_FILES = [
-  'career/smarter-technologies.md',
-  'career/thoughtful.md',
-  'career/action-network.md',
-  'career/google.md',
-  'about-me/strengths-and-weaknesses.md',
+  'career/smarter-technologies/index.md',
+  'career/smarter-technologies/enterprise-deals.md',
+  'career/smarter-technologies/ai-se-platform.md',
+  'career/smarter-technologies/commercial-innovation.md',
+  'career/thoughtful/index.md',
+  'career/action-network/index.md',
+  'career/google/index.md',
+  'about-me/strengths-and-weaknesses/index.md',
 ];
 
 async function readDanBackground(): Promise<string> {
