@@ -6,6 +6,7 @@ import SearchContentCard from './tool-cards/SearchContentCard';
 import JDFitCard from './tool-cards/JDFitCard';
 import EmailDraftCard from './tool-cards/EmailDraftCard';
 import MeetingSchedulerCard from './tool-cards/MeetingSchedulerCard';
+import ApplicationMaterialsCard from './tool-cards/ApplicationMaterialsCard';
 import styles from './ToolCallCard.module.css';
 
 export default function ToolCallCard({ part }: { part: ToolUsePart }) {
@@ -13,10 +14,11 @@ export default function ToolCallCard({ part }: { part: ToolUsePart }) {
   if (part.name === 'analyze_jd_fit') return <JDFitCard part={part} />;
   if (part.name === 'compose_email_to_danny') return <EmailDraftCard part={part} />;
   if (part.name === 'schedule_meeting') return <MeetingSchedulerCard part={part} />;
+  if (part.name === 'generate_application_materials') return <ApplicationMaterialsCard part={part} />;
 
   return (
     <div className={styles.fallback}>
-      <span>{part.status === 'pending' ? '⏳' : '✓'} {part.name}</span>
+      <span>{part.status === 'pending' ? '⏳' : '✓'} {part.summary ?? part.name}</span>
     </div>
   );
 }
