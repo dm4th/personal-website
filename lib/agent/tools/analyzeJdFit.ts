@@ -71,7 +71,7 @@ export const analyzeJdFitTool = {
 
 export async function analyzeJdFit(
   input: JdFitInput,
-): Promise<{ ok: true; data: JdFitOutput; summary: string } | { ok: false; error: string }> {
+): Promise<{ ok: true; data: JdFitOutput; summary: string; extractedTerms: { searchTerms: string[]; synonymTerms: string[] } } | { ok: false; error: string }> {
   try {
     // Step 1: Extract structured requirements from JD (Haiku — cheap pass)
     const extractResp = await client.messages.create({
