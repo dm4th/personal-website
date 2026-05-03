@@ -28,11 +28,29 @@ The key innovation was using vector similarity to find relevant examples and inj
 
 Using five similar examples for in-context learning, we achieved over 95% accuracy within two days and 100% accuracy shortly after. The approach was so successful that we implemented similar hybrid-RAG systems in three more automations within a month. Within two months of joining Thoughtful, I was presenting this feature to our board as a breakthrough innovation.
 
+### Production Deployment and Accuracy Maintenance
+
+This was not a prototype — it was a live production system used by customer agents every day as part of their eligibility verification workflows. Customer service agents at dental billing teams relied on it to make correct benefit determination calls on real patient accounts. The system had a direct financial impact: a wrong determination meant either a denied claim or an unnecessary write-off.
+
+Because accuracy had direct business consequences, I built a test and evaluation framework from the start. I maintained a labeled holdout dataset of edge cases and ran the model against it every time we added new training examples or changed the prompt structure. This let me catch accuracy regressions before they reached production. I tracked precision and recall by limitation category — age restrictions, frequency limits, tooth-specific rules — because failure modes were not uniform across types. When accuracy dipped below the 95% threshold we had committed to customers, I traced it to specific categories and either added targeted examples or adjusted the retrieval logic.
+
+Over the two years I worked in this system and its successors, I ran dozens of evaluation cycles, wrote test suites in Python with Jupyter notebooks, and learned more about what makes RAG-based systems fail in production than I would have from any course. The pattern I internalized — rapid prototyping, tight eval loop, customer-verifiable accuracy benchmarks — carried into every GenAI system I designed after it.
+
 Built with: Python, Jupyter Notebook, OpenAI GPT-3.5, OpenAI Text Embedding Small, pgvector, AWS RDS, SharePoint API
 
 ### Master Automation Plans
 
-MAPs were the documentation backbone of every automation we built—detailed pseudo-code with step-by-step instructions bridging customer requirements and technical implementation. I optimized them by thoroughly documenting API endpoints and HTTP requests that could bypass traditional RPA steps, significantly reducing development time and making automations far less brittle.
+MAPs were the documentation backbone of every automation we built, but describing them as "documentation" undersells what they actually were. A MAP was simultaneously a PRD, a technical specification, and a pseudo-code implementation plan. Writing one required sitting with a customer for anywhere from 8 to 20 hours to fully capture their standard operating procedure for a given workflow. Most customers couldn't tell you their own decision rules. They just did it. Extracting that implicit knowledge and making it explicit was the first real deliverable.
+
+The output of those sessions was a document that walked through every logical decision and pathway the agent needed to follow to complete the workflow: what data to read from which system, what conditions triggered which path, what to do when edge cases occurred, what to return as output, and how to handle failures at each step. It was pseudo-code in the true sense: structured enough for engineers to implement directly, written in plain language so the customer could verify it accurately reflected their intent.
+
+I'd hand the MAP to our offshore development team as the primary build artifact. Then I'd create formal success criteria that the customer would review and sign off on. It was a definition of done that both sides agreed to before a single line of code was written. That sign-off prevented the most common failure mode in implementation work: scope drift and disagreement about what "done" meant.
+
+Once the build was ready, I'd execute the testing plan I wrote alongside the MAP. I was the QA layer before anything touched a customer environment. When defects surfaced, I documented them against the original MAP so engineers had precise reproduction cases, not vague reports.
+
+A core principle I built into every MAP was the push toward determinism. Our customers needed our agents to perform an order of magnitude better than their best human. Not just as good, not "close enough." Non-deterministic LLM reasoning paths often couldn't hit that bar reliably, and customers weren't comfortable with probabilistic outputs on financial workflows. So wherever possible, I designed the MAP to specify deterministic logic: explicit conditions with explicit outcomes. The hybrid-RAG system was a direct expression of this: it built a growing library of deterministic answers derived from human-verified examples, so the non-deterministic reasoning path shrank over time rather than persisting indefinitely. Every MAP I wrote tried to push the agent toward the same convergence: reduce the scope of what requires inference, maximize the scope of what's rule-driven.
+
+The internal analytics and tracking for each automation were also mine to build. I instrumented every agent with the telemetry needed to measure its production performance, and then built customer-facing dashboards as the foundation for what became our formal customer analytics product. Customers had visibility into accuracy rates, processing volumes, and exception counts without needing to access our internal systems.
 
 Each MAP included structured JSON data schemas defining the objects our automations would process, precise error-handling specifications, and explicit integration points. These documents functioned as formal contracts between Thoughtful and our customers—shared with both the client and the offshore engineering team to create alignment across all stakeholders.
 

@@ -22,7 +22,21 @@ I worked with our Next.js team to integrate Quicksight dashboards directly into 
 
 These dashboards became instrumental in executive-level customer relationships. Showing automation success rates, processing times, and cost savings in clear visual terms made the ROI argument concrete in a way that narrative summaries never could.
 
-Built with: PostgreSQL, AWS, Quicksight, iFrames, Python, Next.js
+The most technically demanding part was the data transformation layer. Our AI agents emitted deeply nested JSON as their execution output — structured logging for debugging, not for reporting. There was no dedicated data engineering team at this stage, so I became the de facto one. I wrote SQL queries that parsed and unnested JSON structures directly inside PostgreSQL, extracting fields from nested objects and arrays using SQL's JSON operators rather than preprocessing the data in Python. This let me query hundreds of thousands of agent execution records without standing up a separate ETL pipeline. It was a niche but powerful pattern: treating SQL as a scripting and transformation language, not just a query language.
+
+This work also introduced me to building customer-facing analytics infrastructure with a skeleton crew. I was shipping SQL, integrating with frontend engineers on the iFrame embedding approach, and managing customer expectations about dashboard availability — all simultaneously, without a formal data team to hand off to.
+
+Built with: PostgreSQL, AWS, Quicksight, iFrames, SQL JSON parsing, Python, Next.js
+
+### Low-Code Automation Rescue and Extension
+
+One of my early customers was a physician practice trying to build an AI-powered SOAP notes generator. They were using Make to wire together their clinical workflow — intake data flowing into a language model, structured output routing back to their EHR. The problem: the Make workflows were broken. Conditional logic was misfiring, webhook payloads weren't being parsed correctly, and the automations kept silently failing in ways the customer couldn't diagnose.
+
+I stepped in and rebuilt the broken Make workflows from scratch: correcting the webhook configurations, fixing the JSON parsing logic in the routers, and restructuring the branching logic so failures surfaced clearly instead of disappearing. Once the foundation was solid, I extended the workflows to do more. Our AI agents at Thoughtful needed to be able to trigger those Make workflows programmatically — sending structured data via webhook so the agents could pull patient record context on demand as part of their execution. I built the webhook integration on both ends: the agent side (outbound payload construction) and the Make side (inbound routing to the right workflow branches).
+
+The result was a tightly coupled system where Thoughtful's AI agents and the customer's Make automation layer spoke to each other bidirectionally — agents triggering Make workflows to fetch data, Make workflows triggering downstream actions on completion. It was my first direct hands-on experience with low-code automation platforms in a production clinical context, and it reinforced that low-code tools and full-code agents aren't alternatives — they're layers that need to interoperate cleanly.
+
+Built with: Make (Integromat), webhooks, JSON, Python, Thoughtful AI agents
 
 ### Multi-Portal Eligibility Verification
 
@@ -35,6 +49,24 @@ Each portal required its own MAP documenting unique technical requirements, auth
 The project provided some of my most valuable lessons about setting realistic expectations, transparent communication, and the importance of thorough technical discovery before making timeline commitments. I spent considerable time working directly with the customer to rebuild trust and adjust scope. The delivered solution provided real value—it just took longer and covered less than originally promised.
 
 Built with: Python, Notion, Google Sheets, AWS, Quicksight
+
+### Healthcare Data Interchange Formats
+
+Working across 20+ payer portals and multiple EMR integrations gave me deep functional fluency in the healthcare data interchange standards that govern how payers, providers, and clearinghouses exchange information. I did not write low-level EDI parsers from scratch, but I worked extensively with these formats at the design and integration level — understanding their structure, the information they carry, and the ways they fail in practice — across nearly every automation we built.
+
+**EDI X12 transactions** were the connective tissue of our eligibility and claims automation work:
+
+- **270/271 (Eligibility Inquiry and Response)**: The 270 is the structured query a provider sends to a payer asking whether a patient is covered and what their benefits are. The 271 is the response — often thousands of characters of structured segments covering deductibles, copays, out-of-pocket maximums, and benefit-level limitations. My hybrid-RAG eligibility system was built specifically to make sense of the free-text limitation fields embedded inside 271 responses, which payers render inconsistently across plans. Understanding the loop and segment structure of the 271 was prerequisite to designing the extraction layer.
+
+- **835 (Remittance Advice / ERA)**: The 835 is the electronic explanation of payment that payers send when adjudicating a claim. It tells providers what was paid, what was denied, at what rate, and why — using CARC and RARC codes. Our payment posting and denials management automations depended on parsing 835 files to classify denial reasons and route accounts to the correct follow-up workflow. I understood the 835 segment structure well enough to scope integrations and design downstream logic around adjustment reason codes.
+
+- **276/277 (Claim Status Inquiry and Response)**: The 276 is a claim status request; the 277 is the response indicating whether a claim is pending, paid, or denied. We used these for automated claim statusingworkflows that replaced manual portal checks. Understanding the 277 response codes — and their inconsistent implementation across payers — was essential to building reliable denial detection logic.
+
+**FHIR APIs** became increasingly relevant as EMR vendors opened read-level access. The key insight I developed: FHIR is excellent for reading structured patient data — demographics, clinical history, medication lists, encounter records — but most payer and billing workflows require writing back to the EHR, and FHIR write capabilities are inconsistently implemented or simply not available. Our standard architecture became FHIR for reads (patient lookup, eligibility context, prior auth history) combined with RPA for write-backs (posting results, updating records, triggering downstream workflows). This hybrid pattern let us integrate with modern EMRs without being blocked by write limitations.
+
+**HL7 v2 interoperability** came up primarily in the context of automations I sold rather than built directly. Several of our most complex integrations — particularly in hospital systems running legacy infrastructure — required HL7 v2 message routing for admission, discharge, and transfer events (ADT) and order management (ORM/ORU). I understood the interoperability requirements well enough to scope these integrations and identify which customers would need middleware layers between their legacy HL7 infrastructure and our automation agents.
+
+The practical value of this exposure: when a health system or payer asks what it would take to integrate their data pipeline with an AI workflow, I can have a specific conversation about where the 271 benefit data lives, how the 835 denial codes map to workflow decisions, and whether FHIR read access is sufficient or whether they'll need a write-back strategy. That specificity earns technical trust in a way that generic "we integrate with your EHR" framing never does.
 
 ### Saving Struggling Accounts
 
