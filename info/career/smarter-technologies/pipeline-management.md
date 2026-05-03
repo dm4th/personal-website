@@ -32,6 +32,16 @@ EMR platforms I evaluated integration readiness for: Epic, NextGen, Cerner, eCli
 
 61 deals personally managed (62% of company pipeline), $31.8M in pipeline value, $1.95M in closed-won revenue across five deals, 76 prospect directories with complete documentation, 8 product lines across 10+ healthcare verticals. I handled four times the deal volume of the second team member while maintaining quality scores above 80/100.
 
+### Salesforce for Executive Reporting
+
+Alongside the custom-built deal management system, I maintained Smarter Technologies' Salesforce CRM as the canonical record of deal flow for the sales organization. While our internal AI-powered system handled the operational depth—meeting notes, technical requirements, action items—Salesforce served as the source of truth for the VP of Sales and CEO when they needed an at-a-glance pipeline view.
+
+I managed deal progression through Salesforce stages, keeping opportunity records current as deals advanced, stalled, or closed. Because the sales team worked across multiple dashboards and reporting views, I built custom Salesforce reports and tailored dashboard components that surfaced the metrics each stakeholder actually cared about: pipeline by product line, close probability distributions, stage velocity, and forecasted bookings by quarter. When the VP of Sales needed a specific cut of the data for a board update, I could build and share a custom Salesforce report in under an hour.
+
+The dual-system approach—Salesforce for executive visibility, custom Git/Notion system for SE operational depth—required careful synchronization. I kept both current so leadership always had confidence in what they were looking at.
+
+Built with: Salesforce, custom reports, pipeline dashboards
+
 ### Tech Stack
 
-Notion (deal tracker databases, health indicators, status fields), Git (version-controlled deal state and history), Python (schema validation, deal tracker audit scripts), Claude Code (automated field updates and briefing generation)
+Notion (deal tracker databases, health indicators, status fields), Salesforce (CRM, executive reporting, deal flow), Git (version-controlled deal state and history), Python (schema validation, deal tracker audit scripts), Claude Code (automated field updates and briefing generation)

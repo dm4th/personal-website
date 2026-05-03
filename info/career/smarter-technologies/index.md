@@ -16,6 +16,18 @@ There was no SE infrastructure when I started: no deal tracking, no meeting anal
 
 Over seven months, I shipped 943 commits and 500+ pull requests while simultaneously managing $31.8M in active pipeline across 61 enterprise healthcare deals—62% of total company pipeline.
 
+### EMR Integration and FHIR Architecture
+
+A recurring technical challenge across nearly every deal I ran at Smarter Technologies was scoping EMR integration architecture. Our agents needed to read patient and clinical data from the customer's EHR and write results back — and the right approach differed significantly depending on the platform and what the agent was doing.
+
+The pattern I settled on and used consistently: **FHIR for reads, RPA for write-backs**. FHIR APIs — available in modern Epic, Cerner, and Athena environments — are excellent for reading structured clinical and administrative data: patient demographics, encounter history, insurance coverage, prior authorization status, medication records. The FHIR R4 standard is well-implemented by the major EMR vendors for these read use cases, and it let us pull the context our agents needed without requiring custom API agreements or screen scraping.
+
+Write-back was a different problem. FHIR write capabilities are inconsistently implemented across EMR vendors, and many of our agent workflows needed to post results back into the EHR — updating eligibility status, logging authorization outcomes, posting payment records. In most cases, FHIR write support either didn't exist or required negotiating custom implementation agreements. Our solution was RPA for these write operations: direct browser or native application automation that mimicked the billing team's manual steps. This was more brittle than an API integration, but it was the only path to write-back reliability across the range of systems we encountered.
+
+This FHIR-read/RPA-write architecture became standard across our agent designs and shaped how I scoped integration feasibility during pre-sales technical discovery. When a prospect asked how we'd connect to their Epic environment, I could give a specific answer: FHIR endpoints for the data-in direction, and a defined set of write-back workflows handled through portal automation. That specificity was a meaningful differentiator in enterprise deals where the IT team was trying to understand actual implementation risk.
+
+I scoped this architecture across 12+ EMR platforms — Epic, Cerner, Athena, eClinicalWorks, NextGen, Meditech, WellSky, ModMed, Raintree, and others — each with different levels of FHIR maturity, different API credential requirements, and different constraints on what could be automated. Understanding those differences at the platform level was essential to making accurate promises during pre-sales.
+
 ### Pages in This Section
 
 - [AI-Powered SE Platform](/info/career/smarter-technologies/ai-se-platform) — The operating system I built for all SE work

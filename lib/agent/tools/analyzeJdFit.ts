@@ -8,6 +8,7 @@ export type JdFitInput = {
   focus?: 'technical' | 'leadership' | 'cultural' | 'all';
   backgroundContext?: string; // Dan's career files, passed in by callers that have already read them
   outputPerspective?: 'observer' | 'applicant'; // 'observer' = third-person for visitors; 'applicant' = first-person as Dan
+  termGlossary?: string; // accumulated JD→practitioner vocabulary mappings from prior runs
 };
 
 export type JdFitEvidence = {
@@ -39,6 +40,7 @@ type ExtractedRequirements = {
   roleTitle: string;
   company?: string;
   searchTerms: string[];
+  synonymTerms: string[]; // practitioner vocab / domain equivalents for the same concepts
   requirements: {
     technical: string[];
     leadership: string[];
@@ -78,14 +80,29 @@ export async function analyzeJdFit(
       messages: [
         {
           role: 'user',
-          content: `Extract the key requirements from this job description as JSON. Return ONLY valid JSON, no markdown fences.
+          content: `Extract key requirements from this job description as JSON. Return ONLY valid JSON, no markdown fences.
 
-IMPORTANT: Job postings often begin with a generic "About Us" or company description section. IGNORE that section entirely. Focus exclusively on what THIS SPECIFIC ROLE requires from a candidate — the responsibilities, required skills, experience levels, and expectations for the person in this position.
+IMPORTANT: Job postings often begin with a generic "About Us" section. IGNORE that section entirely. Focus exclusively on what THIS SPECIFIC ROLE requires from the candidate.
+
+Generate TWO sets of grep search terms — both will be run against a candidate's career files:
+
+1. "searchTerms": 6-8 terms taken DIRECTLY from the JD's own vocabulary (exact skills/keywords as written).
+2. "synonymTerms": 8-12 ALTERNATIVE terms that an experienced practitioner would use to describe the same concepts. These bridge the gap between how the JD is written and how a candidate's career files are written. Built-in examples:
+   - JD says "RAG architectures" → synonymTerms includes "hybrid-RAG", "retrieval-augmented", "embedding model", "pgvector"
+   - JD says "Python/SQL" → synonymTerms includes "pandas", "jupyter", "Jupyter Notebook", "data analysis"
+   - JD says "prior authorization" → synonymTerms includes "SmarterAuthorizations", "utilization management", "PA workflow"
+   - JD says "GenAI solutions" → synonymTerms includes "GPT", "LLM pipeline", "prompt engineering", "OpenAI"
+   - JD says "pre-sales" → synonymTerms includes "solutions architect", "customer engineer", "SE"
+   - JD says "proof of concept" → synonymTerms includes "POC", "prototype", "demo"${input.termGlossary ? `
+
+Additionally, use these accumulated vocabulary mappings from previous JD analyses to expand your synonymTerms further:
+${input.termGlossary}` : ''}
 
 {
   "roleTitle": "string",
   "company": "string or null",
-  "searchTerms": ["4-8 specific skills/keywords that a candidate for THIS role needs — not generic company traits"],
+  "searchTerms": ["6-8 direct JD vocabulary terms"],
+  "synonymTerms": ["8-12 practitioner/domain synonym alternatives"],
   "requirements": {
     "technical": ["specific technical skills, tools, or domain knowledge required for this role"],
     "leadership": ["specific leadership and management expectations for this role"],
@@ -108,19 +125,26 @@ ${input.jobDescription.slice(0, 8000)}`,
       return { ok: false, error: 'Failed to parse JD requirements' };
     }
 
-    // Step 2: Search Dan's /info files for evidence on each search term
+    // Step 2: Search Dan's /info files for evidence.
+    // Run grep on both JD-vocabulary terms and practitioner-synonym terms so that
+    // vocabulary mismatches between the JD and Dan's career files don't create false gaps.
+    const allSearchTerms = [
+      ...(extracted.searchTerms ?? []).slice(0, 7),
+      ...(extracted.synonymTerms ?? []).slice(0, 7),
+    ].filter((t, i, arr) => t && arr.indexOf(t) === i); // deduplicate, drop empty
+
     const evidenceMap: Record<string, Array<{ file: string; line: number; text: string }>> = {};
-    for (const term of (extracted.searchTerms ?? []).slice(0, 6)) {
+    for (const term of allSearchTerms.slice(0, 14)) {
       const result = await searchContent({ action: 'grep', pattern: term } as SearchContentInput);
       if (result.ok && !Array.isArray(result.data) && 'matches' in result.data) {
-        evidenceMap[term] = result.data.matches.slice(0, 4);
+        evidenceMap[term] = result.data.matches.slice(0, 3);
       }
     }
 
     // Step 3: Synthesize assessment (Sonnet)
     const focus = input.focus ?? 'all';
     const backgroundSection = input.backgroundContext
-      ? `\nDan's background (primary source of truth — use this to reason about fit):\n${input.backgroundContext.slice(0, 8000)}\n`
+      ? `\nDan's background (primary source of truth — use this to reason about fit):\n${input.backgroundContext}\n`
       : '';
     const evidenceSection = Object.keys(evidenceMap).length > 0
       ? `\nSupporting evidence (grep hits from Dan's files):\n${JSON.stringify(evidenceMap, null, 2)}`
@@ -130,7 +154,7 @@ ${input.jobDescription.slice(0, 8000)}`,
 
     const synthesisResp = await client.messages.create({
       model: process.env.AGENT_MODEL ?? 'claude-sonnet-4-6',
-      max_tokens: 2048,
+      max_tokens: 4096,
       messages: [
         {
           role: 'user',
@@ -186,6 +210,11 @@ Return ONLY valid JSON (no markdown fences):
       ok: true,
       data: output,
       summary: `Fit score: ${output.fitScore}/100 — ${output.roleTitle}${output.company ? ` at ${output.company}` : ''}`,
+      // Expose extracted terms so callers can persist them to the cross-JD glossary
+      extractedTerms: {
+        searchTerms: extracted.searchTerms ?? [],
+        synonymTerms: extracted.synonymTerms ?? [],
+      },
     };
   } catch (err) {
     return { ok: false, error: String(err) };

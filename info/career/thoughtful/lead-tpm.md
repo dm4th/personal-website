@@ -32,6 +32,26 @@ As leadership challenges threatened our delivery momentum, the executive team as
 
 The interim role became permanent as I demonstrated I could maintain delivery quality while establishing processes that let our growing team scale. I strategically redistributed my project portfolio: keeping the most complex implementations for myself while delegating others to create bandwidth for leadership work. Balancing tactical execution with vision-setting while the company was scaling fast was genuinely hard. But stepping into the role was the right call, and it shaped my understanding of what technical leadership actually requires.
 
+### TPM Delivery Contribution
+
+My time as a formal TPM was brief: roughly three months before I was promoted to lead the team. But the output from that window was significant. During the period I held the TPM role, my implementations accounted for approximately 63% of Thoughtful's net new ARR as the company grew 3x year-over-year. That ratio reflects something important about the role: the TPM function sat at the exact intersection where technical complexity and commercial outcome met. Getting an implementation to production and demonstrating ROI was what turned a customer into a reference and a reference into the next logo.
+
+The reason I got promoted so quickly wasn't just delivery volume. It was that I was doing something harder than implementation. I was making judgment calls about what to build, in what order, at what fidelity, against what constraints. Those are product decisions. The Lead TPM role formalized what I was already doing informally: setting the direction, not just executing it.
+
+### Determinism as a Design Principle
+
+One of the most important things I learned building AI automations in healthcare was when not to use non-deterministic AI. Healthcare billing workflows have near-zero tolerance for probabilistic outputs. A wrong eligibility determination means a denied claim, a wrong payment posting means a compliance problem, and a wrong denial routing means lost revenue. Customers didn't care about our model's average accuracy; they cared that every output was correct.
+
+My design philosophy evolved into a consistent pattern: use AI where it genuinely adds value (pattern matching across variable inputs, extracting structure from unstructured text, handling edge cases that can't be enumerated in advance), and everywhere else, write code. A deterministic Python function is always more reliable than an LLM producing the same output. The hybrid-RAG architecture I built at Thoughtful was an explicit implementation of this: the system converged toward determinism over time. The human-verified outputs from each cycle became hard-coded answers for future identical inputs, shrinking the space that required live inference. Eventually, most cases were handled without touching the LLM at all.
+
+I extended this to how I wrote MAPs. Rather than designing workflows that depended on the agent "figuring it out," I specified explicit decision trees wherever possible. The agent became the executor of deterministic logic, not the reasoner making uncertain judgments. Pairing LLMs with engineers writing deterministic execution paths, rather than hoping the LLM handles it, is what let our agents achieve accuracy levels an order of magnitude above the human baseline.
+
+### EOB Parsing and Eval Engineering
+
+Before my promotion, I was assigned to an Explanation of Benefits (EOB) parsing project: automating the extraction of structured payment data from PDF EOBs sent by payers. EOBs are genuinely hard to parse. Format varies by payer, layout changes across plan years, and the data structures are inconsistently placed across the document. I built evaluation infrastructure for the parsing agents: a labeled dataset of EOB samples across payer formats, scoring logic that measured field-level extraction accuracy, and regression tests that flagged when a model or prompt change degraded performance on previously passing cases.
+
+I was pulled off the project mid-stream when the Lead TPM opportunity arose. The eval framework I'd built remained in use by the team that continued the work.
+
 ### The Merger and What Came Next
 
 In September 2025, Thoughtful AI underwent a private equity merger during our Series B fundraising process. We combined with three other companies to form [Smarter Technologies](/info/career/smarter-technologies).

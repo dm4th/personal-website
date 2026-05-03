@@ -1,91 +1,141 @@
-# Fit Resume to Job Description
+# Generate Application Materials
 
-You are creating a tailored version of Dan Mathieson's resume for a specific job opportunity.
+Creates a tailored resume, cover letter, PDFs, and notes file for a specific job opportunity. Can be invoked directly with a JD, or called from `/job-application` after the gap-filling loop.
 
 ## Input
 
 $ARGUMENTS
 
-The user will provide a job description and optionally additional context (company info, why they're interested, specific angles to emphasize). If no job description is provided, ask for one before proceeding.
+Provide a job description and, optionally, a pre-derived output slug (format: `[company-slug]-[role-type]`). If neither is provided, ask for the job description before proceeding.
+
+---
+
+## Key Facts Reference
+
+Read `work-product/work-context/key-facts.md` before generating any content. It contains:
+- Canonical metrics (do not change or approximate these numbers)
+- Positioning angles by role type
+- Key differentiators
+- Resume and cover letter structure guidelines
+- Style rules (especially: no em-dashes anywhere)
+- Contact info
+
+---
 
 ## Source Files
 
 **Base resume HTML**: `work-product/danny-mathieson-resume.html`
-- This is the master resume. Never modify this file directly for a fit version.
+Always use this as the structural template. Never modify it directly.
 
-**Full work history and metrics** (for pulling in relevant details):
+**Work history and context**:
 - `work-product/work-context/danny-mathieson-resume.md` — Complete structured resume
-- `work-product/work-context/project-portfolio.md` — 10 detailed project descriptions
-- `work-product/work-context/role-fit-analysis.md` — Career positioning across 6 role types with fit scores
+- `work-product/work-context/project-portfolio.md` — 10 detailed project write-ups
+- `work-product/work-context/role-fit-analysis.md` — Pre-analyzed fit scores for 6 role types
 - `work-product/work-context/notion-data.md` — Pipeline and deal metrics
-- `work-product/work-context/resume-sources.md` — Source verification for claims
 
-**Website content** (for additional narrative context):
-- `info/career/smarter-technologies.md` — Director SE role details
-- `info/career/thoughtful.md` — Earlier Thoughtful AI roles
-- `info/career/action-network.md`, `info/career/google.md`, `info/career/fanduel.md`
+**Career narrative** (for richer bullet content):
+- `info/career/smarter-technologies/` — Director SE role, enterprise deals, AI platform
+- `info/career/thoughtful/` — TPM, Solutions Architect, Customer Engineer roles
+- `info/career/action-network/`, `info/career/google/`, `info/career/fanduel/`
 
-## Instructions
+**Previous applications** (for style reference):
+- `work-product/job-applications/distyl-ai-strategist-healthcare/`
+- `work-product/job-applications/8090-solutions-tpm/`
+- `work-product/job-applications/openai-solutions-engineer-healthcare/`
 
-1. **Read the job description** carefully. Identify:
-   - Required skills and experience
-   - Preferred qualifications
-   - Key responsibilities
-   - Company industry and stage
-   - Seniority level and reporting structure
-   - Any specific technologies, domains, or methodologies mentioned
+---
 
-2. **Read the role-fit-analysis.md** — it contains pre-analyzed fit scores across 6 role categories (Founder, VP/Dir SE, Head of Solutions, Dir AI/Automation, Technical PM, Principal SE). Find the closest match and use that analysis to inform positioning.
+## Step 1 — Determine Output Location
 
-3. **Read the base resume HTML** and the full work-context files to find the most relevant achievements.
+If a slug was passed as an argument, use it. Otherwise derive one from the job description:
+- Format: `[company-slug]-[role-type]` (lowercase, hyphenated, no special characters)
+- Examples: `8090-solutions-tpm`, `distyl-ai-strategist-healthcare`, `openai-solutions-engineer`
 
-4. **Create a tailored resume** at `work-product/fitted-resumes/[company-name]-resume.html`:
-   - Copy the base HTML structure and styling (navy blue #2B4C7E, 2-page layout, sidebar metrics)
-   - **Rewrite the Professional Summary** to directly address the role's core requirements
-   - **Reorder and reweight bullet points** — lead with the most relevant achievements for this role
-   - **Adjust the sidebar metrics** — highlight the numbers most relevant to this role
-   - **Adjust Technical Skills** — lead with technologies mentioned in the job description
-   - **Adjust the Thoughtful AI section** — emphasize the projects most relevant to this role
-   - **Adjust earlier career** — expand or condense based on relevance
-   - Pull in additional details from project-portfolio.md or notion-data.md that aren't in the base resume but are relevant to this specific role
-   - Maintain the same professional quality and formatting
+Output directory: `work-product/job-applications/[slug]/`
 
-5. **Create a cover letter brief** at `work-product/fitted-resumes/[company-name]-notes.md`:
-   - 3-5 bullet points on why Dan is a strong fit
-   - Key talking points for an interview
-   - Any gaps or areas to address proactively
-   - Suggested questions to ask the interviewer
+---
 
-6. **Search the web** for additional context on the company if helpful:
-   - Recent news, funding rounds, product launches
-   - Company size, growth stage, culture signals
-   - Competitors and market position
-   - Use this to inform positioning in the resume and notes
+## Step 2 — Research the Company
 
-## Positioning Guidelines
+Search the web for:
+- What the company does (in their own words)
+- Recent news, funding, or product launches
+- Company size, stage, culture signals
+- Specific language or values they use
 
-Based on the role-fit-analysis.md, Dan's strongest positioning angles are:
+Use this to inform the resume summary and cover letter opening. Reference the company's actual thesis, not generic descriptions.
 
-- **For SE/Solutions leadership roles** (9/10 fit): Already doing the job at compressed scale. A 2-person team managing ~100 deals is VP-level scope. Built tooling that multiplied team capacity by 10x.
-- **For AI/Automation roles** (8/10 fit): Built AI automation in production, not just prototypes. Understands what to automate and what not to. Healthcare RCM is the hottest automation target.
-- **For Technical PM/Product roles** (8/10 fit): Built a product from scratch with real users (943 commits, not a side project). Is his own customer. Ships.
-- **For Founder/Co-founder** (9/10 fit): Built a product, understands customers, has commercial instinct, can do everything simultaneously.
-- **For Principal/Staff SE** (8/10 fit): Technical depth with code not credentials. Makes others better. Thrives in ambiguity.
+---
 
-## Style Guidelines
+## Step 3 — Generate the Resume
 
-- No em-dashes. Use commas, colons, or periods instead.
-- Bold key metrics and outcomes.
-- Match the tone and formality to the target company (startup vs. enterprise).
-- Be specific. Replace generic claims with quantified results.
-- Dan's name: "Dan Mathieson"
-- Email: danny.mathieson233@gmail.com
+Create `work-product/job-applications/[slug]/resume.html` using `work-product/danny-mathieson-resume.html` as the structural template.
 
-## Key Differentiators to Weave In
+Refer to `key-facts.md` for the resume structure guidelines. Key decisions to make per role:
 
-- Built one of the most complex Claude Code deployments in production
-- Rare combination: builds production software + closes large deals + deep domain expertise
-- $31.8M pipeline managed by a 2-person team (efficiency story)
-- Healthcare RCM domain depth across 12+ EHR platforms
-- Commercial sophistication (5 pricing models, ROI frameworks)
-- Promoted because the sales team couldn't function without him
+- **Header subtitle**: Rewrite to match the role type (e.g., "Technical Program Manager | Forward-Deployed AI Delivery | Healthcare & Life Sciences")
+- **Professional Summary**: Address the role's core requirements directly. Not generic.
+- **Sidebar KPIs**: Split into "Smarter Technologies (Last 7 Months)" and "Thoughtful AI (2023-2025)" sections when both are relevant. Lead with the metrics most signal-rich for this role.
+- **Smarter Technologies bullets**: Lead with the most relevant subsection (Discovery/Scoping, Customer Engagement, or Platform Engineering)
+- **Thoughtful AI bullets**: For delivery/TPM roles, lead with 63% ARR and MAP/PRD methodology. For SE/GTM roles, lead with pre-sales and hybrid-RAG system.
+- **Skills sidebar**: Lead with the skill categories the JD emphasizes most
+- **No em-dashes** anywhere in the HTML
+
+Pull richer detail from `info/career/` files when the base resume bullets are too compressed for this role.
+
+---
+
+## Step 4 — Generate the Cover Letter
+
+Create `work-product/job-applications/[slug]/cover-letter.html` using the 8090 Solutions cover letter as a structural reference (`work-product/job-applications/8090-solutions-tpm/cover-letter.html`).
+
+Follow the cover letter structure in `key-facts.md`. Key decisions to make per role:
+
+- **Opening**: Connect Dan's background to the company's specific thesis. One sentence. Not generic.
+- **Thoughtful AI paragraph**: For delivery/TPM roles, lead with MAP methodology and 63% ARR. For SE/GTM roles, lead with pre-sales funnel and hybrid-RAG.
+- **Discovery paragraph**: Choose the most relevant example (Jefferson Health workshop, Presbyterian Health workshop, or multi-portal eligibility scoping model)
+- **Smarter Technologies paragraph**: Condensed to 2-3 achievements most relevant to this role. Should not overshadow Thoughtful if role values delivery.
+- **Closing**: Reference the company's specific thesis. Ask for a conversation.
+
+No more than 5-6 paragraphs. No em-dashes. Conversational but precise.
+
+---
+
+## Step 5 — Generate PDFs
+
+```bash
+cd work-product/job-applications/[slug]
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --headless --disable-gpu \
+  --print-to-pdf="Dan Mathieson Resume.pdf" \
+  --print-to-pdf-no-header --no-margins \
+  "file://$(pwd)/resume.html"
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --headless --disable-gpu \
+  --print-to-pdf="Dan Mathieson Cover Letter.pdf" \
+  --print-to-pdf-no-header --no-margins \
+  "file://$(pwd)/cover-letter.html"
+```
+
+Confirm both PDFs were written and report file sizes.
+
+---
+
+## Step 6 — Create Notes File
+
+Create `work-product/job-applications/[slug]/notes.md` with:
+- Final fit score (if this was called from `/job-application`) and what drove it
+- 3-5 strongest talking points for an interview (written as Dan would actually say them, first-person)
+- Remaining gaps and how to address them in conversation
+- 4-5 questions Dan should ask in the interview, tailored to this specific company
+
+---
+
+## Step 7 — Output Summary
+
+Tell the user:
+- Files created (with paths)
+- The single strongest talking point to open with in an interview
+- Any structural gaps to be prepared to address
