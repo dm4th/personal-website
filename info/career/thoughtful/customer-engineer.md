@@ -1,5 +1,5 @@
 ---
-Title: Thoughtful AI: Customer Engineer
+Title: "Thoughtful AI: Customer Engineer"
 Start: March, 2024
 End: November, 2024
 ---

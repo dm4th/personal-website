@@ -1,5 +1,5 @@
 ---
-Title: Thoughtful AI: Lead Technical Product Manager
+Title: "Thoughtful AI: Lead Technical Product Manager"
 Start: November, 2024
 End: September, 2025
 ---

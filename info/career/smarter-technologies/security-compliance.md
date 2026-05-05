@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Security & Compliance
+Title: "Smarter Technologies: Security & Compliance"
 Start: September, 2025
 End: Current
 ---

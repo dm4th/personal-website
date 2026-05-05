@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Enterprise Deals
+Title: "Smarter Technologies: Enterprise Deals"
 Start: September, 2025
 End: Current
 ---

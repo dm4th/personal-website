@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Meeting Intelligence
+Title: "Smarter Technologies: Meeting Intelligence"
 Start: September, 2025
 End: Current
 ---

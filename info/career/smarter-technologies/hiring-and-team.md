@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Hiring & Team
+Title: "Smarter Technologies: Hiring & Team"
 Start: September, 2025
 End: Current
 ---

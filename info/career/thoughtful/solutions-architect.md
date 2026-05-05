@@ -1,5 +1,5 @@
 ---
-Title: Thoughtful AI: Solutions Architect
+Title: "Thoughtful AI: Solutions Architect"
 Start: September, 2023
 End: March, 2024
 ---

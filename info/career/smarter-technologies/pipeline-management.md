@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Pipeline Management
+Title: "Smarter Technologies: Pipeline Management"
 Start: September, 2025
 End: Current
 ---

@@ -1,5 +1,5 @@
 ---
-Title: FanDuel: Early Years
+Title: "FanDuel: Early Years"
 Start: August, 2016
 End: August, 2018
 ---

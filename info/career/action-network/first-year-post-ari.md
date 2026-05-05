@@ -1,5 +1,5 @@
 ---
-Title: Action Network: First Year Post-Ari
+Title: "Action Network: First Year Post-Ari"
 Start: June, 2021
 End: January, 2022
 ---

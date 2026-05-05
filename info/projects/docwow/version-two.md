@@ -1,5 +1,5 @@
 ---
-Title: DocWoW: Version 2
+Title: "DocWoW: Version 2"
 Start: August, 2023
 End: September, 2023
 Link: https://doc-iug984t8j-dm4th.vercel.app/

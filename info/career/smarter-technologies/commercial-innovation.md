@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Commercial Innovation
+Title: "Smarter Technologies: Commercial Innovation"
 Start: September, 2025
 End: Current
 ---

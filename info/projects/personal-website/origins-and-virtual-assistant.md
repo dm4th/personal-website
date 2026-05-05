@@ -1,5 +1,5 @@
 ---
-Title: Personal Website: Origins and Virtual Assistant
+Title: "Personal Website: Origins and Virtual Assistant"
 Start: April, 2023
 End: March, 2025
 Link: http://www.danielmathieson.com

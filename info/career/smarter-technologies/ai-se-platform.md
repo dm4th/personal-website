@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: AI-Powered SE Platform
+Title: "Smarter Technologies: AI-Powered SE Platform"
 Start: September, 2025
 End: Current
 ---

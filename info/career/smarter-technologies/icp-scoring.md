@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: ICP Scoring
+Title: "Smarter Technologies: ICP Scoring"
 Start: September, 2025
 End: Current
 ---

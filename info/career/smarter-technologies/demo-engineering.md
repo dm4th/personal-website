@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies: Demo Engineering
+Title: "Smarter Technologies: Demo Engineering"
 Start: September, 2025
 End: Current
 ---

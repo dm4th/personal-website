@@ -1,5 +1,5 @@
 ---
-Title: Personal Website: Claude Code Era
+Title: "Personal Website: Claude Code Era"
 Start: March, 2025
 End: Current
 Link: http://www.danielmathieson.com

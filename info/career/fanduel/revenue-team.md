@@ -1,5 +1,5 @@
 ---
-Title: FanDuel: Revenue Team
+Title: "FanDuel: Revenue Team"
 Start: August, 2018
 End: December, 2019
 ---
