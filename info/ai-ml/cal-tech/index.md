@@ -10,4 +10,4 @@ A six-month AI/ML bootcamp through SimpliLearn and Cal Tech, completed during my
 
 ### Pages in This Section
 
-- [The Bootcamp](/info/ai-ml/cal-tech/bootcamp) — Projects, lessons learned, and honest reflections on the program
+- [The Bootcamp](/info/ai-ml/cal-tech/bootcamp): Projects, lessons learned, and honest reflections on the program

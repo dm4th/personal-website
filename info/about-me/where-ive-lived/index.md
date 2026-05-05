@@ -8,5 +8,5 @@ I grew up in Connecticut, went to college in central Pennsylvania, spent three a
 
 ### Pages in This Section
 
-- [New York City](/info/about-me/where-ive-lived/new-york-city) — August 2016 to December 2019
-- [San Francisco](/info/about-me/where-ive-lived/san-francisco) — January 2020 to present
+- [New York City](/info/about-me/where-ive-lived/new-york-city) (August 2016 to December 2019)
+- [San Francisco](/info/about-me/where-ive-lived/san-francisco) (January 2020 to present)

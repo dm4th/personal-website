@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies — ICP Scoring
+Title: Smarter Technologies: ICP Scoring
 Start: September, 2025
 End: Current
 ---
@@ -14,18 +14,18 @@ I co-developed an Ideal Customer Profile scoring framework with our VP of Delive
 
 The final version scores prospects across six weighted dimensions:
 
-- 25% — Payer Layer Coverage and EDI Readiness
-- 20% — SOP Consistency and Process Quality
-- 20% — Staffing Model (onshore / dedicated)
-- 15% — Centralized Operations and IT Engagement
-- 10% — Receptiveness to Human + Tech Model
-- 10% — Specialty Focus and Practice Size
+- 25%: Payer Layer Coverage and EDI Readiness
+- 20%: SOP Consistency and Process Quality
+- 20%: Staffing Model (onshore / dedicated)
+- 15%: Centralized Operations and IT Engagement
+- 10%: Receptiveness to Human + Tech Model
+- 10%: Specialty Focus and Practice Size
 
-Each dimension is scored 1–5. The composite weighted score determines tier placement: Tier 1 (score ≥ 4.0) gets full SE engagement with complete technical discovery, custom pricing, and delivery scoping. Tier 2 (3.0–3.99) gets standard coverage. Tier 3 (below 3.0) gets a light-touch pathway—often a cost-takeout consulting approach rather than a full product sale.
+Each dimension is scored 1 to 5. The composite weighted score determines tier placement: Tier 1 (score ≥ 4.0) gets full SE engagement with complete technical discovery, custom pricing, and delivery scoping. Tier 2 (3.0 to 3.99) gets standard coverage. Tier 3 (below 3.0) gets a light-touch pathway, often a cost-takeout consulting approach rather than a full product sale.
 
 ### Score the Scope
 
-The most important insight from the calibration process came in March 2026: the scoring unit matters. We discovered that scoring criteria against an organization's full footprint produced misleading results. A 2,600-clinic health system would score poorly on SOP Consistency because of size and variation—even if the specific deployment target was a clean, well-run ambulatory division.
+The most important insight from the calibration process came in March 2026: the scoring unit matters. We discovered that scoring criteria against an organization's full footprint produced misleading results. A 2,600-clinic health system would score poorly on SOP Consistency because of size and variation, even if the specific deployment target was a clean, well-run ambulatory division.
 
 The correct unit of analysis is the scoped deployment: the specific EHR, geography, business unit, and use case being implemented. We called this principle "Score the Scope." It resolved both over-scoring (large organizations with deployment complexity getting inflated Tier 1 placements) and under-scoring (focused ambulatory practices with strong fit being deprioritized because of surface-level org-level unknowns).
 
@@ -37,7 +37,7 @@ The scoring framework is implemented as a Claude Code skill (`assessing-prospect
 
 A batch assessment script can score the entire 99-deal pipeline in a single run, producing a prioritized prospect list for capacity planning discussions with sales and delivery leadership.
 
-Scores are also updated dynamically during meeting analysis—every time `/analyze-meeting` runs, the agent has access to the ICP scoring framework and can flag if new information warrants a tier reassignment.
+Scores are also updated dynamically during meeting analysis. Every time `/analyze-meeting` runs, the agent has access to the ICP scoring framework and can flag if new information warrants a tier reassignment.
 
 ### Results
 

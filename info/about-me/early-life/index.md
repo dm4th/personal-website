@@ -10,4 +10,4 @@ Growing up in Connecticut, summers at camp, and the teachers and coaches who sha
 
 ### Pages in This Section
 
-- [Early Years and High School](/info/about-me/early-life/early-years-and-high-school) — Childhood through senior year
+- [Early Years and High School](/info/about-me/early-life/early-years-and-high-school): Childhood through senior year

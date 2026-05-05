@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies — Security & Compliance
+Title: Smarter Technologies: Security & Compliance
 Start: September, 2025
 End: Current
 ---
@@ -12,7 +12,7 @@ Answering them manually consumed days of SE time per prospect. Days that should 
 
 ### What I Built
 
-An automated security questionnaire answering system that reads questions from Google Sheets, matches them against a curated answer bank in Notion, and writes back prospect-specific answers. The whole process—ingest, match, contextualize, generate, write back—runs with a single command.
+An automated security questionnaire answering system that reads questions from Google Sheets, matches them against a curated answer bank in Notion, and writes back prospect-specific answers. The whole process (ingest, match, contextualize, generate, write back) runs with a single command.
 
 The pipeline has five stages:
 
@@ -20,7 +20,7 @@ The pipeline has five stages:
 
 **Match** compares each question against 180+ approved answers in a Notion answer bank, using keyword routing and semantic matching. The same HIPAA question might appear as "Do you maintain a BAA?", "Describe your Business Associate Agreement process", or "HIPAA BAA status" depending on who wrote the questionnaire. The routing table maps keyword clusters to canonical answers regardless of phrasing.
 
-**Contextualize** layers in prospect-specific details from the deal's README—which products are being sold, which EMR integration points are in scope, what data types will be processed. A security answer for an eligibility verification deployment should reference different data flows than one for a prior authorization platform.
+**Contextualize** layers in prospect-specific details from the deal's README: which products are being sold, which EMR integration points are in scope, what data types will be processed. A security answer for an eligibility verification deployment should reference different data flows than one for a prior authorization platform.
 
 **Generate** produces answers that are grounded in approved security language but tailored to the specific deployment context.
 
@@ -34,7 +34,7 @@ The bank grows with each new questionnaire. When a question doesn't match an exi
 
 ### Technical Notes
 
-Two Python scripts handle the heavy lifting: one for Google Sheets read/write operations and one for Notion answer bank retrieval. The system supports both OAuth2 (full read/write) and public CSV export (read-only fallback). It also handles a common edge case: prospects sometimes upload .xlsx files to Drive, which break the standard Sheets API—the system detects this and guides conversion.
+Two Python scripts handle the heavy lifting: one for Google Sheets read/write operations and one for Notion answer bank retrieval. The system supports both OAuth2 (full read/write) and public CSV export (read-only fallback). It also handles a common edge case: prospects sometimes upload .xlsx files to Drive, which break the standard Sheets API. The system detects this and guides conversion.
 
 ### Results
 

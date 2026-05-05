@@ -26,16 +26,16 @@ const ROLES = [
     slug: '/info/career/action-network',
   },
   {
-    title: 'Financial Analyst → Revenue Team Lead',
-    company: 'FanDuel',
-    period: '2019 – 2022',
-    slug: '/info/career/fanduel',
-  },
-  {
     title: 'Financial Analyst, Google Cloud',
     company: 'Google',
-    period: '2018 – 2019',
+    period: '2019 – 2020',
     slug: '/info/career/google',
+  },
+  {
+    title: 'Financial Analyst → Revenue Team Lead',
+    company: 'FanDuel',
+    period: '2016 – 2019',
+    slug: '/info/career/fanduel',
   },
 ];
 
@@ -98,7 +98,7 @@ export default async function HomePage() {
 
           <div className={styles.bio}>
             <p>
-              I build AI systems that actually ship — from agent harnesses and agentic loops to SE operations platforms managing $30M+ enterprise pipelines. Currently focused on agentic engineering: tool composition, harness design, and Claude Agent SDK.
+              I build AI systems that actually ship: agent harnesses, agentic loops, and SE operations platforms managing $30M+ enterprise pipelines. Currently focused on agentic engineering, tool composition, harness design, and the Claude Agent SDK.
             </p>
           </div>
 

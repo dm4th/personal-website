@@ -6,7 +6,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Dan Mathieson',
-  description: 'Director of Solutions Engineering — AI · Healthcare · Agent Engineering',
+  description: 'Director of Solutions Engineering · AI · Healthcare · Agent Engineering',
   icons: { icon: '/favicon.ico' },
 };
 

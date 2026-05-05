@@ -6,7 +6,7 @@ Title: Career Metrics & Highlights
 
 I track my work carefully. These are the numbers that tell the story of the last few years, pulled from actual logged data rather than rounded estimates.
 
-### Smarter Technologies — Director of Sales Engineering (Sep 2025 - Present)
+### Smarter Technologies: Director of Sales Engineering (Sep 2025 - Present)
 
 At Smarter Technologies, I run the pre-sales and solutions function for a PE-backed healthcare RCM automation company. The team is two people. The scope is not.
 
@@ -22,7 +22,7 @@ At Smarter Technologies, I run the pre-sales and solutions function for a PE-bac
 
 The SE platform I built to make this scale possible: 22 skills, 5 parallel agents, 57 scripts, with API integrations across Notion, Fireflies, Google Drive, GitHub, and JIRA. The platform handles meeting analysis, deal tracking, pricing model generation, demo creation, and competitive research.
 
-### Thoughtful AI — Solutions Architect, Customer Engineer, Lead TPM (2023-2025)
+### Thoughtful AI: Solutions Architect, Customer Engineer, Lead TPM (2023-2025)
 
 At Thoughtful AI, I held three titles across two years. I started as a Solutions Architect, moved to Customer Engineer owning a book of 10+ live accounts, and was promoted to Lead TPM within 3 months of taking on the formal TPM role.
 

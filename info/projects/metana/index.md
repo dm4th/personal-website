@@ -11,4 +11,4 @@ A blockchain and Solidity bootcamp completed during my career break, alongside t
 
 ### Pages in This Section
 
-- [The Bootcamp](/info/projects/metana/bootcamp) — Solidity, smart contracts, and Web3 fundamentals
+- [The Bootcamp](/info/projects/metana/bootcamp): Solidity, smart contracts, and Web3 fundamentals

@@ -1,22 +1,22 @@
 ---
-Title: Smarter Technologies — Commercial Innovation
+Title: Smarter Technologies: Commercial Innovation
 Start: September, 2025
 End: Current
 ---
 
 # Commercial Innovation
 
-Healthcare RCM automation pricing is genuinely hard. You're selling productivity gains that depend on payer-specific EDI capabilities, EMR integration depth, claim volume distributions, denial rates, and staff efficiency—none of which are standardized across prospects. A standard SaaS per-seat model doesn't capture value in this market. You need pricing that aligns your revenue with the customer's realized benefit.
+Healthcare RCM automation pricing is genuinely hard. You're selling productivity gains that depend on payer-specific EDI capabilities, EMR integration depth, claim volume distributions, denial rates, and staff efficiency, none of which are standardized across prospects. A standard SaaS per-seat model doesn't capture value in this market. You need pricing that aligns your revenue with the customer's realized benefit.
 
 Over seven months, I developed five distinct pricing architectures and built an automation estimation engine to support them.
 
 ### Five Pricing Models
 
-**Transaction-based pricing** ties revenue directly to automation volume—a per-claim or per-verification fee that scales linearly with throughput. This works well for high-volume, single-product deployments where value is straightforward to measure.
+**Transaction-based pricing** ties revenue directly to automation volume: a per-claim or per-verification fee that scales linearly with throughput. This works well for high-volume, single-product deployments where value is straightforward to measure.
 
 **FTE-based cost reduction** anchors pricing to the customer's current staffing cost. Our fee is structured as a percentage of demonstrated savings, which requires establishing a baseline and building ongoing reporting into the engagement. It's more work to set up, but it's compelling in a CFO meeting because the math is direct.
 
-**Fixed plus variable hybrid** combines a platform fee for infrastructure and integration with variable per-transaction fees for automation throughput. This balances revenue predictability for us with value alignment for the customer—they pay for what they use once the base is covered.
+**Fixed plus variable hybrid** combines a platform fee for infrastructure and integration with variable per-transaction fees for automation throughput. This balances revenue predictability for us with value alignment for the customer: they pay for what they use once the base is covered.
 
 **Volume discount tiers** graduate pricing to reward scale, designed for multi-location deployments where per-unit cost decreases as clinics are added. The model keeps customers incentivized to expand rather than capping their deployment to avoid pricing tier cliffs.
 
@@ -34,7 +34,7 @@ The engine runs in two modes depending on the use case:
 
 **Historical/heuristic mode** (payment posting, accounts receivable, denials) uses exponential ramp curves calibrated against historical deployments. The formula: `Base% + (Full% - Base%) × exponential_progress`, where Base is automation at value start and Full is steady-state maximum. Full Auto is set conservatively below the sub-task blended rate to account for edge cases and ramp variability.
 
-Output is a professionally formatted Google Sheet with monthly automation ramps, implementation team assignments, delivery cost projections, and volume breakdowns. The sheet is created directly in Google Drive via API with native Sheets formatting—not a CSV upload.
+Output is a professionally formatted Google Sheet with monthly automation ramps, implementation team assignments, delivery cost projections, and volume breakdowns. The sheet is created directly in Google Drive via API with native Sheets formatting, not a CSV upload.
 
 ### Results
 

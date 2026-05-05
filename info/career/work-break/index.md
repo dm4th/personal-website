@@ -10,4 +10,4 @@ After leaving Action Network in October 2022, I took a deliberate year off to up
 
 ### Pages in This Section
 
-- [The Break](/info/career/work-break/the-break) — Deciding to learn, bootcamps, and how I tracked my time
+- [The Break](/info/career/work-break/the-break): Deciding to learn, bootcamps, and how I tracked my time

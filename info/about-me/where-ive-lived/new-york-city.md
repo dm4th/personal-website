@@ -8,7 +8,7 @@ End: December, 2019
 
 After college, I was initially open to working anywhere but New York City. Coming from a smaller city and a small college town, I had real concerns about the scale and pace of it. That changed when FanDuel made me an offer in the summer of 2016. I accepted while visiting family in San Francisco and moved to northern New Jersey to stay with relatives a few weeks later.
 
-I lasted four months in New Jersey before the daily commute became too much. In December 2016, I moved in with my former college roommate in the Murray Hill neighborhood of Manhattan—walking distance from the FanDuel offices near Gramercy Park and Madison Square Park.
+I lasted four months in New Jersey before the daily commute became too much. In December 2016, I moved in with my former college roommate in the Murray Hill neighborhood of Manhattan, walking distance from the FanDuel offices near Gramercy Park and Madison Square Park.
 
 # Early Years
 
@@ -18,6 +18,6 @@ Murray Hill was the right place to land. The neighborhood had energy, my roommat
 
 After two years in Murray Hill, Zach and I moved to the East Village. Smaller apartment, better location, more character. Still walking distance to the office. With a better feel for the subway system, more of the city became accessible.
 
-After a year and a half there, though, I started feeling something missing. New York City is a city built around dining out and nightlife—both of which I enjoy—but I was increasingly craving outdoor experiences and a closer relationship with nature. Around the same time, I met Maggie, my roommate was moving out, and my career was shifting. When a job at Google came up in the Bay Area, it felt like the right moment to explore something different. Google covered the relocation costs, and I've been in California ever since.
+After a year and a half there, though, I started feeling something missing. New York City is a city built around dining out and nightlife (both of which I enjoy), but I was increasingly craving outdoor experiences and a closer relationship with nature. Around the same time, I met Maggie, my roommate was moving out, and my career was shifting. When a job at Google came up in the Bay Area, it felt like the right moment to explore something different. Google covered the relocation costs, and I've been in California ever since.
 
 I had a great time in New York. But San Francisco is genuinely more my pace.

@@ -12,5 +12,5 @@ I joined straight out of Bucknell as a business analyst and left as a senior ana
 
 ### Pages in This Section
 
-- [Early Years](/info/career/fanduel/early-years) — First two years: operational reporting, target tracking, accounting pipelines
-- [Revenue Team](/info/career/fanduel/revenue-team) — Working with Chris: Slackbot, Monte Carlo simulation, and leaving for Google
+- [Early Years](/info/career/fanduel/early-years): First two years. Operational reporting, target tracking, accounting pipelines.
+- [Revenue Team](/info/career/fanduel/revenue-team): Working with Chris. Slackbot, Monte Carlo simulation, and leaving for Google.

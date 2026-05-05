@@ -13,7 +13,7 @@ At Thoughtful AI, our Customer Engineers are the linchpin in delivering transfor
 
 The inception of the Customer Engineer role at Thoughtful AI arose from a critical need identified by Chris Williams, the SVP of Customer Engineering, Security, and Support. Chris provides insight into this evolution.
 
-"We initially thought a project manager could manage the technical people," Chris explains. "However, we quickly realized that we needed someone who could understand both the technical and business aspects of our projects. The traditional approach was like a game of telephone—customers would communicate issues to project managers, who would then relay these messages to engineers, and back to the customers, often resulting in miscommunication and delays."
+"We initially thought a project manager could manage the technical people," Chris explains. "However, we quickly realized that we needed someone who could understand both the technical and business aspects of our projects. The traditional approach was like a game of telephone: customers would communicate issues to project managers, who would then relay these messages to engineers, and back to the customers, often resulting in miscommunication and delays."
 
 The solution was to hire individuals with engineering backgrounds who could directly interact with customers, effectively eliminating the middleman. "By having Customer Engineers who can talk to customers and understand their AI development needs, we build trust and deliver solutions more efficiently," Chris adds.
 
@@ -63,11 +63,11 @@ Danny also appreciates the variety his role provides. "Each project feels like m
 
 For the Customer Engineering team, the most fulfilling aspect of the role is the tangible impact on the healthcare system. "What we’re doing is really important," Danny says. "It’s detailed work, but these AI agents we build can be used for years. Optimizing the entire revenue cycle management (RCM) process, making it more efficient, is incredibly rewarding."
 
-The AI agents don't just replicate human processes—their capabilities extend far beyond that of a human. By training AI agents to collect and report data, customers are empowered with information they previously couldn’t access. "Our customers often struggle to get a full bird’s-eye view of their data. They might know a patient was seen and what they got paid, but they don’t have insights into the entire RCM cycle," Danny explains.
+The AI agents don't just replicate human processes. Their capabilities extend far beyond that of a human. By training AI agents to collect and report data, customers are empowered with information they previously couldn’t access. "Our customers often struggle to get a full bird’s-eye view of their data. They might know a patient was seen and what they got paid, but they don’t have insights into the entire RCM cycle," Danny explains.
 
 Chris adds, "Our customers benefit greatly from seeing their revenue, costs, financial allocations, and expenditures all on one dashboard or report. They want to know where their money is going and how to use that data to make decisions."
 
-The real "aha" moment, Danny notes, comes when customers see detailed reports of what the AI agent did. "It’s shocking for them to see how much output the agent produces and how much better the results are. We roll out their analytics, and they say, 'Oh my God, you did that 15,000 times in five days?!' They see step-by-step what was accomplished, exactly why and where they failed, who we skipped, and what portal it went to—all of that, which no human employee could track so meticulously. This gives them the ability to understand where processes fail and how they can improve. And from their side, it seems just as easy as flipping a switch."
+The real "aha" moment, Danny notes, comes when customers see detailed reports of what the AI agent did. "It’s shocking for them to see how much output the agent produces and how much better the results are. We roll out their analytics, and they say, 'Oh my God, you did that 15,000 times in five days?!' They see step-by-step what was accomplished, exactly why and where they failed, who we skipped, and what portal it went to, all of that, which no human employee could track so meticulously. This gives them the ability to understand where processes fail and how they can improve. And from their side, it seems just as easy as flipping a switch."
 
 # Differentiating from Solution Architects
 

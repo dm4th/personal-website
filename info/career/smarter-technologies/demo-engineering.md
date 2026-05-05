@@ -1,5 +1,5 @@
 ---
-Title: Smarter Technologies — Demo Engineering
+Title: Smarter Technologies: Demo Engineering
 Start: September, 2025
 End: Current
 ---
@@ -14,7 +14,7 @@ I built a demo engineering platform with 20+ reusable demo workflows managed as 
 
 The `/create-demo` command guides an interactive workflow. It starts by pulling context from the prospect's README and recent meeting notes to understand their specialty, EMR, key pain points, and the specific products being demonstrated. From that context, it recommends a demo type: single-product focus, full suite walkthrough, or a custom combination.
 
-It then generates a manifest and structures the required artifacts—CSV reports with realistic payer and volume data, audio files for voice AI demonstrations, screenshots from relevant EMR integrations. Demos can be composed from existing components or built from scratch when a new specialty or workflow type requires it.
+It then generates a manifest and structures the required artifacts: CSV reports with realistic payer and volume data, audio files for voice AI demonstrations, screenshots from relevant EMR integrations. Demos can be composed from existing components or built from scratch when a new specialty or workflow type requires it.
 
 ### The Submodule Architecture
 
@@ -26,9 +26,9 @@ The submodule also travels with the main repository. When you check out a prospe
 
 ### What We Have
 
-20+ demo workflows covering all eight product lines: SmarterEligibility, SmarterAuthorizations, SmarterReceivables, ConverseAI, SmarterAgents, SmarterPosting, SmarterDenials, and SmarterPreBill. The library spans specialty-specific variants for the verticals we sell into most frequently—behavioral health, physical therapy, dental, ophthalmology, and hospital systems.
+20+ demo workflows covering all eight product lines: SmarterEligibility, SmarterAuthorizations, SmarterReceivables, ConverseAI, SmarterAgents, SmarterPosting, SmarterDenials, and SmarterPreBill. The library spans specialty-specific variants for the verticals we sell into most frequently: behavioral health, physical therapy, dental, ophthalmology, and hospital systems.
 
-Demo preparation time dropped from hours to minutes for repeat specialties. For a specialty we've demonstrated before, the relevant artifacts already exist—it's a matter of customizing payer data and volume numbers for the specific prospect.
+Demo preparation time dropped from hours to minutes for repeat specialties. For a specialty we've demonstrated before, the relevant artifacts already exist. It's a matter of customizing payer data and volume numbers for the specific prospect.
 
 The manifests also double as training materials. A new SE team member can read a demo manifest and understand exactly what to show, what to emphasize, and what specialty-specific terminology matters for that audience.
 
