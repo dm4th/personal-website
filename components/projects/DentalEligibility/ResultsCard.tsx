@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import styles from './ResultsCard.module.css';
 import DeterminationBadge from './DeterminationBadge';
 import PipelineSteps from './PipelineSteps';
+import ResolvedPipeline from './ResolvedPipeline';
+import LookupTrace from './LookupTrace';
 import type { DemoState, SimilarCase } from '@/lib/projects/dental-eligibility/types';
 
 type Props = {
@@ -157,22 +159,25 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             This claim matches a previously verified determination. No review required.
           </p>
 
-          {matchedCase && (
-            <div className={styles.matchedCase}>
-              <div className={styles.matchedCaseHeader}>
-                <span className={styles.matchedCaseLabel}>{matchedCase.scenario_label}</span>
-                {matchedCase.source === 'session' && <span className={styles.sessionChip}>session</span>}
-              </div>
-              <div className={styles.matchedSim}>
-                <div className={styles.simBar}>
-                  <div className={styles.simBarFill} style={{ width: '100%' }} />
-                </div>
-                <span className={styles.simPct}>{similar_cases[0] ? Math.round(similar_cases[0].similarity * 100) : 100}% match</span>
-              </div>
-            </div>
-          )}
+          <ResolvedPipeline
+            queryString={result.query_string}
+            totalCases={totalCases}
+            topSimilarity={result.top_similarity}
+            topMatchLabel={matchedCase?.scenario_label ?? similar_cases[0]?.scenario_label ?? null}
+            path={path}
+            fieldComparison={result.field_comparison}
+          />
 
           {coverageDisplay}
+
+          <LookupTrace
+            queryString={result.query_string}
+            topSimilarity={result.top_similarity}
+            topMatchLabel={matchedCase?.scenario_label ?? similar_cases[0]?.scenario_label ?? null}
+            path={path}
+            fieldComparison={result.field_comparison}
+          />
+
           <button className={styles.clearBtn} onClick={onClear}>
             Clear — next claim →
           </button>
@@ -273,6 +278,15 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           GPT-4o synthesized this determination using {similar_cases.length} similar verified {similar_cases.length === 1 ? 'case' : 'cases'} as context. Please review before approving.
         </p>
 
+        <ResolvedPipeline
+          queryString={result.query_string}
+          totalCases={totalCases}
+          topSimilarity={result.top_similarity}
+          topMatchLabel={similar_cases[0]?.scenario_label ?? null}
+          path={path}
+          fieldComparison={result.field_comparison}
+        />
+
         {coverageDisplay}
 
         {similar_cases.length > 0 && (
@@ -290,6 +304,14 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           <span className={styles.reasoningLabel}>Determination Reasoning</span>
           <p className={styles.reasoningText}>{determination.reasoning}</p>
         </div>
+
+        <LookupTrace
+          queryString={result.query_string}
+          topSimilarity={result.top_similarity}
+          topMatchLabel={similar_cases[0]?.scenario_label ?? null}
+          path={path}
+          fieldComparison={result.field_comparison}
+        />
 
         <div className={styles.reviewActions}>
           <p className={styles.reviewPrompt}>Is this determination correct?</p>

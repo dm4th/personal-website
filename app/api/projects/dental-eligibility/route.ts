@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { z } from 'zod';
-import type { EligibilityCase, SessionCase, CaseDetermination } from '@/lib/projects/dental-eligibility/types';
+import type { EligibilityCase, SessionCase, CaseDetermination, FieldComparison } from '@/lib/projects/dental-eligibility/types';
 import { findTopK, buildQueryString } from '@/lib/projects/dental-eligibility/similarity';
 import { buildKShotMessages, SYSTEM_PROMPT } from '@/lib/projects/dental-eligibility/prompt';
 import casesData from '@/data/dental-eligibility-cases.json';
@@ -91,11 +91,13 @@ export async function POST(req: NextRequest) {
   const { session_cases, ...input } = parsed.data;
   const sessionCases = session_cases as SessionCase[];
 
+  const queryString = buildQueryString(input);
+
   let queryEmbedding: number[];
   try {
     const embeddingResponse = await client.embeddings.create({
       model: 'text-embedding-3-small',
-      input: buildQueryString(input),
+      input: queryString,
     });
     queryEmbedding = embeddingResponse.data[0].embedding;
   } catch (err) {
@@ -104,6 +106,12 @@ export async function POST(req: NextRequest) {
   }
 
   const { topResults, topSimilarity, topCase } = findTopK(queryEmbedding, baseCases, sessionCases, 3);
+
+  const fieldComparison: FieldComparison[] = topCase ? [
+    { field: 'patient_age', label: 'Patient Age', query_val: input.patient_age, stored_val: topCase.input.patient_age, matched: input.patient_age === topCase.input.patient_age },
+    { field: 'plan_year_remaining', label: 'Plan Year Remaining', query_val: input.plan_year_remaining, stored_val: topCase.input.plan_year_remaining, matched: input.plan_year_remaining === topCase.input.plan_year_remaining },
+    { field: 'deductible_met', label: 'Deductible Met', query_val: input.deductible_met, stored_val: topCase.input.deductible_met, matched: input.deductible_met === topCase.input.deductible_met },
+  ] : [];
 
   // Variable fields (age, financials) are explicitly compared — embedding similarity alone can't
   // distinguish these when the coverage text is identical, since numeric tokens have weak vector weight.
@@ -154,6 +162,9 @@ export async function POST(req: NextRequest) {
       determination,
       path: 'exact_match',
       query_embedding: queryEmbedding,
+      query_string: queryString,
+      top_similarity: topSimilarity,
+      field_comparison: fieldComparison,
       similar_cases: topResults,
       matched_case_id: topCase.id,
     });
@@ -187,6 +198,9 @@ export async function POST(req: NextRequest) {
     determination,
     path: 'hybrid_rag',
     query_embedding: queryEmbedding,
+    query_string: queryString,
+    top_similarity: topSimilarity,
+    field_comparison: fieldComparison,
     similar_cases: topResults,
   });
 }

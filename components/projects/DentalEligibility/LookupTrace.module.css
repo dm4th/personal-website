@@ -1,0 +1,261 @@
+.details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  background: var(--surface-2);
+  transition: background 0.15s;
+}
+
+.summary::-webkit-details-marker { display: none; }
+
+.details[open] .summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.summary:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.summaryIcon {
+  font-size: 13px;
+}
+
+.summaryLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--subtle);
+  letter-spacing: 0.01em;
+}
+
+.summaryHint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+/* Body */
+.body {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.sectionNote {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* Embedding input */
+.queryPre {
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--subtle);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+/* Similarity gate */
+.matchMeta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.matchLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.matchName {
+  font-size: 12px;
+  color: var(--subtle);
+  font-style: italic;
+}
+
+.gateBarWrapper {
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.gateBar {
+  position: relative;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.gateBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.fillAbove {
+  background: var(--success);
+}
+
+.fillBelow {
+  background: #f59e0b;
+}
+
+.gateBarThreshold {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 14px;
+  background: var(--muted);
+  border-radius: 1px;
+  transform: translateX(-50%);
+}
+
+.gateBarLabels {
+  position: relative;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.gateBarScore {
+  position: absolute;
+  font-size: 10px;
+  color: var(--subtle);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.gateBarThresholdLabel {
+  position: absolute;
+  font-size: 10px;
+  color: var(--muted);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.gateResult {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.gatePass {
+  color: var(--success);
+}
+
+.gateFail {
+  color: #f59e0b;
+}
+
+/* Field comparison table */
+.fieldTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.fieldTable thead th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 0 8px 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.thField { width: 45%; }
+.thVal   { width: 18%; }
+.thResult { width: 20%; }
+
+.fieldTable tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.fieldTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tdField {
+  padding: 7px 8px 7px 0;
+  color: var(--subtle);
+  font-weight: 500;
+}
+
+.tdVal {
+  padding: 7px 8px 7px 0;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--subtle);
+}
+
+.tdResult {
+  padding: 7px 0;
+}
+
+.rowMatch .tdVal {
+  color: var(--muted);
+}
+
+.rowMismatch .tdVal:nth-child(2) {
+  color: #f59e0b;
+}
+
+.matchCheck {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.mismatchX {
+  color: #f59e0b;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fieldResult {
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 2px;
+}

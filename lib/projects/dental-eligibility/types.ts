@@ -62,10 +62,21 @@ export type SimilarCase = {
   source: 'base' | 'session';
 };
 
+export type FieldComparison = {
+  field: 'patient_age' | 'plan_year_remaining' | 'deductible_met';
+  label: string;
+  query_val: number | boolean;
+  stored_val: number | boolean;
+  matched: boolean;
+};
+
 export type EligibilityResponse = {
   determination: CaseDetermination;
   path: 'exact_match' | 'hybrid_rag';
   query_embedding: number[];
+  query_string: string;
+  top_similarity: number;
+  field_comparison: FieldComparison[];
   similar_cases: SimilarCase[];
   matched_case_id?: string;
 };
