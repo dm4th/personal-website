@@ -1,0 +1,27 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.covered {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--success);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.notCovered {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.review {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}

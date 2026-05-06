@@ -159,6 +159,21 @@
   padding: 4px;
 }
 
+.navLink {
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
 .loginBtn {
   background: transparent;
   color: #a3a3a3;

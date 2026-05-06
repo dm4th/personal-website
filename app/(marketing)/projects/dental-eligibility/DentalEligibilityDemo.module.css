@@ -1,0 +1,77 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  flex: 1;
+  align-items: start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-right: 1px solid var(--border);
+  min-height: calc(100vh - var(--header-height) - 160px);
+}
+
+.formWrapper {
+  border-top: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.formTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5e5e5;
+}
+
+.formHint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.rightColumn {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: calc(var(--header-height) + 20px);
+}
+
+.resultsLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5e5e5;
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .leftColumn {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    min-height: unset;
+  }
+
+  .rightColumn {
+    position: static;
+  }
+}

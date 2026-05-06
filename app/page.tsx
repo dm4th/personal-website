@@ -41,22 +41,28 @@ const ROLES = [
 
 const PROJECTS = [
   {
-    title: 'Agent-First Personal Website',
-    description: 'This site — built with Claude Agent SDK, Clerk, and Neon. Visitors interact with an agent that can search my experience, analyze job descriptions, and schedule meetings.',
-    slug: '/info/projects/personal-website',
-    tags: ['Next.js', 'Claude SDK', 'Clerk', 'Neon'],
+    title: 'Dental Eligibility Intelligence',
+    description: 'Hybrid-RAG eligibility verification engine built in production at Thoughtful AI. 95%+ accuracy within two days. Exact matches bypass the LLM — approve results live to grow the case library.',
+    demoSlug: '/projects/dental-eligibility',
+    infoSlug: '/info/career/thoughtful/dental-eligibility-intelligence',
+    tags: ['Hybrid RAG', 'GPT-4o', 'Healthcare RCM'],
+    stat: '95%+ accuracy',
   },
   {
-    title: 'SE Operations Platform at Thoughtful AI',
-    description: '23 skills, 57 Python scripts, 5 AI agents, 943 commits. Automated the full SE lifecycle for a $31.8M pipeline of enterprise healthcare deals.',
-    slug: '/info/career/thoughtful',
-    tags: ['Python', 'AI Agents', 'Healthcare RCM'],
+    title: 'Agent-First Personal Website',
+    description: 'This site — built with Claude Agent SDK, Clerk, and Neon. Visitors interact with an agent that can search my experience, analyze job descriptions, and schedule meetings.',
+    demoSlug: null,
+    infoSlug: '/info/projects/personal-website',
+    tags: ['Next.js', 'Claude SDK', 'Clerk', 'Neon'],
+    stat: null,
   },
   {
     title: 'DocWow',
     description: 'AI-powered document understanding platform with RAG and structured extraction pipelines.',
-    slug: '/info/projects/docwow',
+    demoSlug: null,
+    infoSlug: '/info/projects/docwow',
     tags: ['RAG', 'LLMs', 'Document AI'],
+    stat: null,
   },
 ];
 
@@ -121,18 +127,33 @@ export default async function HomePage() {
           {/* Projects */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Projects</h2>
-            <div className={styles.projectGrid}>
-              {PROJECTS.map((project) => (
-                <Link key={project.slug} href={project.slug} className={styles.projectCard}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDesc}>{project.description}</p>
-                  <div className={styles.tagRow}>
-                    {project.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
-                    ))}
-                  </div>
-                </Link>
-              ))}
+            <div className={styles.projectCarousel}>
+              {PROJECTS.map((project) => {
+                const href = project.demoSlug ?? project.infoSlug;
+                return (
+                  <Link key={project.infoSlug} href={href} className={styles.projectCard}>
+                    <div className={styles.projectCardTop}>
+                      <div className={styles.projectCardHeader}>
+                        <h3 className={styles.projectTitle}>{project.title}</h3>
+                        {project.demoSlug && (
+                          <span className={styles.liveBadge}>Live Demo</span>
+                        )}
+                      </div>
+                      <p className={styles.projectDesc}>{project.description}</p>
+                    </div>
+                    <div className={styles.projectCardBottom}>
+                      {project.stat && (
+                        <span className={styles.projectStat}>{project.stat}</span>
+                      )}
+                      <div className={styles.tagRow}>
+                        {project.tags.map((tag) => (
+                          <span key={tag} className={styles.tag}>{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
 

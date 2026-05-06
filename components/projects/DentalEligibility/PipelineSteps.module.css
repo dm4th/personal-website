@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 24px;
+}
+
+.heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 14px;
+  color: #c5c5c5;
+}

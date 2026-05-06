@@ -1,0 +1,233 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import styles from './ResultsCard.module.css';
+import DeterminationBadge from './DeterminationBadge';
+import PipelineSteps from './PipelineSteps';
+import type { DemoState } from '@/lib/projects/dental-eligibility/types';
+
+type Props = {
+  state: DemoState;
+  totalCases: number;
+  approvalState: 'pending' | 'approved';
+  onApprove: () => void;
+  onClear: () => void;
+};
+
+export default function ResultsCard({ state, totalCases, approvalState, onApprove, onClear }: Props) {
+  const [denyStep, setDenyStep] = useState<'idle' | 'form' | 'submitted'>('idle');
+  const [denyReason, setDenyReason] = useState('');
+  const [showToast, setShowToast] = useState(false);
+
+  // reset deny state when a new result comes in
+  useEffect(() => {
+    setDenyStep('idle');
+    setDenyReason('');
+    setShowToast(false);
+  }, [state]);
+
+  const handleDenySubmit = () => {
+    setDenyStep('submitted');
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3500);
+  };
+
+  if (state.status === 'idle') {
+    return (
+      <div className={`${styles.card} ${styles.idle}`}>
+        <div className={styles.idleContent}>
+          <div className={styles.idleIcon}>⚕</div>
+          <p className={styles.idleText}>Enter procedure details and run an eligibility check.</p>
+          <p className={styles.idleHint}>The system searches the verified case library first. Novel cases are synthesized by GPT-4o and routed for human review.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (state.status === 'loading') {
+    return (
+      <div className={`${styles.card} ${styles.loading}`}>
+        <PipelineSteps totalCases={totalCases} />
+      </div>
+    );
+  }
+
+  if (state.status === 'error') {
+    return (
+      <div className={`${styles.card} ${styles.error}`}>
+        <div className={styles.errorIcon}>⚠</div>
+        <p className={styles.errorText}>{state.message}</p>
+      </div>
+    );
+  }
+
+  const { result } = state;
+  const { determination, path, similar_cases } = result;
+  const isExactMatch = path === 'exact_match';
+
+  const coverageDisplay = (
+    <div className={styles.coverageBlock}>
+      <div className={styles.coverageRow}>
+        <DeterminationBadge covered={determination.covered} confidence={isExactMatch ? 1 : determination.confidence} />
+        {determination.coverage_pct > 0 && (
+          <span className={styles.pctLabel}>
+            {determination.coverage_pct}% plan · {determination.patient_responsibility_pct}% patient
+          </span>
+        )}
+      </div>
+      {determination.estimated_benefit !== null && determination.covered && (
+        <div className={styles.benefit}>
+          Estimated benefit: <strong>${determination.estimated_benefit.toLocaleString()}</strong>
+        </div>
+      )}
+      {determination.flags.length > 0 && (
+        <div className={styles.flagsList}>
+          {determination.flags.map((flag) => (
+            <span key={flag} className={styles.flag}>
+              {flag.replace(/_/g, ' ')}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
+  // Exact match — auto-approved, no review needed
+  if (isExactMatch) {
+    return (
+      <div className={styles.card}>
+        <div className={styles.stack}>
+          <div className={styles.statusBadge} data-status="approved">
+            ✓ Auto-Approved
+          </div>
+          <p className={styles.statusNote}>
+            This claim matches a previously verified determination. No review required.
+          </p>
+          {coverageDisplay}
+          <button className={styles.clearBtn} onClick={onClear}>
+            Clear — next claim →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Hybrid RAG — approved by user this session
+  if (approvalState === 'approved') {
+    return (
+      <div className={styles.card}>
+        <div className={styles.stack}>
+          <div className={styles.statusBadge} data-status="approved">
+            ✓ Approved — Added to Library
+          </div>
+          <p className={styles.statusNote}>
+            This determination has been added to your session library. Future identical claims will auto-approve.
+          </p>
+          {coverageDisplay}
+          <button className={styles.clearBtn} onClick={onClear}>
+            Clear — next claim →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Hybrid RAG — deny form showing
+  if (denyStep === 'form') {
+    return (
+      <div className={styles.card}>
+        <div className={styles.stack}>
+          <div className={styles.statusBadge} data-status="review">
+            ✗ Determination Incorrect
+          </div>
+          {coverageDisplay}
+          <div className={styles.denyForm}>
+            <label className={styles.denyLabel}>Why is this determination incorrect?</label>
+            <textarea
+              className={styles.denyTextarea}
+              placeholder="Describe what was wrong with the determination..."
+              value={denyReason}
+              onChange={(e) => setDenyReason(e.target.value)}
+              rows={4}
+            />
+            <div className={styles.denyActions}>
+              <button
+                className={styles.submitFeedbackBtn}
+                onClick={handleDenySubmit}
+                disabled={!denyReason.trim()}
+              >
+                Submit Feedback
+              </button>
+              <button className={styles.cancelBtn} onClick={() => setDenyStep('idle')}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+        {showToast && (
+          <div className={styles.toast}>
+            Thank you for your feedback. It has been noted.
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Hybrid RAG — feedback submitted
+  if (denyStep === 'submitted') {
+    return (
+      <div className={styles.card}>
+        <div className={styles.stack}>
+          <div className={styles.statusBadge} data-status="review">
+            ✗ Feedback Submitted
+          </div>
+          <p className={styles.statusNote}>
+            Thank you — your correction has been noted. This determination will not be added to the library.
+          </p>
+          {coverageDisplay}
+          <button className={styles.clearBtn} onClick={onClear}>
+            Clear — next claim →
+          </button>
+        </div>
+        {showToast && (
+          <div className={styles.toast}>
+            Feedback noted. Thank you for improving the system.
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Hybrid RAG — pending review (main review state)
+  return (
+    <div className={styles.card}>
+      <div className={styles.stack}>
+        <div className={styles.statusBadge} data-status="review">
+          ⚠ Review Required
+        </div>
+        <p className={styles.statusNote}>
+          This claim is new to the verified library. GPT-4o synthesized a determination using {similar_cases.length} similar verified {similar_cases.length === 1 ? 'case' : 'cases'} as context. Please review before approving.
+        </p>
+
+        {coverageDisplay}
+
+        <div className={styles.reasoningSection}>
+          <span className={styles.reasoningLabel}>Determination Reasoning</span>
+          <p className={styles.reasoningText}>{determination.reasoning}</p>
+        </div>
+
+        <div className={styles.reviewActions}>
+          <p className={styles.reviewPrompt}>Is this determination correct?</p>
+          <div className={styles.reviewButtons}>
+            <button className={styles.approveBtn} onClick={onApprove}>
+              ✓ Approve — Add to verified library
+            </button>
+            <button className={styles.denyBtn} onClick={() => setDenyStep('form')}>
+              ✗ Deny
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

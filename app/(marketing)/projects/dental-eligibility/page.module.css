@@ -1,0 +1,5 @@
+.page {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+  background: #0a0a0a;
+}

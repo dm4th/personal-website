@@ -1,0 +1,120 @@
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: #333;
+}
+
+.session {
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.code {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: var(--accent);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.payer {
+  font-size: 12px;
+  color: var(--subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+.sessionBadge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--accent);
+}
+
+.outcome {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.outcomeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.covered {
+  background: var(--success);
+}
+
+.denied {
+  background: #ef4444;
+}
+
+.outcomeLabel {
+  font-size: 11px;
+  color: var(--subtle);
+  white-space: nowrap;
+}
+
+.confidence {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.snippet {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.useBtn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.useBtn:hover {
+  color: var(--accent-hover);
+}

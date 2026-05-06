@@ -135,6 +135,7 @@ export default function SiteHeader({ allInfoData }: Props) {
             })}
           </Dropdown>
         ))}
+        <Link href="/projects" className={styles.navLink}>Live Demos</Link>
       </div>
 
       <div className={styles.right}>
