@@ -244,6 +244,43 @@
   flex-shrink: 0;
 }
 
+.youreHereBadge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  flex-shrink: 0;
+}
+
+.projectCardBtn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-shrink: 0;
+  width: 280px;
+  scroll-snap-align: start;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.projectCardBtn:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
 .projectTitle {
   font-size: 0.9375rem;
   font-weight: 600;

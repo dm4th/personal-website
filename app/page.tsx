@@ -4,6 +4,7 @@ import { getSortedInfo } from '@/lib/content/infoDocs';
 import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
 import AgentPanel from '@/components/agent/AgentPanel';
+import WebsiteProjectCard from './WebsiteProjectCard';
 import styles from './page.module.css';
 
 const ROLES = [
@@ -42,7 +43,7 @@ const ROLES = [
 const PROJECTS = [
   {
     title: 'Dental Eligibility Intelligence',
-    description: 'Hybrid-RAG eligibility verification engine built in production at Thoughtful AI. 95%+ accuracy within two days. Exact matches bypass the LLM — approve results live to grow the case library.',
+    description: 'Hybrid-RAG eligibility verification engine built in production at Thoughtful AI. 95%+ accuracy within two days. Exact matches bypass the LLM; approve results live to grow the case library.',
     demoSlug: '/projects/dental-eligibility',
     infoSlug: '/info/career/thoughtful/dental-eligibility-intelligence',
     tags: ['Hybrid RAG', 'GPT-4o', 'Healthcare RCM'],
@@ -50,7 +51,7 @@ const PROJECTS = [
   },
   {
     title: 'Agent-First Personal Website',
-    description: 'This site — built with Claude Agent SDK, Clerk, and Neon. Visitors interact with an agent that can search my experience, analyze job descriptions, and schedule meetings.',
+    description: 'This site, built with Claude Agent SDK, Clerk, and Neon. Visitors interact with an agent that can search my experience, analyze job descriptions, and schedule meetings.',
     demoSlug: null,
     infoSlug: '/info/projects/personal-website',
     tags: ['Next.js', 'Claude SDK', 'Clerk', 'Neon'],
@@ -129,6 +130,16 @@ export default async function HomePage() {
             <h2 className={styles.sectionTitle}>Projects</h2>
             <div className={styles.projectCarousel}>
               {PROJECTS.map((project) => {
+                if (project.demoSlug === null && project.infoSlug === '/info/projects/personal-website') {
+                  return (
+                    <WebsiteProjectCard
+                      key={project.infoSlug}
+                      title={project.title}
+                      description={project.description}
+                      tags={project.tags}
+                    />
+                  );
+                }
                 const href = project.demoSlug ?? project.infoSlug;
                 return (
                   <Link key={project.infoSlug} href={href} className={styles.projectCard}>
