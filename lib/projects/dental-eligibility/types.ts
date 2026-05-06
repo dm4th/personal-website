@@ -38,6 +38,7 @@ export type EligibilityCase = {
   determination: CaseDetermination;
   verified: true;
   embedding: number[];
+  query_string: string;
   source: 'base' | 'session';
 };
 
@@ -47,6 +48,7 @@ export type SessionCase = {
   input: CaseInput;
   determination: CaseDetermination;
   embedding: number[];
+  query_string: string;
   source: 'session';
 };
 
@@ -76,6 +78,7 @@ export type EligibilityResponse = {
   query_embedding: number[];
   query_string: string;
   top_similarity: number;
+  threshold: number;
   field_comparison: FieldComparison[];
   similar_cases: SimilarCase[];
   matched_case_id?: string;

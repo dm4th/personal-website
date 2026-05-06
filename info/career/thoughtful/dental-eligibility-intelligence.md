@@ -27,10 +27,26 @@ Human billing specialists learn to read these responses over years. The question
 
 The system uses what I call a hybrid-RAG approach:
 
-1. **Embedding**: Each eligibility query (procedure code + description + payer + coverage text) gets embedded using OpenAI's text-embedding-3-small model
+1. **Embedding**: Each eligibility query (procedure code + description + payer + coverage text + patient financials) gets embedded using OpenAI's text-embedding-3-small model
 2. **Similarity search**: The query embedding is compared against a library of previously verified cases using cosine similarity in pgvector
 3. **Exact-match bypass**: If similarity exceeds a threshold (~0.97), the system returns the stored determination without calling the LLM. No tokens consumed. No latency from generation
 4. **RAG + synthesis**: For novel cases, the top-k most similar verified cases are assembled as few-shot context, and GPT-3.5 (now GPT-4o in the demo) synthesizes a structured determination
+
+### Why Exact String Matching Makes This Hybrid-RAG (Not Just RAG)
+
+This is the core architectural insight — and what makes the system meaningfully different from standard retrieval-augmented generation.
+
+Plain RAG always calls the retrieval model and usually calls the LLM. The "hybrid" here means the system has two distinct code paths: one that's fully deterministic and one that uses a model.
+
+The routing decision is made by comparing the exact query string against stored cases first, before any embedding computation. If the query text is identical to a previously verified case, the system returns similarity = 1.0 and the determination directly — no cosine computation, no LLM call, no token spend. The OpenAI embedding API is non-deterministic (the same input text returns slightly different float vectors across API calls), so floating-point cosine similarity alone is an unreliable signal for "this is the exact same query." String equality is both faster and more reliable.
+
+The practical consequences:
+
+- **Token efficiency**: Once a case is verified, re-querying it costs zero LLM tokens. At scale, this is significant. If 80% of queries are repeat cases (common in dental billing where the same procedure codes appear constantly), 80% of queries never touch an LLM.
+- **Zero hallucination on known cases**: The determination is retrieved, not generated. There is no probability distribution over outputs — the answer is the stored, human-verified answer.
+- **Compounding advantage**: Every human-approved determination expands the exact-match library. The system gets more deterministic over time, not less. The LLM is invoked less frequently as the library grows.
+
+The demo makes this visible. Approve a hybrid-RAG result and it gets added to your session library. Re-run the same query and it routes to exact match — 100.0% similarity, LLM bypassed. You're watching the compounding happen in real time.
 
 ### The Determinism Principle
 

@@ -7,9 +7,8 @@ type Props = {
   topMatchLabel: string | null;
   path: 'exact_match' | 'hybrid_rag';
   fieldComparison: FieldComparison[];
+  threshold: number;
 };
-
-const THRESHOLD = 0.97;
 
 function formatVal(field: FieldComparison['field'], val: number | boolean): string {
   if (field === 'plan_year_remaining') return `$${(val as number).toLocaleString()}`;
@@ -24,10 +23,10 @@ function formatQueryString(qs: string): string {
     .replace(' Deductible met:', '\nDeductible met:');
 }
 
-export default function LookupTrace({ queryString, topSimilarity, topMatchLabel, path, fieldComparison }: Props) {
+export default function LookupTrace({ queryString, topSimilarity, topMatchLabel, path, fieldComparison, threshold }: Props) {
   const simPct = topSimilarity * 100;
-  const thresholdPct = THRESHOLD * 100;
-  const aboveThreshold = topSimilarity >= THRESHOLD;
+  const thresholdPct = threshold * 100;
+  const aboveThreshold = topSimilarity >= threshold;
   const allFieldsMatch = fieldComparison.every((f) => f.matched);
   const isExact = path === 'exact_match';
 
@@ -86,9 +85,9 @@ export default function LookupTrace({ queryString, topSimilarity, topMatchLabel,
 
           <div className={styles.gateResult}>
             {aboveThreshold ? (
-              <span className={styles.gatePass}>✓ {simPct.toFixed(1)}% ≥ {thresholdPct.toFixed(0)}% — threshold passed</span>
+              <span className={styles.gatePass}>✓ {simPct.toFixed(1)}% ≥ {thresholdPct.toFixed(0)}%: threshold passed</span>
             ) : (
-              <span className={styles.gateFail}>✗ {simPct.toFixed(1)}% &lt; {thresholdPct.toFixed(0)}% — below threshold → GPT-4o</span>
+              <span className={styles.gateFail}>✗ {simPct.toFixed(1)}% &lt; {thresholdPct.toFixed(0)}%: below threshold, routing to GPT-4o</span>
             )}
           </div>
         </div>
@@ -131,8 +130,8 @@ export default function LookupTrace({ queryString, topSimilarity, topMatchLabel,
 
               <div className={styles.fieldResult}>
                 {isExact
-                  ? <span className={styles.gatePass}>✓ All fields matched — LLM bypassed</span>
-                  : <span className={styles.gateFail}>✗ Field mismatch — routed to GPT-4o synthesis</span>
+                  ? <span className={styles.gatePass}>✓ All fields matched, LLM bypassed</span>
+                  : <span className={styles.gateFail}>✗ Field mismatch, routed to GPT-4o synthesis</span>
                 }
               </div>
             </div>

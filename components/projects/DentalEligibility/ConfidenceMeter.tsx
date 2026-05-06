@@ -15,7 +15,7 @@ function getLabel(confidence: number): string {
   if (confidence >= 0.9) return 'High';
   if (confidence >= 0.75) return 'Good';
   if (confidence >= 0.5) return 'Moderate';
-  return 'Low — Human review recommended';
+  return 'Low, human review recommended';
 }
 
 export default function ConfidenceMeter({ confidence }: Props) {

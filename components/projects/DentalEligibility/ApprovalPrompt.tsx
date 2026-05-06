@@ -21,8 +21,8 @@ export default function ApprovalPrompt({ onApprove, onDismiss, approved }: Props
   return (
     <div className={styles.wrapper}>
       <p className={styles.prompt}>
-        Is this determination correct? Approving it adds the case to your session library —
-        the next identical query will match exactly without calling the LLM.
+        Is this determination correct? Approving it adds the case to your session library.
+        The next identical query will match exactly without calling the LLM.
       </p>
       <div className={styles.actions}>
         <button className={styles.approveBtn} onClick={onApprove}>

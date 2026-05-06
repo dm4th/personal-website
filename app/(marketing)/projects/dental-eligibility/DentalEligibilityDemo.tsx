@@ -38,6 +38,7 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
   const [approvalState, setApprovalState] = useState<'pending' | 'approved'>('pending');
   const [lastResult, setLastResult] = useState<EligibilityResponse | null>(null);
   const [lastInput, setLastInput] = useState<CaseInput | null>(null);
+  const [threshold, setThreshold] = useState<number>(100);
 
   const sessionCasesDisplay = sessionCases.map(({ embedding: _e, ...rest }) => rest);
 
@@ -61,6 +62,7 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
         body: JSON.stringify({
           ...formValues,
           session_cases: sessionCases,
+          threshold: threshold / 100,
         }),
       });
 
@@ -90,6 +92,7 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
       input: lastInput,
       determination: lastResult.determination,
       embedding: lastResult.query_embedding,
+      query_string: lastResult.query_string,
       source: 'session',
     };
 
@@ -128,6 +131,8 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
               onChange={setFormValues}
               onSubmit={handleSubmit}
               loading={demoState.status === 'loading'}
+              threshold={threshold}
+              onThresholdChange={setThreshold}
             />
           </div>
         </div>
@@ -138,6 +143,7 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
             state={demoState}
             totalCases={totalCases}
             approvalState={approvalState}
+            threshold={threshold / 100}
             onApprove={handleApprove}
             onClear={handleClear}
           />

@@ -12,6 +12,7 @@ type Props = {
   state: DemoState;
   totalCases: number;
   approvalState: 'pending' | 'approved';
+  threshold: number;
   onApprove: () => void;
   onClear: () => void;
 };
@@ -43,7 +44,7 @@ function SimilarCaseRow({ sc, index }: { sc: SimilarCase; index: number }) {
   );
 }
 
-export default function ResultsCard({ state, totalCases, approvalState, onApprove, onClear }: Props) {
+export default function ResultsCard({ state, totalCases, approvalState, threshold, onApprove, onClear }: Props) {
   const [denyStep, setDenyStep] = useState<'idle' | 'form' | 'submitted'>('idle');
   const [denyReason, setDenyReason] = useState('');
   const [showToast, setShowToast] = useState(false);
@@ -116,7 +117,7 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
 
       {determination.covered && determination.coverage_pct === 100 && (
         <div className={styles.benefit}>
-          <strong>100% covered</strong> — no patient cost
+          <strong>100% covered</strong>, no patient cost
         </div>
       )}
 
@@ -159,6 +160,8 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             This claim matches a previously verified determination. No review required.
           </p>
 
+          {coverageDisplay}
+
           <ResolvedPipeline
             queryString={result.query_string}
             totalCases={totalCases}
@@ -166,9 +169,8 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             topMatchLabel={matchedCase?.scenario_label ?? similar_cases[0]?.scenario_label ?? null}
             path={path}
             fieldComparison={result.field_comparison}
+            threshold={threshold}
           />
-
-          {coverageDisplay}
 
           <LookupTrace
             queryString={result.query_string}
@@ -176,10 +178,11 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             topMatchLabel={matchedCase?.scenario_label ?? similar_cases[0]?.scenario_label ?? null}
             path={path}
             fieldComparison={result.field_comparison}
+            threshold={threshold}
           />
 
           <button className={styles.clearBtn} onClick={onClear}>
-            Clear — next claim →
+            Next Claim →
           </button>
         </div>
       </div>
@@ -192,14 +195,14 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
       <div className={styles.card}>
         <div className={styles.stack}>
           <div className={styles.statusBadge} data-status="approved">
-            ✓ Approved — Added to Library
+            ✓ Approved: Added to Library
           </div>
           <p className={styles.statusNote}>
             This determination has been added to your session library. Future identical claims will auto-approve.
           </p>
           {coverageDisplay}
           <button className={styles.clearBtn} onClick={onClear}>
-            Clear — next claim →
+            Next Claim →
           </button>
         </div>
       </div>
@@ -215,11 +218,11 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             ✗ Feedback Submitted
           </div>
           <p className={styles.statusNote}>
-            Thank you — your correction has been noted. This determination will not be added to the library.
+            Thank you. Your correction has been noted. This determination will not be added to the library.
           </p>
           {coverageDisplay}
           <button className={styles.clearBtn} onClick={onClear}>
-            Clear — next claim →
+            Next Claim →
           </button>
         </div>
         {showToast && (
@@ -278,6 +281,8 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           GPT-4o synthesized this determination using {similar_cases.length} similar verified {similar_cases.length === 1 ? 'case' : 'cases'} as context. Please review before approving.
         </p>
 
+        {coverageDisplay}
+
         <ResolvedPipeline
           queryString={result.query_string}
           totalCases={totalCases}
@@ -285,9 +290,8 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           topMatchLabel={similar_cases[0]?.scenario_label ?? null}
           path={path}
           fieldComparison={result.field_comparison}
+          threshold={threshold}
         />
-
-        {coverageDisplay}
 
         {similar_cases.length > 0 && (
           <div className={styles.similarSection}>
@@ -311,13 +315,14 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           topMatchLabel={similar_cases[0]?.scenario_label ?? null}
           path={path}
           fieldComparison={result.field_comparison}
+          threshold={threshold}
         />
 
         <div className={styles.reviewActions}>
           <p className={styles.reviewPrompt}>Is this determination correct?</p>
           <div className={styles.reviewButtons}>
             <button className={styles.approveBtn} onClick={onApprove}>
-              ✓ Approve — Add to verified library
+              ✓ Approve: Add to verified library
             </button>
             <button className={styles.denyBtn} onClick={() => setDenyStep('form')}>
               ✗ Deny

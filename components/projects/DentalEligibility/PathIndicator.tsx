@@ -21,7 +21,7 @@ export default function PathIndicator(props: Props) {
         <div className={styles.main}>
           <span className={styles.icon}>🔒</span>
           <span className={styles.text}>
-            {isSession ? 'Exact Match — from your session!' : 'Exact Match — LLM bypassed'}
+            {isSession ? 'Exact Match: from your session!' : 'Exact Match: LLM bypassed'}
           </span>
           <span className={`${styles.badge} ${styles.badgeGreen}`}>
             {isSession ? 'Session' : 'Library'}
@@ -39,7 +39,7 @@ export default function PathIndicator(props: Props) {
     <div className={`${styles.indicator} ${styles.hybridRag}`}>
       <div className={styles.main}>
         <span className={styles.icon}>✦</span>
-        <span className={styles.text}>Hybrid RAG — GPT-4o synthesis</span>
+        <span className={styles.text}>Hybrid RAG: GPT-4o synthesis</span>
         <span className={`${styles.badge} ${styles.badgeBlue}`}>Live inference</span>
       </div>
       <div className={styles.sub}>

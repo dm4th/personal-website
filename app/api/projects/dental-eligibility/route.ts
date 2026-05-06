@@ -47,6 +47,7 @@ const SessionCaseSchema = z.object({
     frequency_limit: FrequencyLimitSchema,
   }),
   embedding: z.array(z.number()),
+  query_string: z.string().default(''),
   source: z.literal('session'),
 });
 
@@ -60,9 +61,8 @@ const RequestSchema = z.object({
   deductible_met: z.boolean(),
   last_appointment_date: z.string().nullable().optional().default(null),
   session_cases: z.array(SessionCaseSchema).optional().default([]),
+  threshold: z.number().min(0).max(1).optional().default(1.0),
 });
-
-const EXACT_MATCH_THRESHOLD = 0.97;
 
 function monthsSince(dateStr: string): number {
   const last = new Date(dateStr);
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation error', detail: parsed.error.message }, { status: 400 });
   }
 
-  const { session_cases, ...input } = parsed.data;
+  const { session_cases, threshold, ...input } = parsed.data;
   const sessionCases = session_cases as SessionCase[];
 
   const queryString = buildQueryString(input);
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Embedding generation failed', detail: message }, { status: 500 });
   }
 
-  const { topResults, topSimilarity, topCase } = findTopK(queryEmbedding, baseCases, sessionCases, 3);
+  const { topResults, topSimilarity, topCase } = findTopK(queryEmbedding, queryString, baseCases, sessionCases, 3);
 
   const fieldComparison: FieldComparison[] = topCase ? [
     { field: 'patient_age', label: 'Patient Age', query_val: input.patient_age, stored_val: topCase.input.patient_age, matched: input.patient_age === topCase.input.patient_age },
@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
     topCase.input.plan_year_remaining === input.plan_year_remaining &&
     topCase.input.deductible_met === input.deductible_met;
 
-  if (topSimilarity >= EXACT_MATCH_THRESHOLD && topCase && inputFieldsMatchCase) {
+  if (topSimilarity >= threshold && topCase && inputFieldsMatchCase) {
     const determination = { ...topCase.determination, flags: [...topCase.determination.flags] };
     const { age_limit, frequency_limit } = determination;
 
@@ -164,6 +164,7 @@ export async function POST(req: NextRequest) {
       query_embedding: queryEmbedding,
       query_string: queryString,
       top_similarity: topSimilarity,
+      threshold,
       field_comparison: fieldComparison,
       similar_cases: topResults,
       matched_case_id: topCase.id,
@@ -200,6 +201,7 @@ export async function POST(req: NextRequest) {
     query_embedding: queryEmbedding,
     query_string: queryString,
     top_similarity: topSimilarity,
+    threshold,
     field_comparison: fieldComparison,
     similar_cases: topResults,
   });

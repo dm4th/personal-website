@@ -54,9 +54,11 @@ type Props = {
   onChange: (values: CaseInput) => void;
   onSubmit: () => void;
   loading: boolean;
+  threshold: number;
+  onThresholdChange: (v: number) => void;
 };
 
-export default function InputForm({ values, onChange, onSubmit, loading }: Props) {
+export default function InputForm({ values, onChange, onSubmit, loading, threshold, onThresholdChange }: Props) {
   const set = <K extends keyof CaseInput>(key: K, value: CaseInput[K]) =>
     onChange({ ...values, [key]: value });
 
@@ -183,6 +185,34 @@ export default function InputForm({ values, onChange, onSubmit, loading }: Props
           max={new Date().toISOString().split('T')[0]}
           onChange={(e) => set('last_appointment_date', e.target.value || null)}
         />
+      </div>
+
+      <div className={styles.thresholdSection}>
+        <div className={styles.thresholdHeader}>
+          <label className={styles.label}>
+            Auto-Approval Threshold: <strong>{threshold}%</strong>
+          </label>
+          <div className={styles.tooltipWrapper}>
+            <span className={styles.tooltipTrigger}>?</span>
+            <div className={styles.tooltip}>
+              As you grow more confident in the AI&apos;s ability to determine eligibility and benefits, you can lower the auto-approval threshold to remove the human-in-the-loop component of the AI decision making. At 100%, only exact query matches bypass review. At lower values, near-identical cases also auto-approve.
+            </div>
+          </div>
+        </div>
+        <input
+          className={styles.slider}
+          type="range"
+          min={50}
+          max={100}
+          step={1}
+          value={threshold}
+          style={{ '--fill-pct': `${(threshold - 50) / 50 * 100}%` } as React.CSSProperties}
+          onChange={(e) => onThresholdChange(parseInt(e.target.value, 10))}
+        />
+        <div className={styles.sliderLabels}>
+          <span>50%: Trust AI broadly</span>
+          <span>100%: Exact match only</span>
+        </div>
       </div>
 
       <button
