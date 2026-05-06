@@ -32,7 +32,7 @@ const SessionCaseSchema = z.object({
     coverage_text: z.string(),
     plan_year_remaining: z.number(),
     deductible_met: z.boolean(),
-    waiting_period_met: z.boolean(),
+    last_appointment_date: z.string().nullable(),
   }),
   determination: z.object({
     covered: z.boolean(),
@@ -58,11 +58,22 @@ const RequestSchema = z.object({
   coverage_text: z.string().min(1),
   plan_year_remaining: z.number().min(0),
   deductible_met: z.boolean(),
-  waiting_period_met: z.boolean(),
+  last_appointment_date: z.string().nullable().optional().default(null),
   session_cases: z.array(SessionCaseSchema).optional().default([]),
 });
 
 const EXACT_MATCH_THRESHOLD = 0.97;
+
+function monthsSince(dateStr: string): number {
+  const last = new Date(dateStr);
+  const now = new Date();
+  return (now.getFullYear() - last.getFullYear()) * 12 + (now.getMonth() - last.getMonth());
+}
+
+function isFrequencyMet(lastAppointmentDate: string | null, frequencyMonths: number): boolean {
+  if (!lastAppointmentDate) return true;
+  return monthsSince(lastAppointmentDate) >= frequencyMonths;
+}
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -94,7 +105,15 @@ export async function POST(req: NextRequest) {
 
   const { topResults, topSimilarity, topCase } = findTopK(queryEmbedding, baseCases, sessionCases, 3);
 
-  if (topSimilarity >= EXACT_MATCH_THRESHOLD && topCase) {
+  // Variable fields (age, financials) are explicitly compared — embedding similarity alone can't
+  // distinguish these when the coverage text is identical, since numeric tokens have weak vector weight.
+  const inputFieldsMatchCase =
+    topCase &&
+    topCase.input.patient_age === input.patient_age &&
+    topCase.input.plan_year_remaining === input.plan_year_remaining &&
+    topCase.input.deductible_met === input.deductible_met;
+
+  if (topSimilarity >= EXACT_MATCH_THRESHOLD && topCase && inputFieldsMatchCase) {
     const determination = { ...topCase.determination, flags: [...topCase.determination.flags] };
     const { age_limit, frequency_limit } = determination;
 
@@ -114,19 +133,21 @@ export async function POST(req: NextRequest) {
       determination.covered = topCase.determination.covered;
     }
 
-    // Frequency / waiting period check
-    if (frequency_limit.type === 'months' && !input.waiting_period_met) {
-      determination.covered = false;
-      if (!determination.flags.includes('waiting_period_active')) {
-        determination.flags.push('waiting_period_active');
+    // Frequency / waiting period check — computed from last_appointment_date + frequency_limit
+    if (frequency_limit.type === 'months') {
+      const frequencyMet = isFrequencyMet(input.last_appointment_date ?? null, frequency_limit.months);
+      if (!frequencyMet) {
+        determination.covered = false;
+        if (!determination.flags.includes('waiting_period_active')) {
+          determination.flags.push('waiting_period_active');
+        }
+        determination.flags = determination.flags.filter((f) => f !== 'waiting_period_not_met');
+      } else {
+        determination.flags = determination.flags.filter(
+          (f) => f !== 'waiting_period_active' && f !== 'waiting_period_not_met' && f !== 'frequency_limit_triggered'
+        );
+        determination.covered = topCase.determination.covered;
       }
-      determination.flags = determination.flags.filter((f) => f !== 'waiting_period_not_met');
-    } else if (frequency_limit.type === 'months' && input.waiting_period_met) {
-      // Waiting period satisfied — restore base coverage, remove stale flags
-      determination.flags = determination.flags.filter(
-        (f) => f !== 'waiting_period_active' && f !== 'waiting_period_not_met' && f !== 'frequency_limit_triggered'
-      );
-      determination.covered = topCase.determination.covered;
     }
 
     return NextResponse.json({
@@ -154,7 +175,6 @@ export async function POST(req: NextRequest) {
     if (typeof determination.covered !== 'boolean') {
       throw new Error('Invalid determination structure from LLM');
     }
-    // Ensure frequency_limit is present (older LLM responses may omit it)
     if (!determination.frequency_limit) {
       determination.frequency_limit = { type: 'none' };
     }

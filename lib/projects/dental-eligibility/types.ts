@@ -6,7 +6,7 @@ export type CaseInput = {
   coverage_text: string;
   plan_year_remaining: number;
   deductible_met: boolean;
-  waiting_period_met: boolean;
+  last_appointment_date: string | null;
 };
 
 export type AgeLimit =

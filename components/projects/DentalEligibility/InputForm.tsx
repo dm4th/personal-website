@@ -174,18 +174,15 @@ export default function InputForm({ values, onChange, onSubmit, loading }: Props
         </div>
       </div>
 
-      <div className={styles.row}>
-        <div className={styles.field}>
-          <label className={styles.label}>Waiting Period Met?</label>
-          <select
-            className={styles.input}
-            value={values.waiting_period_met ? 'yes' : 'no'}
-            onChange={(e) => set('waiting_period_met', e.target.value === 'yes')}
-          >
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
+      <div className={styles.field}>
+        <label className={styles.label}>Last Appointment Date <span className={styles.labelHint}>(leave blank if no prior service)</span></label>
+        <input
+          className={styles.input}
+          type="date"
+          value={values.last_appointment_date ?? ''}
+          max={new Date().toISOString().split('T')[0]}
+          onChange={(e) => set('last_appointment_date', e.target.value || null)}
+        />
       </div>
 
       <button

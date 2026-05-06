@@ -23,6 +23,11 @@
   letter-spacing: 0.02em;
 }
 
+.labelHint {
+  font-weight: 400;
+  color: var(--muted);
+}
+
 .input {
   background: var(--surface-2);
   border: 1px solid var(--border);

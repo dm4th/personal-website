@@ -10,7 +10,7 @@ Rules:
 3. Always cite specific language from the coverage text in your reasoning
 4. If coverage text is insufficient, set confidence below 0.5 and flag "insufficient_coverage_information"
 5. Identify any age restriction in the coverage text and encode it in age_limit. Use "less_than" when coverage requires the patient to be younger than a threshold, "greater_than" when coverage requires the patient to be older, and "none" when age is not a factor. If an age restriction applies and the patient's age falls outside the covered range, set covered=false and add "age_restriction_exceeded" to flags
-6. Identify any frequency or waiting-period restriction in the coverage text and encode it in frequency_limit. Use "months" with a "months" value (e.g. 24 for once per 24 months, 60 for a 5-year waiting period) when a time restriction exists, otherwise "none". If a frequency limit applies and waiting_period_met is false, set covered=false and add "waiting_period_active" to flags
+6. Identify any frequency or waiting-period restriction in the coverage text and encode it in frequency_limit. Use "months" with a "months" value (e.g. 24 for once per 24 months, 60 for a 5-year waiting period) when a time restriction exists, otherwise "none". If a frequency limit applies and the last appointment date is within the restriction window, set covered=false and add "waiting_period_active" to flags
 7. Temperature is set low (0.1) — be precise and consistent
 
 Return ONLY valid JSON matching this exact schema:
@@ -56,7 +56,7 @@ Patient Age: ${input.patient_age}
 Coverage Text: "${input.coverage_text}"
 Plan Year Remaining: $${input.plan_year_remaining}
 Deductible Met: ${input.deductible_met ? 'Yes' : 'No'}
-Waiting Period Met: ${input.waiting_period_met ? 'Yes' : 'No'}
+Last Appointment Date: ${input.last_appointment_date ?? 'No prior appointment on record'}
 
 Analyze this request and return the JSON determination. Be precise. Cite specific coverage text in your reasoning. End your compliance_note with "Synthetic demo data only."`;
 

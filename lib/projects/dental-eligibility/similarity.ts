@@ -18,8 +18,19 @@ export function buildQueryString(input: {
   procedure_description: string;
   payer: string;
   coverage_text: string;
+  patient_age: number;
+  plan_year_remaining: number;
+  deductible_met: boolean;
 }): string {
-  return `${input.procedure_code} ${input.procedure_description} ${input.payer} ${input.coverage_text}`;
+  return [
+    input.procedure_code,
+    input.procedure_description,
+    input.payer,
+    input.coverage_text,
+    `Patient age: ${input.patient_age}`,
+    `Plan year remaining: $${input.plan_year_remaining}`,
+    `Deductible met: ${input.deductible_met ? 'yes' : 'no'}`,
+  ].join(' ');
 }
 
 export function findTopK(
