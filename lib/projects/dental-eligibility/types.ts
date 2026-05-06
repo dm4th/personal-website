@@ -6,11 +6,16 @@ export type CaseInput = {
   coverage_text: string;
   plan_year_remaining: number;
   deductible_met: boolean;
+  waiting_period_met: boolean;
 };
 
 export type AgeLimit =
   | { type: 'less_than'; age: number }
   | { type: 'greater_than'; age: number }
+  | { type: 'none' };
+
+export type FrequencyLimit =
+  | { type: 'months'; months: number }
   | { type: 'none' };
 
 export type CaseDetermination = {
@@ -23,6 +28,7 @@ export type CaseDetermination = {
   reasoning: string;
   compliance_note: string;
   age_limit: AgeLimit;
+  frequency_limit: FrequencyLimit;
 };
 
 export type EligibilityCase = {

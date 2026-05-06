@@ -9,7 +9,8 @@
       "patient_age": 34,
       "coverage_text": "Amalgam restorations: covered at 80% after deductible for basic restorative services. Annual maximum $1,500. Frequency limitation: once per tooth surface per 24 months. Deductible: $50 individual, waived for preventive services.",
       "plan_year_remaining": 1200,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -21,6 +22,9 @@
       "reasoning": "Procedure D2140 is a basic amalgam restoration explicitly listed as covered at 80% after deductible. Deductible is met. Annual maximum has $1,200 remaining — sufficient for a one-surface amalgam (average cost $120). No frequency flag triggered.",
       "compliance_note": "No PHI concerns. Standard basic restorative claim. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -1575,7 +1579,8 @@
       "patient_age": 51,
       "coverage_text": "Major restorative services including crowns may be covered at 50% after deductible subject to plan maximums. Coverage applies when dentist determines procedure is clinically necessary. Alternative benefit provisions may apply.",
       "plan_year_remaining": 800,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -1591,6 +1596,9 @@
       "reasoning": "Crown D2740 falls under major restorative, covered at 50%. However, deductible ($75 estimated) has not been met and must be applied first. 'Alternative benefit provisions may apply' is ambiguous — this language sometimes indicates the plan will pay for a less expensive alternative (e.g., an amalgam). Clinical necessity documentation recommended. Estimated benefit of $375 assumes $750 allowable after $0 deductible credit.",
       "compliance_note": "Alternative benefit provision language requires dentist to document why the porcelain crown is preferred over a less expensive alternative. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -3145,7 +3153,8 @@
       "patient_age": 42,
       "coverage_text": "Dental sealants: covered at 100% for patients age 15 and under, permanent molars and premolars only. Frequency: once per tooth every 36 months. Not covered for patients over age 15.",
       "plan_year_remaining": 950,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": false,
@@ -3161,6 +3170,9 @@
       "age_limit": {
         "type": "less_than",
         "age": 14
+      },
+      "frequency_limit": {
+        "type": "none"
       }
     },
     "verified": true,
@@ -4714,7 +4726,8 @@
       "patient_age": 28,
       "coverage_text": "Resin-based composites (posterior): covered at 80% after deductible as basic restorative. Annual maximum benefit: $1,500 per plan year. Deductible: $25 individual.",
       "plan_year_remaining": 45,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -4728,6 +4741,9 @@
       "reasoning": "D2391 covered at 80% as basic restorative. However, only $45 remains on the $1,500 annual maximum. A one-surface posterior composite averages $180-220. Plan will pay up to $45 (the remaining maximum), patient responsible for balance of the allowed amount plus the 20% copay on whatever the plan pays. Flag: annual maximum nearly exhausted.",
       "compliance_note": "Patient must be notified that their annual maximum is nearly exhausted before treatment. Remaining benefit capped at $45 regardless of procedure fee. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -6282,7 +6298,8 @@
       "patient_age": 45,
       "coverage_text": "Amalgam restorations: covered at 80% after deductible. Frequency limitation: replacement permitted after 60 months (5 years) if clinically necessary. New restorations on same tooth surface: once per 24 months. Deductible: $50 individual.",
       "plan_year_remaining": 750,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": false
     },
     "determination": {
       "covered": false,
@@ -6297,6 +6314,10 @@
       "compliance_note": "If dentist can document clinical necessity (e.g., existing restoration fractured), plan may allow an exception. Recommendation: submit with clinical notes and X-rays. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
+      },
+      "frequency_limit": {
+        "type": "months",
+        "months": 24
       }
     },
     "verified": true,
@@ -7850,7 +7871,8 @@
       "patient_age": 67,
       "coverage_text": "Basic dental services are generally covered subject to plan provisions. Members are encouraged to verify benefits prior to receiving services. Some procedures may require prior authorization. Coverage varies by plan and provider network.",
       "plan_year_remaining": 600,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": false,
@@ -7866,6 +7888,9 @@
       "reasoning": "Coverage text is insufficient to make a determination. 'Basic dental services generally covered' is too vague to confirm D7140 specifically. HMO plans often require in-network providers and prior authorization for oral surgery procedures. Cannot determine coverage percentage, deductible application, or if this payer classifies simple extractions as basic or surgical. Human review required before proceeding.",
       "compliance_note": "Do not proceed with treatment based on this determination. Contact payer directly to verify eligibility and obtain prior authorization if required. This is the correct protocol for low-confidence HMO determinations. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -9420,7 +9445,8 @@
       "patient_age": 38,
       "coverage_text": "Preventive services: covered at 100% with no deductible. Adult prophylaxis (D1110): twice per calendar year, minimum 6 months between visits. Covered in-network only.",
       "plan_year_remaining": 1500,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -9432,6 +9458,9 @@
       "reasoning": "Adult prophylaxis D1110 is explicitly covered at 100% with no deductible for preventive services. Annual maximum is not yet exhausted. No frequency flag (assuming this is the first or second cleaning of the year). Patient owes nothing in-network.",
       "compliance_note": "Must be rendered in-network. Patient responsible for full fee if out-of-network. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -10986,7 +11015,8 @@
       "patient_age": 52,
       "coverage_text": "Diagnostic X-rays: covered at 100% preventive benefit. Bitewing radiographs: once per 12 months for adults. Panoramic or full-mouth series: once per 36 months. No deductible for diagnostic services.",
       "plan_year_remaining": 1400,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -10998,6 +11028,9 @@
       "reasoning": "D0274 (4 bitewing images) is a standard diagnostic service covered at 100% with no deductible. Once per 12 months frequency — assuming this is the first set this year. Patient owes nothing.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -12552,7 +12585,8 @@
       "patient_age": 44,
       "coverage_text": "Endodontic services: covered at 50% after deductible as major restorative. Molar root canals (D3330): prior authorization required for procedures over $500. Annual maximum $2,000. Deductible: $50 individual.",
       "plan_year_remaining": 1800,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -12567,6 +12601,9 @@
       "reasoning": "D3330 falls under major endodontic, covered at 50%. Deductible ($50) has not been met and applies. Prior authorization is required — molar root canals routinely exceed $500. Estimated allowable fee ~$1,000; plan pays 50% less $50 deductible = $450. Flag: obtain prior auth before scheduling.",
       "compliance_note": "Prior authorization failure will result in denial. Submit auth request with X-rays showing pulpal involvement. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -14121,7 +14158,8 @@
       "patient_age": 58,
       "coverage_text": "Periodontal treatment: covered at 80% after deductible as basic periodontic service. Scaling and root planing: once per quadrant per 24 months with documentation of periodontal disease (pocket depths, bone loss). Annual maximum $1,500.",
       "plan_year_remaining": 1100,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -14135,6 +14173,9 @@
       "reasoning": "D4341 periodontal scaling is covered at 80% after deductible as basic periodontic. Deductible met. Plan requires documentation of periodontal disease (clinical pocket depth measurements, radiographic bone loss). Estimated one-quadrant allowable ~$220; plan pays $176. Submit with perio chart.",
       "compliance_note": "Submit with clinical documentation: pocket depth chart showing ≥4mm pockets, radiographic evidence of bone loss. Without documentation, claim likely to be downgraded or denied. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -15689,7 +15730,8 @@
       "patient_age": 63,
       "coverage_text": "Implants: not a covered benefit under this plan. Members seeking implant services are responsible for the full fee. Alternative prosthetic options (bridges, partial dentures) may be covered at 50% as major restorative.",
       "plan_year_remaining": 900,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": false,
@@ -15704,6 +15746,9 @@
       "reasoning": "D6010 implant placement is explicitly excluded from coverage. Plan clearly states 'not a covered benefit.' Alternative prosthetic options (D6240 bridge or D5213 partial denture) may be covered at 50% as major restorative. Patient bears full implant cost — typically $1,500-2,500 per fixture.",
       "compliance_note": "Inform patient of alternative benefits. A bridge (D6240) over the same site may qualify for 50% coverage. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -17258,21 +17303,24 @@
       "patient_age": 71,
       "coverage_text": "Major prosthodontic services: covered at 50% after deductible. Waiting period: 12 months from enrollment date for prosthetic services. Replacement: once every 60 months. Annual maximum $2,000.",
       "plan_year_remaining": 2000,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": false
     },
     "determination": {
-      "covered": false,
-      "coverage_pct": 0,
-      "patient_responsibility_pct": 100,
-      "estimated_benefit": 0,
-      "flags": [
-        "waiting_period_active"
-      ],
+      "covered": true,
+      "coverage_pct": 50,
+      "patient_responsibility_pct": 50,
+      "estimated_benefit": 800,
+      "flags": [],
       "confidence": 0.91,
-      "reasoning": "Patient enrolled less than 12 months ago (waiting period active). D5213 partial denture falls under major prosthodontic services which require a 12-month waiting period. Coverage is denied until waiting period is satisfied. Patient bears full cost now; may resubmit after enrollment anniversary date.",
+      "reasoning": "D5213 maxillary partial denture falls under major prosthodontic services covered at 50% after deductible. Waiting period has been satisfied. Annual maximum $2,000 applies. Replacement frequency limit: once every 60 months.",
       "compliance_note": "Inform patient of waiting period end date. Document in treatment plan that this service will be eligible after the 12-month mark. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
+      },
+      "frequency_limit": {
+        "type": "months",
+        "months": 60
       }
     },
     "verified": true,
@@ -18826,7 +18874,8 @@
       "patient_age": 26,
       "coverage_text": "Basic restorative: covered at 80% after deductible. Anterior composites (D2331): covered as basic restorative. Posterior composites covered at amalgam alternative benefit — plan pays as if amalgam placed. Annual maximum $1,500.",
       "plan_year_remaining": 1500,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -18838,6 +18887,9 @@
       "reasoning": "Anterior composite D2331 is covered at 80% as basic restorative — note the distinction from posterior composites which are subject to amalgam alternative benefit provisions. Deductible is met. Annual maximum full. Estimated 2-surface anterior composite allowable ~$170; plan pays $136.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -20392,7 +20444,8 @@
       "patient_age": 33,
       "coverage_text": "Diagnostic services: covered at 100% preventive benefit, no deductible. Comprehensive oral evaluation: once per 36 months per provider. Periodic oral evaluation: twice per calendar year.",
       "plan_year_remaining": 1500,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -20404,6 +20457,9 @@
       "reasoning": "D0150 comprehensive exam is covered at 100% with no deductible as a diagnostic preventive service. Frequency: once per 36 months per provider — this is a new patient visit. No frequency flag. Patient owes nothing.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -21958,7 +22014,8 @@
       "patient_age": 24,
       "coverage_text": "Preventive services: fluoride treatment covered at 100%, no deductible. Age limitation: covered for patients through age 18. Not covered for patients age 19 and over. Frequency: twice per calendar year.",
       "plan_year_remaining": 1200,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": false,
@@ -21974,6 +22031,9 @@
       "age_limit": {
         "type": "less_than",
         "age": 19
+      },
+      "frequency_limit": {
+        "type": "none"
       }
     },
     "verified": true,
@@ -23527,7 +23587,8 @@
       "patient_age": 49,
       "coverage_text": "Core buildups (D2950): covered at 50% as major restorative when submitted with a crown on the same claim. Not covered as a standalone procedure. Annual maximum $1,500. Deductible: $50 individual.",
       "plan_year_remaining": 700,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -23541,6 +23602,9 @@
       "reasoning": "D2950 core buildup is covered at 50% only when submitted with a crown (D27xx) on the same claim. Deductible is met. Estimated core buildup allowable ~$130; plan pays $65. Flag: submit on same claim as the crown or claim will be denied as a standalone procedure.",
       "compliance_note": "Bundle D2950 with the associated crown code on the same claim date. If billed separately, coverage will be denied. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -25095,7 +25159,8 @@
       "patient_age": 39,
       "coverage_text": "Emergency dental treatment: D9110 covered at 100% preventive benefit with no deductible. Covered once per 12-month period per provider. If definitively treated on same visit, only definitive procedure is covered.",
       "plan_year_remaining": 1100,
-      "deductible_met": false
+      "deductible_met": false,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": true,
@@ -25109,6 +25174,9 @@
       "reasoning": "D9110 emergency palliative is covered at 100% with no deductible. However, flag: if the dentist also performs a definitive treatment (e.g., extraction, root canal) on the same visit, D9110 is bundled and not separately reimbursed — only the definitive procedure is paid.",
       "compliance_note": "If palliative treatment only: bill D9110, patient owes $0. If palliative plus definitive: bill only definitive procedure, D9110 will be denied or bundled. Synthetic demo data only.",
       "age_limit": {
+        "type": "none"
+      },
+      "frequency_limit": {
         "type": "none"
       }
     },
@@ -26663,7 +26731,8 @@
       "patient_age": 31,
       "coverage_text": "Orthodontic treatment: lifetime maximum $1,500 for eligible dependents through age 19. Adult orthodontics: not covered. Covered for patients under 19 only. Banding included in global orthodontic fee.",
       "plan_year_remaining": 1500,
-      "deductible_met": true
+      "deductible_met": true,
+      "waiting_period_met": true
     },
     "determination": {
       "covered": false,
@@ -26680,6 +26749,10 @@
       "age_limit": {
         "type": "less_than",
         "age": 19
+      },
+      "frequency_limit": {
+        "type": "months",
+        "months": 24
       }
     },
     "verified": true,

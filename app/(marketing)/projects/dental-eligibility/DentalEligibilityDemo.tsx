@@ -24,6 +24,7 @@ const DEFAULT_FORM: CaseInput = {
   coverage_text: '',
   plan_year_remaining: 1500,
   deductible_met: false,
+  waiting_period_met: false,
 };
 
 type Props = {

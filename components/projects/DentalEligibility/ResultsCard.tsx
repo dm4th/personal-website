@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './ResultsCard.module.css';
 import DeterminationBadge from './DeterminationBadge';
 import PipelineSteps from './PipelineSteps';
-import type { DemoState } from '@/lib/projects/dental-eligibility/types';
+import type { DemoState, SimilarCase } from '@/lib/projects/dental-eligibility/types';
 
 type Props = {
   state: DemoState;
@@ -14,12 +14,38 @@ type Props = {
   onClear: () => void;
 };
 
+function patientDollar(estimatedBenefit: number | null, coveragePct: number, patientPct: number): number | null {
+  if (estimatedBenefit === null || coveragePct === 0) return null;
+  return Math.round(estimatedBenefit * patientPct / coveragePct);
+}
+
+function SimilarCaseRow({ sc, index }: { sc: SimilarCase; index: number }) {
+  const pct = Math.round(sc.similarity * 100);
+  return (
+    <div className={styles.similarRow}>
+      <div className={styles.similarMeta}>
+        <span className={styles.similarRank}>#{index + 1}</span>
+        <span className={styles.similarLabel}>{sc.scenario_label}</span>
+        {sc.source === 'session' && <span className={styles.sessionChip}>session</span>}
+      </div>
+      <div className={styles.similarBottom}>
+        <div className={styles.simBar}>
+          <div className={styles.simBarFill} style={{ width: `${pct}%` }} />
+        </div>
+        <span className={styles.simPct}>{pct}% match</span>
+        <span className={sc.determination.covered ? styles.simCovered : styles.simNotCovered}>
+          {sc.determination.covered ? `Covered ${sc.determination.coverage_pct}%` : 'Not covered'}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function ResultsCard({ state, totalCases, approvalState, onApprove, onClear }: Props) {
   const [denyStep, setDenyStep] = useState<'idle' | 'form' | 'submitted'>('idle');
   const [denyReason, setDenyReason] = useState('');
   const [showToast, setShowToast] = useState(false);
 
-  // reset deny state when a new result comes in
   useEffect(() => {
     setDenyStep('idle');
     setDenyReason('');
@@ -62,24 +88,51 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
   }
 
   const { result } = state;
-  const { determination, path, similar_cases } = result;
+  const { determination, path, similar_cases, matched_case_id } = result;
   const isExactMatch = path === 'exact_match';
+
+  const matchedCase = isExactMatch
+    ? similar_cases.find((sc) => sc.id === matched_case_id) ?? similar_cases[0]
+    : null;
+
+  const patientAmt = patientDollar(
+    determination.estimated_benefit,
+    determination.coverage_pct,
+    determination.patient_responsibility_pct,
+  );
 
   const coverageDisplay = (
     <div className={styles.coverageBlock}>
       <div className={styles.coverageRow}>
         <DeterminationBadge covered={determination.covered} confidence={isExactMatch ? 1 : determination.confidence} />
-        {determination.coverage_pct > 0 && (
+        {determination.covered && determination.coverage_pct > 0 && (
           <span className={styles.pctLabel}>
             {determination.coverage_pct}% plan · {determination.patient_responsibility_pct}% patient
           </span>
         )}
       </div>
-      {determination.estimated_benefit !== null && determination.covered && (
+
+      {determination.covered && determination.coverage_pct === 100 && (
         <div className={styles.benefit}>
-          Estimated benefit: <strong>${determination.estimated_benefit.toLocaleString()}</strong>
+          <strong>100% covered</strong> — no patient cost
         </div>
       )}
+
+      {determination.covered && determination.coverage_pct > 0 && determination.coverage_pct < 100 && (
+        <div className={styles.benefitRow}>
+          {determination.estimated_benefit !== null && (
+            <span className={styles.benefit}>
+              Plan pays: <strong>${determination.estimated_benefit.toLocaleString()}</strong>
+            </span>
+          )}
+          {patientAmt !== null && (
+            <span className={styles.patientAmt}>
+              Patient owes: <strong>${patientAmt.toLocaleString()}</strong>
+            </span>
+          )}
+        </div>
+      )}
+
       {determination.flags.length > 0 && (
         <div className={styles.flagsList}>
           {determination.flags.map((flag) => (
@@ -92,7 +145,7 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
     </div>
   );
 
-  // Exact match — auto-approved, no review needed
+  // Exact match — auto-approved
   if (isExactMatch) {
     return (
       <div className={styles.card}>
@@ -103,6 +156,22 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           <p className={styles.statusNote}>
             This claim matches a previously verified determination. No review required.
           </p>
+
+          {matchedCase && (
+            <div className={styles.matchedCase}>
+              <div className={styles.matchedCaseHeader}>
+                <span className={styles.matchedCaseLabel}>{matchedCase.scenario_label}</span>
+                {matchedCase.source === 'session' && <span className={styles.sessionChip}>session</span>}
+              </div>
+              <div className={styles.matchedSim}>
+                <div className={styles.simBar}>
+                  <div className={styles.simBarFill} style={{ width: '100%' }} />
+                </div>
+                <span className={styles.simPct}>{similar_cases[0] ? Math.round(similar_cases[0].similarity * 100) : 100}% match</span>
+              </div>
+            </div>
+          )}
+
           {coverageDisplay}
           <button className={styles.clearBtn} onClick={onClear}>
             Clear — next claim →
@@ -132,7 +201,32 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
     );
   }
 
-  // Hybrid RAG — deny form showing
+  // Hybrid RAG — feedback submitted
+  if (denyStep === 'submitted') {
+    return (
+      <div className={styles.card}>
+        <div className={styles.stack}>
+          <div className={styles.statusBadge} data-status="review">
+            ✗ Feedback Submitted
+          </div>
+          <p className={styles.statusNote}>
+            Thank you — your correction has been noted. This determination will not be added to the library.
+          </p>
+          {coverageDisplay}
+          <button className={styles.clearBtn} onClick={onClear}>
+            Clear — next claim →
+          </button>
+        </div>
+        {showToast && (
+          <div className={styles.toast}>
+            Feedback noted. Thank you for improving the system.
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Hybrid RAG — deny form
   if (denyStep === 'form') {
     return (
       <div className={styles.card}>
@@ -164,41 +258,11 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
             </div>
           </div>
         </div>
-        {showToast && (
-          <div className={styles.toast}>
-            Thank you for your feedback. It has been noted.
-          </div>
-        )}
       </div>
     );
   }
 
-  // Hybrid RAG — feedback submitted
-  if (denyStep === 'submitted') {
-    return (
-      <div className={styles.card}>
-        <div className={styles.stack}>
-          <div className={styles.statusBadge} data-status="review">
-            ✗ Feedback Submitted
-          </div>
-          <p className={styles.statusNote}>
-            Thank you — your correction has been noted. This determination will not be added to the library.
-          </p>
-          {coverageDisplay}
-          <button className={styles.clearBtn} onClick={onClear}>
-            Clear — next claim →
-          </button>
-        </div>
-        {showToast && (
-          <div className={styles.toast}>
-            Feedback noted. Thank you for improving the system.
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // Hybrid RAG — pending review (main review state)
+  // Hybrid RAG — pending review
   return (
     <div className={styles.card}>
       <div className={styles.stack}>
@@ -206,10 +270,21 @@ export default function ResultsCard({ state, totalCases, approvalState, onApprov
           ⚠ Review Required
         </div>
         <p className={styles.statusNote}>
-          This claim is new to the verified library. GPT-4o synthesized a determination using {similar_cases.length} similar verified {similar_cases.length === 1 ? 'case' : 'cases'} as context. Please review before approving.
+          GPT-4o synthesized this determination using {similar_cases.length} similar verified {similar_cases.length === 1 ? 'case' : 'cases'} as context. Please review before approving.
         </p>
 
         {coverageDisplay}
+
+        {similar_cases.length > 0 && (
+          <div className={styles.similarSection}>
+            <span className={styles.reasoningLabel}>Retrieved Context</span>
+            <div className={styles.similarList}>
+              {similar_cases.map((sc, i) => (
+                <SimilarCaseRow key={sc.id} sc={sc} index={i} />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className={styles.reasoningSection}>
           <span className={styles.reasoningLabel}>Determination Reasoning</span>

@@ -174,6 +174,20 @@ export default function InputForm({ values, onChange, onSubmit, loading }: Props
         </div>
       </div>
 
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label className={styles.label}>Waiting Period Met?</label>
+          <select
+            className={styles.input}
+            value={values.waiting_period_met ? 'yes' : 'no'}
+            onChange={(e) => set('waiting_period_met', e.target.value === 'yes')}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
       <button
         type="submit"
         className={styles.submitBtn}

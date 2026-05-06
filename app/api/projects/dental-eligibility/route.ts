@@ -10,6 +10,17 @@ const baseCases = casesData as EligibilityCase[];
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+const AgeLimitSchema = z.union([
+  z.object({ type: z.literal('less_than'), age: z.number() }),
+  z.object({ type: z.literal('greater_than'), age: z.number() }),
+  z.object({ type: z.literal('none') }),
+]);
+
+const FrequencyLimitSchema = z.union([
+  z.object({ type: z.literal('months'), months: z.number() }),
+  z.object({ type: z.literal('none') }),
+]);
+
 const SessionCaseSchema = z.object({
   id: z.string(),
   scenario_label: z.string(),
@@ -21,6 +32,7 @@ const SessionCaseSchema = z.object({
     coverage_text: z.string(),
     plan_year_remaining: z.number(),
     deductible_met: z.boolean(),
+    waiting_period_met: z.boolean(),
   }),
   determination: z.object({
     covered: z.boolean(),
@@ -31,11 +43,8 @@ const SessionCaseSchema = z.object({
     confidence: z.number(),
     reasoning: z.string(),
     compliance_note: z.string(),
-    age_limit: z.union([
-      z.object({ type: z.literal('less_than'), age: z.number() }),
-      z.object({ type: z.literal('greater_than'), age: z.number() }),
-      z.object({ type: z.literal('none') }),
-    ]),
+    age_limit: AgeLimitSchema,
+    frequency_limit: FrequencyLimitSchema,
   }),
   embedding: z.array(z.number()),
   source: z.literal('session'),
@@ -49,6 +58,7 @@ const RequestSchema = z.object({
   coverage_text: z.string().min(1),
   plan_year_remaining: z.number().min(0),
   deductible_met: z.boolean(),
+  waiting_period_met: z.boolean(),
   session_cases: z.array(SessionCaseSchema).optional().default([]),
 });
 
@@ -86,8 +96,9 @@ export async function POST(req: NextRequest) {
 
   if (topSimilarity >= EXACT_MATCH_THRESHOLD && topCase) {
     const determination = { ...topCase.determination, flags: [...topCase.determination.flags] };
-    const { age_limit } = determination;
+    const { age_limit, frequency_limit } = determination;
 
+    // Age restriction check
     if (age_limit.type === 'less_than' && input.patient_age >= age_limit.age) {
       determination.covered = false;
       if (!determination.flags.includes('age_restriction_exceeded')) {
@@ -99,8 +110,22 @@ export async function POST(req: NextRequest) {
         determination.flags.push('age_restriction_exceeded');
       }
     } else if (age_limit.type !== 'none') {
-      // age restriction exists but patient qualifies — remove stale flag if present
       determination.flags = determination.flags.filter((f) => f !== 'age_restriction_exceeded');
+      determination.covered = topCase.determination.covered;
+    }
+
+    // Frequency / waiting period check
+    if (frequency_limit.type === 'months' && !input.waiting_period_met) {
+      determination.covered = false;
+      if (!determination.flags.includes('waiting_period_active')) {
+        determination.flags.push('waiting_period_active');
+      }
+      determination.flags = determination.flags.filter((f) => f !== 'waiting_period_not_met');
+    } else if (frequency_limit.type === 'months' && input.waiting_period_met) {
+      // Waiting period satisfied — restore base coverage, remove stale flags
+      determination.flags = determination.flags.filter(
+        (f) => f !== 'waiting_period_active' && f !== 'waiting_period_not_met' && f !== 'frequency_limit_triggered'
+      );
       determination.covered = topCase.determination.covered;
     }
 
@@ -128,6 +153,10 @@ export async function POST(req: NextRequest) {
 
     if (typeof determination.covered !== 'boolean') {
       throw new Error('Invalid determination structure from LLM');
+    }
+    // Ensure frequency_limit is present (older LLM responses may omit it)
+    if (!determination.frequency_limit) {
+      determination.frequency_limit = { type: 'none' };
     }
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error';
