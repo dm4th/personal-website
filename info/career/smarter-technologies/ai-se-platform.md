@@ -60,6 +60,22 @@ Beyond the automated questionnaire layer, I frequently took calls with CIOs and 
 
 Built with: Claude Code, Python, Git, custom RFP/security response repository
 
+### Scaling to the Team: From Personal Tool to Shared Platform
+
+The SE platform started as a personal productivity system. Turning it into something a less technical sales rep could actually use was a different problem.
+
+The solution was deploying the skills through Claude Code's co-work platform, which let me package individual slash commands as publishable skills that non-technical users could access without touching a terminal or writing a prompt from scratch. I ported the highest-impact skills from my Claude Code agent into a co-work interface, writing skill specifications optimized for natural language invocation rather than structured command syntax. The goal was that a rep who had never heard of a system prompt could run a meeting analysis or generate a pricing summary by describing what they wanted in plain English.
+
+Adoption was meaningful: team members who had never directly used the underlying AI tooling began incorporating the packaged skills into their regular workflows. But I wasn't satisfied with measuring adoption through usage counts alone. I wanted to know whether the skills were actually useful, and more importantly, where they were failing.
+
+I built a tracking and feedback system using pre- and post-tool-use hooks in Claude Code. Every skill invocation was logged: which skill was called, what the input prompt looked like, and what the output was. On roughly 15 to 20 percent of skill usages, the system surfaced a prompt asking the user for feedback: a thumbs up, a thumbs down, or an optional written note on what wasn't working. That feedback fed directly back into skill iteration. A cluster of thumbs-down responses on the pricing skill with notes about "wrong EHR context" told me exactly what to fix in the skill specification. A pattern of written feedback about meeting summaries being too long told me the output template needed tightening.
+
+This was the feedback loop that made the platform improve over time rather than stagnate. Each iteration of a skill was justified by actual user signal, not my own intuition about what would be better.
+
+Beyond the SE-specific tools, I also led the internal governance work for Claude Code-based agent deployment across the broader organization. As other teams began building their own agents, I took the lead on defining which skills should be published to which user groups, structuring the organization-level plugin hierarchy within the Claude co-work and Claude for Enterprise platform, and making sure that the right capabilities were accessible to the right people without creating a confusing sprawl of overlapping tools. This was product work: access control, discoverability, usage boundaries, and rollout sequencing across a non-technical user base.
+
+Built with: Claude Code, Claude co-work, pre/post tool use hooks, Python, GitHub
+
 ### Tech Stack
 
 Claude Code, Python 3.11, Notion API, Fireflies GraphQL API, Google Drive/Sheets API (OAuth2), GitHub Actions, Git worktrees, Slack API

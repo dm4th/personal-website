@@ -12,13 +12,25 @@ The most important lesson from this period: strong, aligned leadership is the pr
 
 What shifted things was a meaningful organizational focus change: from audience metrics to user acquisition. I was deeply involved in facilitating that shift, taking charge of new reporting and analysis to make it real. The result was an intricate user acquisition dashboard that tracked our conversion efforts in real time and guided future strategy.
 
+### Consumer Product Analytics Infrastructure
+
+Before I could influence product direction, I needed to understand how users actually moved through the product. I built end-to-end tracking across the web platform and our native iOS and Android apps, connecting event-level user behavior to downstream revenue outcomes.
+
+The Action Network had two distinct revenue streams. The first was subscriptions: monthly and annual plans that gave users access to premium content and picks. These generated predictable recurring revenue, and I modeled LTV using cohort-based churn rates. The second, and far more valuable, was affiliate clicks: when a user clicked a link out to a sportsbook, we earned a placement fee of $150 to $300 per activation. Because a single user could activate on multiple sportsbooks over time, their total affiliate LTV could approach $1,000. That asymmetry shaped everything about how we thought about the product.
+
+My team built the model that connected in-product behavior to predicted LTV: which actions correlated with eventual subscription, which correlated with affiliate activation, and which predicted nothing. What we found was that the highest-LTV funnel was specific: get a web user to download the app, then get them engaging with editorial content (either from our writers or sportsbook-sponsored pieces), and they were significantly more likely to click an affiliate link within the same or following session. Web users who never downloaded the app had much lower conversion rates regardless of how much content they consumed.
+
+This analysis directly informed product roadmap priorities. We were no longer building features for engagement's sake. Every content feature and onboarding decision was evaluated against its predicted impact on the funnel we had mapped.
+
+Built with: SQL, Redshift, Segment, Google Analytics, Google Data Studio, Tableau, Python, SciKit Learn
+
 ### The Value Clicks Project
 
 As we shifted from focusing on Monthly Active Users to prioritizing revenue, nearly 40% of the company experienced a significant role change. This hit the content team hardest. Chad, a genuine savant in the sports media space, was completely supportive of the shift, but faced a motivational challenge. His team had previously had a clear view of their direct impact through article readership. With the new focus on conversion further down the funnel, it became difficult for them to see how their work connected to the bottom line.
 
 In collaboration with Chad and his team leads (Katie, Steve, and Andrew), we developed the concept of a "Value Click": examining the subsequent action a user took after reading an article, and asking whether that action was predictive of a future subscription or a sportsbook promotional click. The metric was split by platform and session type, giving the team a granular view of their actual impact on revenue potential.
 
-This was a meaningful professional milestone for me. It was the first project of this scope that I ideated and led end-to-end. It forced me to listen carefully to a large team's needs and deliver something that actually changed how they worked. We also discovered correlated metrics along the way ("articles read per reader" and "cross-sport readers") that had substantial downstream revenue impacts.
+This became the company's north star metric. Both the content side and the product side aligned their roadmaps around it. We instrumented it in Tableau and Google Data Studio so it was visible to the whole organization on a regular cadence. For me it was the first project of this scope that I ideated and led end-to-end: I had to listen carefully to a large team's needs and deliver something that actually changed how they worked. We also discovered correlated metrics along the way ("articles read per reader" and "cross-sport readers") that had substantial downstream revenue impacts.
 
 Built with: SQL, Redshift, Google Sheets, Google Apps Script, Google Analytics, Segment, Python, SciKit Learn
 

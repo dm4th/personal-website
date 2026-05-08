@@ -11,52 +11,36 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-Technical Project Manager
-Company: 8090 Solutions
-Location: California, United States (On-site, Redwood City CA or Toronto Canada)
-Employment Type: Full-time
-Compensation: $150,000 – $250,000 + stock and/or stock options + benefits
+Product Manager (Builder)
+Company: Perplexity
+Location: San Francisco; Palo Alto
+Employment Type: Full time
+Department: Product Management
+Compensation: $230,000 – $330,000 + Equity
 
-About 8090
-At 8090, we identify inefficiencies in enterprise operations and deliver AI-powered solutions tailored to each problem. Co-founded and led by Chamath Palihapitiya, we're building a Software Factory that can generate complete software solutions from initial concepts, eliminating the bloated complexity and overhead of traditional software development.
+About the Role
+Perplexity is looking for product managers to join a highly leveraged, small team for building new products. In 2026, we launched Computer, the defining product for the new era of agentic AI. We've scaled beyond initial launch and product managers at Perplexity work closely with design and engineering, focusing on the core Computer experience.
 
-The Opportunity
-We are hiring an exceptional Technical Product Manager to join 8090 in a mission-critical, customer-centric role. Our TPMs operate as forward-deployed product leaders, owning the full lifecycle of AI-first enterprise solutions, from early discovery through live deployment and iteration in production environments.
-
-Location
-You will work in person from Redwood City, CA or Toronto, Canada, partnering closely with small, high-leverage engineering teams while leading complex customer engagements inside large enterprises.
-
-This role is central to how 8090 delivers value. It requires strong product fundamentals and the ability to move into hands-on solution creation:
-
-Discovery & Solution Definition: Partner with sales teams during pre-contract discovery to identify technical risks (APIs, integrations, data requirements) and create PRD Lights that accurately scope projects. Transform ambiguous business needs into actionable requirements that guide both sales commitments and engineering delivery.
-Execution Excellence: Own end-to-end execution under real-world constraints, establishing governance, coordinating cross-functional teams, and driving on-time, high-quality delivery. Act as the primary customer interface, managing expectations and escalations when needed from pre-contract discovery through production deployment.
-Technical and Analytical Judgement: Bring lived experience building enterprise software, ideally including non-deterministic, data-driven systems, to make sound architectural and product decisions. Apply analytical rigor to evaluate trade-offs, measure outcomes, and guide teams through complexity and uncertainty.
-
-Key Responsibilities
-- Lead discovery with prospective and committed customers to identify technical risks (APIs, integrations, data availability, security constraints) and create accurate, execution-ready PRDs.
-- Translate ambiguous business problems into concrete solution designs, including building or contributing to live POCs when needed.
-- Partner closely with engineering to validate feasibility, reduce ambiguity, and accelerate delivery.
-- Drive execution under real-world constraints: resources, timelines, and enterprise governance.
-- Own project governance, success metrics, and delivery milestones from pre-sales through production.
-- Serve as the primary interface with customers, facilitating discovery workshops, steering committees, and executive reviews.
-- Create and deliver tailored communications ranging from executive-level project updates to detailed iteration plans.
-- Anticipate and surface "unforced errors" early (missing data, undocumented APIs, unrealistic assumptions) to prevent downstream delivery risk.
-- Balance speed and rigor in discovery, moving fast without compromising solution integrity.
-
-What Sets You Apart
-- Demonstrated success delivering enterprise software solutions end-to-end, ideally involving AI/ML systems.
-- Ability to build and deploy solutions inside complex enterprise environments, not just design them.
-- Strong technical intuition and credibility with senior engineers.
-- Experience operating effectively with small internal teams and large, demanding customer organizations.
-- Clear, confident communicator at both executive and technical levels.
-- Domain expertise in Health and Life Sciences industries.
+What you'll do
+- Anticipate opportunities for innovation and value in enterprise industries.
+- Envision new experiences and deliver a long-term vision.
+- Understanding of levers for product-led growth and retention.
+- Work closely with engineering and design to align product expectations and capabilities.
+- Work with research to evaluate and steer nondeterministic models into high value outcomes for users.
+- Work with data and user research to understand quantitative and qualitative data.
+- Have conviction to make difficult product decisions in the face of uncertainty.
 
 Qualifications
-- 5+ years of experience in Product Management with emphasis on enterprise software creation.
-- Proven ownership of the full product lifecycle, from discovery through production and iteration.
-- Strong technical background with hands-on exposure to software systems.
-- Exceptional written and verbal communication, with a history of impactful stakeholder management.
-- Familiarity with data science, ML concepts, and non-deterministic systems in real deployments.
+- Strong experience with product management and leadership.
+- Strong experience working with data and metrics.
+- Experience with productivity and knowledge work products.
+- Experience with prototyping and data visualization.
+- Experience with building data driven flywheels for iterative improvement.
+- Thrives in a small, agile team: has initiative and desire for ownership.
+- 4+ years of product management experience.
+
+Our Mission
+Perplexity's mission is to power curiosity. Curious people are the people who drive change in the world. Learn, Build, Integrate, Repeat.
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -64,6 +48,15 @@ Qualifications
 // Add entries here whenever a previously-analyzed JD isn't yet represented.
 
 const HISTORICAL_JDS: Array<{ role: string; company: string; jd: string }> = [
+  {
+    role: 'Technical Project Manager',
+    company: '8090 Solutions',
+    jd: `
+Technical Project Manager — 8090 Solutions
+Location: Redwood City CA or Toronto Canada (on-site). $150K-$250K base + stock options.
+Key requirements: Forward-deployed TPM owning full lifecycle of AI-first enterprise solutions, from discovery through production. Partner with sales during pre-contract discovery to identify technical risks (APIs, integrations, data) and create PRD Lights. Translate ambiguous business needs into actionable requirements. End-to-end execution under real-world constraints, cross-functional coordination. Primary customer interface through steering committees and executive reviews. 5+ years PM with enterprise software creation. Strong technical background, hands-on software systems. Non-deterministic, data-driven systems experience. Health and Life Sciences domain expertise. Ability to build and deploy solutions inside complex enterprise environments.
+    `,
+  },
   {
     role: 'AI Strategist, Healthcare Solutions',
     company: 'Distyl AI',
@@ -329,12 +322,15 @@ async function main() {
     // Education + technical credentials — address degree/Python/ML gaps early
     'about-me/education/bucknell-overview.md',
     'ai-ml/cal-tech/bootcamp.md',
-    // Prior career — data analytics depth, Python/pandas/SQL evidence
+    // Prior career — data analytics depth, Python/pandas/SQL evidence, consumer PLG/LTV work
+    'career/action-network/first-year-post-ari.md',
     'career/action-network/year-two-and-departure.md',
     // Remaining context
     'career/fanduel/revenue-team.md',
     'career/google/my-year-at-google.md',
     'about-me/strengths-and-weaknesses/self-assessment.md',
+    // Independent research — healthcare agent data layer thesis + Perplexity connection
+    'projects/healthcare-agent-data-layer/index.md',
   ];
   const backgroundContext = keyFiles
     .map((f) => {
