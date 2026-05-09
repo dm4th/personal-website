@@ -207,7 +207,7 @@ function extractRoleContent(text: string): string {
   }
 
   if (earliestIndex === -1 || earliestIndex > 5000) {
-    // No clear split found or split is very late — keep full text
+    // No clear split found or split is very late - keep full text
     return text;
   }
 
@@ -217,7 +217,7 @@ function extractRoleContent(text: string): string {
   return `[Company: ${companyIntro}]\n\n${roleContent}`;
 }
 
-// Key career files to read for background context — ordered by relevance to most roles.
+// Key career files to read for background context - ordered by relevance to most roles.
 // Smarter Technologies gets multiple sub-files since it's the most recent and detailed role.
 const BACKGROUND_FILES = [
   'career/smarter-technologies/index.md',
@@ -279,7 +279,7 @@ Instructions:
 - Opening: why this role/company specifically
 - Middle: 2–3 concrete examples from his background that map to the role's needs
 - Closing: clear ask for a conversation, forward-looking
-- Tone: confident, specific, not generic — Dan doesn't do boilerplate
+- Tone: confident, specific, not generic - Dan doesn't do boilerplate
 - Do NOT use phrases like "I am writing to express my interest" or "I am excited to apply"
 - Return the cover letter text only, no subject line or "Dear Hiring Manager" header`,
       },
@@ -319,7 +319,7 @@ export async function generateApplicationMaterials(
     // Read Dan's career files to ground both fit analysis and cover letter
     const danBackground = await readDanBackground();
 
-    // Run fit analysis with background context — applicant perspective so output is first-person as Dan
+    // Run fit analysis with background context - applicant perspective so output is first-person as Dan
     const fitResult = await analyzeJdFit({
       jobDescription: roleText,
       focus: 'all',
@@ -351,7 +351,7 @@ export async function generateApplicationMaterials(
     return {
       ok: true,
       data: { ...materials, notionUpdated },
-      summary: `Materials generated — fit score ${fit.fitScore}/100 for ${fit.roleTitle}${fit.company ? ` at ${fit.company}` : ''}${notionUpdated ? ' · Notion updated' : ''}`,
+      summary: `Materials generated - fit score ${fit.fitScore}/100 for ${fit.roleTitle}${fit.company ? ` at ${fit.company}` : ''}${notionUpdated ? ' · Notion updated' : ''}`,
     };
   } catch (err) {
     return { ok: false, error: String(err) };

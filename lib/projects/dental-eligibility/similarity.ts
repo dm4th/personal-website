@@ -47,7 +47,7 @@ export function findTopK(
     .map((c) => ({
       id: c.id,
       scenario_label: c.scenario_label,
-      // Exact string match short-circuits cosine computation — same input text always maps to
+      // Exact string match short-circuits cosine computation - same input text always maps to
       // the same embedding, so string equality is both faster and more reliable than float comparison.
       similarity: c.query_string === queryString ? 1.0 : cosineSimilarity(queryEmbedding, c.embedding),
       determination: c.determination,

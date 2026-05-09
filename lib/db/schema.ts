@@ -141,14 +141,33 @@ export const googleOAuthTokens = pgTable(
   ],
 );
 
+// ─── notion_configs ───────────────────────────────────────────────────────────
+
+export const notionConfigs = pgTable('notion_configs', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id')
+    .notNull()
+    .unique()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  // AES-256-GCM encrypted using TOKEN_ENC_KEY env var; format: iv:tag:ciphertext (base64)
+  integrationToken: text('integration_token'),
+  meetingNotesDbId: text('meeting_notes_db_id'),
+  agentAnalysesDbId: text('agent_analyses_db_id'),
+  agentLibraryDbId: text('agent_library_db_id'),
+  icpRubricDbId: text('icp_rubric_db_id'),
+  createdAt: timestamp('created_at').default(sql`now()`).notNull(),
+  updatedAt: timestamp('updated_at').default(sql`now()`).notNull(),
+});
+
 // ─── relations ────────────────────────────────────────────────────────────────
 
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(users, ({ many, one }) => ({
   sessions: many(sessions),
   draftedEmails: many(draftedEmails),
   meetings: many(meetings),
   memos: many(memos),
   googleOAuthTokens: many(googleOAuthTokens),
+  notionConfig: one(notionConfigs, { fields: [users.id], references: [notionConfigs.userId] }),
 }));
 
 export const sessionsRelations = relations(sessions, ({ one, many }) => ({

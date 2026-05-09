@@ -32,6 +32,8 @@ code {
 :root {
   --header-height: 56px;
   --agent-panel-width: 384px;
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
   --surface: #111;
   --surface-2: #1a1a1a;
   --border: #222;

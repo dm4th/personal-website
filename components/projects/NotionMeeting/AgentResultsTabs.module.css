@@ -1,0 +1,166 @@
+.container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Idle / Error states ─────────────────────────────────── */
+
+.idle,
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 12px;
+  min-height: 280px;
+}
+
+.idleIcon {
+  font-size: 32px;
+  opacity: 0.25;
+}
+
+.idleText {
+  font-size: 13px;
+  color: var(--subtle);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.idleHint {
+  font-size: 11px;
+  color: var(--muted, var(--subtle));
+  margin: 0;
+}
+
+.errorIcon {
+  font-size: 24px;
+}
+
+.errorText {
+  font-size: 13px;
+  color: #ef4444;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* ── Accordion shell ─────────────────────────────────────── */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual agent row */
+.agentRow {
+  border-bottom: 1px solid var(--border);
+}
+
+.agentRow:last-child {
+  border-bottom: none;
+}
+
+/* Clickable row header */
+.agentHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.agentHeader:hover {
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+
+.agentRowOpen > .agentHeader {
+  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+}
+
+.agentEmoji {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.agentMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.agentTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agentSubtitle {
+  font-size: 11px;
+  color: var(--subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agentBadge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ICP has two badges side by side */
+.icpBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Verdict badge (for summary agent) */
+.verdictBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.chevron {
+  font-size: 10px;
+  color: var(--subtle);
+  flex-shrink: 0;
+  margin-left: 4px;
+  transition: transform 0.15s;
+}
+
+.agentRowOpen > .agentHeader .chevron {
+  transform: rotate(0deg); /* already points up */
+}
+
+/* Collapsible body */
+.agentBody {
+  border-top: 1px solid var(--border);
+  /* card handles its own padding */
+}

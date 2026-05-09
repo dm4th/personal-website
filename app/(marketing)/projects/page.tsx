@@ -12,6 +12,16 @@ export const metadata: Metadata = {
 
 const DEMOS = [
   {
+    slug: '/projects/notion-meeting-intelligence',
+    title: 'AI-Native GTM Engine',
+    description:
+      'Paste a sales meeting transcript and watch six Claude agents analyze it in parallel - sales coaching, commercial pricing, delivery risk, product feedback, ICP fit, and an executive summary agent. Writes a Meeting Note + 6 Agent Analysis rows directly to your Notion GTM Hub workspace.',
+    tags: ['Claude AI', 'Notion', 'Multi-Agent', 'GTM'],
+    infoSlug: null,
+    stat: '6 agents in parallel',
+    statLabel: 'analyzing every call',
+  },
+  {
     slug: '/projects/dental-eligibility',
     title: 'Dental Eligibility Intelligence',
     description:
@@ -33,7 +43,7 @@ export default function ProjectsPage() {
         <div className={styles.header}>
           <h1 className={styles.title}>Projects</h1>
           <p className={styles.subtitle}>
-            Interactive demos of systems I&apos;ve built — not just writeups, but working prototypes you can try.
+            Interactive demos of systems I&apos;ve built - not just writeups, but working prototypes you can try.
           </p>
         </div>
 

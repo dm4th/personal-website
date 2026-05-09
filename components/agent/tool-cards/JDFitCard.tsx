@@ -39,7 +39,7 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
 
       {expanded && !isPending && (
         <div className={styles.body}>
-          {isError && <p className={styles.error}>Analysis failed — try pasting the job description again.</p>}
+          {isError && <p className={styles.error}>Analysis failed - try pasting the job description again.</p>}
 
           {data && (
             <>

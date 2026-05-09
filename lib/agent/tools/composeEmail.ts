@@ -24,7 +24,7 @@ export type ComposeEmailOutput = {
 export const composeEmailTool = {
   name: 'compose_email_to_danny',
   description:
-    "Draft an intro email from a visitor to Dan Mathieson. Use this when a visitor wants to reach out to Dan. Generates a polished draft that the visitor can review and send (sending requires signing in). Do NOT call this speculatively — only when the visitor explicitly asks to contact or email Dan.",
+    "Draft an intro email from a visitor to Dan Mathieson. Use this when a visitor wants to reach out to Dan. Generates a polished draft that the visitor can review and send (sending requires signing in). Do NOT call this speculatively - only when the visitor explicitly asks to contact or email Dan.",
   input_schema: {
     type: 'object' as const,
     properties: {
@@ -85,7 +85,7 @@ export async function composeEmail(
       messages: [
         {
           role: 'user',
-          content: `Write a brief intro email from a visitor to Dan Mathieson (Director of Solutions Engineering at Smarter Technologies, San Francisco — AI/agent engineering focus).
+          content: `Write a brief intro email from a visitor to Dan Mathieson (Director of Solutions Engineering at Smarter Technologies, San Francisco - AI/agent engineering focus).
 
 ${contextLines}
 Tone: ${toneInstructions}

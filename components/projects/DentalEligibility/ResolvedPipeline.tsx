@@ -36,7 +36,7 @@ export default function ResolvedPipeline({ queryString, totalCases, topSimilarit
   return (
     <div className={styles.pipeline}>
 
-      {/* Step 1: String match check — always first */}
+      {/* Step 1: String match check - always first */}
       <div className={styles.step}>
         <span className={`${styles.check} ${isStringMatch ? styles.checkGreen : ''}`}>✓</span>
         <div className={styles.stepContent}>

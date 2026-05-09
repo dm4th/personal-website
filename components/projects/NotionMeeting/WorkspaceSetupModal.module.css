@@ -1,0 +1,402 @@
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(2px);
+}
+
+/* Modal shell */
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+/* Header row: step pills + close button */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+}
+
+.stepPills {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  color: var(--subtle);
+  background: var(--surface-2);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.pillActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.pillDone {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--accent);
+}
+
+.closeBtn {
+  font-size: 12px;
+  color: var(--subtle);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  color: var(--foreground);
+  background: var(--surface-2);
+}
+
+/* Step body */
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px 28px;
+}
+
+.stepLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.stepTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  font-size: 0.825rem;
+  color: var(--subtle);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Database list (Step 1) */
+.dbList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dbRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dbRow:last-child {
+  border-bottom: none;
+}
+
+.dbEmoji {
+  font-size: 1.1rem;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.dbName {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.dbDesc {
+  font-size: 0.75rem;
+  color: var(--subtle);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Template button (Step 1 - secondary) */
+.templateBtn {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--foreground);
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.templateBtn:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
+}
+
+/* Instruction list (Step 2) */
+.instructionList {
+  padding-left: 1.2em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.instructionList li {
+  font-size: 0.8rem;
+  color: var(--subtle);
+  line-height: 1.55;
+}
+
+.instructionList a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.instructionList strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* "Alternatively" callout inside an instruction item */
+.altNote {
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.775rem;
+  color: var(--subtle);
+  line-height: 1.5;
+}
+
+.altNote strong {
+  color: var(--foreground);
+}
+
+/* Workspace search row (Step 3) */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchBtn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.searchBtn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
+}
+
+.searchBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.searchSuccess {
+  font-size: 0.775rem;
+  color: var(--success);
+  font-weight: 500;
+}
+
+.searchError {
+  font-size: 0.775rem;
+  color: #ef4444;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Fields (Steps 2 & 3) */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--subtle);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Small "Found" / "✓" badge shown when a field is valid */
+.validBadge {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.input {
+  font-size: 11px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: monospace;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Green border when the ID has been resolved to 32 chars */
+.inputValid {
+  border-color: color-mix(in srgb, var(--success) 50%, var(--border));
+}
+
+.inputValid:focus {
+  border-color: var(--success);
+}
+
+.input::placeholder {
+  color: var(--muted);
+  font-family: inherit;
+}
+
+/* Inline code */
+.code {
+  font-family: monospace;
+  font-size: 0.8em;
+  background: var(--surface-2);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+/* Button row */
+.btnRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Primary CTA */
+.primaryBtn {
+  padding: 9px 18px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.825rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Back button */
+.backBtn {
+  font-size: 0.8rem;
+  color: var(--subtle);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.backBtn:hover {
+  color: var(--foreground);
+}
+
+@media (max-width: 560px) {
+  .modal {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+    max-height: 85vh;
+  }
+
+  .backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+}

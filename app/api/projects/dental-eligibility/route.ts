@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
     { field: 'deductible_met', label: 'Deductible Met', query_val: input.deductible_met, stored_val: topCase.input.deductible_met, matched: input.deductible_met === topCase.input.deductible_met },
   ] : [];
 
-  // Variable fields (age, financials) are explicitly compared — embedding similarity alone can't
+  // Variable fields (age, financials) are explicitly compared - embedding similarity alone can't
   // distinguish these when the coverage text is identical, since numeric tokens have weak vector weight.
   const inputFieldsMatchCase =
     topCase &&
@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
       determination.covered = topCase.determination.covered;
     }
 
-    // Frequency / waiting period check — computed from last_appointment_date + frequency_limit
+    // Frequency / waiting period check - computed from last_appointment_date + frequency_limit
     if (frequency_limit.type === 'months') {
       const frequencyMet = isFrequencyMet(input.last_appointment_date ?? null, frequency_limit.months);
       if (!frequencyMet) {

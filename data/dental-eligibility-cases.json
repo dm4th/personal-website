@@ -1,7 +1,7 @@
 [
   {
     "id": "scenario-filling-exact",
-    "scenario_label": "Simple amalgam filling — Delta Dental PPO",
+    "scenario_label": "Simple amalgam filling - Delta Dental PPO",
     "input": {
       "procedure_code": "D2140",
       "procedure_description": "Amalgam restoration, one surface, primary or permanent",
@@ -19,7 +19,7 @@
       "estimated_benefit": 96,
       "flags": [],
       "confidence": 0.97,
-      "reasoning": "Procedure D2140 is a basic amalgam restoration explicitly listed as covered at 80% after deductible. Deductible is met. Annual maximum has $1,200 remaining — sufficient for a one-surface amalgam (average cost $120). No frequency flag triggered.",
+      "reasoning": "Procedure D2140 is a basic amalgam restoration explicitly listed as covered at 80% after deductible. Deductible is met. Annual maximum has $1,200 remaining - sufficient for a one-surface amalgam (average cost $120). No frequency flag triggered.",
       "compliance_note": "No PHI concerns. Standard basic restorative claim. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -1572,7 +1572,7 @@
   },
   {
     "id": "scenario-crown-ambiguous",
-    "scenario_label": "Porcelain crown — Cigna DPPO, ambiguous major language",
+    "scenario_label": "Porcelain crown - Cigna DPPO, ambiguous major language",
     "input": {
       "procedure_code": "D2740",
       "procedure_description": "Crown, porcelain/ceramic substrate",
@@ -1594,7 +1594,7 @@
         "clinical_necessity_required"
       ],
       "confidence": 0.71,
-      "reasoning": "Crown D2740 falls under major restorative, covered at 50%. However, deductible ($75 estimated) has not been met and must be applied first. 'Alternative benefit provisions may apply' is ambiguous — this language sometimes indicates the plan will pay for a less expensive alternative (e.g., an amalgam). Clinical necessity documentation recommended. Estimated benefit of $375 assumes $750 allowable after $0 deductible credit.",
+      "reasoning": "Crown D2740 falls under major restorative, covered at 50%. However, deductible ($75 estimated) has not been met and must be applied first. 'Alternative benefit provisions may apply' is ambiguous - this language sometimes indicates the plan will pay for a less expensive alternative (e.g., an amalgam). Clinical necessity documentation recommended. Estimated benefit of $375 assumes $750 allowable after $0 deductible credit.",
       "compliance_note": "Alternative benefit provision language requires dentist to document why the porcelain crown is preferred over a less expensive alternative. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -3147,10 +3147,10 @@
   },
   {
     "id": "scenario-age-restriction",
-    "scenario_label": "Sealant code D1351 — adult patient, age restriction",
+    "scenario_label": "Sealant code D1351 - adult patient, age restriction",
     "input": {
       "procedure_code": "D1351",
-      "procedure_description": "Sealant — per tooth",
+      "procedure_description": "Sealant - per tooth",
       "payer": "MetLife PDP",
       "patient_age": 42,
       "coverage_text": "Dental sealants: covered at 100% for patients age 15 and under, permanent molars and premolars only. Frequency: once per tooth every 36 months. Not covered for patients over age 15.",
@@ -4717,11 +4717,11 @@
       0.03680419921875
     ],
     "source": "base",
-    "query_string": "D1351 Sealant — per tooth MetLife PDP Dental sealants: covered at 100% for patients age 15 and under, permanent molars and premolars only. Frequency: once per tooth every 36 months. Not covered for patients over age 15. Patient age: 42 Plan year remaining: $950 Deductible met: yes"
+    "query_string": "D1351 Sealant - per tooth MetLife PDP Dental sealants: covered at 100% for patients age 15 and under, permanent molars and premolars only. Frequency: once per tooth every 36 months. Not covered for patients over age 15. Patient age: 42 Plan year remaining: $950 Deductible met: yes"
   },
   {
     "id": "scenario-annual-max",
-    "scenario_label": "Composite filling — $45 remaining on annual max",
+    "scenario_label": "Composite filling - $45 remaining on annual max",
     "input": {
       "procedure_code": "D2391",
       "procedure_description": "Resin-based composite, one surface, posterior, primary or permanent",
@@ -6294,7 +6294,7 @@
   },
   {
     "id": "scenario-frequency-limit",
-    "scenario_label": "Amalgam — same surface treated 14 months ago",
+    "scenario_label": "Amalgam - same surface treated 14 months ago",
     "input": {
       "procedure_code": "D2150",
       "procedure_description": "Amalgam restoration, two surfaces, primary or permanent",
@@ -6314,7 +6314,7 @@
         "frequency_limit_triggered"
       ],
       "confidence": 0.94,
-      "reasoning": "D2150 on the same tooth surface was treated 14 months ago. Plan permits new restorations on same surface only after 24 months. 14 months < 24 months — frequency limit triggered. Coverage denied unless there is documented clinical necessity for early replacement (fracture, decay under existing restoration). Patient bears full cost absent clinical exception documentation.",
+      "reasoning": "D2150 on the same tooth surface was treated 14 months ago. Plan permits new restorations on same surface only after 24 months. 14 months < 24 months - frequency limit triggered. Coverage denied unless there is documented clinical necessity for early replacement (fracture, decay under existing restoration). Patient bears full cost absent clinical exception documentation.",
       "compliance_note": "If dentist can document clinical necessity (e.g., existing restoration fractured), plan may allow an exception. Recommendation: submit with clinical notes and X-rays. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -7868,7 +7868,7 @@
   },
   {
     "id": "scenario-low-confidence",
-    "scenario_label": "Extraction D7140 — vague 'basic services' language",
+    "scenario_label": "Extraction D7140 - vague 'basic services' language",
     "input": {
       "procedure_code": "D7140",
       "procedure_description": "Extraction, erupted tooth or exposed root",
@@ -9443,10 +9443,10 @@
   },
   {
     "id": "lib-prophy-preventive",
-    "scenario_label": "Prophylaxis (cleaning) D1110 — United Concordia",
+    "scenario_label": "Prophylaxis (cleaning) D1110 - United Concordia",
     "input": {
       "procedure_code": "D1110",
-      "procedure_description": "Prophylaxis — adult",
+      "procedure_description": "Prophylaxis - adult",
       "payer": "United Concordia Advantage",
       "patient_age": 38,
       "coverage_text": "Preventive services: covered at 100% with no deductible. Adult prophylaxis (D1110): twice per calendar year, minimum 6 months between visits. Covered in-network only.",
@@ -11010,14 +11010,14 @@
       0.0158233642578125
     ],
     "source": "base",
-    "query_string": "D1110 Prophylaxis — adult United Concordia Advantage Preventive services: covered at 100% with no deductible. Adult prophylaxis (D1110): twice per calendar year, minimum 6 months between visits. Covered in-network only. Patient age: 38 Plan year remaining: $1500 Deductible met: no"
+    "query_string": "D1110 Prophylaxis - adult United Concordia Advantage Preventive services: covered at 100% with no deductible. Adult prophylaxis (D1110): twice per calendar year, minimum 6 months between visits. Covered in-network only. Patient age: 38 Plan year remaining: $1500 Deductible met: no"
   },
   {
     "id": "lib-xray-bitewing",
-    "scenario_label": "Bitewing X-rays D0274 — BCBS Federal",
+    "scenario_label": "Bitewing X-rays D0274 - BCBS Federal",
     "input": {
       "procedure_code": "D0274",
-      "procedure_description": "Bitewing radiographic images — four images",
+      "procedure_description": "Bitewing radiographic images - four images",
       "payer": "Blue Cross Blue Shield Federal Employee Program",
       "patient_age": 52,
       "coverage_text": "Diagnostic X-rays: covered at 100% preventive benefit. Bitewing radiographs: once per 12 months for adults. Panoramic or full-mouth series: once per 36 months. No deductible for diagnostic services.",
@@ -11032,7 +11032,7 @@
       "estimated_benefit": 85,
       "flags": [],
       "confidence": 0.98,
-      "reasoning": "D0274 (4 bitewing images) is a standard diagnostic service covered at 100% with no deductible. Once per 12 months frequency — assuming this is the first set this year. Patient owes nothing.",
+      "reasoning": "D0274 (4 bitewing images) is a standard diagnostic service covered at 100% with no deductible. Once per 12 months frequency - assuming this is the first set this year. Patient owes nothing.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -12581,11 +12581,11 @@
       0.03125
     ],
     "source": "base",
-    "query_string": "D0274 Bitewing radiographic images — four images Blue Cross Blue Shield Federal Employee Program Diagnostic X-rays: covered at 100% preventive benefit. Bitewing radiographs: once per 12 months for adults. Panoramic or full-mouth series: once per 36 months. No deductible for diagnostic services. Patient age: 52 Plan year remaining: $1400 Deductible met: yes"
+    "query_string": "D0274 Bitewing radiographic images - four images Blue Cross Blue Shield Federal Employee Program Diagnostic X-rays: covered at 100% preventive benefit. Bitewing radiographs: once per 12 months for adults. Panoramic or full-mouth series: once per 36 months. No deductible for diagnostic services. Patient age: 52 Plan year remaining: $1400 Deductible met: yes"
   },
   {
     "id": "lib-root-canal-molar",
-    "scenario_label": "Molar root canal D3330 — Cigna DPPO",
+    "scenario_label": "Molar root canal D3330 - Cigna DPPO",
     "input": {
       "procedure_code": "D3330",
       "procedure_description": "Endodontic therapy, molar tooth (excluding final restoration)",
@@ -12606,7 +12606,7 @@
         "deductible_not_met"
       ],
       "confidence": 0.88,
-      "reasoning": "D3330 falls under major endodontic, covered at 50%. Deductible ($50) has not been met and applies. Prior authorization is required — molar root canals routinely exceed $500. Estimated allowable fee ~$1,000; plan pays 50% less $50 deductible = $450. Flag: obtain prior auth before scheduling.",
+      "reasoning": "D3330 falls under major endodontic, covered at 50%. Deductible ($50) has not been met and applies. Prior authorization is required - molar root canals routinely exceed $500. Estimated allowable fee ~$1,000; plan pays 50% less $50 deductible = $450. Flag: obtain prior auth before scheduling.",
       "compliance_note": "Prior authorization failure will result in denial. Submit auth request with X-rays showing pulpal involvement. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -14159,10 +14159,10 @@
   },
   {
     "id": "lib-periodontal-scaling",
-    "scenario_label": "Periodontal scaling D4341 — Delta Dental Premier",
+    "scenario_label": "Periodontal scaling D4341 - Delta Dental Premier",
     "input": {
       "procedure_code": "D4341",
-      "procedure_description": "Periodontal scaling and root planing — four or more teeth per quadrant",
+      "procedure_description": "Periodontal scaling and root planing - four or more teeth per quadrant",
       "payer": "Delta Dental Premier",
       "patient_age": 58,
       "coverage_text": "Periodontal treatment: covered at 80% after deductible as basic periodontic service. Scaling and root planing: once per quadrant per 24 months with documentation of periodontal disease (pocket depths, bone loss). Annual maximum $1,500.",
@@ -15728,11 +15728,11 @@
       0.0241241455078125
     ],
     "source": "base",
-    "query_string": "D4341 Periodontal scaling and root planing — four or more teeth per quadrant Delta Dental Premier Periodontal treatment: covered at 80% after deductible as basic periodontic service. Scaling and root planing: once per quadrant per 24 months with documentation of periodontal disease (pocket depths, bone loss). Annual maximum $1,500. Patient age: 58 Plan year remaining: $1100 Deductible met: yes"
+    "query_string": "D4341 Periodontal scaling and root planing - four or more teeth per quadrant Delta Dental Premier Periodontal treatment: covered at 80% after deductible as basic periodontic service. Scaling and root planing: once per quadrant per 24 months with documentation of periodontal disease (pocket depths, bone loss). Annual maximum $1,500. Patient age: 58 Plan year remaining: $1100 Deductible met: yes"
   },
   {
     "id": "lib-implant-body",
-    "scenario_label": "Implant body D6010 — MetLife PDP",
+    "scenario_label": "Implant body D6010 - MetLife PDP",
     "input": {
       "procedure_code": "D6010",
       "procedure_description": "Surgical placement of implant body: endosteal implant",
@@ -15753,7 +15753,7 @@
         "alternative_covered_at_50pct"
       ],
       "confidence": 0.99,
-      "reasoning": "D6010 implant placement is explicitly excluded from coverage. Plan clearly states 'not a covered benefit.' Alternative prosthetic options (D6240 bridge or D5213 partial denture) may be covered at 50% as major restorative. Patient bears full implant cost — typically $1,500-2,500 per fixture.",
+      "reasoning": "D6010 implant placement is explicitly excluded from coverage. Plan clearly states 'not a covered benefit.' Alternative prosthetic options (D6240 bridge or D5213 partial denture) may be covered at 50% as major restorative. Patient bears full implant cost - typically $1,500-2,500 per fixture.",
       "compliance_note": "Inform patient of alternative benefits. A bridge (D6240) over the same site may qualify for 50% coverage. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -17306,10 +17306,10 @@
   },
   {
     "id": "lib-denture-partial",
-    "scenario_label": "Partial denture D5213 — Guardian PPO, waiting period",
+    "scenario_label": "Partial denture D5213 - Guardian PPO, waiting period",
     "input": {
       "procedure_code": "D5213",
-      "procedure_description": "Maxillary partial denture — cast metal framework with resin denture bases",
+      "procedure_description": "Maxillary partial denture - cast metal framework with resin denture bases",
       "payer": "Guardian PPO",
       "patient_age": 71,
       "coverage_text": "Major prosthodontic services: covered at 50% after deductible. Waiting period: 12 months from enrollment date for prosthetic services. Replacement: once every 60 months. Annual maximum $2,000.",
@@ -18874,17 +18874,17 @@
       0.0096588134765625
     ],
     "source": "base",
-    "query_string": "D5213 Maxillary partial denture — cast metal framework with resin denture bases Guardian PPO Major prosthodontic services: covered at 50% after deductible. Waiting period: 12 months from enrollment date for prosthetic services. Replacement: once every 60 months. Annual maximum $2,000. Patient age: 71 Plan year remaining: $2000 Deductible met: no"
+    "query_string": "D5213 Maxillary partial denture - cast metal framework with resin denture bases Guardian PPO Major prosthodontic services: covered at 50% after deductible. Waiting period: 12 months from enrollment date for prosthetic services. Replacement: once every 60 months. Annual maximum $2,000. Patient age: 71 Plan year remaining: $2000 Deductible met: no"
   },
   {
     "id": "lib-composite-anterior",
-    "scenario_label": "Anterior composite D2331 — Aetna PPO",
+    "scenario_label": "Anterior composite D2331 - Aetna PPO",
     "input": {
       "procedure_code": "D2331",
-      "procedure_description": "Resin-based composite — two surfaces, anterior",
+      "procedure_description": "Resin-based composite - two surfaces, anterior",
       "payer": "Aetna PPO",
       "patient_age": 26,
-      "coverage_text": "Basic restorative: covered at 80% after deductible. Anterior composites (D2331): covered as basic restorative. Posterior composites covered at amalgam alternative benefit — plan pays as if amalgam placed. Annual maximum $1,500.",
+      "coverage_text": "Basic restorative: covered at 80% after deductible. Anterior composites (D2331): covered as basic restorative. Posterior composites covered at amalgam alternative benefit - plan pays as if amalgam placed. Annual maximum $1,500.",
       "plan_year_remaining": 1500,
       "deductible_met": true,
       "last_appointment_date": null
@@ -18896,7 +18896,7 @@
       "estimated_benefit": 136,
       "flags": [],
       "confidence": 0.95,
-      "reasoning": "Anterior composite D2331 is covered at 80% as basic restorative — note the distinction from posterior composites which are subject to amalgam alternative benefit provisions. Deductible is met. Annual maximum full. Estimated 2-surface anterior composite allowable ~$170; plan pays $136.",
+      "reasoning": "Anterior composite D2331 is covered at 80% as basic restorative - note the distinction from posterior composites which are subject to amalgam alternative benefit provisions. Deductible is met. Annual maximum full. Estimated 2-surface anterior composite allowable ~$170; plan pays $136.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -20445,14 +20445,14 @@
       0.036376953125
     ],
     "source": "base",
-    "query_string": "D2331 Resin-based composite — two surfaces, anterior Aetna PPO Basic restorative: covered at 80% after deductible. Anterior composites (D2331): covered as basic restorative. Posterior composites covered at amalgam alternative benefit — plan pays as if amalgam placed. Annual maximum $1,500. Patient age: 26 Plan year remaining: $1500 Deductible met: yes"
+    "query_string": "D2331 Resin-based composite - two surfaces, anterior Aetna PPO Basic restorative: covered at 80% after deductible. Anterior composites (D2331): covered as basic restorative. Posterior composites covered at amalgam alternative benefit - plan pays as if amalgam placed. Annual maximum $1,500. Patient age: 26 Plan year remaining: $1500 Deductible met: yes"
   },
   {
     "id": "lib-exam-comprehensive",
-    "scenario_label": "Comprehensive exam D0150 — United Healthcare Dental",
+    "scenario_label": "Comprehensive exam D0150 - United Healthcare Dental",
     "input": {
       "procedure_code": "D0150",
-      "procedure_description": "Comprehensive oral evaluation — new or established patient",
+      "procedure_description": "Comprehensive oral evaluation - new or established patient",
       "payer": "United Healthcare Dental",
       "patient_age": 33,
       "coverage_text": "Diagnostic services: covered at 100% preventive benefit, no deductible. Comprehensive oral evaluation: once per 36 months per provider. Periodic oral evaluation: twice per calendar year.",
@@ -20467,7 +20467,7 @@
       "estimated_benefit": 75,
       "flags": [],
       "confidence": 0.97,
-      "reasoning": "D0150 comprehensive exam is covered at 100% with no deductible as a diagnostic preventive service. Frequency: once per 36 months per provider — this is a new patient visit. No frequency flag. Patient owes nothing.",
+      "reasoning": "D0150 comprehensive exam is covered at 100% with no deductible as a diagnostic preventive service. Frequency: once per 36 months per provider - this is a new patient visit. No frequency flag. Patient owes nothing.",
       "compliance_note": "Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -22016,14 +22016,14 @@
       0.017852783203125
     ],
     "source": "base",
-    "query_string": "D0150 Comprehensive oral evaluation — new or established patient United Healthcare Dental Diagnostic services: covered at 100% preventive benefit, no deductible. Comprehensive oral evaluation: once per 36 months per provider. Periodic oral evaluation: twice per calendar year. Patient age: 33 Plan year remaining: $1500 Deductible met: no"
+    "query_string": "D0150 Comprehensive oral evaluation - new or established patient United Healthcare Dental Diagnostic services: covered at 100% preventive benefit, no deductible. Comprehensive oral evaluation: once per 36 months per provider. Periodic oral evaluation: twice per calendar year. Patient age: 33 Plan year remaining: $1500 Deductible met: no"
   },
   {
     "id": "lib-fluoride-adult",
-    "scenario_label": "Fluoride varnish D1208 — BCBS, adult age cutoff",
+    "scenario_label": "Fluoride varnish D1208 - BCBS, adult age cutoff",
     "input": {
       "procedure_code": "D1208",
-      "procedure_description": "Topical application of fluoride — excluding varnish",
+      "procedure_description": "Topical application of fluoride - excluding varnish",
       "payer": "Blue Cross Blue Shield of Illinois",
       "patient_age": 24,
       "coverage_text": "Preventive services: fluoride treatment covered at 100%, no deductible. Age limitation: covered for patients through age 18. Not covered for patients age 19 and over. Frequency: twice per calendar year.",
@@ -22040,7 +22040,7 @@
         "age_restriction_exceeded"
       ],
       "confidence": 0.97,
-      "reasoning": "D1208 topical fluoride has an explicit age limitation: covered only through age 18. Patient is 24. Coverage is denied — 'not covered for patients age 19 and over' is unambiguous. Patient bears full cost.",
+      "reasoning": "D1208 topical fluoride has an explicit age limitation: covered only through age 18. Patient is 24. Coverage is denied - 'not covered for patients age 19 and over' is unambiguous. Patient bears full cost.",
       "compliance_note": "Age limitation on fluoride is common across many payer plans. Consider D1206 (fluoride varnish) which may have different age provisions on some plans. Synthetic demo data only.",
       "age_limit": {
         "type": "less_than",
@@ -23590,11 +23590,11 @@
       0.03070068359375
     ],
     "source": "base",
-    "query_string": "D1208 Topical application of fluoride — excluding varnish Blue Cross Blue Shield of Illinois Preventive services: fluoride treatment covered at 100%, no deductible. Age limitation: covered for patients through age 18. Not covered for patients age 19 and over. Frequency: twice per calendar year. Patient age: 24 Plan year remaining: $1200 Deductible met: yes"
+    "query_string": "D1208 Topical application of fluoride - excluding varnish Blue Cross Blue Shield of Illinois Preventive services: fluoride treatment covered at 100%, no deductible. Age limitation: covered for patients through age 18. Not covered for patients age 19 and over. Frequency: twice per calendar year. Patient age: 24 Plan year remaining: $1200 Deductible met: yes"
   },
   {
     "id": "lib-crown-buildup",
-    "scenario_label": "Core buildup D2950 — Delta Dental PPO, requires crown same day",
+    "scenario_label": "Core buildup D2950 - Delta Dental PPO, requires crown same day",
     "input": {
       "procedure_code": "D2950",
       "procedure_description": "Core buildup, including any pins when required",
@@ -25167,10 +25167,10 @@
   },
   {
     "id": "lib-emergency-palliative",
-    "scenario_label": "Emergency palliative D9110 — Humana PPO",
+    "scenario_label": "Emergency palliative D9110 - Humana PPO",
     "input": {
       "procedure_code": "D9110",
-      "procedure_description": "Palliative (emergency) treatment of dental pain — minor procedure",
+      "procedure_description": "Palliative (emergency) treatment of dental pain - minor procedure",
       "payer": "Humana PPO",
       "patient_age": 39,
       "coverage_text": "Emergency dental treatment: D9110 covered at 100% preventive benefit with no deductible. Covered once per 12-month period per provider. If definitively treated on same visit, only definitive procedure is covered.",
@@ -25187,7 +25187,7 @@
         "cannot_bill_with_definitive_treatment_same_visit"
       ],
       "confidence": 0.93,
-      "reasoning": "D9110 emergency palliative is covered at 100% with no deductible. However, flag: if the dentist also performs a definitive treatment (e.g., extraction, root canal) on the same visit, D9110 is bundled and not separately reimbursed — only the definitive procedure is paid.",
+      "reasoning": "D9110 emergency palliative is covered at 100% with no deductible. However, flag: if the dentist also performs a definitive treatment (e.g., extraction, root canal) on the same visit, D9110 is bundled and not separately reimbursed - only the definitive procedure is paid.",
       "compliance_note": "If palliative treatment only: bill D9110, patient owes $0. If palliative plus definitive: bill only definitive procedure, D9110 will be denied or bundled. Synthetic demo data only.",
       "age_limit": {
         "type": "none"
@@ -26736,11 +26736,11 @@
       0.0124664306640625
     ],
     "source": "base",
-    "query_string": "D9110 Palliative (emergency) treatment of dental pain — minor procedure Humana PPO Emergency dental treatment: D9110 covered at 100% preventive benefit with no deductible. Covered once per 12-month period per provider. If definitively treated on same visit, only definitive procedure is covered. Patient age: 39 Plan year remaining: $1100 Deductible met: no"
+    "query_string": "D9110 Palliative (emergency) treatment of dental pain - minor procedure Humana PPO Emergency dental treatment: D9110 covered at 100% preventive benefit with no deductible. Covered once per 12-month period per provider. If definitively treated on same visit, only definitive procedure is covered. Patient age: 39 Plan year remaining: $1100 Deductible met: no"
   },
   {
     "id": "lib-orthodontics-adult",
-    "scenario_label": "Orthodontic banding D8080 — Delta Dental, adult exclusion",
+    "scenario_label": "Orthodontic banding D8080 - Delta Dental, adult exclusion",
     "input": {
       "procedure_code": "D8080",
       "procedure_description": "Comprehensive orthodontic treatment, adolescent dentition",
@@ -26761,8 +26761,8 @@
         "age_restriction_exceeded"
       ],
       "confidence": 0.98,
-      "reasoning": "Plan explicitly excludes adult orthodontics — 'not covered for patients age 19 and over.' Patient is 31. D8080 banding for comprehensive orthodontic treatment is not covered. Additionally, D8080 describes 'adolescent dentition' which is clinically inconsistent with an adult patient. Coverage denied.",
-      "compliance_note": "Patient must self-pay for orthodontic treatment. Some premium plans offer adult ortho as a rider — verify enrollment in such riders if applicable. Synthetic demo data only.",
+      "reasoning": "Plan explicitly excludes adult orthodontics - 'not covered for patients age 19 and over.' Patient is 31. D8080 banding for comprehensive orthodontic treatment is not covered. Additionally, D8080 describes 'adolescent dentition' which is clinically inconsistent with an adult patient. Coverage denied.",
+      "compliance_note": "Patient must self-pay for orthodontic treatment. Some premium plans offer adult ortho as a rider - verify enrollment in such riders if applicable. Synthetic demo data only.",
       "age_limit": {
         "type": "less_than",
         "age": 19

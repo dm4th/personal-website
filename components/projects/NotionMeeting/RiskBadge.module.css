@@ -1,0 +1,10 @@
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--risk-color, #6b7280) 12%, transparent);
+  color: var(--risk-color, #6b7280);
+  white-space: nowrap;
+}

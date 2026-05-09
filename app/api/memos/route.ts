@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   // Look up internal user ID
   const dbUsers = await db.select({ id: users.id }).from(users).where(eq(users.clerkUserId, user.id)).limit(1);
   const userId = dbUsers[0]?.id;
-  if (!userId) return NextResponse.json({ error: 'User not found — sign out and back in' }, { status: 404 });
+  if (!userId) return NextResponse.json({ error: 'User not found - sign out and back in' }, { status: 404 });
 
   // Build markdown body from messages
   const bodyMarkdown = messages
