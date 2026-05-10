@@ -75,7 +75,7 @@ export async function scheduleMeeting(
     const windowEnd = new Date(input.windowEnd);
 
     if (isNaN(windowStart.getTime()) || isNaN(windowEnd.getTime())) {
-      return { ok: false, error: 'Invalid date window — use ISO 8601 format (e.g. "2026-04-21")' };
+      return { ok: false, error: 'Invalid date window - use ISO 8601 format (e.g. "2026-04-21")' };
     }
 
     // Expand to cover full days in PT
@@ -103,7 +103,7 @@ export async function scheduleMeeting(
       data: output,
       summary: count > 0
         ? `Found ${count} open slot${count !== 1 ? 's' : ''} for a ${input.durationMinutes}-min meeting`
-        : 'No open slots found in that window — try a different date range',
+        : 'No open slots found in that window - try a different date range',
     };
   } catch (err) {
     const msg = String(err);

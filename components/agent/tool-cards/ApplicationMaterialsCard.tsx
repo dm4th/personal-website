@@ -42,7 +42,7 @@ export default function ApplicationMaterialsCard({ part }: { part: ToolUsePart }
         <div className={styles.body}>
           {isError && (
             <p className={styles.error}>
-              {(data as unknown as { error?: string })?.error ?? 'Materials generation failed — try again or paste the JD text directly.'}
+              {(data as unknown as { error?: string })?.error ?? 'Materials generation failed - try again or paste the JD text directly.'}
             </p>
           )}
 

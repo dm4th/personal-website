@@ -1,0 +1,134 @@
+.wrapper {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+/* Toggle button */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+  color: var(--foreground);
+}
+
+.toggle:hover {
+  background: var(--surface-2);
+}
+
+.toggleIcon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.toggleLabel {
+  flex: 1;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+}
+
+.chevron {
+  font-size: 8px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* Pipeline body */
+.body {
+  padding: 4px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Section divider between findings and methodology */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 4px 0 6px;
+}
+
+/* Individual step */
+.step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  width: 18px;
+  text-align: center;
+  color: var(--subtle);
+}
+
+/* Icon color variants */
+.icon_green  { color: #22c55e; }
+.icon_amber  { color: #f59e0b; }
+.icon_red    { color: #ef4444; }
+.icon_blue   { color: #3b82f6; }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Label color variants */
+.label_green { color: #22c55e; }
+.label_amber { color: #f59e0b; }
+.label_red   { color: #ef4444; }
+.label_blue  { color: #3b82f6; }
+
+.detail {
+  font-size: 11.5px;
+  color: var(--subtle);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Bullet item list */
+.items {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.item {
+  font-size: 11.5px;
+  color: var(--subtle);
+  line-height: 1.45;
+  padding-left: 12px;
+  position: relative;
+}
+
+.item::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: var(--muted);
+}

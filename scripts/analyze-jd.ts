@@ -61,7 +61,7 @@ Key requirements: Forward-deployed TPM owning full lifecycle of AI-first enterpr
     role: 'AI Strategist, Healthcare Solutions',
     company: 'Distyl AI',
     jd: `
-AI Strategist, Healthcare Solutions — Distyl AI
+AI Strategist, Healthcare Solutions - Distyl AI
 Location: San Francisco; New York. Hybrid. $150K-$250K base + equity.
 Key requirements: 8-12 years SE/solutions/PM at intersection of business and technology, deep direct healthcare experience (payer ops, provider workflows, health tech). Technical undergrad (CS/engineering/math). Hands-on GenAI (LLM pipelines, prompt engineering, RAG). Python/SQL/pandas. Healthcare-specific data formats (EDI, FHIR). Prior auth, claims adjudication, UM workflows. GTM engine building, demo and POC construction on Distillery platform. 0-to-1 mode. C-suite communication. 50% travel.
     `,
@@ -124,7 +124,7 @@ What You'll Achieve:
 
 Skills You'll Need to Bring:
 - 3-5 years of work experience in a technical commercial role (sales engineer, technical account manager or similar) and/or a growth engineer or product manager role with exposure to GTM systems
-- Demonstrated experience building AI workflows, automation, or product solutions — you can show examples of what you've shipped and the impact it created
+- Demonstrated experience building AI workflows, automation, or product solutions - you can show examples of what you've shipped and the impact it created
 - Strong product management instincts and systems thinking: you naturally see how pieces fit together and can design elegant solutions
 - Genuine passion for GTM engineering and the future of AI-driven selling
 - High bias to action and ownership mentality: you ship quickly, iterate based on feedback, and take projects from 0 to 1
@@ -193,12 +193,12 @@ function saveGlossary(
   synonymTerms: string[],
 ): void {
   // Merge new synonym terms into the term mapping by pairing each searchTerm with synonyms
-  // that are new to the glossary (simple accumulation — no deduplication across synonym sets).
+  // that are new to the glossary (simple accumulation - no deduplication across synonym sets).
   const existingJdTerms = new Set(glossary.termMappings.map((m) => m.jdTerm.toLowerCase()));
   for (const term of searchTerms) {
     if (!existingJdTerms.has(term.toLowerCase())) {
       // Find synonyms from this run that aren't already captured for this term.
-      // (We just store all synonymTerms from the run against any new JD terms —
+      // (We just store all synonymTerms from the run against any new JD terms -
       // the goal is to grow the vocabulary pool, not maintain a strict mapping.)
       if (synonymTerms.length > 0) {
         glossary.termMappings.push({ jdTerm: term, synonyms: synonymTerms });
@@ -230,7 +230,7 @@ function saveGlossary(
 
 // ─── Extraction-only seeder ────────────────────────────────────────────────────
 // Runs Haiku extraction on historical JDs and merges their terms into the glossary
-// without running the full Sonnet synthesis. Safe to call every run — already-seen
+// without running the full Sonnet synthesis. Safe to call every run - already-seen
 // companies are skipped so costs are negligible after the first pass.
 
 async function seedHistoricalJds(glossary: GlossaryFile): Promise<void> {
@@ -241,7 +241,7 @@ async function seedHistoricalJds(glossary: GlossaryFile): Promise<void> {
   for (const { role, company, jd } of HISTORICAL_JDS) {
     const key = `${company}::${role}`;
     if (seenCompanyRoles.has(key)) {
-      console.log(`[glossary] Skipping "${role} @ ${company}" — already seeded\n`);
+      console.log(`[glossary] Skipping "${role} @ ${company}" - already seeded\n`);
       continue;
     }
 
@@ -254,9 +254,9 @@ async function seedHistoricalJds(glossary: GlossaryFile): Promise<void> {
           role: 'user',
           content: `Extract search terms from this job description as JSON. Return ONLY valid JSON, no markdown fences.
 
-Generate TWO sets of grep search terms — both will be run against a candidate's career files:
+Generate TWO sets of grep search terms - both will be run against a candidate's career files:
 1. "searchTerms": 6-8 terms taken DIRECTLY from the JD's own vocabulary.
-2. "synonymTerms": 8-12 practitioner/domain synonym alternatives — how an experienced candidate would describe the same concepts.
+2. "synonymTerms": 8-12 practitioner/domain synonym alternatives - how an experienced candidate would describe the same concepts.
 
 {
   "searchTerms": ["6-8 direct JD terms"],
@@ -272,7 +272,7 @@ ${jd.slice(0, 6000)}`,
     const text = resp.content[0]?.type === 'text' ? resp.content[0].text : '';
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      console.warn(`[glossary] Could not parse extraction for ${company} — skipping\n`);
+      console.warn(`[glossary] Could not parse extraction for ${company} - skipping\n`);
       continue;
     }
 
@@ -289,12 +289,12 @@ ${jd.slice(0, 6000)}`,
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
-  // Quick sanity check — confirm grep can actually find files
+  // Quick sanity check - confirm grep can actually find files
   const testGrep = await searchContent({ action: 'grep', pattern: 'SQL' });
   if (testGrep.ok && !Array.isArray(testGrep.data) && 'matches' in testGrep.data) {
     console.log(`[debug] grep("SQL") found ${testGrep.data.matches.length} hits in INFO_ROOT\n`);
   } else {
-    console.log('[debug] grep("SQL") returned no data — INFO_ROOT may be wrong\n');
+    console.log('[debug] grep("SQL") returned no data - INFO_ROOT may be wrong\n');
   }
 
   // Load cross-JD term glossary (grows with each run)
@@ -306,23 +306,23 @@ async function main() {
   if (termGlossary) {
     console.log(`[glossary] Loaded ${glossary.termMappings.length} term mappings from ${glossary.runs.length} prior runs\n`);
   } else {
-    console.log('[glossary] No prior runs — starting fresh glossary\n');
+    console.log('[glossary] No prior runs - starting fresh glossary\n');
   }
 
   // Load key career files as background context so synthesis isn't grep-dependent
   const infoRoot = path.join(process.cwd(), 'info');
   const keyFiles = [
-    // Core recent career — highest signal for most roles
+    // Core recent career - highest signal for most roles
     'career/smarter-technologies/index.md',
     'career/smarter-technologies/pipeline-management.md',
     'career/smarter-technologies/ai-se-platform.md',
     'career/thoughtful/solutions-architect.md',
     'career/thoughtful/customer-engineer.md',
     'career/thoughtful/lead-tpm.md',
-    // Education + technical credentials — address degree/Python/ML gaps early
+    // Education + technical credentials - address degree/Python/ML gaps early
     'about-me/education/bucknell-overview.md',
     'ai-ml/cal-tech/bootcamp.md',
-    // Prior career — data analytics depth, Python/pandas/SQL evidence, consumer PLG/LTV work
+    // Prior career - data analytics depth, Python/pandas/SQL evidence, consumer PLG/LTV work
     'career/action-network/first-year-post-ari.md',
     'career/action-network/year-two-and-departure.md',
     // Remaining context

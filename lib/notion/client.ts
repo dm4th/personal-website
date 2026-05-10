@@ -175,8 +175,8 @@ async function extractTextFromBlocks(blockList: AnyBlock[]): Promise<string[]> {
  * Reads JD content from the Notion page body.
  *
  * Handles two layouts:
- *   1. Toggle heading — "Job Description" heading_1 with all content as its children
- *   2. Flat layout — content as sibling blocks after a "Job Description" heading
+ *   1. Toggle heading - "Job Description" heading_1 with all content as its children
+ *   2. Flat layout - content as sibling blocks after a "Job Description" heading
  *
  * Stops before any "Application Materials" analysis section.
  */
@@ -215,7 +215,7 @@ export async function readJdFromNotionPage(pageId: string): Promise<string | nul
     const siblings = fullBlocks.slice(siblingStart, siblingEnd);
     lines.push(...await extractTextFromBlocks(siblings));
   } else {
-    // No JD heading — read all blocks before the analysis section
+    // No JD heading - read all blocks before the analysis section
     const end = analysisIdx >= 0 ? analysisIdx : fullBlocks.length;
     lines.push(...await extractTextFromBlocks(fullBlocks.slice(0, end)));
   }
@@ -289,7 +289,7 @@ export async function appendOpportunityMaterials(
   }
 
   blocks.push(
-    heading(1, `Application Materials — Fit Score: ${materials.fitScore}/100`),
+    heading(1, `Application Materials - Fit Score: ${materials.fitScore}/100`),
     heading(2, 'Cover Letter'),
   );
 

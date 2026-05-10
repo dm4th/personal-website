@@ -47,7 +47,7 @@ export const submitJobLeadTool = {
       },
       contactName: {
         type: 'string',
-        description: "Name of the person submitting the lead (optional — 'Anonymous' if not provided)",
+        description: "Name of the person submitting the lead (optional - 'Anonymous' if not provided)",
       },
       contactInfo: {
         type: 'string',
@@ -89,7 +89,7 @@ export async function submitJobLead(
       .join('\n');
 
     await createJobEncounter({
-      title: `Lead submitted via website — ${submitter}`,
+      title: `Lead submitted via website - ${submitter}`,
       jobId: opportunityId,
       date: today,
       notes: encounterNotes,
@@ -143,7 +143,7 @@ export async function submitJobLead(
     return {
       ok: true,
       data: { notionUrl, fitScore, coverLetterPreview, notionUpdated },
-      summary: `Lead logged — ${input.opportunityTitle} at ${input.company}${fitScore !== undefined ? ` (fit: ${fitScore}/100)` : ''}`,
+      summary: `Lead logged - ${input.opportunityTitle} at ${input.company}${fitScore !== undefined ? ` (fit: ${fitScore}/100)` : ''}`,
     };
   } catch (err) {
     return { ok: false, error: String(err) };

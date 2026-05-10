@@ -3,11 +3,11 @@
  *
  * Prerequisites:
  *   1. Create OAuth 2.0 credentials in Google Cloud Console as type "Desktop app"
- *      (Web app type won't work — OOB flow requires Desktop app credentials)
+ *      (Web app type won't work - OOB flow requires Desktop app credentials)
  *   2. Enable the Google Calendar API in the same project
  *   3. Set these in .env.local:
  *        GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET,
- *        TOKEN_ENC_KEY (64-char hex — generate with: openssl rand -hex 32)
+ *        TOKEN_ENC_KEY (64-char hex - generate with: openssl rand -hex 32)
  *        NEON_DATABASE_URL
  *
  * Run with:

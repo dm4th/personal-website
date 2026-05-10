@@ -1,0 +1,210 @@
+.wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header:hover {
+  background: color-mix(in srgb, var(--border) 30%, transparent);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.notionLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 12px;
+  font-weight: 900;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.sub {
+  font-size: 10px;
+  color: var(--subtle);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readyBadge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #22c55e;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+  padding: 1px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.templateLink {
+  font-size: 10px;
+  color: var(--subtle);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.templateLink:hover {
+  color: var(--foreground);
+}
+
+.skipBtn {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--subtle);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.skipBtn:hover {
+  color: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.chevron {
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.body {
+  border-top: 1px solid var(--border);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.stepNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--foreground);
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.stepText {
+  font-size: 11px;
+  color: var(--subtle);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.stepText a {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fieldLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--subtle);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.savedBadge {
+  font-size: 9px;
+  font-weight: 600;
+  color: #22c55e;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.input {
+  font-size: 11px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: monospace;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--foreground);
+}
+
+.input::placeholder {
+  color: var(--muted);
+  font-family: inherit;
+}

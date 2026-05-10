@@ -35,7 +35,7 @@ export default async function InfoPage({ params }: Props) {
               <h1 className={styles.title}>{d.Title ?? filePath.at(-1)}</h1>
               {(d.Start || d.End) && (
                 <p className={styles.dates}>
-                  {d.Start}{d.End ? ` — ${d.End}` : d.Start ? ' — Present' : ''}
+                  {d.Start}{d.End ? ` - ${d.End}` : d.Start ? ' - Present' : ''}
                 </p>
               )}
               {(d.Link || d.GitHub || d.Credit) && (
@@ -72,7 +72,7 @@ export default async function InfoPage({ params }: Props) {
           <Image
             key={`${pageName}-${index + 1}`}
             src={img.imgPath}
-            alt={`PDF Page ${index + 1} — ${pageTitle}`}
+            alt={`PDF Page ${index + 1} - ${pageTitle}`}
             width={img.width ?? 800}
             height={img.height ?? 1035}
             priority={index === 0}

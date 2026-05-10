@@ -1,0 +1,123 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.left::-webkit-scrollbar {
+  display: none;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Mode banner */
+.modeBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.modeBannerText {
+  font-size: 0.825rem;
+  color: var(--subtle);
+}
+
+.modeSwitchBtn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.modeSwitchBtn:hover {
+  opacity: 0.75;
+}
+
+/* Demo-mode nudge shown after a successful analysis */
+.demoNudge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1.5px dashed var(--border);
+  background: var(--surface);
+}
+
+.demoNudgeText {
+  font-size: 0.85rem;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.demoNudgeBtn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.demoNudgeBtn:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    position: static;
+    max-height: none;
+  }
+
+  .modeBanner {
+    flex-wrap: wrap;
+  }
+
+  .demoNudge {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -3,14 +3,14 @@
  * and no existing analysis section.
  *
  * JD source priority for each opportunity:
- *   1. Job Post URL — fetched via ATS-specific APIs (Ashby, Greenhouse, Lever) or HTML scrape
- *   2. Notion page body — if URL is missing or fails, reads JD text from page blocks
+ *   1. Job Post URL - fetched via ATS-specific APIs (Ashby, Greenhouse, Lever) or HTML scrape
+ *   2. Notion page body - if URL is missing or fails, reads JD text from page blocks
  *      (put the JD under a "Job Description" heading in the Notion page)
  *
  * Usage:
- *   npm run jobs:process          — process all unanalyzed opportunities
- *   npm run jobs:dry-run          — preview without writing to Notion
- *   npm run jobs:reprocess        — force-regenerate all (appends new section)
+ *   npm run jobs:process          - process all unanalyzed opportunities
+ *   npm run jobs:dry-run          - preview without writing to Notion
+ *   npm run jobs:reprocess        - force-regenerate all (appends new section)
  */
 
 import {
@@ -49,7 +49,7 @@ async function main() {
     // Skip if analysis already exists (unless --force or --clean)
     const alreadyAnalyzed = await hasExistingAnalysis(opp.id);
     if (alreadyAnalyzed && !isForce && !isClean) {
-      console.log(`   ✅ Analysis already exists — skipping (use --force to append, --clean to replace)\n`);
+      console.log(`   ✅ Analysis already exists - skipping (use --force to append, --clean to replace)\n`);
       skipped++;
       continue;
     }
@@ -62,7 +62,7 @@ async function main() {
         console.log(`   🧹 Cleared ${deleted} existing analysis block(s)`);
       }
     } else if (alreadyAnalyzed && isForce) {
-      console.log(`   ⚠️  Existing analysis found — appending new section (--force)`);
+      console.log(`   ⚠️  Existing analysis found - appending new section (--force)`);
     }
 
     // Resolve JD source: Notion page body takes priority (manually curated),
@@ -78,7 +78,7 @@ async function main() {
       console.log(`   🔗 ${opp.jobPostUrl}`);
       jdSource = { jobUrl: opp.jobPostUrl, sourceLabel: 'URL' };
     } else {
-      console.log(`   ❌ No JD found — add a Job Post URL or paste the JD under a "Job Description" heading in the Notion page\n`);
+      console.log(`   ❌ No JD found - add a Job Post URL or paste the JD under a "Job Description" heading in the Notion page\n`);
       skipped++;
       continue;
     }
@@ -100,7 +100,7 @@ async function main() {
     if (result.ok) {
       await updateOpportunityScore(opp.id, result.data.fitScore);
       console.log(
-        `   ✅ Done — fit score ${result.data.fitScore}/100 · status → Fit Scored\n`,
+        `   ✅ Done - fit score ${result.data.fitScore}/100 · status → Fit Scored\n`,
       );
       processed++;
     } else {

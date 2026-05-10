@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: error?.message ?? 'Send failed' }, { status: 500 });
     }
 
-    // Record in DB (best-effort — don't fail the response if this errors)
+    // Record in DB (best-effort - don't fail the response if this errors)
     try {
       await db.insert(draftedEmails).values({
         sessionId: sessionId ?? null,

@@ -8,6 +8,13 @@
       "when": 1776539302345,
       "tag": "0000_bumpy_colossus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1746576000000,
+      "tag": "0001_add_notion_configs",
+      "breakpoints": true
     }
   ]
 }

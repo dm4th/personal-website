@@ -148,7 +148,7 @@ export default function ResultsCard({ state, totalCases, approvalState, threshol
     </div>
   );
 
-  // Exact match — auto-approved
+  // Exact match - auto-approved
   if (isExactMatch) {
     return (
       <div className={styles.card}>
@@ -189,7 +189,7 @@ export default function ResultsCard({ state, totalCases, approvalState, threshol
     );
   }
 
-  // Hybrid RAG — approved by user this session
+  // Hybrid RAG - approved by user this session
   if (approvalState === 'approved') {
     return (
       <div className={styles.card}>
@@ -209,7 +209,7 @@ export default function ResultsCard({ state, totalCases, approvalState, threshol
     );
   }
 
-  // Hybrid RAG — feedback submitted
+  // Hybrid RAG - feedback submitted
   if (denyStep === 'submitted') {
     return (
       <div className={styles.card}>
@@ -234,7 +234,7 @@ export default function ResultsCard({ state, totalCases, approvalState, threshol
     );
   }
 
-  // Hybrid RAG — deny form
+  // Hybrid RAG - deny form
   if (denyStep === 'form') {
     return (
       <div className={styles.card}>
@@ -270,7 +270,7 @@ export default function ResultsCard({ state, totalCases, approvalState, threshol
     );
   }
 
-  // Hybrid RAG — pending review
+  // Hybrid RAG - pending review
   return (
     <div className={styles.card}>
       <div className={styles.stack}>

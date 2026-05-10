@@ -88,7 +88,7 @@ export default function DentalEligibilityDemo({ baseCases }: Props) {
     const payer = lastInput.payer;
     const newCase: SessionCase = {
       id: newId,
-      scenario_label: `${procedureCode} — ${payer} (session)`,
+      scenario_label: `${procedureCode} - ${payer} (session)`,
       input: lastInput,
       determination: lastResult.determination,
       embedding: lastResult.query_embedding,

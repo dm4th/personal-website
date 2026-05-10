@@ -42,6 +42,14 @@ const ROLES = [
 
 const PROJECTS = [
   {
+    title: 'AI-Native GTM Engine',
+    description: 'Paste a sales transcript and six Claude agents analyze it in parallel - sales coaching, commercial pricing, delivery, product feedback, ICP fit, and an executive summary. Writes a Meeting Note + 6 Agent Analysis rows to your Notion GTM Hub template.',
+    demoSlug: '/projects/notion-meeting-intelligence',
+    infoSlug: null,
+    tags: ['Claude AI', 'Notion', 'Multi-Agent', 'GTM'],
+    stat: '6 agents in parallel',
+  },
+  {
     title: 'Dental Eligibility Intelligence',
     description: 'Hybrid-RAG eligibility verification engine built in production at Thoughtful AI. 95%+ accuracy within two days. Exact matches bypass the LLM; approve results live to grow the case library.',
     demoSlug: '/projects/dental-eligibility',

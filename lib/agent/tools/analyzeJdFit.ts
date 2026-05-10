@@ -73,7 +73,7 @@ export async function analyzeJdFit(
   input: JdFitInput,
 ): Promise<{ ok: true; data: JdFitOutput; summary: string; extractedTerms: { searchTerms: string[]; synonymTerms: string[] } } | { ok: false; error: string }> {
   try {
-    // Step 1: Extract structured requirements from JD (Haiku — cheap pass)
+    // Step 1: Extract structured requirements from JD (Haiku - cheap pass)
     const extractResp = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
@@ -84,7 +84,7 @@ export async function analyzeJdFit(
 
 IMPORTANT: Job postings often begin with a generic "About Us" section. IGNORE that section entirely. Focus exclusively on what THIS SPECIFIC ROLE requires from the candidate.
 
-Generate TWO sets of grep search terms — both will be run against a candidate's career files:
+Generate TWO sets of grep search terms - both will be run against a candidate's career files:
 
 1. "searchTerms": 6-8 terms taken DIRECTLY from the JD's own vocabulary (exact skills/keywords as written).
 2. "synonymTerms": 8-12 ALTERNATIVE terms that an experienced practitioner would use to describe the same concepts. These bridge the gap between how the JD is written and how a candidate's career files are written. Built-in examples:
@@ -144,7 +144,7 @@ ${input.jobDescription.slice(0, 8000)}`,
     // Step 3: Synthesize assessment (Sonnet)
     const focus = input.focus ?? 'all';
     const backgroundSection = input.backgroundContext
-      ? `\nDan's background (primary source of truth — use this to reason about fit):\n${input.backgroundContext}\n`
+      ? `\nDan's background (primary source of truth - use this to reason about fit):\n${input.backgroundContext}\n`
       : '';
     const evidenceSection = Object.keys(evidenceMap).length > 0
       ? `\nSupporting evidence (grep hits from Dan's files):\n${JSON.stringify(evidenceMap, null, 2)}`
@@ -161,11 +161,11 @@ ${input.jobDescription.slice(0, 8000)}`,
           content: `You are assessing how well Dan Mathieson fits a job description.
 
 Scoring guidance:
-- 80-100: Strong match — most requirements met, minor gaps only
-- 60-79: Good match — core requirements met, some genuine gaps
-- 40-59: Partial match — relevant background but meaningful gaps
-- 20-39: Weak match — some transferable skills but significant gaps
-- 0-19: Poor match — most requirements unmet
+- 80-100: Strong match - most requirements met, minor gaps only
+- 60-79: Good match - core requirements met, some genuine gaps
+- 40-59: Partial match - relevant background but meaningful gaps
+- 20-39: Weak match - some transferable skills but significant gaps
+- 0-19: Poor match - most requirements unmet
 
 Be calibrated, not pessimistic. If Dan has done this type of work (SE leadership, GTM, enterprise AI), score accordingly. Only score below 40 if there are fundamental missing requirements.
 
@@ -209,7 +209,7 @@ Return ONLY valid JSON (no markdown fences):
     return {
       ok: true,
       data: output,
-      summary: `Fit score: ${output.fitScore}/100 — ${output.roleTitle}${output.company ? ` at ${output.company}` : ''}`,
+      summary: `Fit score: ${output.fitScore}/100 - ${output.roleTitle}${output.company ? ` at ${output.company}` : ''}`,
       // Expose extracted terms so callers can persist them to the cross-JD glossary
       extractedTerms: {
         searchTerms: extracted.searchTerms ?? [],

@@ -1,0 +1,443 @@
+.card {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji {
+  font-size: 22px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.propRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.propRow:last-child {
+  border-bottom: none;
+}
+
+.propLabel {
+  font-size: 12px;
+  color: var(--subtle);
+  flex-shrink: 0;
+}
+
+.propValue {
+  font-size: 12px;
+  color: var(--foreground);
+  font-weight: 500;
+  text-align: right;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.listItem {
+  font-size: 12px;
+  color: var(--foreground);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.listItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--subtle);
+}
+
+.listItemGreen::before { color: #22c55e; }
+.listItemRed::before { color: #ef4444; }
+.listItemAmber::before { color: #f59e0b; }
+
+.para {
+  font-size: 12px;
+  color: var(--foreground);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dots {
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.dotFilled {
+  background: var(--foreground);
+}
+
+.dimTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dimTable th {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--subtle);
+  text-align: left;
+  padding: 0 0 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dimTable td {
+  font-size: 11px;
+  color: var(--foreground);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.dimTable tr:last-child td {
+  border-bottom: none;
+}
+
+.dimScore {
+  font-weight: 700;
+  color: var(--foreground);
+  width: 28px;
+}
+
+.dimWeight {
+  color: var(--subtle);
+  width: 40px;
+}
+
+.dimEvidence {
+  color: var(--subtle);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.quote {
+  font-size: 12px;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-style: italic;
+  padding: 8px 12px;
+  border-left: 2px solid #3b82f6;
+  margin: 0;
+}
+
+.flagItem {
+  font-size: 12px;
+  color: #ef4444;
+  padding-left: 14px;
+  position: relative;
+}
+
+.flagItem::before {
+  content: '⚠';
+  position: absolute;
+  left: 0;
+  font-style: normal;
+}
+
+/* ── Metric bar ─────────────────────────────────────────── */
+
+.metricBar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metricBarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.metricBarLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+}
+
+.metricBarValue {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.metricBarDenom {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--subtle);
+}
+
+.metricBarTrack {
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  overflow: hidden;
+}
+
+.metricBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease, background 0.3s ease;
+}
+
+.metricBarCaption {
+  font-size: 10px;
+  color: var(--subtle);
+  margin: 0;
+}
+
+/* ── Inline icon steps (styled like dropdown steps, used in card body) ── */
+
+.iconSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.iconStep {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.iconStepIcon {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  width: 18px;
+  text-align: center;
+  color: var(--subtle);
+}
+
+.iconStepIcon_green  { color: #22c55e; }
+.iconStepIcon_amber  { color: #f59e0b; }
+.iconStepIcon_red    { color: #ef4444; }
+.iconStepIcon_blue   { color: #3b82f6; }
+
+.iconStepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconStepLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+  line-height: 1.3;
+}
+
+.iconStepDetail {
+  font-size: 12px;
+  color: var(--foreground);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.iconStepDetail_blue   { color: #3b82f6; }
+.iconStepDetail_green  { color: #22c55e; }
+.iconStepDetail_amber  { color: #f59e0b; }
+.iconStepDetail_red    { color: #ef4444; }
+
+/* ── Stat count grid (Product Feedback) ─────────────────── */
+
+.countGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.countItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.countIcon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.countNum {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.countLabel {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+  line-height: 1.3;
+}
+
+/* ── Delivery risk indicator ─────────────────────────────── */
+
+.riskRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.riskRowLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+}
+
+/* ── Deal tier callout (Commercial) ─────────────────────── */
+
+.dealTierRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.dealTierLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+}
+
+.acvValue {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.acvLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+  margin: 0 0 2px;
+}
+
+/* ── ICP dimension table in dropdown ─────────────────────── */
+
+.detailTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detailTable th {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+  text-align: left;
+  padding: 0 8px 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.detailTable td {
+  font-size: 11px;
+  color: var(--foreground);
+  padding: 6px 8px 6px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.detailTable tr:last-child td {
+  border-bottom: none;
+}
+
+.detailTableScore {
+  font-weight: 700;
+  white-space: nowrap;
+  width: 32px;
+}
+
+.detailTableWeight {
+  color: var(--subtle);
+  white-space: nowrap;
+  width: 36px;
+}
+
+.detailTableEvidence {
+  color: var(--subtle);
+  font-size: 10px;
+  line-height: 1.4;
+}

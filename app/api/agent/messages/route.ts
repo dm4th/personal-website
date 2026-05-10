@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       },
     ]);
   } catch {
-    // Non-blocking — don't fail the UX if DB write fails
+    // Non-blocking - don't fail the UX if DB write fails
   }
 
   return NextResponse.json({ ok: true });
