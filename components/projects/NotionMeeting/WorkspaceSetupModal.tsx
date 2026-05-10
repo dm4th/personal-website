@@ -215,6 +215,9 @@ export default function WorkspaceSetupModal({ onComplete, onDismiss }: Props) {
             >
               Open GTM Hub Template →
             </a>
+            <p className={styles.templateNote}>
+              ⏳ Template pending review by the Notion team — duplication coming soon.
+            </p>
 
             <button className={styles.primaryBtn} onClick={() => setStep(2)}>
               I&apos;ve cloned it, continue →

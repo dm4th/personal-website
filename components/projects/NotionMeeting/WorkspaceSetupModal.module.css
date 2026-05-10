@@ -181,6 +181,13 @@
   background: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
 }
 
+.templateNote {
+  font-size: 0.75rem;
+  color: var(--foreground-muted, #888);
+  text-align: center;
+  margin-top: 6px;
+}
+
 /* Instruction list (Step 2) */
 .instructionList {
   padding-left: 1.2em;
