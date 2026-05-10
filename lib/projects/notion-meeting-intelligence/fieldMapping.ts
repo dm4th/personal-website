@@ -32,6 +32,48 @@ export function buildMeetingNoteProperties(metadata: MeetingMetadata, debriefTex
     'Other': 'Other',
   };
 
+  // Map AI-generated buyer role descriptions to valid Notion multi_select options.
+  // The AI may return job titles ("CTO", "VP Sales") or role categories ("Champion").
+  const roleMap: Record<string, string> = {
+    champion: 'Champion',
+    'economic buyer': 'Economic Buyer',
+    ceo: 'Economic Buyer',
+    cfo: 'Economic Buyer',
+    president: 'Economic Buyer',
+    owner: 'Economic Buyer',
+    'technical buyer': 'Technical Buyer',
+    cto: 'Technical Buyer',
+    'vp engineering': 'Technical Buyer',
+    'head of engineering': 'Technical Buyer',
+    architect: 'Technical Buyer',
+    developer: 'Technical Buyer',
+    'it/security': 'IT/Security',
+    'it security': 'IT/Security',
+    ciso: 'IT/Security',
+    security: 'IT/Security',
+    'end user': 'End User',
+    user: 'End User',
+    procurement: 'Procurement',
+    legal: 'Procurement',
+    'vp sales': 'Champion',
+    'head of sales': 'Champion',
+    'sales manager': 'Champion',
+    'account exec': 'Champion',
+    'revenue': 'Champion',
+  };
+
+  const buyerRoleOptions = metadata.buyer_roles_present
+    .map((r) => {
+      const lower = r.toLowerCase();
+      // Direct key match
+      for (const [key, option] of Object.entries(roleMap)) {
+        if (lower.includes(key)) return option;
+      }
+      return null;
+    })
+    .filter((r): r is string => r !== null)
+    .filter((r, i, arr) => arr.indexOf(r) === i); // dedupe
+
   const props: AnyProps = {
     'Meeting Title': { title: [{ text: { content: metadata.meeting_title } }] },
     'Date': { date: { start: metadata.meeting_date } },
@@ -44,14 +86,16 @@ export function buildMeetingNoteProperties(metadata: MeetingMetadata, debriefTex
     'Key Signals': richText(metadata.key_signals.map((s) => `• ${s}`).join('\n')),
     'Action Items': richText(metadata.action_items.map((a) => `☐ ${a}`).join('\n')),
     'General Summary': richText(metadata.general_summary),
-    'Opportunities': richText(metadata.opportunities),
     'AI Debrief': richText(debriefText),
-    'Buyer Roles Present': richText(
-      metadata.buyer_roles_present.length > 0
-        ? metadata.buyer_roles_present.join('\n')
-        : 'Not specified',
-    ),
+    // 'Opportunities' is a relation field — omitted since we don't have a linked Opportunity page ID
   };
+
+  // Only write Buyer Roles Present if we have at least one valid option to avoid API errors
+  if (buyerRoleOptions.length > 0) {
+    props['Buyer Roles Present'] = {
+      multi_select: buyerRoleOptions.map((name) => ({ name })),
+    };
+  }
 
   if (metadata.recording_link) {
     props['Recording Link'] = { url: metadata.recording_link };
@@ -195,9 +239,10 @@ export function extractAgentAnalysisSummaries(
     },
   ];
 
+  // Strip leading emoji from agentType for a clean title (e.g. "📋 Meeting Summary" → "Meeting Summary")
   return rows.map((row) => ({
     ...row,
     meetingDate,
-    analysisTitle: `${companyName} - ${row.agentType}`,
+    analysisTitle: `${companyName} - ${row.agentType.replace(/^\p{Emoji}\s*/u, '')}`,
   }));
 }

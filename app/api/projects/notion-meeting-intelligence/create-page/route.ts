@@ -1,15 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Client, type CreatePageParameters, type BlockObjectRequest } from '@notionhq/client';
 import { z } from 'zod';
+import { auth } from '@clerk/nextjs/server';
+import { eq } from 'drizzle-orm';
+import { db } from '@/lib/db/client';
+import { users, notionConfigs } from '@/lib/db/schema';
+import { decryptToken } from '@/lib/auth/googleOAuth';
 import {
   buildMeetingNoteProperties,
   buildAIDebriefText,
   buildAgentAnalysisProperties,
   extractAgentAnalysisSummaries,
 } from '@/lib/projects/notion-meeting-intelligence/fieldMapping';
+import { AGENT_LIBRARY_DATA_SOURCE_ID } from '@/lib/projects/notion-meeting-intelligence/fetchAgentLibrary';
 
 const RequestSchema = z.object({
-  notion_token: z.string().min(10),
+  notion_token: z.string().min(4), // allows '__use_saved__' sentinel
   meeting_notes_db_id: z.string().min(10),
   agent_analyses_db_id: z.string().min(10),
   agent_library_db_id: z.string().min(10).optional(),
@@ -211,8 +217,32 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { notion_token, meeting_notes_db_id, agent_analyses_db_id, agent_library_db_id, results, metadata } =
+  let { notion_token, meeting_notes_db_id, agent_analyses_db_id, agent_library_db_id, results, metadata } =
     parsed.data;
+
+  // Resolve the '__use_saved__' sentinel — look up the encrypted token from the DB
+  if (notion_token === '__use_saved__') {
+    try {
+      const { userId: clerkUserId } = await auth();
+      if (!clerkUserId) {
+        return NextResponse.json({ error: 'Token not provided and user not authenticated' }, { status: 401 });
+      }
+      const userRows = await db.select().from(users).where(eq(users.clerkUserId, clerkUserId)).limit(1);
+      const dbUser = userRows[0];
+      if (!dbUser) {
+        return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      }
+      const configRows = await db.select().from(notionConfigs).where(eq(notionConfigs.userId, dbUser.id)).limit(1);
+      const savedToken = configRows[0]?.integrationToken;
+      if (!savedToken) {
+        return NextResponse.json({ error: 'No saved Notion token found. Please re-enter your token.' }, { status: 400 });
+      }
+      notion_token = decryptToken(savedToken);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      return NextResponse.json({ error: 'Failed to retrieve saved token', detail: message }, { status: 500 });
+    }
+  }
 
   const notion = new Client({ auth: notion_token });
 
@@ -253,6 +283,7 @@ export async function POST(req: NextRequest) {
     meetingPageUrl = notionUrl(page.id);
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('[create-page] Meeting Note creation failed:', message);
     return NextResponse.json(
       { error: 'Failed to create Meeting Note page', detail: message },
       { status: 500 },
@@ -301,17 +332,25 @@ export async function POST(req: NextRequest) {
   }
 
   // Step 3: Update Agent Library rows with Last Run + Manual Hours Saved increment (non-fatal)
+  if (!agent_library_db_id) {
+    console.log('[create-page] agent_library_db_id not provided — skipping Agent Library update');
+  }
   if (agent_library_db_id) {
     try {
-      // Query all agents in the library that are triggered by Meeting Analysis
-      const libraryResponse = await notion.databases.query({
-        database_id: agent_library_db_id,
+      // Query all agents in the library that are triggered by Meeting Analysis.
+      // In @notionhq/client v5, databases are queried via dataSources.query with the
+      // collection/data_source ID — different from the page ID stored in the user config.
+      // We use the hardcoded AGENT_LIBRARY_DATA_SOURCE_ID constant which is always correct.
+      const libraryResponse = await notion.dataSources.query({
+        data_source_id: AGENT_LIBRARY_DATA_SOURCE_ID,
         filter: {
           property: 'Trigger',
           select: { equals: 'Meeting Analysis' },
         },
         page_size: 20,
       });
+
+      console.log(`[create-page] Agent Library query returned ${libraryResponse.results.length} rows`);
 
       const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
@@ -330,24 +369,29 @@ export async function POST(req: NextRequest) {
 
           // Only update agents we have results for
           const knownSlugs = ['sales', 'commercial', 'delivery', 'product', 'icp', 'summary'];
-          if (!knownSlugs.includes(slug)) return;
+          if (!knownSlugs.includes(slug)) {
+            console.log(`[create-page] Skipping Agent Library row — slug "${slug}" not in known list`);
+            return;
+          }
 
           // Read current Manual Hours Saved value
           const hoursProp = (page as { properties: Record<string, unknown> }).properties['Manual Hours Saved'];
-          const currentMinutes =
+          const currentHours =
             hoursProp &&
             typeof hoursProp === 'object' &&
             (hoursProp as { type: string }).type === 'number'
               ? ((hoursProp as { number: number | null }).number ?? 0)
               : 0;
 
-          // Add a random 10–20 minute increment
-          const increment = Math.floor(Math.random() * 11) + 10;
+          // Add a random decimal increment between 10.0–20.0 minutes (1 decimal place)
+          const increment = Math.round((Math.random() * 10 + 10) * 10) / 10;
+
+          console.log(`[create-page] Updating Agent Library row slug="${slug}" hours=${currentHours}+${increment}`);
 
           await notion.pages.update({
             page_id: page.id,
             properties: {
-              'Manual Hours Saved': { number: currentMinutes + increment },
+              'Manual Hours Saved': { number: Math.round((currentHours + increment) * 10) / 10 },
               'Last Run': { date: { start: today } },
             },
           });

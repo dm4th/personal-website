@@ -231,6 +231,11 @@
   gap: 12px;
 }
 
+.searchRow .input {
+  flex: 1;
+  min-width: 0;
+}
+
 .searchBtn {
   padding: 8px 14px;
   border-radius: 6px;
@@ -287,6 +292,11 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.fieldHint {
+  font-weight: 400;
+  opacity: 0.7;
 }
 
 /* Small "Found" / "✓" badge shown when a field is valid */

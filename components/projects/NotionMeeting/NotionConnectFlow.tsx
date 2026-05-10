@@ -28,7 +28,7 @@ type Props = {
 export default function NotionConnectFlow({ results, metadata, notionConfig, isLoggedIn }: Props) {
   const [connectState, setConnectState] = useState<NotionConnectState>({ status: 'idle' });
 
-  const { token, meetingNotesDbId, agentAnalysesDbId, hasSavedToken } = notionConfig;
+  const { token, meetingNotesDbId, agentAnalysesDbId, agentLibraryDbId, hasSavedToken } = notionConfig;
 
   const isConfigured =
     (token.length >= 10 || hasSavedToken) &&
@@ -39,7 +39,7 @@ export default function NotionConnectFlow({ results, metadata, notionConfig, isL
     setConnectState({ status: 'loading' });
 
     if (isLoggedIn) {
-      const { agentLibraryDbId, icpRubricDbId } = notionConfig;
+      const { icpRubricDbId } = notionConfig;
       const saveBody: Record<string, string> = {
         meeting_notes_db_id: meetingNotesDbId,
         agent_analyses_db_id: agentAnalysesDbId,
@@ -69,7 +69,8 @@ export default function NotionConnectFlow({ results, metadata, notionConfig, isL
       });
       const data = await res.json();
       if (!res.ok) {
-        setConnectState({ status: 'error', message: data.error ?? 'Failed to create pages' });
+        const msg = [data.error, data.detail].filter(Boolean).join(' — ');
+        setConnectState({ status: 'error', message: msg || 'Failed to create pages' });
         return;
       }
       setConnectState({
