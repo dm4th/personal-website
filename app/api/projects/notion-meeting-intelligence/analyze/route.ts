@@ -85,8 +85,8 @@ function deriveMetadata(
   const { sales, commercial, delivery, product, icp, summary } = results;
 
   // Derive company name from transcript (first mention of a proper noun near the call intro)
-  const companyMatch = transcript.match(/\b([A-Z][a-zA-Z]+ (?:Health|Tech|Systems|Ventures|Capital|Labs|Studio|Media|Compute|Robotics|Marketplace|Platform|Software|Group|Inc|LLC|Corp)[^\s,]*)/);
-  const companyName = companyMatch?.[1] ?? 'Unknown Company';
+  const companyMatch = transcript.match(/\b([A-Z][a-zA-Z]+ (?:Health|Tech|Systems|Ventures|Capital|Labs|Studio|Media|Compute|Robotics|Marketplace|Platform|Software|Group|Inc|LLC|Corp)(?:\s+[A-Z][a-zA-Z]+)*)/);
+  const companyName = companyMatch?.[1]?.trim() ?? 'Unknown Company';
 
   // Derive sentiment from sales score
   let sentiment: MeetingMetadata['sentiment'];
@@ -183,7 +183,11 @@ export async function POST(req: NextRequest) {
       promptMap = new Map(
         entries.map((e) => [
           e.outputSchemaKey,
-          `${buildBasePrompt(today)}\n\n${e.systemPromptBody}`,
+          // If the Notion "System Prompt" field is empty for this agent, fall back to
+          // the hardcoded prompt for that agent rather than sending a bare base prompt.
+          e.systemPromptBody.trim()
+            ? `${buildBasePrompt(today)}\n\n${e.systemPromptBody}`
+            : buildAgentPrompt(e.outputSchemaKey, today),
         ]),
       );
     }

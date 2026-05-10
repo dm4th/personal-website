@@ -37,7 +37,7 @@ export type AgentLibraryEntry = {
 };
 
 /** Collection (data source) ID of the Agent Library in the GTM Hub workspace */
-const AGENT_LIBRARY_DATA_SOURCE_ID = '5c82e2b2-4545-41de-80b9-2ed966d1f3e1';
+export const AGENT_LIBRARY_DATA_SOURCE_ID = '5c82e2b2-4545-41de-80b9-2ed966d1f3e1';
 
 /** Collection (data source) ID of the ICP Scoring Rubric database */
 const ICP_RUBRIC_DATA_SOURCE_ID = '35afc8f4-554c-800c-9931-000bc3cfea39';
@@ -55,6 +55,35 @@ function getText(
   if (!prop) return '';
   const arr = prop.rich_text ?? prop.title ?? [];
   return arr.map((b) => b.plain_text).join('');
+}
+
+/** Fetch the full page body of an agent page and return it as plain text. */
+async function getPageBody(notion: Client, pageId: string): Promise<string> {
+  try {
+    const blocks = await notion.blocks.children.list({ block_id: pageId, page_size: 100 });
+    const lines: string[] = [];
+    for (const block of blocks.results) {
+      if (!('type' in block)) continue;
+      const b = block as { type: string; [key: string]: unknown };
+      // Extract rich_text from paragraph, heading_1/2/3, bulleted/numbered list items, callout, quote
+      const richTextTypes = [
+        'paragraph', 'heading_1', 'heading_2', 'heading_3',
+        'bulleted_list_item', 'numbered_list_item', 'callout', 'quote',
+      ];
+      if (richTextTypes.includes(b.type)) {
+        const inner = b[b.type] as { rich_text?: Array<{ plain_text: string }> } | undefined;
+        const text = inner?.rich_text?.map((r) => r.plain_text).join('') ?? '';
+        if (text) lines.push(text);
+      } else if (b.type === 'code') {
+        const inner = b.code as { rich_text?: Array<{ plain_text: string }> } | undefined;
+        const text = inner?.rich_text?.map((r) => r.plain_text).join('') ?? '';
+        if (text) lines.push(text);
+      }
+    }
+    return lines.join('\n');
+  } catch {
+    return '';
+  }
 }
 
 /**
@@ -123,20 +152,24 @@ export async function fetchMeetingAgents(force = false): Promise<AgentLibraryEnt
     // No sort: Execution Order property was dropped; agents are matched by slug, not position
   });
 
-  const rawAgents = response.results
-    .filter((page): page is PageObjectResponse => page.object === 'page')
-    .map((page) => {
+  const pages = response.results.filter((page): page is PageObjectResponse => page.object === 'page');
+
+  // Fetch each agent's page body in parallel — this is the primary source for system prompts.
+  // Falls back gracefully per-agent if the body fetch fails (getPageBody catches internally).
+  const pageBodies = await Promise.all(pages.map((page) => getPageBody(notion, page.id)));
+
+  const rawAgents = pages
+    .map((page, i) => {
       const props = page.properties as unknown as NotionPropMap;
       return {
         agentName: getText(props['Agent Name'] as Parameters<typeof getText>[0]),
-        // Agent Slug is a rich_text property (renamed from the old "Output Schema Key" select)
         outputSchemaKey: getText(props['Agent Slug'] as Parameters<typeof getText>[0]) as AgentName,
-        systemPromptBody: getText(props['System Prompt'] as Parameters<typeof getText>[0]),
+        // Page body is the authoritative prompt source; "System Prompt" property is a fallback
+        systemPromptBody: pageBodies[i] || getText(props['System Prompt'] as Parameters<typeof getText>[0]),
         stakeholder: (props['Stakeholder'] as { select?: { name?: string } } | undefined)?.select?.name ?? '',
         jobToBeDone: getText(props['Job to be Done'] as Parameters<typeof getText>[0]),
       };
     })
-    // Drop rows missing the schema key — prompt body may be empty (fallback to prompts.ts per-agent)
     .filter((a) => !!a.outputSchemaKey);
 
   // If any agent has the {{ICP_RUBRIC}} placeholder, fetch the live rubric and inject it.

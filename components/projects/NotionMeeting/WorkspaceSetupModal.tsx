@@ -121,7 +121,7 @@ export default function WorkspaceSetupModal({ onComplete, onDismiss }: Props) {
 
       if (Object.keys(matched).length === 0) {
         setSearchError(
-          'No matching databases found. Make sure you shared the cloned template databases with your integration.',
+          'No matching databases found inside that hub page. Make sure the integration has access to it (... → Connections), then try again.',
         );
         return;
       }
