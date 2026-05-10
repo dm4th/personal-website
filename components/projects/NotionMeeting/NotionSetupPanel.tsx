@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './NotionSetupPanel.module.css';
 import type { NotionConfigGetResponse } from '@/lib/projects/notion-meeting-intelligence/types';
 
-const NOTION_HUB_URL = 'https://www.notion.so/dm4th/AI-Native-GTM-Hub-357fc8f4554c806a908be47807ac63df';
+const NOTION_HUB_URL = 'https://dm4th.notion.site/AI-Native-GTM-Hub-357fc8f4554c806a908be47807ac63df';
 const NOTION_INTEGRATIONS_URL = 'https://www.notion.so/my-integrations';
 
 export type NotionConfig = {
