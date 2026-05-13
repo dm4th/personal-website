@@ -52,6 +52,18 @@ Before my promotion, I was assigned to an Explanation of Benefits (EOB) parsing 
 
 I was pulled off the project mid-stream when the Lead TPM opportunity arose. The eval framework I'd built remained in use by the team that continued the work.
 
+### Pre-Sales Technical Authority
+
+The analytics work I did at Thoughtful had an unexpected second life. The Quicksight dashboards I built for customer observability, the value realization model I developed, and the canonical template I created for agent performance reporting all became artifacts our sales team wanted to show prospects before deals closed. What started as tools for existing customers turned into the primary way our GTM team illustrated what made our agent platform different from generic RPA.
+
+Our CEO and CPO started pulling me into large sales opportunities to help explain what we were building and how it solved the specific workflows a prospect was struggling with. The skill was the same one I had been developing for existing customers: listening carefully enough to understand the real problem, then connecting our technology to it in terms that made sense to the person I was talking to. It worked. Within a few weeks, I was on every sales opportunity in the pipeline.
+
+The number that stuck: 96% of prospects who met with me moved to proposal stage within a month. Sales started breaking scheduling rules to get me on calls that were stalling. "Just put Danny on a call, prospects love him" became a standing instruction. I was running a full delivery load simultaneously, which made the output from that window unusual even by Thoughtful standards.
+
+This also had a direct technical benefit beyond funnel metrics. My involvement in pre-sales created better scoping for custom agent engagements before a contract was signed. The deeper my understanding of a prospect's actual workflow, the tighter the initial technical specification. That reduced the ambiguity that historically caused implementation timelines to slip. Pre-sales was functioning as early requirements engineering.
+
+When the Smarter Technologies merger formed and the sales organization was scaling rapidly, leadership had a frank conversation about messaging with prospects. The sales team had a simple answer: "Can we just have Danny full-time?" I was promoted to Director of Sales Engineering the next day.
+
 ### The Merger and What Came Next
 
 In September 2025, Thoughtful AI underwent a private equity merger during our Series B fundraising process. We combined with three other companies to form [Smarter Technologies](/info/career/smarter-technologies).

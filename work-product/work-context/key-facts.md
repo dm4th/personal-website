@@ -18,15 +18,22 @@ Referenced by `/job-application` and `/fit-resume` commands. Do not embed these 
 
 ## Canonical Metrics (preserve exactly)
 
-### Smarter Technologies (Sep 2025 - Present, ~7 months)
+### AccessHealthcare / Smarter Technologies (Sep 2025 - Present)
+- **VP of Solutions** at AccessHealthcare (largest healthcare RCM BPO, multi-billion dollar portfolio company), promoted within first month post-shutdown
+- Retained as **1 of ~15%** of employees after April 2026 Smarter Technologies shutdown; only non-Product/Engineering person kept
+- Executives at both the PE firm and AccessHealthcare made a special exception for retention
+
+### Smarter Technologies (Sep 2025 - Apr 2026, ~7 months as Director SE)
 - **$31.8M** active pipeline, personal ownership
 - **61** enterprise healthcare deals managed personally
 - **62%** of total company pipeline (2-person team)
 - **$1.95M** closed-won revenue
+- **96%** of prospects who met with Dan moved to proposal stage within a month (pre-sales effectiveness)
 - **271 hours / 483 meetings** logged (138 prospect-facing across 48+ accounts)
 - **8+ healthcare verticals**, **12+ EHR platforms**, 8 product lines
 - **81.1/100 engagement score**, 77.9 pitch quality across 85 AI-scored meetings
 - SE platform: **22-skill, 5-agent, 57-script** system with API integrations across Notion, Fireflies, Google Drive, GitHub, JIRA
+- Deployed SE platform skills to Claude Cowork after team members were Slacking Dan to query his agent on their behalf
 
 ### Thoughtful AI (2023-2025)
 - **63% of net new ARR** at Thoughtful during 3x year-over-year growth (2024)
@@ -53,6 +60,7 @@ These are pre-analyzed fit scores. Always read `role-fit-analysis.md` for the fu
 ## Key Differentiators
 
 - Forward-deployed delivery: discovery through production ownership, same person scopes and delivers
+- Global team leadership: led forward-deployed engineering teams at Thoughtful AI based in South America, South Africa, and Eastern Europe; at AccessHealthcare works daily with India-based delivery teams; open and accustomed to travel for on-site customer engagements
 - MAP (Master Automation Plan) methodology: SOP capture, pseudo-code decision-tree specs, customer-signed definition of done before any code is written, test plan executed by Dan before production
 - Determinism-first design philosophy: Python deterministic functions preferred over LLM reasoning; LLM used only where genuine variability exists; hybrid-RAG convergence (non-deterministic path shrinks as verified examples accumulate)
 - On-demand demo engineering: GTM agent generates complete demo package from prospect context; reduced creation from 3-4 days to 3-4 hours

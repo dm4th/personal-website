@@ -11,36 +11,39 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-Product Manager (Builder)
-Company: Perplexity
-Location: San Francisco; Palo Alto
-Employment Type: Full time
-Department: Product Management
-Compensation: $230,000 – $330,000 + Equity
+Technical Specialist, Claude Code
+Company: Anthropic
+Location: San Francisco, CA
+Employment Type: Full-time (Hybrid — 25% in-office minimum)
+Compensation: $180,000 – $365,000
 
-About the Role
-Perplexity is looking for product managers to join a highly leveraged, small team for building new products. In 2026, we launched Computer, the defining product for the new era of agentic AI. We've scaled beyond initial launch and product managers at Perplexity work closely with design and engineering, focusing on the core Computer experience.
+About the Role:
+Anthropic seeks a Technical Specialist to drive adoption of Claude Code among enterprise customers. Post-sale customer engagement, enablement and deep product adoption within 90 days of contract signature.
 
-What you'll do
-- Anticipate opportunities for innovation and value in enterprise industries.
-- Envision new experiences and deliver a long-term vision.
-- Understanding of levers for product-led growth and retention.
-- Work closely with engineering and design to align product expectations and capabilities.
-- Work with research to evaluate and steer nondeterministic models into high value outcomes for users.
-- Work with data and user research to understand quantitative and qualitative data.
-- Have conviction to make difficult product decisions in the face of uncertainty.
+Key Responsibilities:
+- Design and deliver customized training programs: workshops, office hours, hands-on labs tailored to customer tech stacks and workflows
+- Enable champions and AI Center of Excellence leads within client organizations
+- Drive adoption of Claude capabilities: subagents, hooks, MCP servers, headless mode
+- Partner on strategic pilots with Sales, Applied AI, and customer engineering teams
+- Design and execute on-site and virtual hackathons with complete playbooks (themes, judging, starter kits, follow-up)
+- Build production-quality demo applications and reference architectures
+- Create technical tutorials, blog posts, and walkthroughs for enterprise audiences
+- Rapidly translate new product capabilities into field-ready content
+- Deliver keynotes and live-coded demonstrations at customer events and Anthropic summits
+- Conduct Q&A on architecture, prompting, agent design, and tool limitations
+- Partner with Sales, Customer Success, and Product teams
+- Provide field insights on customer needs and adoption barriers
 
-Qualifications
-- Strong experience with product management and leadership.
-- Strong experience working with data and metrics.
-- Experience with productivity and knowledge work products.
-- Experience with prototyping and data visualization.
-- Experience with building data driven flywheels for iterative improvement.
-- Thrives in a small, agile team: has initiative and desire for ownership.
-- 4+ years of product management experience.
-
-Our Mission
-Perplexity's mission is to power curiosity. Curious people are the people who drive change in the world. Learn, Build, Integrate, Repeat.
+Required Qualifications:
+- 3-7+ years in customer-facing technical roles (Solutions Architecture, sales engineering, developer relations, consulting)
+- Active hands-on experience building with Claude Code, Claude Developer Platform, and Cowork
+- Proven ability to deliver technical talks, workshops, and training to engineering audiences
+- Professional software engineering, founding, or Solutions Architecture background
+- Experience supporting enterprise technical evaluations and pilots
+- Strong written and visual communication skills
+- Project management capability for multi-week engagements
+- Willingness to travel regularly
+- Deep enthusiasm for AI with hands-on LLM development experience
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -48,6 +51,12 @@ Perplexity's mission is to power curiosity. Curious people are the people who dr
 // Add entries here whenever a previously-analyzed JD isn't yet represented.
 
 const HISTORICAL_JDS: Array<{ role: string; company: string; jd: string }> = [
+  {
+    role: 'Product Manager (Builder)',
+    company: 'Perplexity',
+    jd: `Product Manager (Builder) — Perplexity. SF/Palo Alto. $230K-$330K + equity.
+Key requirements: PM on small high-leverage team building agentic AI products (Computer). Anticipate enterprise innovation opportunities, deliver long-term vision, PLG and retention levers. Work with engineering/design/research. Data and metrics fluency. Prototyping and data visualization. Building data-driven flywheels for iterative improvement. 4+ years PM experience. Productivity/knowledge work product experience.`,
+  },
   {
     role: 'Technical Project Manager',
     company: '8090 Solutions',
@@ -331,6 +340,8 @@ async function main() {
     'about-me/strengths-and-weaknesses/self-assessment.md',
     // Independent research — healthcare agent data layer thesis + Perplexity connection
     'projects/healthcare-agent-data-layer/index.md',
+    // Retention + VP promotion — critical signal for enablement/adoption roles
+    'career/smarter-technologies/shutdown-and-retention.md',
   ];
   const backgroundContext = keyFiles
     .map((f) => {

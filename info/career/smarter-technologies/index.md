@@ -8,13 +8,13 @@ End: Current
 
 In September 2025, Thoughtful AI underwent a private equity merger with three other healthcare automation companies to form Smarter Technologies. The timing hit during Thoughtful's Series B fundraising process and combined four companies into a single, larger entity focused on end-to-end healthcare revenue cycle automation.
 
-The merger created an unexpected career pivot for me. As Lead Technical Product Manager, I'd been doing increasingly heavy lifting with the sales team: helping new sales executives explain our services to prospects, providing technical support to move deals forward, and becoming the person they couldn't really operate without. I was slated to move onto the product team, but sales leadership pushed back hard. They insisted I move into a go-to-market leadership role full-time. Alex and Dan (CEO and CPO) agreed, and I was promoted to Director of Sales Engineering.
+The merger created an expected career pivot for me, but not for the reasons most would assume. As Lead Technical Product Manager, I'd spent the prior year becoming the essential technical voice in every major sales conversation at Thoughtful. The pre-sales track record was hard to ignore: 96% of prospects who met with me moved to proposal stage within a month. Sales teams broke scheduling rules to save stalling deals. "Just put Danny on a call, prospects love him" had become a standing instruction. When Smarter Technologies formed and the expanded sales organization needed to sharpen its messaging with prospects, the sales team had a blunt answer: "Can we just have Danny full-time?" I was promoted to Director of Sales Engineering the next day.
 
-The role sits within delivery, which turned out to be exactly the right organizational home. Being accountable to delivery KPIs means I'm setting up our intricate implementation cycles for success much earlier: during pre-sale rather than post-close, which is where things historically fell apart. The person scoping the deal is also accountable for its successful implementation.
+The role sits within delivery, which turned out to be exactly the right organizational home. As Director, I became the solutions leader for every large-scale engagement involving AI agents across all business units under Smarter Technologies, which in healthcare automation meant essentially every significant deal in the pipeline. Being accountable to delivery KPIs means I'm setting up intricate implementation cycles for success much earlier: during pre-sale rather than post-close, which is where things historically fell apart. The person scoping the deal is also accountable for its successful implementation.
 
 There was no SE infrastructure when I started: no deal tracking, no meeting analysis pipeline, no prospect management system, no repeatable processes. The company was selling eight product lines across ten healthcare verticals with a team of two. We needed to operate at the scale of a team five times our size. So I built one.
 
-Over seven months, I shipped 943 commits and 500+ pull requests while simultaneously managing $31.8M in active pipeline across 61 enterprise healthcare deals, 62% of total company pipeline.
+Over seven months, I shipped 943 commits and 500+ pull requests while simultaneously managing $31.8M in active pipeline across 61 enterprise healthcare deals, 62% of total company pipeline. As the platform matured and word spread across the organization, team members were sending me Slack messages just to query my agent on their behalf. That was the signal to expand: I ported the highest-impact skills to Claude's Cowork platform so the whole team could run them directly, without needing to go through me.
 
 ### EMR Integration and FHIR Architecture
 
@@ -39,3 +39,4 @@ I scoped this architecture across 12+ EMR platforms (Epic, Cerner, Athena, eClin
 - [Security & Compliance](/info/career/smarter-technologies/security-compliance): Automating security questionnaire responses
 - [Commercial Innovation](/info/career/smarter-technologies/commercial-innovation): Pricing models and automation estimation
 - [Hiring & Team](/info/career/smarter-technologies/hiring-and-team): Building the SE function from scratch
+- [Shutdown and Retention](/info/career/smarter-technologies/shutdown-and-retention): What happened when the company shut down, and what came next
