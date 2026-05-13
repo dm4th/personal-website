@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Mathieson - Resume | Anthropic Technical Specialist, Claude Code</title>
+  <style>
+    /* ===== BASE STYLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    a { color: #2B4C7E; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.4in 0.5in;
+    }
+
+    .page-break { page-break-before: always; }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid #2B4C7E;
+    }
+
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-subtitle {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .contact-info {
+      font-size: 8.5pt;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span { white-space: nowrap; }
+    .contact-info .sep { color: #bbb; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    /* ===== SUMMARY ===== */
+    .summary {
+      font-size: 9pt;
+      line-height: 1.45;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    /* ===== TWO-COLUMN LAYOUT FOR PAGE 1 ===== */
+    .page1-content {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .main-col { }
+    .side-col { }
+
+    /* ===== ROLE ENTRIES ===== */
+    .role-entry { margin-bottom: 8px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .role-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .role-period {
+      font-size: 8.5pt;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .role-company {
+      font-size: 9pt;
+      color: #444;
+      margin-bottom: 1px;
+    }
+
+    .role-context {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    /* ===== SUBSECTIONS ===== */
+    .subsection-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    /* ===== BULLET GROUPS ===== */
+    .bullet-group {
+      padding-left: 14px;
+      margin-bottom: 2px;
+      list-style-type: '–  ';
+    }
+
+    .bullet-group li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 1.5px;
+      color: #222;
+    }
+
+    .bullet-group li strong { font-weight: 600; }
+
+    /* ===== SIDEBAR METRICS ===== */
+    .sidebar-section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-section-title:first-child { margin-top: 0; }
+
+    .metric-item { margin-bottom: 6px; }
+
+    .metric-value {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 8pt;
+      color: #555;
+      line-height: 1.3;
+    }
+
+    /* ===== SKILLS (sidebar) ===== */
+    .skill-category { margin-bottom: 4px; }
+
+    .skill-category-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 1px;
+    }
+
+    .skill-category-items {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.35;
+    }
+
+    /* ===== PAGE 2 STYLES ===== */
+    .role-entry-compact { margin-bottom: 7px; }
+    .role-entry-compact .bullet-group li { font-size: 8.5pt; }
+
+    /* ===== EDUCATION ===== */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .edu-entry .edu-name { font-size: 9pt; font-weight: 600; }
+    .edu-entry .edu-detail { font-size: 8.5pt; color: #444; }
+    .edu-entry .edu-period { font-size: 8.5pt; color: #555; }
+
+    /* ===== PRINT STYLES ===== */
+    @page { size: letter; margin: 0; }
+
+    @media print {
+      body { background: none; }
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 0.4in 0.5in;
+      }
+      .page-break { page-break-before: always; }
+      a { color: #2B4C7E; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dan Mathieson</h1>
+    <div class="header-subtitle">Claude Code Platform Builder &nbsp;|&nbsp; Enterprise AI Enablement &nbsp;|&nbsp; Technical Solutions Engineering</div>
+    <div class="contact-info">
+      <span>danny.mathieson233@gmail.com</span>
+      <span class="sep">|</span>
+      <span>danielmathieson.com</span>
+      <span class="sep">|</span>
+      <span>linkedin.com/in/daniel-mathieson</span>
+      <span class="sep">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    I have spent the past two years building production systems on Claude Code and deploying them to enterprise teams, which means I have already solved the exact adoption problems this role exists to address. At Smarter Technologies, I built a 22-skill, 5-agent platform on Claude Code from scratch, packaged the highest-impact capabilities via Cowork for non-technical users with pre/post tool-use hooks and a real feedback loop, and used it to manage $31.8M in enterprise pipeline. I built an event-driven agent that automatically injected field intelligence from discovery calls into the engineering team's weekly standups. At Thoughtful AI, I built the company's first production GenAI system, achieved a 96% pre-sales funnel pass-through rate by making complex AI accessible to non-technical enterprise buyers, and built the customer analytics product that became the core GTM sales artifact. I understand what enterprise AI adoption requires from both sides: as the person who built the platform and as the person who made it real for the people who needed to use it.
+  </p>
+
+  <!-- TWO-COLUMN: Experience left, Metrics + Skills right -->
+  <div class="page1-content">
+
+    <!-- LEFT COLUMN: Experience -->
+    <div class="main-col">
+
+      <div class="section-title">Experience</div>
+
+      <!-- ROLE: Director SE / VP Solutions -->
+      <div class="role-entry">
+        <div class="role-header">
+          <span class="role-title">VP, Solutions (AccessHealthcare) / Director, Sales Engineering (Smarter Technologies)</span>
+          <span class="role-period">2025 – Present</span>
+        </div>
+        <div class="role-company">Smarter Technologies / AccessHealthcare &nbsp;|&nbsp; San Francisco, CA</div>
+        <div class="role-context">Promoted from Lead TPM when sales team requested dedicated SE leadership at the PE-backed Thoughtful AI rollup. Built the full SE function from scratch. After company wind-down in April 2026, retained as one of 15% kept, the only non-Product/Engineering person, and promoted to VP of Solutions at AccessHealthcare (largest portfolio company, multi-billion dollar healthcare RCM BPO) within the first month.</div>
+
+        <div class="subsection-title">Claude Code Platform Engineering</div>
+        <ul class="bullet-group">
+          <li>Architected a <strong>22-skill, 5-agent production platform on Claude Code</strong> as the primary operating system for managing $31.8M in enterprise pipeline; shipped <strong>943 commits and 500+ PRs</strong> in 7 months while simultaneously running 61 live deals</li>
+          <li>Implemented <strong>pre- and post-tool-use hooks</strong> to log every skill invocation and sample user feedback on 15-20% of usages (thumbs up/down with optional notes); achieved a <strong>93% tool approval rating</strong> across sampled interactions in the first three weeks of cross-company deployment; signal fed directly into skill specification iteration</li>
+          <li>Built an <strong>event-driven product feedback pipeline</strong>: a sub-agent applied current Notion roadmap data to every discovery call analysis; a second agent waited for weekly engineering standup pages to be created and auto-populated a market feedback section with field observations from that week's calls, closing the loop between customer conversations and engineering priorities without any manual steps</li>
+          <li>Built a <strong>custom demo creation skill</strong> generating complete, prospect-specific demo packages (data files, manifests, test suites, makefiles) from structured context, cutting creation from 3-4 days to 3-4 hours; every demo validated against automated tests before the prospect meeting</li>
+        </ul>
+
+        <div class="subsection-title">Enterprise Enablement &amp; Team Adoption</div>
+        <ul class="bullet-group">
+          <li>Led design and deployment of a <strong>unified Cowork skill platform</strong> covering all operational teams (sales, GTM, delivery) across Thoughtful and Smarter Technologies, consolidating independently-built Claude Code work into one governed package using Anthropic's GitHub-based plugin repository system to distribute role-specific skill sets; led org-level governance for plugin access controls, discoverability, and rollout sequencing across Claude for Enterprise</li>
+          <li>Built a <strong>security questionnaire automation skill</strong> using Claude Code against a versioned RFP repository, cutting turnaround from days to hours with Git-versioned audit trail; delivered live technical architecture walkthroughs to CISOs and IT security leadership at enterprise health systems</li>
+          <li>Retained post-shutdown as <strong>VP of Solutions at AccessHealthcare</strong>; leads external enterprise AI adoption strategy and internal AI enablement initiatives helping existing BPO client operations leverage AI agents to improve operational efficiency and quality; works across India-based delivery teams daily</li>
+        </ul>
+
+        <div class="subsection-title">Healthcare Enterprise Pre-Sales</div>
+        <ul class="bullet-group">
+          <li>Managed <strong>61 simultaneous enterprise healthcare deals</strong> across hospital systems, behavioral health, oncology, home health, dental, and specialty medicine; evaluated integration readiness across Epic, Cerner, Athena, NextGen, eClinicalWorks, and 7 other EMR platforms</li>
+          <li>Closed <strong>$1.95M in revenue</strong>: $1.9M TPA administrator win (4 AI agents, 4 regions) and $1M/yr EHR vendor strategic partnership (80+ enterprise customers, CO16 denial guide, 37 meetings); anchored $30-40M design partnership at a 65,000-employee health system with 2-day on-site discovery sessions</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Key Metrics + Skills -->
+    <div class="side-col">
+
+      <div class="sidebar-section-title">Smarter Tech (Last 7 Mo)</div>
+
+      <div class="metric-item">
+        <div class="metric-value">93%</div>
+        <div class="metric-label">Cowork skill approval rating<br>across sales, GTM &amp; delivery<br>(15% sampled interactions)</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">96%</div>
+        <div class="metric-label">Pre-sales proposal pass-through<br>rate at Thoughtful AI</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">$31.8M</div>
+        <div class="metric-label">Active pipeline personally<br>managed (2-person team)</div>
+      </div>
+
+      <div class="sidebar-section-title">Thoughtful AI (2023-2025)</div>
+
+      <div class="metric-item">
+        <div class="metric-value">63%</div>
+        <div class="metric-label">Net new ARR during Thoughtful's<br>3x YoY growth year</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">95%</div>
+        <div class="metric-label">Hybrid-RAG accuracy on live<br>eligibility workflow (2 days)</div>
+      </div>
+
+      <div class="sidebar-section-title">Technical Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Claude Code &amp; Agentic AI</div>
+        <div class="skill-category-items">Claude Code, Claude Cowork, Subagents, Hooks (pre/post), MCP, Tool Use, Multi-Agent Pipelines, Prompt Engineering</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">LLM Development</div>
+        <div class="skill-category-items">RAG, pgvector, Eval Engineering, OpenAI Embeddings, In-Context Learning, Regression Testing</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Enablement &amp; GTM</div>
+        <div class="skill-category-items">Workshop Design, Training Delivery, Skill Packaging, Enterprise Discovery, Solutions Architecture</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Languages &amp; Integration</div>
+        <div class="skill-category-items">Python, SQL, TypeScript, Notion API, Fireflies, Google APIs, GitHub Actions, Git worktrees</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Healthcare</div>
+        <div class="skill-category-items">FHIR, EDI/HL7, 12+ EMR platforms, HIPAA/BAA/SOC 2, RCM workflows</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page page-break">
+
+  <div class="section-title">Experience (continued)</div>
+
+  <!-- Thoughtful AI -->
+  <div class="role-entry">
+    <div class="role-header">
+      <span class="role-title">Solutions Architect / Customer Engineer / Lead Technical Program Manager</span>
+      <span class="role-period">2023 – 2025</span>
+    </div>
+    <div class="role-company">Thoughtful AI (acq. by New Mountain Capital; merged into Smarter Technologies, Sep 2025) &nbsp;|&nbsp; San Francisco, CA</div>
+    <div class="role-context">Series A healthcare AI startup building revenue cycle automation agents. Progressed through 3 roles in 2 years. Promoted to Lead TPM within 3 months because I was already doing product work before the title reflected it. Became the go-to pre-sales technical voice; 96% of prospects who met with me moved to proposal within a month. Promoted to Director SE at the merged entity when the sales team requested me full-time.</div>
+    <ul class="bullet-group">
+      <li>Built Thoughtful's <strong>first customer-facing analytics product</strong> on AWS QuickSight, parsing nested JSON execution logs from hundreds of thousands of agent runs via PostgreSQL into dashboards used in executive QBRs; product became the core GTM sales artifact demonstrating agent observability differentiation to prospects; CEO/CPO started bringing me into large deals to explain the platform, achieving a <strong>96% prospect-to-proposal conversion rate</strong></li>
+      <li>Delivered <strong>63% of company net new ARR</strong> during a year when Thoughtful grew 3x YoY; owned full cycle from discovery through production sign-off; developed the MAP delivery methodology (8-20 hour SOP capture sessions, pseudo-code decision-tree specs engineers build directly from, customer-signed definition of done before any code is written)</li>
+      <li>Built the company's <strong>first production GenAI system</strong>: a hybrid-RAG eligibility verification solution matching unstructured free-text coverage limitations to correct billing determinations using OpenAI embeddings and in-context learning; achieved <strong>95%+ accuracy within two days</strong> on live billing workflows; presented to the board, replicated across 3 additional automations within a month</li>
+      <li>Built <strong>eval engineering infrastructure</strong> for every AI system: labeled holdout datasets, precision/recall tracking by failure category, regression test suites that ran before every model or prompt change; operated as the primary QA layer before anything reached a customer environment</li>
+      <li>Developed <strong>value realization simulation</strong> in Python covering the full RCM lifecycle: probability distributions across billing workflow stages, QuickSight dashboards per agent translating performance to staff hours saved and denial-protected revenue; became core value proposition framework used with healthcare CFOs and COOs</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Earlier Experience</div>
+
+  <!-- Action Network -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Data Science &amp; Analytics</span>
+      <span class="role-period">02/2021 – 10/2022</span>
+    </div>
+    <div class="role-company">Action Network (acq. Better Collective) &nbsp;|&nbsp; Remote</div>
+    <ul class="bullet-group">
+      <li>Led a team of 4 analysts and 3 engineers building <strong>Airflow-orchestrated data pipelines</strong> on Redshift; architected the "Value Clicks" north star metric correlating content to affiliate conversion, driving <strong>70%+ YoY revenue growth</strong> and a <strong>225%+ YoY improvement in revenue per mobile user</strong></li>
+      <li>Built <strong>affiliate LTV financial models</strong> evaluating revenue-share deals worth $500K-$2M/year, presenting to CFO and executive leadership with cohort retention, loss rate, and state-level tax modeling</li>
+    </ul>
+  </div>
+
+  <!-- Google -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Revenue Analyst, G-Suite Finance</span>
+      <span class="role-period">01/2020 – 02/2021</span>
+    </div>
+    <div class="role-company">Google &nbsp;|&nbsp; Sunnyvale, CA</div>
+    <ul class="bullet-group">
+      <li>Built P&amp;L reporting suite in GoogleSQL for 500M+ SaaS users; improved top-line forecast accuracy by <strong>7%</strong> using Google AI/ML tooling; automated forecast cube generation via <strong>Google Apps Script and SAP integration</strong>; designed and taught Apps Script training course to the finance team</li>
+    </ul>
+  </div>
+
+  <!-- FanDuel -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Manager, Revenue &amp; Forecasting</span>
+      <span class="role-period">08/2016 – 12/2019</span>
+    </div>
+    <div class="role-company">FanDuel &nbsp;|&nbsp; New York, NY</div>
+    <ul class="bullet-group">
+      <li>Built the entire revenue reporting infrastructure on Redshift; built a <strong>Markov Chain Monte Carlo simulation</strong> forecasting season revenue to within <strong>2% error</strong> across 17 user segments; built a Python Slackbot reducing manual reporting 40%; <strong>designed and taught SQL courses</strong> to the operations team</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="edu-entry">
+    <div>
+      <span class="edu-name">B.S. Electrical &amp; Computer Engineering</span>
+      <span class="edu-detail">, Bucknell University</span>
+    </div>
+    <span class="edu-period">08/2012 – 05/2016</span>
+  </div>
+  <div class="edu-entry" style="margin-bottom: 8px;">
+    <div>
+      <span class="edu-name">AI &amp; Machine Learning Professional Certificate</span>
+      <span class="edu-detail">, CalTech / SimpliLearn</span>
+    </div>
+    <span class="edu-period">10/2022 – 04/2023</span>
+  </div>
+
+  <div class="section-title">Independent Research</div>
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Healthcare Agent Data Layer</span>
+      <span class="role-period">2025 – Present</span>
+    </div>
+    <ul class="bullet-group">
+      <li>Designed an <strong>MCP-native clinical data platform</strong> architected as the missing infrastructure layer between healthcare AI agents and fragmented EHR/payer data sources: read path (FHIR R4 + proprietary portals as MCP tools), write path (RPA-backed write-through as MCP tools), consent-check middleware. Wrote technical architecture docs, investor memos, and a partner pitch positioning MCP as the default agent-tool interface for healthcare AI.</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

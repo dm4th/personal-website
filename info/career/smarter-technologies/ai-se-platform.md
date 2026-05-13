@@ -76,6 +76,20 @@ Beyond the SE-specific tools, I also led the internal governance work for Claude
 
 Built with: Claude Code, Claude co-work, pre/post tool use hooks, Python, GitHub
 
+### Closing the Loop: Field Intelligence Back to Engineering
+
+One of the more unusual things the platform did was automatically close the feedback loop between customer discovery calls and the engineering teams building the product.
+
+Every discovery call I ran was processed through the meeting intelligence pipeline. But I also built a product analyzer sub-agent that ran after each call analysis. It pulled the current product roadmap from Notion, matched what I'd heard from the prospect against what was on the roadmap, and surfaced where prospect needs were already covered, where they weren't, and where the market was consistently asking for something we hadn't built yet.
+
+The second piece was event-driven. The engineering team published weekly standup notes pages in Notion as part of their standard process. I built an agent that watched for new standup pages to be created, then automatically populated a market feedback section on each page with a summary of what had surfaced in discovery calls that week, filtered by relevance to whatever each team was currently building. Engineers didn't need to ask me what customers were saying. The information arrived in their workflow without requiring any action on my part or theirs.
+
+This had a real effect on how I worked with the engineering teams after the Thoughtful wind-down and transition to AccessHealthcare. When Smarter Technologies shut down in April 2026, about 15 engineers transitioned over, along with 2 other non-technical roles. I was the only non-Product/Engineering person retained. The relationships I had with those engineers, grounded in being the person who consistently gave them field signal in a format they could actually use, became part of the reason I was kept. Engineers weren't just tolerating the GTM person. They were asking me questions and relying on my context.
+
+The pattern extended forward: as VP of Solutions at AccessHealthcare, I'm still the person who translates between what enterprise customers are asking for and what the engineering organization is building. The agent infrastructure I built at Smarter Technologies was a mechanical version of a skill I'd been developing for two years.
+
+Built with: Claude Code, Notion API, event-driven agent hooks, Python
+
 ### Tech Stack
 
 Claude Code, Python 3.11, Notion API, Fireflies GraphQL API, Google Drive/Sheets API (OAuth2), GitHub Actions, Git worktrees, Slack API
