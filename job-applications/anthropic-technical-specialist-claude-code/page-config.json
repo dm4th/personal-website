@@ -83,6 +83,11 @@
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
       "relevance": "Production hybrid-RAG system built for a live healthcare billing workflow, demonstrating the AI system design skills this role requires at the enterprise level."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Built a Claude Code-based multi-agent pipeline that turns meeting recordings into structured deal intelligence in Notion. Shows a prototype version of real-world use cases for Claude Code outside of code generation."
     }
   ],
   "applicationQuestions": [
