@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Mathieson — Resume | Distyl AI Strategist, Healthcare Solutions</title>
+  <style>
+    /* ===== BASE STYLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    a { color: #2B4C7E; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.4in 0.5in;
+    }
+
+    .page-break { page-break-before: always; }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid #2B4C7E;
+    }
+
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-subtitle {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .contact-info {
+      font-size: 8.5pt;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span { white-space: nowrap; }
+    .contact-info .sep { color: #bbb; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    /* ===== SUMMARY ===== */
+    .summary {
+      font-size: 9pt;
+      line-height: 1.45;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    /* ===== TWO-COLUMN LAYOUT FOR PAGE 1 ===== */
+    .page1-content {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .main-col { }
+    .side-col { }
+
+    /* ===== ROLE ENTRIES ===== */
+    .role-entry { margin-bottom: 8px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .role-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .role-period {
+      font-size: 8.5pt;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .role-company {
+      font-size: 9pt;
+      color: #444;
+      margin-bottom: 1px;
+    }
+
+    .role-context {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    /* ===== SUBSECTIONS ===== */
+    .subsection-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    /* ===== BULLET GROUPS ===== */
+    .bullet-group {
+      padding-left: 14px;
+      margin-bottom: 2px;
+      list-style-type: '–  ';
+    }
+
+    .bullet-group li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 1.5px;
+      color: #222;
+    }
+
+    .bullet-group li strong { font-weight: 600; }
+
+    /* ===== SIDEBAR METRICS ===== */
+    .sidebar-section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-section-title:first-child { margin-top: 0; }
+
+    .metric-item { margin-bottom: 6px; }
+
+    .metric-value {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 8pt;
+      color: #555;
+      line-height: 1.3;
+    }
+
+    /* ===== SKILLS (sidebar) ===== */
+    .skill-category { margin-bottom: 4px; }
+
+    .skill-category-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 1px;
+    }
+
+    .skill-category-items {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.35;
+    }
+
+    /* ===== PAGE 2 STYLES ===== */
+    .role-entry-compact { margin-bottom: 7px; }
+    .role-entry-compact .bullet-group li { font-size: 8.5pt; }
+
+    /* ===== EDUCATION ===== */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .edu-entry .edu-name { font-size: 9pt; font-weight: 600; }
+    .edu-entry .edu-detail { font-size: 8.5pt; color: #444; }
+    .edu-entry .edu-period { font-size: 8.5pt; color: #555; }
+
+    /* ===== PRINT STYLES ===== */
+    @page { size: letter; margin: 0; }
+
+    @media print {
+      body { background: none; }
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 0.4in 0.5in;
+      }
+      .page-break { page-break-before: always; }
+      a { color: #2B4C7E; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dan Mathieson</h1>
+    <div class="header-subtitle">Healthcare AI Strategist &nbsp;|&nbsp; Production GenAI Builder &nbsp;|&nbsp; Enterprise GTM Leader</div>
+    <div class="contact-info">
+      <span>danny.mathieson233@gmail.com</span>
+      <span class="sep">|</span>
+      <span>danielmathieson.com</span>
+      <span class="sep">|</span>
+      <span>linkedin.com/in/daniel-mathieson</span>
+      <span class="sep">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    Healthcare AI strategist and builder with hands-on experience designing production GenAI systems, running enterprise pre-sales across 10+ clinical verticals, and creating GTM infrastructure from scratch. Built and deployed a hybrid-RAG eligibility verification system used daily by billing teams, then built the entire SE operating platform at a PE-backed healthcare AI company while simultaneously managing $31.8M in active pipeline. Deep technical fluency in healthcare data formats: EDI X12 (270/271, 835, 276/277), FHIR R4 APIs, and HL7 interoperability. Computer Engineering background, Cal Tech AI/ML certification, and a career-long pattern of prototyping fast, validating against real data, and shipping to production without waiting for engineering support.
+  </p>
+
+  <!-- TWO-COLUMN: Experience left, Metrics + Skills right -->
+  <div class="page1-content">
+
+    <!-- LEFT COLUMN: Experience -->
+    <div class="main-col">
+
+      <div class="section-title">Experience</div>
+
+      <!-- ROLE: Director SE -->
+      <div class="role-entry">
+        <div class="role-header">
+          <span class="role-title">Director, Sales Engineering</span>
+          <span class="role-period">2025 – Present</span>
+        </div>
+        <div class="role-company">Smarter Technologies &nbsp;|&nbsp; San Francisco, CA</div>
+        <div class="role-context">Formed Sep 2025 via New Mountain Capital PE rollup of Thoughtful AI, Access Healthcare, SmarterDx, and Pieces Technologies. Promoted to Director SE from Lead TPM at Thoughtful AI at close of merger; built the entire SE function from scratch with no prior infrastructure, now personally carrying 62% of total company pipeline across 10+ clinical specialties.</div>
+
+        <div class="subsection-title">Healthcare AI Solutioning &amp; Discovery</div>
+        <ul class="bullet-group">
+          <li>Ran the full pre-sales motion end-to-end across <strong>61 simultaneous enterprise healthcare deals</strong> spanning hospital systems, behavioral health, oncology, home health, specialty medicine, and dental; owned discovery through close with no handoff between technical and commercial functions</li>
+          <li>Conducted <strong>technical discovery sessions with CIOs, CFOs, and CMOs</strong> at large health systems: diagnosed operational bottlenecks, identified the highest-value AI use cases per workflow, scoped integration feasibility, and built prospect-specific ROI models grounded in actual claim volume and denial rates</li>
+          <li>Designed an <strong>ICP scoring and automation estimation engine</strong> using payer mix data, EHR scope analysis, and RCM volume modeling to produce defensible ROI projections; used by the sales team to prioritize outreach and frame value in CFO conversations</li>
+          <li>Closed <strong>$1.95M in enterprise deals</strong> across 5 accounts in a two-person SE team; maintained quality scores above 80/100 while handling 4 times the deal volume of the second SE</li>
+        </ul>
+
+        <div class="subsection-title">Healthcare Data Architecture</div>
+        <ul class="bullet-group">
+          <li>Scoped EMR integration architecture across <strong>12+ platforms</strong> (Epic, Cerner, Athena, NextGen, eClinicalWorks, Meditech, and others): standardized on FHIR R4 for reads and RPA for write-backs based on FHIR write limitations in production environments, reducing post-close implementation surprises</li>
+          <li>Built <strong>technical integration collateral covering FHIR endpoint availability, EDI transaction support (270/271, 835, 276/277), and API authentication patterns</strong> for each EMR platform; used during pre-sales to give prospects a specific, accurate picture of implementation scope before they signed</li>
+          <li>Served as primary point of contact for health system IT security teams: fielded <strong>HIPAA, BAA, SOC 2, data residency, and third-party risk questions</strong> in live calls with CISOs and IT leadership; calls were frequently the gatekeeping decision for whether a deal moved to procurement</li>
+        </ul>
+
+        <div class="subsection-title">AI-Powered GTM Infrastructure</div>
+        <ul class="bullet-group">
+          <li>Architected and shipped a <strong>full AI-powered SE operating system</strong> from nothing: 23 specialized Claude Code skills, 57 Python integration scripts across Notion, Fireflies, Google Drive, and GitHub, and a 5-agent parallel meeting intelligence pipeline processing every sales call in real time</li>
+          <li>Shipped <strong>943 commits and 451 pull requests</strong> while simultaneously running live enterprise pipeline; built and maintained 76 prospect workspaces with automated bidirectional sync across Notion and Git</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Metrics + Skills -->
+    <div class="side-col">
+
+      <div class="sidebar-section-title">At a Glance</div>
+
+      <div class="metric-item">
+        <div class="metric-value">$31.8M</div>
+        <div class="metric-label">Active healthcare pipeline<br>personally managed</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">61 Deals</div>
+        <div class="metric-label">Simultaneous enterprise<br>accounts, 10+ verticals</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">943</div>
+        <div class="metric-label">Commits shipped while<br>running live pipeline</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">95%+</div>
+        <div class="metric-label">RAG accuracy on production<br>eligibility verification system</div>
+      </div>
+
+      <div class="sidebar-section-title">Technical Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Healthcare Data Formats</div>
+        <div class="skill-category-items">EDI X12 (270/271, 835, 276/277), FHIR R4 APIs, HL7 v2 interoperability, RCM workflows, EMR integration scoping</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">AI &amp; GenAI</div>
+        <div class="skill-category-items">RAG system design, LLM APIs (Claude, GPT-4, OpenAI), multi-agent pipelines, pgvector, prompt engineering, eval frameworks</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Languages &amp; Data</div>
+        <div class="skill-category-items">Python, SQL (Redshift, PostgreSQL), Jupyter, pandas, NumPy, statistical modeling, AWS RDS</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">GTM &amp; Pre-Sales</div>
+        <div class="skill-category-items">Technical discovery, use case scoping, POC design, ROI modeling, demo engineering, Salesforce</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Infrastructure</div>
+        <div class="skill-category-items">AWS, GitHub Actions, Git worktrees, Docker, Next.js, Claude Code</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page page-break">
+
+  <div class="section-title">Experience (continued)</div>
+
+  <!-- Thoughtful AI -->
+  <div class="role-entry">
+    <div class="role-header">
+      <span class="role-title">Solutions Architect / Customer Engineer / Lead Technical Program Manager</span>
+      <span class="role-period">2023 – 2025</span>
+    </div>
+    <div class="role-company">Thoughtful AI (acq. by New Mountain Capital; merged into Smarter Technologies, Sep 2025) &nbsp;|&nbsp; San Francisco, CA</div>
+    <div class="role-context">Series A healthcare AI startup building revenue cycle automation agents. Progressed through 3 roles in 2 years; designed and built Thoughtful's first production GenAI system and served as the primary pre-sales technical resource throughout. Promoted to Director SE at the combined entity at close of merger.</div>
+    <ul class="bullet-group">
+      <li>Designed and deployed Thoughtful's <strong>first production GenAI system</strong>: a hybrid-RAG solution for dental eligibility verification that matched unstructured free-text 271 response fields to correct billing determinations using OpenAI embeddings and GPT-3.5 with in-context learning. Achieved 95%+ accuracy within two days; maintained it through dozens of eval cycles against a labeled holdout set before it reached the board as a breakthrough and was replicated across 3 additional automations within a month</li>
+      <li>Built <strong>deep fluency in healthcare EDI transaction formats</strong> through production automation work: designed agents that parsed EDI 270/271 eligibility transactions, 835 remittance advice files (including CARC/RARC denial code routing), and 276/277 claim status responses; understood each format's loop and segment structure well enough to scope integrations and design downstream workflow logic without engineering support</li>
+      <li>Standardized the company's <strong>FHIR R4 + RPA write-back integration pattern</strong> across 12+ EMR environments: used FHIR endpoints for patient data reads, RPA for write-backs where FHIR write capabilities were absent or inconsistent; this architecture reduced implementation surprises and became the standard approach for all new EMR integrations</li>
+      <li>Functioned as <strong>dedicated pre-sales technical advisor</strong> across the full sales cycle: scoped automation use cases, designed proof-of-concept architectures, delivered demos to clinical operations and IT leadership, and achieved a 96% funnel pass-through rate contributing to 3x ARR growth year over year</li>
+      <li>Built a <strong>value realization simulation</strong> in Python and Jupyter covering the full RCM lifecycle from eligibility through payment posting: used statistical probability distributions to project automation impact per clinical workflow, surfacing results in executive Quicksight dashboards that translated model performance into staff hours saved and denial-protected revenue; became the foundation for sales team conversations with healthcare CFOs and COOs</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Earlier Experience</div>
+
+  <!-- Action Network -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Data Science &amp; Analytics</span>
+      <span class="role-period">02/2021 – 10/2022</span>
+    </div>
+    <div class="role-company">Action Network (acq. Better Collective) &nbsp;|&nbsp; Remote</div>
+    <ul class="bullet-group">
+      <li>Led a team of 4 analysts and 3 engineers building <strong>Airflow-orchestrated data pipelines</strong> on Redshift; built Python and pandas analysis frameworks used for cohort modeling, affiliate LTV projections, and state-level revenue forecasting</li>
+      <li>Built a <strong>multi-variable affiliate LTV model</strong> in Python using SciKit-Learn and user-level cohort data from sportsbook partners, projecting revenue-share deal value across a 3-5 year horizon; analysis directly informed a strategic pivot presented to executive leadership</li>
+      <li>Designed the company's <strong>content-to-revenue attribution model</strong> ("Value Clicks"), correlating content consumption patterns to downstream affiliate conversions; drove a 70%+ YoY revenue increase and shaped how the executive team measured content ROI post-acquisition</li>
+    </ul>
+  </div>
+
+  <!-- Google -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Revenue Analyst, G-Suite Finance</span>
+      <span class="role-period">01/2020 – 02/2021</span>
+    </div>
+    <div class="role-company">Google &nbsp;|&nbsp; Sunnyvale, CA</div>
+    <ul class="bullet-group">
+      <li>Built and maintained <strong>670 P&amp;L dashboards</strong> covering 500M+ SaaS users in GoogleSQL; improved top-line revenue forecast accuracy by 7% using Google AI/ML tooling</li>
+      <li>Automated forecast cube generation using <strong>Google Apps Script and SAP integration</strong>, eliminating manual reporting cycles across the G-Suite finance organization</li>
+    </ul>
+  </div>
+
+  <!-- FanDuel -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Manager, Revenue &amp; Forecasting</span>
+      <span class="role-period">08/2016 – 12/2019</span>
+    </div>
+    <div class="role-company">FanDuel &nbsp;|&nbsp; New York, NY</div>
+    <ul class="bullet-group">
+      <li>Built the <strong>entire revenue reporting infrastructure</strong> on Redshift SQL: daily retention queries, LTV segmentation, bonus targeting, and C-suite Chartio dashboards; also automated reporting via a Python Slackbot reducing manual cycles by 40%</li>
+      <li>Built a <strong>Markov-chain Monte Carlo revenue simulation in SQL</strong> forecasting LTV across 17 user cohorts to within 2% accuracy; designed and taught SQL courses to the operations team</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="edu-entry">
+    <div>
+      <span class="edu-name">B.S. Electrical &amp; Computer Engineering</span>
+      <span class="edu-detail">, Bucknell University</span>
+    </div>
+    <span class="edu-period">08/2012 – 05/2016</span>
+  </div>
+  <div class="edu-entry" style="margin-bottom: 8px;">
+    <div>
+      <span class="edu-name">AI &amp; Machine Learning Professional Certificate</span>
+      <span class="edu-detail">, CalTech / SimpliLearn</span>
+    </div>
+    <span class="edu-period">10/2022 – 04/2023</span>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -5,6 +5,11 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/api/agent/stream': ['./info/**/*'],
   },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+    ],
+  },
 };
 
 export default nextConfig;

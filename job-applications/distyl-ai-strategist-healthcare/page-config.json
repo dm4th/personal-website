@@ -1,0 +1,28 @@
+{
+  "id": "fc6a736edb03",
+  "company": "Distyl AI",
+  "role": "AI Strategist, Healthcare",
+  "appliedDate": "",
+  "fitScore": 0,
+  "fitScoreNote": "Update fit score and notes after analysis",
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/Distyl/c1a313de-f6a2-4615-ab54-63edb0209838",
+  "jobDescriptionText": "Role: AI Strategist, Healthcare Solutions\nDepartment: Solutions\n\nAbout Distyl AI\nDistyl is an applied AI technology company partnering with the world's most ambitious institutions to rearchitect critical operations for the frontier of AI. Our customers include the largest companies in telecom, healthcare, insurance, manufacturing, consumer goods, and global social organizations. We research and deploy technologies that power AI-native operations. Our work spans research into self-constructing systems, the development of the most reliable execution of AI systems, and products that transform mission-critical workflows. Distyl is backed by Lightspeed Venture Partners, Khosla Ventures, Coatue, DST Global, and board-members of 20+ F500s. 100% production deployment success rate and one of the few enterprise AI companies to run a profitable business.\n\nWhat We Are Looking For\nAs an AI Strategist, you'll lead the technology solutions in Healthcare and drive the GTM process with healthcare customer engagements, from first meeting to deal signed. You'll drive revenue and new logo expansion by diagnosing customer problems through an AI lens and designing data-driven, AI-enabled strategies. You'll operate in 0-1 mode -- rapidly building demos and proof-of-concept solutions that showcase the Distillery platform's capabilities to prospective healthcare clients.\n\nKey Responsibilities\n- Drive the AI solutioning throughout the pre-sales process on healthcare deals -- from initial discovery through deal close\n- Diagnose prospective client problems through an AI lens\n- Research clients and their industry landscape to prepare materials for prospective client meetings\n- Develop deep expertise in Distyl's Healthcare Solutions (Utilization Management, Care Management, Cost of Care, Claims, Member/Provider Communications)\n- Conduct technical discovery -- identify the right use cases, solution architecture, and feasibility\n- Work closely with engineering to co-design solutions\n- Build demos and competitive positioning docs\n- Build out POC proposals -- define scope, success criteria, timelines, and resource requirements\n- Build compelling storylines and decks that make the ROI of AI transformation concrete\n\nWho You Are\n- 8-12 years of experience in sales engineering, solutions consulting, product management, or similar role with deep healthcare experience (payer operations, provider workflows, or health tech)\n- Technical undergraduate degree (CS, engineering, math, or similar)\n- Hands-on experience designing and building GenAI solutions -- LLM pipelines, prompt engineering, RAG architectures\n- Ability to translate complex AI technical capabilities into specific, high-value business outcomes\n- Strong engineering-adjacent data skills: SQL, Python/pandas\n- Exceptional communication and storytelling skills\n- Deep domain expertise in healthcare operations (UM, care management, claims, network)\n- Travel: 50%\n\nCompensation: $150K-$250K base + meaningful equity + comprehensive benefits. Hybrid 3+ days/week in SF or NYC.",
+  "strengths": [],
+  "weaknesses": [],
+  "referralBlurb": "",
+  "projects": [
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production AI system built for a healthcare billing workflow -- directly relevant to Distyl's healthcare AI strategy focus."
+    },
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Multi-agent pipeline for converting sales conversations into structured intelligence -- shows applied AI strategy translated into working product."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": ""
+}

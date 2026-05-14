@@ -1,0 +1,96 @@
+{
+  "id": "9ff4108e8ae6",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Technical Specialist, Claude Code",
+  "appliedDate": "2026-05-13",
+  "fitScore": 82,
+  "fitScoreNote": "Dan is a practitioner-first technical specialist who has already deployed Claude Code in a real enterprise GTM context -- he built a 22-skill, 5-agent platform running live on $31.8M in pipeline, not a side project. He is someone who bridges the gap between SE leadership and hands-on AI building, with the credibility of having felt the adoption friction firsthand and solved it from inside a commercial org.",
+  "summary": [
+    "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline",
+    "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
+    "Only non-Product/Engineering person retained after 85% headcount reduction at Smarter Technologies",
+    "6 months designing MCP-native clinical data platform architecture for enterprise AI adoption",
+    "Automated field-to-engineering feedback pipeline using pre/post tool-use hooks at scale"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5197597008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Production Claude Code platform deployed at enterprise scale",
+      "description": "Built a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance -- running live on $31.8M in enterprise pipeline. Most applicants will have used Claude Code; almost none will have deployed it at this scale with a real feedback loop.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Smarter Technologies Overview", "path": "/info/career/smarter-technologies" }
+      ]
+    },
+    {
+      "title": "Pre-sales technical authority with 96% proposal conversion",
+      "description": "At Thoughtful AI, I became the person placed on calls specifically because of my ability to make complex AI systems legible to enterprise buyers. 96% of accounts I was placed on moved forward -- that adoption instinct is the core job in this role.",
+      "citations": [
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
+        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+      ]
+    },
+    {
+      "title": "Field-to-engineering feedback loop (automated, not manual)",
+      "description": "Built an agent that populated a market feedback section in Notion every time the engineering team's weekly standup page was created -- sourced from that week's discovery calls. Engineers didn't have to ask what customers were saying. It showed up in their workflow.",
+      "citations": [
+        { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" },
+        { "label": "Commercial Innovation", "path": "/info/career/smarter-technologies/commercial-innovation" }
+      ]
+    },
+    {
+      "title": "Only non-Product/Engineering person retained after 85% reduction",
+      "description": "When Smarter Technologies shut down, I was one of 15% retained -- the only person without a Product or Engineering title. The PE firm made a specific exception. That happened because I can take complex AI systems and make them legible to the people who need to adopt them.",
+      "citations": [
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+      ]
+    },
+    {
+      "title": "MCP-native platform design for enterprise AI adoption",
+      "description": "Spent six months designing an MCP-native clinical data platform. The reason MCP matters for enterprise Claude Code adoption is the same reason it matters in healthcare: it makes the boundary between the agent and external systems explicit and auditable -- something enterprise IT teams can evaluate and approve.",
+      "citations": [
+        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No formal external hackathon experience",
+      "description": "Have designed internal build sprints and enablement rollouts that share the same DNA -- scoped deliverables, time-boxed execution, defined success criteria, documented playbooks. No external hackathon credits yet.",
+      "mitigation": "The facilitation and preparation muscles are there. I would build the hackathon format quickly and I am genuinely excited to."
+    },
+    {
+      "title": "Developer conference talks or keynotes",
+      "description": "Technical talks have been to enterprise buyers and C-suite, not developer conferences. The technical depth is the same; the venue scale is new.",
+      "mitigation": "Live architecture walkthroughs with CIOs and security deep-dives with IT leadership require the same preparation discipline as conference talks. Ready for the larger venue."
+    },
+    {
+      "title": "Headless mode and specific Claude Code API surface",
+      "description": "Production work was embedded in GTM workflows rather than isolated Claude Code API exploration. Pre/post hooks and parallel agent pipelines are direct evidence of the underlying capability.",
+      "mitigation": "Ramping on headless mode specifics is a matter of days given the production foundation already in place."
+    }
+  ],
+  "referralBlurb": "",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "The agent panel on this site is built on the Anthropic SDK -- tool use, streaming, and a full RAG pipeline grounded in career content. It is the kind of Claude Code-native system this role would help enterprise customers build."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production hybrid-RAG system built for a live healthcare billing workflow -- demonstrates the AI system design skills this role requires at the enterprise level."
+    }
+  ],
+  "applicationQuestions": [
+    {
+      "question": "Why do you want to work at Anthropic? (We value this response highly - great answers are often 200-400 words.)",
+      "answer": "With this now being the fourth time I've applied to Anthropic in the last four years, the reason I persist in wanting to join the mission remains the same. Namely, I believe Anthropic's mission of safe and reliable AI deployment throughout the economy is of the utmost importance, and that importance continues to grow with each successive application of mine. Dario said it best across multiple media appearances, the best way to ensure safe AI is to lead from the front and give the rest of the space no option but to follow. Claude Code is a direct manifestation of that thesis coming to life, and I'd love to help share the benefits that Claude Code has had on my life, both in my career and personal life, with people across the country and all over the world.\n\nIn my work with Claude Code, I'm fascinated most not by the times the technology continues to amaze me, but by the ways I can build tools and workflows that amaze others. Even after Thoughtful AI shut down, I still get messages from my coworkers asking to help them build out Claude Code-based personal knowledge systems for themselves. It's these moments of wonder that continue to prove that leading from the front is the right way to achieve the mission. I know I can help achieve the mission as a technical specialist helping even more people leverage this technology for the benefit of all humanity."
+    }
+  ],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

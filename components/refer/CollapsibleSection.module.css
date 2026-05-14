@@ -1,0 +1,44 @@
+.wrapper {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toggle {
+  width: 100%;
+  background: var(--surface);
+  border: none;
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.toggle:hover {
+  background: var(--surface-2);
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chevron {
+  font-size: 0.625rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.body {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem;
+  background: var(--background);
+}
