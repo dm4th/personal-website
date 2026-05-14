@@ -82,3 +82,38 @@ Acknowledge it directly. "I haven't owned a consumer growth product. My consumer
 ## Key Exercise Submission Note
 
 The Perplexity exercise thread should be submitted as the URL to the shared thread. The thread argued for Perplexity to build the MCP-native healthcare agent data layer. If the application asks for Option 1 or Option 2, this was effectively Option 1 (teach us about a topic) but reframed as a product thesis pitch. Reference the investor memo work in the cover letter if they ask for more context.
+
+---
+
+## Company Context — 2026 Product Launches (Supplemental Research)
+
+*Added May 2026 based on web research.*
+
+**Perplexity Computer (agentic AI):**
+- Launched 2026 as an autonomous AI agent that executes multi-step workflows: browses the web, uses software, fills forms, manages tasks without user input.
+- Extended into enterprise at the "Ask 2026" developer conference: multi-model architecture, Slack integration, Snowflake connectors, 20 orchestrated AI models — explicitly competing against Microsoft Copilot and Salesforce.
+- Over 100 enterprise customers requested access in a single weekend of the enterprise launch.
+- The Register headline (March 2026): *"Perplexity: Everything is Computer"* — signals this is the company's defining product direction, not just a feature.
+
+**Perplexity Health:**
+- Launched 2026 as a dedicated section within the app: connects wearables, personal medical records, and specialized AI health agents in a secure environment.
+- Currently consumer-facing. Enterprise/provider extension has not formally launched — this is the stated gap and the product opportunity most directly relevant to this role.
+- Positioning: secure, private, AI-agent-driven. The enterprise RCM / clinical operations extension is clearly directional but hasn't been shipped.
+
+**Company scale:**
+- ~1,472 employees (grown from <50 in early 2024)
+- $500M ARR in 2025; 5x revenue growth on 34% team growth
+- $9B+ valuation; targeting 2x revenue in 2026 with same team size — "highly leveraged small team" is literal, not marketing language
+
+---
+
+## Key Contacts (for warm outreach — see `/warm-outreach-guide.md`)
+
+| Name | Role | Best channel |
+|---|---|---|
+| Dmitry Shevelenko | Chief Business Officer | Twitter/X @dmitry140 → LinkedIn → dmitry@perplexity.ai |
+| Raman Malik | VP Product & Growth | LinkedIn (linkedin.com/in/ramanrmalik) → raman@perplexity.ai |
+| Jason Urbiztondo | Head of Customer Success | Direct email: jason@perplexity.ai (confirmed) |
+| Aravind Srinivas | CEO & Co-Founder | Twitter/X @AravSrinivas (active, known to respond to substantive DMs) |
+
+**Note on Aravind:** He's been described as directly involved in key hires at the PM level. He's active on X and is known for engaging with people who have genuine product takes, not just fan messages. If you have a strong 2-3 sentence thesis on the healthcare Computer opportunity, a DM to him is worth trying after exhausting the CBO/VP channels. Keep it under 280 characters and lead with the thesis, not the job ask.

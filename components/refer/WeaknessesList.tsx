@@ -18,7 +18,7 @@ export default function WeaknessesList({ weaknesses }: Props) {
             <p className={styles.description}>{w.description}</p>
             {w.mitigation && (
               <div className={styles.mitigationBlock}>
-                <span className={styles.mitigationLabel}>How I'd address it</span>
+                <span className={styles.mitigationLabel}>How I&apos;d address it</span>
                 <p className={styles.mitigation}>{w.mitigation}</p>
               </div>
             )}

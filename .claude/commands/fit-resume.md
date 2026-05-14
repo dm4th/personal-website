@@ -39,9 +39,9 @@ Always use this as the structural template. Never modify it directly.
 - `info/career/action-network/`, `info/career/google/`, `info/career/fanduel/`
 
 **Previous applications** (for style reference):
-- `work-product/job-applications/distyl-ai-strategist-healthcare/`
-- `work-product/job-applications/8090-solutions-tpm/`
-- `work-product/job-applications/openai-solutions-engineer-healthcare/`
+- `job-applications/distyl-ai-strategist-healthcare/`
+- `job-applications/8090-solutions-tpm/`
+- `job-applications/openai-solutions-engineer-healthcare/`
 
 ---
 
@@ -51,7 +51,7 @@ If a slug was passed as an argument, use it. Otherwise derive one from the job d
 - Format: `[company-slug]-[role-type]` (lowercase, hyphenated, no special characters)
 - Examples: `8090-solutions-tpm`, `distyl-ai-strategist-healthcare`, `openai-solutions-engineer`
 
-Output directory: `work-product/job-applications/[slug]/`
+Output directory: `job-applications/[slug]/`
 
 ---
 
@@ -69,7 +69,7 @@ Use this to inform the resume summary and cover letter opening. Reference the co
 
 ## Step 3 — Generate the Resume
 
-Create `work-product/job-applications/[slug]/resume.html` using `work-product/danny-mathieson-resume.html` as the structural template.
+Create `job-applications/[slug]/resume.html` using `work-product/danny-mathieson-resume.html` as the structural template.
 
 Refer to `key-facts.md` for the resume structure guidelines. Key decisions to make per role:
 
@@ -87,7 +87,7 @@ Pull richer detail from `info/career/` files when the base resume bullets are to
 
 ## Step 4 — Generate the Cover Letter
 
-Create `work-product/job-applications/[slug]/cover-letter.html` using the 8090 Solutions cover letter as a structural reference (`work-product/job-applications/8090-solutions-tpm/cover-letter.html`).
+Create `job-applications/[slug]/cover-letter.html` using the 8090 Solutions cover letter as a structural reference (`work-product/job-applications/8090-solutions-tpm/cover-letter.html`).
 
 Follow the cover letter structure in `key-facts.md`. Key decisions to make per role:
 
@@ -104,7 +104,7 @@ No more than 5-6 paragraphs. No em-dashes. Conversational but precise.
 ## Step 5 — Generate PDFs
 
 ```bash
-cd work-product/job-applications/[slug]
+cd job-applications/[slug]
 
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
   --headless --disable-gpu \
@@ -125,7 +125,7 @@ Confirm both PDFs were written and report file sizes.
 
 ## Step 6 — Create Notes File
 
-Create `work-product/job-applications/[slug]/notes.md` with:
+Create `job-applications/[slug]/notes.md` with:
 - Final fit score (if this was called from `/job-application`) and what drove it
 - 3-5 strongest talking points for an interview (written as Dan would actually say them, first-person)
 - Remaining gaps and how to address them in conversation
@@ -133,9 +133,48 @@ Create `work-product/job-applications/[slug]/notes.md` with:
 
 ---
 
-## Step 7 — Output Summary
+## Step 7 — Generate Referral Page Config
+
+Create `job-applications/[slug]/page-config.json` as a stub referral page config. Populate from the notes file and JD analysis:
+
+- Set `id` to the slug (Dan can change this to something shorter later)
+- Set `fitScore` from the final score and `fitScoreNote` to one sentence summarizing what drove the score
+- Extract 3-5 strengths from the "Strongest Talking Points" section of notes.md, with placeholder `citations: []` arrays for Dan to fill in
+- Extract 2-3 weaknesses from the "Remaining Gaps" section of notes.md, including `mitigation` text from the "how to address" guidance
+- Set `jobDescriptionUrl` to `""` (Dan fills this in)
+- Set `jobDescriptionText` to `""` (Dan fills this in)
+- Set `referralBlurb` to `""` (Dan fills this in)
+- Set `applicationQuestions` to `[]` (Dan fills this in)
+- Set `projects` to `[]` (Dan fills this in)
+- Set `resumeFile` to `"Dan Mathieson Resume.pdf"` and `coverLetterFile` to `"Dan Mathieson Cover Letter.pdf"`
+
+Schema reference:
+```json
+{
+  "id": "[slug]",
+  "company": "...",
+  "role": "...",
+  "appliedDate": "",
+  "fitScore": 0,
+  "fitScoreNote": "...",
+  "jobDescriptionUrl": "",
+  "jobDescriptionText": "",
+  "strengths": [{ "title": "...", "description": "...", "citations": [] }],
+  "weaknesses": [{ "title": "...", "description": "...", "mitigation": "..." }],
+  "referralBlurb": "",
+  "projects": [],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}
+```
+
+---
+
+## Step 8 — Output Summary
 
 Tell the user:
 - Files created (with paths)
 - The single strongest talking point to open with in an interview
 - Any structural gaps to be prepared to address
+- Remind Dan to fill in `jobDescriptionUrl`, `referralBlurb`, `projects`, and `applicationQuestions` in `page-config.json` before sharing the referral page
