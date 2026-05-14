@@ -3,13 +3,63 @@
   "company": "OpenAI",
   "role": "Solutions Engineer, Healthcare",
   "appliedDate": "",
-  "fitScore": 0,
-  "fitScoreNote": "Update fit score and notes after analysis",
+  "fitScore": 76,
+  "fitScoreNote": "Dan is a healthcare AI SE with production system depth and a 96% pre-sales conversion rate -- he has operated at every layer of the healthcare enterprise sales cycle this role requires. The 10+ years experience bar is the primary question; the domain fit and technical depth are genuine.",
   "jobDescriptionUrl": "https://jobs.ashbyhq.com/openai/1baad891-43b8-4e2a-9e6c-f68741e718a4",
   "jobDescriptionText": "Role: Solutions Engineer, Healthcare & Life Sciences\nDepartment: Go To Market\n\nAbout the Team\nThe Technical Success team is responsible for the customer experience on the OpenAI suite of products, ensuring developers and enterprises maximize benefit, value, and adoption from our highly-capable models.\n\nAbout the Role\nWe are seeking a solutions engineer to partner with our largest Healthcare & Life Sciences customers and ensure they achieve tangible business value from our models through the OpenAI suite of products. You will partner with senior business stakeholders to understand their pre-sales needs, guide their AI strategy, and identify the highest value use cases and applications.\n\nIn this role, you will:\n- Deliver an exceptional pre-sales customer experience for large Healthcare & Life Sciences prospects and customers\n- Demonstrate how leveraging OpenAI's suite of products can meet customers' business needs and deliver substantial business value\n- Build and present demos, scope use cases, recommend architecture patterns, and provide in-depth technical advisory\n- Create and maintain documentation, guides, and FAQs related to common questions and requirements discovered during the pre-sales process\n- Develop and nurture strong customer relationships during the evaluation, validation, and purchasing process\n- Foster customer advocacy and represent the voice of the customer with internal teams\n- Serve as the first line of defense for security and compliance questions\n\nYou'll thrive in this role if you:\n- Have 10+ years of experience in a technical pre-sales or similar role, including 3+ years selling to Healthcare & Life Sciences customers\n- Demonstrate a thorough understanding of IT security principles and customer requirements for technical B2B SaaS products\n- Have foundational training in programming languages like Python or Javascript\n- Have delivered prototypes of Generative AI/traditional ML solutions and have knowledge of network/cloud architecture\n- Are an effective presenter and communicator who can translate business and technical topics to all audiences\n- Own problems end-to-end and are willing to pick up whatever knowledge you're missing to get the job done\n\nBased in San Francisco, CA or New York, NY. Hybrid work model of 3 days in the office per week.",
-  "strengths": [],
-  "weaknesses": [],
-  "referralBlurb": "",
+  "strengths": [
+    {
+      "title": "Healthcare pre-sales with 96% proposal conversion rate",
+      "description": "At Thoughtful AI I was placed on accounts specifically because of my ability to make complex AI systems legible to enterprise healthcare buyers. 96% of accounts I was assigned to moved forward. The OpenAI SE role is the same job at a different scale: partner with senior business stakeholders, guide AI strategy, identify the highest-value use cases. I have done this in the exact vertical.",
+      "citations": [
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
+        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+      ]
+    },
+    {
+      "title": "Production GenAI in a live healthcare billing workflow",
+      "description": "Built Thoughtful's dental eligibility system -- a hybrid-RAG pipeline hitting 95% accuracy on a production billing workflow within two days of launch. The JD asks for someone who has 'delivered prototypes of Generative AI/traditional ML solutions.' I delivered production systems used daily by real billing teams, not demos.",
+      "citations": [
+        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
+      ]
+    },
+    {
+      "title": "First-line defense on security and compliance",
+      "description": "At Smarter Technologies I owned HIPAA/SOC 2 security documentation and fielded IT security deep-dives from enterprise customers as the first point of contact. The JD calls this out explicitly: 'serve as the first line of defense for security and compliance questions.' I have done this for AI systems in regulated healthcare environments.",
+      "citations": [
+        { "label": "Security and Compliance (Smarter Technologies)", "path": "/info/career/smarter-technologies/security-compliance" },
+        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+      ]
+    },
+    {
+      "title": "Healthcare domain: 12+ EHR platforms, 48+ provider orgs, RCM fluency",
+      "description": "EDI/FHIR/HL7 data flows, payer eligibility API patterns, RCM workflow context, and payer/provider operations across 8 product lines. For an OpenAI SE who needs to rapidly diagnose where AI creates value in a healthcare enterprise, not needing to ramp on the domain is a meaningful differentiator.",
+      "citations": [
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" },
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" }
+      ]
+    },
+    {
+      "title": "MCP-native enterprise AI architecture for regulated industries",
+      "description": "Spent six months designing an MCP-native clinical data platform architecture -- the same architectural pattern OpenAI enterprise customers in healthcare need to evaluate and approve for production. I understand how to make the boundary between AI systems and external data auditable, which is what enterprise IT teams require before approving deployment.",
+      "citations": [
+        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "10+ years experience bar",
+      "description": "The role asks for 10+ years in technical pre-sales. My documented experience in this motion is closer to 4 years across Thoughtful AI and Smarter Technologies.",
+      "mitigation": "The output at those companies -- 96% conversion rate, primary interface on 60%+ of deliveries, 15 enterprise-grade implementations -- reflects the caliber of someone further into that trajectory. The years are shorter; the reps are real."
+    },
+    {
+      "title": "OpenAI-specific product surface",
+      "description": "My production AI work has been Anthropic-native (Claude API, Claude Code, MCP). I have not built extensively on GPT-4, the Assistants API, or the OpenAI developer platform.",
+      "mitigation": "The underlying patterns -- RAG, tool use, streaming, prompt engineering, enterprise security requirements -- are model-agnostic. Ramping on OpenAI's specific API surface is a matter of days given the production foundation already in place."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the Solutions Engineer, Healthcare & Life Sciences role. Dan was the pre-sales technical authority at Thoughtful AI, achieving a 96% proposal conversion rate on healthcare AI accounts -- operating as the primary customer interface from first discovery through live production delivery. He has built and deployed production GenAI systems in live healthcare billing workflows, has deep domain expertise across RCM, EHR platforms, and payer operations, and has served as the first line of defense on security and compliance reviews for AI systems in regulated environments. The healthcare AI pre-sales experience the role requires is his core background.",
   "projects": [
     {
       "name": "Dental Eligibility Intelligence",

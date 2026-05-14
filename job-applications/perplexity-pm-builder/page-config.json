@@ -65,7 +65,7 @@
       "mitigation": "Would be learning Perplexity's specific growth mechanics while contributing on the agentic AI and enterprise sides where I have genuine depth."
     }
   ],
-  "referralBlurb": "",
+  "referralBlurb": "I'm referring Dan Mathieson for the Product Manager, Builder role. Dan is the unusual case of someone who both builds production AI systems and makes product decisions about them. At Smarter Technologies he shipped 943 commits in 7 months building a 22-skill agentic platform that ran live on $31.8M in pipeline -- with hooks-based usage tracking and a data flywheel for iterative improvement. For the application exercise, he used Perplexity itself to argue that Perplexity should build the MCP-native healthcare agent data layer, backed by investor memos and two years of domain work. That kind of conviction and initiative is what the role is looking for.",
   "projects": [
     {
       "name": "Notion Meeting Intelligence",
