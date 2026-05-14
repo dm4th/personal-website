@@ -1,6 +1,7 @@
 {
   "id": "f46cd6b36c8a",
   "company": "8090 Solutions",
+  "companyLogoUrl": "https://www.8090.ai/assets/8090-logo-fill.svg",
   "role": "Technical Project Manager",
   "appliedDate": "",
   "fitScore": 85,
@@ -10,7 +11,7 @@
   "strengths": [
     {
       "title": "Forward-deployed TPM in healthcare AI for two years",
-      "description": "The 8090 model (discovery \u2192 PRD \u2192 execution \u2192 production) maps precisely to what I did at Thoughtful AI as Solutions Architect, Customer Engineer, and Lead TPM. Primary customer interface from first call through live deployment for 60%+ of Thoughtful's 2024 deliveries.",
+      "description": "The 8090 model (discovery → PRD → execution → production) maps precisely to what I did at Thoughtful AI as Solutions Architect, Customer Engineer, and Lead TPM. Primary customer interface from first call through live deployment for 60%+ of Thoughtful's 2024 deliveries.",
       "citations": [
         {
           "label": "Solutions Architect (Thoughtful AI)",

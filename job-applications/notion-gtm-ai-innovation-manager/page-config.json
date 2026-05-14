@@ -1,6 +1,7 @@
 {
   "id": "ce6dae842a78",
   "company": "Notion",
+  "companyLogoUrl": "https://www.notion.so/favicon.ico",
   "role": "GTM AI Innovation Manager",
   "appliedDate": "",
   "fitScore": 75,
@@ -12,30 +13,48 @@
       "title": "Built the GTM AI platform the role is responsible for creating",
       "description": "At Smarter Technologies I designed and deployed a 22-skill, 5-agent AI operating system specifically for a GTM team -- proposal generation, discovery prep, competitive intelligence, market feedback, and more. It was not a prototype. It ran live on $31.8M in active pipeline with two people. The role asks someone to build this kind of system at Notion; I have already done it from inside a commercial org.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
-        { "label": "Smarter Technologies Overview", "path": "/info/career/smarter-technologies" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "Smarter Technologies Overview",
+          "path": "/info/career/smarter-technologies"
+        }
       ]
     },
     {
       "title": "Notion Meeting Intelligence: the direct demo",
       "description": "Built a multi-agent pipeline that automatically turns sales meeting recordings into structured deal intelligence and writes it into Notion -- summaries, action items, market signals, and follow-up context. The system is precisely what a GTM AI Innovation Manager would pitch to Notion's own sales team as a productivity multiplier. I built it for mine.",
       "citations": [
-        { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" }
+        {
+          "label": "Meeting Intelligence (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/meeting-intelligence"
+        }
       ]
     },
     {
       "title": "Hooks-based usage tracking and adoption measurement",
       "description": "Built a hooks-based logging system on top of the agent platform -- every skill invocation captured, 15-20% of usages prompted for structured feedback. Used that signal to identify which skills had friction and where. ROI measurement on AI and automation implementations is listed as a core 'What You'll Achieve' in the JD; I built the instrumentation for it.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
       ]
     },
     {
       "title": "Cross-functional bridge: technical to commercial",
       "description": "At both Thoughtful AI and Smarter Technologies I operated as the translator between engineering teams and field-facing commercial teams -- gathering requirements from sellers, building systems, and driving adoption. The JD describes this as a core deliverable: 'bridge technical and commercial teams, gather technical requirements, ensure solutions deliver real business value.' That is my default operating mode.",
       "citations": [
-        { "label": "Commercial Innovation (Smarter Technologies)", "path": "/info/career/smarter-technologies/commercial-innovation" },
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" }
+        {
+          "label": "Commercial Innovation (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/commercial-innovation"
+        },
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        }
       ]
     }
   ],

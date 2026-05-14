@@ -1,6 +1,7 @@
 {
   "id": "d7758a2230ca",
   "company": "OpenAI",
+  "companyLogoUrl": "https://openai.com/favicon.ico",
   "role": "Solutions Engineer, Healthcare",
   "appliedDate": "",
   "fitScore": 76,
@@ -12,38 +13,62 @@
       "title": "Healthcare pre-sales with 96% proposal conversion rate",
       "description": "At Thoughtful AI I was placed on accounts specifically because of my ability to make complex AI systems legible to enterprise healthcare buyers. 96% of accounts I was assigned to moved forward. The OpenAI SE role is the same job at a different scale: partner with senior business stakeholders, guide AI strategy, identify the highest-value use cases. I have done this in the exact vertical.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Customer Engineer (Thoughtful AI)",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
       ]
     },
     {
       "title": "Production GenAI in a live healthcare billing workflow",
       "description": "Built Thoughtful's dental eligibility system: a hybrid-RAG pipeline hitting 95% accuracy on a production billing workflow within two days of launch. The JD asks for someone who has 'delivered prototypes of Generative AI/traditional ML solutions.' I delivered production systems used daily by real billing teams, not demos.",
       "citations": [
-        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
+        {
+          "label": "Dental Eligibility Intelligence (Thoughtful AI)",
+          "path": "/info/career/thoughtful/dental-eligibility-intelligence"
+        }
       ]
     },
     {
       "title": "First-line defense on security and compliance",
       "description": "At Smarter Technologies I owned HIPAA/SOC 2 security documentation and fielded IT security deep-dives from enterprise customers as the first point of contact. The JD calls this out explicitly: 'serve as the first line of defense for security and compliance questions.' I have done this for AI systems in regulated healthcare environments.",
       "citations": [
-        { "label": "Security and Compliance (Smarter Technologies)", "path": "/info/career/smarter-technologies/security-compliance" },
-        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+        {
+          "label": "Security and Compliance (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/security-compliance"
+        },
+        {
+          "label": "Enterprise Deals (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/enterprise-deals"
+        }
       ]
     },
     {
       "title": "Healthcare domain: 12+ EHR platforms, 48+ provider orgs, RCM fluency",
       "description": "EDI/FHIR/HL7 data flows, payer eligibility API patterns, RCM workflow context, and payer/provider operations across 8 product lines. For an OpenAI SE who needs to rapidly diagnose where AI creates value in a healthcare enterprise, not needing to ramp on the domain is a meaningful differentiator.",
       "citations": [
-        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" },
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" }
+        {
+          "label": "Lead TPM (Thoughtful AI)",
+          "path": "/info/career/thoughtful/lead-tpm"
+        },
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        }
       ]
     },
     {
       "title": "MCP-native enterprise AI architecture for regulated industries",
       "description": "Spent six months designing an MCP-native clinical data platform architecture, the same architectural pattern OpenAI enterprise customers in healthcare need to evaluate and approve for production. I understand how to make the boundary between AI systems and external data auditable, which is what enterprise IT teams require before approving deployment.",
       "citations": [
-        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+        {
+          "label": "Healthcare Agent Data Layer",
+          "path": "/info/projects/healthcare-agent-data-layer"
+        }
       ]
     }
   ],

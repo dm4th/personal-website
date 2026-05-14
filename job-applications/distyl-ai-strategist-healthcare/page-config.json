@@ -1,6 +1,7 @@
 {
   "id": "fc6a736edb03",
   "company": "Distyl AI",
+  "companyLogoUrl": "https://distyl.ai/wp-content/uploads/2025/03/Distyl-Logo-dark-v2.svg",
   "role": "AI Strategist, Healthcare",
   "appliedDate": "",
   "fitScore": 80,
@@ -12,38 +13,62 @@
       "title": "Healthcare AI pre-sales: discovery through deal close",
       "description": "At Thoughtful AI I was the primary customer interface from first discovery call through live production. 96% of accounts I was placed on moved forward. The Distyl AI Strategist role is the same motion: diagnose the problem through an AI lens, design the solution, scope the POC, close the deal. I have done this at scale in healthcare automation.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Customer Engineer (Thoughtful AI)",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
       ]
     },
     {
       "title": "Production RAG system on a live healthcare billing workflow",
       "description": "Built Thoughtful's dental eligibility system from scratch: a hybrid-RAG pipeline hitting 95% accuracy within two days on a production billing workflow used daily by real billing teams. Not a demo. This is the kind of POC-to-production system the AI Strategist role is responsible for standing up for Distyl's healthcare clients.",
       "citations": [
-        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
+        {
+          "label": "Dental Eligibility Intelligence (Thoughtful AI)",
+          "path": "/info/career/thoughtful/dental-eligibility-intelligence"
+        }
       ]
     },
     {
       "title": "Domain depth: UM, claims, RCM, 12+ EHR platforms",
       "description": "Worked across 48+ provider organizations with deep fluency in EDI/FHIR/HL7 data flows, payer eligibility APIs, HIPAA/SOC 2 requirements, and RCM-specific workflows. Distyl's healthcare solution areas (UM, care management, claims, member/provider communications) are not domains I need to ramp on.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Lead TPM (Thoughtful AI)",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
       ]
     },
     {
       "title": "POC scoping with defined success criteria and feasibility modeling",
       "description": "Built a reusable automation estimation engine at Thoughtful that quantified implementation complexity across portal types, staffing requirements, and timeline risk, matching the same deliverable described in the Distyl JD as 'POC proposals with scope, success criteria, timelines, and resource requirements.' Built because the alternative was timeline overruns and eroded customer trust.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Lead TPM (Thoughtful AI)",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
       ]
     },
     {
       "title": "Technical storytelling for C-suite and IT security audiences",
       "description": "Delivered live architecture walkthroughs to CIOs and security deep-dives to IT leadership at healthcare enterprise accounts. The Distyl role requires building 'compelling storylines and decks that make ROI concrete.' I have done this in the exact audience context and at the stakes level the role operates in.",
       "citations": [
-        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+        {
+          "label": "Enterprise Deals (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/enterprise-deals"
+        }
       ]
     }
   ],
