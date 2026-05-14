@@ -4,13 +4,13 @@
   "role": "AI Strategist, Healthcare",
   "appliedDate": "",
   "fitScore": 80,
-  "fitScoreNote": "Dan is a healthcare AI pre-sales specialist who has actually built the systems he sells -- 96% proposal conversion rate, 12+ EHR platforms, and a production RAG system running on a live billing workflow. Discovery through deal close in healthcare automation is his documented wheelhouse.",
+  "fitScoreNote": "Dan is a healthcare AI pre-sales specialist who has actually built the systems he sells: 96% proposal conversion rate, 12+ EHR platforms, and a production RAG system running on a live billing workflow. Discovery through deal close in healthcare automation is his documented wheelhouse.",
   "jobDescriptionUrl": "https://jobs.ashbyhq.com/Distyl/c1a313de-f6a2-4615-ab54-63edb0209838",
   "jobDescriptionText": "Role: AI Strategist, Healthcare Solutions\nDepartment: Solutions\n\nAbout Distyl AI\nDistyl is an applied AI technology company partnering with the world's most ambitious institutions to rearchitect critical operations for the frontier of AI. Our customers include the largest companies in telecom, healthcare, insurance, manufacturing, consumer goods, and global social organizations. We research and deploy technologies that power AI-native operations. Our work spans research into self-constructing systems, the development of the most reliable execution of AI systems, and products that transform mission-critical workflows. Distyl is backed by Lightspeed Venture Partners, Khosla Ventures, Coatue, DST Global, and board-members of 20+ F500s. 100% production deployment success rate and one of the few enterprise AI companies to run a profitable business.\n\nWhat We Are Looking For\nAs an AI Strategist, you'll lead the technology solutions in Healthcare and drive the GTM process with healthcare customer engagements, from first meeting to deal signed. You'll drive revenue and new logo expansion by diagnosing customer problems through an AI lens and designing data-driven, AI-enabled strategies. You'll operate in 0-1 mode -- rapidly building demos and proof-of-concept solutions that showcase the Distillery platform's capabilities to prospective healthcare clients.\n\nKey Responsibilities\n- Drive the AI solutioning throughout the pre-sales process on healthcare deals -- from initial discovery through deal close\n- Diagnose prospective client problems through an AI lens\n- Research clients and their industry landscape to prepare materials for prospective client meetings\n- Develop deep expertise in Distyl's Healthcare Solutions (Utilization Management, Care Management, Cost of Care, Claims, Member/Provider Communications)\n- Conduct technical discovery -- identify the right use cases, solution architecture, and feasibility\n- Work closely with engineering to co-design solutions\n- Build demos and competitive positioning docs\n- Build out POC proposals -- define scope, success criteria, timelines, and resource requirements\n- Build compelling storylines and decks that make the ROI of AI transformation concrete\n\nWho You Are\n- 8-12 years of experience in sales engineering, solutions consulting, product management, or similar role with deep healthcare experience (payer operations, provider workflows, or health tech)\n- Technical undergraduate degree (CS, engineering, math, or similar)\n- Hands-on experience designing and building GenAI solutions -- LLM pipelines, prompt engineering, RAG architectures\n- Ability to translate complex AI technical capabilities into specific, high-value business outcomes\n- Strong engineering-adjacent data skills: SQL, Python/pandas\n- Exceptional communication and storytelling skills\n- Deep domain expertise in healthcare operations (UM, care management, claims, network)\n- Travel: 50%\n\nCompensation: $150K-$250K base + meaningful equity + comprehensive benefits. Hybrid 3+ days/week in SF or NYC.",
   "strengths": [
     {
       "title": "Healthcare AI pre-sales: discovery through deal close",
-      "description": "At Thoughtful AI I was the primary customer interface from first discovery call through live production -- 96% of accounts I was placed on moved forward. The Distyl AI Strategist role is the same motion: diagnose the problem through an AI lens, design the solution, scope the POC, close the deal. I have done this at scale in healthcare automation.",
+      "description": "At Thoughtful AI I was the primary customer interface from first discovery call through live production. 96% of accounts I was placed on moved forward. The Distyl AI Strategist role is the same motion: diagnose the problem through an AI lens, design the solution, scope the POC, close the deal. I have done this at scale in healthcare automation.",
       "citations": [
         { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
         { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
@@ -18,7 +18,7 @@
     },
     {
       "title": "Production RAG system on a live healthcare billing workflow",
-      "description": "Built Thoughtful's dental eligibility system from scratch -- a hybrid-RAG pipeline hitting 95% accuracy within two days on a production billing workflow used daily by real billing teams. Not a demo. This is the kind of POC-to-production system the AI Strategist role is responsible for standing up for Distyl's healthcare clients.",
+      "description": "Built Thoughtful's dental eligibility system from scratch: a hybrid-RAG pipeline hitting 95% accuracy within two days on a production billing workflow used daily by real billing teams. Not a demo. This is the kind of POC-to-production system the AI Strategist role is responsible for standing up for Distyl's healthcare clients.",
       "citations": [
         { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
       ]
@@ -33,7 +33,7 @@
     },
     {
       "title": "POC scoping with defined success criteria and feasibility modeling",
-      "description": "Built a reusable automation estimation engine at Thoughtful that quantified implementation complexity across portal types, staffing requirements, and timeline risk -- the same deliverable described in the Distyl JD as 'POC proposals with scope, success criteria, timelines, and resource requirements.' Built because the alternative was timeline overruns and eroded customer trust.",
+      "description": "Built a reusable automation estimation engine at Thoughtful that quantified implementation complexity across portal types, staffing requirements, and timeline risk, matching the same deliverable described in the Distyl JD as 'POC proposals with scope, success criteria, timelines, and resource requirements.' Built because the alternative was timeline overruns and eroded customer trust.",
       "citations": [
         { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
         { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
@@ -41,7 +41,7 @@
     },
     {
       "title": "Technical storytelling for C-suite and IT security audiences",
-      "description": "Delivered live architecture walkthroughs to CIOs and security deep-dives to IT leadership at healthcare enterprise accounts. The Distyl role requires building 'compelling storylines and decks that make ROI concrete' -- I have done this in the exact audience context and at the stakes level the role operates in.",
+      "description": "Delivered live architecture walkthroughs to CIOs and security deep-dives to IT leadership at healthcare enterprise accounts. The Distyl role requires building 'compelling storylines and decks that make ROI concrete.' I have done this in the exact audience context and at the stakes level the role operates in.",
       "citations": [
         { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
       ]
@@ -54,17 +54,17 @@
       "mitigation": "At Smarter Technologies I managed $31.8M in active pipeline including large enterprise deals with dedicated IT security and compliance review cycles. The stakeholder complexity scales more than the domain knowledge does."
     }
   ],
-  "referralBlurb": "I'm referring Dan Mathieson for the AI Strategist, Healthcare role. Dan was the forward-deployed pre-sales technical owner at Thoughtful AI, taking 96% of assigned accounts through proposal -- working directly with healthcare enterprise buyers from initial discovery through deal close on AI automation solutions. He built production RAG systems on live healthcare billing workflows, has deep fluency across 12+ EHR platforms and 48+ provider organizations, and understands how to translate AI technical capability into business outcomes for payer and provider operations. His background maps directly to what the AI Strategist role requires.",
+  "referralBlurb": "I'm referring Dan Mathieson for the AI Strategist, Healthcare role. Dan was the forward-deployed pre-sales technical owner at Thoughtful AI, taking 96% of assigned accounts through proposal, working directly with healthcare enterprise buyers from initial discovery through deal close on AI automation solutions. He built production RAG systems on live healthcare billing workflows, has deep fluency across 12+ EHR platforms and 48+ provider organizations, and understands how to translate AI technical capability into business outcomes for payer and provider operations. His background maps directly to what the AI Strategist role requires.",
   "projects": [
     {
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
-      "relevance": "Production AI system built for a healthcare billing workflow -- directly relevant to Distyl's healthcare AI strategy focus."
+      "relevance": "Production AI system built for a healthcare billing workflow, directly relevant to Distyl's healthcare AI strategy focus."
     },
     {
       "name": "Notion Meeting Intelligence",
       "path": "/projects/notion-meeting-intelligence",
-      "relevance": "Multi-agent pipeline for converting sales conversations into structured intelligence -- shows applied AI strategy translated into working product."
+      "relevance": "Multi-agent pipeline for converting sales conversations into structured intelligence, showing applied AI strategy translated into working product."
     }
   ],
   "applicationQuestions": [],
