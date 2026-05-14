@@ -12,7 +12,10 @@ export default function ProjectCallouts({ projects }: Props) {
       <div className={styles.grid}>
         {projects.map((p, i) => (
           <div key={i} className={styles.card}>
-            <p className={styles.name}>{p.name}</p>
+            <div className={styles.nameRow}>
+              <p className={styles.name}>{p.name}</p>
+              <span className={styles.liveBadge}>Live Demo</span>
+            </div>
             <p className={styles.relevance}>{p.relevance}</p>
             <Link href={p.path} className={styles.link}>
               View demo →
