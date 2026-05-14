@@ -3,8 +3,8 @@
   "company": "Notion",
   "role": "GTM AI Innovation Manager",
   "appliedDate": "",
-  "fitScore": 68,
-  "fitScoreNote": "Dan is an AI builder who has already shipped what this role is responsible for designing -- a fully deployed agent platform for a commercial GTM team with usage tracking and adoption measurement, plus the Notion Meeting Intelligence system as the direct demo. The NYC/SF in-person requirement and RevOps tooling familiarity are the real gaps.",
+  "fitScore": 75,
+  "fitScoreNote": "Dan is an AI builder who has already shipped what this role is responsible for designing -- a fully deployed agent platform for a commercial GTM team with usage tracking and adoption measurement, plus the Notion Meeting Intelligence system as the direct demo. Based in SF, so the anchor day model is a fit. RevOps tooling familiarity is the remaining gap.",
   "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/3336e944-0970-48ef-9a97-4ebd6656d0c2",
   "jobDescriptionText": "Role: GTM AI + Innovation Manager\nDepartment: Revenue Operations & Strategy\n\nAbout Notion\nNotion helps you build beautiful tools for your life's work. Notion provides one place for teams to get everything done, seamlessly connecting docs, notes, projects, calendar, and email -- with AI built in to find answers and automate work. Millions of users, from individuals to large organizations like Toyota, Figma, and OpenAI, love Notion for its flexibility.\n\nAbout the Role\nAs GTM AI & Innovation Manager, you will support revenue growth by architecting and implementing AI-powered solutions that enhance our GTM team's effectiveness and accelerate customer acquisition. Working closely with GTM teams, Business Technology, Data Science and Automations Engineering, you'll help develop innovative approaches to leverage AI for improving sales processes and optimizing customer outcomes.\n\nWhat You'll Achieve\n- Systems Thinking: Understand how to design systems that meet field sellers, marketers and post-sales resources where they do their daily work\n- Hands-On Building: Work alongside engineering to build out prototype and production-grade systems, ship continuously\n- Cross-Functional Collaboration: Bridge technical and commercial teams, gathering technical requirements while ensuring solutions deliver real business value\n- Ongoing Enablement: Communicate enhancements to revenue teams and encourage adoption through continuous learning\n- ROI Measurement: Track and optimize the pipeline and revenue impact of AI and automation implementations across GTM\n\nSkills You'll Need\n- 3-5 years of work experience in a technical commercial role (sales engineer, technical account manager or similar) and/or a growth engineer or product manager role with exposure to GTM systems\n- Demonstrated experience building AI workflows, automation, or product solutions\n- Strong product management instincts and systems thinking\n- Genuine passion for GTM engineering and the future of AI-driven selling\n- High bias to action and ownership mentality\n- Technical skills (coding concepts, SQL and scripting languages, low-code tools)\n- Understanding of B2B sales processes and metrics\n- Must be located in New York or San Francisco\n\nNice to Haves: Salesforce/HubSpot experience, modern sales automation tools, Notion power user, sales operations background\n\nCompensation: $150,000-$175,000 base. In-person collaboration required Mon/Tue/Thu (Anchor Days).",
   "strengths": [
@@ -40,11 +40,6 @@
     }
   ],
   "weaknesses": [
-    {
-      "title": "NYC/SF in-person requirement",
-      "description": "The role requires Mon/Tue/Thu in-person collaboration in New York or San Francisco. This is a location logistics question that needs to be addressed upfront.",
-      "mitigation": "Worth discussing directly -- happy to talk through what relocation or a transition plan would look like if there's strong mutual fit."
-    },
     {
       "title": "Salesforce/HubSpot RevOps tooling depth",
       "description": "My AI automation work has been built on top of custom pipelines and Notion itself -- not deeply inside Salesforce/HubSpot CRM workflows, which are listed as nice-to-haves.",
