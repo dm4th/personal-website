@@ -5,7 +5,7 @@
   "role": "Technical Specialist, Claude Code",
   "appliedDate": "2026-05-13",
   "fitScore": 82,
-  "fitScoreNote": "Dan is a practitioner-first technical specialist who has already deployed Claude Code in a real enterprise GTM context -- he built a 22-skill, 5-agent platform running live on $31.8M in pipeline, not a side project. He is someone who bridges the gap between SE leadership and hands-on AI building, with the credibility of having felt the adoption friction firsthand and solved it from inside a commercial org.",
+  "fitScoreNote": "Dan is a practitioner-first technical specialist who has already deployed Claude Code in a real enterprise GTM context: he built a 22-skill, 5-agent platform running live on $31.8M in pipeline, not a side project. He is someone who bridges the gap between SE leadership and hands-on AI building, with the credibility of having felt the adoption friction firsthand and solved it from inside a commercial org.",
   "summary": [
     "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline",
     "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
@@ -18,7 +18,7 @@
   "strengths": [
     {
       "title": "Production Claude Code platform deployed at enterprise scale",
-      "description": "Built a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance -- running live on $31.8M in enterprise pipeline. Most applicants will have used Claude Code; almost none will have deployed it at this scale with a real feedback loop.",
+      "description": "Built a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance, running live on $31.8M in enterprise pipeline. Most applicants will have used Claude Code; almost none will have deployed it at this scale with a real feedback loop.",
       "citations": [
         { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
         { "label": "Smarter Technologies Overview", "path": "/info/career/smarter-technologies" }
@@ -26,7 +26,7 @@
     },
     {
       "title": "Pre-sales technical authority with 96% proposal conversion",
-      "description": "At Thoughtful AI, I became the person placed on calls specifically because of my ability to make complex AI systems legible to enterprise buyers. 96% of accounts I was placed on moved forward -- that adoption instinct is the core job in this role.",
+      "description": "At Thoughtful AI, I became the person placed on calls specifically because of my ability to make complex AI systems legible to enterprise buyers. 96% of accounts I was placed on moved forward. That adoption instinct is the core job in this role.",
       "citations": [
         { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
         { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
@@ -34,7 +34,7 @@
     },
     {
       "title": "Field-to-engineering feedback loop (automated, not manual)",
-      "description": "Built an agent that populated a market feedback section in Notion every time the engineering team's weekly standup page was created -- sourced from that week's discovery calls. Engineers didn't have to ask what customers were saying. It showed up in their workflow.",
+      "description": "Built an agent that populated a market feedback section in Notion every time the engineering team's weekly standup page was created, sourced from that week's discovery calls. Engineers didn't have to ask what customers were saying. It showed up in their workflow.",
       "citations": [
         { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" },
         { "label": "Commercial Innovation", "path": "/info/career/smarter-technologies/commercial-innovation" }
@@ -42,14 +42,14 @@
     },
     {
       "title": "Only non-Product/Engineering person retained after 85% reduction",
-      "description": "When Smarter Technologies shut down, I was one of 15% retained -- the only person without a Product or Engineering title. The PE firm made a specific exception. That happened because I can take complex AI systems and make them legible to the people who need to adopt them.",
+      "description": "When Smarter Technologies shut down, I was one of 15% retained, the only person without a Product or Engineering title. The PE firm made a specific exception. That happened because I can take complex AI systems and make them legible to the people who need to adopt them.",
       "citations": [
         { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
       ]
     },
     {
       "title": "MCP-native platform design for enterprise AI adoption",
-      "description": "Spent six months designing an MCP-native clinical data platform. The reason MCP matters for enterprise Claude Code adoption is the same reason it matters in healthcare: it makes the boundary between the agent and external systems explicit and auditable -- something enterprise IT teams can evaluate and approve.",
+      "description": "Spent six months designing an MCP-native clinical data platform. The reason MCP matters for enterprise Claude Code adoption is the same reason it matters in healthcare: it makes the boundary between the agent and external systems explicit and auditable, something enterprise IT teams can evaluate and approve.",
       "citations": [
         { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
       ]
@@ -58,7 +58,7 @@
   "weaknesses": [
     {
       "title": "No formal external hackathon experience",
-      "description": "Have designed internal build sprints and enablement rollouts that share the same DNA -- scoped deliverables, time-boxed execution, defined success criteria, documented playbooks. No external hackathon credits yet.",
+      "description": "Have designed internal build sprints and enablement rollouts that share the same DNA: scoped deliverables, time-boxed execution, defined success criteria, documented playbooks. No external hackathon credits yet.",
       "mitigation": "The facilitation and preparation muscles are there. I would build the hackathon format quickly and I am genuinely excited to."
     },
     {
@@ -77,12 +77,12 @@
     {
       "name": "Personal Website Agent",
       "path": "/",
-      "relevance": "The agent panel on this site is built on the Anthropic SDK -- tool use, streaming, and a full RAG pipeline grounded in career content. It is the kind of Claude Code-native system this role would help enterprise customers build."
+      "relevance": "The agent panel on this site is built on the Anthropic SDK: tool use, streaming, and a full RAG pipeline grounded in career content. It is the kind of Claude Code-native system this role would help enterprise customers build."
     },
     {
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
-      "relevance": "Production hybrid-RAG system built for a live healthcare billing workflow -- demonstrates the AI system design skills this role requires at the enterprise level."
+      "relevance": "Production hybrid-RAG system built for a live healthcare billing workflow, demonstrating the AI system design skills this role requires at the enterprise level."
     }
   ],
   "applicationQuestions": [

@@ -1,16 +1,17 @@
 {
   "id": "f46cd6b36c8a",
   "company": "8090 Solutions",
+  "companyLogoUrl": "https://www.8090.ai/assets/8090-logo-fill.svg",
   "role": "Technical Project Manager",
   "appliedDate": "",
   "fitScore": 85,
-  "fitScoreNote": "Two years doing the exact job in the exact target vertical -- forward-deployed delivery in healthcare AI automation, discovery through production",
+  "fitScoreNote": "Two years doing the exact job in the exact target vertical: forward-deployed delivery in healthcare AI automation, discovery through production",
   "jobDescriptionUrl": "https://www.8090.ai/careers",
   "jobDescriptionText": "Role: Technical Product Manager\n\nAbout 8090\nCo-founded and led by Chamath Palihapitiya, 8090 is building a Software Factory that delivers fully-managed and hosted software purpose-built for each customer, cutting through the bloated Software Industrial Complex.\n\nThe Opportunity\nLead the end-to-end creation and implementation of AI-first enterprise products, from customer discovery through successful delivery and ongoing engagement.\n\nKey Responsibilities\n- Lead customer discovery to document business processes and translate requirements into actionable items, maintaining the PRD throughout the project lifecycle\n- Manage multi-stream, technical engagements by developing project governance plans, schedules, team goals, success criteria, and milestones\n- Ensure goal alignment across stakeholder groups including customers, and internal teams\n- Create and deliver tailored communications ranging from executive-level project updates to detailed iteration plans\n- Track metrics and provide weekly status reports to demonstrate progress and value\n- Represent customer business needs throughout the development process\n- Plan, organize, and manage all phases of the project lifecycle to ensure successful delivery\n\nWhat Sets You Apart\n- Proven ability to deliver enterprise solutions on time and within budget, ideally involving AI/ML integrations\n- Exceptional stakeholder management skills for high-impact client engagements\n- Experience managing teams in fast-paced, resource-constrained environments\n- Strong project management capabilities with a track record of successful delivery\n- Domain expertise in regulated industries\n\nQualifications\n- 5+ years of experience in Technical Product Management with emphasis on customer delivery\n- Demonstrated success managing the full lifecycle of enterprise products\n- Strong technical acumen with ability to communicate with both business stakeholders and engineering teams\n\nCompensation: $150,000-$1,000,000 + stock/options + benefits.",
   "strengths": [
     {
       "title": "Forward-deployed TPM in healthcare AI for two years",
-      "description": "The 8090 model (discovery \u2192 PRD \u2192 execution \u2192 production) maps precisely to what I did at Thoughtful AI as Solutions Architect, Customer Engineer, and Lead TPM. Primary customer interface from first call through live deployment for 60%+ of Thoughtful's 2024 deliveries.",
+      "description": "The 8090 model (discovery → PRD → execution → production) maps precisely to what I did at Thoughtful AI as Solutions Architect, Customer Engineer, and Lead TPM. Primary customer interface from first call through live deployment for 60%+ of Thoughtful's 2024 deliveries.",
       "citations": [
         {
           "label": "Solutions Architect (Thoughtful AI)",
@@ -28,7 +29,7 @@
     },
     {
       "title": "Production hybrid-RAG system with real billing workflow stakes",
-      "description": "Built Thoughtful's dental eligibility system from scratch -- a hybrid-RAG pipeline hitting 95% accuracy on a live production billing workflow, maintained with a labeled holdout evaluation suite. Not a demo. Real billing teams relied on it daily.",
+      "description": "Built Thoughtful's dental eligibility system from scratch: a hybrid-RAG pipeline hitting 95% accuracy on a live production billing workflow, maintained with a labeled holdout evaluation suite. Not a demo. Real billing teams relied on it daily.",
       "citations": [
         {
           "label": "Dental Eligibility Intelligence (Thoughtful AI)",
@@ -66,7 +67,7 @@
     },
     {
       "title": "Built a software factory for my own team (22 skills, 943 commits)",
-      "description": "At Smarter Technologies I built a 22-skill, 5-agent AI operating system for the SE team -- essentially an internal software factory for sales engineering. I understand the power of AI-generated scaffolding and the human judgment required to keep it on rails. That instinct transfers directly to 8090's core product thesis.",
+      "description": "At Smarter Technologies I built a 22-skill, 5-agent AI operating system for the SE team, essentially an internal software factory for sales engineering. I understand the power of AI-generated scaffolding and the human judgment required to keep it on rails. That instinct transfers directly to 8090's core product thesis.",
       "citations": [
         {
           "label": "AI-SE Platform (Smarter Technologies)",
@@ -78,7 +79,7 @@
   "weaknesses": [
     {
       "title": "8090's product is a platform, not a service",
-      "description": "My delivery experience is in services -- Thoughtful AI built custom automation for each customer. 8090's Software Factory is a platform that generates software customers then own.",
+      "description": "My delivery experience is in services. Thoughtful AI built custom automation for each customer. 8090's Software Factory is a platform that generates software customers then own.",
       "mitigation": "The TPM role bridges this. My job has always been owning the customer outcome, not any single delivery modality. Whether output comes from a handcrafted implementation or an AI-generated pipeline, the job is the same."
     },
     {
@@ -87,17 +88,17 @@
       "mitigation": "The pattern recognition I built around EHR integration complexity, payer APIs, and compliance requirements directly parallels what you encounter in financial core banking or federal procurement. The framework transfers."
     }
   ],
-  "referralBlurb": "I'm referring Dan Mathieson for the Technical Project Manager role. Dan spent two years at Thoughtful AI as the primary customer interface for 60%+ of their deliveries -- forward-deployed from first discovery call through live production in healthcare AI automation. He built a hybrid-RAG system that hit 95% accuracy on a live billing workflow, created the scoping model that caught and corrected timeline overruns before they became customer trust problems, and was one of 15% retained after an 85% headcount reduction. He understands both the technical depth and the delivery discipline the 8090 TPM role requires.",
+  "referralBlurb": "I'm referring Dan Mathieson for the Technical Project Manager role. Dan spent two years at Thoughtful AI as the primary customer interface for 60%+ of their deliveries, forward-deployed from first discovery call through live production in healthcare AI automation. He built a hybrid-RAG system that hit 95% accuracy on a live billing workflow, created the scoping model that caught and corrected timeline overruns before they became customer trust problems, and was one of 15% retained after an 85% headcount reduction. He understands both the technical depth and the delivery discipline the 8090 TPM role requires.",
   "projects": [
     {
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
-      "relevance": "Production hybrid-RAG eligibility system for a healthcare billing workflow -- the type of AI delivery project 8090 TPMs oversee for enterprise clients."
+      "relevance": "Production hybrid-RAG eligibility system for a healthcare billing workflow, the type of AI delivery project 8090 TPMs oversee for enterprise clients."
     },
     {
       "name": "Notion Meeting Intelligence",
       "path": "/projects/notion-meeting-intelligence",
-      "relevance": "Multi-agent pipeline that turns sales meeting recordings into structured deal intelligence -- shows the agentic platform-building approach directly relevant to 8090's delivery model."
+      "relevance": "Multi-agent pipeline that turns sales meeting recordings into structured deal intelligence, showing the agentic platform-building approach directly relevant to 8090's delivery model."
     }
   ],
   "applicationQuestions": [],
