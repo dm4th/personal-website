@@ -1,0 +1,28 @@
+{
+  "id": "d7758a2230ca",
+  "company": "OpenAI",
+  "role": "Solutions Engineer, Healthcare",
+  "appliedDate": "",
+  "fitScore": 0,
+  "fitScoreNote": "Update fit score and notes after analysis",
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/openai/1baad891-43b8-4e2a-9e6c-f68741e718a4",
+  "jobDescriptionText": "Role: Solutions Engineer, Healthcare & Life Sciences\nDepartment: Go To Market\n\nAbout the Team\nThe Technical Success team is responsible for the customer experience on the OpenAI suite of products, ensuring developers and enterprises maximize benefit, value, and adoption from our highly-capable models.\n\nAbout the Role\nWe are seeking a solutions engineer to partner with our largest Healthcare & Life Sciences customers and ensure they achieve tangible business value from our models through the OpenAI suite of products. You will partner with senior business stakeholders to understand their pre-sales needs, guide their AI strategy, and identify the highest value use cases and applications.\n\nIn this role, you will:\n- Deliver an exceptional pre-sales customer experience for large Healthcare & Life Sciences prospects and customers\n- Demonstrate how leveraging OpenAI's suite of products can meet customers' business needs and deliver substantial business value\n- Build and present demos, scope use cases, recommend architecture patterns, and provide in-depth technical advisory\n- Create and maintain documentation, guides, and FAQs related to common questions and requirements discovered during the pre-sales process\n- Develop and nurture strong customer relationships during the evaluation, validation, and purchasing process\n- Foster customer advocacy and represent the voice of the customer with internal teams\n- Serve as the first line of defense for security and compliance questions\n\nYou'll thrive in this role if you:\n- Have 10+ years of experience in a technical pre-sales or similar role, including 3+ years selling to Healthcare & Life Sciences customers\n- Demonstrate a thorough understanding of IT security principles and customer requirements for technical B2B SaaS products\n- Have foundational training in programming languages like Python or Javascript\n- Have delivered prototypes of Generative AI/traditional ML solutions and have knowledge of network/cloud architecture\n- Are an effective presenter and communicator who can translate business and technical topics to all audiences\n- Own problems end-to-end and are willing to pick up whatever knowledge you're missing to get the job done\n\nBased in San Francisco, CA or New York, NY. Hybrid work model of 3 days in the office per week.",
+  "strengths": [],
+  "weaknesses": [],
+  "referralBlurb": "",
+  "projects": [
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production AI system built for a healthcare billing workflow -- the type of solution OpenAI SEs help enterprise healthcare customers design and deploy."
+    },
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Multi-agent pipeline for sales intelligence -- demonstrates the agentic systems design skills an OpenAI SE brings to complex enterprise deployments."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "cover-letter.pdf"
+}

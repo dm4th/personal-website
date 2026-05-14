@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Mathieson — Resume | Notion GTM AI & Innovation Manager</title>
+  <style>
+    /* ===== BASE STYLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    a { color: #2B4C7E; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.4in 0.5in;
+    }
+
+    .page-break { page-break-before: always; }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid #2B4C7E;
+    }
+
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-subtitle {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .contact-info {
+      font-size: 8.5pt;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span { white-space: nowrap; }
+    .contact-info .sep { color: #bbb; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    /* ===== SUMMARY ===== */
+    .summary {
+      font-size: 9pt;
+      line-height: 1.45;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    /* ===== TWO-COLUMN LAYOUT FOR PAGE 1 ===== */
+    .page1-content {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .main-col { }
+    .side-col { }
+
+    /* ===== ROLE ENTRIES ===== */
+    .role-entry { margin-bottom: 8px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .role-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .role-period {
+      font-size: 8.5pt;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .role-company {
+      font-size: 9pt;
+      color: #444;
+      margin-bottom: 1px;
+    }
+
+    .role-location {
+      font-size: 8.5pt;
+      color: #666;
+      margin-bottom: 3px;
+    }
+
+    .role-context {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    /* ===== SUBSECTIONS ===== */
+    .subsection-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    /* ===== BULLET GROUPS ===== */
+    .bullet-group {
+      padding-left: 14px;
+      margin-bottom: 2px;
+      list-style-type: '–  ';
+    }
+
+    .bullet-group li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 1.5px;
+      color: #222;
+    }
+
+    .bullet-group li strong { font-weight: 600; }
+
+    /* ===== SIDEBAR METRICS ===== */
+    .sidebar-section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-section-title:first-child { margin-top: 0; }
+
+    .metric-item { margin-bottom: 6px; }
+
+    .metric-value {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 8pt;
+      color: #555;
+      line-height: 1.3;
+    }
+
+    /* ===== SKILLS (sidebar) ===== */
+    .skill-category { margin-bottom: 4px; }
+
+    .skill-category-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 1px;
+    }
+
+    .skill-category-items {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.35;
+    }
+
+    /* ===== PAGE 2 STYLES ===== */
+    .role-entry-compact { margin-bottom: 7px; }
+    .role-entry-compact .bullet-group li { font-size: 8.5pt; }
+
+    /* ===== EDUCATION ===== */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .edu-entry .edu-name { font-size: 9pt; font-weight: 600; }
+    .edu-entry .edu-detail { font-size: 8.5pt; color: #444; }
+    .edu-entry .edu-period { font-size: 8.5pt; color: #555; }
+
+    /* ===== PRINT STYLES ===== */
+    @page { size: letter; margin: 0; }
+
+    @media print {
+      body { background: none; }
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 0.4in 0.5in;
+      }
+      .page-break { page-break-before: always; }
+      a { color: #2B4C7E; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dan Mathieson</h1>
+    <div class="header-subtitle">GTM AI Builder &nbsp;|&nbsp; Revenue Systems Architect &nbsp;|&nbsp; Technical Commercial Leader</div>
+    <div class="contact-info">
+      <span>danny.mathieson233@gmail.com</span>
+      <span class="sep">|</span>
+      <span>danielmathieson.com</span>
+      <span class="sep">|</span>
+      <span>linkedin.com/in/daniel-mathieson</span>
+      <span class="sep">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    Technical commercial leader building a production-grade AI GTM platform from scratch on top of GitHub and Notion. Shipping 943 commits and managing $31.8M in active enterprise pipeline simultaneously in a solutions engineering leadership capacity. Career-long track record of architecting AI and automated workflows, automation systems, and data pipelines that make revenue teams measurably faster. Fluent across the full GTM stack: from SQL-driven LTV models and Airflow pipelines to multi-agent sales intelligence systems, Salesforce CRM reporting, and low-code automation with Make. Equally comfortable writing Python in a terminal, presenting architecture to a VP of Sales, or closing a deal with prospects at a board level.
+  </p>
+
+  <!-- TWO-COLUMN: Experience left, Metrics + Skills right -->
+  <div class="page1-content">
+
+    <!-- LEFT COLUMN: Experience -->
+    <div class="main-col">
+
+      <div class="section-title">Experience</div>
+
+      <!-- ROLE: Director SE -->
+      <div class="role-entry">
+        <div class="role-header">
+          <span class="role-title">Director, Sales Engineering</span>
+          <span class="role-period">2025 – Present</span>
+        </div>
+        <div class="role-company">Smarter Technologies &nbsp;|&nbsp; San Francisco, CA</div>
+        <div class="role-context">Promoted into GTM leadership role after becoming the connective tissue between engineering and the sales org. Built the entire SE operating system from scratch while personally carrying 62% of total company pipeline.</div>
+
+        <div class="subsection-title">GTM AI Systems</div>
+        <ul class="bullet-group">
+          <li>Architected a <strong>5-agent parallel meeting intelligence pipeline</strong> that processes every sales call in real time, extracting objections, competitive intel, product feedback, pricing signals, and follow-up items, routing each to product, delivery, and sales automatically</li>
+          <li>Built <strong>ephemeral prospect workspaces</strong> on Git worktrees with automated bidirectional sync between Notion and Salesforce — 451 PRs generated, one per work session per deal</li>
+          <li>Engineered a <strong>custom demo creation pipeline</strong> enabling a 2-person team to build and deliver prospect-specific demos in minutes; created an internal agent skills plugin scaling AI capabilities across the org</li>
+          <li>Designed an <strong>ICP scoring model</strong> and automation estimation engine using payer EDI data, EHR scope analysis, and volume modeling, producing defensible ROI projections across 30+ prospects</li>
+        </ul>
+
+        <div class="subsection-title">CRM &amp; Revenue Operations</div>
+        <ul class="bullet-group">
+          <li>Maintained <strong>Salesforce as canonical CRM</strong> for pipeline, building custom reports and dashboard components used in VP and CEO-level reviews; tracked stage velocity, win probability, and forecasted bookings by quarter. Included bi-directional sync with Notion tracking infrastructure</li>
+          <li>Managed <strong>$31.8M in active pipeline</strong> across 61 enterprise deals personally; closed $1.95M closed-won revenue across 5 deals with active opportunities from $50K to $4M</li>
+          <li>Handled <strong>4× the deal volume</strong> of the second SE team member while maintaining quality scores above 80/100 which was enabled by building systems that scale</li>
+        </ul>
+
+        <div class="subsection-title">Cross-Functional Enablement</div>
+        <ul class="bullet-group">
+          <li>Designed <strong>5 pricing architectures</strong> (transaction-based, FTE cost-reduction, fixed+variable hybrid, volume step-down, contingency) and built commercial models used by the CEO in board-level conversations</li>
+          <li>Served as the bridge between engineering and sales leadership — translating technical constraints into commercial narratives and field feedback into product roadmap priorities</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Metrics + Skills -->
+    <div class="side-col">
+
+      <div class="sidebar-section-title">GTM Impact</div>
+
+      <div class="metric-item">
+        <div class="metric-value">$31.8M</div>
+        <div class="metric-label">Active pipeline personally<br>managed via AI systems</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">943 Commits</div>
+        <div class="metric-label">Shipped while managing<br>$31.8M in live pipeline</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">5 Agents</div>
+        <div class="metric-label">Parallel AI pipeline on<br>every prospect meeting</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">451 PRs</div>
+        <div class="metric-label">Automated deal state syncs<br>across Notion + Salesforce</div>
+      </div>
+
+      <div class="sidebar-section-title">Technical Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">GTM &amp; Automation</div>
+        <div class="skill-category-items">Salesforce (reports, dashboards, pipeline), Make/Integromat, Notion (databases, automations, APIs), Webhooks, Zapier</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">AI &amp; Agent Workflows</div>
+        <div class="skill-category-items">Claude Agent SDK, Multi-Agent Pipelines, LLM Tool Use, Prompt Engineering, RAG Systems</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Languages &amp; Data</div>
+        <div class="skill-category-items">Python, SQL (Redshift, PostgreSQL, GoogleSQL), TypeScript, Airflow, pandas</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Visualization &amp; BI</div>
+        <div class="skill-category-items">Quicksight, Tableau, Chartio, Google Data Studio, Google Sheets / Apps Script</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Infrastructure</div>
+        <div class="skill-category-items">Git, GitHub Actions, AWS, Docker, Next.js, React</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page page-break">
+
+  <div class="section-title">Experience (continued)</div>
+
+  <!-- Thoughtful AI -->
+  <div class="role-entry">
+    <div class="role-header">
+      <span class="role-title">Solutions Architect → Customer Engineer → Lead Technical Program Manager</span>
+      <span class="role-period">2023 – 2025</span>
+    </div>
+    <div class="role-company">Thoughtful AI &nbsp;|&nbsp; San Francisco, CA</div>
+    <div class="role-context">Progressed through 3 roles in 2 years at a Series A healthcare AI startup. Owned technical delivery, pre-sales, and the company's first customer-facing analytics product.</div>
+    <ul class="bullet-group">
+      <li>Built Thoughtful's <strong>first customer analytics product</strong> on AWS Quicksight — wrote custom SQL queries including JSON parsers in PostgreSQL to transform hundreds of thousands of AI agent execution records into customer-facing dashboards embedded via iFrame in the product portal</li>
+      <li>Functioned as <strong>dedicated technical pre-sales advisor.</strong> Designed and demoed bespoke AI solutions for each prospect, achieving a 96% funnel pass-through rate; drove 3× ARR YoY growth as primary technical resource for 60% of completed deliveries</li>
+      <li>Built the company's <strong>first hybrid-RAG workflow</strong>, reducing human-in-the-loop exception rates by 90% and providing full model observability</li>
+      <li>Stabilized <strong>3× standard implementation load</strong> of struggling accounts during a critical growth phase, preventing a wave of customer departures</li>
+      <li><strong>Rescued and extended a customer's Make automation workflows</strong> for an AI SOAP notes generator — fixed broken webhook configurations and JSON routing logic, then wired Thoughtful's AI agents to trigger those workflows bidirectionally via webhook, creating a tightly coupled low-code + full-code pipeline</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Earlier Experience</div>
+
+  <!-- Action Network -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Data Science &amp; Analytics</span>
+      <span class="role-period">02/2021 – 10/2022</span>
+    </div>
+    <div class="role-company">Action Network (acq. Better Collective) &nbsp;|&nbsp; Remote</div>
+    <ul class="bullet-group">
+      <li>Led a team of 4 analysts and 3 engineers building <strong>Airflow-orchestrated data pipelines</strong> on Redshift, scraping 80+ partner dashboards and reducing reporting cycles from weeks to hours</li>
+      <li>Architected post-acquisition pivot from audience to revenue metrics — built the <strong>"Value Clicks" model</strong> correlating content consumption to downstream affiliate conversion, driving 70%+ YoY revenue growth</li>
+      <li>Built <strong>affiliate LTV financial models</strong> evaluating revenue-share deals worth $500K–$2M/year, presenting directly to CFO and executive leadership; modeled cohort retention, loss rates, and state-level tax adjustments</li>
+      <li>Designed <strong>user acquisition dashboards and KPI frameworks</strong> in Tableau and Google Data Studio; drove 225%+ YoY improvement in revenue per mobile app user</li>
+    </ul>
+  </div>
+
+  <!-- Google -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Revenue Analyst, G-Suite Finance</span>
+      <span class="role-period">01/2020 – 02/2021</span>
+    </div>
+    <div class="role-company">Google &nbsp;|&nbsp; Sunnyvale, CA</div>
+    <ul class="bullet-group">
+      <li>Built a <strong>full P&amp;L transformation and reporting suite</strong> in GoogleSQL, automatically piping data into custom executive dashboards and Google Sheets consumed by finance leaders across Google Cloud</li>
+      <li>Developed and maintained <strong>670 dashboards and P&amp;L statements</strong> covering 0.5B SaaS users; improved top-line revenue forecast accuracy by 7% using Google AI/ML tooling</li>
+      <li>Automated forecast cube generation using <strong>Google Apps Script and SAP integration</strong>, eliminating manual reporting cycles</li>
+    </ul>
+  </div>
+
+  <!-- FanDuel -->
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Manager, Revenue &amp; Forecasting</span>
+      <span class="role-period">08/2016 – 12/2019</span>
+    </div>
+    <div class="role-company">FanDuel &nbsp;|&nbsp; New York, NY</div>
+    <ul class="bullet-group">
+      <li>Built the <strong>entire revenue reporting infrastructure</strong> on Redshift SQL — wrote custom queries daily for retention analysis, LTV segmentation, and bonus targeting by user propensity; built Chartio dashboards consumed by the full C-suite</li>
+      <li>Automated reporting via a <strong>Python Slackbot</strong> triggered by Slack slash commands, reducing manual reporting by 40% and putting data directly in the flow of daily operations</li>
+      <li>Built a <strong>Markov-chain Monte Carlo simulation in SQL</strong> forecasting LTV and revenue across 17 user cohorts to within 2% accuracy; designed and taught SQL courses to the operations team</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="edu-entry">
+    <div>
+      <span class="edu-name">B.S. Electrical &amp; Computer Engineering</span>
+      <span class="edu-detail">, Bucknell University</span>
+    </div>
+    <span class="edu-period">08/2012 – 05/2016</span>
+  </div>
+  <div class="edu-entry" style="margin-bottom: 8px;">
+    <div>
+      <span class="edu-name">AI &amp; Machine Learning Professional Certificate</span>
+      <span class="edu-detail">, CalTech / SimpliLearn</span>
+    </div>
+    <span class="edu-period">10/2022 – 04/2023</span>
+  </div>
+
+</div>
+
+</body>
+</html>
