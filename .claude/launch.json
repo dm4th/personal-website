@@ -2,6 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "resume-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "4444", "/Users/dannymathieson/Develop/personal-website/work-product"],
+      "port": 4444
+    }
+  ,
+    {
       "name": "dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
