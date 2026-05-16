@@ -158,6 +158,17 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
               {/* Score + role */}
               <div className={styles.scoreRow}>
                 <div className={styles.scoreRing} style={{ '--score-color': scoreColor } as React.CSSProperties}>
+                  <svg className={styles.scoreRingSvg} viewBox="0 0 68 68">
+                    <circle cx="34" cy="34" r="29" className={styles.scoreTrack} />
+                    <circle
+                      cx="34" cy="34" r="29"
+                      className={styles.scoreArc}
+                      style={{
+                        stroke: scoreColor,
+                        strokeDashoffset: 182.21 * (1 - data.fitScore / 100),
+                      }}
+                    />
+                  </svg>
                   <span className={styles.scoreNum}>{data.fitScore}</span>
                   <span className={styles.scoreDenom}>/100</span>
                 </div>
