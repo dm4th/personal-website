@@ -69,10 +69,32 @@ function DimensionScoring({ dimensionScores }: { dimensionScores?: Record<string
 
 // ─── Complete: full card ──────────────────────────────────────────────────────
 
+// ─── Normalise citation paths from sub-agents ────────────────────────────────
+
+function normalizeCitationPath(p: string): string {
+  return p.replace(/^\/+/, '').replace(/^info\//, '');
+}
+
+function citationLabel(p: string): string {
+  return normalizeCitationPath(p)
+    .replace(/\/index\.md$/, '')
+    .replace(/\.md$/, '')
+    .split('/')
+    .map((s) => s.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()))
+    .join(' / ');
+}
+
+function citationHref(p: string): string {
+  return '/info/' + normalizeCitationPath(p).replace(/\/index\.md$/, '').replace(/\.md$/, '');
+}
+
+// ─── Complete: full card ──────────────────────────────────────────────────────
+
 export default function JDFitCard({ part }: { part: ToolUsePart }) {
   const [expanded, setExpanded] = useState(true);
   const [dimExpanded, setDimExpanded] = useState(false);
   const [openStrengths, setOpenStrengths] = useState<Set<number>>(new Set());
+  const [expandedDimKey, setExpandedDimKey] = useState<string | null>(null);
 
   const isPending = part.status === 'pending';
   const isError = part.status === 'error';
@@ -126,43 +148,6 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                   {data.company && <p className={styles.company}>{data.company}</p>}
                 </div>
               </div>
-
-              {/* Dimension breakdown (collapsible) */}
-              {data.dimensions && (
-                <div className={styles.dimSection}>
-                  <button
-                    className={styles.dimToggle}
-                    onClick={() => setDimExpanded((v) => !v)}
-                  >
-                    <span>Score breakdown</span>
-                    <span className={styles.chevron}>{dimExpanded ? '▲' : '▼'}</span>
-                  </button>
-                  {dimExpanded && (
-                    <div className={styles.dimList}>
-                      {DIMENSIONS.map(({ key, label, weight, max }) => {
-                        const dim = data.dimensions[key];
-                        if (!dim) return null;
-                        const weighted = Math.round(dim.score * weight * 10) / 10;
-                        return (
-                          <div key={key} className={`${styles.dimRow} ${styles.dimRowDone}`}>
-                            <div className={styles.dimRowHeader}>
-                              <span className={styles.dimRowLabel}>{label}</span>
-                              <span
-                                className={styles.dimScoreChip}
-                                style={{ color: dimScoreColor(dim.score), borderColor: dimScoreColor(dim.score) + '55', background: dimScoreColor(dim.score) + '18' }}
-                              >
-                                {dim.score}/10
-                              </span>
-                              <span className={styles.dimWeight}>{weighted}/{max}pts</span>
-                            </div>
-                            <p className={styles.dimRationale}>{dim.rationale}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              )}
 
               {/* Strengths / Gaps columns */}
               <div className={styles.grid}>
@@ -234,6 +219,80 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                 <div className={styles.section}>
                   <h4 className={styles.colTitle}>Recommended Framing</h4>
                   <p className={styles.framingText}>{data.recommendedRoleFraming}</p>
+                </div>
+              )}
+
+              {/* Score breakdown table — after framing, behind More info toggle */}
+              {data.dimensions && (
+                <div className={styles.dimSection}>
+                  <button
+                    className={`${styles.moreInfoBtn} ${dimExpanded ? styles.moreInfoBtnActive : ''}`}
+                    onClick={() => setDimExpanded((v) => !v)}
+                  >
+                    Score breakdown {dimExpanded ? '▲' : '▼'}
+                  </button>
+                  {dimExpanded && (
+                    <div className={styles.dimTableWrapper}>
+                      <table className={styles.dimTable}>
+                        <thead>
+                          <tr>
+                            <th className={styles.dtCriterion}>Criterion</th>
+                            <th className={styles.dtScore}>Score</th>
+                            <th className={styles.dtWeight}>Weight</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {DIMENSIONS.map(({ key, label, max }) => {
+                            const dim = data.dimensions[key];
+                            if (!dim) return null;
+                            const weightPct = max; // max IS the weight percentage (30, 20, 25, 15, 10)
+                            const color = dimScoreColor(dim.score);
+                            const isRowExpanded = expandedDimKey === key;
+                            return (
+                              <>
+                                <tr
+                                  key={key}
+                                  className={`${styles.dtRow} ${isRowExpanded ? styles.dtRowExpanded : ''}`}
+                                  onClick={() => setExpandedDimKey(isRowExpanded ? null : key)}
+                                >
+                                  <td className={styles.dtTdCriterion}>
+                                    <span className={styles.dtLabel}>{label}</span>
+                                  </td>
+                                  <td className={styles.dtTdScore}>
+                                    <div className={styles.dtScoreInner}>
+                                      <div className={styles.dtBarWrap}>
+                                        <div className={styles.dtBarFill} style={{ width: `${dim.score * 10}%`, background: color }} />
+                                      </div>
+                                      <span className={styles.dtScoreNum} style={{ color }}>{dim.score}/10</span>
+                                    </div>
+                                  </td>
+                                  <td className={styles.dtTdWeight}>
+                                    <span className={styles.dtWeight}>{weightPct}%</span>
+                                  </td>
+                                </tr>
+                                {isRowExpanded && (
+                                  <tr key={`${key}-detail`} className={styles.dtDetailRow}>
+                                    <td colSpan={3} className={styles.dtDetailCell}>
+                                      <p className={styles.dtRationale}>{dim.rationale}</p>
+                                      {dim.citations.length > 0 && (
+                                        <div className={styles.dtCitations}>
+                                          {dim.citations.map((c) => (
+                                            <Link key={c} href={citationHref(c)} className={styles.dtChip} target="_blank">
+                                              {citationLabel(c)} →
+                                            </Link>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </td>
+                                  </tr>
+                                )}
+                              </>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
                 </div>
               )}
             </>

@@ -81,7 +81,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "POC development",
+        "EDI",
+        "FHIR",
+        "HL7"
       ]
     },
     {
@@ -123,7 +127,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "POC development",
+        "EDI",
+        "FHIR",
+        "HL7"
       ]
     },
     {
@@ -159,7 +167,13 @@
         "go-to-market strategy",
         "healthcare IT",
         "HIPAA",
-        "machine learning implementation"
+        "machine learning implementation",
+        "POC development",
+        "data privacy",
+        "sales enablement",
+        "EDI",
+        "FHIR",
+        "HL7"
       ]
     },
     {
@@ -330,7 +344,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "POC development",
+        "EDI",
+        "FHIR",
+        "HL7"
       ]
     },
     {
@@ -503,7 +521,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "POC development",
+        "EDI",
+        "FHIR",
+        "HL7"
       ]
     },
     {
@@ -520,7 +542,9 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents",
+        "agentic AI"
       ]
     },
     {
@@ -574,7 +598,9 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents",
+        "agentic AI"
       ]
     },
     {
@@ -591,7 +617,9 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents",
+        "agentic AI"
       ]
     },
     {
@@ -608,7 +636,9 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents",
+        "agentic AI"
       ]
     },
     {
@@ -625,7 +655,8 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents"
       ]
     },
     {
@@ -642,7 +673,8 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents"
       ]
     },
     {
@@ -659,7 +691,8 @@
         "sales operations",
         "B2B sales acceleration",
         "revenue tech",
-        "sales effectiveness"
+        "sales effectiveness",
+        "autonomous AI agents"
       ]
     },
     {
@@ -1320,6 +1353,171 @@
         "go-to-market strategy",
         "sales enablement"
       ]
+    },
+    {
+      "jdTerm": "sales engineer",
+      "synonyms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "growth engineering",
+        "pipeline optimization",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "autonomous AI agents",
+        "agentic AI"
+      ]
+    },
+    {
+      "jdTerm": "GenAI",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "payer operations",
+        "provider workflows",
+        "healthcare IT",
+        "retrieval-augmented generation",
+        "large language model",
+        "workflow automation",
+        "POC development",
+        "prototype",
+        "demo",
+        "Python",
+        "SQL",
+        "pandas",
+        "API architecture",
+        "HIPAA",
+        "data privacy",
+        "machine learning implementation",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "sales enablement",
+        "EDI",
+        "FHIR",
+        "HL7",
+        "health tech"
+      ]
+    },
+    {
+      "jdTerm": "prior authorization",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "payer operations",
+        "provider workflows",
+        "healthcare IT",
+        "retrieval-augmented generation",
+        "large language model",
+        "workflow automation",
+        "POC development",
+        "prototype",
+        "demo",
+        "Python",
+        "SQL",
+        "pandas",
+        "API architecture",
+        "HIPAA",
+        "data privacy",
+        "machine learning implementation",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "sales enablement",
+        "EDI",
+        "FHIR",
+        "HL7",
+        "health tech"
+      ]
+    },
+    {
+      "jdTerm": "claims adjudication",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "payer operations",
+        "provider workflows",
+        "healthcare IT",
+        "retrieval-augmented generation",
+        "large language model",
+        "workflow automation",
+        "POC development",
+        "prototype",
+        "demo",
+        "Python",
+        "SQL",
+        "pandas",
+        "API architecture",
+        "HIPAA",
+        "data privacy",
+        "machine learning implementation",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "sales enablement",
+        "EDI",
+        "FHIR",
+        "HL7",
+        "health tech"
+      ]
+    },
+    {
+      "jdTerm": "growth engineer",
+      "synonyms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "autonomous AI agents",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "pipeline optimization",
+        "agentic AI"
+      ]
+    },
+    {
+      "jdTerm": "product manager",
+      "synonyms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "autonomous AI agents",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "pipeline optimization",
+        "agentic AI"
+      ]
+    },
+    {
+      "jdTerm": "AI agents",
+      "synonyms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "autonomous AI agents",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "pipeline optimization",
+        "agentic AI"
+      ]
     }
   ],
   "runs": [
@@ -1755,6 +1953,191 @@
         "cross-functional coordination",
         "go-to-market strategy",
         "sales enablement"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "role": "Technical Specialist, Claude Code",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Claude Code",
+        "Solutions Architecture",
+        "sales engineering",
+        "developer relations",
+        "enterprise adoption",
+        "technical workshops",
+        "LLM development",
+        "AI Center of Excellence"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "AI/ML systems",
+        "prompt engineering",
+        "agentic AI",
+        "autonomous agents",
+        "retrieval-augmented generation",
+        "embedding models",
+        "large language models",
+        "generative AI implementation",
+        "machine learning implementation",
+        "POC development",
+        "prototype",
+        "demo",
+        "technical training",
+        "knowledge transfer",
+        "hackathons",
+        "API architecture",
+        "workflow automation",
+        "production deployment",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy",
+        "sales enablement"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "role": "GTM AI + Innovation Manager",
+      "company": "",
+      "searchTerms": [
+        "GTM AI",
+        "sales automation",
+        "AI workflows",
+        "revenue operations",
+        "sales processes",
+        "customer acquisition",
+        "revenue growth",
+        "sales engineer"
+      ],
+      "synonymTerms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "growth engineering",
+        "pipeline optimization",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "autonomous AI agents"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "role": "AI Strategist, Healthcare Solutions",
+      "company": "Distyl AI",
+      "searchTerms": [
+        "solutions engineering",
+        "GenAI",
+        "LLM pipelines",
+        "prompt engineering",
+        "RAG architectures",
+        "prior authorization",
+        "claims adjudication",
+        "utilization management"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "payer operations",
+        "provider workflows",
+        "healthcare IT",
+        "retrieval-augmented generation",
+        "large language model",
+        "workflow automation",
+        "POC development",
+        "prototype",
+        "demo",
+        "Python",
+        "SQL",
+        "pandas",
+        "API architecture",
+        "HIPAA",
+        "data privacy",
+        "machine learning implementation",
+        "enterprise solutions architect"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "role": "AI Strategist, Healthcare Solutions",
+      "company": "Distyl AI",
+      "searchTerms": [
+        "GenAI",
+        "LLM pipelines",
+        "prompt engineering",
+        "RAG architectures",
+        "prior authorization",
+        "claims adjudication",
+        "utilization management",
+        "solutions engineering"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "payer operations",
+        "provider workflows",
+        "healthcare IT",
+        "retrieval-augmented generation",
+        "large language model",
+        "workflow automation",
+        "POC development",
+        "prototype",
+        "demo",
+        "Python",
+        "SQL",
+        "pandas",
+        "API architecture",
+        "HIPAA",
+        "data privacy",
+        "machine learning implementation",
+        "go-to-market strategy",
+        "sales enablement",
+        "EDI",
+        "FHIR",
+        "HL7",
+        "health tech"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "role": "GTM AI + Innovation Manager",
+      "company": "",
+      "searchTerms": [
+        "GTM AI",
+        "sales automation",
+        "AI workflows",
+        "revenue operations",
+        "sales engineer",
+        "growth engineer",
+        "product manager",
+        "AI agents"
+      ],
+      "synonymTerms": [
+        "go-to-market strategy",
+        "sales enablement",
+        "workflow automation",
+        "intelligent agents",
+        "autonomous AI agents",
+        "CRM automation",
+        "sales operations",
+        "B2B sales acceleration",
+        "revenue tech",
+        "sales effectiveness",
+        "pipeline optimization",
+        "agentic AI"
       ]
     }
   ]
