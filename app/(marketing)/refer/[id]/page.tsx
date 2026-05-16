@@ -115,6 +115,24 @@ export default async function ReferPage({ params }: Props) {
             />
           </div>
 
+          {/* ── Demo video ───────────────────────────────────── */}
+          {overview.videoUrl && (
+            <div className={styles.videoSection}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionLabel}>Claude Code in action</span>
+                <span className={styles.danTag}>Dan&apos;s workflow</span>
+              </div>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src={overview.videoUrl.replace('/share/', '/embed/')}
+                  className={styles.videoFrame}
+                  allow="fullscreen"
+                  title="Claude Code demo"
+                />
+              </div>
+            </div>
+          )}
+
           <div className={styles.backLink}>
             <Link href="/">← danielmathieson.com</Link>
           </div>

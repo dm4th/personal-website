@@ -7,6 +7,7 @@ export type CompanyOverviewConfig = {
   companySlug: string;
   companyLogoUrl?: string;
   personalNote?: string;
+  videoUrl?: string;
 };
 
 export type CompanyOverviewEntry = {
