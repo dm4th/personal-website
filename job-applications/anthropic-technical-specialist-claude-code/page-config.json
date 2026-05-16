@@ -6,6 +6,51 @@
   "appliedDate": "2026-05-13",
   "fitScore": 91,
   "fitScoreNote": "Dan is a practitioner-first technical specialist who has already deployed Claude Code in a real enterprise GTM context: he built a 22-skill, 5-agent platform running live on $31.8M in pipeline, not a side project. He is someone who bridges the gap between SE leadership and hands-on AI building, with the credibility of having felt the adoption friction firsthand and solved it from inside a commercial org.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's career is an exceptionally close functional match. He has 3+ years in exactly the customer-facing technical motion the JD describes — Solutions Architect, Customer Engineer, Director of Sales Engineering — with documented evidence of enterprise discovery workshops, custom demo engineering, and driving AI adoption across non-technical users via Claude's Cowork platform. His superpower of translating complex AI systems to non-technical stakeholders is explicitly the reason he survived an 85% RIF and was promoted to VP of Solutions.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/shutdown-and-retention.md",
+        "career/thoughtful/solutions-architect.md",
+        "career/thoughtful/customer-engineer.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan's profile is a near-exact match for this role's seniority band (3-7+ years customer-facing). He brings ~8 years of post-college experience with a direct progression through Solutions Architect → Customer Engineer → Lead TPM → Director of Sales Engineering, owning $31.8M in enterprise pipeline end-to-end. He is an active, production-level Claude Code power user who built a 22-skill, 5-agent agentic platform, directly satisfying the 'active hands-on experience building with Claude Code' requirement.",
+      "citations": [
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 9,
+      "rationale": "Dan has extensive, production-level evidence for nearly every technical requirement. He built a production Claude Code agentic platform with 23 specialized skills, 5 parallel subagents, pre/post tool-use hooks, and Cowork deployment to non-technical users. He also built a production hybrid-RAG system with OpenAI embeddings and pgvector, has deep API integration experience, and has held Solutions Architect and Director of SE roles with documented enterprise technical evaluations.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/dental-eligibility-intelligence.md",
+        "projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "The Anthropic Claude Code role targets the AI developer tools vertical — companies selling to engineering organizations and AI Champions across industries. Dan's career is concentrated in healthcare AI automation with earlier work in fintech and political tech. However, he has direct production-scale experience operating within the exact vertical this role serves: he deployed Claude's Cowork platform to non-technical teammates and led internal governance for Claude for Enterprise.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/index.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan has lived in San Francisco since January 2020 with deep personal ties to the city, making the SF-based hybrid requirement a zero-friction match. The 25% in-office minimum aligns directly with his stated preference for hybrid. The $180K–$365K compensation band comfortably spans senior IC and director-level SF market rates with no friction.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md"
+      ]
+    }
+  },
   "summary": [
     "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline",
     "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",

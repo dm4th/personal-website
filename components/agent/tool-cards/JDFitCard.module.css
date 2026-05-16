@@ -202,7 +202,127 @@
   overflow: hidden;
 }
 
-/* Talking points + framing */
+/* ─── Pending: live dimension scoring ──────────────────────────────────────── */
+
+.dimScoringWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.dimScoringLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.dimList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.dimRow {
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.625rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dimRowPending {
+  background: var(--surface-2);
+  opacity: 0.6;
+}
+
+.dimRowDone {
+  background: var(--surface-2);
+  opacity: 1;
+}
+
+.dimRowHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dimRowLabel {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: #d4d4d4;
+  font-weight: 500;
+}
+
+.dimScoreChip {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.dimScorePulse {
+  display: inline-block;
+  width: 42px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--border);
+  flex-shrink: 0;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.dimWeight {
+  font-size: 0.625rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dimRationale {
+  font-size: 0.75rem;
+  color: var(--subtle);
+  line-height: 1.45;
+  margin: 0.375rem 0 0;
+}
+
+/* ─── Complete: collapsible dimension section ─────────────────────────────── */
+
+.dimSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.dimToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.375rem 0;
+  width: 100%;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  transition: color 0.12s;
+}
+
+.dimToggle:hover { color: var(--subtle); }
+
+/* ─── Talking points + framing ────────────────────────────────────────────── */
 .section { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tpList {

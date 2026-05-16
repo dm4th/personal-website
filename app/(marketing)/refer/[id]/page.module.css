@@ -149,21 +149,23 @@
   font-style: normal;
 }
 
-/* ── Summary of qualifications ───────────────────── */
+/* ── Summary of qualifications (below framing quote) */
 .summaryBlock {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.summaryLabel {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
+/* ── Referral summary: framing quote ─────────────── */
+.framingQuote {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.65;
+  font-style: normal;
 }
 
 /* ── Collapsible sections stack ──────────────────── */

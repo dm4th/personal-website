@@ -2,12 +2,76 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import type { ToolUsePart } from '@/stores/agent';
+import type { ToolUsePart, LiveDimensionScore } from '@/stores/agent';
 import type { JdFitOutput } from '@/lib/agent/tools/analyzeJdFit';
 import styles from './JDFitCard.module.css';
 
+// ─── Dimension metadata ───────────────────────────────────────────────────────
+
+const DIMENSIONS = [
+  { key: 'coreJobFunction',  label: 'Core job function',   weight: 3,   max: 30 },
+  { key: 'seniority',        label: 'Seniority / years',   weight: 2,   max: 20 },
+  { key: 'technicalSkills',  label: 'Technical skills',    weight: 2.5, max: 25 },
+  { key: 'industryVertical', label: 'Industry / vertical', weight: 1.5, max: 15 },
+  { key: 'logistics',        label: 'Logistics / misc',    weight: 1,   max: 10 },
+] as const;
+
+function dimScoreColor(score: number): string {
+  if (score >= 9) return '#22c55e';
+  if (score >= 7) return '#3b82f6';
+  if (score >= 6) return '#eab308';
+  if (score >= 5) return '#f59e0b';
+  return '#ef4444';
+}
+
+// ─── Pending: live dimension cards ───────────────────────────────────────────
+
+function DimensionScoring({ dimensionScores }: { dimensionScores?: Record<string, LiveDimensionScore> }) {
+  const scored = dimensionScores ?? {};
+  const completedCount = Object.keys(scored).length;
+
+  return (
+    <div className={styles.dimScoringWrapper}>
+      <p className={styles.dimScoringLabel}>
+        Scoring {completedCount}/5 dimensions…
+      </p>
+      <div className={styles.dimList}>
+        {DIMENSIONS.map(({ key, label, weight, max }) => {
+          const result = scored[key];
+          const isComplete = !!result;
+
+          return (
+            <div key={key} className={`${styles.dimRow} ${isComplete ? styles.dimRowDone : styles.dimRowPending}`}>
+              <div className={styles.dimRowHeader}>
+                <span className={styles.dimRowLabel}>{label}</span>
+                {isComplete ? (
+                  <span
+                    className={styles.dimScoreChip}
+                    style={{ color: dimScoreColor(result.score), borderColor: dimScoreColor(result.score) + '55', background: dimScoreColor(result.score) + '18' }}
+                  >
+                    {result.score}/10
+                  </span>
+                ) : (
+                  <span className={styles.dimScorePulse} />
+                )}
+                <span className={styles.dimWeight}>×{weight} / {max}pts</span>
+              </div>
+              {isComplete && (
+                <p className={styles.dimRationale}>{result.rationale}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── Complete: full card ──────────────────────────────────────────────────────
+
 export default function JDFitCard({ part }: { part: ToolUsePart }) {
   const [expanded, setExpanded] = useState(true);
+  const [dimExpanded, setDimExpanded] = useState(false);
   const [openStrengths, setOpenStrengths] = useState<Set<number>>(new Set());
 
   const isPending = part.status === 'pending';
@@ -32,11 +96,19 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
       <button className={styles.header} onClick={() => setExpanded((v) => !v)}>
         <span className={styles.icon}>{isPending ? '⏳' : isError ? '✗' : '📄'}</span>
         <span className={styles.label}>
-          {isPending ? 'Analyzing job description…' : (part.summary ?? 'JD Fit Analysis')}
+          {isPending ? 'Scoring job fit…' : (part.summary ?? 'JD Fit Analysis')}
         </span>
         {!isPending && <span className={styles.chevron}>{expanded ? '▲' : '▼'}</span>}
       </button>
 
+      {/* Pending: show live dimension scoring cards */}
+      {isPending && (
+        <div className={styles.body}>
+          <DimensionScoring dimensionScores={part.dimensionScores} />
+        </div>
+      )}
+
+      {/* Complete or error */}
       {expanded && !isPending && (
         <div className={styles.body}>
           {isError && <p className={styles.error}>Analysis failed - try pasting the job description again.</p>}
@@ -54,6 +126,43 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                   {data.company && <p className={styles.company}>{data.company}</p>}
                 </div>
               </div>
+
+              {/* Dimension breakdown (collapsible) */}
+              {data.dimensions && (
+                <div className={styles.dimSection}>
+                  <button
+                    className={styles.dimToggle}
+                    onClick={() => setDimExpanded((v) => !v)}
+                  >
+                    <span>Score breakdown</span>
+                    <span className={styles.chevron}>{dimExpanded ? '▲' : '▼'}</span>
+                  </button>
+                  {dimExpanded && (
+                    <div className={styles.dimList}>
+                      {DIMENSIONS.map(({ key, label, weight, max }) => {
+                        const dim = data.dimensions[key];
+                        if (!dim) return null;
+                        const weighted = Math.round(dim.score * weight * 10) / 10;
+                        return (
+                          <div key={key} className={`${styles.dimRow} ${styles.dimRowDone}`}>
+                            <div className={styles.dimRowHeader}>
+                              <span className={styles.dimRowLabel}>{label}</span>
+                              <span
+                                className={styles.dimScoreChip}
+                                style={{ color: dimScoreColor(dim.score), borderColor: dimScoreColor(dim.score) + '55', background: dimScoreColor(dim.score) + '18' }}
+                              >
+                                {dim.score}/10
+                              </span>
+                              <span className={styles.dimWeight}>{weighted}/{max}pts</span>
+                            </div>
+                            <p className={styles.dimRationale}>{dim.rationale}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Strengths / Gaps columns */}
               <div className={styles.grid}>

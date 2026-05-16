@@ -13,6 +13,7 @@ import DocumentSection from '@/components/refer/DocumentSection';
 import ReferralBlurb from '@/components/refer/ReferralBlurb';
 import ApplicationQA from '@/components/refer/ApplicationQA';
 import ProjectCallouts from '@/components/refer/ProjectCallouts';
+import FitScoreDimensions from '@/components/refer/FitScoreDimensions';
 import { getSortedInfo } from '@/lib/content/infoDocs';
 import styles from './page.module.css';
 
@@ -87,24 +88,30 @@ export default async function ReferPage({ params }: Props) {
           )}
         </header>
 
-        {/* ── Job fit analysis ─────────────────────────── */}
-        {config.fitScoreNote && (
+        {/* ── Job fit analysis: quote + bullets (standalone, always visible) ── */}
+        {(config.fitScoreNote || (config.summary && config.summary.length > 0)) && (
           <div className={styles.framingBlock}>
             <p className={styles.framingLabel}>Job fit analysis</p>
-            <blockquote className={styles.framingQuote}>{config.fitScoreNote}</blockquote>
-          </div>
-        )}
-
-        {/* ── Summary of qualifications (always visible) ──── */}
-        {config.summary && config.summary.length > 0 && (
-          <div className={styles.summaryBlock}>
-            <p className={styles.summaryLabel}>Summary of qualifications</p>
-            <QualificationsSummary items={config.summary} />
+            {config.fitScoreNote && (
+              <blockquote className={styles.framingQuote}>{config.fitScoreNote}</blockquote>
+            )}
+            {config.summary && config.summary.length > 0 && (
+              <div className={styles.summaryBlock}>
+                <QualificationsSummary items={config.summary} />
+              </div>
+            )}
           </div>
         )}
 
         {/* ── Collapsible sections ─────────────────────────── */}
         <div className={styles.sections}>
+
+          {/* ── Fit scoring detail: full-width dimension table ── */}
+          {config.dimensions && (
+            <CollapsibleSection title="Fit scoring detail">
+              <FitScoreDimensions dimensions={config.dimensions} />
+            </CollapsibleSection>
+          )}
 
           {config.projects.length > 0 && (
             <CollapsibleSection title="Relevant projects" defaultOpen>

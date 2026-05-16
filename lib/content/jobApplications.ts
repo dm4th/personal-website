@@ -6,6 +6,20 @@ export type JobCitation = {
   path: string;
 };
 
+export type JobDimensionScore = {
+  score: number;        // 1-10
+  rationale: string;
+  citations: string[];  // /info file paths
+};
+
+export type JobFitDimensions = {
+  coreJobFunction: JobDimensionScore;  // × 3 = up to 30 pts
+  seniority: JobDimensionScore;        // × 2 = up to 20 pts
+  technicalSkills: JobDimensionScore;  // × 2.5 = up to 25 pts
+  industryVertical: JobDimensionScore; // × 1.5 = up to 15 pts
+  logistics: JobDimensionScore;        // × 1 = up to 10 pts
+};
+
 export type JobStrength = {
   title: string;
   description: string;
@@ -37,6 +51,7 @@ export type JobApplicationConfig = {
   appliedDate: string;
   fitScore: number;
   fitScoreNote: string;
+  dimensions?: JobFitDimensions;
   summary?: string[];
   jobDescriptionUrl: string;
   jobDescriptionText: string;
