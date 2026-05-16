@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Mathieson - Resume | Notion Forward Deployed Engineer, GTM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    a { color: #2B4C7E; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.4in 0.5in;
+    }
+
+    .page-break { page-break-before: always; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid #2B4C7E;
+    }
+
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-subtitle { font-size: 10pt; color: #444; margin-bottom: 5px; }
+
+    .contact-info {
+      font-size: 8.5pt;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span { white-space: nowrap; }
+    .contact-info .sep { color: #bbb; }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .summary { font-size: 9pt; line-height: 1.45; color: #333; margin-bottom: 2px; }
+
+    .page1-content {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .role-entry { margin-bottom: 8px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .role-title { font-size: 10pt; font-weight: 700; color: #1a1a1a; }
+    .role-period { font-size: 8.5pt; color: #555; white-space: nowrap; }
+    .role-company { font-size: 9pt; color: #444; margin-bottom: 1px; }
+
+    .role-context {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    .subsection-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #2B4C7E;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .bullet-group {
+      padding-left: 14px;
+      margin-bottom: 2px;
+      list-style-type: '–  ';
+    }
+
+    .bullet-group li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 1.5px;
+      color: #222;
+    }
+
+    .bullet-group li strong { font-weight: 600; }
+
+    .sidebar-section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2B4C7E;
+      border-bottom: 1.5px solid #2B4C7E;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-section-title:first-child { margin-top: 0; }
+
+    .metric-item { margin-bottom: 6px; }
+
+    .metric-value { font-size: 13pt; font-weight: 700; color: #2B4C7E; line-height: 1.2; }
+    .metric-label { font-size: 8pt; color: #555; line-height: 1.3; }
+
+    .skill-category { margin-bottom: 4px; }
+    .skill-category-title { font-size: 8pt; font-weight: 700; color: #333; margin-bottom: 1px; }
+    .skill-category-items { font-size: 7.5pt; color: #555; line-height: 1.35; }
+
+    .role-entry-compact { margin-bottom: 7px; }
+    .role-entry-compact .bullet-group li { font-size: 8.5pt; }
+
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .edu-entry .edu-name { font-size: 9pt; font-weight: 600; }
+    .edu-entry .edu-detail { font-size: 8.5pt; color: #444; }
+    .edu-entry .edu-period { font-size: 8.5pt; color: #555; }
+
+    @page { size: letter; margin: 0; }
+
+    @media print {
+      body { background: none; }
+      .page { width: 100%; min-height: auto; padding: 0.4in 0.5in; }
+      .page-break { page-break-before: always; }
+      a { color: #2B4C7E; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+
+  <div class="header">
+    <h1>Dan Mathieson</h1>
+    <div class="header-subtitle">Forward Deployed Engineer &nbsp;|&nbsp; Applied AI Builder &nbsp;|&nbsp; Enterprise Customer Delivery</div>
+    <div class="contact-info">
+      <span>danny.mathieson233@gmail.com</span>
+      <span class="sep">|</span>
+      <span>danielmathieson.com</span>
+      <span class="sep">|</span>
+      <span>linkedin.com/in/daniel-mathieson</span>
+      <span class="sep">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </div>
+
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    I have held the literal title of forward-deployed engineer, embedding with enterprise customers from discovery through production sign-off across up to 18 concurrent workstreams. At Thoughtful AI I owned the full customer delivery lifecycle for 60% of completed implementations, driving 63% of net new ARR during a 3x growth year. At Smarter Technologies I built the Notion Meeting Intelligence system: a production multi-agent pipeline that processes sales call recordings and writes structured deal intelligence directly into customer Notion workspaces via the API, running live on $31.8M in active pipeline. I ship production integrations against the APIs I use to close deals, which means the demos I give are grounded in systems I have actually debugged in production.
+  </p>
+
+  <div class="page1-content">
+
+    <div class="main-col">
+
+      <div class="section-title">Experience</div>
+
+      <div class="role-entry">
+        <div class="role-header">
+          <span class="role-title">Director, Sales &amp; Solutions Engineering</span>
+          <span class="role-period">2025 – Present</span>
+        </div>
+        <div class="role-company">Smarter Technologies &nbsp;|&nbsp; San Francisco, CA</div>
+        <div class="role-context">PE-backed rollup of Thoughtful AI, SmarterDx, and Access Healthcare. Built the entire SE function from scratch while carrying 62% of total company pipeline. Retained as 1 of ~15% of employees after April 2026 shutdown; the only non-Product/Engineering person kept.</div>
+
+        <div class="subsection-title">Production Deployment and API Integration</div>
+        <ul class="bullet-group">
+          <li>Built the <strong>Notion Meeting Intelligence system</strong>: a 5-agent parallel pipeline ingesting Fireflies call recordings, routing each to specialized agents extracting requirements, objections, competitive signals, and pricing context, then writing structured deal intelligence directly into Notion workspaces via the Notion API with bidirectional Salesforce sync</li>
+          <li>Architected <strong>76 prospect deal environments</strong> using Git worktrees as isolated workspaces with automated sync across Notion, Salesforce, Google Drive, Fireflies, and GitHub Actions; shipped <strong>943 commits and 451 PRs</strong> while simultaneously running live enterprise pipeline</li>
+          <li>Designed and deployed <strong>22 AI skills via Claude's co-work platform</strong>: custom demo generation cutting creation time from 3-4 days to 3-4 hours, security questionnaire automation against versioned RFP response repositories, automation estimation from payer EDI data and EHR scope, and meeting analysis scoring pitch quality and objection handling across 85 recorded calls</li>
+          <li>Built a <strong>hooks-based usage tracking system</strong> logging every skill invocation with 15-20% prompt rate for structured feedback, feeding signal back into skill specification iteration</li>
+        </ul>
+
+        <div class="subsection-title">Enterprise Customer Delivery</div>
+        <ul class="bullet-group">
+          <li>Anchored a <strong>$30-40M health system design partnership</strong> (65,000-employee system): 2-day on-site discovery covering Epic integration depth, enterprise data architecture review, cost-takeout framework, and multi-year roadmap with cross-functional stakeholder sign-off</li>
+          <li>Managed <strong>61 simultaneous enterprise healthcare deals</strong> across hospital systems, behavioral health, oncology, home health, ABA therapy, and dental with a <strong>96% prospect-to-proposal conversion rate within 30 days</strong> of first meeting</li>
+          <li>Primary contact for health system IT security teams on <strong>HIPAA, BAA, SOC 2, data residency, and third-party risk reviews</strong>; evaluated integration readiness across 12+ EHR platforms</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="side-col">
+
+      <div class="sidebar-section-title">Smarter Technologies</div>
+
+      <div class="metric-item">
+        <div class="metric-value">$31.8M</div>
+        <div class="metric-label">Active pipeline managed<br>via Notion-native tooling</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">22</div>
+        <div class="metric-label">AI skills deployed to<br>production GTM team</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">943</div>
+        <div class="metric-label">Commits shipped while<br>running live pipeline</div>
+      </div>
+
+      <div class="sidebar-section-title">Thoughtful AI</div>
+
+      <div class="metric-item">
+        <div class="metric-value">63%</div>
+        <div class="metric-label">Net new ARR during<br>3x YoY growth year</div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-value">96%</div>
+        <div class="metric-label">Pre-sales funnel<br>pass-through rate</div>
+      </div>
+
+      <div class="sidebar-section-title">Technical Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">API and Integration</div>
+        <div class="skill-category-items">Notion API, Salesforce, Google Drive/Sheets API, Fireflies, GitHub Actions, Make/Integromat, Webhooks, Zapier</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Agentic AI</div>
+        <div class="skill-category-items">Claude Agent SDK, MCP, Multi-Agent Pipelines, RAG, pgvector, LLM Tool Use, Eval Engineering, Prompt Engineering</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Languages and Data</div>
+        <div class="skill-category-items">Python, SQL (Redshift, PostgreSQL, GoogleSQL), TypeScript, pandas, Jupyter, Airflow</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Infrastructure</div>
+        <div class="skill-category-items">Git, GitHub Actions, AWS, Docker, Next.js, React</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-title">Enterprise Compliance</div>
+        <div class="skill-category-items">HIPAA, BAA, SOC 2 advisory, FHIR, EDI/HL7, 12+ EHR platforms</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page page-break">
+
+  <div class="section-title">Experience (continued)</div>
+
+  <div class="role-entry">
+    <div class="role-header">
+      <span class="role-title">Solutions Architect / Customer Engineer / Lead Technical Product Manager</span>
+      <span class="role-period">2023 – 2025</span>
+    </div>
+    <div class="role-company">Thoughtful AI (acq. by New Mountain Capital; merged into Smarter Technologies, Sep 2025) &nbsp;|&nbsp; San Francisco, CA</div>
+    <div class="role-context">Series A healthcare AI startup. Progressed through 3 roles in 2 years. As Lead Technical Product Manager, served as the business and technical guide for teams of forward-deployed engineers across multiple concurrent enterprise accounts. Promoted to Lead TPM within 3 months. Promoted to Director SE at the merged entity.</div>
+    <ul class="bullet-group">
+      <li>Served as <strong>business and technical lead for forward-deployed engineering teams</strong>: directed 1-3 FDEs per project across up to 18 concurrent enterprise workstreams, translating customer requirements into architecture decisions and holding delivery accountability from scoping through production sign-off</li>
+      <li>Ran <strong>on-site discovery workshops at two large health systems</strong>: a 65,000-employee integrated health system and a major regional health system in the Southwest, producing scoped automation specs with customer-signed definition of done before any code was written</li>
+      <li>Built Thoughtful's <strong>first production GenAI system</strong>: hybrid-RAG eligibility verification achieving <strong>95% accuracy in two days</strong>, presented to the board and replicated across 3 additional automations within a month</li>
+      <li>Developed a <strong>PRD delivery methodology</strong>: SOP capture sessions, pseudo-code decision-tree specs engineers built from directly, customer-signed definition of done, and personal test plan execution before every production sign-off</li>
+      <li>Built <strong>eval engineering infrastructure</strong> for every AI system: labeled holdout datasets, precision/recall tracking by failure category, and regression test suites before every model or prompt change</li>
+      <li>Stabilized <strong>3x standard implementation load</strong> of struggling accounts during a critical growth phase, rebuilding trust through transparent recovery plans with explicit success metrics</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Earlier Experience</div>
+
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Data Science &amp; Analytics</span>
+      <span class="role-period">02/2021 – 10/2022</span>
+    </div>
+    <div class="role-company">Action Network (acq. Better Collective) &nbsp;|&nbsp; Remote</div>
+    <ul class="bullet-group">
+      <li>Led a team of 4 analysts and 3 engineers building <strong>Airflow-orchestrated data pipelines</strong> on Redshift; architected the "Value Clicks" revenue model driving <strong>70%+ YoY revenue growth</strong> and <strong>225%+ improvement in revenue per mobile user</strong></li>
+      <li>Built <strong>affiliate LTV financial models</strong> evaluating revenue-share deals worth $500K-$2M/year, presenting directly to CFO and executive leadership</li>
+    </ul>
+  </div>
+
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Revenue Analyst, G-Suite Finance</span>
+      <span class="role-period">01/2020 – 02/2021</span>
+    </div>
+    <div class="role-company">Google &nbsp;|&nbsp; Sunnyvale, CA</div>
+    <ul class="bullet-group">
+      <li>Built revenue dashboards and P&amp;L statements covering <strong>500M+ SaaS users</strong>; improved top-line forecast accuracy by <strong>7%</strong> using Google AI/ML tooling</li>
+    </ul>
+  </div>
+
+  <div class="role-entry-compact">
+    <div class="role-header">
+      <span class="role-title">Manager, Revenue &amp; Forecasting</span>
+      <span class="role-period">08/2016 – 12/2019</span>
+    </div>
+    <div class="role-company">FanDuel &nbsp;|&nbsp; New York, NY</div>
+    <ul class="bullet-group">
+      <li>Built entire revenue reporting infrastructure on Redshift SQL: daily retention analysis, LTV segmentation, bonus targeting by user propensity across C-suite dashboards</li>
+      <li>Built a <strong>Markov Chain Monte Carlo simulation</strong> modeling 17 user segments to forecast season revenue to within <strong>2% error</strong></li>
+    </ul>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="edu-entry">
+    <div>
+      <span class="edu-name">B.S. Electrical &amp; Computer Engineering</span>
+      <span class="edu-detail">, Bucknell University</span>
+    </div>
+    <span class="edu-period">08/2012 – 05/2016</span>
+  </div>
+  <div class="edu-entry" style="margin-bottom: 8px;">
+    <div>
+      <span class="edu-name">AI &amp; Machine Learning Professional Certificate</span>
+      <span class="edu-detail">, CalTech / SimpliLearn</span>
+    </div>
+    <span class="edu-period">10/2022 – 04/2023</span>
+  </div>
+
+</div>
+
+</body>
+</html>

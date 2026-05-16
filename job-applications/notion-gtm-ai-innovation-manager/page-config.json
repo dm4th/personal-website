@@ -4,7 +4,7 @@
   "companyLogoUrl": "https://www.google.com/s2/favicons?domain=notion.com&sz=128",
   "role": "GTM AI Innovation Manager",
   "appliedDate": "2026-05-02",
-  "fitScore": 84,
+  "fitScore": 83,
   "fitScoreNote": "Dan is an AI builder and GTM leader who has already shipped what this role is responsible for designing, a fully deployed agent platform for a commercial GTM team with usage tracking and adoption measurement. You can see a prototype of the platform at the Notion Meeting Intelligence system link below. Based in SF, so working in person will not be an issue. He's an avid user of Notion both for work and in his personal life, and would love to offer his expertise in many areas to help his favorite software and developer platform achieve their goals.",
   "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/3336e944-0970-48ef-9a97-4ebd6656d0c2",
   "jobDescriptionText": "Role: GTM AI + Innovation Manager\nDepartment: Revenue Operations & Strategy\n\nAbout Notion\nNotion helps you build beautiful tools for your life's work. Notion provides one place for teams to get everything done, seamlessly connecting docs, notes, projects, calendar, and email -- with AI built in to find answers and automate work. Millions of users, from individuals to large organizations like Toyota, Figma, and OpenAI, love Notion for its flexibility.\n\nAbout the Role\nAs GTM AI & Innovation Manager, you will support revenue growth by architecting and implementing AI-powered solutions that enhance our GTM team's effectiveness and accelerate customer acquisition. Working closely with GTM teams, Business Technology, Data Science and Automations Engineering, you'll help develop innovative approaches to leverage AI for improving sales processes and optimizing customer outcomes.\n\nWhat You'll Achieve\n- Systems Thinking: Understand how to design systems that meet field sellers, marketers and post-sales resources where they do their daily work\n- Hands-On Building: Work alongside engineering to build out prototype and production-grade systems, ship continuously\n- Cross-Functional Collaboration: Bridge technical and commercial teams, gathering technical requirements while ensuring solutions deliver real business value\n- Ongoing Enablement: Communicate enhancements to revenue teams and encourage adoption through continuous learning\n- ROI Measurement: Track and optimize the pipeline and revenue impact of AI and automation implementations across GTM\n\nSkills You'll Need\n- 3-5 years of work experience in a technical commercial role (sales engineer, technical account manager or similar) and/or a growth engineer or product manager role with exposure to GTM systems\n- Demonstrated experience building AI workflows, automation, or product solutions\n- Strong product management instincts and systems thinking\n- Genuine passion for GTM engineering and the future of AI-driven selling\n- High bias to action and ownership mentality\n- Technical skills (coding concepts, SQL and scripting languages, low-code tools)\n- Understanding of B2B sales processes and metrics\n- Must be located in New York or San Francisco\n\nNice to Haves: Salesforce/HubSpot experience, modern sales automation tools, Notion power user, sales operations background\n\nCompensation: $150,000-$175,000 base. In-person collaboration required Mon/Tue/Thu (Anchor Days).",
@@ -85,5 +85,71 @@
   ],
   "applicationQuestions": [],
   "resumeFile": "Dan Mathieson Resume.pdf",
-  "coverLetterFile": "cover-letter.pdf"
+  "coverLetterFile": "cover-letter.pdf",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's day-to-day work maps extremely closely to this role: he built and deployed a GTM AI platform from scratch (23 AI skills, 57 Python scripts, agentic workflows) while owning cross-functional coordination between sales, product, and engineering — the exact motion Notion's GTM AI + Innovation Manager requires. His superpower of translating technical AI concepts for non-technical stakeholders is extensively documented, from packaging Claude Code skills for non-technical reps to running CIO-level architecture walkthroughs and feeding field signal back to engineering in automated, digestible formats. The only minor gap is that his GTM AI work has been self-directed and internal rather than externally customer-facing as a product launch or revenue program at Notion's scale.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/commercial-innovation.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/career-metrics.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    },
+    "seniority": {
+      "score": 8,
+      "rationale": "Dan has ~8 years of post-college experience with clear title progression (Analyst → Senior Analyst → Lead TPM → Director of Sales Engineering → VP of Solutions) and demonstrated end-to-end ownership of GTM functions including $31.8M pipeline management, AI-powered workflow automation (22-skill agentic platform with 943 commits), cross-functional coordination across sales/engineering/product, and go-to-market artifact creation that directly fed deal cycles. His current Director/VP-level scope and hands-on AI innovation work (LLM agents, Claude Code orchestration, RAG systems) align well with the GTM AI + Innovation Manager role at Notion, though his experience skews heavily toward healthcare enterprise sales engineering rather than broader B2B SaaS GTM strategy, and the role likely sits at a mid-senior manager level where his depth is strong but his industry breadth is narrower than ideal.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/commercial-innovation.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 8,
+      "rationale": "Dan has strong evidence across nearly all technical requirements for this GTM AI + Innovation Manager role. He built a production agentic AI platform (23 skills, 5 parallel agents, 57 Python scripts) using Claude Code with Notion API as a central integration layer — directly relevant to a Notion-based role — and has demonstrated hands-on LLM/RAG/embedding work dating back to GPT-3.5 implementations at Thoughtful. He also brings concrete GTM execution evidence: $31.8M pipeline managed, $1.95M closed-won in 7 months, custom demo engineering, sales enablement tooling deployed to non-technical reps, and cross-functional field-to-engineering feedback loops. The notable gap is formal product launch ownership and outbound GTM strategy (launch sequencing, positioning, pricing go-to-market at a product company level) — his GTM experience is operator/sales-side rather than product marketing or GTM program management at a SaaS company, which is the core of this Notion role.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/meeting-intelligence.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/career/thoughtful/dental-eligibility-intelligence.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 7,
+      "rationale": "This is a horizontal productivity/workspace role, so scoring pivots to ICP match and GTM/AI innovation fit. Dan is a documented Notion power user who has integrated Notion's API into a custom multi-agent GTM platform at Smarter Technologies — building AI-augmented workflows for sales enablement, deal tracking, meeting intelligence, and cross-functional alignment that closely mirror what this role would drive internally. His background spans agentic AI (Claude Code, LLMs, parallel agent dispatch), cross-functional collaboration with CEOs/VPs/Product/Engineering, and building novel GTM tooling from scratch. However, Dan's experience is primarily as an SE/implementor of AI-driven GTM systems rather than as a GTM strategy leader managing AI product launches and go-to-market programs at a scaled SaaS company — the strategic leadership and product commercialization angle of this role is less directly demonstrated.",
+      "citations": [
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan has been SF-based since January 2020 and is currently settled in the Richmond neighborhood — a direct location match for Notion's SF headquarters. The JD does not state a compensation band, travel requirement, security clearance, or degree requirement, so no hard blockers exist on any of those dimensions. The only minor friction is the absence of a stated comp band in the JD, which prevents confirming alignment with SF senior IC/director market rates (~$200K–$300K+), introducing a small uncertainty rather than a confirmed blocker.",
+      "citations": [
+        "/info/about-me/where-ive-lived/index.md",
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    }
+  },
+  "summary": [
+    "Built and deployed production GTM AI systems using Notion API as core infrastructure layer",
+    "Translated complex AI capabilities into actionable insights for executives, sales, and engineering teams",
+    "Survived 85% organizational reduction by demonstrating irreplaceable value in AI-to-business translation",
+    "Developed hooks-based usage tracking and adoption measurement systems for AI platform scaling",
+    "Proven cross-functional bridge between technical AI development and commercial execution at scale"
+  ]
 }

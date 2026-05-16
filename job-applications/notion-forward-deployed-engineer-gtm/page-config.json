@@ -1,0 +1,188 @@
+{
+  "id": "e3ae31f4aa49",
+  "company": "Notion",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=notion.com&sz=128",
+  "role": "Forward Deployed Engineer, GTM",
+  "appliedDate": "",
+  "fitScore": 82,
+  "fitScoreNote": "I've held the literal forward-deployed motion this role describes, building production integrations against the Notion API and leading customer engagements from technical discovery through deployment. I'm applying to do that work at the company that built the product I've been shipping against.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's career is a near-direct match for a Forward Deployed Engineer, GTM role. At Thoughtful AI he held the literal title of 'forward-deployed delivery engineer, embedded with customers, building and maintaining production automation systems' \u2014 including API integrations, workflow automation (Make, webhooks, Python pipelines), and customer-facing technical communication. At Smarter Technologies he ran pre-sales solutions engineering end-to-end across 61 enterprise deals, built production tooling (943 commits, 22-skill agent platform with Notion/GitHub/JIRA integrations), and led technical discovery and deployment scoping. His single most-cited superpower \u2014 retained through an 85% RIF specifically because of his ability to explain complex AI systems to non-technical executives \u2014 maps precisely to what a Forward Deployed Engineer at Notion must do. The only minor gap is that the role is Notion-specific (productivity/knowledge management SaaS) versus Dan's domain being healthcare RCM, but the motion, skills, and customer engagement model are functionally identical.",
+      "citations": [
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan's background as a Customer Engineer at Thoughtful AI is explicitly described as a 'forward-deployed delivery engineer, embedded with customers, building and maintaining production automation systems' \u2014 a near-direct analog to Notion's Forward Deployed Engineer, GTM role. He has ~8 years of post-college experience with strong end-to-end ownership (63% of net new ARR at Thoughtful, $1.95M closed-won at Smarter Technologies, 61 enterprise deals managed solo), demonstrated API integration depth (Notion, Fireflies, Google Drive, GitHub, AWS), and workflow automation design across 20+ payer portals and 12+ EHR platforms. He led 1-3 FDEs per project across up to 18 concurrent workstreams as Lead TPM, and has a consistent pattern of stakeholder management with C-suite healthcare executives. The only minor gap is that Notion's FDE role is likely more software/productivity-tool oriented rather than healthcare RCM, so there is a slight domain translation cost \u2014 but the core competencies (forward-deployed technical delivery, enterprise customer ownership, API integration, automation design, cross-functional influence) are an exceptionally strong match.",
+      "citations": [
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful-day-in-the-life/the-article.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 8,
+      "rationale": "Dan has strong evidence of production-level API integration (Notion API, Google Drive/Sheets API, Fireflies GraphQL, Slack API, AWS), workflow automation design (57 Python integration scripts, CI/CD via GitHub Actions, Make/Integromat), and enterprise deployment experience (61 enterprise healthcare deals end-to-end, forward-deployed delivery engineering at Thoughtful AI). His technical stack \u2014 Python, SQL, AWS, Redshift, Airflow, PostgreSQL, RAG systems \u2014 demonstrates genuine depth, not surface familiarity. The primary gap relative to this specific Notion FDE role is absence of evidence around JavaScript/frontend depth or Notion-as-a-platform administration/customization at the enterprise level, though he is a heavy Notion power user and has built Notion API integrations extensively.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/commercial-innovation.md",
+        "/info/career/fanduel/revenue-team.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "Notion is a horizontal productivity/workspace tool that sells broadly across enterprise, mid-market, and SMB \u2014 not a specific vertical. Their ICP spans engineering, ops, and knowledge-worker teams across many industries, making this a genuine ICP-matching challenge. Dan has meaningful Forward Deployed Engineer experience (Thoughtful AI explicitly created an FDE function he led, and his Customer Engineer role was described as 'forward-deployed delivery engineer, embedded with customers, building and maintaining production automation systems'), and he is a genuine Notion power user with direct API integration experience (Notion API used across multiple production systems). However, his buyer persona experience is almost entirely healthcare-specific, and Notion's ICP is broad horizontal enterprise \u2014 there is limited evidence Dan has sold to or deployed for the knowledge-worker, ops, or engineering teams that Notion primarily targets at scale.",
+      "citations": [
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/pipeline-management.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan is permanently SF-based (Richmond neighborhood since 2020, engaged, deeply rooted) and Notion is headquartered in San Francisco, making this a direct location match with zero relocation friction. He has demonstrated travel tolerance through multi-day on-site enterprise engagements (Jefferson Health, Presbyterian Health in New Mexico) consistent with a Forward Deployed Engineer's travel profile. The JD page did not fully render so no explicit comp band was extractable, but Notion's senior IC GTM roles typically align with SF market rates \u2014 the only minor uncertainty is confirming the exact band, which prevents a perfect 10.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/about-me/career-metrics.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    }
+  },
+  "summary": [
+    "Held a forward-deployed engineer role embedded with enterprise customers across 18 concurrent workstreams.",
+    "Built production Notion API integrations as core infrastructure for a $31.8M pipeline management platform.",
+    "Led 1-3 engineers per project, owning customer relationships from technical discovery through deployment.",
+    "Sold and delivered complex AI systems to CFO, CIO, and VP-level buyers at major health systems.",
+    "Genuine Notion power user with hands-on experience in relational databases, sync layers, and agent hooks."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "I've held the literal title of forward-deployed delivery engineer, embedded with",
+      "description": "I've held the literal title of forward-deployed delivery engineer, embedded with customers, building and maintaining production automation systems \u2014 the exact motion this role requires.",
+      "citations": [
+        {
+          "label": "thoughtful/customer-engineer",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
+      ]
+    },
+    {
+      "title": "I've built production API integrations across the Notion API, Google Drive, Fire",
+      "description": "I've built production API integrations across the Notion API, Google Drive, Fireflies GraphQL, Slack, GitHub, and AWS \u2014 not as side projects, but as the connective tissue of a live SE platform managing $31.8M in pipeline.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "I led 1\u20133 forward-deployed engineers per project across up to 18 concurrent work",
+      "description": "I led 1\u20133 forward-deployed engineers per project across up to 18 concurrent workstreams, owning the customer relationship from technical discovery through production deployment.",
+      "citations": [
+        {
+          "label": "thoughtful/lead-tpm",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
+      ]
+    },
+    {
+      "title": "I'm a genuine Notion power user who has built against the Notion API in producti",
+      "description": "I'm a genuine Notion power user who has built against the Notion API in production \u2014 relational databases, bidirectional sync layers, event-driven agent hooks \u2014 not just someone who uses it for notes.",
+      "citations": [
+        {
+          "label": "strengths-and-weaknesses/self-assessment",
+          "path": "/info/about-me/strengths-and-weaknesses/self-assessment"
+        }
+      ]
+    },
+    {
+      "title": "I was specifically retained through an 85% RIF \u2014 the only non-Product/Engineerin",
+      "description": "I was specifically retained through an 85% RIF \u2014 the only non-Product/Engineering person kept \u2014 because of my ability to explain complex AI systems to non-technical executives in ways that move them from skeptical to convinced.",
+      "citations": [
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
+      ]
+    },
+    {
+      "title": "96% of prospects I met with moved to proposal stage within a month \u2014 a number th",
+      "description": "96% of prospects I met with moved to proposal stage within a month \u2014 a number that got me promoted to Director of Sales Engineering the day the sales team was asked how to fix stalling pipeline.",
+      "citations": [
+        {
+          "label": "thoughtful/lead-tpm",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
+      ]
+    },
+    {
+      "title": "I built workflow automation end-to-end \u2014 23 specialized AI skills, CI/CD via Git",
+      "description": "I built workflow automation end-to-end \u2014 23 specialized AI skills, CI/CD via GitHub Actions, and a feedback loop system that iterated skills based on real user signal \u2014 and I shipped 943 commits while simultaneously managing 61 enterprise deals.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "My buyer-persona experience is almost entirely in healthcare RCM, whereas Notion",
+      "description": "My buyer-persona experience is almost entirely in healthcare RCM, whereas Notion sells horizontally to engineering, ops, and knowledge-worker teams across many industries.",
+      "mitigation": "I'd say: the motion is identical \u2014 I've been embedded with enterprise buyers, running technical discovery, scoping deployments, and translating complex systems into decisions. The domain shifts; the customer engagement model doesn't. And honestly, having sold the hardest possible vertical \u2014 healthcare with its compliance overhead, EHR integration complexity, and skeptical C-suite buyers \u2014 makes a horizontal productivity tool feel like a lower-friction conversation, not a harder one."
+    },
+    {
+      "title": "I don't have deep JavaScript or frontend experience, which could be a gap if the",
+      "description": "I don't have deep JavaScript or frontend experience, which could be a gap if the role requires significant Notion-as-a-platform customization at the UI layer.",
+      "mitigation": "I'd say: my implementation depth has been on the backend and integration layer \u2014 Python, APIs, data modeling, automation architecture \u2014 which is where the real complexity lives in enterprise deployments. I've never been blocked by frontend gaps in customer work because the FDE motion I've run has been about what the system does, not how a page renders. That said, I'm not starting from zero \u2014 I've worked alongside Next.js teams and know enough to be dangerous."
+    },
+    {
+      "title": "I haven't sold to or deployed for the specific Notion ICP \u2014 knowledge-worker, op",
+      "description": "I haven't sold to or deployed for the specific Notion ICP \u2014 knowledge-worker, ops, or engineering team buyers at scale \u2014 so I'd be building that buyer intuition in the role.",
+      "mitigation": "I'd say: I've sold to CFOs, CIOs, VP of Revenue Cycle, and IT security teams at major health systems \u2014 some of the most skeptical, compliance-driven buyers in enterprise software. If I can move those buyers, I can learn a new ICP quickly. I'm also a genuine Notion power user with a relational personal workspace that mirrors how I'd scope an enterprise deployment, so I'm not starting from the customer's perspective cold."
+    }
+  ],
+  "referralBlurb": "Dan spent the last three years embedded with enterprise customers as a forward-deployed engineer, building production AI systems and owning the technical relationship from discovery through deployment. He built against the Notion API in production \u2014 relational databases, bidirectional sync layers, agent hooks \u2014 as the connective tissue of a live SE platform managing $31.8M in pipeline. If you need someone who can sit across from an enterprise buyer, scope a complex deployment, and ship it, Dan has done exactly that.",
+  "projects": [
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Directly demonstrates GTM AI building and Notion-native development, turning sales meeting recordings into structured deal intelligence written into Notion through a multi-agent pipeline."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Shows production-grade enterprise AI deployment with real stability and customer-facing delivery requirements, the same bar a forward-deployed engineer at Notion would be held to."
+    },
+    {
+      "name": "Personal AI Website",
+      "path": "/",
+      "relevance": "Demonstrates full-stack AI development and technical communication breadth, including RAG architecture and multi-LLM support, showing the range expected in a GTM engineering role."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "cover-letter.pdf"
+}

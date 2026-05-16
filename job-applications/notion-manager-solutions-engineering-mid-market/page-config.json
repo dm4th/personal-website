@@ -1,0 +1,215 @@
+{
+  "id": "f55980fd99bb",
+  "company": "Notion",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=notion.com&sz=128",
+  "role": "Manager, Solutions Engineering, Mid-Market",
+  "appliedDate": "",
+  "fitScore": 71,
+  "fitScoreNote": "I built the SE motion from zero at Thoughtful AI, hitting a 96% prospect-to-proposal conversion rate across $31.8M in pipeline, and I've been building production applications on Notion's API long enough that I can speak to its value from genuine daily use rather than a prepared script.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's current role as Director of Sales Engineering at Smarter Technologies is nearly identical in motion to what Notion is hiring for: he owns pre-sales technical discovery, builds and delivers custom demos, manages $31.8M in pipeline, leads cross-functional deal strategy with executives, and built a hiring/evaluation framework for SE candidates \u2014 all hallmarks of an SE manager role. His superpower of translating complex AI/healthcare automation concepts to non-technical buyers is extensively documented (96% proposal conversion rate, retained through an 85% RIF specifically for this skill), which maps directly to Notion's cultural requirement of communicating with both technical and non-technical audiences. The primary gap is that his SE leadership has been at a 2-person team in a highly verticalized enterprise healthcare context, not a scaled mid-market SaaS motion with PLG dynamics, which is what Notion's mid-market segment typically involves.",
+      "citations": [
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "seniority": {
+      "score": 7,
+      "rationale": "Dan has ~8 years post-college experience with a strong and directly relevant SE track record: Director of Sales Engineering title, $31.8M pipeline ownership, 61 enterprise deals managed end-to-end, demo engineering platforms, discovery methodology, and cross-functional leadership with CEOs and VPs. However, the Notion role is Manager of a mid-market SE team, requiring people management of multiple SEs, whereas Dan's team was only 2 people (himself and one team lead) with limited direct reports \u2014 he built hiring frameworks and evaluation rubrics but has not yet managed a scaled team. His SE craft and ownership depth are strong matches; his people management scope is narrower than the role likely requires.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 6,
+      "rationale": "Dan has strong, production-level evidence of core SE technical skills \u2014 custom demo engineering platforms, enterprise integration architecture (FHIR/RPA/APIs), pipeline management across 61 deals, and technical presales execution (96% prospect-to-proposal conversion rate). However, his SE experience is entirely in healthcare/RCM domain, not collaborative workspace tools like Notion's product category, and his 'team management' was essentially a two-person operation with limited evidence of coaching or scaling a multi-person SE org. The role requires managing a mid-market SE team with quota accountability and GTM strategy in a SaaS productivity tool context \u2014 Dan's domain expertise and product knowledge gaps here are meaningful, though his Notion power-user familiarity and hands-on Notion API work provide some relevant signal.",
+      "citations": [
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 3,
+      "rationale": "Notion's ICP for a mid-market SE manager is horizontal tech companies and knowledge-worker-heavy organizations, not a specific vertical Dan has sold into. Dan's entire recent commercial career has targeted healthcare payers, health systems, and RCM leaders \u2014 a fundamentally different buyer than the product, ops, and engineering teams Notion serves. While Dan is a documented Notion power user with hands-on experience building on the Notion API, that reflects product familiarity rather than ICP alignment with the mid-market tech buyer Notion's SE team engages.",
+      "citations": [
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/smarter-technologies/ai-se-platform.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan has lived in San Francisco since January 2020 and is deeply rooted there (Richmond neighborhood, fianc\u00e9e, home), making Notion's SF headquarters a perfect location match with zero relocation friction. He has demonstrated travel tolerance through structured on-site enterprise discovery workshops at Jefferson Health and Presbyterian Health in New Mexico, fully consistent with any mid-market SE manager travel expectations. No hard blockers exist \u2014 no clearance requirements, no relocation demands, and Notion's SF-based senior manager compensation bands align with the $200K\u2013$300K+ director/senior IC market rates assumed for Dan.",
+      "citations": [
+        "/info/about-me/where-ive-lived/index.md",
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/about-me/career-metrics.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    }
+  },
+  "summary": [
+    "Built SE function from scratch: discovery methodology, demo infrastructure, and pipeline systems.",
+    "Managed $31.8M across 61 enterprise deals with a 96% prospect-to-proposal conversion rate.",
+    "Engineered reusable demo platform cutting custom build time from 3-4 days to 3-4 hours.",
+    "Created field-to-engineering feedback loops that made GTM context a resource engineering teams requested.",
+    "Active Notion builder and daily user with production API projects ready to demo from real experience."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/3c0141de-06fb-4186-9cd4-75395f0b5488",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "I've built and run the full SE motion from scratch \u2014 discovery, custom demos, pi",
+      "description": "I've built and run the full SE motion from scratch \u2014 discovery, custom demos, pipeline management, and cross-functional deal strategy \u2014 managing $31.8M across 61 enterprise deals as a two-person team.",
+      "citations": [
+        {
+          "label": "smarter-technologies/index",
+          "path": "/info/career/smarter-technologies/index"
+        },
+        {
+          "label": "smarter-technologies/pipeline-management",
+          "path": "/info/career/smarter-technologies/pipeline-management"
+        }
+      ]
+    },
+    {
+      "title": "My 96% prospect-to-proposal conversion rate is the clearest evidence I have that",
+      "description": "My 96% prospect-to-proposal conversion rate is the clearest evidence I have that I can translate complex technical products into language that moves skeptical buyers \u2014 exactly what mid-market SE leadership requires.",
+      "citations": [
+        {
+          "label": "thoughtful/lead-tpm",
+          "path": "/info/career/thoughtful/lead-tpm"
+        },
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
+      ]
+    },
+    {
+      "title": "I engineered a reusable, validated demo platform that cut custom demo build time",
+      "description": "I engineered a reusable, validated demo platform that cut custom demo build time from 3-4 days to 3-4 hours across 8 product lines \u2014 the kind of SE infrastructure investment that scales a team's capacity without scaling headcount.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "I built feedback loops from field discovery directly into engineering workflows ",
+      "description": "I built feedback loops from field discovery directly into engineering workflows \u2014 engineering teams weren't just tolerating the GTM person, they were asking me questions and relying on my context.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "I'm a genuine Notion power user who has built relational database systems on top",
+      "description": "I'm a genuine Notion power user who has built relational database systems on top of the Notion API in production \u2014 I'm not learning the product, I'm already living inside it.",
+      "citations": [
+        {
+          "label": "strengths-and-weaknesses/self-assessment",
+          "path": "/info/about-me/strengths-and-weaknesses/self-assessment"
+        },
+        {
+          "label": "smarter-technologies/pipeline-management",
+          "path": "/info/career/smarter-technologies/pipeline-management"
+        }
+      ]
+    },
+    {
+      "title": "I was the only non-Product/Engineering person retained through an 85% reduction ",
+      "description": "I was the only non-Product/Engineering person retained through an 85% reduction \u2014 that signal about what I do well is more meaningful to me than any title I've held.",
+      "citations": [
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        },
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
+      ]
+    },
+    {
+      "title": "I've built hiring frameworks and evaluation rubrics for SE candidates from the g",
+      "description": "I've built hiring frameworks and evaluation rubrics for SE candidates from the ground up, and I understand what great SE craft looks like well enough to assess it in others \u2014 which is the foundation of coaching a team.",
+      "citations": [
+        {
+          "label": "smarter-technologies/index",
+          "path": "/info/career/smarter-technologies/index"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "My SE team management has been a two-person operation, not a scaled multi-person",
+      "description": "My SE team management has been a two-person operation, not a scaled multi-person org, so I haven't yet managed five or six SEs through quota cycles simultaneously.",
+      "mitigation": "I'd say: I've done the harder version in some ways \u2014 building the entire SE function from zero with no playbook, no tools, and four times the deal volume of the second team member. At Thoughtful I also led 1-3 forward-deployed engineers per project across up to six concurrent implementations. I'm ready to scale that pattern, and I'm looking for this role specifically because it's the right next step in building that muscle."
+    },
+    {
+      "title": "My enterprise deals have been in healthcare RCM, not the horizontal knowledge-wo",
+      "description": "My enterprise deals have been in healthcare RCM, not the horizontal knowledge-worker and mid-market tech buyer that Notion's SE team engages.",
+      "mitigation": "I'd say: The buyer motion is actually quite similar \u2014 I was selling AI automation to ops and finance leaders who were skeptical of the technology, needed to see ROI in their specific workflow, and had to champion the deal internally. That's not a different skill from selling Notion to a head of product or an engineering director. The product category is different, but I've been building on Notion's API in production, I use it as my actual operating system, and I can speak to its value from genuine experience rather than a sales script."
+    },
+    {
+      "title": "I don't have direct experience managing a mid-market SaaS SE motion with PLG dyn",
+      "description": "I don't have direct experience managing a mid-market SaaS SE motion with PLG dynamics, where much of the pipeline starts from product-qualified leads rather than outbound or field discovery.",
+      "mitigation": "I'd say: The discovery methodology I've refined \u2014 understanding the real workflow problem before talking about solutions, connecting technology to specific pain points \u2014 translates directly. PLG changes the top of the funnel, not the SE's job once a champion raises their hand. I've managed deal complexity that required teaching buyers what was possible; in a PLG context the buyer already believes, and the SE's job is to accelerate that conviction. That's a motion I can learn quickly, and my Notion fluency is a real head start."
+    },
+    {
+      "title": "My quota accountability has been at the company pipeline level as an individual ",
+      "description": "My quota accountability has been at the company pipeline level as an individual contributor, not formal quota ownership as a people manager with team-level forecasting responsibility.",
+      "mitigation": "I'd say: I owned 62% of total company pipeline and reported deal health and close probability directly to the CEO and VP of Sales through Salesforce. The forecasting discipline is there. What I haven't done is roll up individual SE quotas into a team number and defend it in a QBR \u2014 but the analytical infrastructure I built for pipeline management maps directly onto that problem, and I'm genuinely excited to own that accountability at the team level."
+    }
+  ],
+  "referralBlurb": "Dan built the entire SE function at Thoughtful AI from scratch \u2014 discovery methodology, demo infrastructure, pipeline systems \u2014 and managed $31.8M across 61 enterprise deals as a two-person team with a 96% prospect-to-proposal conversion rate. He also engineered a reusable demo platform that cut custom build time from days to hours, which is exactly the kind of scalable SE infrastructure Notion's mid-market team needs. If you want someone who has already done the hard version of this job and is ready to scale it with a real team, Dan is that person.",
+  "projects": [
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "A multi-agent pipeline that converts sales meeting recordings into structured deal intelligence inside Notion, demonstrating both deep Notion-native development fluency and the kind of GTM AI thinking that directly maps to scaling an SE team's capacity."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "A production AI system built for real enterprise customers in a regulated, skeptical-buyer environment, demonstrating the technical delivery standards and customer-facing credibility required to lead an SE team closing mid-market deals."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "cover-letter.pdf"
+}
