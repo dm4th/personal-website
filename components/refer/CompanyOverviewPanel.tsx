@@ -16,13 +16,14 @@ type Props = {
   roles: RoleEntry[];
   personalNote?: string;
   company?: string;
+  videoUrl?: string;
 };
 
 function scoreColor(s: number): string {
   return s >= 90 ? '#22c55e' : s >= 85 ? '#3b82f6' : s >= 80 ? '#eab308' : s >= 70 ? '#f59e0b' : '#ef4444';
 }
 
-export default function CompanyOverviewPanel({ roles, personalNote, company }: Props) {
+export default function CompanyOverviewPanel({ roles, personalNote, company, videoUrl }: Props) {
   const [selectedId, setSelectedId] = useState(roles[0]?.config.id ?? '');
   const [copied, setCopied] = useState(false);
 
@@ -136,26 +137,40 @@ export default function CompanyOverviewPanel({ roles, personalNote, company }: P
       </div>
 
       {/* ── Personal note (Why Company) ──────────────────── */}
-      {personalNote && (
+      {(personalNote || videoUrl) && (
         <div className={styles.personalSection}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>{company ? `Why ${company}` : 'From Dan'}</span>
             <span className={styles.danTag}>Dan Generated</span>
           </div>
-          <div className={styles.personalCard}>
-            <div className={styles.personalNote}>
-              {personalNote.split('\n\n').map((para, i) => (
-                <p key={i} className={styles.personalPara}>{para}</p>
-              ))}
+          {personalNote && (
+            <div className={styles.personalCard}>
+              <div className={styles.personalNote}>
+                {personalNote.split('\n\n').map((para, i) => (
+                  <p key={i} className={styles.personalPara}>{para}</p>
+                ))}
+              </div>
+              <button
+                className={styles.copyButton}
+                onClick={handleCopy}
+                aria-label="Copy to clipboard"
+              >
+                {copied ? '✓ Copied' : 'Copy'}
+              </button>
             </div>
-            <button
-              className={styles.copyButton}
-              onClick={handleCopy}
-              aria-label="Copy to clipboard"
-            >
-              {copied ? '✓ Copied' : 'Copy'}
-            </button>
-          </div>
+          )}
+          {videoUrl && (
+            <div className={styles.videoCard}>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src={videoUrl.replace('/share/', '/embed/')}
+                  className={styles.videoFrame}
+                  allow="fullscreen"
+                  title="Claude Code demo"
+                />
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
