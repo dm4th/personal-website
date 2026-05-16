@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import FitScoreWheel from './FitScoreWheel';
 import RadarChart from './RadarChart';
@@ -26,18 +26,18 @@ export default function CompanyOverviewPanel({ roles, personalNote, company }: P
   const [selectedId, setSelectedId] = useState(roles[0]?.config.id ?? '');
   const [copied, setCopied] = useState(false);
 
-  const selected = roles.find((r) => r.config.id === selectedId) ?? roles[0];
-  if (!selected) return null;
-
-  const accentColor = scoreColor(selected.config.fitScore);
-
-  const handleCopy = useCallback(() => {
+  function handleCopy() {
     if (!personalNote) return;
     navigator.clipboard.writeText(personalNote).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
-  }, [personalNote]);
+  }
+
+  const selected = roles.find((r) => r.config.id === selectedId) ?? roles[0];
+  if (!selected) return null;
+
+  const accentColor = scoreColor(selected.config.fitScore);
 
   return (
     <div className={styles.root}>
