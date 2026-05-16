@@ -85,7 +85,6 @@ export default function FitScoreDimensions({ dimensions }: Props) {
                 >
                   <td className={styles.tdCriterion}>
                     <span className={styles.criterionLabel}>{label}</span>
-                    <span className={styles.expandHint}>{isExpanded ? '▲' : '▼'}</span>
                   </td>
                   <td className={styles.tdScore}>
                     <div className={styles.barWrap}>
@@ -100,22 +99,30 @@ export default function FitScoreDimensions({ dimensions }: Props) {
                     <span className={styles.weightBadge}>{weightPct}%</span>
                   </td>
                   <td className={styles.tdCitations} onClick={(e) => e.stopPropagation()}>
-                    {dim.citations.length > 0 ? (
-                      <div className={styles.chips}>
-                        {dim.citations.map((c) => (
-                          <Link
-                            key={c}
-                            href={infoPathToHref(c)}
-                            className={styles.chip}
-                            target="_blank"
-                          >
-                            {infoPathToLabel(c)} →
-                          </Link>
-                        ))}
-                      </div>
-                    ) : (
-                      <span className={styles.noCitations}>—</span>
-                    )}
+                    <div className={styles.citationsInner}>
+                      {dim.citations.length > 0 ? (
+                        <div className={styles.chips}>
+                          {dim.citations.map((c) => (
+                            <Link
+                              key={c}
+                              href={infoPathToHref(c)}
+                              className={styles.chip}
+                              target="_blank"
+                            >
+                              {infoPathToLabel(c)} →
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className={styles.noCitations}>—</span>
+                      )}
+                      <button
+                        className={`${styles.moreInfo} ${isExpanded ? styles.moreInfoActive : ''}`}
+                        onClick={(e) => { e.stopPropagation(); toggle(key); }}
+                      >
+                        {isExpanded ? 'Less info ▲' : 'More info ▼'}
+                      </button>
+                    </div>
                   </td>
                 </tr>
                 {isExpanded && (
