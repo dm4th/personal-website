@@ -209,7 +209,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "field engineer",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination"
       ]
     },
     {
@@ -255,7 +259,11 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "field engineer",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination"
       ]
     },
     {
@@ -357,7 +365,19 @@
         "information security",
         "data privacy",
         "HIPAA",
-        "SOC 2"
+        "SOC 2",
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical presales",
+        "field engineer",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement"
       ]
     },
     {
@@ -511,7 +531,19 @@
         "intelligent agents",
         "go-to-market strategy",
         "sales enablement",
-        "pipeline optimization"
+        "pipeline optimization",
+        "SE",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
       ]
     },
     {
@@ -703,7 +735,22 @@
         "prototype",
         "demo",
         "machine learning implementation",
-        "cloud architecture"
+        "cloud architecture",
+        "SE",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth",
+        "developer relations",
+        "technical enablement",
+        "POC development"
       ]
     },
     {
@@ -865,7 +912,18 @@
         "risk mitigation",
         "stakeholder management",
         "cross-functional coordination",
-        "production deployment"
+        "production deployment",
+        "SE",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
       ]
     },
     {
@@ -1156,7 +1214,14 @@
         "stakeholder management",
         "cross-functional coordination",
         "go-to-market strategy",
-        "sales enablement"
+        "sales enablement",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
       ]
     },
     {
@@ -1810,7 +1875,17 @@
         "developer relations",
         "technical enablement",
         "field engineer",
-        "enablement specialist"
+        "enablement specialist",
+        "solutions architect",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "cross-functional coordination",
+        "workflow automation",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
       ]
     },
     {
@@ -1970,7 +2045,13 @@
         "API architecture",
         "stakeholder management",
         "cross-functional coordination",
-        "production deployment"
+        "production deployment",
+        "enterprise solutions architect",
+        "go-to-market strategy",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management"
       ]
     },
     {
@@ -2016,7 +2097,13 @@
         "API architecture",
         "stakeholder management",
         "cross-functional coordination",
-        "production deployment"
+        "production deployment",
+        "enterprise solutions architect",
+        "go-to-market strategy",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management"
       ]
     },
     {
@@ -2115,7 +2202,11 @@
         "financial services",
         "life sciences",
         "compliance and security reviews",
-        "production systems"
+        "production systems",
+        "go-to-market strategy",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management"
       ]
     },
     {
@@ -2298,6 +2389,334 @@
         "financial services",
         "life sciences",
         "cross-functional coordination"
+      ]
+    },
+    {
+      "jdTerm": "GTM",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "jdTerm": "customer success",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "jdTerm": "API integration",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "jdTerm": "workflow automation",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "jdTerm": "stakeholder management",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "jdTerm": "Mid-Market",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "workflow automation",
+        "go-to-market strategy",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
+      ]
+    },
+    {
+      "jdTerm": "enterprise solutions architect",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "workflow automation",
+        "go-to-market strategy",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
+      ]
+    },
+    {
+      "jdTerm": "POC",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "workflow automation",
+        "go-to-market strategy",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
+      ]
+    },
+    {
+      "jdTerm": "Enterprise sales",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "field engineer",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "customer demos",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "field engineer",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "technical implementation",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "field engineer",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "partner enablement",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "technical presales",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "enterprise solutions",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "API architecture",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "product demonstrations",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
       ]
     }
   ],
@@ -2872,6 +3291,136 @@
         "financial services",
         "life sciences",
         "cross-functional coordination"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Forward Deployed Engineer, GTM",
+      "company": "Notion",
+      "searchTerms": [
+        "Forward Deployed Engineer",
+        "GTM",
+        "enterprise deployment",
+        "production applications",
+        "customer success",
+        "API integration",
+        "workflow automation",
+        "stakeholder management"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "field engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "go-to-market strategy",
+        "cross-functional coordination",
+        "production systems",
+        "technical enablement",
+        "statement of work",
+        "end-to-end engagement management",
+        "SE",
+        "technical presales",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "developer relations"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Manager, Solutions Engineering, Mid-Market",
+      "company": "Notion",
+      "searchTerms": [
+        "Solutions Engineering",
+        "Mid-Market",
+        "sales engineering",
+        "technical account manager",
+        "enterprise solutions architect",
+        "POC",
+        "customer discovery",
+        "GTM strategy"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "enterprise adoption",
+        "demo coaching",
+        "stakeholder management",
+        "cross-functional coordination",
+        "workflow automation",
+        "go-to-market strategy",
+        "sales enablement",
+        "prototype development",
+        "technical evaluation",
+        "product-led growth"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Solutions Engineer - Enterprise - AMER",
+      "company": "Notion",
+      "searchTerms": [
+        "Solutions Engineer",
+        "Enterprise sales",
+        "pre-sales",
+        "proof-of-concept",
+        "customer demos",
+        "technical implementation",
+        "API integration",
+        "workflow automation"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "field engineer",
+        "POC development",
+        "prototype",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Partner Solutions Engineer",
+      "company": "Notion",
+      "searchTerms": [
+        "solutions engineer",
+        "partner enablement",
+        "technical presales",
+        "enterprise solutions",
+        "API architecture",
+        "product demonstrations",
+        "customer success",
+        "GTM strategy"
+      ],
+      "synonymTerms": [
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "solutions architect",
+        "developer relations",
+        "technical enablement",
+        "POC development",
+        "stakeholder management",
+        "cross-functional coordination",
+        "go-to-market strategy"
       ]
     }
   ]

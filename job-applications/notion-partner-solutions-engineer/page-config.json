@@ -1,0 +1,183 @@
+{
+  "id": "a344ce6016ee",
+  "company": "Notion",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=notion.com&sz=128",
+  "role": "Partner Solutions Engineer",
+  "appliedDate": "",
+  "fitScore": 79,
+  "fitScoreNote": "I've been running the Partner SE motion in everything but name \u2014 building enablement packages, scoping implementations, and explaining AI systems to non-technical stakeholders across $31.8M in enterprise pipeline \u2014 and Notion is the platform I've actually built production infrastructure on top of.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's entire recent career is essentially a Partner Solutions Engineer role in motion: at Smarter Technologies he served as Director of Sales Engineering running pre-sales technical discovery, building custom demos, managing enterprise GTM motions across $31.8M in pipeline, and enabling non-technical sales reps through tools he built on top of the Notion API. His defining superpower \u2014 explicitly cited in his shutdown/retention file \u2014 is explaining complex AI systems to non-technical stakeholders in ways that move them from skeptical to convinced, which maps directly to Notion's requirement to simplify complex technical concepts. The one minor gap is that this role is partner-facing (ISVs, resellers) rather than direct enterprise prospects, and Dan has no explicit partner/channel enablement experience, but his customer enablement, API integration fluency, and cross-functional technical communication work is otherwise a near-identical motion.",
+      "citations": [
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/thoughtful-day-in-the-life/the-article.md",
+        "/info/about-me/career-metrics.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan has ~8 years of post-college experience with strong end-to-end ownership across exactly the skills Notion's Partner SE role requires: he built a full SE platform from scratch as Director of Sales Engineering at Smarter Technologies (Sep 2025), ran 199 demo meetings, managed $31.8M in pipeline, built 57 Python API integration scripts spanning Notion, Fireflies, Google Drive, Slack, and GitHub, and created partner enablement packages including implementation guides and delivery charters. He has owned technical presales end-to-end (discovery through close), delivered executive-level architecture walkthroughs, and is currently VP of Solutions at AccessHealthcare \u2014 slightly senior to a Partner SE title \u2014 but his hands-on technical depth, Notion API fluency, demo engineering, and partner enablement work are a near-exact match for the role's requirements.",
+      "citations": [
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/hiring-and-team.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 7,
+      "rationale": "Dan has strong production-level evidence for several key requirements: he built a custom SE platform with deep Notion API integration (bidirectional sync, REST API, event-driven hooks), extensive workflow automation via 57 Python scripts across multiple platforms, and hands-on demo engineering at scale (199 demo meetings, custom demo pipelines). He also self-describes as a Notion power user with relational databases, rollups, and CRM-style architecture. However, the role is Notion-specific (selling/enabling partners on Notion's product), and Dan's technical depth is almost entirely in healthcare AI/RCM automation \u2014 there is no evidence of experience with Notion as a product being sold, partner channel enablement programs, or enterprise SaaS GTM in a productivity/collaboration tool context. His API and integration knowledge is strong but domain-adjacent rather than directly mapped to Notion's ecosystem (no evidence of Notion integrations like Zapier, Make, or similar no-code/iPaaS tools relevant to Notion's partner landscape).",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "Notion is a horizontal productivity/collaboration platform with a broad ICP spanning enterprise knowledge workers, GTM teams, and B2B organizations of all kinds \u2014 not a specific vertical. Dan is an active Notion power user (his SE platform uses Notion API as core infrastructure for deal tracking and syncing), and he has enterprise B2B sales motion experience, but his career has been overwhelmingly concentrated in healthcare RCM as a buyer vertical. He has not demonstrably sold to, built for, or been embedded in the types of organizations Notion's partner ecosystem targets (consultancies, resellers, SI partners, productivity-focused enterprise buyers) as a primary buyer segment.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/google/my-year-at-google.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan is SF-based (Richmond neighborhood, resident since 2020) and Notion is headquartered in San Francisco, making this a near-perfect location match with no relocation friction. The JD as provided does not state a compensation band, clearance requirement, degree mandate, or language requirement, eliminating all common hard blockers. Dan has demonstrated enterprise travel tolerance through multi-day on-site workshops at Jefferson Health and Presbyterian Health in New Mexico, and is an established Notion power user with hands-on Notion API experience, removing any practical friction around the product itself. The one minor friction point is that the JD text was truncated so the exact work arrangement and compensation band remain unconfirmed, warranting a one-point deduction from a perfect score.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/career/smarter-technologies/ai-se-platform.md"
+      ]
+    }
+  },
+  "summary": [
+    "Ran end-to-end technical sales motion across $31.8M enterprise pipeline as a team of two.",
+    "Built production Notion API infrastructure: bidirectional sync, relational CRM, event-driven hooks.",
+    "Packaged AI capabilities as enablement tooling so non-technical reps could operate them independently.",
+    "Retained through 85% company reduction for ability to move skeptical executives from hesitant to convinced.",
+    "Conducted technical discovery and custom demos across eight product lines in ten healthcare verticals."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/a6a91521-87cd-41aa-b800-24dc8808d375",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "I've built and run the full Partner Solutions Engineer motion end-to-end \u2014 techn",
+      "description": "I've built and run the full Partner Solutions Engineer motion end-to-end \u2014 technical discovery, custom demos, enablement packages, and post-close implementation scoping \u2014 across $31.8M in enterprise pipeline.",
+      "citations": [
+        {
+          "label": "smarter-technologies/index",
+          "path": "/info/career/smarter-technologies/index"
+        },
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "My defining superpower \u2014 the one that got me retained through an 85% company red",
+      "description": "My defining superpower \u2014 the one that got me retained through an 85% company reduction \u2014 is explaining complex AI systems to non-technical stakeholders in ways that move them from skeptical to convinced.",
+      "citations": [
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
+      ]
+    },
+    {
+      "title": "I'm a genuine Notion power user who has built production infrastructure on top o",
+      "description": "I'm a genuine Notion power user who has built production infrastructure on top of the Notion API \u2014 bidirectional sync, relational CRM architecture, event-driven hooks \u2014 not just someone who uses Notion for notes.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "strengths-and-weaknesses/self-assessment",
+          "path": "/info/about-me/strengths-and-weaknesses/self-assessment"
+        }
+      ]
+    },
+    {
+      "title": "I've built and delivered sales enablement infrastructure for non-technical reps ",
+      "description": "I've built and delivered sales enablement infrastructure for non-technical reps at scale \u2014 packaging AI skills as natural-language slash commands so reps who had never touched a terminal could run meeting analyses and generate pricing summaries on their own.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "I have a track record of 96% prospect-to-proposal conversion in pre-sales techni",
+      "description": "I have a track record of 96% prospect-to-proposal conversion in pre-sales technical roles, which resulted in sales leadership literally reorganizing around my availability.",
+      "citations": [
+        {
+          "label": "thoughtful/lead-tpm",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
+      ]
+    },
+    {
+      "title": "I've built and maintained Salesforce CRM alongside custom deal-tracking infrastr",
+      "description": "I've built and maintained Salesforce CRM alongside custom deal-tracking infrastructure, including custom reports and dashboards for executive stakeholders \u2014 so I understand the full CRM integration landscape a Partner SE needs to navigate.",
+      "citations": [
+        {
+          "label": "smarter-technologies/pipeline-management",
+          "path": "/info/career/smarter-technologies/pipeline-management"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "I haven't worked directly in a partner or channel-facing role \u2014 my enablement an",
+      "description": "I haven't worked directly in a partner or channel-facing role \u2014 my enablement and technical communication work has been aimed at enterprise end customers and internal sales teams, not ISVs or resellers.",
+      "mitigation": "I'd frame it this way: the motion is nearly identical \u2014 I've built enablement packages, delivery charters, and implementation guides for organizations adopting complex AI systems. The audience shifts from a direct enterprise buyer to a partner who then enables their own customers, but the core skill of making a technical platform legible and actionable to someone who didn't build it is exactly what I've been doing. I'd lean on the Cowork platform work as the closest analog \u2014 I was essentially enabling a distributed, non-technical user base to get value from tooling I built, which is the partner enablement motion."
+    },
+    {
+      "title": "My technical depth in Notion is as a builder and power user, not as someone who ",
+      "description": "My technical depth in Notion is as a builder and power user, not as someone who has sold or positioned Notion's product \u2014 I know the platform from the inside, but not from the GTM side.",
+      "mitigation": "I'd be honest that I come in as a practitioner, not a Notion AE. But I'd argue that's actually an asset in a Partner SE role: I can speak to what Notion can genuinely do in a workflow automation or CRM context because I've built those systems myself. I know where the API is strong, where Python is the better call, and how to help a partner think through implementation decisions \u2014 which is more useful than knowing the pitch deck."
+    },
+    {
+      "title": "My industry exposure is heavily weighted toward healthcare RCM \u2014 I haven't been ",
+      "description": "My industry exposure is heavily weighted toward healthcare RCM \u2014 I haven't been embedded in the productivity, collaboration, or horizontal SaaS buyer segments that make up Notion's partner ecosystem.",
+      "mitigation": "I'd acknowledge the vertical concentration directly and then point to the transferable pattern: every enterprise sale I've run required me to understand a new buyer's workflow from scratch and connect a technical platform to it in terms that made sense to them. I've done that across ten healthcare verticals with eight product lines. The skill generalizes \u2014 healthcare was the context, not the constraint."
+    }
+  ],
+  "referralBlurb": "Dan built and ran the full solutions engineering motion at our company \u2014 technical discovery, custom demos across eight product lines, and a Notion-native enablement system that let non-technical reps run AI-powered meeting analysis without touching a terminal. He's also a genuine Notion API builder who shipped bidirectional sync and relational CRM infrastructure in production. If you're looking for someone who can make Notion's platform legible and actionable to partners who didn't build it, that's exactly what he's been doing for two years.",
+  "projects": [
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Demonstrates Dan's ability to build GTM-facing AI infrastructure natively on Notion's platform, combining agent orchestration with structured deal intelligence written directly into Notion databases \u2014 exactly the kind of workflow automation a partner ecosystem would want to understand and replicate."
+    },
+    {
+      "name": "Personal AI Website",
+      "path": "/",
+      "relevance": "A full-stack RAG system with multi-LLM support that shows Dan can architect, build, and communicate complex AI systems end-to-end \u2014 the same technical range needed to support partners evaluating and implementing Notion's AI capabilities."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "cover-letter.pdf"
+}
