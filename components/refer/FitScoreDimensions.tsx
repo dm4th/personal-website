@@ -24,10 +24,10 @@ const DIMENSIONS: DimensionMeta[] = [
 ];
 
 function scoreColor(score: number): string {
-  if (score >= 9) return '#22c55e';
-  if (score >= 7) return '#3b82f6';
-  if (score >= 6) return '#eab308';
-  if (score >= 5) return '#f59e0b';
+  if (score >= 10) return '#22c55e';
+  if (score >= 9)  return '#3b82f6';
+  if (score >= 8)  return '#eab308';
+  if (score >= 7)  return '#f59e0b';
   return '#ef4444';
 }
 

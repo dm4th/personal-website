@@ -24,8 +24,10 @@ export default function ApplicationMaterialsCard({ part }: { part: ToolUsePart }
 
   const scoreColor =
     !data ? 'var(--muted)'
-    : data.fitScore >= 80 ? '#22c55e'
-    : data.fitScore >= 60 ? '#f59e0b'
+    : data.fitScore >= 90 ? '#22c55e'
+    : data.fitScore >= 85 ? '#3b82f6'
+    : data.fitScore >= 80 ? '#eab308'
+    : data.fitScore >= 70 ? '#f59e0b'
     : '#ef4444';
 
   return (

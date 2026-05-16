@@ -8,7 +8,7 @@ export default function FitScoreWheel({ score, showText = true }: Props) {
   const offset = circumference - (Math.min(score, 100) / 100) * circumference;
 
   const color =
-    score >= 81 ? 'var(--success)' : score >= 61 ? '#3b82f6' : score >= 40 ? '#f59e0b' : '#ef4444';
+    score >= 90 ? '#22c55e' : score >= 85 ? '#3b82f6' : score >= 80 ? '#eab308' : score >= 70 ? '#f59e0b' : '#ef4444';
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ flexShrink: 0 }}>

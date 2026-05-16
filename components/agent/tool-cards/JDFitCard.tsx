@@ -17,10 +17,10 @@ const DIMENSIONS = [
 ] as const;
 
 function dimScoreColor(score: number): string {
-  if (score >= 9) return '#22c55e';
-  if (score >= 7) return '#3b82f6';
-  if (score >= 6) return '#eab308';
-  if (score >= 5) return '#f59e0b';
+  if (score >= 10) return '#22c55e';
+  if (score >= 9)  return '#3b82f6';
+  if (score >= 8)  return '#eab308';
+  if (score >= 7)  return '#f59e0b';
   return '#ef4444';
 }
 
@@ -109,10 +109,10 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
 
   const scoreColor =
     !data ? 'var(--muted)'
-    : data.fitScore >= 85 ? '#22c55e'
-    : data.fitScore >= 70 ? '#3b82f6'
-    : data.fitScore >= 55 ? '#eab308'
-    : data.fitScore >= 40 ? '#f59e0b'
+    : data.fitScore >= 90 ? '#22c55e'
+    : data.fitScore >= 85 ? '#3b82f6'
+    : data.fitScore >= 80 ? '#eab308'
+    : data.fitScore >= 70 ? '#f59e0b'
     : '#ef4444';
 
   // Parse "Fit score: XX/100 - Role Title at Company" into coloured parts

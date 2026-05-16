@@ -19,7 +19,7 @@ type Props = {
 };
 
 function scoreColor(s: number): string {
-  return s >= 81 ? 'var(--success)' : s >= 61 ? '#3b82f6' : s >= 40 ? '#f59e0b' : '#ef4444';
+  return s >= 90 ? '#22c55e' : s >= 85 ? '#3b82f6' : s >= 80 ? '#eab308' : s >= 70 ? '#f59e0b' : '#ef4444';
 }
 
 export default function CompanyOverviewPanel({ roles, personalNote, company }: Props) {
