@@ -117,9 +117,11 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
     <div className={styles.card}>
       <button className={styles.header} onClick={() => setExpanded((v) => !v)}>
         <span className={styles.icon}>{isPending ? '⏳' : isError ? '✗' : '📄'}</span>
-        <span className={styles.label}>
-          {isPending ? 'Scoring job fit…' : (part.summary ?? 'JD Fit Analysis')}
-        </span>
+        {isPending ? (
+          <span className={styles.label}>Scoring job fit…</span>
+        ) : (
+          <span className={styles.labelTitle}>{part.summary ?? 'JD Fit Analysis'}</span>
+        )}
         {!isPending && <span className={styles.chevron}>{expanded ? '▲' : '▼'}</span>}
       </button>
 
@@ -222,14 +224,15 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                 </div>
               )}
 
-              {/* Score breakdown table — after framing, behind More info toggle */}
+              {/* Score breakdown table — after framing, sub-header toggle */}
               {data.dimensions && (
                 <div className={styles.dimSection}>
                   <button
-                    className={`${styles.moreInfoBtn} ${dimExpanded ? styles.moreInfoBtnActive : ''}`}
+                    className={`${styles.dimSubHeader} ${dimExpanded ? styles.dimSubHeaderOpen : ''}`}
                     onClick={() => setDimExpanded((v) => !v)}
                   >
-                    Score breakdown {dimExpanded ? '▲' : '▼'}
+                    <span className={styles.dimSubHeaderLabel}>Score breakdown</span>
+                    <span className={styles.chevron}>{dimExpanded ? '▲' : '▼'}</span>
                   </button>
                   {dimExpanded && (
                     <div className={styles.dimTableWrapper}>
@@ -239,13 +242,14 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                             <th className={styles.dtCriterion}>Criterion</th>
                             <th className={styles.dtScore}>Score</th>
                             <th className={styles.dtWeight}>Weight</th>
+                            <th className={styles.dtSources}>Sources</th>
                           </tr>
                         </thead>
                         <tbody>
                           {DIMENSIONS.map(({ key, label, max }) => {
                             const dim = data.dimensions[key];
                             if (!dim) return null;
-                            const weightPct = max; // max IS the weight percentage (30, 20, 25, 15, 10)
+                            const weightPct = max;
                             const color = dimScoreColor(dim.score);
                             const isRowExpanded = expandedDimKey === key;
                             return (
@@ -253,7 +257,6 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                                 <tr
                                   key={key}
                                   className={`${styles.dtRow} ${isRowExpanded ? styles.dtRowExpanded : ''}`}
-                                  onClick={() => setExpandedDimKey(isRowExpanded ? null : key)}
                                 >
                                   <td className={styles.dtTdCriterion}>
                                     <span className={styles.dtLabel}>{label}</span>
@@ -269,10 +272,18 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                                   <td className={styles.dtTdWeight}>
                                     <span className={styles.dtWeight}>{weightPct}%</span>
                                   </td>
+                                  <td className={styles.dtTdSources}>
+                                    <button
+                                      className={styles.dtMoreInfo}
+                                      onClick={(e) => { e.stopPropagation(); setExpandedDimKey(isRowExpanded ? null : key); }}
+                                    >
+                                      {isRowExpanded ? 'Less info ▲' : `More info ▼`}
+                                    </button>
+                                  </td>
                                 </tr>
                                 {isRowExpanded && (
                                   <tr key={`${key}-detail`} className={styles.dtDetailRow}>
-                                    <td colSpan={3} className={styles.dtDetailCell}>
+                                    <td colSpan={4} className={styles.dtDetailCell}>
                                       <p className={styles.dtRationale}>{dim.rationale}</p>
                                       {dim.citations.length > 0 && (
                                         <div className={styles.dtCitations}>
