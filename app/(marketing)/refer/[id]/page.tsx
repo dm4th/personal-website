@@ -78,7 +78,7 @@ export default async function ReferPage({ params }: Props) {
           {/* ── Thank-you blurb ───────────────────────────────── */}
           <p className={styles.thankYou}>
             Thank you so much for reviewing my candidacy for a role at {overview.company}! More
-            than anything I want to join and contribute to the mission at {overview.company} and
+            than anything I want to join and contribute to the mission at {overview.company}, and
             I took my time evaluating multiple roles before landing on my top choice.
           </p>
 
