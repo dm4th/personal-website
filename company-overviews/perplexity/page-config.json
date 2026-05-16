@@ -1,0 +1,7 @@
+{
+  "id": "perplexity",
+  "company": "Perplexity",
+  "companySlug": "perplexity",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128",
+  "personalNote": "I first started using Perplexity when it was just a search interface. I kept using it because it was the first AI product that actually changed how I research things, not just the speed at which I do them. That distinction matters to me.\n\nFor my PM Builder application exercise, I didn't write about a hobby. I used Perplexity to argue that Perplexity should build the MCP-native healthcare agent data layer. I spent two years designing exactly that system: an architecture that makes clinical data accessible to AI agents across payer and provider workflows without requiring custom integrations for every data source. The thesis is not something I read about. It is something I have been building toward. Using your own product to make a credible product argument felt like the only honest submission.\n\nWhat keeps pulling me toward Perplexity is the same instinct that drove the Computer launch: the belief that AI should transform knowledge into action, not just surface it faster. I have been building agentic systems that do exactly that for enterprise customers in healthcare. I know what it takes to make that work in production, and I know how hard it is to get enterprises to trust the output. Perplexity is the company best positioned to solve that problem at scale, and I want to be part of doing it."
+}

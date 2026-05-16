@@ -1,0 +1,177 @@
+{
+  "id": "da380466a851",
+  "company": "Perplexity",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128",
+  "role": "Solutions Product Marketing Manager",
+  "appliedDate": "2026-05",
+  "fitScore": 51,
+  "fitScoreNote": "I'm a strong fit on the dimensions that are hardest to hire for: two years of deep healthcare vertical knowledge across 61 enterprise deals, a demonstrated ability to make complex AI legible to C-suite buyers, and the specific artifacts this role requires including competitive narratives, ROI models, and persona-specific content. The honest gap is that my GTM work has lived inside the pre-sales and solutions layer rather than in a dedicated product marketing function, so I'm coming in with the substance of the work but not the title history or campaign execution experience the JD specifies.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 5,
+      "rationale": "Dan has deep, transferable skills in the adjacent pre-sales / solutions engineering space — enterprise deal management, vertical-specific (healthcare) discovery, translating complex technical concepts to C-suite buyers, and building data-driven ROI models — but his career is not in product marketing. The role requires 5+ years of B2B product marketing execution: owning vertical GTM as a system, building awareness campaigns across paid/organic/owned channels, producing sales collateral like battle cards and talk tracks, and driving pipeline attribution. Dan has done none of these as a primary job function; his GTM exposure has been as a technical pre-sales operator and solutions engineer, not as a marketer who owns campaign strategy, content production, or demand generation programs. His analytics background (Action Network/FanDuel) and his superpower of bridging technical complexity with non-technical audiences are genuine assets, but the core functional motion — product marketing strategy, campaign execution, vertical thought leadership content — is largely absent from his work history.",
+      "citations": [
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/meeting-intelligence.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "seniority": {
+      "score": 5,
+      "rationale": "Dan has ~8 years of post-college experience and strong enterprise sales engineering credentials — $31.8M pipeline, 61 enterprise deals, deep healthcare vertical knowledge, and competitive differentiation work — but his background is fundamentally in solutions/sales engineering and technical product management, not product marketing. The JD requires 5+ years of explicit product marketing experience including vertical GTM campaign execution, paid/organic channel management, thought leadership content creation, battle cards, and persona-specific talk tracks. Dan's closest analog work (competitive narratives, pricing models, demo engineering, ICP scoring) was built to support his own SE motion, not as a dedicated PMM function owning awareness campaigns, content programs, or marketing-to-sales pipeline attribution at an organizational level.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/icp-scoring.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 3,
+      "rationale": "Dan's background is in sales engineering, technical product management, data analytics, and AI infrastructure — not product marketing. There is zero evidence of product marketing-specific work: no campaign management, no battle cards or objection handling content creation, no vertical GTM strategy ownership, no paid/organic/owned channel execution, no thought leadership content programs, no pipeline attribution measurement from a marketing function, and no persona development work. His enterprise sales cycle experience (managing $31.8M pipeline in healthcare) and GTM-adjacent skills like demo engineering and ICP scoring are real but are fundamentally pre-sales/SE functions, not product marketing disciplines.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/icp-scoring.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 6,
+      "rationale": "Dan has deep, direct experience in healthcare — one of Perplexity's four named target verticals — having spent 2+ years in healthcare RCM automation, managing 61 enterprise deals across 10+ sub-verticals and driving AI adoption strategy at a VP level. However, the role explicitly requires owning GTM for Finance, Healthcare, Legal, and Consulting equally, and Dan has no meaningful domain history in legal or consulting, and only peripheral finance exposure (Google Cloud FP&A, FanDuel consumer analytics) that falls short of fintech or enterprise finance buyer depth.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/thoughtful/index.md",
+        "/info/career/google/my-year-at-google.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan is based in San Francisco, which is one of the two listed locations for this role (SF or NYC), creating zero location friction. The role is hybrid at a startup (Perplexity), which aligns with Dan's stated preference for in-office work at senior roles and his history of on-site enterprise travel (e.g., Jefferson Health, Presbyterian Health in New Mexico). No security clearances, specific degree requirements, visa restrictions, or other hard logistical blockers appear in the JD. The only minor friction is that the compensation band is unstated, introducing a small unknown against SF senior IC market rates (~$200K–$300K+), but Perplexity is a well-funded, high-growth AI company where market-rate comp is a reasonable assumption.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/where-ive-lived/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md"
+      ]
+    }
+  },
+  "summary": [
+    "Managed $31.8M in active healthcare enterprise pipeline across 61 deals spanning 10+ sub-verticals including hospital systems, dental DSOs, behavioral health, oncology, and ABA, building vertical GTM infrastructure from scratch as the sole solutions engineer.",
+    "Built ROI models and value realization frameworks that became the primary artifacts our sales team used to open enterprise conversations, giving healthcare executives concrete workflow-specific projections before a deal was even scoped.",
+    "Reduced custom demo creation from three to four days down to three to four hours per prospect by engineering an AI-powered demo system with a test suite that validated fidelity before every call, enabling repeatable, persona-specific content at scale.",
+    "Achieved a 96% proposal-stage conversion rate among prospects I met with, a number I can trace directly to specific improvements in discovery frameworks, competitive differentiation narratives, and executive-level objection handling.",
+    "Survived an 85% company-wide reduction as the only non-Product or Engineering employee retained, with two separate customer organizations intervening on my behalf, because I was the person who could make AI infrastructure credible to skeptical enterprise buyers."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/perplexity/9e3a4516-b893-4579-9a6a-3720658e4b6d",
+  "jobDescriptionText": "Solutions Product Marketing Manager\nCompany: Perplexity\nLocation: San Francisco / New York City\nDepartment: Marketing\n\nPerplexity is changing how enterprises adopt AI. We're seeking a Solutions Product Marketer to own GTM strategy for our highest-priority verticals, Finance, Healthcare, Legal, and Consulting. You'll go deep on buying motions, use cases, and competitive dynamics, translating insight into campaigns, content, and sales enablement that systematically win each industry. This role sits at the intersection of marketing, sales strategy, and product.\n\nYou will:\n- Own vertical GTM as a system, not one-off campaigns\n- Map how enterprise buyers in each vertical evaluate, purchase, and deploy AI, personas, decision processes, and competitive alternatives\n- Build and run vertical awareness campaigns across paid, organic, and owned channels, including webinars, landing pages, and industry-specific creative\n- Arm enterprise sales with battle cards, objection handling, persona-specific talk tracks, and deal-stage content that moves revenue\n- Develop opinionated thought leadership positioning Perplexity as the authority on AI adoption in each vertical\n- Instrument and measure vertical performance: pipeline sourced, conversion rates, engagement iterating weekly based on data\n\nQualifications:\n- 5+ years of product marketing experience, B2B preferred\n- Proven track record building and executing vertical or industry-specific GTM strategies that drove measurable pipeline\n- Deep understanding of enterprise buying motions, comfortable with long sales cycles, multi-stakeholder deals, and C-suite messaging\n- Exceptional storytelling and writing skills, able to distill complex capabilities into simple, compelling narratives across decks, one-pagers, videos, and ROI models\n- Advanced proficiency using AI tools to drive marketing outcomes\n- Collaborative, low-ego operator who thrives in fast-paced, small-team environments and owns the full stack of work",
+  "strengths": [
+    {
+      "title": "Healthcare vertical depth across the full buyer landscape",
+      "description": "I've managed enterprise deals across hospital systems, behavioral health, dental DSOs, physical therapy, oncology, vision, and ABA, each with different payer dynamics, EMR constraints, and C-suite buyer profiles. That is vertical GTM at real scale, not a single-segment case study. Healthcare is the most regulated and fragmented of Perplexity's four named verticals, and I've gone deep enough there to know what vertical mastery actually requires operationally.",
+      "citations": [
+        {
+          "label": "Thoughtful AI SE role",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    },
+    {
+      "title": "Translating AI complexity into executive narratives that move revenue",
+      "description": "My core function for two years was making AI infrastructure legible to skeptical C-suite buyers: CFOs focused on ROI timelines, CIOs worried about security and integration, and COOs translating workflow disruption into headcount math. The 96% proposal-stage conversion rate I hit is the measurable output of that narrative work. Two separate customer organizations intervened during a reduction to retain the person who could bridge that gap, which is about as direct a market signal as I know how to point to.",
+      "citations": [
+        {
+          "label": "Thoughtful AI pipeline performance",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    },
+    {
+      "title": "PMM-quality artifacts built inside the SE function",
+      "description": "I produced the specific content assets this role requires: battle-card-equivalent competitive differentiation materials positioning against incumbent RCM vendors, persona-specific demo packages calibrated to CFO versus CIO versus COO entry points, objection-handling frameworks for security and compliance narratives, and executive dashboards that became the foundation of our sales team's value proposition conversations. The org chart said Solutions Engineering, but the artifacts were product marketing.",
+      "citations": [
+        {
+          "label": "Thoughtful AI TPM and SE work",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    },
+    {
+      "title": "AI tools proficiency operating at a systems level, not surface level",
+      "description": "I shipped 943 commits and 500+ pull requests while simultaneously managing a $31.8M enterprise pipeline, using Claude Code as my primary operating layer. I built production systems including a hybrid-RAG dental eligibility system achieving 95% accuracy in two days and a multi-agent meeting intelligence pipeline that converts call recordings into structured deal intelligence in Notion. Perplexity's JD specifically calls out advanced AI tools proficiency as a qualifier, and I can demonstrate that at an engineering depth most PMM candidates cannot.",
+      "citations": [
+        {
+          "label": "Dental Eligibility Intelligence project",
+          "path": "/projects/dental-eligibility-intelligence"
+        },
+        {
+          "label": "AI Meeting Intelligence project",
+          "path": "/projects/ai-meeting-intelligence"
+        }
+      ]
+    },
+    {
+      "title": "Data-driven measurement architecture built from the buyer side",
+      "description": "I built the ICP scoring model, pipeline attribution tracking, and conversion rate measurement that our team used to iterate on GTM sequencing. Before joining Thoughtful, I spent three years in data and analytics at Action Network and FanDuel, building the measurement infrastructure for high-velocity consumer funnels. I understand what the campaign instrumentation this role requires needs to produce because I have built those systems from both the buyer-facing and data-engineering sides.",
+      "citations": [
+        {
+          "label": "Action Network analytics role",
+          "path": "/info/career/action-network"
+        },
+        {
+          "label": "Thoughtful AI ICP and pipeline work",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No direct ownership of paid, organic, or owned-channel campaign execution",
+      "description": "My GTM work has lived in the pre-sales and solutions layer, not in demand generation or campaign management. I have not managed media budgets, run webinar series, or owned a content calendar as a primary job function.",
+      "mitigation": "The campaign infrastructure problem, building repeatable, measurable systems that move buyers through a funnel, is exactly what I have been solving on the SE side. I built the measurement framework, the content assets, and the conversion tracking. I just did it from inside the deal rather than above it. Channel execution is a learnable motion; the strategic judgment about what to measure and why is what I would bring on day one, and I would be transparent with the team about where I am ramping on the channel mechanics."
+    },
+    {
+      "title": "No formal product marketing title or vertical content program ownership",
+      "description": "My positioning and narrative work was embedded in Solutions Engineering and was not attributed to a marketing function. I do not have the title history the JD's five-year B2B product marketing requirement implies.",
+      "mitigation": "I want to be direct about that distinction rather than paper over it. What I would point to is the artifact quality and the pipeline impact: I wrote the competitive narratives, built the talk tracks, and developed the persona-specific messaging. The question I would ask the hiring team to weigh is whether the functional label matters more than the demonstrated output and the buyer-side credibility it produced."
+    },
+    {
+      "title": "Domain depth concentrated in healthcare, with limited legal and consulting exposure",
+      "description": "Perplexity's role explicitly requires owning GTM across Finance, Healthcare, Legal, and Consulting. My legal and consulting vertical knowledge is shallow, and my finance exposure is peripheral rather than enterprise-buyer-deep.",
+      "mitigation": "Healthcare is genuinely the hardest vertical on this list given regulatory complexity, fragmented buyer landscapes, and multi-stakeholder purchasing. I have gone deep enough there to understand what vertical mastery actually requires: the pattern of building credibility with a CFO at a health system is not categorically different from building it with a GC at a law firm. I have a track record of getting smart on new verticals fast, and I would treat legal and consulting as structured learning sprints in the first 90 days, including direct buyer interviews and competitive landscape analysis."
+    }
+  ],
+  "referralBlurb": "Dan Mathieson is one of the most unusual candidates I can point to for this role, not because he checks every box in the traditional PMM career path, but because he has done the hardest parts of this job at real scale and has the measurable outcomes to prove it. He spent two years as the sole solutions engineer at a healthcare AI company managing $31.8M in active pipeline across 61 enterprise deals spanning hospital systems, behavioral health, dental DSOs, oncology, and ABA. He built the competitive narratives, the ROI models, the persona-specific talk tracks, and the objection-handling frameworks that moved those deals. The org chart said Solutions Engineering. The artifacts were product marketing.\n\nWhat makes Dan genuinely hard to replicate is the combination: he has C-suite credibility in healthcare (the most complex of Perplexity's four target verticals), he can build and ship AI systems at an engineering depth most PMM candidates cannot approach, and he has a documented 96% proposal-stage conversion rate that traces directly to specific narrative and discovery improvements he made himself. He survived an 85% company reduction as the only non-Product or Engineering employee retained, with two customer organizations intervening on his behalf, because he was the person who could make AI infrastructure legible to skeptical enterprise buyers. That is the core motion of a solutions PMM.\n\nThe honest gap is that he is transitioning from a pre-sales operator role into a dedicated marketing function, and he has not run paid or owned-channel campaigns as a primary owner. He is direct about this and frames it correctly: the measurement architecture and content production work are things he has done; the channel execution mechanics are a ramp he is taking on deliberately.\n\nFor a role at Perplexity where healthcare vertical credibility and AI fluency are table stakes and where the PMM needs to earn trust with enterprise sales teams on day one, Dan's background is a serious differentiator. I recommend a conversation.",
+  "projects": [
+    {
+      "name": "Healthcare Agent Data Layer",
+      "path": "/projects/healthcare-agent-data-layer",
+      "relevance": "Two years of independent research into enterprise AI infrastructure for healthcare payer and provider workflows directly supports the thought leadership positioning and vertical expertise this role requires for Perplexity's healthcare GTM."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/ai-meeting-intelligence",
+      "relevance": "This multi-agent pipeline converting meeting recordings into structured deal intelligence in Notion demonstrates the kind of AI-powered sales enablement systems thinking a solutions PMM would apply to content production and pipeline attribution at scale."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility-intelligence",
+      "relevance": "A production hybrid-RAG system achieving 95% accuracy on a live healthcare billing workflow in two days shows the technical depth and vertical-specific domain knowledge that would make Dan's healthcare GTM content credible to enterprise buyers rather than generic."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

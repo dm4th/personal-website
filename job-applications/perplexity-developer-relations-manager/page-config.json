@@ -1,0 +1,182 @@
+{
+  "id": "1a6ea5d77bb4",
+  "company": "Perplexity",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128",
+  "role": "Developer Relations Manager - Perplexity API Platform",
+  "appliedDate": "2026-05",
+  "fitScore": 33,
+  "fitScoreNote": "My fit for this role is real but partial: I've built production RAG pipelines, LLM agent frameworks, and MCP-aware architectures from scratch, and I've spent years translating those systems into language that moves skeptical audiences from uncertain to committed. What I haven't done is point those skills outward at a developer community, and I want to be direct about that gap rather than paper over it. The structural motion of DevRel (get builders to trust a platform, activate them, close the feedback loop with engineering) is one I've run internally; this role would be the first time I run it externally, and Perplexity's API surface is the one I'd most want to build that public practice around.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 3,
+      "rationale": "Dan's career is built around pre-sales solutions engineering, enterprise deal management, and analytics — not Developer Relations. There is zero evidence of DevRel-specific work: no community management (Discord/forums/Reddit), no hackathon organization, no developer education content (tutorials, changelogs, SDK examples), no developer activation funnel ownership, and no conference representation as a technical evangelist. While Dan demonstrates strong technical-to-non-technical communication (his acknowledged superpower) and has shipped code with API integrations, these skills support a sales/GTM motion aimed at enterprise buyers, not a developer community motion aimed at builders. The role requires owning a developer community platform, writing Cookbook examples, running RAG/agent/MCP demos publicly, and building a developer activation funnel — none of which appear anywhere in his career history.",
+      "citations": [
+        "/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/career/smarter-technologies/shutdown-and-retention.md",
+        "/career/smarter-technologies/ai-se-platform.md",
+        "/career/thoughtful/solutions-architect.md",
+        "/career/fanduel/revenue-team.md"
+      ]
+    },
+    "seniority": {
+      "score": 2,
+      "rationale": "Dan has zero documented experience in Developer Relations, Developer Advocacy, or developer community management — none of the core requirements of this role. His ~8 years post-college span data analytics (FanDuel, Google, Action Network), solutions engineering/sales engineering (Thoughtful AI, Smarter Technologies), and TPM work in healthcare RCM, with no evidence of running hackathons, owning developer communities (Discord/Reddit/forums), writing developer-facing tutorials or changelogs, representing a company at technical conferences, managing SDK integrations for external developers, or building developer activation funnels. While he has genuine technical depth (Python, APIs, RAG pipelines, Claude SDK) and strong ownership instincts, that technical fluency is applied in a pre-sales/implementation context, not a developer-facing external evangelism context — which is what this role requires entirely.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 3,
+      "rationale": "Dan has strong Python/API integration skills and genuine hands-on AI/ML experience (RAG pipelines, LLM agent frameworks, Claude Code, OpenAI embeddings, MCP protocol awareness) that would satisfy the technical coding bar. However, there is zero evidence of Developer Relations, Developer Advocacy, community platform management (Discord/Reddit/forums), hackathon organization, SDK documentation authorship, technical tutorial writing for external audiences, or any developer-facing content strategy — the core job requirements. His career is entirely in analytics, sales engineering, and internal AI tooling, not external developer community work. The specific DevRel tools (n8n, developer activation funnels, conference speaking, Cookbook examples) are completely absent from his background.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/projects/personal-website/origins-and-virtual-assistant.md",
+        "/info/projects/healthcare-agent-data-layer/index.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 2,
+      "rationale": "This role requires 4+ years of dedicated Developer Relations or Developer Advocacy experience — owning developer communities (Discord, Reddit, forums), running hackathons, writing technical tutorials and cookbooks, and being the public face of an API platform to a developer/builder ICP. Dan's career is entirely in analytics, sales engineering, and healthcare RCM automation with no evidence of DevRel, developer community management, technical evangelism, or developer education work. While Dan has meaningful API integration experience and technical depth (FHIR, RAG pipelines, Python scripting), these are tools he uses as a practitioner, not skills deployed in service of a developer audience. The ICP here is software developers and technical builders — a buyer persona Dan has not sold to or built programs around at any point in his career.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/solutions-architect.md",
+        "about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan has lived in San Francisco's Richmond neighborhood since 2020 and explicitly describes it as 'more my pace,' making him a direct location match for this SF-based Perplexity role. He is demonstrably travel-tolerant, having run multi-day on-site discovery workshops at health systems in Philadelphia (Jefferson Health) and New Mexico (Presbyterian Health). The role lists no compensation band, security clearance, specific degree, visa, or language requirements that would create friction; the only minor uncertainty is that Perplexity may lean toward a fully in-office culture given its startup stage, but nothing in the JD mandates it.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/where-ive-lived/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md"
+      ]
+    }
+  },
+  "summary": [
+    "Built a production hybrid-RAG system for dental eligibility verification that hit 95% accuracy on a live billing workflow within 2 days, maintaining that threshold through dozens of evaluation cycles and edge-case expansions.",
+    "Designed and shipped a full-stack AI agent on the Anthropic SDK with tool use, streaming, RAG pipeline, and multiple LLM backends, demonstrating end-to-end ownership of the exact stack Perplexity's Cookbook examples would need to cover.",
+    "At Smarter Technologies, built an internal SE platform with slash-command AI skills, instrumented adoption across 15-20% of usages, and used structured feedback loops to iterate continuously, a motion structurally identical to developer activation and community management.",
+    "Spent 2 years independently designing an MCP-native enterprise AI infrastructure layer for healthcare payer/provider workflows, developing deep fluency in protocol design, FHIR-native agent architectures, and multi-provider LLM orchestration.",
+    "Delivered technical education to audiences ranging from operations teams to C-suite executives, including SQL courses, Apps Script training, and AI tool onboarding, consistently translating complex systems into frameworks that non-technical people could actually use."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/perplexity/bf58f336-d644-4679-a771-69db80c7694f",
+  "jobDescriptionText": "Developer Relations Manager - Perplexity API Platform\nCompany: Perplexity\nLocation: San Francisco\nDepartment: Go-to-Market / Developer Relations\n\nPerplexity's APIs power the AI behind every Samsung on-device experience — across one billion devices — and are trusted by a growing roster of Fortune 500s. We went from a single Sonar API to a full platform: Search API, Agent API, Embeddings, and more. That growth didn't happen by accident, and it isn't slowing down.\n\nWe're looking for the person who will own the next chapter: making Perplexity's API platform the default choice for developers building the next generation of AI-native products.\n\nWHAT YOU'LL OWN\n\nBE THE FACE OF PERPLEXITY'S API PLATFORM\n- Represent our APIs at conferences, hackathons, and developer meetups — not as a booth rep, but as a credible builder who has shipped with our stack.\n- Run workshops, AMAs, and webinars that go deep on the Search API, Agent API, Embeddings, and MCP server.\n- Amplify developer projects publicly — on X, Discord, Reddit, and wherever the best builders congregate.\n\nBUILD AND OPERATE THE COMMUNITY\n- Own our developer forum, Discord, and Reddit presence — triage, moderate, and make sure no high-signal question goes unanswered.\n- Organize hackathons and build nights. Handle everything from prize scoping and API credit grants to live event support and post-event ROI writeups.\n- Convert repeated questions and friction points into docs updates, Cookbook examples, and better onboarding — close the loop between community and product.\n\nSHIP DEVELOPER EDUCATION THAT ACTUALLY WORKS\n- Write tutorials, changelogs, and technical blog posts that developers forward to each other — not marketing copy dressed up as docs.\n- Build and maintain Cookbook examples: RAG pipelines, agent workflows, multi-provider SDK demos, n8n integrations, MCP starters — things developers can run on day one.\n- Coordinate launch content across docs, social, Discord, and forum so every API release lands consistently and builds momentum.\n\nTRANSLATE DEVELOPER SIGNAL INTO PRODUCT REALITY\n- Sit with developers to troubleshoot integrations — and synthesize those conversations into structured feedback for product and engineering.\n- Monitor the competitive landscape and surface differentiation opportunities for GTM and product teams.\n- Maintain the partner integration pipeline and help scale the Startups credits program beyond its current manual state.\n\nABOUT YOU\n- 4+ years in DevRel or Developer Advocacy with measurable results — you can name the campaigns and quote the outcomes.\n- You've shipped code. Comfortable with API integrations, SDKs, and modern web tooling. You can read a diff, write a working example, and spot when docs are wrong.\n- Exceptional communicator across formats — conference talk, changelog entry, Reddit reply — all in the same day.\n- Operationally sharp. You've managed community platforms, run event logistics, and kept multiple workstreams moving without things falling through the cracks.\n- Growth-minded. You connect every initiative to business impact and you've built or meaningfully improved a developer activation funnel.\n- Collaborative by default. You thrive at the intersection of product, engineering, and marketing — and you're comfortable pushing back when developer needs aren't being met.",
+  "strengths": [
+    {
+      "title": "Production AI builder who can read and write real code",
+      "description": "I've shipped RAG pipelines, LLM agent frameworks, MCP integrations, and multi-backend AI systems in production contexts, not just notebooks. My dental eligibility RAG system hit 95% accuracy within 2 days on a live billing workflow and held that threshold through continuous iteration. I can read a diff, spot when docs are wrong, and write a working Cookbook example from scratch because I've already built the underlying systems those examples describe.",
+      "citations": [
+        {
+          "label": "Dental Eligibility Intelligence project",
+          "path": "/projects/dental-eligibility-intelligence"
+        },
+        {
+          "label": "Personal Website Agent project",
+          "path": "/projects/personal-website-agent"
+        }
+      ]
+    },
+    {
+      "title": "Technical translator who moves skeptical audiences to action",
+      "description": "I've closed enterprise deals with skeptical CIOs by making complex AI architecture legible at a level of specificity that generic pitches can't match, and separately, I've turned non-technical sales reps into people who can run AI-powered meeting analysis on their own. Both require the same underlying skill: meeting someone where they are technically and giving them a model they can trust. That is the core motion of DevRel pointed at a developer audience, and it is the skill I've sharpened most consistently across my career.",
+      "citations": [
+        {
+          "label": "Thoughtful AI solutions engineering",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "Smarter Technologies SE platform",
+          "path": "/info/career/smarter-technologies"
+        }
+      ]
+    },
+    {
+      "title": "Feedback loop architect between users and product teams",
+      "description": "At Smarter Technologies, I didn't just ship internal tools: I instrumented adoption, collected structured feedback on 15-20% of usages, and routed that signal back to engineering in actionable formats. At Thoughtful AI, I built a multi-agent pipeline that turned meeting recordings into structured deal intelligence in Notion, with automated field-to-engineering feedback built into the workflow. Synthesizing practitioner signal and closing the loop with builders is something I've done by design, not by accident.",
+      "citations": [
+        {
+          "label": "AI Meeting Intelligence project",
+          "path": "/projects/ai-meeting-intelligence"
+        },
+        {
+          "label": "Smarter Technologies SE platform",
+          "path": "/info/career/smarter-technologies"
+        }
+      ]
+    },
+    {
+      "title": "Deep MCP and multi-provider LLM architecture fluency",
+      "description": "I've spent 2 years independently designing an MCP-native healthcare agent data layer, working through protocol design, FHIR-native agent architectures, and multi-provider LLM orchestration at an implementation level, not a research level. That means I can run workshops and AMAs on the Perplexity MCP server, Agent API, and Embeddings with the same specificity I brought to enterprise buyers who needed to understand implementation risk before signing. I've been living inside this stack long enough to know where the real friction points are.",
+      "citations": [
+        {
+          "label": "Healthcare Agent Data Layer project",
+          "path": "/projects/healthcare-agent-data-layer"
+        },
+        {
+          "label": "Smarter Technologies AI architecture",
+          "path": "/info/career/smarter-technologies"
+        }
+      ]
+    },
+    {
+      "title": "Natural educator with a track record of curriculum design",
+      "description": "I've designed and delivered technical education across SQL, Google Apps Script, and AI tooling to audiences ranging from front-line operations staff to C-suite executives. I write technical documentation at engineer-grade depth naturally: my Master Automation Plans at Thoughtful were essentially developer specifications used by engineering teams to scope and build production systems. The instinct to document, teach, and make complex systems accessible is not something I've had to develop; it runs through every role in my career.",
+      "citations": [
+        {
+          "label": "Thoughtful AI Master Automation Plans",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "Google and FanDuel analytics education",
+          "path": "/info/career/google"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No external developer community ownership or hackathon experience",
+      "description": "I haven't owned a Discord server, moderated a developer forum, or organized a public hackathon. My community-building experience is entirely internal.",
+      "mitigation": "I'd acknowledge this directly in any conversation with the team and point to the structural parallel: I built and operated an internal developer platform at Smarter Technologies, designed onboarding, packaged tools, measured adoption, and iterated on feedback. The motion of getting builders to trust a platform and actually use it is one I understand at an operational level. The external surface is new; the underlying mechanics are not. My first 30 days ask would be to shadow every community touchpoint before owning any of them, so I'm learning the specific culture and norms of Perplexity's developer community before I start making decisions that affect it."
+    },
+    {
+      "title": "No public-facing developer content or conference presence",
+      "description": "I haven't written tutorials, changelogs, or SDK examples for an external developer audience, and I haven't represented a company at a technical conference or given a developer-facing talk.",
+      "mitigation": "For the content gap, I'd propose something concrete immediately: give me a week with the Perplexity API and I'll ship a working demo (RAG pipeline, agent workflow, or MCP starter, whichever the team needs most) and write it up in a format developers can actually use. That closes the gap faster than any explanation. For the conference gap, I've delivered high-stakes technical presentations to CIOs and board members where the cost of losing credibility was a failed deal, not a bad rating on a speaker card. The credibility-building and real-time technical communication skills are there; I just haven't pointed them at a conference stage yet, and I'd treat booking a first speaking slot as a 60-day deliverable."
+    },
+    {
+      "title": "API integration experience is pre-sales and internal, not developer-education-facing",
+      "description": "My hands-on API work has been in service of enterprise deals or internal tooling, not writing public Cookbook examples or SDK demos that external developers run on day one.",
+      "mitigation": "The code I write is already at the level of specificity and correctness that Cookbook examples require: I document edge cases, instrument failure modes, and write for the person who will maintain the system after me. The gap is publishing externally and building a public voice, which I'd treat as the single highest-priority 90-day deliverable. I'd start by identifying the 3 highest-friction integration patterns in the existing community (from Discord and forum triage) and ship working examples for each one, with writeups, before the 90-day mark."
+    }
+  ],
+  "referralBlurb": "Dan Mathieson is applying for the Developer Relations Manager role at Perplexity, and I want to give you an honest picture of where he's exceptional and where the fit requires a bet.\n\nThe most compelling thing about Dan is that he builds real things and then explains them to people who need to trust them. He shipped a production RAG system that hit 95% accuracy on a live healthcare billing workflow within 2 days. He built a full-stack AI agent on the Anthropic SDK with tool use, streaming, and multiple LLM backends. He spent 2 years designing an MCP-native enterprise AI infrastructure layer from scratch. This is not a technical marketer who learned to say the right words: this is someone who has been living inside the exact stack Perplexity's API platform is built on, and who can write Cookbook examples and run technical workshops at the level of depth your developer community will actually demand.\n\nThe second thing that makes Dan unusual is his feedback loop instinct. At Smarter Technologies, he didn't just ship internal tools: he instrumented adoption, collected structured feedback on 15-20% of usages, and routed that signal back to engineering in structured formats. That is the core operational motion of DevRel. He's been running it internally for years.\n\nThe honest gap is that Dan has not owned a public developer community, organized a hackathon, or written tutorials for an external developer audience. He is direct about this and frames it correctly: the motion is familiar, the external surface is new. His ask is 90 days and the space to ship something real before you judge whether he belongs in the role.\n\nIf you have a candidate with 4 years of DevRel experience who can also build production RAG pipelines and explain MCP protocol design to a skeptical CIO, take that candidate. If you don't, Dan Mathieson is the strongest adjacent bet I've seen: deep technical credibility, a proven instinct for closing feedback loops, and the communication skill to meet developers exactly where they are. I'd recommend a conversation.",
+  "projects": [
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility-intelligence",
+      "relevance": "This production hybrid-RAG system demonstrates the exact kind of working, benchmarked implementation I would write as a Perplexity API Cookbook example: a real workflow, a measurable accuracy threshold, and the design decisions documented well enough for another developer to understand and extend it."
+    },
+    {
+      "name": "Personal Website Agent",
+      "path": "/projects/personal-website-agent",
+      "relevance": "This full-stack agent built on the Anthropic SDK with tool use, streaming, RAG pipeline, and multiple LLM backends is the closest analog to the multi-provider SDK demos and MCP starters the role requires me to ship for Perplexity's developer community."
+    },
+    {
+      "name": "Healthcare Agent Data Layer",
+      "path": "/projects/healthcare-agent-data-layer",
+      "relevance": "Two years of independent MCP-native architecture design gives me the protocol-level fluency to run credible workshops and AMAs on Perplexity's MCP server and Agent API, not as a marketer who learned the talking points, but as someone who has worked through the implementation tradeoffs firsthand."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

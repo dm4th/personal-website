@@ -1,0 +1,177 @@
+{
+  "id": "54be1040a2c4",
+  "company": "Perplexity",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128",
+  "role": "Enterprise Customer Success Manager",
+  "appliedDate": "2026-05",
+  "fitScore": 56,
+  "fitScoreNote": "I bring 8 years of enterprise client ownership experience including managing 61 simultaneous healthcare deals and running C-level architecture conversations with CIOs, which maps directly to the executive engagement and portfolio discipline this role requires. My title has been Solutions Architect and Director of Sales Engineering rather than CSM, but the functional work at Thoughtful AI included distressed account stabilization, value realization modeling, and building adoption dashboards that gave customers real-time health visibility before they asked for it. The deliberate gap is that I haven't owned formal churn targets or NRR quotas as primary job responsibilities, and I'd own that directly in any conversation with the hiring team.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 6,
+      "rationale": "Dan has strong overlap in enterprise deal management, executive-level stakeholder engagement, and client-facing technical communication — he managed 61 enterprise healthcare deals, ran C-level security and architecture walkthroughs, and drove onboarding-adjacent discovery engagements at scale. However, his core motion is pre-sales solutions engineering and technical delivery, not post-sale customer success ownership. The role requires owning retention, adoption metrics, and customer health tracking as primary responsibilities, which are adjacent to but distinct from Dan's day-to-day work history. No evidence of CRM proficiency, customer success platform tooling, or structured CS lifecycle management was found.",
+      "citations": [
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "seniority": {
+      "score": 7,
+      "rationale": "Dan has ~8 years of post-college experience and a strong track record of enterprise client ownership — managing 61 enterprise healthcare deals, $31.8M in active pipeline, and owning 63% of net new ARR at Thoughtful AI — with demonstrated C-level engagement, Salesforce CRM proficiency, and cross-functional collaboration. However, his background is primarily in Sales Engineering and Technical Product Management rather than Customer Success specifically; his focus has been pre-sale discovery and implementation scoping rather than post-sale retention, health monitoring, and expansion motions that define the CSM role. He meets the 5+ year threshold and enterprise client experience requirements comfortably, but the functional gap between SE/TPM and CSM is meaningful enough to knock one to two points off a perfect match.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/thoughtful/customer-engineer.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 3,
+      "rationale": "Dan's background is in data analytics, sales engineering (pre-sales), and technical implementation — not enterprise customer success. While he has Salesforce proficiency (building custom reports and dashboards at Smarter Technologies) and strong data/KPI work, his client-facing work has been framed as pre-sales discovery and delivery engineering, not post-sale account ownership, retention management, or structured CSM programs. His files explicitly note that at Thoughtful his role was 'not a customer success or advisory role' — he was a 'forward-deployed delivery engineer.' There is no evidence of managing a portfolio of enterprise accounts for retention/expansion, running formal onboarding or enablement programs, or operating within a CS function with churn and NRR targets.",
+      "citations": [
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "Perplexity is a horizontal AI company whose enterprise ICP spans virtually all industries — technology, finance, media, professional services — making vertical matching less relevant and ICP matching the operative lens. Dan has meaningful enterprise client engagement experience (61 enterprise healthcare deals, C-suite interactions with CIOs, executive-level documentation) and has used Salesforce for pipeline management, but his background is primarily in pre-sales SE and TPM roles rather than post-sale customer success. The role calls for driving onboarding, adoption, retention, and expansion for a general-purpose AI product across a broad enterprise buyer base — Dan has adjacent skills but has not held a dedicated CSM or account management title, and his enterprise engagement experience is concentrated in a single vertical (healthcare RCM) rather than the cross-industry portfolio Perplexity's CS team would manage.",
+      "citations": [
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "The role is based in San Francisco, an exact location match — Dan has lived there since January 2020 and is deeply rooted in the city. The JD states no salary band, clearance, degree, or language requirements, eliminating any hard blockers. The minor friction is that the role is an individual contributor Customer Success Manager position, which may sit slightly below the director/senior-IC compensation tier Dan would target, though Perplexity's enterprise compensation is generally competitive for SF market rates.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/where-ive-lived/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/google/index.md"
+      ]
+    }
+  },
+  "summary": [
+    "Managed 61 enterprise healthcare deals simultaneously representing $31.8M in active pipeline, building documentation and tracking systems so every account had clear current state and defined next actions at all times.",
+    "Accounted for 63% of Thoughtful AI's net new ARR during a 3x growth period by translating complex AI agent implementations into executive-facing ROI models that connected automation performance to revenue protection.",
+    "Stabilized multiple distressed enterprise accounts by identifying failure patterns early, building recovery plans with defined success metrics, and proactively sharing transparent progress data with skeptical C-level stakeholders before they requested it.",
+    "Achieved 96% proposal conversion rate across enterprise prospects by leading every engagement with workflow discovery before product positioning, consistently earning technical trust with CIOs and CFOs at major regional health systems.",
+    "Built customer-facing Quicksight analytics dashboards that gave enterprise clients real-time visibility into staff hours saved and denial reduction rates, creating the primary artifact used for both retention and expansion conversations."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/perplexity/9a570310-305d-4f4e-9807-b8862b31194b",
+  "jobDescriptionText": "Enterprise Customer Success Manager\nCompany: Perplexity\nLocation: San Francisco\nDepartment: Enterprise\n\nWe are looking for an experienced Enterprise Customer Success Manager to join our Enterprise team. In this crucial role, you'll be responsible for executing onboarding and adoption strategies through key client ownership across our Enterprise clientele. The ideal candidate will have a proven track record in tech of driving enterprise-level engagement, retention, and growth.\n\nYou will work closely with other members of the Enterprise team, making strong communication and collaboration skills vital. A core sense of conviction and a \"can-do\" attitude are prerequisites. Your success will play a crucial part in expanding Perplexity's market presence and contributing to the company's overall success.\n\nRESPONSIBILITIES\n- Execute the Enterprise customer success strategy developed by leadership\n- Serve as a primary point of contact for key enterprise clients\n- Drive initial enablement through high quality onboarding and training\n- Identify and support opportunities for growth and client expansion\n- Manage retention, working with clients to quantify value delivered\n- Advocate for client needs, and collaborate with cross-functional teams to drive product development\n- Monitor and report on established key performance indicators, analyze data to identify trends\n\nREQUIREMENTS\n- 5+ years experience in Customer Success or Account Management roles at scaling tech companies, specifically working with enterprise clients\n- Proven track record of driving enterprise-level satisfaction, growth, and retention\n- Excellent communication and presentation skills, with the ability to engage C-level executives\n- A self-starter by nature, comfortable dealing with ambiguity and juggling multiple initiatives.\n- Ability to work under pressure, thriving in demanding environments\n- Ability to work independently and as part of a collaborative team\n- Proficiency in CRM systems and customer success tools",
+  "strengths": [
+    {
+      "title": "Enterprise Portfolio Management at Genuine Scale",
+      "description": "I managed 61 enterprise healthcare deals simultaneously during a single high-growth period at Thoughtful AI, which required building a system where every account had complete documentation, clear ownership, and defined next actions so nothing fell through a crack. That volume is not a talking point for me: it forced me to develop the portfolio discipline that most CSMs build over years of smaller account work. I maintained Salesforce as the canonical pipeline record and built custom reports and dashboards tailored to each executive stakeholder's specific data needs.",
+      "citations": [
+        {
+          "label": "Thoughtful AI role context",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "Salesforce CRM proficiency",
+          "path": "/info/skills/crm"
+        }
+      ]
+    },
+    {
+      "title": "C-Level Executive Engagement in High-Stakes Technical Conversations",
+      "description": "I ran C-level security architecture walkthroughs with CIOs at major health systems, presenting complex AI integration designs to executives who were deeply skeptical of vendor claims and operating under strict compliance constraints. This wasn't a supporting role: I owned the room, the narrative, and the outcome. The 96% proposal conversion rate I achieved tells me that the instinct I bring to those conversations is calibrated correctly.",
+      "citations": [
+        {
+          "label": "Thoughtful AI enterprise engagement",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "Executive communication pattern",
+          "path": "/info/skills/communication"
+        }
+      ]
+    },
+    {
+      "title": "Distressed Account Recovery and Trust Rebuilding",
+      "description": "When multiple enterprise implementations at Thoughtful showed distress simultaneously, I volunteered to take on three times my standard load and stabilize those accounts. My approach was to show customers transparent progress data in real time via Quicksight dashboards, because rebuilding trust with a skeptical stakeholder requires putting data in front of them before they ask for it. That work is the hardest version of what a CSM does, and I've done it under pressure at scale.",
+      "citations": [
+        {
+          "label": "Thoughtful AI delivery and stabilization work",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    },
+    {
+      "title": "Value Realization Modeling That Connects Post-Sale Work to Retention",
+      "description": "I built a value realization model at Thoughtful that translated agent automation performance into an executive dashboard showing cumulative staff hours saved and revenue protected through reduced claim denials. It started as a retention tool for existing customers and became the primary artifact the sales team used to close new deals. That crossover is exactly the commercial leverage a high-performing CSM creates: post-sale success work that generates expansion and renewal momentum.",
+      "citations": [
+        {
+          "label": "Thoughtful AI ROI modeling and dashboards",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "ARR contribution and growth period",
+          "path": "/info/career/thoughtful-ai"
+        }
+      ]
+    },
+    {
+      "title": "Retained Through 85% Workforce Reduction for Enterprise AI Legibility",
+      "description": "When Smarter Technologies reduced its workforce by 85%, I was the only non-Product or Engineering person retained, and two separate organizations intervened specifically to keep me. The reason wasn't code or technical assets I owned: it was that I could take genuinely complex AI systems and make them legible to enterprise executives who needed to decide whether to trust them. That skill is the foundation of AI product adoption in a CSM role, and it's the hardest thing to teach.",
+      "citations": [
+        {
+          "label": "Smarter Technologies retention event",
+          "path": "/info/career/smarter-technologies"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No Formal CSM Title or Churn and NRR Quota Ownership",
+      "description": "I haven't held a role where churn targets, NRR quotas, or QBR cadences were my primary job responsibilities, and I won't pretend otherwise.",
+      "mitigation": "I'd walk directly into this gap and then describe the Thoughtful distressed account stabilization work in specific terms: I was measuring success against explicit health metrics, rebuilding trust with executives who had already lost confidence, and tracking recovery milestones the same way a CSM tracks customer health. I've lived the hard version of retention triage even without the title. What I need is the formal commercial ownership structure around it, which is exactly why I'm making this move deliberately."
+    },
+    {
+      "title": "Enterprise Experience Concentrated in a Single Vertical",
+      "description": "My client work has been almost entirely in healthcare RCM, whereas Perplexity's CSM would manage a cross-industry portfolio spanning tech, finance, media, and professional services.",
+      "mitigation": "The underlying skill is vertical-agnostic: I understand a customer's real workflow before I say anything about what the product can do. Healthcare was actually a harder testing ground than most because the buyers were highly regulated, deeply skeptical, and technically demanding. If I could earn trust with a CIO at a regional health system making decisions about AI touching billing infrastructure, I can earn it with a CFO at a media company evaluating an AI search product. The framework transfers."
+    },
+    {
+      "title": "No Experience with Dedicated Customer Success Platforms",
+      "description": "I haven't used Gainsight, Totango, ChurnZero, or any purpose-built CS platform, and I have no experience managing formal customer health scoring inside a CS ops infrastructure.",
+      "mitigation": "My health tracking lived in custom Notion databases, Salesforce dashboards, and Quicksight analytics I built myself. That means I understand the underlying data model and what good health metrics should actually capture: which signals predict churn, which ones predict expansion, and how to surface them for executives. Learning a purpose-built platform is a tool adoption problem, not a conceptual one, and I'd treat it exactly the way I'd want a customer to approach adopting Perplexity: get into the product immediately and use real work to learn it."
+    }
+  ],
+  "referralBlurb": "Dan Mathieson is one of the most compelling non-traditional CSM candidates I've seen for an enterprise AI role. His differentiator isn't a resume with the right title sequence: it's that he's already been doing the hardest parts of enterprise customer success work under conditions most CSMs never face.\n\nAt Thoughtful AI, Dan managed 61 enterprise healthcare accounts simultaneously, representing $31.8M in active pipeline, while personally accounting for 63% of the company's net new ARR during a 3x growth period. When multiple implementations went into distress at once, he volunteered to triple his load, stabilized those accounts using real-time Quicksight dashboards he built himself, and rebuilt trust with C-level stakeholders who had already become skeptical. That is retention work. He just did it without the formal title.\n\nHis C-suite engagement pattern is also worth naming directly. He ran security architecture walkthroughs with CIOs at major regional health systems, converted 96% of enterprise prospects to proposal stage within a month, and built the value realization model that started as a customer retention artifact and ended up as the primary close tool for the sales team. He understands how post-sale customer health connects to commercial expansion, and he's built the infrastructure to demonstrate it.\n\nThe honest gap is that he hasn't owned a churn target or NRR quota as a primary accountability, and his enterprise experience is concentrated in healthcare rather than a cross-industry portfolio. He knows this and names it directly rather than trying to paper over it, which is itself a signal worth weighing.\n\nWhat Perplexity would be getting is someone who has made complex AI products legible to skeptical enterprise executives under real commercial pressure, who has built portfolio management discipline at genuine scale, and who is making a deliberate move into formal CSM ownership because the work is already what he does. I'd recommend a conversation.",
+  "projects": [
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/ai-meeting-intelligence",
+      "relevance": "This multi-agent pipeline that converts meeting recordings into structured deal intelligence in Notion demonstrates exactly the kind of operational discipline a CSM needs: capturing customer signals systematically, routing insights to the right teams, and building institutional memory across a large account portfolio."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility-intelligence",
+      "relevance": "Achieving 95% accuracy on a live healthcare billing workflow within two days shows the speed-to-value delivery instinct that defines strong CSM onboarding work: getting a customer to a meaningful outcome fast enough that early skepticism doesn't have time to harden into churn."
+    },
+    {
+      "name": "Personal Website Agent",
+      "path": "/projects/personal-website-agent",
+      "relevance": "Building a full-stack AI agent with RAG, tool use, and multiple LLM backends to represent his own career demonstrates the hands-on AI fluency that makes a CSM credible when helping enterprise customers adopt and expand their use of a product like Perplexity."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

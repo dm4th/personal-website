@@ -1,82 +1,182 @@
 {
-  "id": "4e1f41e51649",
+  "id": "1c39fc1397d9",
   "company": "Perplexity",
   "companyLogoUrl": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128",
-  "role": "Product Manager, Builder",
+  "role": "Product Manager (Builder)",
   "appliedDate": "2026-05",
-  "fitScore": 52,
-  "fitScoreNote": "Strong on agentic AI systems and data flywheels; structural gap is no formal PM title at a consumer PLG company. The exercise submission is the X-factor.",
+  "fitScore": 62,
+  "fitScoreNote": "I've spent the last three years building production agentic AI systems with real eval infrastructure, designing feedback loops that connected user behavior directly to product iteration, and making nondeterministic AI legible to both engineers and executives - exactly the motion Perplexity describes for this role. My formal PM title history is shorter than the JD targets, but the substance of what I was doing as Lead TPM at Thoughtful - setting product direction, sequencing against user signal, measuring impact, and iterating under uncertainty - drove 63% of net new ARR and mirrors the core PM motion here. I'm a heavy daily user of Perplexity and agentic AI tools, I've built production systems on top of them, and I want to apply that same rigor to a product that's redefining how knowledge workers get things done.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 6,
+      "rationale": "Dan has strong overlap on several JD requirements: deep data/analytics background (FanDuel, Action Network, Google), hands-on building of data-driven feedback loops and dashboards, experience with nondeterministic AI systems (hybrid-RAG, eval engineering, determinism-as-design-principle at Thoughtful), and his core superpower of bridging technical concepts with non-technical stakeholders is extensively documented. However, this role is specifically a Product Manager role requiring 4+ years of formal PM experience with ownership over product vision, roadmap, and PLG/retention strategy — Dan's PM tenure was brief (~3 months as formal TPM before becoming a delivery/sales engineering leader), and his day-to-day motion has been pre-sales, solutions engineering, customer delivery, and analytics rather than owning a product from vision through growth metrics. The knowledge work and productivity software domain expertise Perplexity emphasizes is also largely absent from his background, which is rooted in healthcare RCM and sports media.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/career/fanduel/early-years.md",
+        "/info/career/thoughtful-day-in-the-life/the-article.md"
+      ]
+    },
+    "seniority": {
+      "score": 7,
+      "rationale": "Dan has ~8 years of post-college experience with strong end-to-end ownership in analytics, TPM, and sales engineering roles, meeting the 4+ year PM threshold and demonstrating data-driven product thinking, cross-functional leadership, and conviction-based decision-making. His Lead TPM role at Thoughtful shows direct product ownership (63% of net new ARR, leading FDEs, building eval frameworks for nondeterministic AI), and his healthcare agent data layer project shows genuine agentic AI product vision. However, his background is TPM and analytics rather than pure consumer/PLG product management, and he lacks direct experience with product-led growth loops, retention optimization, and the search/knowledge work domain that Perplexity's role centers on.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/projects/healthcare-agent-data-layer/index.md",
+        "/info/career/smarter-technologies/index.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 5,
+      "rationale": "Dan has strong adjacent credentials — deep enterprise domain expertise (healthcare AI, 61 enterprise deals), genuine hands-on AI/ML experience (hybrid-RAG systems, LLM agents, embedding models, multi-agent pipelines), and data analytics depth (SQL, cohort modeling, metrics frameworks at FanDuel/Google/Action Network). However, his title history is Solutions Architect, Customer Engineer, Lead TPM, and Director of Sales Engineering — not Product Manager. He has zero documented PM tenure against the 4+ year requirement, and no evidence of owning product vision, running user research, managing product roadmaps, or building product-led growth flywheels as a PM. The TPM role (lasting ~3 months before promotion) involved delivery and implementation judgment, not product strategy ownership. The technical AI understanding is genuinely strong, but the core PM experience gap is a hard structural miss for this role.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/thoughtful/dental-eligibility-intelligence.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/meeting-intelligence.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/about-me/career-metrics.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "Perplexity is a horizontal AI productivity platform targeting knowledge workers broadly — not a specific industry vertical — so this scores on ICP match. Dan's career has been almost entirely healthcare RCM automation and enterprise B2B sales engineering, with earlier roles in consumer sports analytics (FanDuel) and media affiliate analytics (Action Network). None of these map closely to Perplexity's core ICP of individual knowledge workers and prosumer/consumer AI users. Dan has genuine PM-adjacent experience (Lead TPM, product roadmap input, agentic AI system building) and has used and built agentic AI tools, but his buyer personas and product contexts are healthcare enterprise and vertical SaaS — not the horizontal productivity and search consumers Perplexity serves.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/fanduel/revenue-team.md",
+        "/info/career/action-network/first-year-post-ari.md",
+        "/info/projects/healthcare-agent-data-layer/index.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan is a current SF resident (Richmond neighborhood) with deep Bay Area roots since 2020, making the SF/Palo Alto office location a zero-friction match. The JD states no explicit travel requirement, no security clearance, no language requirement, and no compensation band that could create misalignment; Dan's baseline openness to hybrid/in-office arrangements aligns directly with Perplexity's known in-person culture. The only minor consideration is a potential Palo Alto commute, but that is a routine Bay Area scenario, not a meaningful blocker.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md",
+        "about-me/where-ive-lived/index.md",
+        "about-me/career-metrics.md",
+        "career/google/index.md",
+        "career/fanduel/early-years.md"
+      ]
+    }
+  },
+  "summary": [
+    "Built a hybrid-RAG dental eligibility system from prototype to 100% accuracy on a labeled holdout dataset in production, including embedding pipelines, vector retrieval, in-context learning, and regression tests I wrote myself.",
+    "Drove 63% of net new ARR as Lead TPM at Thoughtful AI by owning product direction, scope tradeoffs, and cross-functional delivery across 61 enterprise deals in a high-stakes healthcare AI environment.",
+    "Designed a pre/post tool-use hook feedback system at Smarter Technologies that logged every agent skill invocation, surfaced user ratings on 15-20% of uses, and fed directly into iteration cycles - a production data flywheel built from scratch.",
+    "Created the Value Clicks north star metric at Action Network from scratch, connecting editorial behavior to affiliate LTV, which directly reshaped roadmap priorities across both content and product teams.",
+    "Retained through an 85% company reduction as the only non-Product/Engineering person kept at Thoughtful AI, on the basis of my ability to make complex AI systems legible across technical and non-technical stakeholders simultaneously."
+  ],
   "jobDescriptionUrl": "https://jobs.ashbyhq.com/perplexity/f25e190e-0508-4707-b575-fcaed358dc13",
-  "jobDescriptionText": "Role: Product Manager (Builder)\nDepartment: Product Management\n\nPerplexity is looking for product managers to join a highly leveraged, small team for building new products that innovate to accelerate human productivity. In 2026, we launched Computer, the defining product for the new era of agentic AI. We've scaled beyond the millions of people using Perplexity every day for research, shopping, investing and curiosity into a new paradigm of using AI to transform knowledge into action.\n\nWhat you'll do\n- Anticipate opportunities for innovation and value in enterprise industries\n- Envision new experiences and deliver a long-term vision\n- Understanding of levers for product-led growth and retention\n- Work closely with engineering and design to align product expectations and capabilities\n- Work with research to evaluate and steer nondeterministic models into the high value outcomes for users\n- Work with data and user research to understand quantitative and qualitative data\n- Have conviction to make difficult product decisions in the face of uncertainty\n\nQualifications\n- Strong experience with product management and leadership\n- Strong experience working with data and metrics\n- Experience with productivity and knowledge work products\n- Experience with prototyping and data visualization\n- Experience with building data driven flywheels for iterative improvement\n- Thrives in a small, agile team: has initiative and desire for ownership\n- 4+ years of product management experience\n\nNote: In the application, please highlight which industry you are most interested in innovating.",
+  "jobDescriptionText": "Product Manager (Builder)\nCompany: Perplexity\nLocation: San Francisco / Palo Alto\nDepartment: Product Management\n\nPERPLEXITY IS LOOKING FOR PRODUCT MANAGERS TO JOIN A HIGHLY LEVERAGED, SMALL TEAM FOR BUILDING NEW PRODUCTS THAT INNOVATE TO ACCELERATE HUMAN PRODUCTIVITY.\n\nIn 2026, we launched Computer, the defining product for the new era of agentic AI. We've scaled beyond the millions of people using Perplexity every day for research, shopping, investing and curiosity into a new paradigm of using AI to transform knowledge into action.\n\nProduct managers at Perplexity work closely with design and engineering, focusing on the core Computer and search experience. The ideal candidate should have strong communication and writing skills, the ability to envision innovative technology, and willingness to reimagine work to be more efficient and creative. Ideal candidates have a passion in a particular industry that they are domain experts in: in the application please highlight which industry you are most interested in innovating.\n\nWHAT YOU'LL DO\n- Anticipate opportunities for innovation and value in enterprise industries.\n- Envision new experiences and deliver a long-term vision.\n- Understanding of levers for product-led growth and retention.\n- Work closely with engineering and design to align product expectations and capabilities.\n- Work with research to evaluate and steer nondeterministic models into the high value outcomes for users.\n- Work with data and user research to understand quantitative and qualitative data.\n- Have conviction to make difficult product decisions in the face of uncertainty.\n\nQUALIFICATIONS\n- Strong experience with product management and leadership.\n- Strong experience working with data and metrics.\n- Experience with productivity and knowledge work products.\n- Experience with prototyping and data visualization.\n- Experience with building data driven flywheels for iterative improvement.\n- Thrives in a small, agile team: has initiative and desire for ownership.\n- 4+ years of product management experience.",
   "strengths": [
     {
-      "title": "Production agentic AI systems with real financial stakes",
-      "description": "943 commits and 500 pull requests in 7 months at Smarter Technologies while managing $31.8M in active pipeline with two people. The platform enabling that scale was entirely self-built: 22 skills, 5 parallel agents, 57 Python integration scripts. Not a PM who hands specs to engineers. The person who builds the thing, then makes the next call about what to build.",
+      "title": "Production agentic AI systems with real eval infrastructure",
+      "description": "I built a hybrid-RAG eligibility intelligence system at Thoughtful that went from zero to 100% accuracy on a labeled holdout dataset - embedding training data, building vector similarity retrieval, writing regression tests, and designing for convergent determinism as human-verified outputs accumulated. This wasn't a demo or prototype: it ran live on healthcare billing workflows with direct financial consequences for every error. That end-to-end AI product cycle - from architecture to eval to production - is exactly what Perplexity describes in steering nondeterministic models toward high-value user outcomes.",
       "citations": [
         {
-          "label": "AI-SE Platform (Smarter Technologies)",
-          "path": "/info/career/smarter-technologies/ai-se-platform"
-        }
-      ]
-    },
-    {
-      "title": "Nondeterminism-as-a-design-parameter philosophy",
-      "description": "At Thoughtful I built a hybrid-RAG eligibility system that hit 95% accuracy within two days on a live billing workflow. The architecture was designed to converge toward determinism: as human-verified outputs accumulated, future identical cases bypassed the model entirely. Nondeterminism is a design parameter, not a property to tolerate. You decide where it is acceptable and engineer the boundary.",
-      "citations": [
-        {
-          "label": "Dental Eligibility Intelligence (Thoughtful AI)",
-          "path": "/info/career/thoughtful/dental-eligibility-intelligence"
-        }
-      ]
-    },
-    {
-      "title": "Data flywheel with hooks-based usage tracking",
-      "description": "Built a hooks-based usage tracking system on top of the agent platform deployed to my sales team. Every skill invocation was logged. On 15-20% of usages the system prompted for feedback: thumbs up, down, or a written note. A cluster of thumbs-down on the pricing skill with notes about missing EHR context told me exactly what to fix. Same instinct at Action Network: built the tracking pipeline that identified the highest-LTV funnel and created Value Clicks as the north star metric.",
-      "citations": [
-        {
-          "label": "AI-SE Platform (Smarter Technologies)",
-          "path": "/info/career/smarter-technologies/ai-se-platform"
+          "label": "Dental Eligibility Intelligence project",
+          "path": "/projects/dental-eligibility-intelligence"
         },
         {
-          "label": "Action Network: Year Two",
-          "path": "/info/career/action-network/year-two-and-departure"
+          "label": "Thoughtful AI role",
+          "path": "/info/career/thoughtful-ai"
         }
       ]
     },
     {
-      "title": "Exercise submission: pitched Perplexity on building the healthcare agent data layer",
-      "description": "Did not teach a hobby topic. Used Perplexity to argue that Perplexity should build the MCP-native healthcare agent data layer, backed by investor and partner memos. Spent two years building exactly the systems that make that argument non-obvious. The thesis is not something I read about. It is something I have been building toward.",
+      "title": "Principled framework for building on nondeterministic AI",
+      "description": "I developed a design principle I called determinism-as-a-goal: use AI where genuine inference adds value, and write deterministic code everywhere else. This tradeoff framework - knowing when not to use a model - emerged from building real agentic systems where unpredictable outputs had financial consequences, and it became the architectural spine of every AI product decision I made at Thoughtful. Perplexity is doing the hardest version of this problem at scale, and I'd bring that same tradeoff discipline to every feature decision on the Computer and search roadmap.",
       "citations": [
         {
-          "label": "Healthcare Agent Data Layer",
-          "path": "/info/projects/healthcare-agent-data-layer"
+          "label": "Thoughtful AI TPM role",
+          "path": "/info/career/thoughtful-ai"
+        },
+        {
+          "label": "Dental Eligibility Intelligence",
+          "path": "/projects/dental-eligibility-intelligence"
+        }
+      ]
+    },
+    {
+      "title": "Data-driven product feedback loops built from scratch",
+      "description": "At Smarter Technologies I built a pre/post tool-use hook system that logged every agent skill invocation and surfaced user ratings on 15-20% of uses - not a third-party analytics integration, but a purpose-built feedback flywheel wired directly into the product. A cluster of thumbs-down responses on a specific skill told me exactly what to fix and why, shortening iteration cycles meaningfully. At Action Network I did the same thing at the metric layer - designing the Value Clicks model that connected editorial actions to affiliate LTV and became the north star that realigned both content and product roadmap priorities.",
+      "citations": [
+        {
+          "label": "Smarter Technologies role",
+          "path": "/info/career/smarter-technologies"
+        },
+        {
+          "label": "Action Network analytics work",
+          "path": "/info/career/action-network"
+        }
+      ]
+    },
+    {
+      "title": "Deep analytics background with genuine product impact",
+      "description": "My analytics work at FanDuel, Google, and Action Network wasn't reporting - it was cohort modeling, LTV frameworks, north star metric design, and cross-functional alignment around data that moved product decisions. At FanDuel I built the models that shaped acquisition and retention strategy for a consumer product at scale. At Action Network I connected in-product behavioral signals to downstream revenue, which is the same analytical motion I'd want to run at Perplexity: find the number that actually predicts the outcome you care about, then build the instrumentation to track it.",
+      "citations": [
+        {
+          "label": "FanDuel analytics role",
+          "path": "/info/career/fanduel"
+        },
+        {
+          "label": "Action Network analytics role",
+          "path": "/info/career/action-network"
+        }
+      ]
+    },
+    {
+      "title": "Cross-functional conviction under uncertainty at the product layer",
+      "description": "As Lead TPM at Thoughtful I was regularly in rooms with C-suite executives and senior engineers simultaneously, making scope tradeoffs and communicating them with enough clarity and conviction that both groups aligned and moved. I was retained through an 85% company reduction as the only non-Product/Engineering person kept - specifically because I could hold product judgment and technical communication together under pressure. That combination - making hard calls in the face of uncertainty, then making them legible to everyone who needs to act on them - is the core of what Perplexity is asking for here.",
+      "citations": [
+        {
+          "label": "Thoughtful AI Lead TPM role",
+          "path": "/info/career/thoughtful-ai"
         }
       ]
     }
   ],
   "weaknesses": [
     {
-      "title": "No formal PM title at a consumer product company",
-      "description": "PM title is short in history. PLG at Perplexity's scale (self-serve SaaS growth mechanics) is undocumented experience. All AI product work is enterprise automation.",
-      "mitigation": "Promoted to Lead TPM at Thoughtful in 3 months because I was already making build/don't-build calls before the title reflected it. During that window, implementations drove 63% of net new ARR during a 3x growth year. The title was the formalization. The work was already happening."
+      "title": "Limited formal PM title history against a 4+ year requirement",
+      "description": "My formal Product Manager tenure was brief - roughly three months as TPM before moving into a delivery and sales engineering leadership track - which creates a real structural gap against the JD's 4+ year PM experience requirement.",
+      "mitigation": "The substance of what Perplexity needs a PM to do - define what to build, sequence it against user signal, make tradeoffs under uncertainty, measure impact, and iterate - is exactly what I was executing as Lead TPM at Thoughtful. I drove 63% of net new ARR through those judgment calls, owned the product direction for a live agentic AI platform, and made scope decisions that affected both engineering velocity and customer outcomes. The title was different; the motion was the same. I'd also point to my Healthcare Agent Data Layer research project as two years of independent product vision work in the agentic AI space, done outside any formal role."
     },
     {
-      "title": "Consumer PLG at scale",
-      "description": "Consumer product analytics work was at Action Network and FanDuel: built the LTV models and identified the funnel, but was not the PM making the feature calls.",
-      "mitigation": "Would be learning Perplexity's specific growth mechanics while contributing on the agentic AI and enterprise sides where I have genuine depth."
+      "title": "Domain background is healthcare and sports media, not knowledge work productivity",
+      "description": "Almost all of my professional context is healthcare RCM automation and enterprise B2B sales engineering, with earlier work in consumer sports analytics - none of which maps directly to Perplexity's core ICP of knowledge workers and prosumer AI users.",
+      "mitigation": "I'm an extremely heavy daily user of the exact category Perplexity is building for - I've built my own personal operating system in Notion, I use agentic AI as my primary work interface, and the agent infrastructure I built at Smarter Technologies was fundamentally a knowledge work productivity problem at its core. The healthcare framing was the customer context; the underlying design challenge - helping people offload cognitive work to AI agents reliably - is identical to what Perplexity is solving. I understand this user because I am this user, and I've been building tools for myself in this space for two years independently."
+    },
+    {
+      "title": "No direct consumer-scale PLG funnel or retention optimization experience",
+      "description": "I haven't owned PLG loops or retention metrics for a horizontal consumer or prosumer SaaS product - my growth and retention work has been in enterprise B2B and media affiliate contexts, not self-serve consumer funnels.",
+      "mitigation": "At Action Network I built the model that mapped in-product behavioral signals to predicted affiliate LTV, identified the highest-converting funnel path through the content experience, and watched it directly reshape roadmap priorities. That's the same analytical motion - connecting activation behavior to downstream retention and revenue - just applied to a different audience. At FanDuel I worked on acquisition and retention modeling for a consumer product at meaningful scale. I'd need to apply that framework to a horizontal prosumer product, which I'm confident I can do quickly given the underlying analytical mechanics are ones I've executed before."
     }
   ],
-  "referralBlurb": "I'm referring Dan Mathieson for the Product Manager, Builder role. Dan is the unusual case of someone who both builds production AI systems and makes product decisions about them. At Smarter Technologies he shipped 943 commits in 7 months building a 22-skill agentic platform that ran live on $31.8M in pipeline, with hooks-based usage tracking and a data flywheel for iterative improvement. For the application exercise, he used Perplexity itself to argue that Perplexity should build the MCP-native healthcare agent data layer, backed by investor memos and two years of domain work. That kind of conviction and initiative is what the role is looking for.",
+  "referralBlurb": "Dan Mathieson is one of the rare candidates who has actually built production agentic AI systems from the ground up - not managed vendors, not scoped prototypes, but written the embedding pipelines, vector retrieval logic, eval frameworks, and regression tests himself, then shipped them into live workflows with real financial consequences. That hands-on depth, combined with his ability to make those systems legible to C-suite executives and non-technical customers simultaneously, is the differentiator I'd lead with for this role.\n\nAt Thoughtful AI, Dan drove 63% of net new ARR as Lead TPM by owning product direction for a live healthcare AI platform, making scope tradeoffs under uncertainty, and building the eval infrastructure that moved a hybrid-RAG system from prototype to 100% accuracy on a labeled holdout dataset. He was retained through an 85% company reduction as the only non-Product/Engineering person kept - a clear signal about where leadership placed his product judgment relative to pure technical or sales profiles.\n\nHis analytics background is genuine product analytics depth: cohort modeling and LTV frameworks at FanDuel, north star metric design at Action Network (where his Value Clicks model realigned both content and product roadmap priorities), and a pre/post tool-use hook feedback system at Smarter Technologies that logged every agent skill invocation and surfaced user ratings on 15-20% of uses. He builds data flywheels; he doesn't just consume them.\n\nHis formal PM title history is shorter than the JD targets, and his domain background is healthcare and sports media rather than horizontal productivity software. Both are real gaps worth probing. But the core PM motion Perplexity is hiring for - define what to build, sequence against user signal, make hard calls under uncertainty, measure impact - is exactly what Dan was executing in practice. He's also a power user of Perplexity and agentic AI tools daily, with two years of independent research into the agentic AI infrastructure layer.\n\nFor a team that prizes builders who can operate at both the product and technical layer simultaneously, Dan is worth a conversation.",
   "projects": [
     {
-      "name": "Notion Meeting Intelligence",
-      "path": "/projects/notion-meeting-intelligence",
-      "relevance": "Knowledge work tool that turns meeting recordings into structured deal intelligence, the same core problem Perplexity solves for knowledge workers."
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility-intelligence",
+      "relevance": "This is my most direct proof point for the JD requirement of steering nondeterministic models toward high-value outcomes: a production hybrid-RAG system I architected end-to-end, including eval framework and regression tests, that reached 100% accuracy on a labeled holdout dataset in a live high-stakes workflow."
     },
     {
-      "name": "Dental Eligibility Intelligence",
-      "path": "/projects/dental-eligibility",
-      "relevance": "Production hybrid-RAG system designed for convergent determinism, directly relevant to Perplexity's core challenge of making nondeterministic AI reliably useful."
+      "name": "Personal Website Agent",
+      "path": "/projects/personal-website-agent",
+      "relevance": "This demonstrates my ability to build full-stack agentic systems with tool use, RAG pipelines, streaming, and multiple LLM backends - the hands-on technical range Perplexity values in a PM who can prototype and work fluently alongside engineering."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/ai-meeting-intelligence",
+      "relevance": "This multi-agent pipeline that converts meeting recordings into structured Notion deal intelligence - with automated field-to-engineering feedback - is a direct example of building a data-driven product flywheel for iterative improvement, one of the core JD qualifications."
     }
   ],
   "applicationQuestions": [],
