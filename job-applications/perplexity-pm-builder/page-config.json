@@ -5,7 +5,7 @@
   "role": "Product Manager (Builder)",
   "appliedDate": "2026-05",
   "fitScore": 62,
-  "fitScoreNote": "I've spent the last three years building production agentic AI systems with real eval infrastructure, designing feedback loops that connected user behavior directly to product iteration, and making nondeterministic AI legible to both engineers and executives - exactly the motion Perplexity describes for this role. My formal PM title history is shorter than the JD targets, but the substance of what I was doing as Lead TPM at Thoughtful - setting product direction, sequencing against user signal, measuring impact, and iterating under uncertainty - drove 63% of net new ARR and mirrors the core PM motion here. I'm a heavy daily user of Perplexity and agentic AI tools, I've built production systems on top of them, and I want to apply that same rigor to a product that's redefining how knowledge workers get things done.",
+  "fitScoreNote": "The JD asks candidates to highlight which industry they are most interested in innovating. For my application exercise, I didn't write about a hobby - I used Perplexity itself to argue that Perplexity should build the MCP-native healthcare agent data layer, backed by investor and partner memos I wrote over two years of independent research. I've spent three years building production agentic AI systems with real eval infrastructure, designing feedback loops that fed directly into product iteration, and making nondeterministic AI legible to both engineers and executives. My formal PM title is shorter than the JD targets, but the substance - owning product direction, sequencing against user signal, making tradeoffs under uncertainty - drove 63% of net new ARR as Lead TPM. The thesis I submitted is not something I read about. It is something I have been building toward.",
   "dimensions": {
     "coreJobFunction": {
       "score": 6,
@@ -78,6 +78,16 @@
   "jobDescriptionText": "Product Manager (Builder)\nCompany: Perplexity\nLocation: San Francisco / Palo Alto\nDepartment: Product Management\n\nPERPLEXITY IS LOOKING FOR PRODUCT MANAGERS TO JOIN A HIGHLY LEVERAGED, SMALL TEAM FOR BUILDING NEW PRODUCTS THAT INNOVATE TO ACCELERATE HUMAN PRODUCTIVITY.\n\nIn 2026, we launched Computer, the defining product for the new era of agentic AI. We've scaled beyond the millions of people using Perplexity every day for research, shopping, investing and curiosity into a new paradigm of using AI to transform knowledge into action.\n\nProduct managers at Perplexity work closely with design and engineering, focusing on the core Computer and search experience. The ideal candidate should have strong communication and writing skills, the ability to envision innovative technology, and willingness to reimagine work to be more efficient and creative. Ideal candidates have a passion in a particular industry that they are domain experts in: in the application please highlight which industry you are most interested in innovating.\n\nWHAT YOU'LL DO\n- Anticipate opportunities for innovation and value in enterprise industries.\n- Envision new experiences and deliver a long-term vision.\n- Understanding of levers for product-led growth and retention.\n- Work closely with engineering and design to align product expectations and capabilities.\n- Work with research to evaluate and steer nondeterministic models into the high value outcomes for users.\n- Work with data and user research to understand quantitative and qualitative data.\n- Have conviction to make difficult product decisions in the face of uncertainty.\n\nQUALIFICATIONS\n- Strong experience with product management and leadership.\n- Strong experience working with data and metrics.\n- Experience with productivity and knowledge work products.\n- Experience with prototyping and data visualization.\n- Experience with building data driven flywheels for iterative improvement.\n- Thrives in a small, agile team: has initiative and desire for ownership.\n- 4+ years of product management experience.",
   "strengths": [
     {
+      "title": "Used Perplexity to pitch Perplexity: the healthcare agent data layer thesis",
+      "description": "For the application exercise, I didn't teach a hobby topic. I used Perplexity itself to argue that Perplexity should build the MCP-native healthcare agent data layer - an architecture that makes clinical data accessible to AI agents across payer and provider workflows without requiring custom integrations for every data source. The thesis was backed by investor and partner memos I had been developing for two years. This is the industry I know deeply, the product gap I can articulate from the ground up, and the exact kind of domain-expert conviction the JD is asking for when it says 'highlight which industry you are most interested in innovating.'",
+      "citations": [
+        {
+          "label": "Healthcare Agent Data Layer",
+          "path": "/info/projects/healthcare-agent-data-layer"
+        }
+      ]
+    },
+    {
       "title": "Production agentic AI systems with real eval infrastructure",
       "description": "I built a hybrid-RAG eligibility intelligence system at Thoughtful that went from zero to 100% accuracy on a labeled holdout dataset - embedding training data, building vector similarity retrieval, writing regression tests, and designing for convergent determinism as human-verified outputs accumulated. This wasn't a demo or prototype: it ran live on healthcare billing workflows with direct financial consequences for every error. That end-to-end AI product cycle - from architecture to eval to production - is exactly what Perplexity describes in steering nondeterministic models toward high-value user outcomes.",
       "citations": [
@@ -132,16 +142,6 @@
           "path": "/info/career/action-network"
         }
       ]
-    },
-    {
-      "title": "Cross-functional conviction under uncertainty at the product layer",
-      "description": "As Lead TPM at Thoughtful I was regularly in rooms with C-suite executives and senior engineers simultaneously, making scope tradeoffs and communicating them with enough clarity and conviction that both groups aligned and moved. I was retained through an 85% company reduction as the only non-Product/Engineering person kept - specifically because I could hold product judgment and technical communication together under pressure. That combination - making hard calls in the face of uncertainty, then making them legible to everyone who needs to act on them - is the core of what Perplexity is asking for here.",
-      "citations": [
-        {
-          "label": "Thoughtful AI Lead TPM role",
-          "path": "/info/career/thoughtful-ai"
-        }
-      ]
     }
   ],
   "weaknesses": [
@@ -161,22 +161,22 @@
       "mitigation": "At Action Network I built the model that mapped in-product behavioral signals to predicted affiliate LTV, identified the highest-converting funnel path through the content experience, and watched it directly reshape roadmap priorities. That's the same analytical motion - connecting activation behavior to downstream retention and revenue - just applied to a different audience. At FanDuel I worked on acquisition and retention modeling for a consumer product at meaningful scale. I'd need to apply that framework to a horizontal prosumer product, which I'm confident I can do quickly given the underlying analytical mechanics are ones I've executed before."
     }
   ],
-  "referralBlurb": "Dan Mathieson is one of the rare candidates who has actually built production agentic AI systems from the ground up - not managed vendors, not scoped prototypes, but written the embedding pipelines, vector retrieval logic, eval frameworks, and regression tests himself, then shipped them into live workflows with real financial consequences. That hands-on depth, combined with his ability to make those systems legible to C-suite executives and non-technical customers simultaneously, is the differentiator I'd lead with for this role.\n\nAt Thoughtful AI, Dan drove 63% of net new ARR as Lead TPM by owning product direction for a live healthcare AI platform, making scope tradeoffs under uncertainty, and building the eval infrastructure that moved a hybrid-RAG system from prototype to 100% accuracy on a labeled holdout dataset. He was retained through an 85% company reduction as the only non-Product/Engineering person kept - a clear signal about where leadership placed his product judgment relative to pure technical or sales profiles.\n\nHis analytics background is genuine product analytics depth: cohort modeling and LTV frameworks at FanDuel, north star metric design at Action Network (where his Value Clicks model realigned both content and product roadmap priorities), and a pre/post tool-use hook feedback system at Smarter Technologies that logged every agent skill invocation and surfaced user ratings on 15-20% of uses. He builds data flywheels; he doesn't just consume them.\n\nHis formal PM title history is shorter than the JD targets, and his domain background is healthcare and sports media rather than horizontal productivity software. Both are real gaps worth probing. But the core PM motion Perplexity is hiring for - define what to build, sequence against user signal, make hard calls under uncertainty, measure impact - is exactly what Dan was executing in practice. He's also a power user of Perplexity and agentic AI tools daily, with two years of independent research into the agentic AI infrastructure layer.\n\nFor a team that prizes builders who can operate at both the product and technical layer simultaneously, Dan is worth a conversation.",
+  "referralBlurb": "For his application exercise, Dan didn't teach a hobby topic. He used Perplexity to argue that Perplexity should build the MCP-native healthcare agent data layer - an architecture connecting clinical data to AI agents across payer and provider workflows - backed by investor and partner memos he'd been developing for two years. That kind of conviction, applied to a real product gap in a domain he genuinely knows, is what the JD is asking for when it says candidates should highlight which industry they want to innovate in. He had the answer before the question was asked.\n\nBeyond the exercise: Dan has actually built production agentic AI systems from the ground up - not managed vendors, not scoped prototypes, but written the embedding pipelines, vector retrieval logic, eval frameworks, and regression tests himself, then shipped them into live workflows with real financial consequences. At Thoughtful AI he drove 63% of net new ARR as Lead TPM by owning product direction for a live healthcare AI platform and moving a hybrid-RAG system from prototype to 100% accuracy on a labeled holdout dataset. He was retained through an 85% company reduction as the only non-Product/Engineering person kept - a clear signal about where leadership placed his product judgment.\n\nHis analytics work is genuine product depth: LTV and cohort modeling at FanDuel, north star metric design at Action Network (his Value Clicks model realigned both content and product roadmap priorities), and a pre/post tool-use hook feedback system at Smarter Technologies that logged every agent skill invocation and surfaced user ratings on 15-20% of uses. He builds data flywheels; he doesn't just consume them.\n\nHis formal PM title history is shorter than the JD targets and his domain background is healthcare rather than horizontal productivity software - both real gaps worth probing. But the PM motion Perplexity is hiring for - define what to build, sequence against user signal, make hard calls under uncertainty, measure impact - is what Dan was executing in practice. For a team that values builders who operate at both the product and technical layer, he's worth a conversation.",
   "projects": [
     {
-      "name": "Dental Eligibility Intelligence",
-      "path": "/projects/dental-eligibility-intelligence",
-      "relevance": "This is my most direct proof point for the JD requirement of steering nondeterministic models toward high-value outcomes: a production hybrid-RAG system I architected end-to-end, including eval framework and regression tests, that reached 100% accuracy on a labeled holdout dataset in a live high-stakes workflow."
+      "name": "Healthcare Agent Data Layer",
+      "path": "/projects/healthcare-agent-data-layer",
+      "relevance": "Two years of independent research into the MCP-native healthcare agent data layer - the product thesis I submitted as my application exercise, arguing that Perplexity should build the integration layer that makes clinical data accessible to AI agents across payer and provider workflows. This is the industry I know, the gap I can articulate precisely, and the product conviction the JD is asking for."
     },
     {
-      "name": "Personal Website Agent",
-      "path": "/projects/personal-website-agent",
-      "relevance": "This demonstrates my ability to build full-stack agentic systems with tool use, RAG pipelines, streaming, and multiple LLM backends - the hands-on technical range Perplexity values in a PM who can prototype and work fluently alongside engineering."
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production hybrid-RAG system that reached 100% accuracy on a labeled holdout dataset in a live healthcare billing workflow - direct evidence of steering nondeterministic models toward high-value, reliable outcomes, which is the core technical PM challenge at Perplexity."
     },
     {
       "name": "AI Meeting Intelligence",
-      "path": "/projects/ai-meeting-intelligence",
-      "relevance": "This multi-agent pipeline that converts meeting recordings into structured Notion deal intelligence - with automated field-to-engineering feedback - is a direct example of building a data-driven product flywheel for iterative improvement, one of the core JD qualifications."
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Multi-agent pipeline that converts meeting recordings into structured deal intelligence with an automated feedback loop - a working data-driven product flywheel built from scratch, matching the JD qualification directly."
     }
   ],
   "applicationQuestions": [],
