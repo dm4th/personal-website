@@ -37,9 +37,21 @@ ANTHROPIC_API_KEY=$(grep ANTHROPIC_API_KEY .env.local | cut -d= -f2) \
 
 ### Step 1.3 — Present results
 
-Show the user:
+Show the user a clean formatted summary:
 
-- **Score**: X/100 with a one-line interpretation (strong/good/partial match)
+**Score: X/100** (one-line interpretation: strong/good/partial/weak match)
+
+| Dimension           | Score | Weighted  |
+|---------------------|-------|-----------|
+| Core job function   |  X/10 |   Y/30    |
+| Seniority           |  X/10 |   Y/20    |
+| Technical skills    |  X/10 |   Y/25    |
+| Industry/vertical   |  X/10 |   Y/15    |
+| Logistics           |  X/10 |   Y/10    |
+
+For each dimension, add one sentence of rationale below the table (the `rationale` field from the output).
+
+Then:
 - **Strengths**: Numbered list, one line each, with the evidence file cited
 - **Gaps**: Numbered list, one line each
 
@@ -49,7 +61,7 @@ Do not show the raw JSON. Format it cleanly for a human.
 
 ## Phase 2: Gap-Filling Loop
 
-For each gap where the score impact is meaningful (>2 points) and where real experience might exist but isn't documented, ask a targeted question.
+Focus on the lowest-scoring dimensions first. For each dimension where the score is 6/10 or below, and where real experience might exist but isn't documented, ask a targeted question. Immediately call out logistics and seniority gaps as structural (cannot be closed with content) rather than asking about them.
 
 ### How to ask good gap questions
 
@@ -59,10 +71,10 @@ For each gap where the score impact is meaningful (>2 points) and where real exp
 - Ask one gap at a time, not all at once. Wait for the answer before asking the next.
 
 Example format:
-> **Gap 2 of 3 — Customer-facing POC building during discovery (+3-4 pts)**
-> The JD asks for someone who can "build or contribute to live POCs when needed" during a customer engagement. The pipeline sees demos and internal tools but not prototype-on-demand work built specifically to answer a prospect's technical question.
+> **Technical Skills — 6/10 (+3-4 pts potential)**
+> The JD asks for hands-on Python and SQL experience, and the pipeline scored this dimension lower because the career files show data analysis work but not explicit Python production code. The technical skills dimension is the highest-weighted area after core function.
 >
-> Have you ever built something quick and specific — a script, a data analysis, a working prototype — during or because of a discovery conversation, specifically to prove feasibility or close a deal? Even a "I pulled their data and showed them a projection in two days" counts.
+> Have you written Python beyond analysis scripts — production pipelines, automation tooling, API integrations? Even "I built the backend ingestion script for the eligibility pipeline" counts and would move this score significantly.
 
 ### When the user provides an answer
 
@@ -74,9 +86,11 @@ Example format:
 
 ### Re-run after each meaningful update
 
-After 2-3 file updates (or whenever the user provides a significant new anecdote), re-run the analysis script and show the new score delta:
+After 2-3 file updates (or whenever the user provides a significant new anecdote), re-run the analysis script and show both the total delta and the per-dimension changes:
 
-> Score: 72 → 78 (+6 pts). Here is what moved...
+> Score: 72 → 78 (+6 pts)
+> Technical Skills: 6/10 → 8/10 (+5 pts weighted)
+> Core function: unchanged at 9/10
 
 ### Loop exit conditions
 

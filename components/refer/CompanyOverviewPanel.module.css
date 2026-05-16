@@ -1,0 +1,307 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Section header row ──────────────────────────── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+}
+
+.sectionLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.aiTag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, #a78bfa 12%, transparent);
+  color: #a78bfa;
+  border: 1px solid color-mix(in srgb, #a78bfa 30%, transparent);
+  flex-shrink: 0;
+}
+
+.danTag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
+  flex-shrink: 0;
+}
+
+/* ── Main panel box ───────────────────────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* ── Chart row (bottom): ring + radar side-by-side ── */
+.chartRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  padding: 1.375rem 1.5rem;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+
+.ringSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.wheelMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.wheelScore {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.wheelScoreDenom {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.wheelRoleLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.wheelAttrib {
+  font-size: 0.625rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.radarSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noDimensions {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ── Role list (top) ──────────────────────────────── */
+.roleList {
+  display: flex;
+  flex-direction: column;
+  padding: 1.125rem 0 0;
+}
+
+.listHeading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.625rem;
+  padding: 0 1.125rem;
+}
+
+.roleItem {
+  border-top: 1px solid var(--border);
+  transition: background 0.12s;
+}
+
+.roleItemSelected {
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  border-left: 3px solid var(--accent);
+}
+
+.roleButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 1.125rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.roleItemSelected .roleButton {
+  padding-left: calc(1.125rem - 3px);
+}
+
+.roleButton:hover {
+  background: color-mix(in srgb, var(--border) 40%, transparent);
+}
+
+.roleTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--subtle);
+  line-height: 1.35;
+  flex: 1;
+}
+
+.roleItemSelected .roleTitle {
+  color: #fff;
+  font-weight: 600;
+}
+
+.roleScore {
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.roleExpanded {
+  padding: 0 1rem 0.875rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.roleItemSelected .roleExpanded {
+  padding-left: calc(1.125rem - 3px);
+}
+
+.roleNote {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.roleLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s;
+  width: fit-content;
+}
+
+.roleLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Scoring methodology note ─────────────────────── */
+.methodologyNote {
+  margin-top: 1rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.methodologyText {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Personal note (Why Company) ─────────────────── */
+.personalSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.personalCard {
+  position: relative;
+  padding: 1.125rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.personalNote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.personalPara {
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.copyButton {
+  align-self: flex-end;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.copyButton:hover {
+  color: var(--subtle);
+  border-color: var(--subtle);
+}
+
+/* ── Mobile ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .chartRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ringSection {
+    justify-content: center;
+  }
+
+  .radarSection {
+    justify-content: center;
+  }
+}

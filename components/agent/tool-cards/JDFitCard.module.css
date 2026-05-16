@@ -31,6 +31,18 @@
   text-overflow: ellipsis;
 }
 
+.labelTitle {
+  flex: 1;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .chevron { font-size: 0.625rem; color: var(--muted); flex-shrink: 0; }
 
 .body {
@@ -57,15 +69,35 @@
 .scoreRing {
   width: 68px;
   height: 68px;
-  border-radius: 50%;
-  border: 3px solid var(--score-color, var(--muted));
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--score-color, transparent) 30%, transparent);
+}
+
+.scoreRingSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--score-color, transparent) 40%, transparent));
+}
+
+.scoreTrack {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 4;
+}
+
+.scoreArc {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 182.21; /* 2π × 29 */
+  transition: stroke-dashoffset 0.6s ease;
 }
 
 .scoreNum {
@@ -202,7 +234,295 @@
   overflow: hidden;
 }
 
-/* Talking points + framing */
+/* ─── Pending: live dimension scoring ──────────────────────────────────────── */
+
+.dimScoringWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.dimScoringLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.dimList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.dimRow {
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.625rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dimRowPending {
+  background: var(--surface-2);
+  opacity: 0.6;
+}
+
+.dimRowDone {
+  background: var(--surface-2);
+  opacity: 1;
+}
+
+.dimRowHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dimRowLabel {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: #d4d4d4;
+  font-weight: 500;
+}
+
+.dimScoreChip {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.dimScorePulse {
+  display: inline-block;
+  width: 42px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--border);
+  flex-shrink: 0;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.dimWeight {
+  font-size: 0.625rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dimRationale {
+  font-size: 0.75rem;
+  color: var(--subtle);
+  line-height: 1.45;
+  margin: 0.375rem 0 0;
+}
+
+/* ─── Complete: Score breakdown sub-header + table ───────────────────────── */
+
+.dimSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Sub-section toggle matching the card header style */
+.dimSubHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.dimSubHeader:hover {
+  background: color-mix(in srgb, var(--border) 50%, var(--surface-2));
+}
+
+.dimSubHeaderOpen {
+  border-radius: 6px 6px 0 0;
+}
+
+.dimSubHeaderLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ─── Dimension table ─────────────────────────────────────────────────────── */
+
+.dimTableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.dimTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.dimTable thead tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.dimTable th {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+}
+
+.dtCriterion { width: 24%; }
+.dtScore     { width: 38%; }
+.dtWeight    { width: 13%; }
+.dtSources   { width: 25%; }
+
+.dtRow {
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+}
+
+.dtRow:last-of-type { border-bottom: none; }
+.dtRow:hover { background: var(--surface-2); }
+.dtRowExpanded { background: var(--surface-2); }
+
+.dtRow td { padding: 0.625rem 0.5rem; vertical-align: middle; }
+
+.dtTdCriterion { padding: 0.625rem 0.5rem !important; }
+
+.dtLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.dtTdScore { padding: 0.625rem 0.5rem !important; }
+
+.dtScoreInner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dtBarWrap {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 28px;
+}
+
+.dtBarFill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.dtScoreNum {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 30px;
+  text-align: right;
+}
+
+.dtTdWeight { padding: 0.625rem 0.5rem !important; }
+
+.dtWeight {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dtTdSources { padding: 0.625rem 0.5rem !important; }
+
+.dtMoreInfo {
+  background: none;
+  border: none;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: color 0.12s;
+}
+
+.dtMoreInfo:hover { color: #93c5fd; }
+
+.dtDetailRow { background: var(--surface-2); border-bottom: 1px solid var(--border); }
+
+.dtDetailCell { padding: 0 0.5rem 0.75rem !important; }
+
+.dtRationale {
+  font-size: 0.75rem;
+  color: var(--subtle);
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--border);
+}
+
+.dtCitations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding-left: 0.1rem;
+}
+
+.dtChip {
+  font-size: 0.625rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  color: var(--subtle);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+.dtChip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── Talking points + framing ────────────────────────────────────────────── */
 .section { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tpList {

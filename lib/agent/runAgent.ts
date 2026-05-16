@@ -85,7 +85,15 @@ export async function runAgent(
           continue;
         }
 
-        const result = await runTool(block.name, block.input as Record<string, unknown>);
+        // For analyze_jd_fit, pass a progress callback so dimension scores stream
+        // to the client as each sub-agent completes, not just at the end.
+        const onDimensionProgress = block.name === 'analyze_jd_fit'
+          ? (key: string, score: { score: number; rationale: string; citations: string[] }) => {
+              emit({ type: 'dimension_score', toolUseId: block.id, key, score });
+            }
+          : undefined;
+
+        const result = await runTool(block.name, block.input as Record<string, unknown>, onDimensionProgress);
 
         emit({
           type: 'tool_result',

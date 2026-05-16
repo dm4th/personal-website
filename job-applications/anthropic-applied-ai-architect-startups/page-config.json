@@ -1,0 +1,130 @@
+{
+  "id": "b2c4d6e8f123",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Applied AI Architect, Startups",
+  "appliedDate": "",
+  "fitScore": 76,
+  "fitScoreNote": "The core motion, forward-deployed technical advisory, pre-sales architecture, and AI adoption enablement, is exactly what I have been doing. The context shift is real though: my ICP for the last several years has been enterprise healthcare buyers, not startup founders and their CTOs. The technical fundamentals transfer completely. The startup GTM pattern is the gap I would need to close.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 8,
+      "rationale": "Dan's career is a direct functional match for Applied AI Architect work: Solutions Architect at Thoughtful AI (forward-deployed, pre-sales), Customer Engineer (technical advisory, adoption), Director of Sales Engineering at Smarter Technologies (enterprise discovery workshops, AI adoption across non-technical users). He has a documented 96% proposal conversion rate and $31.8M in pipeline owned end-to-end. The gap is context: the role specifically targets startup founders and startup-stage engineering teams as the ICP, and Dan's customer base has been enterprise healthcare organizations, not early-stage companies.",
+      "citations": [
+        "career/thoughtful/solutions-architect.md",
+        "career/thoughtful/customer-engineer.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/index.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan's seniority profile is a near-exact match. He has 3+ years of exactly the customer-facing technical role types the JD describes (Solutions Architect, Customer Engineer, Director of SE), with $31.8M in pipeline owned, 61 enterprise deals, and production-level AI system building. The only minor gap is the startup-ecosystem framing, but seniority, depth, and scope are all there.",
+      "citations": [
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/solutions-architect.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 8,
+      "rationale": "Dan has production-level depth in the core technical requirements: Python, Claude API, hybrid-RAG (OpenAI embeddings + pgvector), multi-agent pipelines, and LLM evaluation frameworks. His Claude Code platform is 57 Python scripts, 5 parallel agents, and 943 commits. The modest gap is LLM framework breadth: his work is primarily Claude-native and bespoke rather than LangChain or LlamaIndex, which are common in startup stacks.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/dental-eligibility-intelligence.md",
+        "projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 3,
+      "rationale": "This role is specifically designed to serve startup founders, startup CTOs, and early-stage engineering teams. Dan's entire customer-facing career is in enterprise healthcare RCM, with earlier work in fintech and political tech. He has no documented experience advising startup founders on LLM strategy, no startup-ecosystem advisory credits, and no evidence of engagement with the YC/accelerator founder community. The technical skills transfer but the vertical context is a real structural gap.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/solutions-architect.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan is a confirmed SF resident (Richmond neighborhood, since January 2020). The role is SF-based. The $240K-$315K compensation band aligns with senior IC SF market rates. Regular travel is a stated requirement and Dan has a documented history of travel-heavy enterprise engagement cycles. Minor uncertainty: startup SA roles sometimes require more non-SF domestic travel than enterprise roles.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md"
+      ]
+    }
+  },
+  "summary": [
+    "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
+    "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline at Smarter Technologies",
+    "Production hybrid-RAG system in live healthcare billing workflow: OpenAI embeddings, pgvector, 40+ payer schemas",
+    "Only non-Product/Engineering person retained after 85% headcount reduction, specifically for AI legibility",
+    "Built AI meeting intelligence pipeline converting recordings to structured deal intelligence in Notion"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5197596008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Pre-sales technical authority with 96% proposal conversion",
+      "description": "At Thoughtful AI, I became the person placed on discovery calls and technical evaluations specifically because of my ability to make complex AI systems legible to enterprise buyers. <strong>96%</strong> of accounts I was placed on moved forward. That adoption instinct is identical to what Applied AI Architects need with startup founders evaluating Claude.",
+      "citations": [
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
+        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+      ]
+    },
+    {
+      "title": "Production LLM system design at enterprise scale",
+      "description": "Built a production hybrid-RAG system handling 40+ insurance payer schemas with OpenAI embeddings and pgvector, and a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks deployed live on <strong>$31.8M</strong> in pipeline. Startups evaluating Claude benefit from someone who has already solved the production edge cases.",
+      "citations": [
+        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" },
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "Hands-on Claude Code platform builder",
+      "description": "My Claude Code platform is not a side project: <strong>943 commits</strong>, 57 Python scripts, 5 parallel subagents, org-level Cowork governance, and a feedback loop sampling 15-20% of skill invocations. Startups often want to see an architect who has felt the real friction of building with the tool they are evaluating.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Personal Website (Claude Code Era)", "path": "/info/projects/personal-website/claude-code-era" }
+      ]
+    },
+    {
+      "title": "Field-to-engineering feedback loop design",
+      "description": "Built an automated pipeline that populated a market feedback section in Notion every time the engineering team's weekly standup page was created, sourced from that week's discovery calls. Engineers saw what customers were saying without having to ask. That is the kind of feedback infrastructure startup teams scaling from 0 to 1 need most.",
+      "citations": [
+        { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "ICP has been enterprise, not startup founders",
+      "description": "Every customer-facing engagement I have documented is with enterprise procurement teams, CFOs, CIOs, and compliance leads at large healthcare organizations. Startup founders and CTOs are a meaningfully different buyer persona with different technical depth, different risk tolerance, and different build-vs-buy calculus.",
+      "mitigation": "The technical advisory motion is identical. I would need to adjust the discovery framing and reference points, but the underlying skill transfers directly. My personal Claude Code building experience gives me founder-adjacent credibility."
+    },
+    {
+      "title": "LLM framework exposure is primarily Claude-native",
+      "description": "My production LLM work is Claude API-first and bespoke rather than LangChain or LlamaIndex, which appear frequently in startup stacks. I can advise on the patterns but cannot speak to framework-specific trade-offs from production experience.",
+      "mitigation": "Claude-native is increasingly the right choice for new builds anyway. I would prioritize hands-on LangChain and LlamaIndex work in the first 60 days to close the gap."
+    }
+  ],
+  "referralBlurb": "I am referring Dan Mathieson for the Applied AI Architect, Startups role. Dan spent two years as the technical owner of $31.8M in enterprise pipeline: forward-deployed discovery, custom demo engineering, and AI adoption enablement for non-technical buyers. He built a 22-skill, 5-agent Claude Code platform in production and shipped a hybrid-RAG billing intelligence system with 40+ payer schemas. His ICP has been enterprise healthcare rather than startup founders, but the technical advisory motion and production LLM depth are exactly what this role needs.",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "The agent panel on this site is built on the Anthropic SDK: tool use, streaming, and a full RAG pipeline grounded in career content. It shows the kind of Claude Code-native system this role would help startup customers design and build."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production hybrid-RAG system built for a live healthcare billing workflow. Demonstrates the AI system design skills Applied AI Architects need when advising startups on production LLM architecture."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Claude Code-based multi-agent pipeline turning meeting recordings into structured deal intelligence in Notion. Prototype of the kind of real-world workflow automation startup teams want to build with Claude."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

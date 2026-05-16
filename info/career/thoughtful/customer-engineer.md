@@ -6,7 +6,7 @@ End: November, 2024
 
 # Customer Engineer
 
-As Thoughtful solidified its focus on healthcare automation, my role evolved significantly. Our team transitioned from Solutions Architects to Customer Engineers, reflecting expanded responsibilities beyond process design into hands-on implementation and continuous improvement.
+As Thoughtful solidified its focus on healthcare automation, my role evolved significantly. Our team transitioned from Solutions Architects to Customer Engineers, reflecting expanded responsibilities beyond process design into hands-on implementation and continuous improvement. This was not a customer success or advisory role: I was a forward-deployed delivery engineer, embedded with customers, building and maintaining production automation systems on their behalf.
 
 This evolution was driven by the increasing complexity of our healthcare implementations, which required deeper domain expertise. Rather than documenting processes, we began developing the automation agents directly. Our small team (just three of us at this point) became the cornerstone of Thoughtful's technical delivery as the company achieved product-market fit. With rapid sales growth, my workweek expanded from 50 hours to approximately 70 hours. Our CEO, who doubled as head of sales, frequently promised we just needed "two more months" of intense work, a timeline that kept moving.
 
@@ -14,19 +14,19 @@ Despite the demanding pace, this period was transformative. We developed healthc
 
 ### Agent Telemetry and Analytics
 
-I spotted an opportunity to transform the JSON metadata our automation agents were already generating for debugging purposes into customer-facing business intelligence.
+What became a core product feature started as a one-off Python pipeline I wrote to debug a struggling deployment.
 
-After learning from a platform engineer that this metadata was stored in AWS, I explored AWS Quicksight's visualization capabilities. I prototyped a dashboard around eligibility verification metrics, transforming raw PostgreSQL data into visual insights demonstrating automation performance and business impact. When I shared the initial prototype with a customer, their enthusiastic response prompted immediate prioritization of the feature.
+We were storing agent execution logs as blob files in S3, dense JSON emitted by the automation agents as structured debugging output. There was no data engineering team. I noticed that the data we were already capturing was more than diagnostic: it contained the raw signal to show customers where their builds were succeeding and where accuracy was breaking down. I started writing custom Python pipelines per deployment to pull these blobs from S3, clean and parse the nested JSON, and surface accuracy metrics and failure modes in a format I could actually reason about.
 
-I worked with our Next.js team to integrate Quicksight dashboards directly into the customer portal via iFrames, dynamically rendering visualizations by passing dashboard IDs as parameters. The SQL queries extracted relevant performance metrics; the frontend made those insights accessible without customers needing to touch AWS directly.
+I started doing this primarily for internal benefit: identifying accuracy deficiencies early, giving engineers clear signal on where a build needed work. But the format proved useful enough in customer calls that I started visualizing it directly. On a call with a particularly technical customer, I pulled up a Jupyter Notebook mid-conversation and showed them a set of charts I had built from their deployment's data. Their reaction was immediate: they wanted this on a regular cadence.
 
-These dashboards became instrumental in executive-level customer relationships. Showing automation success rates, processing times, and cost savings in clear visual terms made the ROI argument concrete in a way that narrative summaries never could.
+That customer request became the scope for the next iteration. I learned from a platform engineer that we were already writing rudimentary log data into a QuickSight-backed database alongside the S3 blobs. I started building QuickSight dashboards against that data: eligibility verification accuracy rates, processing volumes, denial reason breakdowns, time-savings projections by workflow. I shared public dashboard links directly with customer stakeholders so they could self-serve without touching AWS.
 
-The most technically demanding part was the data transformation layer. Our AI agents emitted deeply nested JSON as their execution output: structured logging for debugging, not for reporting. There was no dedicated data engineering team at this stage, so I became the de facto one. I wrote SQL queries that parsed and unnested JSON structures directly inside PostgreSQL, extracting fields from nested objects and arrays using SQL's JSON operators rather than preprocessing the data in Python. This let me query hundreds of thousands of agent execution records without standing up a separate ETL pipeline. It was a niche but powerful pattern: treating SQL as a scripting and transformation language, not just a query language.
+Over time, I repeated this pattern enough times across enough deployments that it became obvious the right move was to productize it. I worked with our Next.js team to integrate QuickSight dashboards directly into the customer portal via iFrames, dynamically scoped to each customer's data by passing dashboard IDs as parameters. The custom-per-deployment Python pipelines I had been writing became the template for a more standardized analytics layer embedded in the product itself.
 
-This work also introduced me to building customer-facing analytics infrastructure with a skeleton crew. I was shipping SQL, integrating with frontend engineers on the iFrame embedding approach, and managing customer expectations about dashboard availability, all simultaneously, without a formal data team to hand off to.
+The most technically demanding part throughout was the data transformation. The agent execution JSON was deeply nested: structured for debugging, not reporting. I wrote SQL queries that parsed and unnested these structures directly inside PostgreSQL using SQL's native JSON operators, letting me query hundreds of thousands of execution records without standing up a separate ETL pipeline. Each new deployment had its own schema quirks, which meant a new custom pipeline. The pattern was repeatable; the parameterization was not.
 
-Built with: PostgreSQL, AWS, Quicksight, iFrames, SQL JSON parsing, Python, Next.js
+Built with: Python, PostgreSQL, AWS S3, Quicksight, Jupyter Notebooks, iFrames, SQL JSON parsing, Next.js
 
 ### Low-Code Automation Rescue and Extension
 

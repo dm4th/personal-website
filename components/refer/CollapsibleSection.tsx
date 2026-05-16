@@ -7,9 +7,10 @@ type Props = {
   title: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
+  badge?: string;
 };
 
-export default function CollapsibleSection({ title, children, defaultOpen = false }: Props) {
+export default function CollapsibleSection({ title, children, defaultOpen = false, badge }: Props) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
@@ -19,7 +20,10 @@ export default function CollapsibleSection({ title, children, defaultOpen = fals
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
-        <span className={styles.title}>{title}</span>
+        <span className={styles.titleRow}>
+          <span className={styles.title}>{title}</span>
+          {badge && <span className={styles.badge}>{badge}</span>}
+        </span>
         <span className={styles.chevron}>{open ? '▲' : '▼'}</span>
       </button>
       {open && <div className={styles.body}>{children}</div>}

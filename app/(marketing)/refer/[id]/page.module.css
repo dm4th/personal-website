@@ -10,8 +10,6 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 0;
 }
 
@@ -124,16 +122,7 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.framingLabel {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
+  gap: 0;
 }
 
 .framingQuote {
@@ -149,21 +138,160 @@
   font-style: normal;
 }
 
-/* ── Summary of qualifications ───────────────────── */
+/* ── Summary of qualifications (below framing quote) */
 .summaryBlock {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.summaryLabel {
+/* ── Framing label row with AI tag ───────────────── */
+.framingLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.framingLabel {
   font-size: 0.6875rem;
   font-weight: 700;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0;
+}
+
+.aiTag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, #a78bfa 12%, transparent);
+  color: #a78bfa;
+  border: 1px solid color-mix(in srgb, #a78bfa 30%, transparent);
+  flex-shrink: 0;
+}
+
+/* ── Referral summary: framing quote ─────────────── */
+.framingQuote {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.65;
+  font-style: normal;
+}
+
+/* ── Company overview subtitle ───────────────────── */
+.overviewSubtitle {
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Thank-you blurb ─────────────────────────────── */
+.thankYou {
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.65;
+  margin: 1.25rem 0 0;
+}
+
+/* ── Top role qualifications callout ─────────────── */
+.topRoleCallout {
+  margin-top: 1.25rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--success);
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.topRoleLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.topRoleLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
+  flex-shrink: 0;
+}
+
+.topRoleName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.topRoleScore {
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}
+
+.topRoleSummary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.topRoleSummary li {
+  font-size: 0.875rem;
+  color: var(--subtle);
+  line-height: 1.55;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.topRoleSummary li::before {
+  content: '·';
+  position: absolute;
+  left: 0.375rem;
+  color: var(--success);
+  font-weight: 700;
+}
+
+.topRoleLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.15s;
+}
+
+.topRoleLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Company overview content ────────────────────── */
+.overviewContent {
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
 }
 
 /* ── Collapsible sections stack ──────────────────── */

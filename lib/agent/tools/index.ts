@@ -1,5 +1,5 @@
 import { searchContent, searchContentTool, type SearchContentInput } from './searchContent';
-import { analyzeJdFit, analyzeJdFitTool, type JdFitInput } from './analyzeJdFit';
+import { analyzeJdFit, analyzeJdFitTool, type JdFitInput, type JdFitDimensions, type DimensionScore } from './analyzeJdFit';
 import { composeEmail, composeEmailTool, type ComposeEmailInput } from './composeEmail';
 import { scheduleMeeting, scheduleMeetingTool, type ScheduleMeetingInput } from './scheduleMeeting';
 import { submitJobLead, submitJobLeadTool, type SubmitJobLeadInput } from './submitJobLead';
@@ -26,9 +26,12 @@ export type ToolName =
   | 'submit_job_lead'
   | 'generate_application_materials';
 
+export type DimensionProgressCallback = (key: keyof JdFitDimensions, score: DimensionScore) => void;
+
 export async function runTool(
   name: string,
   input: Record<string, unknown>,
+  onDimensionProgress?: DimensionProgressCallback,
 ): Promise<{ content: string; summary: string; isError?: boolean }> {
   if (name === 'search_content') {
     const result = await searchContent(input as SearchContentInput);
@@ -44,7 +47,10 @@ export async function runTool(
   }
 
   if (name === 'analyze_jd_fit') {
-    const result = await analyzeJdFit(input as JdFitInput);
+    const result = await analyzeJdFit({
+      ...(input as JdFitInput),
+      onProgress: onDimensionProgress,
+    });
     if (result.ok) return { content: JSON.stringify(result.data), summary: result.summary };
     return { content: JSON.stringify({ error: result.error }), summary: 'Analysis error', isError: true };
   }

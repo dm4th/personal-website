@@ -7,7 +7,10 @@ export type StreamEvent =
   | { type: 'tool_result'; toolUseId: string; status: 'success' | 'error'; summary: string; payload?: unknown }
   | { type: 'auth_required'; reason: string; toolName: string }
   | { type: 'message_stop'; stopReason: string }
-  | { type: 'error'; code: string; message: string };
+  | { type: 'error'; code: string; message: string }
+  // Fired as each dimension sub-agent completes, before the full tool_result arrives.
+  // Allows the UI to progressively render dimension scores while others are still running.
+  | { type: 'dimension_score'; toolUseId: string; key: string; score: { score: number; rationale: string; citations: string[] } };
 
 export function encodeEvent(event: StreamEvent): string {
   return `data: ${JSON.stringify(event)}\n\n`;

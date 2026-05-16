@@ -1,6 +1,6 @@
-type Props = { score: number };
+type Props = { score: number; showText?: boolean };
 
-export default function FitScoreWheel({ score }: Props) {
+export default function FitScoreWheel({ score, showText = true }: Props) {
   const radius = 40;
   const strokeWidth = 7;
   const size = (radius + strokeWidth) * 2;
@@ -8,7 +8,7 @@ export default function FitScoreWheel({ score }: Props) {
   const offset = circumference - (Math.min(score, 100) / 100) * circumference;
 
   const color =
-    score >= 75 ? 'var(--success)' : score >= 50 ? '#f59e0b' : '#ef4444';
+    score >= 81 ? 'var(--success)' : score >= 61 ? '#3b82f6' : score >= 40 ? '#f59e0b' : '#ef4444';
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ flexShrink: 0 }}>
@@ -35,30 +35,34 @@ export default function FitScoreWheel({ score }: Props) {
         transform={`rotate(-90 ${size / 2} ${size / 2})`}
       />
       {/* Score number */}
-      <text
-        x={size / 2}
-        y={size / 2 - 4}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill={color}
-        fontSize="20"
-        fontWeight="700"
-        fontFamily="inherit"
-      >
-        {score}
-      </text>
+      {showText && (
+        <text
+          x={size / 2}
+          y={size / 2 - 4}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fill={color}
+          fontSize="20"
+          fontWeight="700"
+          fontFamily="inherit"
+        >
+          {score}
+        </text>
+      )}
       {/* /100 label */}
-      <text
-        x={size / 2}
-        y={size / 2 + 14}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="var(--muted)"
-        fontSize="10"
-        fontFamily="inherit"
-      >
-        /100
-      </text>
+      {showText && (
+        <text
+          x={size / 2}
+          y={size / 2 + 14}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fill="var(--muted)"
+          fontSize="10"
+          fontFamily="inherit"
+        >
+          /100
+        </text>
+      )}
     </svg>
   );
 }

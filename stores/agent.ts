@@ -5,6 +5,12 @@ import type { StreamEvent } from '@/lib/agent/streamProtocol';
 export type PanelState = 'collapsed' | 'sidebar' | 'expanded';
 
 export type TextPart = { type: 'text'; text: string };
+export type LiveDimensionScore = {
+  score: number;
+  rationale: string;
+  citations: string[];
+};
+
 export type ToolUsePart = {
   type: 'tool_use';
   toolUseId: string;
@@ -13,6 +19,8 @@ export type ToolUsePart = {
   status: 'pending' | 'success' | 'error';
   summary?: string;
   payload?: unknown;
+  // Progressive dimension scores for analyze_jd_fit — fills in as each sub-agent completes
+  dimensionScores?: Record<string, LiveDimensionScore>;
 };
 export type MessagePart = TextPart | ToolUsePart;
 
@@ -167,6 +175,17 @@ export const useAgentStore = create<AgentState>()(
                       status: 'pending',
                     } satisfies ToolUsePart,
                   ],
+                }));
+              }
+
+              if (event.type === 'dimension_score') {
+                updateAssistant((msg) => ({
+                  ...msg,
+                  parts: msg.parts.map((p) =>
+                    p.type === 'tool_use' && p.toolUseId === event.toolUseId
+                      ? { ...p, dimensionScores: { ...(p.dimensionScores ?? {}), [event.key]: event.score } }
+                      : p,
+                  ),
                 }));
               }
 

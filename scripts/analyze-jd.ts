@@ -11,39 +11,36 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-Technical Specialist, Claude Code
+Technical Deployment Lead
 Company: Anthropic
-Location: San Francisco, CA
+Location: Austin, TX; Boston, MA; New York City, NY; San Francisco, CA; Seattle, WA
 Employment Type: Full-time (Hybrid — 25% in-office minimum)
-Compensation: $180,000 – $365,000
+Compensation: $200,000 - $345,000 USD annually
 
 About the Role:
-Anthropic seeks a Technical Specialist to drive adoption of Claude Code among enterprise customers. Post-sale customer engagement, enablement and deep product adoption within 90 days of contract signature.
+This is a founding team role focused on delivering custom AI agent solutions for enterprise clients in regulated industries. You will manage end-to-end engagements from statement of work through production deployment, serving as the primary technical and relationship owner.
 
 Key Responsibilities:
-- Design and deliver customized training programs: workshops, office hours, hands-on labs tailored to customer tech stacks and workflows
-- Enable champions and AI Center of Excellence leads within client organizations
-- Drive adoption of Claude capabilities: subagents, hooks, MCP servers, headless mode
-- Partner on strategic pilots with Sales, Applied AI, and customer engineering teams
-- Design and execute on-site and virtual hackathons with complete playbooks (themes, judging, starter kits, follow-up)
-- Build production-quality demo applications and reference architectures
-- Create technical tutorials, blog posts, and walkthroughs for enterprise audiences
-- Rapidly translate new product capabilities into field-ready content
-- Deliver keynotes and live-coded demonstrations at customer events and Anthropic summits
-- Conduct Q&A on architecture, prompting, agent design, and tool limitations
-- Partner with Sales, Customer Success, and Product teams
-- Provide field insights on customer needs and adoption barriers
+- Manage end-to-end engagements from statement of work through production deployment
+- Lead technical discovery and map customer workflows to define MVP scope
+- Drive day-to-day engineering execution and maintain unblocked progress
+- Own customer relationships, including executive briefings and stakeholder management
+- Define impact hypotheses, establish KPIs, and measure ROI post-deployment
+- Build reusable solution patterns and playbooks for scaling
+- Navigate security reviews, compliance, and procurement processes
+- Travel to customer sites (25-50% expected)
 
 Required Qualifications:
-- 3-7+ years in customer-facing technical roles (Solutions Architecture, sales engineering, developer relations, consulting)
-- Active hands-on experience building with Claude Code, Claude Developer Platform, and Cowork
-- Proven ability to deliver technical talks, workshops, and training to engineering audiences
-- Professional software engineering, founding, or Solutions Architecture background
-- Experience supporting enterprise technical evaluations and pilots
-- Strong written and visual communication skills
-- Project management capability for multi-week engagements
-- Willingness to travel regularly
-- Deep enthusiasm for AI with hands-on LLM development experience
+- Leadership experience with AI/ML deployments as founder, scientist, engineer, or consultant
+- Proven production delivery of AI or LLM-based agentic solutions
+- Ability to lead architecture discussions and evaluate technical trade-offs
+- Track record delivering complex enterprise projects in regulated industries
+- Executive presence: polished, credible, and comfortable representing Anthropic to senior leaders
+- Comfort operating in ambiguity with builder's mindset
+
+Preferred Qualifications:
+- Experience in specialized verticals (financial services, life sciences, pharma, etc.)
+- Background in professional services or consulting delivery
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -51,6 +48,18 @@ Required Qualifications:
 // Add entries here whenever a previously-analyzed JD isn't yet represented.
 
 const HISTORICAL_JDS: Array<{ role: string; company: string; jd: string }> = [
+  {
+    role: 'Technical Specialist, Claude Code',
+    company: 'Anthropic',
+    jd: `Technical Specialist, Claude Code — Anthropic. SF. $180K-$365K. Hybrid 25% in-office.
+Key requirements: Drive adoption of Claude Code among enterprise customers. Post-sale customer engagement, enablement and deep product adoption within 90 days. Design and deliver customized training programs: workshops, office hours, hands-on labs. Enable champions and AI Center of Excellence leads. Drive adoption of Claude capabilities: subagents, hooks, MCP servers, headless mode. Partner on strategic pilots with Sales, Applied AI, and customer engineering teams. Design and execute on-site and virtual hackathons. Build production-quality demo applications and reference architectures. Create technical tutorials, blog posts, and walkthroughs. Deliver keynotes and live-coded demonstrations at customer events. 3-7+ years in customer-facing technical roles (Solutions Architecture, sales engineering, developer relations, consulting). Active hands-on experience building with Claude Code, Claude Developer Platform, and Cowork.`,
+  },
+  {
+    role: 'Forward Deployed Engineer, Applied AI',
+    company: 'Anthropic',
+    jd: `Forward Deployed Engineer, Applied AI — Anthropic. Boston/NYC/Seattle/SF/DC. $200K-$300K. Hybrid 25% in-office.
+Key requirements: Embed with strategic customers to drive AI adoption. Build production applications using Claude models meeting customer specs. Deliver technical artifacts: MCP servers, sub-agents, agent skills. Enterprise deployment support. Identify repeatable deployment patterns. Maintain LLM capability knowledge. Build customer relationships. 25% travel. 3+ years in technical customer-facing roles (FDE, software engineering with consulting, or founding). Production LLM experience including advanced prompt engineering, agent development, evaluation frameworks. Strong Python. High agency. Background in financial services, healthcare, or enterprise verticals preferred.`,
+  },
   {
     role: 'Product Manager (Builder)',
     company: 'Perplexity',

@@ -138,7 +138,12 @@ Create `job-applications/[slug]/notes.md` with:
 Create `job-applications/[slug]/page-config.json` as a stub referral page config. Populate from the notes file and JD analysis:
 
 - Set `id` to the slug (Dan can change this to something shorter later)
-- Set `fitScore` from the final score and `fitScoreNote` to one sentence summarizing what drove the score
+- Set `fitScore` from the final weighted score (0-100)
+- Set `fitScoreNote` to one sentence summarizing what drove the overall score
+- Set `dimensions` from the `JdFitOutput.dimensions` object returned by the analysis. For each dimension's `citations` array (which contains `/info` file paths like `"career/smarter-technologies/index.md"`), convert them to `JobCitation` format by deriving a human-readable label from the filename and an internal site path:
+  - `"career/smarter-technologies/index.md"` → `{ "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" }`
+  - `"career/thoughtful/solutions-architect.md"` → `{ "label": "Solutions Architect (Thoughtful)", "path": "/info/career/thoughtful/solutions-architect" }`
+  - Strip `/index.md` suffixes; strip `.md` suffix; capitalize words; use the last 1-2 path segments for the label
 - Extract 3-5 strengths from the "Strongest Talking Points" section of notes.md, with placeholder `citations: []` arrays for Dan to fill in
 - Extract 2-3 weaknesses from the "Remaining Gaps" section of notes.md, including `mitigation` text from the "how to address" guidance
 - Set `jobDescriptionUrl` to `""` (Dan fills this in)
@@ -157,6 +162,17 @@ Schema reference:
   "appliedDate": "",
   "fitScore": 0,
   "fitScoreNote": "...",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 8,
+      "rationale": "...",
+      "citations": [{ "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" }]
+    },
+    "seniority": { "score": 7, "rationale": "...", "citations": [] },
+    "technicalSkills": { "score": 8, "rationale": "...", "citations": [] },
+    "industryVertical": { "score": 9, "rationale": "...", "citations": [] },
+    "logistics": { "score": 9, "rationale": "...", "citations": [] }
+  },
   "jobDescriptionUrl": "",
   "jobDescriptionText": "",
   "strengths": [{ "title": "...", "description": "...", "citations": [] }],
