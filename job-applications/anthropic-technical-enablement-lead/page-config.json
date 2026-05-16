@@ -1,0 +1,138 @@
+{
+  "id": "a3f7e92c1b84",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Technical Enablement Lead, Claude Code",
+  "appliedDate": "",
+  "fitScore": 80,
+  "fitScoreNote": "I've been running the core motion of this role from inside a GTM org for two years: building demo infrastructure, training reps, instrumenting feedback loops, and making Claude's capabilities legible to people who won't write a prompt themselves. The gap is that I've never held an enablement title or delivered curriculum to an external developer audience at scale. Both are learnable fast; the underlying teaching instinct is documented across every role I've held.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 8,
+      "rationale": "Dan's career demonstrates strong alignment with this role's core functions: he is a Director of Sales Engineering who built demo engineering platforms, created training materials (demo manifests that double as onboarding docs), coached GTM teams, and led technical enablement at scale. His self-identified superpower is precisely what this role requires: the ability to explain complex AI systems to people who aren't technical, in ways that connect to the problems they're trying to solve. He is a hands-on Claude Code power user who built a production GTM platform with it, taught SQL courses at FanDuel, built training curricula at Google, and taught kids to code. The minor gaps: no evidence of formal public speaking or community advocacy, and his enablement work has been internal and field-focused rather than delivering structured curriculum to external developer personas.",
+      "citations": [
+        "career/smarter-technologies/demo-engineering.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/shutdown-and-retention.md",
+        "career/smarter-technologies/index.md",
+        "about-me/strengths-and-weaknesses/self-assessment.md",
+        "career/fanduel/revenue-team.md",
+        "career/google/my-year-at-google.md",
+        "career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "seniority": {
+      "score": 7,
+      "rationale": "Dan has ~8 years of post-college experience with Director of Sales Engineering scope: built and managed a Claude Code-based GTM platform (943 commits, 500+ PRs), engineered a reusable demo library of 20+ workflows, created training materials, and led technical architecture walkthroughs for enterprise CIOs. His pattern of teaching is consistent across roles. However, the role requires 7+ years specifically in software engineering, solutions engineering, or developer advocacy, and Dan's background blends analytics, TPM, and SE rather than pure engineering or developer advocacy. No evidence of formal public speaking or conference talks.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md",
+        "career/fanduel/revenue-team.md",
+        "career/google/my-year-at-google.md",
+        "about-me/strengths-and-weaknesses/self-assessment.md",
+        "projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 9,
+      "rationale": "Dan has deep, production-level evidence for nearly every technical requirement. Most critically: he built a full Claude Code-based GTM platform in production (23 skills, 57 Python scripts, 5 parallel agents, 943 commits), used Claude's Cowork platform to enable non-technical sales reps, built feedback loops for skill iteration, and structured enterprise-wide Claude for Enterprise plugin governance. His programming depth in Python and SQL is extensive. Teaching and enablement are recurrent themes: formal SQL courses at FanDuel, Google Apps Script training at Google, coding curriculum for children, and demo manifests that double as training materials. The modest gap is the absence of formal public speaking or community advocacy and the lack of outward field-enablement curriculum delivery to external developer personas.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md",
+        "career/smarter-technologies/meeting-intelligence.md",
+        "career/smarter-technologies/hiring-and-team.md",
+        "career/fanduel/revenue-team.md",
+        "career/google/my-year-at-google.md",
+        "about-me/strengths-and-weaknesses/self-assessment.md",
+        "projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 6,
+      "rationale": "This role targets technical enablement of developer and engineering buyer personas using AI coding tools. Dan's career is almost entirely anchored in healthcare RCM sales engineering and non-developer GTM teams. He has extensive, hands-on Claude Code experience and strong demo engineering credentials, but the ICP for this role is software engineers and the GTM teams selling to them, a buyer persona largely absent from Dan's career history. His teaching instincts and technical depth transfer, but the vertical context is a real gap.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md",
+        "projects/personal-website/claude-code-era.md",
+        "career/fanduel/revenue-team.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan is a confirmed SF resident (Richmond neighborhood, since 2020) and the role lists San Francisco as a primary location with a hybrid arrangement, which aligns exactly with his stated preference. The $270K to $290K compensation band sits squarely within the senior IC/director-level SF market range. No hard logistical blockers exist.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md"
+      ]
+    }
+  },
+  "summary": [
+    "Built a 22-skill, 5-agent Claude Code GTM platform from scratch: 943 commits, 57 Python scripts, pre/post tool-use hooks",
+    "Deployed Claude Cowork at org level, enabling non-technical sales reps with role-specific skill sets and no prompt-writing required",
+    "Designed feedback instrumentation that sampled 15-20% of skill usages and fed thumbs-down signals directly into skill iteration",
+    "Taught SQL courses at FanDuel, Google Apps Script to teammates at Google, and coding to kids at The Coder School",
+    "Retained through 85% headcount reduction specifically because of the ability to make complex AI legible to non-technical people"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5185501008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Production Claude Code platform with embedded enablement infrastructure",
+      "description": "Built a 22-skill, 5-agent Cowork platform where the demo manifests themselves doubled as training materials. Every skill came with a YAML spec that served as both configuration and onboarding doc. That's the design discipline this role needs at scale.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Demo Engineering (Smarter Technologies)", "path": "/info/career/smarter-technologies/demo-engineering" }
+      ]
+    },
+    {
+      "title": "Teaching instinct documented across every role",
+      "description": "SQL courses at FanDuel, Google Apps Script training at Google, coding instruction for kids, and demo coaching rubrics for SE candidates at Smarter Technologies. The pattern of translating technical concepts for non-technical audiences runs through my entire career, not just the last two years.",
+      "citations": [
+        { "label": "Revenue Team (FanDuel)", "path": "/info/career/fanduel/revenue-team" },
+        { "label": "My Year at Google", "path": "/info/career/google/my-year-at-google" },
+        { "label": "Hiring and Team (Smarter Technologies)", "path": "/info/career/smarter-technologies/hiring-and-team" }
+      ]
+    },
+    {
+      "title": "Feedback loop instrumentation built into the platform from day one",
+      "description": "Pre/post tool-use hooks sampled 15-20% of skill invocations for thumbs-up/down ratings. A cluster of thumbs-down on the pricing skill with notes about wrong EHR context told me exactly what to fix. That's how I'd approach measuring content effectiveness here: signal from the field, not intuition.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "Retained through 85% reduction specifically for AI legibility",
+      "description": "When Smarter Technologies shut down, I was the only non-Product/Engineering person kept among the 15% retained. The PE firm made a specific exception. That happened because I can take genuinely complex AI systems and make them legible to the people who need to adopt them. That's the skill this role depends on most.",
+      "citations": [
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No formal developer advocacy or public-facing enablement track record",
+      "description": "My enablement work has been internal to GTM orgs and deal-specific, not scaled curriculum delivery to external engineering audiences or developer communities.",
+      "mitigation": "The underlying teaching instinct and technical depth are well-documented. Building external-facing curriculum is the next natural step, not a foreign motion. I'd ramp fast."
+    },
+    {
+      "title": "No conference talks, developer blog, or community advocacy presence",
+      "description": "My writing and technical communication has gone into high-stakes internal artifacts: MAPs, architecture docs, skill specifications, investor memos. Not public content.",
+      "mitigation": "I'd be transparent that this is a genuine gap and express genuine interest in building that external presence in this role. The communication muscle is there; the venue is new."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the Technical Enablement Lead role. Dan spent two years building Claude Code into the operating system of a sales engineering team: 22 skills, 5 parallel agents, a feedback loop that sampled real usage, and org-wide Cowork deployment to non-technical reps. He taught SQL to operations teams at FanDuel, Google Apps Script to colleagues at Google, and was retained through an 85% headcount reduction specifically because he can make complex AI legible to people who aren't technical. His enablement experience is GTM-internal rather than external curriculum delivery, but the underlying teaching instinct and production Claude Code depth are genuinely rare together.",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "The agent panel on this site is built on the Anthropic SDK: tool use, streaming, and a full RAG pipeline grounded in career content. It is the kind of Claude Code-native system this role would help enterprise customers build."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Claude Code-based multi-agent pipeline that turns meeting recordings into structured deal intelligence. Shows the kind of real-world enterprise workflow automation this role would be enabling customers to build."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

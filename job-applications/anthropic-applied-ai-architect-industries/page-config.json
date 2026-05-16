@@ -1,0 +1,130 @@
+{
+  "id": "c3d5e7f9a246",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Applied AI Architect, Industries",
+  "appliedDate": "",
+  "fitScore": 90,
+  "fitScoreNote": "This role is the closest structural match to what I have actually been doing: enterprise discovery workshops, C-suite AI adoption, forward-deployed technical advisory, and production LLM system design in a vertical context. The ICP for this role is the large enterprise buyer I have spent years selling to and enabling. Healthcare procurement is unusually hard. If I can get a CFO at a multi-site DSO to change how they run eligibility, I can get a VP of Engineering at a Fortune 500 to adopt Claude.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's career is a near-direct match for this role's core function. He has 3+ years in forward-deployed enterprise technical advisory roles (Solutions Architect, Customer Engineer, Director of SE), documented C-suite AI adoption workshops, and a track record of driving AI adoption across non-technical organizational stakeholders. His work at Smarter Technologies: building discovery frameworks for CFO and CIO audiences, designing AI demos that abstract technical complexity, and deploying Claude to non-technical sales reps via Cowork, maps precisely to what Applied AI Architects do for enterprise industries customers.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md",
+        "career/thoughtful/solutions-architect.md",
+        "career/thoughtful/customer-engineer.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan has 8 years of post-college experience with the exact trajectory this role describes: Solutions Architect to Customer Engineer to Lead TPM to Director of Sales Engineering. He owned $31.8M in pipeline end-to-end, closed 61 deals, and was promoted to VP of Solutions before the company shuttered. The only minor gap is that his Claude-advisory motion was self-directed within his own GTM org, not formally external-facing on behalf of Anthropic. That is a venue shift, not a capability gap.",
+      "citations": [
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/solutions-architect.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 9,
+      "rationale": "Dan has production evidence for nearly every technical requirement: Python (57 scripts, 943-commit Claude Code platform), Claude API (multi-agent, pre/post hooks, Cowork deployment), hybrid-RAG (OpenAI embeddings + pgvector + 40+ payer schema knowledge graph), and LLM evaluation frameworks. He also built an MCP-native clinical data platform architecture, directly relevant for enterprise customers navigating the audit and governance requirements the Industries segment cares most about.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/dental-eligibility-intelligence.md",
+        "projects/personal-website/claude-code-era.md",
+        "projects/healthcare-agent-data-layer.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 8,
+      "rationale": "The Applied AI Architect, Industries role targets large enterprise buyers across verticals, not a single industry. The ICP is the enterprise procurement stakeholder: CIO, VP Engineering, AI Center of Excellence lead. Dan has deep experience navigating exactly this buyer in a hard vertical (healthcare RCM), which requires procurement approval chains, compliance review, and multi-stakeholder consensus. His C-suite workshop experience at Smarter Technologies maps directly. The gap is that he has not yet operated in industries outside healthcare at the enterprise level, which is minor for a horizontal role.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md",
+        "career/thoughtful/solutions-architect.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan is a confirmed SF resident (Richmond neighborhood, since January 2020) and the role is SF-based hybrid. The compensation band comfortably spans senior IC and director-level SF market rates. Regular travel aligns with his documented enterprise engagement history. No logistical blockers.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md"
+      ]
+    }
+  },
+  "summary": [
+    "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline",
+    "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
+    "Only non-Product/Engineering person retained after 85% headcount reduction, specifically for AI legibility",
+    "MCP-native clinical data platform: 6 months of enterprise AI governance and audit architecture design",
+    "Automated field-to-engineering feedback pipeline using pre/post tool-use hooks and Notion integration"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5197598008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Enterprise C-suite AI adoption is documented and recent",
+      "description": "At Smarter Technologies, I designed and ran discovery workshops with CFOs, CIOs, and operations leaders at multi-site healthcare organizations. These were not PowerPoint sessions: they were structured technical conversations that surfaced the real adoption blockers (compliance, data governance, workflow fit) and produced specific implementation roadmaps. That is exactly the Applied AI Architect motion for Industries customers.",
+      "citations": [
+        { "label": "Demo Engineering (Smarter Technologies)", "path": "/info/career/smarter-technologies/demo-engineering" },
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "Production Claude Code platform with embedded enablement infrastructure",
+      "description": "Built a <strong>22-skill</strong>, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance, deployed live on <strong>$31.8M</strong> in enterprise pipeline. The platform was designed so non-technical sales reps could use it without writing a single prompt. That is the enterprise AI adoption problem Applied AI Architects solve at scale.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "MCP-native enterprise AI governance design",
+      "description": "Spent six months designing an MCP-native clinical data platform: explicit, auditable boundaries between the agent and external systems, which is exactly what enterprise IT approval chains need. The architecture question enterprises ask most is not 'can Claude do this' but 'can we control and audit what Claude does.' I have documented answers to that.",
+      "citations": [
+        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+      ]
+    },
+    {
+      "title": "Only non-Product/Engineering person retained after 85% reduction",
+      "description": "When Smarter Technologies shut down, I was the only person without a Product or Engineering title among the 15% retained. The PE firm made a specific exception. That happened because I can take genuinely complex AI systems and make them legible to the people who need to adopt them. That is the core Applied AI Architect value proposition.",
+      "citations": [
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "Enterprise advisory has been internal, not on behalf of a vendor",
+      "description": "My forward-deployed AI advisory work was within my own GTM org (advising prospects on Smarter Technologies AI) rather than advising enterprise customers on behalf of Anthropic as their AI vendor. The motion is similar but the credibility framing is different.",
+      "mitigation": "The underlying skill is identical. The positioning shift from 'I use Claude' to 'I represent Anthropic' is a venue change, not a capability gap. My production platform gives me firsthand authority that most vendor advisors don't have."
+    },
+    {
+      "title": "Vertical experience is concentrated in healthcare",
+      "description": "My enterprise customer experience is almost entirely in healthcare RCM. The Industries role serves customers across verticals. I have not yet navigated enterprise AI adoption in financial services, manufacturing, or retail.",
+      "mitigation": "Healthcare procurement is among the most regulated and complex enterprise buying environments. The skills transfer to other verticals directly. And a horizontal role benefits from someone who has gone deep in at least one vertical."
+    }
+  ],
+  "referralBlurb": "I am referring Dan Mathieson for the Applied AI Architect, Industries role. Dan has been doing the core motion of this job for the last three years: C-suite AI adoption workshops, forward-deployed enterprise discovery, and production LLM system design in a hard vertical (healthcare RCM). He built a 22-skill, 5-agent Claude Code platform running on $31.8M in pipeline, spent six months on MCP-native enterprise AI governance architecture, and was retained through an 85% headcount reduction specifically because he can make complex AI legible to non-technical stakeholders. His enterprise advisory has been internal rather than vendor-facing, but the underlying skill is exactly what this role demands.",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "The agent panel on this site is built on the Anthropic SDK: tool use, streaming, and a full RAG pipeline grounded in career content. It is the kind of Claude Code-native system this role would help enterprise customers design."
+    },
+    {
+      "name": "Healthcare Agent Data Layer",
+      "path": "/projects/healthcare-agent-data-layer",
+      "relevance": "MCP-native clinical data platform design: explicit audit boundaries between agent and external systems. Directly addresses the enterprise IT governance questions Applied AI Architects face most often."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production hybrid-RAG system in a live healthcare billing workflow: OpenAI embeddings, pgvector, 40+ payer schemas. Shows the production LLM system design depth Industries customers are evaluating."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

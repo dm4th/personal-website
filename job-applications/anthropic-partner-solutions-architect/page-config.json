@@ -1,0 +1,121 @@
+{
+  "id": "d4e6f8a0b357",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Partner Solutions Architect, Applied AI",
+  "appliedDate": "",
+  "fitScore": 76,
+  "fitScoreNote": "My technical foundation is strong and the SA motion is documented. The structural gap is real though: I have no GSI channel experience, no cloud partner ecosystem background, and have never operated in a partner-mediated GTM motion. The role is built around enabling SIs and cloud partners to deliver Anthropic solutions. That is a materially different GTM than direct enterprise sales engineering, which is what I have been doing.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "The Solutions Architect and pre-sales technical advisory motion is an extremely close match: Dan has 3+ years of documented SA/CE/Director SE work, C-suite technical presentations, architecture design sessions, and AI adoption enablement. His 96% conversion rate at Thoughtful AI and $31.8M pipeline at Smarter Technologies are strong evidence of the core SA competency. The gap is the partner-mediated GTM layer: this role specifically requires enabling GSIs and cloud partners to sell and deliver Anthropic solutions, not direct enterprise technical sales.",
+      "citations": [
+        "career/thoughtful/solutions-architect.md",
+        "career/thoughtful/customer-engineer.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/demo-engineering.md"
+      ]
+    },
+    "seniority": {
+      "score": 8,
+      "rationale": "Dan has 8 years of post-college experience with a strong SA/SE progression and Director-level scope. He has the maturity and track record the role requires. The modest gap is the lack of formal GSI/cloud partner experience or developer hackathon leadership, both of which are listed as preferred qualifications and represent real seniority signals in partner SA roles specifically.",
+      "citations": [
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 6,
+      "rationale": "Dan's LLM/RAG and Python skills are strong, and his production Claude Code platform directly satisfies the 'active Claude Code builder' requirement. The gap is cloud architecture breadth: his technical work is concentrated at the AI application layer (agent design, RAG, workflow automation) rather than cloud infrastructure (AWS/GCP/Azure SA certifications, cloud-native deployment patterns, enterprise networking). Partner SAs for AI platforms are frequently expected to advise on cloud deployment architecture, and Dan's background does not document that depth.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/dental-eligibility-intelligence.md",
+        "projects/personal-website/claude-code-era.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "The Partner SA role is built around enabling GSIs (Accenture, Deloitte, Capgemini) and cloud partners (AWS, GCP, Azure) to bring Anthropic AI to their enterprise customers. Dan has no documented experience with this GTM motion: no GSI partnerships, no cloud partner co-sell programs, no channel enablement. His technical skills are strong but the partner ecosystem context is entirely absent from his career history.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/solutions-architect.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan is a confirmed SF resident (Richmond neighborhood, since January 2020) and the role is SF-based. The $240K-$380K compensation band comfortably covers senior IC and director-level SF market rates. Frequent travel is a stated expectation and Dan has a documented history of travel-heavy enterprise engagement cycles. No logistical blockers.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md"
+      ]
+    }
+  },
+  "summary": [
+    "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline at Smarter Technologies",
+    "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
+    "Production hybrid-RAG system with OpenAI embeddings, pgvector, and 40+ payer schemas in live billing workflow",
+    "Only non-Product/Engineering person retained after 85% headcount reduction, specifically for AI legibility",
+    "Enterprise C-suite workshops with CFOs and CIOs at multi-site healthcare organizations"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5197599008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Core SA motion and conversion rate are documented",
+      "description": "At Thoughtful AI, I was placed on complex technical evaluations specifically for my ability to make AI systems legible to enterprise buyers. <strong>96%</strong> of accounts I engaged moved forward. The architecture design, discovery, and technical advisory work that Partner SAs do with GSI delivery teams uses identical skills.",
+      "citations": [
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
+        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+      ]
+    },
+    {
+      "title": "Production Claude Code platform depth",
+      "description": "Built a <strong>22-skill</strong>, 5-agent platform with pre/post tool-use hooks, org-level Cowork governance, and a feedback loop sampling 15-20% of skill invocations. Partner SAs need to advise GSI delivery teams on what to build with Claude. I can speak from production, not slides.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "Enterprise technical enablement infrastructure design",
+      "description": "Built demo manifests that doubled as training materials, coaching rubrics for SE candidate interviews, and a Cowork deployment that enabled non-technical reps without any prompt-writing. Those are the same deliverables Partner SAs produce for GSI enablement: reference architectures, starter kits, and adoption frameworks.",
+      "citations": [
+        { "label": "Demo Engineering (Smarter Technologies)", "path": "/info/career/smarter-technologies/demo-engineering" },
+        { "label": "Hiring and Team (Smarter Technologies)", "path": "/info/career/smarter-technologies/hiring-and-team" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No GSI or cloud partner channel experience",
+      "description": "My GTM motion has been direct enterprise sales engineering, not partner-mediated. I have no documented experience enabling Accenture, Deloitte, AWS, or GCP delivery teams. The channel enablement layer of this role is genuinely new territory.",
+      "mitigation": "The technical advisory and enablement content creation skills transfer directly. The partner relationship management and co-sell motion are learnable. But this is a real gap and worth being transparent about."
+    },
+    {
+      "title": "Cloud infrastructure depth is application-layer, not infra-layer",
+      "description": "My cloud architecture work is concentrated at the AI application layer: agent design, RAG pipelines, workflow automation. Partner SAs often need to advise on cloud deployment architecture (networking, security, enterprise connectivity) that GSI teams implement. That depth is not documented in my background.",
+      "mitigation": "I would prioritize AWS/GCP SA fundamentals in the ramp period. The LLM application layer expertise is the scarcer skill in this market and is well-covered."
+    },
+    {
+      "title": "No hackathon facilitation or developer community leadership",
+      "description": "Partner SAs frequently run hackathons and build community with SI developers. I have designed internal build sprints with similar mechanics but no external hackathon credits.",
+      "mitigation": "The facilitation and preparation muscles are there. I would ramp the external format quickly."
+    }
+  ],
+  "referralBlurb": "I am referring Dan Mathieson for the Partner Solutions Architect, Applied AI role. Dan has been doing the direct-enterprise SA motion for three years with documented results: $31.8M in pipeline, 96% proposal conversion, and a production Claude Code platform that enabled non-technical GTM teams at scale. The structural gap is partner-channel experience: his GTM motion has been direct enterprise rather than GSI co-sell or cloud partner enablement. His technical depth and enterprise SA credentials are strong. The partner ecosystem layer is the gap to close.",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "Built on the Anthropic SDK with tool use, streaming, and a full RAG pipeline. The kind of Claude Code-native reference architecture Partner SAs produce for GSI delivery teams."
+    },
+    {
+      "name": "AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Claude Code-based multi-agent pipeline turning meeting recordings into structured deal intelligence. Demonstrates the enterprise workflow automation patterns GSI teams build with Claude."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

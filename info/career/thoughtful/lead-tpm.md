@@ -24,6 +24,16 @@ This framework became the foundation for our sales team's value proposition conv
 
 Built with: Quicksight, Python, Google Sheets, AWS, Jupyter Notebook, statistical modeling
 
+### Leading Forward Deployed Engineers
+
+The restructuring that created my TPM role also created the Forward Deployed Engineer function: the team members who owned the hands-on technical implementation work on customer deployments. As Lead TPM, I was the delivery lead those FDEs reported to and took direction from.
+
+In practice, I was managing between one and three FDEs per project across a portfolio of three to six concurrent implementations at any given time, which put the upper bound at roughly eighteen active workstreams. My job was to assign work within each deployment, unblock engineers when they hit technical obstacles, and own the customer relationship from a technical perspective throughout. I was the one translating build progress into terms that meant something to the customer: accuracy milestones, timeline adjustments, scope decisions. When a build was working, I showed them the data. When something had gone wrong, I owned the conversation.
+
+I reviewed code when necessary, which typically meant something had surfaced in a customer call or an accuracy metric had flagged a problem I needed to trace back to the implementation. My instinct was always to first check the data: pull the S3 logs, run a quick pipeline to surface where the failure mode was appearing, then hand that to the FDE with a clear enough picture of the problem that they could fix it without needing me in the weeds. Code review was the last step, not the first.
+
+The customer relationship side of this was where I spent most of my time. Healthcare executives don't want engineers on calls unless something has gone wrong. What they want is someone who can tell them whether the automation is performing against the agreed-upon target, what the plan is if it isn't, and what the next milestone looks like. I built that communication layer as a consistent practice: Quicksight dashboards updated on a regular cadence, clear accuracy metrics by workflow category, and a habit of showing them data before they asked for it.
+
 ### Taking Over the Team
 
 After the restructuring, Thoughtful tried several leadership configurations for the three specialized teams. External managers came in and struggled. The fundamental problem was that leading these teams required understanding the intricate relationships between customer needs, healthcare domain knowledge, and our technical capabilities. That knowledge had been built organically over two years of being in the trenches. It couldn't be transferred in an onboarding.

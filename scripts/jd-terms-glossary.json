@@ -525,7 +525,13 @@
         "POC development",
         "EDI",
         "FHIR",
-        "HL7"
+        "HL7",
+        "technical training",
+        "knowledge transfer",
+        "field enablement",
+        "developer relations",
+        "field engineer",
+        "enablement specialist"
       ]
     },
     {
@@ -1113,7 +1119,10 @@
         "stakeholder management",
         "cross-functional coordination",
         "go-to-market strategy",
-        "sales enablement"
+        "sales enablement",
+        "developer relations",
+        "technical workshops",
+        "field enablement"
       ]
     },
     {
@@ -1181,7 +1190,9 @@
         "stakeholder management",
         "cross-functional coordination",
         "go-to-market strategy",
-        "sales enablement"
+        "sales enablement",
+        "developer relations",
+        "technical workshops"
       ]
     },
     {
@@ -1369,7 +1380,29 @@
         "revenue tech",
         "sales effectiveness",
         "autonomous AI agents",
-        "agentic AI"
+        "agentic AI",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement",
+        "solutions engineer",
+        "technical presales",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "field engineer",
+        "enablement specialist"
       ]
     },
     {
@@ -1517,6 +1550,440 @@
         "sales effectiveness",
         "pipeline optimization",
         "agentic AI"
+      ]
+    },
+    {
+      "jdTerm": "technical enablement",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "developer tools",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "AI-assisted development",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "GTM teams",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "demo coaching",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "training curriculum",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement",
+        "technical training",
+        "field enablement"
+      ]
+    },
+    {
+      "jdTerm": "Solutions Architect",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement",
+        "solutions engineer",
+        "technical presales",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "Claude",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "jdTerm": "LLM applications",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "jdTerm": "AI product development",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "jdTerm": "technical evaluations",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "jdTerm": "context engineering",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "jdTerm": "Python",
+      "synonyms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement",
+        "solutions engineer",
+        "technical presales",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management"
+      ]
+    },
+    {
+      "jdTerm": "Technical Account Manager",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "Claude API",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "LLM frameworks",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "enterprise system integration",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "GenAI applications",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "developer relations",
+        "technical enablement",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "cloud architectures",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "developer relations",
+        "technical enablement",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "field engineer",
+        "enablement specialist"
+      ]
+    },
+    {
+      "jdTerm": "GTM partnerships",
+      "synonyms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "developer relations",
+        "technical enablement",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "field engineer",
+        "enablement specialist"
       ]
     }
   ],
@@ -2138,6 +2605,163 @@
         "sales effectiveness",
         "pipeline optimization",
         "agentic AI"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Technical Enablement Lead, Claude Code",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Claude Code",
+        "technical enablement",
+        "developer tools",
+        "AI-assisted development",
+        "GTM teams",
+        "sales engineering",
+        "demo coaching",
+        "training curriculum"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "developer relations",
+        "technical workshops",
+        "knowledge transfer",
+        "go-to-market strategy",
+        "sales enablement"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Technical Enablement Lead, Claude Code",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Claude Code",
+        "technical enablement",
+        "developer tools",
+        "AI-assisted development",
+        "GTM teams",
+        "demo coaching",
+        "training curriculum",
+        "solutions engineering"
+      ],
+      "synonymTerms": [
+        "technical training",
+        "knowledge transfer",
+        "field enablement",
+        "presales consultant",
+        "developer relations",
+        "field engineer",
+        "enablement specialist",
+        "technical account manager",
+        "solutions architect",
+        "customer engineer",
+        "go-to-market strategy",
+        "sales enablement"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Applied AI Architect, Startups",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Solutions Architect",
+        "Sales Engineer",
+        "Claude",
+        "LLM applications",
+        "AI product development",
+        "technical evaluations",
+        "context engineering",
+        "Python"
+      ],
+      "synonymTerms": [
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical account manager",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "demo",
+        "go-to-market strategy",
+        "developer relations",
+        "technical enablement",
+        "startup ecosystems",
+        "founder engagement"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Applied AI Architect, Industries",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Solutions Architect",
+        "Sales Engineer",
+        "Technical Account Manager",
+        "Claude API",
+        "LLM frameworks",
+        "enterprise system integration",
+        "Python"
+      ],
+      "synonymTerms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "cloud architecture",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy"
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "role": "Partner Solutions Architect, Applied AI",
+      "company": "Anthropic",
+      "searchTerms": [
+        "Solutions Architect",
+        "Sales Engineer",
+        "Technical Account Manager",
+        "GenAI applications",
+        "LLM frameworks",
+        "cloud architectures",
+        "enterprise system integration",
+        "GTM partnerships"
+      ],
+      "synonymTerms": [
+        "solutions engineer",
+        "customer engineer",
+        "SE",
+        "presales consultant",
+        "enterprise solutions architect",
+        "technical presales",
+        "large language model",
+        "prompt engineering",
+        "retrieval-augmented generation",
+        "POC development",
+        "prototype",
+        "developer relations",
+        "technical enablement",
+        "API architecture",
+        "stakeholder management",
+        "go-to-market strategy",
+        "field engineer",
+        "enablement specialist"
       ]
     }
   ]

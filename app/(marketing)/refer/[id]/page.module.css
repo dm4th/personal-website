@@ -189,6 +189,19 @@
   font-style: normal;
 }
 
+/* ── Company overview subtitle ───────────────────── */
+.overviewSubtitle {
+  font-size: 0.9375rem;
+  color: var(--subtle);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Company overview content ────────────────────── */
+.overviewContent {
+  margin-top: 1.75rem;
+}
+
 /* ── Collapsible sections stack ──────────────────── */
 .sections {
   margin-top: 2rem;

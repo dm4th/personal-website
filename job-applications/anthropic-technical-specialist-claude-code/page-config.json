@@ -117,7 +117,7 @@
       "mitigation": "Ramping on headless mode specifics is a matter of days given the production foundation already in place."
     }
   ],
-  "referralBlurb": "",
+  "referralBlurb": "I am referring Dan Mathieson for the Technical Specialist, Claude Code role. Dan spent two years building Claude Code into the operating system of a sales engineering team: 22 skills, 5 parallel agents, pre/post tool-use hooks, a feedback loop sampling real usage, and org-wide Cowork deployment to non-technical reps. He ran technical evaluations with a 96% proposal conversion rate, owned $31.8M in enterprise pipeline, and was retained through an 85% headcount reduction specifically because he can make complex AI legible to people who are not technical. His enablement work has been GTM-internal rather than customer-facing on behalf of a vendor, but the underlying Claude Code depth and enterprise adoption instinct are among the most genuine I have encountered.",
   "projects": [
     {
       "name": "Personal Website Agent",

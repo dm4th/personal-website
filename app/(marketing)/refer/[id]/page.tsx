@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllJobApplicationConfigs, getJobApplicationBySlug } from '@/lib/content/jobApplications';
+import { getAllCompanyOverviews, getCompanyOverviewBySlug } from '@/lib/content/companyOverviews';
 import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
 import FitScoreWheel from '@/components/refer/FitScoreWheel';
@@ -14,23 +15,90 @@ import ReferralBlurb from '@/components/refer/ReferralBlurb';
 import ApplicationQA from '@/components/refer/ApplicationQA';
 import ProjectCallouts from '@/components/refer/ProjectCallouts';
 import FitScoreDimensions from '@/components/refer/FitScoreDimensions';
+import CompanyOverviewPanel from '@/components/refer/CompanyOverviewPanel';
 import { getSortedInfo } from '@/lib/content/infoDocs';
 import styles from './page.module.css';
 
 export async function generateStaticParams() {
-  const configs = getAllJobApplicationConfigs();
-  return configs.map(({ config }) => ({ id: config.id }));
+  const jobConfigs = getAllJobApplicationConfigs();
+  const companyOverviews = getAllCompanyOverviews();
+  return [
+    ...jobConfigs.map(({ config }) => ({ id: config.id })),
+    ...companyOverviews.map(({ config }) => ({ id: config.id })),
+  ];
 }
 
 type Props = { params: Promise<{ id: string }> };
 
 export default async function ReferPage({ params }: Props) {
   const { id } = await params;
+  const allInfoData = getSortedInfo();
+
+  // ── Company overview pages ───────────────────────────────────────
+  const companyEntry = getCompanyOverviewBySlug(id);
+  if (companyEntry) {
+    const { config: overview } = companyEntry;
+    const allJobConfigs = getAllJobApplicationConfigs();
+    const roles = allJobConfigs
+      .filter((e) => e.config.company === overview.company)
+      .sort((a, b) => b.config.fitScore - a.config.fitScore);
+
+    return (
+      <>
+        <SiteHeader allInfoData={allInfoData} />
+        <div className={styles.wrapper}>
+
+          {/* ── Page header ─────────────────────────────────── */}
+          <header className={styles.pageHeader}>
+            <div className={styles.headerLeft}>
+              <div className={styles.logoRow}>
+                {overview.companyLogoUrl ? (
+                  <Image
+                    src={overview.companyLogoUrl}
+                    alt={`${overview.company} logo`}
+                    width={48}
+                    height={48}
+                    className={styles.logo}
+                    unoptimized
+                  />
+                ) : (
+                  <div className={styles.logoFallback}>{overview.company.charAt(0)}</div>
+                )}
+                <div className={styles.metaStack}>
+                  <span className={styles.company}>{overview.company}</span>
+                  <span className={styles.date}>Dan Mathieson</span>
+                </div>
+              </div>
+              <h1 className={styles.role}>I researched {roles.length} roles.</h1>
+              <p className={styles.overviewSubtitle}>
+                Here is my honest, AI-scored assessment of each one. Click through any role to
+                see the full breakdown.
+              </p>
+            </div>
+          </header>
+
+          {/* ── Interactive role panel + radar chart ─────────── */}
+          <div className={styles.overviewContent}>
+            <CompanyOverviewPanel
+              roles={roles}
+              personalNote={overview.personalNote}
+            />
+          </div>
+
+          <div className={styles.backLink}>
+            <Link href="/">← danielmathieson.com</Link>
+          </div>
+        </div>
+        <SiteFooter />
+      </>
+    );
+  }
+
+  // ── Role-specific referral pages ──────────────────────────────────
   const entry = getJobApplicationBySlug(id);
   if (!entry) notFound();
 
   const { config } = entry;
-  const allInfoData = getSortedInfo();
 
   const hasStrengthsOrWeaknesses = config.strengths.length > 0 || config.weaknesses.length > 0;
 
