@@ -109,18 +109,34 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
 
   const scoreColor =
     !data ? 'var(--muted)'
-    : data.fitScore >= 80 ? '#22c55e'
-    : data.fitScore >= 60 ? '#f59e0b'
+    : data.fitScore >= 85 ? '#22c55e'
+    : data.fitScore >= 70 ? '#3b82f6'
+    : data.fitScore >= 55 ? '#eab308'
+    : data.fitScore >= 40 ? '#f59e0b'
     : '#ef4444';
+
+  // Parse "Fit score: XX/100 - Role Title at Company" into coloured parts
+  const headerScore = data ? `${data.fitScore}/100` : null;
+  const headerRole  = data
+    ? `${data.roleTitle}${data.company ? ` at ${data.company}` : ''}`
+    : (part.summary ?? 'JD Fit Analysis');
 
   return (
     <div className={styles.card}>
       <button className={styles.header} onClick={() => setExpanded((v) => !v)}>
-        <span className={styles.icon}>{isPending ? '⏳' : isError ? '✗' : '📄'}</span>
+        {(isPending || isError) && (
+          <span className={styles.icon}>{isPending ? '⏳' : '✗'}</span>
+        )}
         {isPending ? (
           <span className={styles.label}>Scoring job fit…</span>
         ) : (
-          <span className={styles.labelTitle}>{part.summary ?? 'JD Fit Analysis'}</span>
+          <span className={styles.labelTitle}>
+            {headerScore && (
+              <span style={{ color: scoreColor }}>{headerScore}</span>
+            )}
+            {headerScore && ' · '}
+            {headerRole}
+          </span>
         )}
         {!isPending && <span className={styles.chevron}>{expanded ? '▲' : '▼'}</span>}
       </button>
@@ -253,9 +269,8 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                             const color = dimScoreColor(dim.score);
                             const isRowExpanded = expandedDimKey === key;
                             return (
-                              <>
+                              <React.Fragment key={key}>
                                 <tr
-                                  key={key}
                                   className={`${styles.dtRow} ${isRowExpanded ? styles.dtRowExpanded : ''}`}
                                 >
                                   <td className={styles.dtTdCriterion}>
@@ -297,7 +312,7 @@ export default function JDFitCard({ part }: { part: ToolUsePart }) {
                                     </td>
                                   </tr>
                                 )}
-                              </>
+                              </React.Fragment>
                             );
                           })}
                         </tbody>
