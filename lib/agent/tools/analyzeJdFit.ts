@@ -4,7 +4,8 @@ import { searchContent, type SearchContentInput } from './searchContent';
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 export type JdFitInput = {
-  jobDescription: string;
+  jobDescription?: string;
+  jobUrl?: string; // If provided and jobDescription is empty, the URL will be fetched automatically
   focus?: 'technical' | 'leadership' | 'cultural' | 'all';
   backgroundContext?: string;
   outputPerspective?: 'observer' | 'applicant';
@@ -312,16 +313,56 @@ ${jd.slice(0, 6000)}`,
   };
 }
 
+// ─── URL fetch helper ─────────────────────────────────────────────────────────
+
+/** Strip HTML tags and decode common entities — good enough for job boards. */
+function htmlToText(html: string): string {
+  return html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&#\d+;/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
+async function fetchJobDescriptionFromUrl(url: string): Promise<string> {
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (compatible; JobFitBot/1.0)',
+      'Accept': 'text/html,application/xhtml+xml',
+    },
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+  const html = await res.text();
+  const text = htmlToText(html);
+  // Trim to 12000 chars — enough for any JD, avoids loading entire page boilerplate
+  return text.slice(0, 12_000);
+}
+
+// ─── Tool definition (what the agent sees) ───────────────────────────────────
+
 export const analyzeJdFitTool = {
   name: 'analyze_jd_fit',
   description:
-    "Analyze a job description against Dan's experience and produce a structured fit assessment. Returns a fit score (0-100), per-dimension scores with rationale, strengths with evidence from Dan's actual files, gaps with mitigations, suggested talking points, and recommended role framing. Use this when a visitor pastes or describes a job they want to evaluate Dan for.",
+    "Analyze a job description against Dan's experience and produce a structured fit assessment. Returns a fit score (0-100), per-dimension scores with rationale, strengths with evidence from Dan's actual files, gaps with mitigations, suggested talking points, and recommended role framing. Use this when a visitor pastes a job description OR shares a job posting URL.",
   input_schema: {
     type: 'object' as const,
     properties: {
       jobDescription: {
         type: 'string',
-        description: 'The full job description text',
+        description: 'The full job description text. Provide this OR jobUrl — not both required.',
+      },
+      jobUrl: {
+        type: 'string',
+        description: 'URL of the job posting. The tool will fetch and parse the text automatically. Use this when the visitor shares a link instead of pasting text.',
       },
       focus: {
         type: 'string',
@@ -329,7 +370,7 @@ export const analyzeJdFitTool = {
         description: 'Which aspects to emphasize. Defaults to "all".',
       },
     },
-    required: ['jobDescription'],
+    required: [],
   },
 };
 
@@ -337,6 +378,19 @@ export async function analyzeJdFit(
   input: JdFitInput,
 ): Promise<{ ok: true; data: JdFitOutput; summary: string; extractedTerms: { searchTerms: string[]; synonymTerms: string[] } } | { ok: false; error: string }> {
   try {
+    // Step 0: If only a URL was provided, fetch the job description text first
+    let jdText = input.jobDescription ?? '';
+    if (!jdText && input.jobUrl) {
+      try {
+        jdText = await fetchJobDescriptionFromUrl(input.jobUrl);
+      } catch (err) {
+        return { ok: false, error: `Could not fetch job description from URL: ${err instanceof Error ? err.message : String(err)}` };
+      }
+    }
+    if (!jdText) {
+      return { ok: false, error: 'Provide either a job description or a job posting URL.' };
+    }
+
     // Step 1: Extract structured requirements from JD (Haiku - cheap pass)
     const extractResp = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
@@ -369,7 +423,7 @@ ${input.termGlossary}` : ''}
 }
 
 Job Description:
-${input.jobDescription.slice(0, 8000)}`,
+${jdText.slice(0, 8000)}`,
         },
       ],
     });
@@ -387,7 +441,7 @@ ${input.jobDescription.slice(0, 8000)}`,
     // onProgress fires for each dimension as soon as it completes, before all 5 are done,
     // so the chat UI can progressively render dimension cards while others are still running.
     const scoreWithProgress = async (key: keyof JdFitDimensions): Promise<[keyof JdFitDimensions, DimensionScore]> => {
-      const score = await scoreDimension(input.jobDescription, extracted, key);
+      const score = await scoreDimension(jdText, extracted, key);
       input.onProgress?.(key, score);
       return [key, score];
     };
