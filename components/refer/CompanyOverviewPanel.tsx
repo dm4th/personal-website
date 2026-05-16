@@ -137,11 +137,22 @@ export default function CompanyOverviewPanel({ roles, personalNote, company, vid
       </div>
 
       {/* ── Personal note (Why Company) ──────────────────── */}
-      {(personalNote || videoUrl) && (
+      {(personalNote || videoUrl) && (  // show section if either note or video link exists
         <div className={styles.personalSection}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>{company ? `Why ${company}` : 'From Dan'}</span>
             <span className={styles.danTag}>Dan Generated</span>
+            {videoUrl && (
+              <a
+                href={videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.videoLink}
+              >
+                <span className={styles.videoLinkIcon}>▶</span>
+                Link to Intro Video
+              </a>
+            )}
           </div>
           {personalNote && (
             <div className={styles.personalCard}>
@@ -157,18 +168,6 @@ export default function CompanyOverviewPanel({ roles, personalNote, company, vid
               >
                 {copied ? '✓ Copied' : 'Copy'}
               </button>
-            </div>
-          )}
-          {videoUrl && (
-            <div className={styles.videoCard}>
-              <div className={styles.videoWrapper}>
-                <iframe
-                  src={videoUrl.replace('/share/', '/embed/')}
-                  className={styles.videoFrame}
-                  allow="fullscreen"
-                  title="Claude Code demo"
-                />
-              </div>
             </div>
           )}
         </div>
