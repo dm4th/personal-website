@@ -1,0 +1,153 @@
+{
+  "id": "a8b2c4d6e0f1",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Technical Deployment Lead",
+  "appliedDate": "",
+  "fitScore": 89,
+  "fitScoreNote": "I've spent the last two years as the technical owner of enterprise AI deployments in healthcare: owning deals from on-site discovery through production scoping, navigating HIPAA and SOC 2 with health system CIOs, and building the agentic infrastructure that made a two-person SE team operate at five times its size. What I do best is bridge the gap between what AI can actually do and the regulated-industry executives who need to decide whether to trust it, and that is exactly the motion this role describes.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan has deep, direct experience with the core motion this role requires: end-to-end enterprise AI deployment ownership in a regulated industry (healthcare), production delivery of LLM-based agentic solutions, technical discovery and workflow mapping, security and compliance navigation (HIPAA, SOC 2, VSRA), and executive-level stakeholder management. His work at Smarter Technologies and Thoughtful AI maps almost precisely to what Anthropic describes: he owned deals from pre-sales discovery through deployment scoping, ran on-site workshops, led CIO-level architecture walkthroughs, and built reusable delivery playbooks from scratch. As Lead TPM at Thoughtful he directed FDE teams on customer implementations and was accountable to delivery KPIs, not just pipeline metrics.",
+      "citations": [
+        "career/smarter-technologies/enterprise-deals.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/security-compliance.md",
+        "career/smarter-technologies/index.md",
+        "career/thoughtful/customer-engineer.md",
+        "career/thoughtful/lead-tpm.md"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "Dan has directly owned end-to-end AI agent deployments in a heavily regulated industry, managing $31.8M in enterprise pipeline across 61 deals as Director of Sales Engineering, including a closed-won $1.9M four-region agentic deployment he drove from technical discovery through contract. He demonstrated executive presence in live security architecture walkthroughs with CIOs, ran on-site workshops at Jefferson Health and Presbyterian Health, built reusable solution playbooks and pricing frameworks from scratch, and navigated HIPAA, SOC 2, and BAA compliance reviews in enterprise procurement cycles. As Lead TPM at Thoughtful he directed FDE teams across multiple concurrent implementations and stepped into team leadership during a scaling crisis.",
+      "citations": [
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/enterprise-deals.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/thoughtful/lead-tpm.md",
+        "career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 8,
+      "rationale": "Dan has substantial production-level experience with AI and LLM-based agentic systems: a 5-agent parallel pipeline, a hybrid-RAG eligibility engine (95% accuracy in production), and a 23-skill Claude Code GTM platform with 943 commits and 57 Python integration scripts, all deployed in real enterprise healthcare contexts. His domain expertise in regulated industries (HIPAA, SOC 2, FHIR, RPA architecture across 12+ EMR platforms, BAA negotiations) is deep and operationally proven. The primary gap is that his agentic work was built on Claude and Anthropic tooling specifically rather than broader LLM frameworks, and his vertical depth is exclusively healthcare RCM.",
+      "citations": [
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/security-compliance.md",
+        "career/thoughtful/dental-eligibility-intelligence.md",
+        "career/thoughtful/customer-engineer.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 9,
+      "rationale": "This role targets regulated industry delivery: healthcare, life sciences, financial services. Dan has 2+ years of deep healthcare RCM automation experience across Thoughtful AI and Smarter Technologies, covering health systems, payers, physician groups, and DSOs. He personally ran on-site discovery workshops mapping full revenue cycle workflows, drove a closed-won $1.9M four-region agent deployment end-to-end, and navigated FHIR, EDI, HIPAA, and EMR integration architecture live with health system CIOs. The SOW-to-production-deployment mandate of this role closely mirrors what Dan has been doing as both a delivery lead and solutions engineering owner.",
+      "citations": [
+        "career/thoughtful/customer-engineer.md",
+        "career/smarter-technologies/enterprise-deals.md",
+        "career/smarter-technologies/index.md",
+        "career/smarter-technologies/security-compliance.md"
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Dan is a deeply rooted SF resident (Richmond neighborhood since 2022, fiancee there, no relocation signals) and the role lists San Francisco as a valid location, eliminating geographic friction. The $200K-$345K compensation band comfortably brackets director and VP-level market rates. The hybrid requirement and 25-50% customer travel expectation are non-issues: Dan ran multi-day on-site discovery workshops at Jefferson Health and Presbyterian Health in New Mexico as standard practice.",
+      "citations": [
+        "about-me/where-ive-lived/san-francisco.md",
+        "career/smarter-technologies/enterprise-deals.md",
+        "career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    }
+  },
+  "summary": [
+    "Directed 1-3 FDEs across up to 18 concurrent customer implementations as Lead TPM, accountable to delivery KPIs throughout",
+    "Drove a four-region agentic deployment to closed-won ($1.9M) from technical discovery through contract at Smarter Technologies",
+    "Built reusable delivery playbooks, pricing frameworks, and a full SE infrastructure from scratch across 10 healthcare verticals",
+    "Navigated HIPAA, SOC 2, BAA, FHIR, and EMR compliance live with health system CIOs as gatekeeping decisions for deal advancement",
+    "Only non-Product/Engineering person retained after 85% RIF; 96% proposal conversion rate as forward-deployed pre-sales lead"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5017903008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "End-to-end enterprise AI deployment ownership in a regulated industry",
+      "description": "At Thoughtful AI I owned implementations from MAP sign-off through production and KPI attainment, directing FDE teams across up to 18 concurrent customer workstreams and personally writing Python analytics pipelines for customer deployments when needed. At Smarter Technologies I drove a <strong>$1.9M</strong> four-region agentic deployment from technical discovery through contract close. The post-contract delivery ownership this role describes is not adjacent to my experience: it is my experience.",
+      "citations": [
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" },
+        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+      ]
+    },
+    {
+      "title": "Executive presence in live compliance and architecture conversations",
+      "description": "I ran live security architecture walkthroughs with health system CIOs covering data flow, encryption model, BAA structure, subprocessor relationships, and audit logging. These were not polished sales calls: they were technical Q&A sessions that were gatekeeping decisions for whether a deal moved to procurement. I navigated HIPAA, SOC 2, FHIR, EDI, and Epic integration questions in real-time with the people who could kill the deal.",
+      "citations": [
+        { "label": "Security and Compliance (Smarter Technologies)", "path": "/info/career/smarter-technologies/security-compliance" },
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "Reusable delivery playbooks and KPI frameworks built from scratch",
+      "description": "There was no SE infrastructure at Smarter Technologies when I started: no deal tracking, no repeatable processes, no scoping templates. I built a full delivery system across <strong>10 healthcare verticals</strong>, including 76 prospect directories, a dual-system Notion and Git state management architecture, pricing frameworks, and a feedback loop that automatically pushed field discovery signal to engineering standup notes. The Deployment Lead role asks for someone who can build solution patterns and playbooks for scaling. That is what I spent seven months doing.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Index (Smarter Technologies)", "path": "/info/career/smarter-technologies/index" }
+      ]
+    },
+    {
+      "title": "Production agentic AI infrastructure in regulated industry context",
+      "description": "Built a <strong>23-skill</strong>, <strong>5-agent</strong> Claude Code platform with CI/CD pipelines, pre/post tool-use hooks, and org-level deployment governance, alongside a hybrid-RAG eligibility engine hitting <strong>95% accuracy</strong> in live production billing workflows. Both systems ran in regulated healthcare environments with near-zero tolerance for error. I designed for determinism as a first principle, not an afterthought.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
+      ]
+    },
+    {
+      "title": "Retained through an 85% RIF; 96% enterprise proposal conversion",
+      "description": "When Smarter Technologies shut down, I was the only non-Product/Engineering person among the <strong>15%</strong> retained. The explicit reason: I can take genuinely complex AI systems and make them legible to the skeptical executives who need to decide whether to trust them. That same capability drove a <strong>96%</strong> proposal conversion rate in pre-sales, where sales teams broke scheduling rules to get me on stalling calls.",
+      "citations": [
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" },
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "Production LLM deployment is internally built and pre-sales-adjacent",
+      "description": "My agentic Claude Code platform was internal tooling for my own GTM org rather than a deployment I delivered to an external customer as a named vendor engagement. The Thoughtful work was closer: post-contract delivery ownership of customer implementations with FDEs. But neither maps perfectly to owning a customer-facing LLM deployment from signed SOW through hypercare as the primary delivery owner on behalf of Anthropic.",
+      "mitigation": "The distinction is thinner than it looks. At Thoughtful I owned implementations from MAP sign-off through production KPIs with real delivery accountability. At Smarter Technologies I closed a four-region agentic deployment to signed contract. The post-SOW delivery muscle is there, applied to the RPA-era version of what this role would do with LLM-native agents."
+    },
+    {
+      "title": "Vertical depth is exclusively healthcare RCM",
+      "description": "The role targets regulated industries broadly: financial services, life sciences, pharma, and others. My enterprise delivery experience is almost entirely in healthcare revenue cycle management. I have not deployed AI agent solutions in financial services or life sciences specifically.",
+      "mitigation": "Healthcare is one of the hardest regulated enterprise verticals: HIPAA, CMS mandates, payer-provider adversarial dynamics, and procurement cycles that rival anything in financial services. The compliance reasoning, the CISO conversation playbook, and the executive briefing discipline transfer directly. I would come up the curve on other verticals quickly because the underlying delivery pattern is the same."
+    },
+    {
+      "title": "Travel expectation is 25-50%, higher than my documented baseline",
+      "description": "While I have done multi-day on-site enterprise work (Jefferson Health in Philadelphia, Presbyterian Health in New Mexico), I have not held a role where 25-50% travel was a structural expectation rather than an occasional requirement.",
+      "mitigation": "I am comfortable with and genuinely enjoy on-site customer work. The 25-50% range is something I would want to discuss in terms of cadence (concentrated sprints versus weekly travel) but it is not a blocker. The on-site discovery dynamic is where I do some of my best work."
+    }
+  ],
+  "referralBlurb": "I am referring Dan Mathieson for the Technical Deployment Lead role. Dan has been doing the core motion of this job for the last two years: end-to-end enterprise AI deployment ownership in healthcare, directing FDE teams on customer implementations, running on-site discovery workshops at major health systems, navigating HIPAA and SOC 2 with health system CIOs, and building reusable delivery playbooks from scratch where none existed. He drove a four-region agentic deployment to closed-won at $1.9M, was the only non-Product/Engineering person retained through an 85% headcount reduction, and built a 23-skill Claude Code platform managing $31.8M in enterprise pipeline with a two-person team. His delivery experience has been adjacent to the formal FDE title rather than under it, but the ownership pattern and accountability are exactly what this role requires.",
+  "projects": [
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "Built on the Anthropic SDK with tool use, streaming, and a RAG pipeline. Shows the Claude Code-native engineering depth this role deploys on behalf of enterprise customers."
+    },
+    {
+      "name": "Healthcare Agent Data Layer",
+      "path": "/projects/healthcare-agent-data-layer",
+      "relevance": "Full technical architecture for an MCP-native clinical data platform: audit boundaries, agent orchestration, and the governance layer enterprise IT teams need before they will approve a deployment."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production hybrid-RAG system deployed in a live billing environment. The eval framework, determinism-as-design-principle approach, and 95% accuracy bar demonstrate the production delivery standard this role maintains."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}
