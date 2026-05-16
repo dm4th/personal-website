@@ -43,6 +43,8 @@ export default async function ReferPage({ params }: Props) {
       .filter((e) => e.config.company === overview.company)
       .sort((a, b) => b.config.fitScore - a.config.fitScore);
 
+    const topRole = roles[0];
+
     return (
       <>
         <SiteHeader allInfoData={allInfoData} />
@@ -69,19 +71,47 @@ export default async function ReferPage({ params }: Props) {
                   <span className={styles.date}>Dan Mathieson</span>
                 </div>
               </div>
-              <h1 className={styles.role}>I researched {roles.length} roles.</h1>
-              <p className={styles.overviewSubtitle}>
-                Here is my honest, AI-scored assessment of each one. Click through any role to
-                see the full breakdown.
-              </p>
+              <h1 className={styles.role}>Dan Mathieson | {overview.company}</h1>
             </div>
           </header>
+
+          {/* ── Thank-you blurb ───────────────────────────────── */}
+          <p className={styles.thankYou}>
+            Thank you so much for reviewing my candidacy for a role at {overview.company}! More
+            than anything I want to join and contribute to the mission at {overview.company} and
+            I took my time evaluating multiple roles before landing on my top choice.
+          </p>
+
+          {/* ── Top role qualifications callout ──────────────── */}
+          {topRole && (topRole.config.summary ?? []).length > 0 && (
+            <div className={styles.topRoleCallout}>
+              <div className={styles.topRoleLabelRow}>
+                <span className={styles.topRoleLabel}>Top match</span>
+                <span className={styles.topRoleName}>{topRole.config.role}</span>
+                <span
+                  className={styles.topRoleScore}
+                  style={{ color: topRole.config.fitScore >= 75 ? 'var(--success)' : topRole.config.fitScore >= 50 ? '#f59e0b' : '#ef4444' }}
+                >
+                  {topRole.config.fitScore}/100
+                </span>
+              </div>
+              <ul className={styles.topRoleSummary}>
+                {(topRole.config.summary ?? []).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+              <a href={`/refer/${topRole.config.id}`} className={styles.topRoleLink}>
+                View full analysis →
+              </a>
+            </div>
+          )}
 
           {/* ── Interactive role panel + radar chart ─────────── */}
           <div className={styles.overviewContent}>
             <CompanyOverviewPanel
               roles={roles}
               personalNote={overview.personalNote}
+              company={overview.company}
             />
           </div>
 

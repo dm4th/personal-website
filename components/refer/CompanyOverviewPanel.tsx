@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import FitScoreWheel from './FitScoreWheel';
 import RadarChart from './RadarChart';
@@ -15,17 +15,29 @@ type RoleEntry = {
 type Props = {
   roles: RoleEntry[];
   personalNote?: string;
+  company?: string;
 };
 
 function scoreColor(s: number): string {
-  return s >= 85 ? 'var(--success)' : s >= 75 ? '#f59e0b' : '#ef4444';
+  return s >= 81 ? 'var(--success)' : s >= 61 ? '#3b82f6' : s >= 40 ? '#f59e0b' : '#ef4444';
 }
 
-export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
+export default function CompanyOverviewPanel({ roles, personalNote, company }: Props) {
   const [selectedId, setSelectedId] = useState(roles[0]?.config.id ?? '');
+  const [copied, setCopied] = useState(false);
 
   const selected = roles.find((r) => r.config.id === selectedId) ?? roles[0];
   if (!selected) return null;
+
+  const accentColor = scoreColor(selected.config.fitScore);
+
+  const handleCopy = useCallback(() => {
+    if (!personalNote) return;
+    navigator.clipboard.writeText(personalNote).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [personalNote]);
 
   return (
     <div className={styles.root}>
@@ -36,10 +48,10 @@ export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
         <span className={styles.aiTag}>AI generated</span>
       </div>
 
-      {/* ── Main interactive panel ───────────────────────── */}
+      {/* ── Main panel ──────────────────────────────────────  */}
       <div className={styles.panel}>
 
-        {/* Left: clickable role list */}
+        {/* Top: clickable role list */}
         <div className={styles.roleList}>
           <p className={styles.listHeading}>Roles considered</p>
           {roles.map((entry) => {
@@ -64,7 +76,6 @@ export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
                   </span>
                 </button>
 
-                {/* Expanded panel under selected role */}
                 {isSelected && (
                   <div className={styles.roleExpanded}>
                     {entry.config.fitScoreNote && (
@@ -83,12 +94,12 @@ export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
           })}
         </div>
 
-        {/* Right: score wheel + radar chart */}
-        <div className={styles.chartPanel}>
-          <div className={styles.wheelRow}>
-            <FitScoreWheel score={selected.config.fitScore} />
+        {/* Bottom: score ring + radar chart side by side */}
+        <div className={styles.chartRow}>
+          <div className={styles.ringSection}>
+            <FitScoreWheel score={selected.config.fitScore} showText={false} />
             <div className={styles.wheelMeta}>
-              <p className={styles.wheelScore} style={{ color: scoreColor(selected.config.fitScore) }}>
+              <p className={styles.wheelScore} style={{ color: accentColor }}>
                 {selected.config.fitScore}<span className={styles.wheelScoreDenom}>/100</span>
               </p>
               <p className={styles.wheelRoleLabel}>Job Fit Score</p>
@@ -97,8 +108,11 @@ export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
           </div>
 
           {selected.config.dimensions ? (
-            <div className={styles.radarWrap}>
-              <RadarChart dimensions={selected.config.dimensions} />
+            <div className={styles.radarSection}>
+              <RadarChart
+                dimensions={selected.config.dimensions}
+                accentColor={accentColor}
+              />
             </div>
           ) : (
             <p className={styles.noDimensions}>
@@ -108,16 +122,39 @@ export default function CompanyOverviewPanel({ roles, personalNote }: Props) {
         </div>
       </div>
 
-      {/* ── Personal note (free-form, from Dan) ─────────── */}
+      {/* ── Scoring methodology note ─────────────────────── */}
+      <div className={styles.methodologyNote}>
+        <p className={styles.methodologyText}>
+          Each role is scored by a custom orchestrator agent that spawns five parallel sub-agents,
+          one per scoring dimension: core job function match, seniority, technical skills,
+          industry vertical fit, and logistics. Each sub-agent reads my full career documentation
+          alongside the job description and returns a score with cited evidence. The orchestrator
+          aggregates the sub-agent scores using weighted averaging (core function 3x, technical
+          skills 2.5x, seniority 2x, industry 1.5x, logistics 1x), normalizes to 100, and
+          presents the full output to me for review before it goes on the site.
+        </p>
+      </div>
+
+      {/* ── Personal note (Why Company) ──────────────────── */}
       {personalNote && (
         <div className={styles.personalSection}>
-          <div className={styles.personalHeader}>
-            <span className={styles.danTag}>From Dan</span>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionLabel}>{company ? `Why ${company}` : 'From Dan'}</span>
+            <span className={styles.danTag}>Dan Generated</span>
           </div>
-          <div className={styles.personalNote}>
-            {personalNote.split('\n\n').map((para, i) => (
-              <p key={i} className={styles.personalPara}>{para}</p>
-            ))}
+          <div className={styles.personalCard}>
+            <div className={styles.personalNote}>
+              {personalNote.split('\n\n').map((para, i) => (
+                <p key={i} className={styles.personalPara}>{para}</p>
+              ))}
+            </div>
+            <button
+              className={styles.copyButton}
+              onClick={handleCopy}
+              aria-label="Copy to clipboard"
+            >
+              {copied ? '✓ Copied' : 'Copy'}
+            </button>
           </div>
         </div>
       )}

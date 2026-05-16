@@ -70,8 +70,8 @@ export default function RadarChart({ dimensions, accentColor = 'var(--accent)' }
           d={gridPath(f)}
           fill="none"
           stroke="var(--border)"
-          strokeWidth={f === 1 ? 1 : 0.6}
-          opacity={f === 1 ? 0.6 : 0.3}
+          strokeWidth={f === 1 ? 1.5 : 1}
+          opacity={f === 1 ? 0.9 : 0.55}
         />
       ))}
 
@@ -86,8 +86,8 @@ export default function RadarChart({ dimensions, accentColor = 'var(--accent)' }
             x2={x2}
             y2={y2}
             stroke="var(--border)"
-            strokeWidth={0.6}
-            opacity={0.35}
+            strokeWidth={1}
+            opacity={0.55}
           />
         );
       })}

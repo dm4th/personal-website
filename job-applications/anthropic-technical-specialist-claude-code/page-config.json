@@ -54,7 +54,7 @@
   "summary": [
     "22-skill, 5-agent Cowork platform deployed live on $31.8M in enterprise pipeline",
     "96% proposal conversion rate as forward-deployed pre-sales technical owner at Thoughtful AI",
-    "Only non-Product/Engineering person retained after 85% headcount reduction at Smarter Technologies",
+    "Only non-Product/Engineering person kept after 85% RIF: retained specifically because I can make complex AI systems legible to the executives who need to trust them",
     "6 months designing MCP-native clinical data platform architecture for enterprise AI adoption",
     "Automated field-to-engineering feedback pipeline using pre/post tool-use hooks at scale"
   ],
@@ -87,7 +87,7 @@
     },
     {
       "title": "Only non-Product/Engineering person retained after 85% reduction",
-      "description": "When Smarter Technologies shut down, I was one of 15% retained, the only person without a Product or Engineering title. The PE firm made a specific exception. That happened because I can take complex AI systems and make them legible to the people who need to adopt them.",
+      "description": "When Smarter Technologies shut down, I was one of 15% retained, the only person without a Product or Engineering title. The PE firm made a specific exception. The explicit reason: I have an uncommon ability to take genuinely complex AI systems and make them legible to skeptical, non-technical executives in ways that move them from unsure to convinced. That skill is not adjacent to this role. It is the role.",
       "citations": [
         { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
       ]
