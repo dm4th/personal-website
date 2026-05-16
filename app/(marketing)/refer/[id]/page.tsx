@@ -91,7 +91,10 @@ export default async function ReferPage({ params }: Props) {
         {/* ── Job fit analysis: quote + bullets (standalone, always visible) ── */}
         {(config.fitScoreNote || (config.summary && config.summary.length > 0)) && (
           <div className={styles.framingBlock}>
-            <p className={styles.framingLabel}>Job fit analysis</p>
+            <div className={styles.framingLabelRow}>
+              <p className={styles.framingLabel}>Job fit analysis</p>
+              <span className={styles.aiTag}>AI generated</span>
+            </div>
             {config.fitScoreNote && (
               <blockquote className={styles.framingQuote}>{config.fitScoreNote}</blockquote>
             )}
@@ -108,7 +111,7 @@ export default async function ReferPage({ params }: Props) {
 
           {/* ── Fit scoring detail: full-width dimension table ── */}
           {config.dimensions && (
-            <CollapsibleSection title="Fit scoring detail">
+            <CollapsibleSection title="Fit scoring detail" badge="AI generated">
               <FitScoreDimensions dimensions={config.dimensions} />
             </CollapsibleSection>
           )}

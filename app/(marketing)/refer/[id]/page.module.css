@@ -124,16 +124,7 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.framingLabel {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
+  gap: 0;
 }
 
 .framingQuote {
@@ -152,6 +143,36 @@
 /* ── Summary of qualifications (below framing quote) */
 .summaryBlock {
   margin-top: 1rem;
+}
+
+/* ── Framing label row with AI tag ───────────────── */
+.framingLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.framingLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.aiTag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, #a78bfa 12%, transparent);
+  color: #a78bfa;
+  border: 1px solid color-mix(in srgb, #a78bfa 30%, transparent);
+  flex-shrink: 0;
 }
 
 /* ── Referral summary: framing quote ─────────────── */
