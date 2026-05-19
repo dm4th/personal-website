@@ -222,7 +222,7 @@ export default async function ReferPage({ params }: Props) {
           )}
 
           {hasStrengthsOrWeaknesses && (
-            <CollapsibleSection title="Fit analysis" defaultOpen>
+            <CollapsibleSection title="Fit analysis" badge="AI generated" defaultOpen>
               <div className={styles.swGrid}>
                 <StrengthsList strengths={config.strengths} />
                 <WeaknessesList weaknesses={config.weaknesses} />
