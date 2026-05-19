@@ -1,0 +1,180 @@
+{
+  "id": "71365ff0389a",
+  "company": "Notion",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=notion.com&sz=128",
+  "role": "Solutions Consultant",
+  "appliedDate": "",
+  "fitScore": 88,
+  "fitScoreNote": "I've spent three years doing the consultative pre-sales motion this role requires, across $31.8M in enterprise pipeline, and I've been building and governing production Notion infrastructure the entire time. I'm not learning the product or the process  -  I'm bringing both to Notion's customers from day one.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Dan's career is a near-perfect functional match for a Solutions Consultant role: he has served explicitly as Director of Sales Engineering running pre-sales, custom demos, technical discovery, and consultative scoping for enterprise deals (96% proposal conversion rate, 61 enterprise deals managed, $31.8M pipeline). His most documented superpower  -  translating complex AI/technical systems into business terms for CIOs, CFOs, and RCM leadership  -  is precisely what a Notion Solutions Consultant does. The one minor gap is that prior experience is healthcare-vertical-specific rather than horizontal SaaS/productivity, and Notion platform expertise (while well-evidenced personally and as a professional ops tool) hasn't been his primary commercial product.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    },
+    "seniority": {
+      "score": 8,
+      "rationale": "Dan has ~8 years of post-college experience with a strong match on the core Solutions Consultant skill set: he has held Solutions Architect, Customer Engineer, Lead TPM, and Director of Sales Engineering titles with demonstrated end-to-end ownership of enterprise deals ($31.8M pipeline, 61 accounts), executive-level stakeholder management (CIOs, CFOs, C-suite at health systems), structured discovery and implementation scoping, and deep Notion platform expertise including serving as workspace admin and building the deal tracking/product feedback infrastructure in Notion. The slight gap is that his background is heavily healthcare-specific and more senior/technical than a typical Solutions Consultant IC role might require, and he lacks direct Notion product sales or SaaS pre-sales experience outside his own tooling use.",
+      "citations": [
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/career/thoughtful/lead-tpm.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 10,
+      "rationale": "Dan has production-depth technical evidence across every skill this role requires. As Notion workspace admin at Thoughtful AI he designed and governed the full workspace architecture: linked databases, rollup formulas, filtered views, permission hierarchies, and cross-functional access controls for engineers, sales, and customer success. At Smarter Technologies he built production integrations against the Notion REST API across 57 Python scripts, including bidirectional sync with Salesforce, Fireflies, Google Drive, and GitHub Actions. He is a self-described power user who has rebuilt his personal operating system in Notion using relational databases, templates, formula fields, and Notion AI. He also built the Notion Meeting Intelligence project: a multi-agent pipeline that writes structured deal intelligence directly into Notion workspaces. The workspace architecture, permissions governance, automation design, and API integration skills this role requires are all production-evidenced, not theoretical. The framing that his Notion experience is only as an internal user rather than a customer-facing implementer misclassifies the depth: governing a production workspace for a cross-functional team and integrating it into a live SE platform is implementation work, just directed inward rather than at a paying client.",
+      "citations": [
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md",
+        "/info/about-me/career-metrics.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/smarter-technologies/demo-engineering.md",
+        "/info/career/smarter-technologies/pipeline-management.md",
+        "/info/career/thoughtful/solutions-architect.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 7,
+      "rationale": "Notion is an explicitly horizontal productivity and collaboration platform with no preferred industry vertical: its ICP spans enterprise ops, GTM, product, and engineering teams across all industries. Because the product is horizontal, a vertical ICP mismatch is a smaller penalty here than it would be for a vertical SaaS role. Dan's core consulting motion, workspace architecture thinking, change management instincts, and stakeholder communication skills transfer regardless of what industry the customer is in. He also brings the strongest possible Notion-specific compensating signal: production workspace admin experience, 57-script API integration platform, personal power-user depth, and the Notion Meeting Intelligence project as a live demo of what he can build on the platform. The modest deduction reflects that his prior enterprise buyer experience is concentrated in healthcare RCM rather than the broader cross-industry buyer base Notion serves, but the consultative skills and Notion depth are both well above the threshold this role requires.",
+      "citations": [
+        "about-me/strengths-and-weaknesses/self-assessment.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/smarter-technologies/pipeline-management.md",
+        "career/smarter-technologies/enterprise-deals.md",
+        "about-me/career-metrics.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan is a confirmed San Francisco resident (Richmond neighborhood, current) and Notion is headquartered in SF, making location an ideal match with no relocation friction. The JD as provided did not render fully (JavaScript required), so specific compensation bands, travel requirements, and hybrid/remote policy cannot be confirmed, which introduces minor uncertainty but no known blockers. Dan's baseline profile indicates openness to hybrid arrangements and travel tolerance, both consistent with a Solutions Consultant role at a SF-based company.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/about-me/where-ive-lived/index.md"
+      ]
+    }
+  },
+  "summary": [
+    "96% proposal conversion rate across 61 enterprise deals managing $31.8M in pipeline simultaneously.",
+    "Production Notion workspace architect  -  built relational databases, permission hierarchies, and API integrations across 57 scripts.",
+    "Ran technical discovery, custom demo engineering, and implementation scoping for health system CIOs and CFOs.",
+    "Built a multi-agent pipeline that writes structured deal intelligence directly into Notion as a GTM productivity tool.",
+    "Deep consultative pre-sales experience translating complex technical systems into executive-level business cases."
+  ],
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/notion/759fe7e9-0cbc-4a4c-bfa5-064b96247b12",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "I've spent the last three years doing exactly what a Solutions Consultant does  - ",
+      "description": "I've spent the last three years doing exactly what a Solutions Consultant does: translating complex AI systems into business terms for CIOs, CFOs, and operations leaders, with a 96% proposal conversion rate to prove it.",
+      "citations": [
+        {
+          "label": "thoughtful/lead-tpm",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
+      ]
+    },
+    {
+      "title": "I'm a genuine Notion power user and former workspace admin  -  I've built relation",
+      "description": "I'm a genuine Notion power user and former workspace admin. I've built relational databases, linked views, rollup formulas, and permission hierarchies, and I've integrated the Notion REST API across 57 Python scripts in a production SE platform.",
+      "citations": [
+        {
+          "label": "thoughtful/solutions-architect",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    },
+    {
+      "title": "I managed $31",
+      "description": "I managed $31.8M in enterprise pipeline across 61 deals simultaneously, building the deal tracking infrastructure, workflow automation, and executive reporting layer from scratch with zero prior SE infrastructure.",
+      "citations": [
+        {
+          "label": "smarter-technologies/pipeline-management",
+          "path": "/info/career/smarter-technologies/pipeline-management"
+        }
+      ]
+    },
+    {
+      "title": "I've run technical discovery, custom demo engineering, and implementation scopin",
+      "description": "I've run technical discovery, custom demo engineering, and implementation scoping for enterprise deals with health system CIOs, CFOs, and IT security teams  -  the same consultative motion a Notion Solutions Consultant runs with knowledge-worker buyers.",
+      "citations": [
+        {
+          "label": "smarter-technologies/index",
+          "path": "/info/career/smarter-technologies/index"
+        }
+      ]
+    },
+    {
+      "title": "I was the only non-Product/Engineering person retained through an 85% reduction ",
+      "description": "I was the only non-Product/Engineering person retained through an 85% reduction at Smarter Technologies shutdown  -  specifically because two organizations valued my ability to make complex AI technology legible to skeptical enterprise buyers.",
+      "citations": [
+        {
+          "label": "smarter-technologies/shutdown-and-retention",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
+      ]
+    },
+    {
+      "title": "I've built and shipped production workflow automation  -  custom API integrations,",
+      "description": "I've built and shipped production workflow automation: custom API integrations, agentic pipelines, demo engineering platforms. When I show a prospect what's possible with Notion automation, I'm speaking from implementation depth, not feature familiarity.",
+      "citations": [
+        {
+          "label": "smarter-technologies/ai-se-platform",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "I haven't sold Notion specifically to enterprise customers  -  my pre-sales experi",
+      "description": "I haven't sold Notion specifically to enterprise customers  -  my pre-sales experience is in healthcare AI, not horizontal productivity software.",
+      "mitigation": "What I'd say: the consultative motion is identical  -  discovery, scoping, custom demo, executive alignment. I've run that process across 61 enterprise deals. The product changes; the skill transfers directly. And I'm not starting from zero on Notion  -  I've been running my own enterprise-grade Notion infrastructure for years."
+    },
+    {
+      "title": "My enterprise buyer experience is concentrated in healthcare  -  I haven't sold in",
+      "description": "My enterprise buyer experience is concentrated in healthcare  -  I haven't sold into the cross-industry ops, GTM, and knowledge-worker personas that are Notion's core ICP.",
+      "mitigation": "What I'd say: the problems Notion solves  -  fragmented workflows, tribal knowledge, unclear project ownership  -  exist in every industry. Healthcare is arguably the most complex environment to navigate organizationally. If I can align a CIO, a CFO, and an RCM operations lead on an AI adoption decision, I can align a VP of Ops and a head of Revenue on a Notion rollout."
+    },
+    {
+      "title": "I haven't implemented Notion for an external client in a formal consulting capac",
+      "description": "I haven't implemented Notion for an external client in a formal consulting capacity  -  my Notion depth is as an internal power user, admin, and API integrator.",
+      "mitigation": "What I'd say: I've been the person who built the workspace from the ground up, governed its structure, and integrated it into a production platform that the whole company depended on. That's a different kind of depth than knowing where the buttons are  -  it's the architecture and governance thinking that enterprise implementations actually require."
+    }
+  ],
+  "referralBlurb": "Dan ran pre-sales for our AI platform across 61 enterprise deals and built every piece of the SE infrastructure from scratch in Notion  -  the pipeline tracking, the workflow automation, the executive reporting layer. He's not just a power user; he integrated the Notion API across 57 production scripts and governed the workspace architecture the whole company depended on. If you need someone who can run consultative discovery with a CIO and then turn around and demo a custom Notion build, Dan is exactly that person.",
+  "projects": [
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "A multi-agent pipeline that converts sales recordings into structured deal intelligence written natively into Notion  -  demonstrates both Notion-native development and the kind of GTM workflow automation Notion's enterprise customers want to build."
+    },
+    {
+      "name": "Personal Website Agent",
+      "path": "/",
+      "relevance": "A production agentic system built with Next.js, TypeScript, and Claude that can analyze job descriptions and search Dan's career history in real time  -  demonstrates the full-stack, agent-first engineering depth that separates a builder-tier Solutions Consultant from a presenter."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "cover-letter.pdf"
+}

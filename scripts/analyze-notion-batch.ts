@@ -21,6 +21,12 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const ROLES = [
   {
+    title: 'Solutions Consultant',
+    company: 'Notion',
+    slug: 'notion-solutions-consultant',
+    url: 'https://jobs.ashbyhq.com/notion/759fe7e9-0cbc-4a4c-bfa5-064b96247b12',
+  },
+  {
     title: 'Forward Deployed Engineer, GTM',
     company: 'Notion',
     slug: 'notion-forward-deployed-engineer-gtm',

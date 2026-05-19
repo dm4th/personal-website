@@ -2718,7 +2718,11 @@
         "POC development",
         "stakeholder management",
         "cross-functional coordination",
-        "go-to-market strategy"
+        "go-to-market strategy",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering"
       ]
     },
     {
@@ -2774,6 +2778,125 @@
         "cross-functional coordination",
         "enterprise adoption",
         "demo coaching"
+      ]
+    },
+    {
+      "jdTerm": "Solutions Consultant",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "Notion",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "customer implementation",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "technical consulting",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "product expertise",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "client success",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
+      ]
+    },
+    {
+      "jdTerm": "workflow optimization",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
       ]
     }
   ],
@@ -3509,6 +3632,35 @@
         "cross-functional coordination",
         "enterprise adoption",
         "demo coaching"
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "role": "Solutions Consultant",
+      "company": "Notion",
+      "searchTerms": [
+        "Solutions Consultant",
+        "Notion",
+        "enterprise solutions",
+        "customer implementation",
+        "technical consulting",
+        "product expertise",
+        "client success",
+        "workflow optimization"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "implementation specialist",
+        "customer success engineer",
+        "business analyst",
+        "requirements gathering",
+        "stakeholder management",
+        "cross-functional coordination",
+        "POC development"
       ]
     }
   ]
