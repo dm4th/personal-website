@@ -25,13 +25,17 @@ const TOOL_SUGGESTIONS: Record<string, string[]> = {
 };
 
 const DEFAULT_SUGGESTIONS_GUEST = [
-  "What's Dan's background in AI?",
-  'Paste a job description to check fit →',
+  "🤖 What's Dan's background in AI?",
+  '🚀 What has Dan shipped, either professionally or personally?',
+  '🏢 Can you describe Dan\'s recent career experience?',
+  '💼 Paste a JD — run a multi-agent fit analysis →',
 ];
 
 const DEFAULT_SUGGESTIONS_AUTHED = [
-  "What's Dan's background in AI?",
-  'Paste a job description to check fit →',
+  "🤖 What's Dan's background in AI?",
+  '🚀 What has Dan shipped, either professionally or personally?',
+  '🏢 Can you describe Dan\'s recent career experience?',
+  '💼 Paste a JD — run a multi-agent fit analysis →',
   'Schedule time with Dan →',
 ];
 

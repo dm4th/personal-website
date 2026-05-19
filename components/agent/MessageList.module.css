@@ -51,6 +51,34 @@
   color: var(--subtle);
 }
 
+.suggestionHighlight {
+  border-color: var(--accent);
+  color: #93c5fd;
+}
+
+.suggestionHighlight:hover {
+  background: #1a2535;
+  color: #bfdbfe;
+}
+
+.orDivider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+  text-align: center;
+  margin: 0.25rem 0;
+}
+
+.orDivider::before,
+.orDivider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
 .typing {
   display: flex;
   gap: 4px;

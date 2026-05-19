@@ -20,12 +20,21 @@ export default function MessageList({ messages, isStreaming, onSend }: Props) {
         <p className={styles.emptyTitle}>Ask me anything about Dan</p>
         <ul className={styles.suggestions}>
           {[
-            "What's Dan's background in AI?",
-            'Paste a job description to check fit →',
-            'What projects has Dan shipped?',
-          ].map((s) => (
-            <li key={s} onClick={() => onSend?.(s)} className={styles.suggestion}>{s}</li>
+            "🤖 What's Dan's background in AI?",
+            '🚀 What has Dan shipped, either professionally or personally?',
+            '🏢 Can you describe Dan\'s recent career experience?',
+          ].map((text) => (
+            <li key={text} onClick={() => onSend?.(text)} className={styles.suggestion}>
+              {text}
+            </li>
           ))}
+          <li className={styles.orDivider}>OR</li>
+          <li
+            onClick={() => onSend?.('💼 Paste a JD — run a multi-agent fit analysis →')}
+            className={`${styles.suggestion} ${styles.suggestionHighlight}`}
+          >
+            💼 Paste a JD — run a multi-agent fit analysis →
+          </li>
         </ul>
       </div>
     );

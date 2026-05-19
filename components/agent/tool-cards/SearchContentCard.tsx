@@ -40,7 +40,11 @@ export default function SearchContentCard({ part }: { part: ToolUsePart }) {
 
       {expanded && !isPending && (
         <div className={styles.body}>
-          {isError && <p className={styles.error}>Tool error</p>}
+          {isError && (
+            <p className={styles.error}>
+              {(payload as { error?: string })?.error ?? 'Tool error'}
+            </p>
+          )}
 
           {/* Grep results */}
           {matches && matches.length > 0 && (
