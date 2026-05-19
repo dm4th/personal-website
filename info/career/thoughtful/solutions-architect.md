@@ -38,6 +38,10 @@ Over the two years I worked in this system and its successors, I ran dozens of e
 
 Built with: Python, Jupyter Notebook, OpenAI GPT-3.5, OpenAI Text Embedding Small, pgvector, AWS RDS, SharePoint API
 
+### Notion as the Operations Layer
+
+During my time at Thoughtful, I served as the workspace admin for our Notion environment. I built and maintained the internal tooling our team used day-to-day: structured databases for tracking customer accounts, automation plans, project status, and implementation timelines. I configured linked databases, rollup formulas, filtered views, and permission hierarchies so that engineers, sales, and customer success could each work in the context they needed without stepping on each other. Being the person who built the workspace from the inside out - not just as a user but as the person responsible for its structure and governance - gave me a different kind of Notion depth than casual power-user experience.
+
 ### Master Automation Plans
 
 MAPs were the documentation backbone of every automation we built, but describing them as "documentation" undersells what they actually were. A MAP was simultaneously a PRD, a technical specification, and a pseudo-code implementation plan. Writing one required sitting with a customer for anywhere from 8 to 20 hours to fully capture their standard operating procedure for a given workflow. Most customers couldn't tell you their own decision rules. They just did it. Extracting that implicit knowledge and making it explicit was the first real deliverable.

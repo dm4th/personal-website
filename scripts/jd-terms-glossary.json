@@ -377,7 +377,12 @@
         "cross-functional coordination",
         "go-to-market strategy",
         "developer relations",
-        "technical enablement"
+        "technical enablement",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -885,7 +890,15 @@
         "risk mitigation",
         "stakeholder management",
         "cross-functional coordination",
-        "production deployment"
+        "production deployment",
+        "SE",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2457,7 +2470,12 @@
         "POC development",
         "prototype",
         "stakeholder management",
-        "developer relations"
+        "developer relations",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2503,7 +2521,12 @@
         "POC development",
         "prototype",
         "stakeholder management",
-        "developer relations"
+        "developer relations",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2590,7 +2613,12 @@
         "prototype",
         "stakeholder management",
         "cross-functional coordination",
-        "go-to-market strategy"
+        "go-to-market strategy",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2608,7 +2636,12 @@
         "prototype",
         "stakeholder management",
         "cross-functional coordination",
-        "go-to-market strategy"
+        "go-to-market strategy",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2626,7 +2659,12 @@
         "prototype",
         "stakeholder management",
         "cross-functional coordination",
-        "go-to-market strategy"
+        "go-to-market strategy",
+        "enablement specialist",
+        "forward deployed engineer",
+        "prototype development",
+        "enterprise adoption",
+        "demo coaching"
       ]
     },
     {
@@ -2717,6 +2755,25 @@
         "stakeholder management",
         "cross-functional coordination",
         "go-to-market strategy"
+      ]
+    },
+    {
+      "jdTerm": "go-to-market strategy",
+      "synonyms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "prototype development",
+        "cross-functional coordination",
+        "enterprise adoption",
+        "demo coaching"
       ]
     }
   ],
@@ -3421,6 +3478,37 @@
         "stakeholder management",
         "cross-functional coordination",
         "go-to-market strategy"
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "role": "Solutions Engineer - Enterprise - AMER",
+      "company": "Notion",
+      "searchTerms": [
+        "Solutions Engineer",
+        "Enterprise sales",
+        "customer demos",
+        "technical implementation",
+        "POC development",
+        "stakeholder management",
+        "go-to-market strategy",
+        "API integration"
+      ],
+      "synonymTerms": [
+        "solutions architect",
+        "customer engineer",
+        "SE",
+        "technical account manager",
+        "enterprise solutions architect",
+        "presales consultant",
+        "field engineer",
+        "enablement specialist",
+        "technical presales",
+        "forward deployed engineer",
+        "prototype development",
+        "cross-functional coordination",
+        "enterprise adoption",
+        "demo coaching"
       ]
     }
   ]

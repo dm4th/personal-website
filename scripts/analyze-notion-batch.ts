@@ -143,7 +143,7 @@ async function generateRichFields(
     { name: 'Notion Meeting Intelligence', path: '/projects/notion-meeting-intelligence', description: 'Multi-agent pipeline that turns sales meeting recordings into structured deal intelligence written directly into Notion. Demonstrates GTM AI building, agent orchestration, and Notion-native development.' },
     { name: 'Dental Eligibility Intelligence', path: '/projects/dental-eligibility', description: 'Production AI system for healthcare automation - real-time insurance eligibility verification. Demonstrates enterprise AI deployment, production stability, and customer-facing technical delivery.' },
     { name: 'Healthcare Agent Data Layer', path: '/projects/healthcare-agent-data-layer', description: 'Research thesis on a shared agent memory/context layer for healthcare. Demonstrates AI architecture thinking, cross-system integration, and independent technical research.' },
-    { name: 'Personal AI Website', path: '/', description: 'RAG-powered chatbot on Dan\'s personal site with multi-LLM support, embeddings, and a "guess the model" game. Demonstrates full-stack AI development and technical communication.' },
+    { name: 'Personal Website Agent', path: '/', description: 'Agent-first personal website built on Claude Agent SDK - includes a live agent that can search Dan\'s career history, analyze job descriptions, and schedule meetings. Built with Next.js, TypeScript, Clerk, and Neon. Demonstrates production agentic engineering and full-stack frontend depth.' },
   ];
 
   const prompt = `You are writing application materials for Dan Mathieson (Director of Solutions Engineering, AI builder) applying to ${roleTitle} at ${company}. Fit score: ${fitScore}/100.
