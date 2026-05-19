@@ -1,0 +1,121 @@
+{
+  "id": "b2d4f6a8c1e3",
+  "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
+  "role": "Manager of Solutions Architecture, Applied AI (Enterprise Tech)",
+  "appliedDate": "",
+  "fitScore": 64,
+  "fitScoreNote": "The pre-sales craft, Claude platform depth, and enterprise AI adoption track record are all real. The honest gap is management scale: this role wants 7+ years SA/SE and 3+ years managing teams of 10-50+ through hypergrowth. My formal team leadership has been a two-person SE function and a brief interim lead role. That is a real structural gap, not a framing problem.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 7,
+      "rationale": "Deep, directly relevant pre-sales and solutions architecture experience: Director of Sales Engineering managing $31.8M in enterprise pipeline across 61 deals, Solutions Architect and Customer Engineer at Thoughtful AI, and a documented superpower of translating complex AI systems to non-technical executives (96% prospect-to-proposal conversion rate, retained post-shutdown specifically for this skill). Production Claude Code platform work and enterprise deal execution with C-suite stakeholders align strongly with the technical and GTM requirements. The gap is management scale: the JD asks for 3+ years managing pre-sales teams of 10-50+ people through hypergrowth, while team leadership was limited to a two-person SE function and a brief interim lead role at Thoughtful.",
+      "citations": [
+        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" },
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" },
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" },
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" }
+      ]
+    },
+    "seniority": {
+      "score": 5,
+      "rationale": "Roughly 2-3 years of solutions architecture and pre-sales experience, falling well short of the 7+ years SA/SE and 3+ years pre-sales management the role requires. Team leadership scope is also thin: a 2-person SE team at a PE-backed startup, far from the hypergrowth 10-50+ person SA org Anthropic seeks. Enterprise deal exposure ($31.8M pipeline, healthcare RCM) does not reach the $10M+ individual customer evaluation and Fortune 500/C-level engagement at scale the role demands. Genuine pre-sales craft, AI tooling depth, and strong individual contributor results, but the seniority and team-scale evidence simply does not match a Manager of Solutions Architecture role at Anthropic's level.",
+      "citations": [
+        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" },
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" },
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" }
+      ]
+    },
+    "technicalSkills": {
+      "score": 6,
+      "rationale": "Genuine, production-level AI/ML technical depth: hybrid-RAG systems with pgvector and OpenAI embeddings, 5-agent parallel pipelines, a full Claude Code SE platform with 57 Python integration scripts and API integrations across Notion, Fireflies, Google Drive, and GitHub. The role requires 7+ years as a Solutions Architect or Sales Engineer with 3+ years of technical pre-sales management, and SA/SE experience spans roughly 2-3 years. No evidence of $10M+ customer evaluations, C-suite enterprise AI platform engagements at Fortune 500 scale, or multi-segment GTM leadership across commercial to Fortune 100 segments that the preferred qualifications demand.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" },
+        { "label": "Dental Eligibility Intelligence", "path": "/info/career/thoughtful/dental-eligibility-intelligence" },
+        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "Anthropic's SA team serves a horizontal ICP across Fortune 500 companies in tech, financial services, retail, manufacturing, and more. Enterprise buyer experience is concentrated almost exclusively in healthcare: 61 enterprise healthcare deals, CIO and IT security leader engagement at health systems, and a VP of Solutions role driving AI adoption within a healthcare BPO. While production experience with Anthropic's own products (Claude Code, Claude for Enterprise governance, multi-agent deployment) is strong, cross-vertical enterprise buyer exposure is not documented.",
+      "citations": [
+        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" },
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" },
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "Confirmed San Francisco resident (Richmond neighborhood since 2022), which is a primary listed location. The $315,000-$380,000 compensation band (base + commission) sits above the senior IC/director market benchmark, representing upside rather than a constraint. Travel comfort is documented through multi-day on-site enterprise engagements. BS in Electrical and Computer Engineering from Bucknell satisfies any implicit credentialing expectations. No clearance, language, or hard degree blockers.",
+      "citations": [
+        { "label": "San Francisco", "path": "/info/about-me/where-ive-lived/san-francisco" },
+        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+      ]
+    }
+  },
+  "summary": [
+    "Built and operated a 22-skill, 5-agent Claude Code SE platform running on $31.8M in active enterprise pipeline with a 2-person team",
+    "96% prospect-to-proposal conversion rate as primary pre-sales technical advisor at Thoughtful AI during 3x YoY growth",
+    "Only non-Product/Engineering person retained after 85% headcount reduction; promoted to VP of Solutions within first month post-shutdown",
+    "Governed Claude for Enterprise deployment at organizational scale: plugin hierarchies, access controls, rollout sequencing for non-technical users",
+    "Honest structural gap: 2-3 years SA/SE vs. 7+ required, 2-person team managed vs. 10-50+ preferred"
+  ],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5222289008",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Production Claude platform depth, not just familiarity",
+      "description": "I've built and shipped production AI systems using Anthropic's own stack: Claude Code, multi-agent pipelines, Claude for Enterprise governance, and org-level Cowork deployment. When I'm in a room coaching SAs on how to demonstrate Claude's capabilities to an enterprise customer, I'm speaking from direct deployment experience, not from the spec sheet.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+      ]
+    },
+    {
+      "title": "96% prospect-to-proposal rate built on technical credibility, not sales technique",
+      "description": "I'd spent two years building the actual automations, debugging them in production, and sitting with healthcare executives while their teams asked hard questions. By the time I was running pre-sales calls, I could go deeper than any competitor in the room. <strong>96%</strong> of prospects who met with me moved to proposal within a month. That is the SA superpower I would want to develop and scale on this team.",
+      "citations": [
+        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
+        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" }
+      ]
+    },
+    {
+      "title": "Retained through an 85% RIF for exactly the skill this role requires",
+      "description": "I was the only non-Product/Engineering person kept in an 85% reduction at Smarter Technologies. The PE firm and AccessHealthcare both intervened specifically to retain me: not because of code I'd written, but because of a skill that is harder to hire. Making complex AI systems legible to the people who need to trust them is the core of what a great SA does, and it is what I would be developing and coaching on this team.",
+      "citations": [
+        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+      ]
+    },
+    {
+      "title": "Built the SE operating system that let two people run a $31.8M pipeline",
+      "description": "Deal tracking, meeting intelligence, demo engineering, ICP scoring, hooks-based feedback loops: I built all of it from scratch using Claude Code as the agentic layer. The playbooks, skill specifications, and governance frameworks I built are what a larger SA team would run on. I've built the infrastructure, not just worked inside someone else's.",
+      "citations": [
+        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "Team management scale is a real gap, not a framing problem",
+      "description": "I have not managed a 10-50+ person SA organization through hypergrowth. My formal team leadership has been a two-person SE function and an interim lead role managing 1-3 FDEs per project at Thoughtful.",
+      "mitigation": "I'd be honest about this and frame it directly: I've built the hiring framework, the performance infrastructure, and the cross-functional leadership patterns that scale. I've also been promoted into leadership roles faster than expected at every company. I'd rather grow into managing a large SA org at Anthropic than arrive having managed one somewhere less demanding."
+    },
+    {
+      "title": "SA/SE tenure is 2-3 years vs. the 7+ years required",
+      "description": "Total SA/SE experience spans roughly 2-3 years rather than the 7+ the JD specifies. That is a real gap on paper.",
+      "mitigation": "The 2-3 years has been unusually dense: built a production agentic platform, managed pipeline at a scale most SAs with 7 years haven't touched, and been promoted three times in two years. The outcomes are worth putting alongside the tenure number."
+    },
+    {
+      "title": "Enterprise buyer experience is concentrated in healthcare",
+      "description": "This role serves a horizontal Fortune 500 ICP across verticals. Enterprise deal experience is concentrated almost entirely in healthcare RCM.",
+      "mitigation": "Healthcare is one of the hardest enterprise buying environments: Byzantine procurement, IT security gatekeepers, C-suite AI skepticism, and compliance requirements that kill deals. If the conversion rate holds in that environment, the pattern transfers. The FHIR/EMR knowledge is vertical; the underlying advisory skill is not."
+    }
+  ],
+  "referralBlurb": "",
+  "projects": [],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

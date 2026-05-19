@@ -11,36 +11,39 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-Technical Deployment Lead
+Manager of Solutions Architecture, Applied AI (Enterprise Tech)
 Company: Anthropic
-Location: Austin, TX; Boston, MA; New York City, NY; San Francisco, CA; Seattle, WA
-Employment Type: Full-time (Hybrid — 25% in-office minimum)
-Compensation: $200,000 - $345,000 USD annually
+Location: San Francisco, CA; New York City, NY
+Employment Type: Full-time
+Compensation: $315,000 - $380,000 USD annually (includes base salary and sales commissions/bonuses)
 
 About the Role:
-This is a founding team role focused on delivering custom AI agent solutions for enterprise clients in regulated industries. You will manage end-to-end engagements from statement of work through production deployment, serving as the primary technical and relationship owner.
+The manager will drive the adoption of frontier AI in partnership with the rest of the go-to-market organization. This involves leading a pre-sales team that partners with account executives to help enterprise customers understand and deploy Anthropic's products.
 
 Key Responsibilities:
-- Manage end-to-end engagements from statement of work through production deployment
-- Lead technical discovery and map customer workflows to define MVP scope
-- Drive day-to-day engineering execution and maintain unblocked progress
-- Own customer relationships, including executive briefings and stakeholder management
-- Define impact hypotheses, establish KPIs, and measure ROI post-deployment
-- Build reusable solution patterns and playbooks for scaling
-- Navigate security reviews, compliance, and procurement processes
-- Travel to customer sites (25-50% expected)
+- Hire, manage, and develop Solutions Architects with technical guidance and career development
+- Establish team performance goals collaboratively with sales leadership
+- Serve as technical advisor for high-value strategic customers on AI adoption strategies
+- Partner with sales leadership to identify adoption strategies within specific verticals
+- Collaborate with product and engineering teams on customer feedback and blockers
+- Travel to customer sites and conferences for executive sessions and relationship building
+- Contribute thought leadership through presentations and content creation
+- Monitor emerging AI/ML trends and competitive landscape
 
 Required Qualifications:
-- Leadership experience with AI/ML deployments as founder, scientist, engineer, or consultant
-- Proven production delivery of AI or LLM-based agentic solutions
-- Ability to lead architecture discussions and evaluate technical trade-offs
-- Track record delivering complex enterprise projects in regulated industries
-- Executive presence: polished, credible, and comfortable representing Anthropic to senior leaders
-- Comfort operating in ambiguity with builder's mindset
+- 7+ years as Solutions Architect, Sales Engineer, or similar pre-sales role
+- 3+ years technical pre-sales management experience
+- Deep technical proficiency with enterprise AI, API integrations, and LLM deployments
+- Strong ability to build and scale teams in fast-moving environments
+- Excellent communication, collaboration, and coaching skills
+- Executive presence and Fortune 500 relationship-building capability
+- High-level familiarity with LLM architecture and operations
+- Passion for safe, beneficial technology
 
 Preferred Qualifications:
-- Experience in specialized verticals (financial services, life sciences, pharma, etc.)
-- Background in professional services or consulting delivery
+- 5+ years leading solution architect teams through hypergrowth (10-50+ people)
+- Hands-on AI platform experience with C-level stakeholder engagement in $10M+ evaluations
+- Multi-segment go-to-market experience across commercial to Fortune 100 segments
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -53,6 +56,12 @@ const HISTORICAL_JDS: Array<{ role: string; company: string; jd: string }> = [
     company: 'Anthropic',
     jd: `Technical Specialist, Claude Code — Anthropic. SF. $180K-$365K. Hybrid 25% in-office.
 Key requirements: Drive adoption of Claude Code among enterprise customers. Post-sale customer engagement, enablement and deep product adoption within 90 days. Design and deliver customized training programs: workshops, office hours, hands-on labs. Enable champions and AI Center of Excellence leads. Drive adoption of Claude capabilities: subagents, hooks, MCP servers, headless mode. Partner on strategic pilots with Sales, Applied AI, and customer engineering teams. Design and execute on-site and virtual hackathons. Build production-quality demo applications and reference architectures. Create technical tutorials, blog posts, and walkthroughs. Deliver keynotes and live-coded demonstrations at customer events. 3-7+ years in customer-facing technical roles (Solutions Architecture, sales engineering, developer relations, consulting). Active hands-on experience building with Claude Code, Claude Developer Platform, and Cowork.`,
+  },
+  {
+    role: 'Technical Deployment Lead',
+    company: 'Anthropic',
+    jd: `Technical Deployment Lead — Anthropic. Austin/Boston/NYC/SF/Seattle. $200K-$345K. Hybrid.
+Key requirements: Founding team role delivering custom AI agent solutions for enterprise clients in regulated industries. Manage end-to-end engagements from SOW through production. Lead technical discovery, map customer workflows, define MVP scope. Own customer relationships including executive briefings. Define impact hypotheses, KPIs, ROI measurement. Build reusable solution patterns and playbooks. Navigate security reviews, compliance, procurement. 25-50% travel. Leadership experience with AI/ML deployments. Proven production delivery of LLM-based agentic solutions. Track record in regulated enterprise projects. Executive presence. Preferred: financial services, life sciences, pharma vertical experience. Professional services or consulting delivery background.`,
   },
   {
     role: 'Forward Deployed Engineer, Applied AI',

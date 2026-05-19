@@ -144,7 +144,12 @@
       "relevance": "Production hybrid-RAG system in a live healthcare billing workflow. Shows the eval framework and determinism-as-design-principle thinking that FDEs apply when deploying AI in high-stakes regulated contexts."
     }
   ],
-  "applicationQuestions": [],
+  "applicationQuestions": [
+    {
+      "question": "Why do you want to work at Anthropic? (We value this response highly - great answers are often 200-400 words.)",
+      "answer": "With this now being the fourth time I've applied to Anthropic in the last four years, the reason I persist in wanting to join the mission remains the same. Namely, I believe Anthropic's mission of safe and reliable AI deployment throughout the economy is of the utmost importance, and that importance continues to grow with each successive application of mine. Dario said it best across multiple media appearances, the best way to ensure safe AI is to lead from the front and give the rest of the space no option but to follow. Claude Code, Cowork, managed agents, MCP, and the Claude SDK are all a direct manifestation of that thesis coming to life, and I'd love to help share the benefits that Anthropic's products have had on my life, both in my career and personal life, with people across the country and all over the world.\n\nIn my work with customers, I'm fascinated most by the variety and frequency of ways I can create what I call \"lightbulb\" moments. Often these moments come during demos of voice agents, or screen recordings of browser agents. More often than not these moments come from teams reporting increased job satisfaction. I try to create as many lightbulb moments as I can both for customers as well as my teammates internally. In fact, even after Thoughtful AI shut down, I still get messages from my coworkers asking to help them build out Claude Code-based personal knowledge systems for themselves. It's these moments of wonder that continue to prove that leading from the front is the right way to achieve the mission. I know I can help achieve the mission as a Forward Deployed Engineer helping even more people leverage this technology for the benefit of all humanity."
+    }
+  ],
   "resumeFile": "Dan Mathieson Resume.pdf",
   "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
 }
