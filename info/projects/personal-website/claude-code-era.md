@@ -37,3 +37,17 @@ By early 2026, the site had been fully restructured around a direct Claude SDK i
 The rewrite also moved state management to Zustand stores, replaced the Supabase backend entirely with Drizzle/PostgreSQL, and rebuilt the content serving infrastructure. The `/info` directory structure itself became part of the agent's context. The agent can read, search, and cite content from the site directly.
 
 This site is the primary technical demonstration of what I'm actually building at Smarter Technologies: AI-augmented systems where the tooling, the knowledge base, and the agent work together as an integrated platform rather than separate components bolted together.
+
+### Voice Agent (AssemblyAI Hackathon)
+
+In early 2026, AssemblyAI ran a developer hackathon. I submitted this site.
+
+My first approach wired their Streaming STT into the existing Claude text agent, then used the browser's native speech synthesis to read responses aloud. It technically worked. The problem was that the text agent is designed to produce long, structured answers: markdown headers, tool cards, multi-step reasoning chains. Spoken audio needs two sentences. The tension was fundamental, not fixable.
+
+So I scrapped it and rebuilt around the AssemblyAI Voice Agent API: a single WebSocket that handles the entire voice loop. Speech in, LLM turn detection, tool dispatch, TTS out. One connection, one protocol. The old approach had four moving parts wired together. This one has one.
+
+The agent runs three tools: a background search that reads my career content files for relevant experience, a job fit analyzer that runs a condensed version of the text agent's multi-agent analysis, and a job lead logger that captures opportunities visitors want to flag. The system prompt has a content map telling the agent exactly which category to search for which type of question: career files for work history, projects for tooling questions, about-me for personal background.
+
+The hardest part wasn't the WebSocket or the audio. It was a race condition. AssemblyAI sends `reply.done` when the agent finishes its verbal turn. My tool fetch runs as an async HTTP call to a Next.js route. If `reply.done` fires before the fetch resolves, zero results get sent and the session hangs. The fix: store a `Promise` instead of the resolved result, and have the `reply.done` handler await all pending promises before transitioning state. The session stays in a researching state until the data actually arrives.
+
+The visitor experience: connect, speak, watch the bar shift from "Listening" to "Researching: [search term]" to "Speaking" as the agent works through your question. No blank waiting. The research is visible.

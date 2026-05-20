@@ -8,7 +8,7 @@ GitHub: https://github.com/dm4th/personal-website
 
 # Personal Website
 
-This site started as a way to teach myself a modern frontend framework and has evolved into something far more interesting. Over two years it has gone through a prompting blog era, a Supabase + RAG virtual assistant era, an LLM guessing game, and most recently a complete agent-first rewrite powered by Claude Code.
+This site started as a way to teach myself a modern frontend framework and has evolved into something far more interesting. Over two years it has gone through a prompting blog era, a Supabase + RAG virtual assistant era, an LLM guessing game, a complete agent-first rewrite powered by Claude Code, and most recently a full voice interface built on the AssemblyAI Voice Agent API as a hackathon submission.
 
 It's my primary technical scratchpad, a place to learn by building, and a living demonstration of whatever I'm currently focused on.
 
