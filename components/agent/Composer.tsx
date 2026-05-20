@@ -2,15 +2,13 @@
 
 import React, { useState, useRef } from 'react';
 import styles from './Composer.module.css';
-import VoiceFab from './VoiceFab';
 
 type Props = {
   onSend: (prompt: string) => void;
   disabled?: boolean;
-  isSpeaking?: boolean;
 };
 
-export default function Composer({ onSend, disabled, isSpeaking }: Props) {
+export default function Composer({ onSend, disabled }: Props) {
   const [value, setValue] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -48,7 +46,6 @@ export default function Composer({ onSend, disabled, isSpeaking }: Props) {
         disabled={disabled}
         rows={2}
       />
-      <VoiceFab onTranscript={onSend} disabled={disabled || isSpeaking} />
       <button
         className={styles.sendBtn}
         onClick={handleSubmit}

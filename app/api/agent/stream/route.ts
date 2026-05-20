@@ -8,14 +8,14 @@ export const maxDuration = 60;
 export async function POST(req: Request) {
   const { userId } = await auth();
 
-  let body: { prompt?: string; history?: AgentMessage[]; voiceMode?: boolean };
+  let body: { prompt?: string; history?: AgentMessage[] };
   try {
     body = await req.json();
   } catch {
     return new Response('Invalid JSON', { status: 400 });
   }
 
-  const { prompt, history = [], voiceMode = false } = body;
+  const { prompt, history = [] } = body;
   if (!prompt || typeof prompt !== 'string') {
     return new Response('Missing prompt', { status: 400 });
   }
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       }).getWriter();
 
       try {
-        await runAgent(prompt, history, writer, userId, voiceMode);
+        await runAgent(prompt, history, writer, userId);
       } catch (err) {
         const event = encodeEvent({ type: 'error', code: 'agent_error', message: String(err) });
         controller.enqueue(encoder.encode(event));

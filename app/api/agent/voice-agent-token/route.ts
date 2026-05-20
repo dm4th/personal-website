@@ -6,16 +6,12 @@ export async function GET() {
 
   let res: Response;
   try {
-    res = await fetch('https://streaming.assemblyai.com/v3/token?expires_in_seconds=60', {
-      headers: { authorization: apiKey },
+    res = await fetch('https://agents.assemblyai.com/v1/token?expires_in_seconds=300', {
+      headers: { Authorization: `Bearer ${apiKey}` },
       signal: AbortSignal.timeout(8000),
     });
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    return NextResponse.json(
-      { error: `Could not reach AssemblyAI — check network (${msg})` },
-      { status: 503 },
-    );
+    return NextResponse.json({ error: `Network error: ${String(err)}` }, { status: 503 });
   }
 
   if (!res.ok) {

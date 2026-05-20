@@ -8,8 +8,7 @@ import MessageList from './MessageList';
 import Composer from './Composer';
 import SuggestionsRail from './SuggestionsRail';
 import SignupNudge from './SignupNudge';
-import VoiceMemoModal from './VoiceMemoModal';
-import VoiceConversationMode from './VoiceConversationMode';
+import VoiceAgentMode from './VoiceAgentMode';
 import styles from './AgentPanel.module.css';
 
 type MemoState = 'idle' | 'saving' | 'saved' | 'error';
@@ -20,7 +19,6 @@ export default function AgentPanel() {
   const { isSignedIn } = useAuth();
   const [memoState, setMemoState] = useState<MemoState>('idle');
   const [memoId, setMemoId] = useState<string | null>(null);
-  const [voiceMemoOpen, setVoiceMemoOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -99,9 +97,6 @@ export default function AgentPanel() {
                 Retry
               </button>
             )}
-            <button className={styles.memoBtn} onClick={() => setVoiceMemoOpen(true)} title="Leave Dan a voice memo">
-              🎙 Memo
-            </button>
             {!isSignedIn && <span className={styles.guestBadge}>Guest</span>}
             {isEngaged && (
               <button
@@ -135,9 +130,8 @@ export default function AgentPanel() {
         )}
 
         <SuggestionsRail messages={messages} onSend={sendMessage} disabled={isStreaming} />
-        <VoiceConversationMode />
+        <VoiceAgentMode />
         <Composer onSend={sendMessage} disabled={isStreaming} />
-        {voiceMemoOpen && <VoiceMemoModal onClose={() => setVoiceMemoOpen(false)} />}
       </div>
     </>
   );

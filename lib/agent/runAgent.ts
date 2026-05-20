@@ -18,7 +18,6 @@ export async function runAgent(
   history: AgentMessage[],
   writer: WritableStreamDefaultWriter<Uint8Array>,
   userId?: string | null,
-  voiceMode = false,
 ): Promise<void> {
   const encoder = new TextEncoder();
 
@@ -37,8 +36,8 @@ export async function runAgent(
   for (let turn = 0; turn < MAX_TURNS; turn++) {
     const response = await client.messages.create({
       model: process.env.AGENT_MODEL ?? 'claude-sonnet-4-6',
-      max_tokens: voiceMode ? 500 : 4096,
-      system: buildSystemPrompt(voiceMode),
+      max_tokens: 4096,
+      system: buildSystemPrompt(),
       messages,
       tools: TOOL_DEFINITIONS as unknown as Anthropic.Tool[],
       stream: false,

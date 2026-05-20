@@ -37,18 +37,12 @@ type AgentState = {
   nudgeDismissed: boolean;
   sessionId: string | null;
   engagementExpanded: boolean;
-  voiceMode: boolean;
-  isSpeaking: boolean;
-  activeToolName: string | null;
   setPanelState: (s: PanelState) => void;
   togglePanel: () => void;
   dismissNudge: () => void;
-  sendMessage: (prompt: string, options?: { voiceMode?: boolean }) => Promise<void>;
+  sendMessage: (prompt: string) => Promise<void>;
   clearMessages: () => void;
   setEngagementExpanded: (v: boolean) => void;
-  toggleVoiceMode: () => void;
-  setIsSpeaking: (v: boolean) => void;
-  speakLastResponse: () => void;
 };
 
 export const useAgentStore = create<AgentState>()(
@@ -60,31 +54,9 @@ export const useAgentStore = create<AgentState>()(
       nudgeDismissed: false,
       sessionId: null,
       engagementExpanded: false,
-      voiceMode: false,
-      isSpeaking: false,
-      activeToolName: null,
 
       setPanelState: (s) => set({ panelState: s }),
       setEngagementExpanded: (v) => set({ engagementExpanded: v }),
-      toggleVoiceMode: () => set((s) => ({ voiceMode: !s.voiceMode })),
-      setIsSpeaking: (v) => set({ isSpeaking: v }),
-
-      speakLastResponse: () => {
-        if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-        const lastAssistant = [...get().messages].reverse().find((m) => m.role === 'assistant');
-        if (!lastAssistant) return;
-        const text = lastAssistant.parts
-          .filter((p): p is TextPart => p.type === 'text')
-          .map((p) => p.text)
-          .join('');
-        if (!text.trim()) return;
-        window.speechSynthesis.cancel();
-        const utt = new SpeechSynthesisUtterance(text);
-        utt.onend = () => set({ isSpeaking: false });
-        utt.onerror = () => set({ isSpeaking: false });
-        set({ isSpeaking: true });
-        window.speechSynthesis.speak(utt);
-      },
 
       togglePanel: () =>
         set((state) => ({
@@ -95,7 +67,7 @@ export const useAgentStore = create<AgentState>()(
 
       clearMessages: () => set({ messages: [] }),
 
-      sendMessage: async (prompt: string, options?: { voiceMode?: boolean }) => {
+      sendMessage: async (prompt: string) => {
         const { messages } = get();
         if (get().isStreaming) return;
 
@@ -145,7 +117,7 @@ export const useAgentStore = create<AgentState>()(
           const res = await fetch('/api/agent/stream', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt, history, voiceMode: options?.voiceMode ?? false }),
+            body: JSON.stringify({ prompt, history }),
           });
 
           if (!res.ok || !res.body) throw new Error('Stream failed');
@@ -191,7 +163,6 @@ export const useAgentStore = create<AgentState>()(
               }
 
               if (event.type === 'tool_use_start') {
-                set({ activeToolName: event.name });
                 updateAssistant((msg) => ({
                   ...msg,
                   parts: [
@@ -219,7 +190,6 @@ export const useAgentStore = create<AgentState>()(
               }
 
               if (event.type === 'tool_result') {
-                set({ activeToolName: null });
                 updateAssistant((msg) => ({
                   ...msg,
                   parts: msg.parts.map((p) =>
