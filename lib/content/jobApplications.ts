@@ -51,6 +51,7 @@ export type JobApplicationConfig = {
   appliedDate: string;
   fitScore: number;
   fitScoreNote: string;
+  hidden?: boolean;
   dimensions?: JobFitDimensions;
   summary?: string[];
   jobDescriptionUrl: string;
@@ -84,7 +85,8 @@ export function getAllJobApplicationConfigs(): JobApplicationEntry[] {
       const configPath = path.join(JOB_APPLICATIONS_DIR, dirName, 'page-config.json');
       const config = JSON.parse(fs.readFileSync(configPath, 'utf8')) as JobApplicationConfig;
       return { config, dirName };
-    });
+    })
+    .filter((entry) => !entry.config.hidden);
 }
 
 export function getJobApplicationBySlug(id: string): JobApplicationEntry | null {

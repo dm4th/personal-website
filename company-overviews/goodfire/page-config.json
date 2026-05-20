@@ -1,0 +1,7 @@
+{
+  "id": "goodfire",
+  "company": "Goodfire",
+  "companySlug": "goodfire",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=goodfire.ai&sz=128",
+  "personalNote": "Mechanistic interpretability is going to matter. Not as an academic exercise - as the infrastructure layer that makes AI systems trustworthy enough to actually deploy in high-stakes environments. I've spent two years embedded in healthcare AI, watching what happens when a model behaves unexpectedly and there's no way to understand why. The question of what's happening inside these models isn't abstract to me; it's the thing that separates a demo from a system you'd actually trust with a patient's benefit determination.\n\nGoodfire is the most serious answer I've seen to that question. The Ember platform and the research behind it - sparse autoencoders, feature circuits, autosteering - represent a genuinely new way to build AI systems that you can audit, debug, and design intentionally. The work with Mayo Clinic and Arc Institute shows they're moving from research to real deployment, which is where I live.\n\nI applied through the general interest form because I don't have a mechanistic interpretability research background and I wanted to be honest about that. What I do have is the production experience to know where interpretability actually matters in deployment, and the customer-facing skills to help enterprises understand what it means for their systems. That combination - technical translation at the frontier - is rare, and it's what I'd bring."
+}

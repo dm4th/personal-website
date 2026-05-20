@@ -1,0 +1,108 @@
+{
+  "id": "74a64ae1651a",
+  "company": "Goodfire",
+  "companyLogoUrl": "https://www.google.com/s2/favicons?domain=goodfire.ai&sz=128",
+  "role": "General Interest",
+  "appliedDate": "",
+  "fitScore": 37,
+  "hidden": true,
+  "fitScoreNote": "Mechanistic interpretability is a domain I find genuinely compelling - I've spent two years building AI systems that fail in expensive ways in healthcare, and I care deeply about the question of what's actually happening inside these models. But the honest read on this score is that Goodfire's work requires fluency with sparse autoencoders, neural network internals, and research-grade ML that my background doesn't cover. My CalTech bootcamp covered supervised learning and image classification - not SAEs, PyTorch, or feature circuit analysis. What I do bring is something Goodfire's enterprise customers need: the ability to make interpretability legible to C-suite buyers, and the production experience to know where the boundary between demo and deployment really is. This application is more 'I want to be in this conversation' than 'I have exactly what you're asking for.' Score: 37/100.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 4,
+      "rationale": "Dan has strong evidence of bridging technical and non-technical audiences and meaningful hands-on building with AI tools, but his AI/ML depth is limited to a CalTech bootcamp covering basic supervised learning and neural networks - with no evidence of mechanistic interpretability, sparse autoencoders, PyTorch/JAX research engineering, or AI safety work. Goodfire's roles are fundamentally research-adjacent (model internals, SAEs, neural network analysis), and while Dan's customer-facing technical and GTM motion would fit a solutions/customer engineer role there, the core technical requirement of working with model internals and interpretability research is a genuine gap.",
+      "citations": [
+        "/info/ai-ml/cal-tech/bootcamp.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/enterprise-deals.md",
+        "/info/career/thoughtful/dental-eligibility-intelligence.md"
+      ]
+    },
+    "seniority": {
+      "score": 3,
+      "rationale": "Goodfire requires deep technical expertise in mechanistic interpretability, sparse autoencoders, neural network internals, PyTorch/JAX, and AI safety research - domains where Dan has no meaningful experience. While Dan brings strong seniority signals (Director/VP-level titles, end-to-end ownership of $31.8M pipeline, demonstrated technical depth in healthcare AI GTM), his experience profile matches a senior customer-facing or solutions engineering role at an AI application company, not a research-adjacent interpretability startup where even go-to-market roles require fluency with SAEs, feature circuits, and model debugging.",
+      "citations": [
+        "/info/ai-ml/cal-tech/bootcamp.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/index.md",
+        "/info/career/smarter-technologies/shutdown-and-retention.md"
+      ]
+    },
+    "technicalSkills": {
+      "score": 2,
+      "rationale": "Dan has no evidence of mechanistic interpretability, sparse autoencoders, AI safety research, or neural network internals analysis - the core technical requirements for Goodfire. His AI/ML background is limited to a 2022-2023 CalTech bootcamp covering basic supervised learning and TensorFlow/Keras image classification, plus production use of Claude Code for agentic workflow automation. While he is a strong Python practitioner and has built impressive LLM-powered tooling, there is zero evidence of PyTorch, JAX, interpretability techniques, model debugging at the architecture level, or any research-adjacent ML work that Goodfire's roles demand.",
+      "citations": [
+        "/info/ai-ml/cal-tech/bootcamp.md",
+        "/info/career/smarter-technologies/ai-se-platform.md",
+        "/info/career/smarter-technologies/meeting-intelligence.md",
+        "/info/about-me/strengths-and-weaknesses/self-assessment.md"
+      ]
+    },
+    "industryVertical": {
+      "score": 3,
+      "rationale": "Goodfire occupies a highly specialized vertical - mechanistic interpretability and AI safety research - that Dan has no direct exposure to. While he has deep healthcare domain expertise relevant to one of Goodfire's named customers (Mayo Clinic), his profile lacks the core technical currency Goodfire actually needs: neural network internals, sparse autoencoders, PyTorch/JAX research engineering, or AI safety principles. Even for customer-facing or GTM roles, Goodfire explicitly requires 2+ years in AI/ML or adjacent research domains - a bar Dan's bootcamp-level ML training and applied automation work does not meet.",
+      "citations": [
+        "/info/ai-ml/cal-tech/bootcamp.md",
+        "/info/career/thoughtful/customer-engineer.md",
+        "/info/career/smarter-technologies/index.md"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "Dan has lived in San Francisco continuously since 2020 and explicitly prefers in-person startup environments - he left Google specifically because he 'yearned for the startup atmosphere.' The 5-days/week in-office requirement aligns with his stated preferences rather than cutting against them. The compensation band ($100K-$400K + equity) is wide enough to accommodate senior IC and director-level market rates in SF, and there are no clearance, visa, or language blockers.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco.md",
+        "/info/career/google/my-year-at-google.md",
+        "/info/career/smarter-technologies/enterprise-deals.md"
+      ]
+    }
+  },
+  "summary": [],
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/goodfire/jobs/4103718008",
+  "jobDescriptionText": "General Interest\nCompany: Goodfire\nLocation: San Francisco, CA\nEmployment Type: Full-time\nCompensation: $100,000 - $400,000 USD + equity + competitive benefits\nWork Schedule: 5 days/week in-person at SF HQ; 1 week/month remote company-wide\n\nAbout Goodfire:\nGoodfire is a research company using interpretability to understand, learn from, and design AI systems. We advance AI safety through scientific understanding rather than scaling alone. Our team is composed of leading researchers and engineers from OpenAI and Google DeepMind, working at the frontier of mechanistic interpretability.\n\nMinimum Requirements:\n- 2+ years of relevant experience in a field aligned with our work\n- Ability to work in-person at our San Francisco headquarters (5 days/week)\n\nCore Values:\n- Mission and team first\n- Continuous improvement\n- Ownership and initiative\n- Act with urgency",
+  "strengths": [
+    {
+      "title": "Makes Complex AI Systems Legible to Enterprise Buyers",
+      "description": "I was the only non-engineering person retained through an 85% reduction when Smarter Technologies shut down. The reason wasn't the code I'd written - it was that I could take genuinely complex AI systems and make them legible to the people who needed to trust them. That's the skill Goodfire's enterprise customers (Mayo Clinic, Microsoft, Arc Institute) actually need: someone who can translate interpretability research into business value.",
+      "citations": [
+        { "label": "Smarter Technologies shutdown and retention", "path": "/info/career/smarter-technologies" }
+      ]
+    },
+    {
+      "title": "Production AI Engineering in High-Stakes Healthcare Environments",
+      "description": "I built a hybrid-RAG dental eligibility system that hit 100% accuracy in production, and I designed it to shrink its own non-deterministic surface over time. I care about what it means for an AI system to actually be reliable, not just accurate on a benchmark. That principled approach to AI deployment aligns with Goodfire's interpretability mission.",
+      "citations": [
+        { "label": "Dental Eligibility Intelligence project", "path": "/projects/dental-eligibility-intelligence" }
+      ]
+    },
+    {
+      "title": "SF-Based, Actively Prefers In-Person Startup Culture",
+      "description": "I've lived in San Francisco since 2020 and left Google specifically because I wanted the ownership and culture of a small team. Goodfire's 5-days-in-office model is not a concession - it's exactly what I'm looking for.",
+      "citations": [
+        { "label": "San Francisco", "path": "/info/about-me/where-ive-lived/san-francisco.md" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No Mechanistic Interpretability Background",
+      "description": "I haven't worked with sparse autoencoders, neural network internals, or feature circuit analysis. My AI/ML background is a CalTech bootcamp covering supervised learning and image classification - not research-grade ML.",
+      "mitigation": "My strength isn't coming in as a mechanistic interpretability researcher - it's coming in as someone who understands how AI systems behave in production and can build the operational and customer-facing infrastructure around the research. I learn fast in technical domains where I'm motivated, and interpretability is a domain I find genuinely compelling."
+    },
+    {
+      "title": "No PyTorch or JAX Experience",
+      "description": "My Python work has been production automation and data engineering, not neural network training or analysis. There's no evidence of research-grade scientific computing in my background.",
+      "mitigation": "I'm a strong Python engineer in production contexts and have shown I can pick up new technical domains quickly. I wouldn't pretend to have PyTorch depth I don't have, but I'd point to the speed with which I've gone deep on FHIR, EDI, and LLM orchestration as evidence I can do it."
+    },
+    {
+      "title": "No AI Safety Research Background",
+      "description": "My interpretability references are about RAG explainability for customers, not mechanistic understanding of model internals. I have no exposure to AI safety as a research discipline.",
+      "mitigation": "I've spent two years thinking hard about what it means for AI systems to be reliable and trustworthy in high-stakes healthcare contexts, and I've built toward determinism and auditability as core design principles. That's adjacent to, not the same as, the AI safety research frontier."
+    }
+  ],
+  "referralBlurb": "",
+  "projects": [],
+  "applicationQuestions": [],
+  "resumeFile": "",
+  "coverLetterFile": ""
+}

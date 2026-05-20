@@ -11,39 +11,39 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-Manager of Solutions Architecture, Applied AI (Enterprise Tech)
-Company: Anthropic
-Location: San Francisco, CA; New York City, NY
+General Interest
+Company: Goodfire
+Location: San Francisco, CA
 Employment Type: Full-time
-Compensation: $315,000 - $380,000 USD annually (includes base salary and sales commissions/bonuses)
+Compensation: $100,000 - $400,000 USD + equity + competitive benefits
+Work Schedule: 5 days/week in-person at SF HQ; 1 week/month remote company-wide
 
-About the Role:
-The manager will drive the adoption of frontier AI in partnership with the rest of the go-to-market organization. This involves leading a pre-sales team that partners with account executives to help enterprise customers understand and deploy Anthropic's products.
+About Goodfire:
+Goodfire is a research company using interpretability to understand, learn from, and design AI systems. We advance AI safety through scientific understanding rather than scaling alone. Our team is composed of leading researchers and engineers from OpenAI and Google DeepMind, working at the frontier of mechanistic interpretability.
 
-Key Responsibilities:
-- Hire, manage, and develop Solutions Architects with technical guidance and career development
-- Establish team performance goals collaboratively with sales leadership
-- Serve as technical advisor for high-value strategic customers on AI adoption strategies
-- Partner with sales leadership to identify adoption strategies within specific verticals
-- Collaborate with product and engineering teams on customer feedback and blockers
-- Travel to customer sites and conferences for executive sessions and relationship building
-- Contribute thought leadership through presentations and content creation
-- Monitor emerging AI/ML trends and competitive landscape
+Our flagship product, Ember, decodes neuron activity inside AI models using sparse autoencoders (SAEs) to extract interpretable "features" — patterns of neural computation. This gives developers programmable access to a model's internal reasoning and enables "autosteering" — controllably manipulating model internals. We also build Silico, a tool for debugging AI models at all stages of development.
 
-Required Qualifications:
-- 7+ years as Solutions Architect, Sales Engineer, or similar pre-sales role
-- 3+ years technical pre-sales management experience
-- Deep technical proficiency with enterprise AI, API integrations, and LLM deployments
-- Strong ability to build and scale teams in fast-moving environments
-- Excellent communication, collaboration, and coaching skills
-- Executive presence and Fortune 500 relationship-building capability
-- High-level familiarity with LLM architecture and operations
-- Passion for safe, beneficial technology
+Our customers and partners include Mayo Clinic (healthcare), Microsoft (enterprise), Arc Institute (scientific research), and materials science companies discovering novel compounds through model reverse-engineering.
 
-Preferred Qualifications:
-- 5+ years leading solution architect teams through hypergrowth (10-50+ people)
-- Hands-on AI platform experience with C-level stakeholder engagement in $10M+ evaluations
-- Multi-segment go-to-market experience across commercial to Fortune 100 segments
+We raised a $50M Series A (April 2025) and a $150M Series B at a $1.25B valuation (February 2026), backed by Menlo Ventures, Lightspeed, Anthropic, B Capital, Salesforce Ventures, and Eric Schmidt.
+
+About This Application:
+This is a general interest application. We review all submissions and match strong candidates to roles as they open — including research engineering, product engineering, customer-facing technical roles, scientific partnerships, and go-to-market. If you're exceptional and aligned with our mission, we want to hear from you even if no exact match exists today.
+
+Minimum Requirements:
+- 2+ years of relevant experience in a field aligned with our work
+- Ability to work in-person at our San Francisco headquarters (5 days/week)
+
+Core Values — All Employees Must Embody:
+- Mission and team first: We put our team above ourselves and the mission above the team. Individual accolades come second.
+- Continuous improvement: We actively seek feedback, acknowledge mistakes, and improve — individually and as an organization.
+- Ownership and initiative: There are no bystanders here. Everyone takes responsibility for problems in their domain and proactively fixes what's broken.
+- Act with urgency: We move fast and make decisions with the information available. Speed and decisive action are core to how we operate.
+
+Benefits:
+- Market competitive salary and equity
+- Comprehensive benefits package
+- Opportunity to work at the frontier of AI interpretability with a world-class team
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────

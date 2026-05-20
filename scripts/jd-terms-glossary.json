@@ -2898,6 +2898,150 @@
         "cross-functional coordination",
         "POC development"
       ]
+    },
+    {
+      "jdTerm": "mechanistic interpretability",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "sparse autoencoders",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "AI model debugging",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "interpretable features",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "autosteering",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "AI safety",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "research engineering",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
+    },
+    {
+      "jdTerm": "customer-facing technical roles",
+      "synonyms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
+      ]
     }
   ],
   "runs": [
@@ -3661,6 +3805,36 @@
         "stakeholder management",
         "cross-functional coordination",
         "POC development"
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "role": "General Interest Application - Multiple Roles",
+      "company": "Goodfire",
+      "searchTerms": [
+        "mechanistic interpretability",
+        "sparse autoencoders",
+        "AI model debugging",
+        "interpretable features",
+        "autosteering",
+        "AI safety",
+        "research engineering",
+        "customer-facing technical roles"
+      ],
+      "synonymTerms": [
+        "neural network analysis",
+        "model internals manipulation",
+        "AI explainability",
+        "model reverse-engineering",
+        "AI systems understanding",
+        "solutions architect",
+        "customer engineer",
+        "technical account manager",
+        "presales consultant",
+        "enterprise solutions architect",
+        "scientific partnerships",
+        "go-to-market strategy",
+        "production systems"
       ]
     }
   ]
