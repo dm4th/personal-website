@@ -41,7 +41,7 @@ export default function VoiceAgentMode() {
     >
       {!connected ? (
         <span className={styles.connectLabel}>
-          ✨ Chat with my Voice Assistant ✨
+          ✨ Chat with Lane, my Voice Assistant ✨
         </span>
       ) : (
         <>

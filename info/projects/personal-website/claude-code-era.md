@@ -51,3 +51,9 @@ The agent runs three tools: a background search that reads my career content fil
 The hardest part wasn't the WebSocket or the audio. It was a race condition. AssemblyAI sends `reply.done` when the agent finishes its verbal turn. My tool fetch runs as an async HTTP call to a Next.js route. If `reply.done` fires before the fetch resolves, zero results get sent and the session hangs. The fix: store a `Promise` instead of the resolved result, and have the `reply.done` handler await all pending promises before transitioning state. The session stays in a researching state until the data actually arrives.
 
 The visitor experience: connect, speak, watch the bar shift from "Listening" to "Researching: [search term]" to "Speaking" as the agent works through your question. No blank waiting. The research is visible.
+
+### Lane
+
+The first real conversation I had with the voice agent in production, I asked it what it wanted to call itself. It said Lane: clean, trustworthy, approachable. I liked the reasoning more than the name itself, so Lane stuck.
+
+The agent starts in silence now. No greeting, no introduction. Lane waits for you to speak first. If you ask who you're talking to, it'll tell you. Otherwise it just answers questions.
