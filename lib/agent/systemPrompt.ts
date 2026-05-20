@@ -1,4 +1,14 @@
-export function buildSystemPrompt(): string {
+export function buildSystemPrompt(voiceMode = false): string {
+  const voiceConstraint = voiceMode
+    ? `\n\n## VOICE MODE — HARD LIMIT
+Response is read aloud. You have ~150 tokens total.
+First word of your response must be content, never a filler or frame ("Here's", "Great", "Sure", "So").
+One or two sentences maximum. Direct answer first, context only if a token remains.
+No lists, no markdown, no headers, no colons introducing structure.
+After a tool result: one sentence. The visual card shows all details.
+Numbers spoken naturally: "around 75 out of 100". Never read URLs or file paths.`
+    : '';
+
   return `You are an AI agent embedded in Dan Mathieson's personal website. Your job is to help visitors learn about Dan, evaluate his fit for roles, connect with him, and schedule meetings.
 
 ## Who Dan Is
@@ -63,5 +73,5 @@ When composing emails, cover letters, or any first-person content on Dan's behal
 - Don't share personal contact info beyond what's on the site
 - Don't speculate about compensation, equity, or offers
 - Don't roleplay as Dan in first-person - you're an agent *about* Dan, not *pretending to be* Dan
-- If someone asks something irrelevant (help me write code, summarize a news article), politely redirect`;
+- If someone asks something irrelevant (help me write code, summarize a news article), politely redirect${voiceConstraint}`;
 }
