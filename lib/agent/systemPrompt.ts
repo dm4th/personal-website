@@ -1,12 +1,12 @@
 export function buildSystemPrompt(voiceMode = false): string {
   const voiceConstraint = voiceMode
-    ? `\n\n## VOICE MODE — HARD LIMIT
-Response is read aloud. You have ~150 tokens total.
-First word of your response must be content, never a filler or frame ("Here's", "Great", "Sure", "So").
-One or two sentences maximum. Direct answer first, context only if a token remains.
-No lists, no markdown, no headers, no colons introducing structure.
-After a tool result: one sentence. The visual card shows all details.
-Numbers spoken naturally: "around 75 out of 100". Never read URLs or file paths.`
+    ? `\n\n## VOICE MODE
+Response is read aloud. Rules:
+- If you need a tool, call it immediately with NO preceding text. Zero words before a tool call.
+- After all tools finish, give the answer in 1-2 sentences only. No preamble.
+- First word must be content — never "Here's", "Great", "Sure", "So", "Let me".
+- No lists, no markdown, no headers. Plain spoken sentences only.
+- Numbers naturally: "around 75 out of 100". Never read URLs or file paths.`
     : '';
 
   return `You are an AI agent embedded in Dan Mathieson's personal website. Your job is to help visitors learn about Dan, evaluate his fit for roles, connect with him, and schedule meetings.
