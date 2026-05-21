@@ -21,73 +21,65 @@ const textract = new TextractClient({
 });
 const BUCKET = process.env.AWS_S3_BUCKET_NAME ?? '';
 
-const POLL_INTERVAL_MS = 3000;
-const MAX_POLLS = 40; // 2 minutes max
-
-/**
- * Start async Textract analysis and poll until completion.
- * Returns parsed ExtractedBlock[] from LINE, TABLE, and KEY_VALUE_SET blocks.
- */
-export async function analyzeDocument(s3Key: string): Promise<{ blocks: ExtractedBlock[]; pageCount: number }> {
-  // Start async job
+/** Start a Textract job and return the job ID immediately. */
+export async function startTextractJob(s3Key: string): Promise<string> {
   const startResp = await textract.send(
     new StartDocumentAnalysisCommand({
-      DocumentLocation: {
-        S3Object: { Bucket: BUCKET, Name: s3Key },
-      },
+      DocumentLocation: { S3Object: { Bucket: BUCKET, Name: s3Key } },
       FeatureTypes: ['TABLES', 'FORMS'],
     })
   );
+  if (!startResp.JobId) throw new Error('Textract did not return a JobId');
+  return startResp.JobId;
+}
 
-  const jobId = startResp.JobId;
-  if (!jobId) {
-    throw new Error('Textract did not return a JobId');
-  }
+export type TextractStatus =
+  | { status: 'processing'; pagesProcessed: number }
+  | { status: 'ready'; blocks: ExtractedBlock[]; pageCount: number }
+  | { status: 'failed'; message: string };
 
-  // Poll until complete
+/**
+ * Check the current status of a Textract job.
+ * If SUCCEEDED, collects all pages (following NextToken) and returns parsed blocks.
+ * Designed to be called repeatedly by a polling frontend.
+ */
+export async function getTextractStatus(jobId: string): Promise<TextractStatus> {
+  // Collect all result pages when job is done
   let allBlocks: Block[] = [];
-  let pageCount = 0;
   let nextToken: string | undefined;
+  let jobStatus: string | undefined;
 
-  for (let poll = 0; poll < MAX_POLLS; poll++) {
-    await sleep(POLL_INTERVAL_MS);
-
-    const getResp = await textract.send(
+  do {
+    const resp = await textract.send(
       new GetDocumentAnalysisCommand({ JobId: jobId, NextToken: nextToken })
     );
+    jobStatus = resp.JobStatus;
 
-    if (getResp.JobStatus === 'FAILED') {
-      throw new Error(`Textract job failed: ${getResp.StatusMessage ?? 'unknown reason'}`);
+    if (jobStatus === 'FAILED') {
+      return { status: 'failed', message: resp.StatusMessage ?? 'Textract job failed' };
     }
 
-    if (getResp.Blocks) {
-      allBlocks = allBlocks.concat(getResp.Blocks);
+    if (jobStatus === 'SUCCEEDED') {
+      if (resp.Blocks) allBlocks = allBlocks.concat(resp.Blocks);
+      nextToken = resp.NextToken;
     }
+  } while (jobStatus === 'SUCCEEDED' && nextToken);
 
-    nextToken = getResp.NextToken;
-
-    if (getResp.JobStatus === 'SUCCEEDED' && !nextToken) {
-      // Count pages from PAGE blocks
-      pageCount = allBlocks.filter((b) => b.BlockType === 'PAGE').length;
-      break;
-    }
-
-    if (poll === MAX_POLLS - 1) {
-      throw new Error('Textract job timed out after 2 minutes');
-    }
+  if (jobStatus === 'IN_PROGRESS' || jobStatus === 'PARTIAL_SUCCESS') {
+    // Return how many pages are visible so far
+    const pagesProcessed = allBlocks.filter((b) => b.BlockType === 'PAGE').length;
+    return { status: 'processing', pagesProcessed };
   }
 
-  // Build a map from block ID to block for relationship traversal
+  // SUCCEEDED — parse blocks
   const blockMap = new Map<string, Block>();
   for (const b of allBlocks) {
     if (b.Id) blockMap.set(b.Id, b);
   }
 
   const extracted: ExtractedBlock[] = [];
-
   for (const block of allBlocks) {
     const { BlockType, Id, Page, Geometry, Confidence } = block;
-
     if (!Id || !Geometry?.BoundingBox || !Page) continue;
 
     const bbox: BoundingBox = {
@@ -98,47 +90,25 @@ export async function analyzeDocument(s3Key: string): Promise<{ blocks: Extracte
     };
 
     if (BlockType === 'LINE') {
-      extracted.push({
-        id: Id,
-        pageNumber: Page,
-        type: 'text',
-        text: block.Text ?? '',
-        bbox,
-        confidence: Confidence ?? 0,
-      });
+      extracted.push({ id: Id, pageNumber: Page, type: 'text', text: block.Text ?? '', bbox, confidence: Confidence ?? 0 });
     } else if (BlockType === 'TABLE') {
-      // Collect all CELL children text
       const cellTexts = collectChildText(block, blockMap);
       if (cellTexts.trim()) {
-        extracted.push({
-          id: Id,
-          pageNumber: Page,
-          type: 'table',
-          text: cellTexts,
-          bbox,
-          confidence: Confidence ?? 0,
-        });
+        extracted.push({ id: Id, pageNumber: Page, type: 'table', text: cellTexts, bbox, confidence: Confidence ?? 0 });
       }
     } else if (BlockType === 'KEY_VALUE_SET' && block.EntityTypes?.includes('KEY')) {
-      // Pair KEY with VALUE
       const keyText = collectChildText(block, blockMap);
       const valueBlock = findValueBlock(block, blockMap);
       const valueText = valueBlock ? collectChildText(valueBlock, blockMap) : '';
       const combined = `${keyText}: ${valueText}`.trim();
       if (combined !== ':') {
-        extracted.push({
-          id: Id,
-          pageNumber: Page,
-          type: 'key-value',
-          text: combined,
-          bbox,
-          confidence: Confidence ?? 0,
-        });
+        extracted.push({ id: Id, pageNumber: Page, type: 'key-value', text: combined, bbox, confidence: Confidence ?? 0 });
       }
     }
   }
 
-  return { blocks: extracted, pageCount };
+  const pageCount = allBlocks.filter((b) => b.BlockType === 'PAGE').length;
+  return { status: 'ready', blocks: extracted, pageCount };
 }
 
 function collectChildText(block: Block, blockMap: Map<string, Block>): string {

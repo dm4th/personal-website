@@ -35,6 +35,41 @@ export async function getSession(sessionId: string): Promise<DocSession | null> 
   return (result.Item as DocSession) ?? null;
 }
 
+export async function updateSession(
+  sessionId: string,
+  updates: Partial<Pick<DocSession, 'status' | 'blocks' | 'pageCount'>>,
+): Promise<void> {
+  const expressions: string[] = [];
+  const names: Record<string, string> = {};
+  const values: Record<string, unknown> = {};
+
+  if (updates.status !== undefined) {
+    expressions.push('#s = :s');
+    names['#s'] = 'status';
+    values[':s'] = updates.status;
+  }
+  if (updates.blocks !== undefined) {
+    expressions.push('blocks = :b');
+    values[':b'] = updates.blocks;
+  }
+  if (updates.pageCount !== undefined) {
+    expressions.push('pageCount = :p');
+    values[':p'] = updates.pageCount;
+  }
+
+  if (expressions.length === 0) return;
+
+  await ddb.send(
+    new UpdateCommand({
+      TableName: TABLE,
+      Key: { sessionId },
+      UpdateExpression: `SET ${expressions.join(', ')}`,
+      ExpressionAttributeNames: Object.keys(names).length ? names : undefined,
+      ExpressionAttributeValues: values,
+    }),
+  );
+}
+
 export async function appendHistory(sessionId: string, turn: ChatTurn): Promise<void> {
   await ddb.send(
     new UpdateCommand({

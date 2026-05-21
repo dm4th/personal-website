@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-export const maxDuration = 60; // Claude response + DynamoDB reads
 import { z } from 'zod';
 import { invokeLambda } from '@/lib/projects/docwow/lambdaInvoke';
 

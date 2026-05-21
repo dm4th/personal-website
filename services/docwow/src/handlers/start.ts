@@ -1,6 +1,6 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { v4 as uuidv4 } from 'uuid';
-import { analyzeDocument } from '../lib/textract';
+import { startTextractJob } from '../lib/textract';
 import { saveSession } from '../lib/dynamo';
 import type { AnalysisProfile } from '../lib/types';
 
@@ -9,6 +9,11 @@ interface StartRequestBody {
   profile: AnalysisProfile;
 }
 
+/**
+ * Kicks off a Textract job and saves the session immediately.
+ * Returns { sessionId } in ~1s — no polling, no waiting for OCR.
+ * The frontend then polls /status until processing is complete.
+ */
 export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   let body: StartRequestBody;
   try {
@@ -31,22 +36,24 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
   }
 
   try {
-    const { blocks, pageCount } = await analyzeDocument(s3Key);
+    const textractJobId = await startTextractJob(s3Key);
     const sessionId = uuidv4();
 
     await saveSession({
       sessionId,
       s3Key,
       profile,
-      blocks,
-      pageCount,
+      blocks: [],
+      pageCount: 0,
       history: [],
+      textractJobId,
+      status: 'processing',
     });
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sessionId, pageCount, blocks }),
+      body: JSON.stringify({ sessionId }),
     };
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error';
@@ -54,7 +61,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Document processing failed', detail: message }),
+      body: JSON.stringify({ error: 'Failed to start processing', detail: message }),
     };
   }
 }

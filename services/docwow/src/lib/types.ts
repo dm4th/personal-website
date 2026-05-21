@@ -42,6 +42,8 @@ export interface DocSession {
   blocks: ExtractedBlock[];
   pageCount: number;
   history: ChatTurn[];
+  textractJobId?: string;
+  status: 'processing' | 'ready';
   createdAt: string;
   ttl: number;
 }

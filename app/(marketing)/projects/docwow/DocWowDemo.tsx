@@ -93,6 +93,7 @@ export default function DocWowDemo({ samples }: Props) {
   };
 
   const runProcessing = async (s3Key: string, selectedProfile: AnalysisProfile) => {
+    // Phase 1: kick off Textract job — returns in ~1s
     setPhase({ status: 'processing', stage: 'textract' });
     const startRes = await fetch('/api/projects/docwow/start', {
       method: 'POST',
@@ -104,9 +105,34 @@ export default function DocWowDemo({ samples }: Props) {
       setPhase({ status: 'error', message: (err as { error?: string }).error ?? 'Processing failed. Please try again.' });
       return;
     }
+    const { sessionId } = await startRes.json() as { sessionId: string };
+
+    // Phase 2: poll /status every 3s until Textract finishes
     setPhase({ status: 'processing', stage: 'parsing' });
-    const { sessionId, pageCount, blocks } = await startRes.json() as { sessionId: string; pageCount: number; blocks: ExtractedBlock[] };
-    setPhase({ status: 'ready', sessionId, pageCount, blocks });
+    const MAX_POLLS = 40; // 2 minute cap
+    for (let i = 0; i < MAX_POLLS; i++) {
+      await new Promise((r) => setTimeout(r, 3000));
+      const statusRes = await fetch(`/api/projects/docwow/status?sessionId=${sessionId}`);
+      if (!statusRes.ok) {
+        setPhase({ status: 'error', message: 'Status check failed. Please try again.' });
+        return;
+      }
+      const statusData = await statusRes.json() as
+        | { status: 'processing'; pagesProcessed: number }
+        | { status: 'ready'; blocks: ExtractedBlock[]; pageCount: number }
+        | { status: 'failed'; message: string };
+
+      if (statusData.status === 'failed') {
+        setPhase({ status: 'error', message: statusData.message });
+        return;
+      }
+      if (statusData.status === 'ready') {
+        setPhase({ status: 'ready', sessionId, pageCount: statusData.pageCount, blocks: statusData.blocks });
+        return;
+      }
+      // Still processing — stay in parsing stage (could surface pagesProcessed if desired)
+    }
+    setPhase({ status: 'error', message: 'Processing timed out. Please try again.' });
   };
 
   const handleSend = useCallback(async (userMessage: string) => {

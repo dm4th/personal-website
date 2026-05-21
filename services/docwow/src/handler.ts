@@ -1,6 +1,7 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { handler as uploadUrlHandler } from './handlers/upload-url';
 import { handler as startHandler } from './handlers/start';
+import { handler as statusHandler } from './handlers/status';
 import { handler as chatHandler } from './handlers/chat';
 
 const SECRET = process.env.DOCWOW_SECRET ?? '';
@@ -38,6 +39,10 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
   if (path.endsWith('/start') && method === 'POST') {
     return startHandler(event);
+  }
+
+  if (path.endsWith('/status') && method === 'GET') {
+    return statusHandler(event);
   }
 
   if (path.endsWith('/chat') && method === 'POST') {
