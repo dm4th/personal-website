@@ -68,29 +68,44 @@
       "title": "Enterprise C-suite AI adoption is documented and recent",
       "description": "At Smarter Technologies, I designed and ran discovery workshops with CFOs, CIOs, and operations leaders at multi-site healthcare organizations. These were not PowerPoint sessions: they were structured technical conversations that surfaced the real adoption blockers (compliance, data governance, workflow fit) and produced specific implementation roadmaps. That is exactly the Applied AI Architect motion for Industries customers.",
       "citations": [
-        { "label": "Demo Engineering (Smarter Technologies)", "path": "/info/career/smarter-technologies/demo-engineering" },
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+        {
+          "label": "Demo Engineering (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/demo-engineering"
+        },
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
       ]
     },
     {
       "title": "Production Claude Code platform with embedded enablement infrastructure",
       "description": "Built a <strong>22-skill</strong>, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance, deployed live on <strong>$31.8M</strong> in enterprise pipeline. The platform was designed so non-technical sales reps could use it without writing a single prompt. That is the enterprise AI adoption problem Applied AI Architects solve at scale.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
       ]
     },
     {
       "title": "MCP-native enterprise AI governance design",
       "description": "Spent six months designing an MCP-native clinical data platform: explicit, auditable boundaries between the agent and external systems, which is exactly what enterprise IT approval chains need. The architecture question enterprises ask most is not 'can Claude do this' but 'can we control and audit what Claude does.' I have documented answers to that.",
       "citations": [
-        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+        {
+          "label": "Healthcare Agent Data Layer",
+          "path": "/info/projects/healthcare-agent-data-layer"
+        }
       ]
     },
     {
       "title": "Only non-Product/Engineering person retained after 85% reduction",
       "description": "When Smarter Technologies shut down, I was the only person without a Product or Engineering title among the 15% retained. The PE firm made a specific exception. That happened because I can take genuinely complex AI systems and make them legible to the people who need to adopt them. That is the core Applied AI Architect value proposition.",
       "citations": [
-        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+        {
+          "label": "Shutdown and Retention (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
       ]
     }
   ],
@@ -122,6 +137,11 @@
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
       "relevance": "Production hybrid-RAG system in a live healthcare billing workflow: OpenAI embeddings, pgvector, 40+ payer schemas. Shows the production LLM system design depth Industries customers are evaluating."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Live document intelligence demo on the Anthropic SDK: Lambda + Textract pipeline, confidence-scored citations, profile-aware system prompts. Shows the end-to-end architecture Anthropic Industries customers want to build for document-heavy enterprise workflows."
     }
   ],
   "applicationQuestions": [

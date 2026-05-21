@@ -66,31 +66,52 @@
       "title": "Pre-sales technical authority with 96% proposal conversion",
       "description": "At Thoughtful AI, I became the person placed on discovery calls and technical evaluations specifically because of my ability to make complex AI systems legible to enterprise buyers. <strong>96%</strong> of accounts I was placed on moved forward. That adoption instinct is identical to what Applied AI Architects need with startup founders evaluating Claude.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Customer Engineer (Thoughtful AI)",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
       ]
     },
     {
       "title": "Production LLM system design at enterprise scale",
       "description": "Built a production hybrid-RAG system handling 40+ insurance payer schemas with OpenAI embeddings and pgvector, and a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks deployed live on <strong>$31.8M</strong> in pipeline. Startups evaluating Claude benefit from someone who has already solved the production edge cases.",
       "citations": [
-        { "label": "Dental Eligibility Intelligence (Thoughtful AI)", "path": "/info/career/thoughtful/dental-eligibility-intelligence" },
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" }
+        {
+          "label": "Dental Eligibility Intelligence (Thoughtful AI)",
+          "path": "/info/career/thoughtful/dental-eligibility-intelligence"
+        },
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        }
       ]
     },
     {
       "title": "Hands-on Claude Code platform builder",
       "description": "My Claude Code platform is not a side project: <strong>943 commits</strong>, 57 Python scripts, 5 parallel subagents, org-level Cowork governance, and a feedback loop sampling 15-20% of skill invocations. Startups often want to see an architect who has felt the real friction of building with the tool they are evaluating.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
-        { "label": "Personal Website (Claude Code Era)", "path": "/info/projects/personal-website/claude-code-era" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "Personal Website (Claude Code Era)",
+          "path": "/info/projects/personal-website/claude-code-era"
+        }
       ]
     },
     {
       "title": "Field-to-engineering feedback loop design",
       "description": "Built an automated pipeline that populated a market feedback section in Notion every time the engineering team's weekly standup page was created, sourced from that week's discovery calls. Engineers saw what customers were saying without having to ask. That is the kind of feedback infrastructure startup teams scaling from 0 to 1 need most.",
       "citations": [
-        { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" }
+        {
+          "label": "Meeting Intelligence (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/meeting-intelligence"
+        }
       ]
     }
   ],
@@ -122,6 +143,11 @@
       "name": "AI Meeting Intelligence",
       "path": "/projects/notion-meeting-intelligence",
       "relevance": "Claude Code-based multi-agent pipeline turning meeting recordings into structured deal intelligence in Notion. Prototype of the kind of real-world workflow automation startup teams want to build with Claude."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare PDF chatbot rebuilt from prototype to live demo on the Anthropic SDK - pixel-precise Textract citations, sub-60s ingestion, zero account required. Shows the rapid prototype-to-production velocity startups expect from an Applied AI Architect."
     }
   ],
   "applicationQuestions": [],

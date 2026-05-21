@@ -2,7 +2,7 @@
 Title: "DocWoW: Version 2"
 Start: August, 2023
 End: September, 2023
-Link: https://doc-iug984t8j-dm4th.vercel.app/
+Link: /projects/docwow
 GitHub: https://github.com/dm4th/DocWow
 ---
 
@@ -27,3 +27,5 @@ When I found Thoughtful AI while researching competition in this space a few mon
 The core ideas in DocWow (RAG over domain-specific documents, citation-grounded responses, role-aware generation) show up in almost everything I've built since. The Hybrid-RAG system I built at Thoughtful was a more sophisticated version of the same pattern. The multi-agent meeting analysis pipeline at Smarter Technologies is a much more sophisticated version still.
 
 The right way to use AI in high-stakes professional contexts isn't to ask it to answer questions and trust the output. It's to ground it in specific, verified sources, show users exactly where information came from, and let the human decide what to do with it. DocWow was where I worked that out.
+
+In 2026, DocWow was rebuilt on the Anthropic SDK and deployed as a live demo on this site - generalizing beyond medical documents to any PDF, with pixel-precise citations still powered by AWS Textract. [See the live demo](/projects/docwow) or read about [the 2026 rebuild](/info/projects/docwow/personal-website-integration).

@@ -7,9 +7,10 @@ type Props = {
   title: string;
   description: string;
   tags: string[];
+  stat?: string;
 };
 
-export default function WebsiteProjectCard({ title, description, tags }: Props) {
+export default function WebsiteProjectCard({ title, description, tags, stat }: Props) {
   const { setPanelState, clearMessages } = useAgentStore();
 
   const handleClick = () => {
@@ -27,6 +28,9 @@ export default function WebsiteProjectCard({ title, description, tags }: Props) 
         <p className={styles.projectDesc}>{description}</p>
       </div>
       <div className={styles.projectCardBottom}>
+        {stat && (
+          <span className={styles.projectStat}>{stat}</span>
+        )}
         <div className={styles.tagRow}>
           {tags.map((tag) => (
             <span key={tag} className={styles.tag}>{tag}</span>

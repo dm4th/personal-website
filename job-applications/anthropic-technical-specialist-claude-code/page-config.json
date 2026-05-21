@@ -9,7 +9,7 @@
   "dimensions": {
     "coreJobFunction": {
       "score": 9,
-      "rationale": "Dan's career is an exceptionally close functional match. He has 3+ years in exactly the customer-facing technical motion the JD describes — Solutions Architect, Customer Engineer, Director of Sales Engineering — with documented evidence of enterprise discovery workshops, custom demo engineering, and driving AI adoption across non-technical users via Claude's Cowork platform. His superpower of translating complex AI systems to non-technical stakeholders is explicitly the reason he survived an 85% RIF and was promoted to VP of Solutions.",
+      "rationale": "Dan's career is an exceptionally close functional match. He has 3+ years in exactly the customer-facing technical motion the JD describes \u2014 Solutions Architect, Customer Engineer, Director of Sales Engineering \u2014 with documented evidence of enterprise discovery workshops, custom demo engineering, and driving AI adoption across non-technical users via Claude's Cowork platform. His superpower of translating complex AI systems to non-technical stakeholders is explicitly the reason he survived an 85% RIF and was promoted to VP of Solutions.",
       "citations": [
         "career/smarter-technologies/ai-se-platform.md",
         "career/smarter-technologies/shutdown-and-retention.md",
@@ -19,7 +19,7 @@
     },
     "seniority": {
       "score": 9,
-      "rationale": "Dan's profile is a near-exact match for this role's seniority band (3-7+ years customer-facing). He brings ~8 years of post-college experience with a direct progression through Solutions Architect → Customer Engineer → Lead TPM → Director of Sales Engineering, owning $31.8M in enterprise pipeline end-to-end. He is an active, production-level Claude Code power user who built a 22-skill, 5-agent agentic platform, directly satisfying the 'active hands-on experience building with Claude Code' requirement.",
+      "rationale": "Dan's profile is a near-exact match for this role's seniority band (3-7+ years customer-facing). He brings ~8 years of post-college experience with a direct progression through Solutions Architect \u2192 Customer Engineer \u2192 Lead TPM \u2192 Director of Sales Engineering, owning $31.8M in enterprise pipeline end-to-end. He is an active, production-level Claude Code power user who built a 22-skill, 5-agent agentic platform, directly satisfying the 'active hands-on experience building with Claude Code' requirement.",
       "citations": [
         "career/smarter-technologies/index.md",
         "career/smarter-technologies/ai-se-platform.md",
@@ -37,7 +37,7 @@
     },
     "industryVertical": {
       "score": 5,
-      "rationale": "The Anthropic Claude Code role targets the AI developer tools vertical — companies selling to engineering organizations and AI Champions across industries. Dan's career is concentrated in healthcare AI automation with earlier work in fintech and political tech. However, he has direct production-scale experience operating within the exact vertical this role serves: he deployed Claude's Cowork platform to non-technical teammates and led internal governance for Claude for Enterprise.",
+      "rationale": "The Anthropic Claude Code role targets the AI developer tools vertical \u2014 companies selling to engineering organizations and AI Champions across industries. Dan's career is concentrated in healthcare AI automation with earlier work in fintech and political tech. However, he has direct production-scale experience operating within the exact vertical this role serves: he deployed Claude's Cowork platform to non-technical teammates and led internal governance for Claude for Enterprise.",
       "citations": [
         "career/smarter-technologies/ai-se-platform.md",
         "career/smarter-technologies/index.md"
@@ -45,7 +45,7 @@
     },
     "logistics": {
       "score": 10,
-      "rationale": "Dan has lived in San Francisco since January 2020 with deep personal ties to the city, making the SF-based hybrid requirement a zero-friction match. The 25% in-office minimum aligns directly with his stated preference for hybrid. The $180K–$365K compensation band comfortably spans senior IC and director-level SF market rates with no friction.",
+      "rationale": "Dan has lived in San Francisco since January 2020 with deep personal ties to the city, making the SF-based hybrid requirement a zero-friction match. The 25% in-office minimum aligns directly with his stated preference for hybrid. The $180K\u2013$365K compensation band comfortably spans senior IC and director-level SF market rates with no friction.",
       "citations": [
         "about-me/where-ive-lived/san-francisco.md"
       ]
@@ -65,38 +65,62 @@
       "title": "Production Claude Code platform deployed at enterprise scale",
       "description": "Built a 22-skill, 5-agent Cowork platform with pre/post tool-use hooks and org-level governance, running live on $31.8M in enterprise pipeline. Most applicants will have used Claude Code; almost none will have deployed it at this scale with a real feedback loop.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
-        { "label": "Smarter Technologies Overview", "path": "/info/career/smarter-technologies" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "Smarter Technologies Overview",
+          "path": "/info/career/smarter-technologies"
+        }
       ]
     },
     {
       "title": "Pre-sales technical authority with 96% proposal conversion",
       "description": "At Thoughtful AI, I became the person placed on calls specifically because of my ability to make complex AI systems legible to enterprise buyers. 96% of accounts I was placed on moved forward. That adoption instinct is the core job in this role.",
       "citations": [
-        { "label": "Solutions Architect (Thoughtful AI)", "path": "/info/career/thoughtful/solutions-architect" },
-        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+        {
+          "label": "Solutions Architect (Thoughtful AI)",
+          "path": "/info/career/thoughtful/solutions-architect"
+        },
+        {
+          "label": "Customer Engineer (Thoughtful AI)",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
       ]
     },
     {
       "title": "Field-to-engineering feedback loop (automated, not manual)",
       "description": "Built an agent that populated a market feedback section in Notion every time the engineering team's weekly standup page was created, sourced from that week's discovery calls. Engineers didn't have to ask what customers were saying. It showed up in their workflow.",
       "citations": [
-        { "label": "Meeting Intelligence (Smarter Technologies)", "path": "/info/career/smarter-technologies/meeting-intelligence" },
-        { "label": "Commercial Innovation", "path": "/info/career/smarter-technologies/commercial-innovation" }
+        {
+          "label": "Meeting Intelligence (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/meeting-intelligence"
+        },
+        {
+          "label": "Commercial Innovation",
+          "path": "/info/career/smarter-technologies/commercial-innovation"
+        }
       ]
     },
     {
       "title": "Only non-Product/Engineering person retained after 85% reduction",
       "description": "When Smarter Technologies shut down, I was one of 15% retained, the only person without a Product or Engineering title. The PE firm made a specific exception. The explicit reason: I have an uncommon ability to take genuinely complex AI systems and make them legible to skeptical, non-technical executives in ways that move them from unsure to convinced. That skill is not adjacent to this role. It is the role.",
       "citations": [
-        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+        {
+          "label": "Shutdown and Retention (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
       ]
     },
     {
       "title": "MCP-native platform design for enterprise AI adoption",
       "description": "Spent six months designing an MCP-native clinical data platform. The reason MCP matters for enterprise Claude Code adoption is the same reason it matters in healthcare: it makes the boundary between the agent and external systems explicit and auditable, something enterprise IT teams can evaluate and approve.",
       "citations": [
-        { "label": "Healthcare Agent Data Layer", "path": "/info/projects/healthcare-agent-data-layer" }
+        {
+          "label": "Healthcare Agent Data Layer",
+          "path": "/info/projects/healthcare-agent-data-layer"
+        }
       ]
     }
   ],
@@ -133,6 +157,11 @@
       "name": "AI Meeting Intelligence",
       "path": "/projects/notion-meeting-intelligence",
       "relevance": "Built a Claude Code-based multi-agent pipeline that turns meeting recordings into structured deal intelligence in Notion. Shows a prototype version of real-world use cases for Claude Code outside of code generation."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Live Claude-powered document intelligence: structured JSON output with citation blockIds, dynamically generated skill files from analysis profiles, and confidence-scored highlights. Shows practical Claude integration patterns beyond standard text generation."
     }
   ],
   "applicationQuestions": [

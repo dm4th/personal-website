@@ -75,37 +75,58 @@
       "title": "Forward-deployed delivery lead directing FDE teams",
       "description": "As Lead TPM at Thoughtful AI, I was the delivery lead for 1-3 Forward Deployed Engineers across 3-6 concurrent customer implementations, with an upper bound of roughly 18 active workstreams at once. I assigned work, unblocked engineers technically, owned the customer relationship throughout the build, and translated progress and accuracy milestones into terms that meant something to the customer. When something went wrong, I owned the conversation. That is the FDE motion from the delivery lead seat.",
       "citations": [
-        { "label": "Lead TPM (Thoughtful AI)", "path": "/info/career/thoughtful/lead-tpm" }
+        {
+          "label": "Lead TPM (Thoughtful AI)",
+          "path": "/info/career/thoughtful/lead-tpm"
+        }
       ]
     },
     {
       "title": "Production multi-agent Claude Code platform with evaluation infrastructure",
       "description": "Built a <strong>23-skill</strong>, <strong>5-agent</strong> Claude Code platform with pre/post tool-use hooks, CI/CD pipelines, and org-level deployment governance, deployed on <strong>$31.8M</strong> in enterprise healthcare pipeline. Also built the eval framework for a hybrid-RAG eligibility engine: labeled holdout datasets, precision/recall tracking by failure category, and regression test suites for a live billing system where every output had financial consequences.",
       "citations": [
-        { "label": "AI-SE Platform (Smarter Technologies)", "path": "/info/career/smarter-technologies/ai-se-platform" },
-        { "label": "Dental Eligibility Intelligence", "path": "/info/career/thoughtful/dental-eligibility-intelligence" }
+        {
+          "label": "AI-SE Platform (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/ai-se-platform"
+        },
+        {
+          "label": "Dental Eligibility Intelligence",
+          "path": "/info/career/thoughtful/dental-eligibility-intelligence"
+        }
       ]
     },
     {
       "title": "Customer analytics pipelines shipped as a product feature",
       "description": "Identified that agent execution logs stored as blob files in S3 were useful business intelligence. Started writing custom Python pipelines per deployment to pull, clean, and surface accuracy metrics in Jupyter Notebooks on customer calls. When a particularly technical customer asked for this on a regular cadence, I built QuickSight dashboards against the log data and made public links for customer self-service. Eventually productized the whole pattern directly into the customer portal via iFrame embedding. This was data engineering with no data team: just SQL, Python, and a problem to solve.",
       "citations": [
-        { "label": "Customer Engineer (Thoughtful AI)", "path": "/info/career/thoughtful/customer-engineer" }
+        {
+          "label": "Customer Engineer (Thoughtful AI)",
+          "path": "/info/career/thoughtful/customer-engineer"
+        }
       ]
     },
     {
       "title": "Healthcare vertical depth at exactly the enterprise buyer profile FDEs engage",
       "description": "Two-plus years selling and deploying AI automation to health systems, payers, physician groups, behavioral health organizations, and dental DSOs. Ran on-site discovery workshops at Jefferson Health and Presbyterian Health. Navigated HIPAA, BAA, FHIR, EDI, and Epic integration conversations live with CIOs and IT security leaders as gatekeeping decisions for whether deals advanced. This is the preferred vertical the JD names explicitly.",
       "citations": [
-        { "label": "Enterprise Deals (Smarter Technologies)", "path": "/info/career/smarter-technologies/enterprise-deals" },
-        { "label": "Security and Compliance (Smarter Technologies)", "path": "/info/career/smarter-technologies/security-compliance" }
+        {
+          "label": "Enterprise Deals (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/enterprise-deals"
+        },
+        {
+          "label": "Security and Compliance (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/security-compliance"
+        }
       ]
     },
     {
       "title": "Only non-Product/Engineering person retained after 85% RIF",
       "description": "When Smarter Technologies shut down, I was the only person without a Product or Engineering title among the <strong>15%</strong> retained. The reason given explicitly: I can take genuinely complex AI systems and make them legible to C-suite executives in ways that move them from skeptical to convinced. That is the core skill the FDE role sells into the field every day.",
       "citations": [
-        { "label": "Shutdown and Retention (Smarter Technologies)", "path": "/info/career/smarter-technologies/shutdown-and-retention" }
+        {
+          "label": "Shutdown and Retention (Smarter Technologies)",
+          "path": "/info/career/smarter-technologies/shutdown-and-retention"
+        }
       ]
     }
   ],
@@ -142,6 +163,11 @@
       "name": "Dental Eligibility Intelligence",
       "path": "/projects/dental-eligibility",
       "relevance": "Production hybrid-RAG system in a live healthcare billing workflow. Shows the eval framework and determinism-as-design-principle thinking that FDEs apply when deploying AI in high-stakes regulated contexts."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Multi-service production deployment: IAM-authenticated Lambda invocation from Vercel, DynamoDB sessions, async Textract polling, and structured citation JSON from Claude Opus. The kind of cross-service integration FDEs help enterprise customers architect and debug."
     }
   ],
   "applicationQuestions": [

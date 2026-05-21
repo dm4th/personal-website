@@ -2,7 +2,7 @@
 Title: "DocWoW: Idea and Version 1"
 Start: June, 2023
 End: August, 2023
-Link: https://doc-iug984t8j-dm4th.vercel.app/
+Link: /projects/docwow
 GitHub: https://github.com/dm4th/DocWow
 ---
 

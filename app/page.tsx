@@ -63,7 +63,7 @@ const PROJECTS = [
     demoSlug: null,
     infoSlug: '/info/projects/personal-website',
     tags: ['Next.js', 'Claude SDK', 'Clerk', 'Neon'],
-    stat: null,
+    stat: 'Now Including Voice',
   },
   {
     title: 'DocWow',
@@ -71,7 +71,7 @@ const PROJECTS = [
     demoSlug: '/projects/docwow',
     infoSlug: '/info/projects/docwow',
     tags: ['Anthropic SDK', 'AWS Textract', 'Document AI'],
-    stat: null,
+    stat: 'Pixel-precise citations',
   },
 ];
 
@@ -145,6 +145,7 @@ export default async function HomePage() {
                       title={project.title}
                       description={project.description}
                       tags={project.tags}
+                      stat={project.stat ?? undefined}
                     />
                   );
                 }

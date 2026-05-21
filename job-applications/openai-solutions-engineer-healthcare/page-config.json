@@ -95,6 +95,11 @@
       "name": "Notion Meeting Intelligence",
       "path": "/projects/notion-meeting-intelligence",
       "relevance": "Multi-agent pipeline for sales intelligence, demonstrating the agentic systems design skills an OpenAI SE brings to complex enterprise deployments."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare PDF chatbot built from scratch: AWS Textract OCR pipeline, pixel-precise citation bounding boxes, analysis profiles for patient/provider/reviewer roles. Direct experience with the exact document workflows healthcare customers bring to AI deployments."
     }
   ],
   "applicationQuestions": [],
