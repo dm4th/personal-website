@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+export const maxDuration = 120; // Textract async jobs take 20-60s
 import { z } from 'zod';
 import { invokeLambda } from '@/lib/projects/docwow/lambdaInvoke';
 
