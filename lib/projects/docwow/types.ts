@@ -22,6 +22,7 @@ export interface Citation {
   quote: string;
   type: BlockType;
   bbox: BoundingBox;
+  confidence?: number; // Textract OCR confidence 0-100
 }
 
 export interface ChatMessage {

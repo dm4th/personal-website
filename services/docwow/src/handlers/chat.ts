@@ -96,7 +96,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
     parsed = { answer: rawAnswer, citations: [] };
   }
 
-  // Enrich citations with bbox from block metadata
+  // Enrich citations with bbox and Textract confidence from block metadata
   const enrichedCitations: Citation[] = (parsed.citations ?? []).flatMap((c) => {
     const block = blockMeta.get(c.blockId);
     if (!block) return [];
@@ -107,6 +107,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
         quote: c.quote ?? block.text.slice(0, 120),
         type: block.type,
         bbox: block.bbox,
+        confidence: block.confidence,
       },
     ];
   });

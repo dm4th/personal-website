@@ -48,12 +48,15 @@ export async function getTextractStatus(jobId: string): Promise<TextractStatus> 
   let allBlocks: Block[] = [];
   let nextToken: string | undefined;
   let jobStatus: string | undefined;
+  let pagesProcessedSoFar = 0;
 
   do {
     const resp = await textract.send(
       new GetDocumentAnalysisCommand({ JobId: jobId, NextToken: nextToken })
     );
     jobStatus = resp.JobStatus;
+    // DocumentMetadata.Pages reflects pages analyzed so far, even while IN_PROGRESS
+    pagesProcessedSoFar = resp.DocumentMetadata?.Pages ?? pagesProcessedSoFar;
 
     if (jobStatus === 'FAILED') {
       return { status: 'failed', message: resp.StatusMessage ?? 'Textract job failed' };
@@ -66,9 +69,7 @@ export async function getTextractStatus(jobId: string): Promise<TextractStatus> 
   } while (jobStatus === 'SUCCEEDED' && nextToken);
 
   if (jobStatus === 'IN_PROGRESS' || jobStatus === 'PARTIAL_SUCCESS') {
-    // Return how many pages are visible so far
-    const pagesProcessed = allBlocks.filter((b) => b.BlockType === 'PAGE').length;
-    return { status: 'processing', pagesProcessed };
+    return { status: 'processing', pagesProcessed: pagesProcessedSoFar };
   }
 
   // SUCCEEDED — parse blocks

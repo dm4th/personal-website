@@ -1,17 +1,8 @@
 .root { display: flex; align-items: center; justify-content: center; height: 100%; }
-
-.card { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 20px; }
-
-/* Progress bar */
-.barTrack { height: 6px; background: #1e1e1e; border-radius: 3px; overflow: hidden; }
-.barFill { height: 100%; background: linear-gradient(90deg, #3b82f6, #6366f1); border-radius: 3px; transition: width 0.6s ease; }
-.barPulse { animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-
-/* Stage list */
-.stages { display: flex; flex-direction: column; gap: 10px; }
-.stage { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #444; }
+.stages { display: flex; flex-direction: column; gap: 16px; }
+.stage { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #555; }
 .done { color: #22c55e; }
 .active { color: #e5e5e5; }
-.dot { width: 18px; text-align: center; font-size: 14px; flex-shrink: 0; }
-.stageLabel { line-height: 1.4; }
+.dot { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #1e1e1e; font-size: 12px; flex-shrink: 0; }
+.spinner { width: 10px; height: 10px; border: 2px solid #555; border-top-color: #e5e5e5; border-radius: 50%; animation: spin 0.8s linear infinite; display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }

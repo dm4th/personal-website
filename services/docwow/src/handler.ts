@@ -40,18 +40,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
     return uploadUrlHandler(event);
   }
 
-  if (path.endsWith('/start') && method === 'POST') {
-    return startHandler(event);
-  }
-
-  if (path.endsWith('/status') && method === 'GET') {
-    return statusHandler(event);
-  }
-
-  if (path.endsWith('/chat') && method === 'POST') {
-    return chatHandler(event);
-  }
-
+  // More-specific /chat/* routes must come before the catch-all /start and /chat checks
   if (path.endsWith('/chat/start') && method === 'POST') {
     return chatStartHandler(event);
   }
@@ -62,6 +51,18 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
   if (path.endsWith('/chat/result') && method === 'GET') {
     return chatResultHandler(event);
+  }
+
+  if (path.endsWith('/start') && method === 'POST') {
+    return startHandler(event);
+  }
+
+  if (path.endsWith('/status') && method === 'GET') {
+    return statusHandler(event);
+  }
+
+  if (path.endsWith('/chat') && method === 'POST') {
+    return chatHandler(event);
   }
 
   return notFound(path);
