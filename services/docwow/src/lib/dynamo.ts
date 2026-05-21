@@ -37,7 +37,7 @@ export async function getSession(sessionId: string): Promise<DocSession | null> 
 
 export async function updateSession(
   sessionId: string,
-  updates: Partial<Pick<DocSession, 'status' | 'blocks' | 'pageCount'>>,
+  updates: Partial<Pick<DocSession, 'status' | 'blocks' | 'pageCount' | 'suggestedQuestions'>>,
 ): Promise<void> {
   const expressions: string[] = [];
   const names: Record<string, string> = {};
@@ -55,6 +55,10 @@ export async function updateSession(
   if (updates.pageCount !== undefined) {
     expressions.push('pageCount = :p');
     values[':p'] = updates.pageCount;
+  }
+  if (updates.suggestedQuestions !== undefined) {
+    expressions.push('suggestedQuestions = :q');
+    values[':q'] = updates.suggestedQuestions;
   }
 
   if (expressions.length === 0) return;

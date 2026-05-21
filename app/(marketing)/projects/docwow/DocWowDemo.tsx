@@ -53,7 +53,9 @@ export default function DocWowDemo({ samples }: Props) {
   const processSample = async (sample: SampleDoc, selectedProfile: AnalysisProfile) => {
     setMessages([]);
     setActiveCitation(null);
-    setSuggestedQuestions(sample.suggestedQuestions);
+    // Seed with user questions first; sample questions fill in if user provided none
+    const userQuestions = selectedProfile.questions ?? [];
+    setSuggestedQuestions(userQuestions.length ? userQuestions : sample.suggestedQuestions);
     const s3Key = `samples/${sample.filename}`;
     const localUrl = `/sample-docs/${sample.filename}`;
     setPdfUrl(localUrl);
@@ -63,7 +65,8 @@ export default function DocWowDemo({ samples }: Props) {
   const processFile = async (file: File, selectedProfile: AnalysisProfile) => {
     setMessages([]);
     setActiveCitation(null);
-    setSuggestedQuestions([]);
+    // Show user-provided questions immediately while Textract runs
+    setSuggestedQuestions(selectedProfile.questions ?? []);
     setPhase({ status: 'processing', stage: 'uploading' });
     const urlRes = await fetch(`/api/projects/docwow/upload-url?filename=${encodeURIComponent(file.name)}`);
     if (!urlRes.ok) {
@@ -119,7 +122,7 @@ export default function DocWowDemo({ samples }: Props) {
       }
       const statusData = await statusRes.json() as
         | { status: 'processing'; pagesProcessed: number }
-        | { status: 'ready'; blocks: ExtractedBlock[]; pageCount: number }
+        | { status: 'ready'; blocks: ExtractedBlock[]; pageCount: number; suggestedQuestions?: string[] }
         | { status: 'failed'; message: string };
 
       if (statusData.status === 'failed') {
@@ -128,6 +131,13 @@ export default function DocWowDemo({ samples }: Props) {
       }
       if (statusData.status === 'ready') {
         setPhase({ status: 'ready', sessionId, pageCount: statusData.pageCount, blocks: statusData.blocks });
+        // Merge auto-generated questions with any user-supplied ones (user questions first)
+        if (statusData.suggestedQuestions?.length) {
+          setSuggestedQuestions((prev) => {
+            const merged = [...prev, ...statusData.suggestedQuestions!.filter((q) => !prev.includes(q))];
+            return merged.slice(0, 5); // Cap at 5 total
+          });
+        }
         return;
       }
       // Still processing — update pagesProcessed so progress bar advances

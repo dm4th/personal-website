@@ -1,11 +1,51 @@
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import Anthropic from '@anthropic-ai/sdk';
 import { getTextractStatus } from '../lib/textract';
 import { getSession, updateSession } from '../lib/dynamo';
+import type { ExtractedBlock } from '../lib/types';
+
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+/**
+ * Generate 3-5 targeted questions from document blocks using Claude.
+ * Uses only the first 60 blocks to keep the call fast (~1-2s).
+ */
+async function generateQuestions(blocks: ExtractedBlock[], profile: { role: string; goal: string }): Promise<string[]> {
+  const sample = blocks
+    .filter((b) => b.type === 'text')
+    .slice(0, 60)
+    .map((b) => b.text)
+    .join('\n');
+
+  const response = await anthropic.messages.create({
+    model: 'claude-haiku-4-5',
+    max_tokens: 256,
+    messages: [
+      {
+        role: 'user',
+        content: `You are helping a ${profile.role} who wants to: ${profile.goal}.
+
+Based on this document excerpt, generate exactly 3 specific, answerable questions they should ask.
+Return only a JSON array of strings. No explanation, no markdown.
+
+Document:
+${sample}`,
+      },
+    ],
+  });
+
+  const text = response.content[0]?.type === 'text' ? response.content[0].text.trim() : '[]';
+  try {
+    const parsed = JSON.parse(text) as string[];
+    return Array.isArray(parsed) ? parsed.slice(0, 3) : [];
+  } catch {
+    return [];
+  }
+}
 
 /**
  * Polls the Textract job for a session and returns current processing status.
- * Called repeatedly by the frontend every ~3s after /start.
- * When Textract is done, parses blocks and marks session as ready.
+ * When Textract finishes, also generates suggested questions via Claude Haiku.
  */
 export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   const sessionId = event.queryStringParameters?.sessionId;
@@ -27,12 +67,17 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
       };
     }
 
-    // Already ready — return cached blocks immediately
+    // Already ready - return cached data immediately
     if (session.status === 'ready') {
       return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'ready', blocks: session.blocks, pageCount: session.pageCount }),
+        body: JSON.stringify({
+          status: 'ready',
+          blocks: session.blocks,
+          pageCount: session.pageCount,
+          suggestedQuestions: session.suggestedQuestions ?? [],
+        }),
       };
     }
 
@@ -47,16 +92,28 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
     const result = await getTextractStatus(session.textractJobId);
 
     if (result.status === 'ready') {
-      // Persist blocks so subsequent /status calls return instantly
-      await updateSession(sessionId, {
-        status: 'ready',
-        blocks: result.blocks,
-        pageCount: result.pageCount,
-      });
+      // Generate questions in parallel with persisting blocks
+      const [suggestedQuestions] = await Promise.all([
+        generateQuestions(result.blocks, session.profile).catch(() => []),
+        updateSession(sessionId, {
+          status: 'ready',
+          blocks: result.blocks,
+          pageCount: result.pageCount,
+        }),
+      ]);
+
+      // Persist questions separately (non-blocking to overall response)
+      updateSession(sessionId, { suggestedQuestions }).catch(console.error);
+
       return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'ready', blocks: result.blocks, pageCount: result.pageCount }),
+        body: JSON.stringify({
+          status: 'ready',
+          blocks: result.blocks,
+          pageCount: result.pageCount,
+          suggestedQuestions,
+        }),
       };
     }
 
@@ -68,7 +125,6 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
       };
     }
 
-    // Still processing
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

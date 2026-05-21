@@ -34,6 +34,7 @@ export interface AnalysisProfile {
   template: 'patient' | 'provider' | 'reviewer' | 'custom';
   role: string;
   goal: string;
+  questions?: string[]; // Optional user-supplied questions pre-populated in chat
 }
 
 export interface SampleDoc {

@@ -28,6 +28,7 @@ export interface AnalysisProfile {
   template: 'patient' | 'provider' | 'reviewer' | 'custom';
   role: string;
   goal: string;
+  questions?: string[];
 }
 
 export interface ChatTurn {
@@ -44,6 +45,7 @@ export interface DocSession {
   history: ChatTurn[];
   textractJobId?: string;
   status: 'processing' | 'ready';
+  suggestedQuestions?: string[];
   createdAt: string;
   ttl: number;
 }

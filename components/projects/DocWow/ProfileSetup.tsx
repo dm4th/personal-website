@@ -21,6 +21,7 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
   const defaults = getTemplateDefaults(template);
   const [role, setRole] = useState(defaults.role);
   const [goal, setGoal] = useState(defaults.goal);
+  const [questionsRaw, setQuestionsRaw] = useState('');
 
   const selectTemplate = (t: AnalysisProfile['template']) => {
     setTemplate(t);
@@ -31,7 +32,11 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
 
   const confirm = () => {
     if (!role.trim() || !goal.trim()) return;
-    onConfirm({ template, role: role.trim(), goal: goal.trim() });
+    const questions = questionsRaw
+      .split('\n')
+      .map((q) => q.trim())
+      .filter(Boolean);
+    onConfirm({ template, role: role.trim(), goal: goal.trim(), questions: questions.length ? questions : undefined });
   };
 
   return (
@@ -52,6 +57,16 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
           <input className={styles.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. Patient Reviewing My Own Records" />
           <label className={styles.label}>Your Goal</label>
           <textarea className={styles.textarea} value={goal} onChange={(e) => setGoal(e.target.value)} rows={3} placeholder="e.g. Understand My Diagnosis And Next Steps" />
+          <label className={styles.label}>
+            Your Questions <span className={styles.optional}>(Optional - One Per Line)</span>
+          </label>
+          <textarea
+            className={styles.textarea}
+            value={questionsRaw}
+            onChange={(e) => setQuestionsRaw(e.target.value)}
+            rows={3}
+            placeholder={"e.g. Why was the MRI denied?\nWhat is my out-of-pocket maximum?"}
+          />
         </div>
         <div className={styles.actions}>
           <button className={styles.cancelBtn} onClick={onCancel}>Cancel</button>

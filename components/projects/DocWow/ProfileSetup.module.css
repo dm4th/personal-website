@@ -17,3 +17,4 @@
 .cancelBtn { padding: 8px 16px; background: transparent; border: 1px solid #333; border-radius: 8px; color: #888; cursor: pointer; font-size: 14px; }
 .confirmBtn { padding: 8px 20px; background: #2563eb; border: none; border-radius: 8px; color: #fff; font-weight: 600; cursor: pointer; font-size: 14px; }
 .confirmBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.optional { font-weight: 400; color: #666; }
