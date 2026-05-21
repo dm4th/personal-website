@@ -48,7 +48,7 @@ export interface SampleDoc {
 export type DemoPhase =
   | { status: 'idle' }
   | { status: 'uploading'; progress: number }
-  | { status: 'processing'; stage: string }
+  | { status: 'processing'; stage: string; pagesProcessed?: number }
   | { status: 'ready'; sessionId: string; pageCount: number; blocks: ExtractedBlock[] }
   | { status: 'error'; message: string };
 

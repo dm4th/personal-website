@@ -9,7 +9,7 @@ import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'DocWow | Dan Mathieson',
-  description: 'Chat with a medical PDF. AWS Textract extracts bounding boxes so every citation highlights the exact source region.',
+  description: 'Upload any PDF, pick an analysis profile, and chat with it. AWS Textract extracts bounding boxes so every citation highlights the exact source region.',
 };
 
 export default function DocWowPage() {
@@ -23,9 +23,10 @@ export default function DocWowPage() {
         <div className={styles.header}>
           <h1 className={styles.title}>DocWow</h1>
           <p className={styles.subtitle}>
-            Upload a medical PDF, pick an analysis profile, and chat with it.
-            The Anthropic SDK runs with a dynamically generated skill file — every answer cites the
-            exact source location highlighted in the document.
+            Upload any PDF, pick an analysis profile, and chat with it.
+            The Anthropic SDK runs with a dynamically generated skill file: every answer cites the
+            exact source location highlighted in the document. Built for medical records, but works
+            on contracts, research papers, or anything else.
           </p>
           <div className={styles.pills}>
             {['Anthropic SDK', 'AWS Textract OCR', 'Bounding Box Citations', 'Dynamic Skill Files', 'AWS Lambda', 'DynamoDB Sessions', 'S3 Presigned Uploads', 'Forced Tool Use'].map((t) => (

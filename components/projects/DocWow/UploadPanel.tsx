@@ -47,12 +47,12 @@ export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: P
       >
         <span className={styles.uploadIcon}>⬆️</span>
         <p className={styles.dropText}>Drop A PDF Here, Or Click To Browse</p>
-        <p className={styles.dropHint}>Max 10 MB · Medical Records, EOBs, Discharge Summaries</p>
+        <p className={styles.dropHint}>Max 10 MB · Medical Records, Contracts, Research Papers</p>
         <input ref={inputRef} type="file" accept=".pdf" className={styles.hidden} onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
       </div>
 
       <div className={styles.readyHint}>
-        <p>Your document is ready. Ask anything about it — Claude Code will find the answer and show you exactly where it came from.</p>
+        <p>Your document is ready. Ask anything about it and Claude will find the answer, citing the exact location in the document.</p>
       </div>
     </div>
   );

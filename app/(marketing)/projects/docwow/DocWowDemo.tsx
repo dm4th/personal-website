@@ -130,7 +130,8 @@ export default function DocWowDemo({ samples }: Props) {
         setPhase({ status: 'ready', sessionId, pageCount: statusData.pageCount, blocks: statusData.blocks });
         return;
       }
-      // Still processing — stay in parsing stage (could surface pagesProcessed if desired)
+      // Still processing — update pagesProcessed so progress bar advances
+      setPhase({ status: 'processing', stage: 'textract', pagesProcessed: statusData.pagesProcessed });
     }
     setPhase({ status: 'error', message: 'Processing timed out. Please try again.' });
   };
@@ -209,6 +210,7 @@ export default function DocWowDemo({ samples }: Props) {
             <ProcessingView
               stage={phase.status === 'uploading' ? 'uploading' : (phase as { status: 'processing'; stage: string }).stage}
               uploadProgress={phase.status === 'uploading' ? phase.progress : undefined}
+              pagesProcessed={phase.status === 'processing' ? (phase as { status: 'processing'; stage: string; pagesProcessed?: number }).pagesProcessed : undefined}
             />
           ) : phase.status === 'error' ? (
             <div className={styles.errorBox}>
