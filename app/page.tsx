@@ -67,10 +67,10 @@ const PROJECTS = [
   },
   {
     title: 'DocWow',
-    description: 'AI-powered document understanding platform with RAG and structured extraction pipelines.',
-    demoSlug: null,
+    description: 'Chat with any medical PDF using the Anthropic SDK. AWS Textract extracts bounding boxes so citations highlight the exact source region.',
+    demoSlug: '/projects/docwow',
     infoSlug: '/info/projects/docwow',
-    tags: ['RAG', 'LLMs', 'Document AI'],
+    tags: ['Anthropic SDK', 'AWS Textract', 'Document AI'],
     stat: null,
   },
 ];

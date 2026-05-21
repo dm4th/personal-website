@@ -1,0 +1,21 @@
+.root { display: flex; flex-direction: column; gap: 16px; padding: 20px; height: 100%; }
+.sectionLabel { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #666; margin: 0 0 8px; }
+.samples { display: flex; flex-direction: column; gap: 8px; }
+.sampleCard { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; text-align: left; cursor: pointer; transition: border-color 0.15s; }
+.sampleCard:hover { border-color: #444; }
+.sampleIcon { font-size: 22px; }
+.sampleText { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.sampleLabel { font-size: 14px; font-weight: 600; color: #e5e5e5; }
+.sampleDesc { font-size: 12px; color: #777; }
+.sampleArrow { font-size: 14px; color: #555; }
+.divider { text-align: center; font-size: 12px; color: #555; position: relative; }
+.divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 35%; height: 1px; background: #2a2a2a; }
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+.dropzone { border: 2px dashed #2a2a2a; border-radius: 12px; padding: 32px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: border-color 0.15s; }
+.dropzone:hover, .dragging { border-color: #444; }
+.uploadIcon { font-size: 28px; }
+.dropText { margin: 0; font-size: 14px; color: #aaa; }
+.dropHint { margin: 0; font-size: 12px; color: #555; }
+.hidden { display: none; }
+.readyHint { display: none; }

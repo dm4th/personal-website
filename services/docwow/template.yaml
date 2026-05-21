@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: DocWow — medical PDF extraction and chat service
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 180
+    MemorySize: 512
+    Environment:
+      Variables:
+        DOCWOW_S3_BUCKET: !Ref DocWowBucket
+        DOCWOW_SESSIONS_TABLE: !Ref SessionsTable
+        DOCWOW_SECRET: !Ref DocWowSecret
+        ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+
+Parameters:
+  DocWowSecret:
+    Type: String
+    NoEcho: true
+    Description: Shared secret for authenticating requests from the Next.js proxy
+
+  AnthropicApiKey:
+    Type: String
+    NoEcho: true
+    Description: Anthropic API key for Claude
+
+Resources:
+  DocWowBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireUploads
+            Status: Enabled
+            Prefix: uploads/
+            ExpirationInDays: 1
+
+  SessionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: docwow-sessions
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: sessionId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: sessionId
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  DocWowFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/handler.handler
+      Policies:
+        - S3FullAccessPolicy:
+            BucketName: !Ref DocWowBucket
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SessionsTable
+        - TextractFullAccessPolicy: {}
+      Events:
+        UploadUrl:
+          Type: Api
+          Properties:
+            Path: /upload-url
+            Method: GET
+        Start:
+          Type: Api
+          Properties:
+            Path: /start
+            Method: POST
+        Chat:
+          Type: Api
+          Properties:
+            Path: /chat
+            Method: POST
+
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2020
+        Sourcemap: true
+        EntryPoints:
+          - src/handler.ts
+
+Outputs:
+  ApiUrl:
+    Description: DocWow API Gateway endpoint
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
