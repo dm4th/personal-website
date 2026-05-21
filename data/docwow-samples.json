@@ -1,0 +1,26 @@
+[
+  {
+    "id": "eob",
+    "label": "Explanation of Benefits",
+    "description": "HealthFirst Insurance EOB from October 2023 — includes a denied MRI claim and an approved office visit.",
+    "filename": "eob.pdf",
+    "pageCount": 2,
+    "suggestedQuestions": [
+      "Why was the MRI denied?",
+      "What was my out-of-pocket cost for the office visit?",
+      "What is the appeals deadline?"
+    ]
+  },
+  {
+    "id": "discharge-summary",
+    "label": "Hospital Discharge Summary",
+    "description": "Fictional discharge summary from City General Hospital following a cardiac event.",
+    "filename": "discharge-summary.pdf",
+    "pageCount": 3,
+    "suggestedQuestions": [
+      "What medications was I prescribed?",
+      "What is my primary diagnosis?",
+      "When is my cardiology follow-up?"
+    ]
+  }
+]

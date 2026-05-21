@@ -31,6 +31,15 @@ const DEMOS = [
     stat: '95%+ accuracy',
     statLabel: 'within 2 days in production',
   },
+  {
+    slug: '/projects/docwow',
+    title: 'DocWow',
+    description: 'Upload any medical PDF, pick an analysis profile, and chat with it. The Anthropic SDK runs with a dynamically generated skill file — AWS Textract extracts bounding boxes so every citation highlights the exact source region in the document.',
+    tags: ['Anthropic SDK', 'AWS Textract', 'Healthcare AI'],
+    infoSlug: '/info/projects/docwow',
+    stat: 'Pixel-precise citations',
+    statLabel: 'from Anthropic SDK + Textract',
+  },
 ];
 
 export default function ProjectsPage() {

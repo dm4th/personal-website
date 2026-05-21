@@ -1,0 +1,5 @@
+.bubble { max-width: 85%; padding: 10px 14px; border-radius: 12px; }
+.user { align-self: flex-end; background: #2563eb; color: #fff; border-bottom-right-radius: 2px; }
+.assistant { align-self: flex-start; background: #1e1e1e; color: #e5e5e5; border-bottom-left-radius: 2px; }
+.content { margin: 0; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+.citations { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
