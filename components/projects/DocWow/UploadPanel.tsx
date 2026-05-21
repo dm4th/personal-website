@@ -46,7 +46,7 @@ export default function UploadPanel({ samples, randomSamples, onSampleSelect, on
             <div className={styles.randomIcon}>🎲</div>
             <div className={styles.randomText}>
               <span className={styles.randomLabel}>Pick A Random Document</span>
-              <span className={styles.randomDesc}>Randomizes from 14 synthetic medical records — discharge summaries, lab panels, radiology reports, op notes, and prior auth forms</span>
+              <span className={styles.randomDesc}>Randomizes from 14 synthetic medical records: discharge summaries, lab panels, radiology reports, op notes, and prior auth forms</span>
             </div>
             <span className={styles.randomArrow}>→</span>
           </button>

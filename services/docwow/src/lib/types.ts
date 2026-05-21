@@ -22,6 +22,7 @@ export interface Citation {
   quote: string;
   type: BlockType;
   bbox: BoundingBox;
+  confidence?: number; // Textract OCR confidence 0-100
 }
 
 export interface AnalysisProfile {
@@ -36,6 +37,14 @@ export interface ChatTurn {
   content: string;
 }
 
+export interface PendingChat {
+  chatId: string;
+  status: 'processing' | 'ready' | 'failed';
+  answer?: string;
+  citations?: Citation[];
+  error?: string;
+}
+
 export interface DocSession {
   sessionId: string;
   s3Key: string;
@@ -46,6 +55,7 @@ export interface DocSession {
   textractJobId?: string;
   status: 'processing' | 'ready';
   suggestedQuestions?: string[];
+  pendingChat?: PendingChat;
   createdAt: string;
   ttl: number;
 }

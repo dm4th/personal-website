@@ -39,6 +39,7 @@ export async function invokeLambda(
 
   const command = new InvokeCommand({
     FunctionName: FUNCTION_NAME,
+    InvocationType: 'RequestResponse',
     Payload: Buffer.from(JSON.stringify(event)),
   });
 
@@ -74,4 +75,33 @@ export async function invokeLambda(
     statusCode: raw.statusCode,
     body: JSON.parse(raw.body),
   };
+}
+
+// Fire-and-forget: invokes Lambda asynchronously (InvocationType: Event).
+// Returns as soon as AWS acknowledges the invocation (~200ms).
+export async function invokeLambdaAsync(
+  path: string,
+  method: 'GET' | 'POST',
+  options: { queryParams?: Record<string, string>; body?: unknown } = {},
+): Promise<void> {
+  const event = {
+    path,
+    httpMethod: method,
+    headers: { 'x-docwow-secret': SECRET },
+    queryStringParameters: options.queryParams ?? {},
+    body: options.body ? JSON.stringify(options.body) : null,
+  };
+
+  const command = new InvokeCommand({
+    FunctionName: FUNCTION_NAME,
+    InvocationType: 'Event',
+    Payload: Buffer.from(JSON.stringify(event)),
+  });
+
+  try {
+    await client.send(command);
+  } catch (e) {
+    const err = e as Error;
+    console.error('invokeLambdaAsync failed:', err.message);
+  }
 }

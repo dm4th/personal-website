@@ -87,3 +87,36 @@ export async function appendHistory(sessionId: string, turn: ChatTurn): Promise<
     })
   );
 }
+
+export async function storePendingChat(sessionId: string, chatId: string): Promise<void> {
+  await ddb.send(
+    new UpdateCommand({
+      TableName: TABLE,
+      Key: { sessionId },
+      UpdateExpression: 'SET pendingChat = :pc',
+      ExpressionAttributeValues: {
+        ':pc': { chatId, status: 'processing' },
+      },
+    }),
+  );
+}
+
+export async function resolvePendingChat(
+  sessionId: string,
+  chatId: string,
+  result: { answer: string; citations: unknown[] } | { error: string },
+): Promise<void> {
+  const isError = 'error' in result;
+  await ddb.send(
+    new UpdateCommand({
+      TableName: TABLE,
+      Key: { sessionId },
+      UpdateExpression: 'SET pendingChat = :pc',
+      ExpressionAttributeValues: {
+        ':pc': isError
+          ? { chatId, status: 'failed', error: (result as { error: string }).error }
+          : { chatId, status: 'ready', answer: (result as { answer: string; citations: unknown[] }).answer, citations: (result as { answer: string; citations: unknown[] }).citations },
+      },
+    }),
+  );
+}

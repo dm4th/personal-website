@@ -3,6 +3,9 @@ import { handler as uploadUrlHandler } from './handlers/upload-url';
 import { handler as startHandler } from './handlers/start';
 import { handler as statusHandler } from './handlers/status';
 import { handler as chatHandler } from './handlers/chat';
+import { handler as chatStartHandler } from './handlers/chat-start';
+import { handler as chatExecuteHandler } from './handlers/chat-execute';
+import { handler as chatResultHandler } from './handlers/chat-result';
 
 const SECRET = process.env.DOCWOW_SECRET ?? '';
 
@@ -47,6 +50,18 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
   if (path.endsWith('/chat') && method === 'POST') {
     return chatHandler(event);
+  }
+
+  if (path.endsWith('/chat/start') && method === 'POST') {
+    return chatStartHandler(event);
+  }
+
+  if (path.endsWith('/chat/execute') && method === 'POST') {
+    return chatExecuteHandler(event);
+  }
+
+  if (path.endsWith('/chat/result') && method === 'GET') {
+    return chatResultHandler(event);
   }
 
   return notFound(path);

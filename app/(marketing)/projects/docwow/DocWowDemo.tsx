@@ -111,8 +111,7 @@ export default function DocWowDemo({ samples, randomSamples }: Props) {
     }
     const { sessionId } = await startRes.json() as { sessionId: string };
 
-    // Phase 2: poll /status every 3s until Textract finishes
-    setPhase({ status: 'processing', stage: 'parsing' });
+    // Phase 2: poll /status every 3s until Textract finishes; stay on 'textract' with page count
     const MAX_POLLS = 40; // 2 minute cap
     for (let i = 0; i < MAX_POLLS; i++) {
       await new Promise((r) => setTimeout(r, 3000));
@@ -131,6 +130,7 @@ export default function DocWowDemo({ samples, randomSamples }: Props) {
         return;
       }
       if (statusData.status === 'ready') {
+        setPhase({ status: 'processing', stage: 'parsing' });
         setPhase({ status: 'ready', sessionId, pageCount: statusData.pageCount, blocks: statusData.blocks });
         // Merge auto-generated questions with any user-supplied ones (user questions first)
         if (statusData.suggestedQuestions?.length) {
@@ -141,7 +141,7 @@ export default function DocWowDemo({ samples, randomSamples }: Props) {
         }
         return;
       }
-      // Still processing — update pagesProcessed so progress bar advances
+      // Still extracting: update page count so the label advances
       setPhase({ status: 'processing', stage: 'textract', pagesProcessed: statusData.pagesProcessed });
     }
     setPhase({ status: 'error', message: 'Processing timed out. Please try again.' });
@@ -155,19 +155,44 @@ export default function DocWowDemo({ samples, randomSamples }: Props) {
     setIsChatLoading(true);
     setActiveCitation(null);
     try {
-      const res = await fetch('/api/projects/docwow/chat', {
+      // Start the async chat job — returns chatId immediately (<1s)
+      const startRes = await fetch('/api/projects/docwow/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sessionId, userMessage }),
       });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
+      if (!startRes.ok) {
+        const err = await startRes.json().catch(() => ({}));
         setMessages((prev) => [...prev, { role: 'assistant', content: (err as { error?: string }).error ?? 'Something went wrong. Please try again.' }]);
         return;
       }
-      const { answer, citations } = await res.json() as { answer: string; citations: Citation[] };
-      setMessages((prev) => [...prev, { role: 'assistant', content: answer, citations }]);
-      if (citations?.length > 0) setActiveCitation(citations[0]);
+      const { chatId } = await startRes.json() as { chatId: string };
+
+      // Poll for result every 2s (max 60 polls = 2 min)
+      const MAX_POLLS = 60;
+      for (let i = 0; i < MAX_POLLS; i++) {
+        await new Promise((r) => setTimeout(r, 2000));
+        const resultRes = await fetch(`/api/projects/docwow/chat/result?sessionId=${sessionId}&chatId=${chatId}`);
+        if (!resultRes.ok) {
+          setMessages((prev) => [...prev, { role: 'assistant', content: 'Status check failed. Please try again.' }]);
+          return;
+        }
+        const data = await resultRes.json() as
+          | { status: 'processing' }
+          | { status: 'ready'; answer: string; citations: Citation[] }
+          | { status: 'failed'; error: string };
+
+        if (data.status === 'failed') {
+          setMessages((prev) => [...prev, { role: 'assistant', content: data.error ?? 'Something went wrong. Please try again.' }]);
+          return;
+        }
+        if (data.status === 'ready') {
+          setMessages((prev) => [...prev, { role: 'assistant', content: data.answer, citations: data.citations }]);
+          if (data.citations?.length > 0) setActiveCitation(data.citations[0]);
+          return;
+        }
+      }
+      setMessages((prev) => [...prev, { role: 'assistant', content: 'Response timed out. Please try again.' }]);
     } catch {
       setMessages((prev) => [...prev, { role: 'assistant', content: 'Network error. Please check your connection and try again.' }]);
     } finally {

@@ -31,14 +31,6 @@ export default function ChatPanel({ messages, isLoading, activeCitationId, sugge
   return (
     <div className={styles.panel}>
       <div className={styles.messages}>
-        {messages.length === 0 && suggestedQuestions.length > 0 && (
-          <div className={styles.suggestions}>
-            <p className={styles.suggestLabel}>Try Asking</p>
-            {suggestedQuestions.map((q) => (
-              <button key={q} className={styles.suggestion} onClick={() => onSend(q)}>{q}</button>
-            ))}
-          </div>
-        )}
         {messages.map((m, i) => (
           <MessageBubble key={i} message={m} activeCitationId={activeCitationId} onCitationClick={onCitationClick} />
         ))}
@@ -49,6 +41,16 @@ export default function ChatPanel({ messages, isLoading, activeCitationId, sugge
         )}
         <div ref={bottomRef} />
       </div>
+      {suggestedQuestions.length > 0 && !isLoading && (
+        <div className={styles.suggestions}>
+          <p className={styles.suggestLabel}>Try Asking</p>
+          <div className={styles.suggestionList}>
+            {suggestedQuestions.map((q) => (
+              <button key={q} className={styles.suggestion} onClick={() => onSend(q)}>{q}</button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className={styles.inputRow}>
         <textarea
           className={styles.input}
