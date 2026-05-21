@@ -38,7 +38,7 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <h2 className={styles.title}>Choose Your Analysis Profile</h2>
-        <p className={styles.subtitle}>This shapes how Claude interprets the document.</p>
+        <p className={styles.subtitle}>This Shapes How Claude Interprets The Document.</p>
         <div className={styles.templates}>
           {TEMPLATES.map((t) => (
             <button key={t.key} className={`${styles.templateCard} ${template === t.key ? styles.selected : ''}`} onClick={() => selectTemplate(t.key)}>
@@ -49,9 +49,9 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
         </div>
         <div className={styles.fields}>
           <label className={styles.label}>Your Role</label>
-          <input className={styles.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. Patient reviewing my own records" />
+          <input className={styles.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. Patient Reviewing My Own Records" />
           <label className={styles.label}>Your Goal</label>
-          <textarea className={styles.textarea} value={goal} onChange={(e) => setGoal(e.target.value)} rows={3} placeholder="e.g. Understand my diagnosis and next steps" />
+          <textarea className={styles.textarea} value={goal} onChange={(e) => setGoal(e.target.value)} rows={3} placeholder="e.g. Understand My Diagnosis And Next Steps" />
         </div>
         <div className={styles.actions}>
           <button className={styles.cancelBtn} onClick={onCancel}>Cancel</button>

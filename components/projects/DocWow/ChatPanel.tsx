@@ -33,7 +33,7 @@ export default function ChatPanel({ messages, isLoading, activeCitationId, sugge
       <div className={styles.messages}>
         {messages.length === 0 && suggestedQuestions.length > 0 && (
           <div className={styles.suggestions}>
-            <p className={styles.suggestLabel}>Try Asking:</p>
+            <p className={styles.suggestLabel}>Try Asking</p>
             {suggestedQuestions.map((q) => (
               <button key={q} className={styles.suggestion} onClick={() => onSend(q)}>{q}</button>
             ))}
@@ -55,7 +55,7 @@ export default function ChatPanel({ messages, isLoading, activeCitationId, sugge
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } }}
-          placeholder="Ask about this document..."
+          placeholder="Ask About This Document..."
           rows={2}
         />
         <button className={styles.sendBtn} onClick={submit} disabled={isLoading || !input.trim()}>Send</button>

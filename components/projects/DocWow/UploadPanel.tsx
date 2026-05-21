@@ -22,7 +22,7 @@ export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: P
     <div className={styles.root}>
       {samples.length > 0 && (
         <div className={styles.samples}>
-          <p className={styles.sectionLabel}>TRY A SAMPLE DOCUMENT</p>
+          <p className={styles.sectionLabel}>Try A Sample Document</p>
           {samples.map((s) => (
             <button key={s.id} className={styles.sampleCard} onClick={() => onSampleSelect(s)}>
               <div className={styles.sampleIcon}>📄</div>
@@ -36,7 +36,7 @@ export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: P
         </div>
       )}
 
-      <div className={styles.divider}>or upload your own PDF</div>
+      <div className={styles.divider}>Or Upload Your Own PDF</div>
 
       <div
         className={`${styles.dropzone} ${dragging ? styles.dragging : ''}`}
@@ -46,8 +46,8 @@ export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: P
         onDrop={(e) => { e.preventDefault(); setDragging(false); const f = e.dataTransfer.files[0]; if (f) handleFile(f); }}
       >
         <span className={styles.uploadIcon}>⬆️</span>
-        <p className={styles.dropText}>Drop a PDF here, or click to browse</p>
-        <p className={styles.dropHint}>Max 10 MB · Medical records, EOBs, discharge summaries</p>
+        <p className={styles.dropText}>Drop A PDF Here, Or Click To Browse</p>
+        <p className={styles.dropHint}>Max 10 MB · Medical Records, EOBs, Discharge Summaries</p>
         <input ref={inputRef} type="file" accept=".pdf" className={styles.hidden} onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
       </div>
 
