@@ -18,9 +18,10 @@ import styles from './DocWowDemo.module.css';
 
 interface Props {
   samples: SampleDoc[];
+  randomSamples: SampleDoc[];
 }
 
-export default function DocWowDemo({ samples }: Props) {
+export default function DocWowDemo({ samples, randomSamples }: Props) {
   const [phase, setPhase] = useState<DemoPhase>({ status: 'idle' });
   const [profile, setProfile] = useState<AnalysisProfile | null>(null);
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -230,7 +231,9 @@ export default function DocWowDemo({ samples }: Props) {
           ) : (
             <UploadPanel
               samples={samples}
+              randomSamples={randomSamples}
               onSampleSelect={(s) => requestProfile(undefined, s)}
+              onRandomSelect={(s) => requestProfile(undefined, s)}
               onFileUpload={(f) => requestProfile(f)}
             />
           )}

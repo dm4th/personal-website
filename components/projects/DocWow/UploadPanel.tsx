@@ -5,13 +5,32 @@ import styles from './UploadPanel.module.css';
 
 interface Props {
   samples: SampleDoc[];
+  randomSamples: SampleDoc[];
   onSampleSelect: (s: SampleDoc) => void;
+  onRandomSelect: (s: SampleDoc) => void;
   onFileUpload: (f: File) => void;
 }
 
-export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: Props) {
+export default function UploadPanel({ samples, randomSamples, onSampleSelect, onRandomSelect, onFileUpload }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
+  const [lastRandom, setLastRandom] = useState(-1);
+
+  // TODO(human): implement handleSurpriseMe
+  // Pick a random document from randomSamples and call onRandomSelect with it.
+  // Consider: what should happen if randomSamples is empty? And how would you
+  // avoid picking the same document twice in a row? (~4-6 lines)
+  const handleSurpriseMe = () => {
+    if (randomSamples.length == 0) return null;
+
+    let randomIndex = Math.floor(Math.random() * randomSamples.length);
+    while (randomIndex == lastRandom && randomSamples.length > 1) {
+      randomIndex = Math.floor(Math.random() * randomSamples.length);
+    }
+
+    setLastRandom(randomIndex);
+    onRandomSelect(randomSamples[randomIndex]);
+  }
 
   const handleFile = (file: File) => {
     if (file.type !== 'application/pdf') return;
@@ -20,6 +39,19 @@ export default function UploadPanel({ samples, onSampleSelect, onFileUpload }: P
 
   return (
     <div className={styles.root}>
+      {randomSamples.length > 0 && (
+        <div className={styles.randomSection}>
+          <p className={styles.sectionLabel}>Surprise Me</p>
+          <button className={styles.randomBtn} onClick={handleSurpriseMe}>
+            <div className={styles.randomIcon}>🎲</div>
+            <div className={styles.randomText}>
+              <span className={styles.randomLabel}>Pick A Random Document</span>
+              <span className={styles.randomDesc}>Randomizes from 14 synthetic medical records — discharge summaries, lab panels, radiology reports, op notes, and prior auth forms</span>
+            </div>
+            <span className={styles.randomArrow}>→</span>
+          </button>
+        </div>
+      )}
       {samples.length > 0 && (
         <div className={styles.samples}>
           <p className={styles.sectionLabel}>Try A Sample Document</p>

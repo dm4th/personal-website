@@ -19,3 +19,11 @@
 .dropHint { margin: 0; font-size: 12px; color: #555; }
 .hidden { display: none; }
 .readyHint { display: none; }
+.randomSection { display: flex; flex-direction: column; gap: 6px; }
+.randomBtn { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; background: #111827; border: 1px solid #2563eb44; border-radius: 10px; cursor: pointer; transition: border-color 0.15s, background 0.15s; text-align: left; gap: 12px; }
+.randomBtn:hover { border-color: #2563eb88; background: #131f35; }
+.randomIcon { font-size: 22px; flex-shrink: 0; }
+.randomText { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.randomLabel { font-size: 14px; font-weight: 600; color: #93c5fd; }
+.randomDesc { font-size: 12px; color: #6b7280; }
+.randomArrow { font-size: 14px; color: #2563eb; }

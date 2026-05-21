@@ -1,0 +1,170 @@
+[
+  {
+    "id": "discharge-cardiac",
+    "label": "Cardiac Discharge Summary",
+    "description": "Post-STEMI discharge from Riverside Medical Center following emergent stent placement.",
+    "filename": "random/discharge-cardiac.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What medications was I discharged on?",
+      "When is my cardiology follow-up?",
+      "What activity restrictions do I have?"
+    ]
+  },
+  {
+    "id": "discharge-orthopedic",
+    "label": "Orthopedic Discharge Summary",
+    "description": "Total right knee replacement discharge with physical therapy and wound care instructions.",
+    "filename": "random/discharge-orthopedic.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "When can I bear full weight?",
+      "What are the signs of infection to watch for?",
+      "When do I start physical therapy?"
+    ]
+  },
+  {
+    "id": "discharge-oncology",
+    "label": "Oncology Admission Note",
+    "description": "Chemotherapy cycle hospitalization for breast cancer with neutropenic fever management.",
+    "filename": "random/discharge-oncology.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What was my neutrophil count at discharge?",
+      "When is my next chemo cycle?",
+      "What symptoms should prompt me to call the oncology team?"
+    ]
+  },
+  {
+    "id": "discharge-pediatric",
+    "label": "Pediatric Discharge Summary",
+    "description": "Appendectomy discharge for an 11-year-old with post-op recovery instructions.",
+    "filename": "random/discharge-pediatric.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "When can my child return to school?",
+      "What pain medications are approved?",
+      "What are warning signs to go back to the ER?"
+    ]
+  },
+  {
+    "id": "labs-metabolic",
+    "label": "Comprehensive Metabolic Panel",
+    "description": "CBC and CMP with flagged values for a diabetic hypertension patient.",
+    "filename": "random/labs-metabolic.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Which of my results are out of range?",
+      "Is my kidney function normal?",
+      "What does my glucose level mean?"
+    ]
+  },
+  {
+    "id": "labs-thyroid",
+    "label": "Thyroid and Lipid Panel",
+    "description": "Annual thyroid function tests and fasting lipid profile showing elevated LDL.",
+    "filename": "random/labs-thyroid.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Is my thyroid function normal?",
+      "Should I be worried about my cholesterol?",
+      "What does my TSH level indicate?"
+    ]
+  },
+  {
+    "id": "labs-diabetes",
+    "label": "Diabetes Monitoring Panel",
+    "description": "HbA1c, fasting glucose, and urinalysis for a Type 2 diabetes management visit.",
+    "filename": "random/labs-diabetes.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What is my HbA1c and what does it mean?",
+      "Is there protein in my urine?",
+      "How does my glucose control compare to last visit?"
+    ]
+  },
+  {
+    "id": "radiology-chest-ct",
+    "label": "Chest CT Report",
+    "description": "CT pulmonary angiography for suspected PE with incidental lung nodule finding.",
+    "filename": "random/radiology-chest-ct.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Was a pulmonary embolism found?",
+      "What does the lung nodule mean?",
+      "What follow-up imaging is recommended?"
+    ]
+  },
+  {
+    "id": "radiology-mri-brain",
+    "label": "MRI Brain Report",
+    "description": "Brain MRI with and without contrast for headache workup — normal study.",
+    "filename": "random/radiology-mri-brain.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Was anything abnormal found on my brain MRI?",
+      "Do I need any additional imaging?",
+      "What does the radiologist recommend?"
+    ]
+  },
+  {
+    "id": "radiology-abdominal-us",
+    "label": "Abdominal Ultrasound Report",
+    "description": "Right upper quadrant ultrasound showing cholelithiasis without acute cholecystitis.",
+    "filename": "random/radiology-abdominal-us.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Do I have gallstones?",
+      "Is my liver normal?",
+      "Does this explain my abdominal pain?"
+    ]
+  },
+  {
+    "id": "op-note-lap-chole",
+    "label": "Laparoscopic Cholecystectomy Op Note",
+    "description": "Operative report for elective gallbladder removal with intraoperative cholangiogram.",
+    "filename": "random/op-note-lap-chole.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "Were there any complications?",
+      "What was found during the surgery?",
+      "What are my post-op restrictions?"
+    ]
+  },
+  {
+    "id": "op-note-tka",
+    "label": "Total Knee Arthroplasty Op Note",
+    "description": "Right total knee replacement operative report with implant sizing and alignment details.",
+    "filename": "random/op-note-tka.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What implant was used?",
+      "Were there any intraoperative complications?",
+      "What was the tourniquet time?"
+    ]
+  },
+  {
+    "id": "prior-auth-biologic",
+    "label": "Prior Authorization — Biologic Therapy",
+    "description": "Humira prior auth request for rheumatoid arthritis with step therapy documentation.",
+    "filename": "random/prior-auth-biologic.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What medications were tried before this request?",
+      "What is the requested drug and dose?",
+      "What diagnosis code was used?"
+    ]
+  },
+  {
+    "id": "prior-auth-dme",
+    "label": "DME Prior Authorization Request",
+    "description": "Continuous glucose monitor prior auth form for a Type 1 diabetes patient.",
+    "filename": "random/prior-auth-dme.pdf",
+    "pageCount": 1,
+    "suggestedQuestions": [
+      "What device is being requested?",
+      "What is the medical justification listed?",
+      "What is the expected approval duration?"
+    ]
+  }
+]

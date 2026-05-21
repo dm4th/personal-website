@@ -4,6 +4,7 @@ import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
 import DocWowDemo from './DocWowDemo';
 import samplesData from '@/data/docwow-samples.json';
+import randomSamplesData from '@/data/docwow-random-samples.json';
 import type { SampleDoc } from '@/lib/projects/docwow/types';
 import styles from './page.module.css';
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function DocWowPage() {
   const allInfoData = getSortedInfo();
   const samples = samplesData as SampleDoc[];
+  const randomSamples = randomSamplesData as SampleDoc[];
 
   return (
     <>
@@ -35,8 +37,13 @@ export default function DocWowPage() {
           </div>
         </div>
         <div className={styles.demo}>
-          <DocWowDemo samples={samples} />
+          <DocWowDemo samples={samples} randomSamples={randomSamples} />
         </div>
+        <p className={styles.attribution}>
+          Sample documents are AI-generated synthetic medical records created for demonstration purposes only.
+          They contain no real patient, provider, or institutional data.
+          Generated with Claude (Anthropic API) &middot; Randomizer pool includes discharge summaries, lab panels, radiology reports, operative notes, and prior authorization forms.
+        </p>
       </div>
       <SiteFooter />
     </>

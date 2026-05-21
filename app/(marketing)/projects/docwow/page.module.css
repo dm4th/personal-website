@@ -5,3 +5,6 @@
 .pills { display: flex; flex-wrap: wrap; gap: 6px; }
 .pill { font-size: 12px; padding: 3px 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 20px; color: #888; }
 .demo { flex: 1; }
+.attribution { margin-top: 16px; padding-top: 14px; border-top: 1px solid #2a2a2a; text-align: center; font-size: 12px; color: #555; line-height: 1.6; }
+.attribution a { color: #6b7280; text-decoration: underline; text-underline-offset: 2px; }
+.attribution a:hover { color: #9ca3af; }
