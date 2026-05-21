@@ -1,0 +1,59 @@
+/**
+ * Direct Lambda invocation helper for DocWow routes.
+ * Bypasses the Function URL entirely - uses IAM credentials from env vars
+ * to call the Lambda with InvokeCommand, constructing an APIGatewayProxyEventV2
+ * shaped payload so the Lambda handler doesn't need changes.
+ */
+import { LambdaClient, InvokeCommand } from '@aws-sdk/client-lambda';
+
+const client = new LambdaClient({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
+
+const FUNCTION_NAME = process.env.DOCWOW_LAMBDA_FUNCTION_NAME ?? 'docwow';
+const SECRET = process.env.DOCWOW_CONTAINER_SECRET ?? '';
+
+interface InvokeResult {
+  statusCode: number;
+  body: unknown;
+}
+
+export async function invokeLambda(
+  path: string,
+  method: 'GET' | 'POST',
+  options: { queryParams?: Record<string, string>; body?: unknown } = {},
+): Promise<InvokeResult> {
+  // Construct an APIGatewayProxyEventV2-shaped event
+  const event = {
+    rawPath: path,
+    requestContext: { http: { method } },
+    headers: { 'x-docwow-secret': SECRET },
+    queryStringParameters: options.queryParams ?? {},
+    body: options.body ? JSON.stringify(options.body) : undefined,
+  };
+
+  const command = new InvokeCommand({
+    FunctionName: FUNCTION_NAME,
+    Payload: Buffer.from(JSON.stringify(event)),
+  });
+
+  const response = await client.send(command);
+
+  if (!response.Payload) {
+    throw new Error('Lambda returned empty payload');
+  }
+
+  const raw = JSON.parse(Buffer.from(response.Payload).toString()) as {
+    statusCode: number;
+    body: string;
+  };
+
+  return {
+    statusCode: raw.statusCode,
+    body: JSON.parse(raw.body),
+  };
+}
