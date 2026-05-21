@@ -97,3 +97,14 @@ export function getJobApplicationBySlug(id: string): JobApplicationEntry | null 
 export function getJobApplicationFilePath(dirName: string, filename: string): string {
   return path.join(JOB_APPLICATIONS_DIR, dirName, filename);
 }
+
+export function aggregateUniqueProjects(roles: JobApplicationEntry[]): JobProject[] {
+  const seen = new Set<string>();
+  return roles
+    .flatMap((e) => e.config.projects ?? [])
+    .filter((p) => {
+      if (seen.has(p.path)) return false;
+      seen.add(p.path);
+      return true;
+    });
+}

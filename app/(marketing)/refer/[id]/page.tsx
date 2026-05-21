@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllJobApplicationConfigs, getJobApplicationBySlug } from '@/lib/content/jobApplications';
+import { getAllJobApplicationConfigs, getJobApplicationBySlug, aggregateUniqueProjects } from '@/lib/content/jobApplications';
 import { getAllCompanyOverviews, getCompanyOverviewBySlug } from '@/lib/content/companyOverviews';
 import SiteHeader from '@/components/shell/SiteHeader';
 import SiteFooter from '@/components/shell/SiteFooter';
@@ -44,6 +44,7 @@ export default async function ReferPage({ params }: Props) {
       .sort((a, b) => b.config.fitScore - a.config.fitScore);
 
     const topRole = roles[0];
+    const companyProjects = aggregateUniqueProjects(roles);
 
     return (
       <>
@@ -115,6 +116,12 @@ export default async function ReferPage({ params }: Props) {
               videoUrl={overview.videoUrl}
             />
           </div>
+
+          {companyProjects.length > 0 && (
+            <CollapsibleSection title="Relevant projects" defaultOpen>
+              <ProjectCallouts projects={companyProjects} />
+            </CollapsibleSection>
+          )}
 
           <div className={styles.backLink}>
             <Link href="/">← danielmathieson.com</Link>
