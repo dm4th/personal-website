@@ -2,9 +2,20 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, GetCommand, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import type { DocSession, ChatTurn } from './types';
 
-const client = new DynamoDBClient({ region: process.env.AWS_REGION ?? 'us-east-1' });
+const credentials = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+      sessionToken: process.env.AWS_SESSION_TOKEN,
+    }
+  : undefined;
+
+const client = new DynamoDBClient({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  ...(credentials && { credentials }),
+});
 const ddb = DynamoDBDocumentClient.from(client);
-const TABLE = process.env.DOCWOW_SESSIONS_TABLE ?? 'docwow-sessions';
+const TABLE = process.env.DYNAMO_TABLE ?? 'docwow-sessions';
 
 // Sessions expire after 2 hours
 const SESSION_TTL_SECONDS = 2 * 60 * 60;

@@ -28,13 +28,13 @@ export async function invokeLambda(
   method: 'GET' | 'POST',
   options: { queryParams?: Record<string, string>; body?: unknown } = {},
 ): Promise<InvokeResult> {
-  // Construct an APIGatewayProxyEventV2-shaped event
+  // Construct an APIGatewayProxyEvent (v1) shaped event to match the handler
   const event = {
-    rawPath: path,
-    requestContext: { http: { method } },
+    path,
+    httpMethod: method,
     headers: { 'x-docwow-secret': SECRET },
     queryStringParameters: options.queryParams ?? {},
-    body: options.body ? JSON.stringify(options.body) : undefined,
+    body: options.body ? JSON.stringify(options.body) : null,
   };
 
   const command = new InvokeCommand({

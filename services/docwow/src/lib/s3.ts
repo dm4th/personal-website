@@ -1,8 +1,19 @@
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
-const s3 = new S3Client({ region: process.env.AWS_REGION ?? 'us-east-1' });
-const BUCKET = process.env.DOCWOW_S3_BUCKET ?? '';
+const credentials = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+      sessionToken: process.env.AWS_SESSION_TOKEN,
+    }
+  : undefined;
+
+const s3 = new S3Client({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  ...(credentials && { credentials }),
+});
+const BUCKET = process.env.AWS_S3_BUCKET_NAME ?? '';
 
 /**
  * Generate a pre-signed PUT URL for a user PDF upload.

@@ -6,8 +6,20 @@ import {
 } from '@aws-sdk/client-textract';
 import type { ExtractedBlock, BoundingBox } from './types';
 
-const textract = new TextractClient({ region: process.env.AWS_REGION ?? 'us-east-1' });
-const BUCKET = process.env.DOCWOW_S3_BUCKET ?? '';
+// Explicitly resolve credentials including session token (required for Lambda execution roles)
+const credentials = process.env.AWS_ACCESS_KEY_ID
+  ? {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+      sessionToken: process.env.AWS_SESSION_TOKEN,
+    }
+  : undefined;
+
+const textract = new TextractClient({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  ...(credentials && { credentials }),
+});
+const BUCKET = process.env.AWS_S3_BUCKET_NAME ?? '';
 
 const POLL_INTERVAL_MS = 3000;
 const MAX_POLLS = 40; // 2 minutes max
