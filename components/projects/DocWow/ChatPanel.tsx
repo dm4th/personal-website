@@ -33,7 +33,7 @@ export default function ChatPanel({ messages, isLoading, activeCitationId, sugge
       <div className={styles.messages}>
         {messages.length === 0 && suggestedQuestions.length > 0 && (
           <div className={styles.suggestions}>
-            <p className={styles.suggestLabel}>Try asking:</p>
+            <p className={styles.suggestLabel}>Try Asking:</p>
             {suggestedQuestions.map((q) => (
               <button key={q} className={styles.suggestion} onClick={() => onSend(q)}>{q}</button>
             ))}

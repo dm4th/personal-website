@@ -37,7 +37,7 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <h2 className={styles.title}>Choose your analysis profile</h2>
+        <h2 className={styles.title}>Choose Your Analysis Profile</h2>
         <p className={styles.subtitle}>This shapes how Claude interprets the document.</p>
         <div className={styles.templates}>
           {TEMPLATES.map((t) => (
@@ -48,14 +48,14 @@ export default function ProfileSetup({ onConfirm, onCancel }: Props) {
           ))}
         </div>
         <div className={styles.fields}>
-          <label className={styles.label}>Your role</label>
-          <input className={styles.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. patient reviewing my own records" />
-          <label className={styles.label}>Your goal</label>
+          <label className={styles.label}>Your Role</label>
+          <input className={styles.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. Patient reviewing my own records" />
+          <label className={styles.label}>Your Goal</label>
           <textarea className={styles.textarea} value={goal} onChange={(e) => setGoal(e.target.value)} rows={3} placeholder="e.g. Understand my diagnosis and next steps" />
         </div>
         <div className={styles.actions}>
           <button className={styles.cancelBtn} onClick={onCancel}>Cancel</button>
-          <button className={styles.confirmBtn} onClick={confirm} disabled={!role.trim() || !goal.trim()}>Start analysis</button>
+          <button className={styles.confirmBtn} onClick={confirm} disabled={!role.trim() || !goal.trim()}>Start Analysis</button>
         </div>
       </div>
     </div>

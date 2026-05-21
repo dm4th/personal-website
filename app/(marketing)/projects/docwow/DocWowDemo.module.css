@@ -1,5 +1,5 @@
-.root { height: 100%; }
-.layout { display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 120px); gap: 0; border: 1px solid #1a1a1a; border-radius: 12px; overflow: hidden; }
+.root { width: 100%; }
+.layout { display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 220px); min-height: 620px; gap: 0; border: 1px solid #1a1a1a; border-radius: 12px; overflow: hidden; }
 .leftCol { overflow: hidden; display: flex; flex-direction: column; border-right: 1px solid #1a1a1a; }
 .rightCol { overflow: hidden; display: flex; flex-direction: column; transition: opacity 0.2s; }
 .dimmed { opacity: 0.4; pointer-events: none; }

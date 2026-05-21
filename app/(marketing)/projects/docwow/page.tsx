@@ -28,7 +28,7 @@ export default function DocWowPage() {
             exact source location highlighted in the document.
           </p>
           <div className={styles.pills}>
-            {['Anthropic SDK', 'AWS Textract OCR', 'Bounding Box Citations', 'Dynamic Skill Files'].map((t) => (
+            {['Anthropic SDK', 'AWS Textract OCR', 'Bounding Box Citations', 'Dynamic Skill Files', 'AWS Lambda', 'DynamoDB Sessions', 'S3 Presigned Uploads', 'Forced Tool Use'].map((t) => (
               <span key={t} className={styles.pill}>{t}</span>
             ))}
           </div>

@@ -167,14 +167,14 @@ export default function DocWowDemo({ samples }: Props) {
             <>
               <div className={styles.pdfHeader}>
                 <span className={styles.profileBadge}>{profile?.role}</span>
-                <button className={styles.resetBtn} onClick={handleReset}>← New document</button>
+                <button className={styles.resetBtn} onClick={handleReset}>← New Document</button>
               </div>
               <div className={styles.pdfViewer}>
                 <PDFViewer pdfUrl={pdfUrl} activeCitation={activeCitation} />
               </div>
               {activeCitation && (
                 <div className={styles.citationCallout}>
-                  <span className={styles.calloutLabel}>Cited from page {activeCitation.pageNumber} · {activeCitation.type}</span>
+                  <span className={styles.calloutLabel}>Cited From Page {activeCitation.pageNumber} · {activeCitation.type.charAt(0).toUpperCase() + activeCitation.type.slice(1)}</span>
                   <p className={styles.calloutQuote}>&ldquo;{activeCitation.quote}&rdquo;</p>
                 </div>
               )}
@@ -187,7 +187,7 @@ export default function DocWowDemo({ samples }: Props) {
           ) : phase.status === 'error' ? (
             <div className={styles.errorBox}>
               <p>{phase.message}</p>
-              <button className={styles.resetBtn} onClick={handleReset}>Try again</button>
+              <button className={styles.resetBtn} onClick={handleReset}>Try Again</button>
             </div>
           ) : (
             <UploadPanel
