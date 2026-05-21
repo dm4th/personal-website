@@ -42,16 +42,33 @@ export async function invokeLambda(
     Payload: Buffer.from(JSON.stringify(event)),
   });
 
-  const response = await client.send(command);
-
-  if (!response.Payload) {
-    throw new Error('Lambda returned empty payload');
+  let response;
+  try {
+    response = await client.send(command);
+  } catch (e) {
+    const err = e as Error & { name?: string };
+    // InvokeCommand itself failed — auth/network error before Lambda ran
+    return {
+      statusCode: 502,
+      body: { error: `InvokeCommand failed: [${err.name}] ${err.message}` },
+    };
   }
 
-  const raw = JSON.parse(Buffer.from(response.Payload).toString()) as {
-    statusCode: number;
-    body: string;
-  };
+  if (!response.Payload) {
+    return { statusCode: 502, body: { error: 'Lambda returned empty payload' } };
+  }
+
+  const payloadStr = Buffer.from(response.Payload).toString();
+
+  // Lambda crashed with unhandled exception
+  if (response.FunctionError) {
+    return {
+      statusCode: 502,
+      body: { error: `Lambda function error (${response.FunctionError}): ${payloadStr}` },
+    };
+  }
+
+  const raw = JSON.parse(payloadStr) as { statusCode: number; body: string };
 
   return {
     statusCode: raw.statusCode,
