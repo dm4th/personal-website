@@ -118,9 +118,9 @@ export default async function ReferPage({ params }: Props) {
           </div>
 
           {companyProjects.length > 0 && (
-            <CollapsibleSection title="Relevant projects" defaultOpen>
+            <div className={styles.overviewContent}>
               <ProjectCallouts projects={companyProjects} />
-            </CollapsibleSection>
+            </div>
           )}
 
           <div className={styles.backLink}>
