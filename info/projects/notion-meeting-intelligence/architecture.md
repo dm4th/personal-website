@@ -52,9 +52,11 @@ Keeping them independent means either can be updated, redeployed, or scaled with
 
 ### Notion as the Prompt Store
 
-The agent prompts are not hardcoded. They live in a Notion database called the Agent Library, fetched at analysis time by the `analyze-start` Next.js route using a server-side `NOTION_API_KEY`. The ICP agent prompt includes a `{{ICP_RUBRIC}}` placeholder that gets replaced with the live content of a separate Notion ICP Scoring Rubric database before being stored in DynamoDB.
+The agent prompts are not hardcoded. They live in the Agent Library database inside the AI-Native GTM Hub Notion template, fetched at analysis time by the `analyze-start` Next.js route using a server-side `NOTION_API_KEY`. The ICP agent prompt includes a `{{ICP_RUBRIC}}` placeholder that gets replaced with the live content of a separate ICP Scoring Rubric database before the prompts are stored in DynamoDB.
 
-This separation matters: the AI methodology is owned in Notion, where it's easy to edit and version. The code is infrastructure. Updating how I want the Sales Coach to evaluate a call is a Notion edit; it takes effect on the next analysis without any code change or redeploy.
+This separation matters: the AI methodology is owned in Notion, where it is easy to edit and version. The code is infrastructure. Updating how the Sales Coach evaluates a call, or adding a new ICP scoring dimension, is a Notion edit that takes effect on the next analysis without any code change or redeploy.
+
+Users who connect their own workspace get this same behavior with their own copy of the Agent Library. They can edit the prompt bodies directly in Notion and the changes apply immediately to their next run.
 
 ### Infrastructure Summary
 

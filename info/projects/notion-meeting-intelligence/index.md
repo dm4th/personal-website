@@ -39,11 +39,28 @@ What makes this more than a generic AI analysis tool is that the agent prompts a
 
 When you run an analysis, the system fetches those prompts from my Notion workspace on the server side before passing them to Claude. The ICP agent even pulls the live ICP Scoring Rubric from a separate Notion database and injects it into the prompt. This means updating my sales methodology is a Notion edit, not a code deploy.
 
+### The AI-Native GTM Hub Template
+
+The backbone of the own-workspace mode is a Notion template I built called the AI-Native GTM Hub. It contains four databases that the analysis pipeline writes to:
+
+- **Meeting Notes** - one page per meeting, with the executive summary and deal verdict as top-level properties
+- **Agent Analyses** - six linked rows per meeting (one per agent), so you can filter your whole pipeline by sales score, ICP tier, delivery risk, or any other dimension across all your calls
+- **Agent Library** - the live store for agent prompts. Each row is one agent, with a system prompt body field. Editing this database changes what every future analysis does, with no code change required
+- **ICP Scoring Rubric** - a scoring framework with dimensions and weights. The ICP agent reads this database at runtime and injects the current rubric into its prompt, so tuning your ICP criteria is a Notion edit
+
+The template is available at [dm4th.notion.site](https://dm4th.notion.site/AI-Native-GTM-Hub-357fc8f4554c806a908be47807ac63df) and is pending review for the public Notion template gallery.
+
+### Connecting Your Workspace
+
+The demo's setup flow walks through three steps: duplicate the template, create a Notion internal integration and paste the token, then connect the four database IDs. The connection step includes an auto-search feature that queries the workspace via the Notion API and fills in matching database IDs automatically - so most users just paste their token, click "Search my workspace," and all four fields populate in one shot.
+
+The integration token stays in the browser session and is used server-side only for Notion API calls. Nothing is persisted.
+
 ### Two Ways to Use It
 
 **Demo mode** runs the full analysis in the browser and shows results in the UI. Nothing is saved anywhere. This is the default path and requires no setup.
 
-**Own workspace mode** does everything demo mode does, then writes the results into your Notion databases: a meeting notes page, and one agent analysis page per agent. To use it you need the GTM Hub Notion template installed and a Notion integration token configured.
+**Own workspace mode** does everything demo mode does, then writes the results into your Notion databases: a meeting notes page, and one agent analysis page per agent. To use it you need the GTM Hub template installed and a Notion integration token configured.
 
 ### Pages in This Section
 
