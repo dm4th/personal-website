@@ -11,39 +11,39 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-General Interest
-Company: Goodfire
+GTM Strategy & Operations, Special Projects
+Company: Anthropic
 Location: San Francisco, CA
-Employment Type: Full-time
-Compensation: $100,000 - $400,000 USD + equity + competitive benefits
-Work Schedule: 5 days/week in-person at SF HQ; 1 week/month remote company-wide
+Employment Type: Full time
+Location Type: Hybrid (minimum 25% in-office)
+Department: Go To Market
 
-About Goodfire:
-Goodfire is a research company using interpretability to understand, learn from, and design AI systems. We advance AI safety through scientific understanding rather than scaling alone. Our team is composed of leading researchers and engineers from OpenAI and Google DeepMind, working at the frontier of mechanistic interpretability.
+About the Role:
+As a GTM Strategy & Operations Lead on the Special Projects team, you will operate as a strategic force multiplier across Anthropic's entire sales organization. Rather than focusing on a single GTM segment, you will tackle cross-cutting initiatives spanning Enterprise, Strategic Accounts, Startups, Commercial, Public Sector, and Partnerships.
 
-Our flagship product, Ember, decodes neuron activity inside AI models using sparse autoencoders (SAEs) to extract interpretable "features" — patterns of neural computation. This gives developers programmable access to a model's internal reasoning and enables "autosteering" — controllably manipulating model internals. We also build Silico, a tool for debugging AI models at all stages of development.
+Key Responsibilities:
+- Lead analytical deep-dives on segmentation strategy, coverage models, resource allocation, and capacity planning that inform decisions across all GTM segments
+- Build scalable frameworks for account prioritization, territory design, and pipeline diagnostics
+- Own special projects end-to-end: from scoping and stakeholder alignment through execution and impact measurement
+- Design processes and operating rhythms that enable the GTM org to scale through hypergrowth phases
+- Collaborate with data science teams on predictive modeling, churn signals, and usage-based analytics
+- Build and maintain unified dashboards and reporting that surface actionable insights to sales leadership
+- Manage CRM data quality initiatives and pipeline hygiene across segments
+- Serve as a connective thread between Revenue Operations, Marketing, Partnerships, Product, and Engineering teams
+- Support leadership with ad-hoc strategic analysis and executive-level deliverables
 
-Our customers and partners include Mayo Clinic (healthcare), Microsoft (enterprise), Arc Institute (scientific research), and materials science companies discovering novel compounds through model reverse-engineering.
+Required Qualifications:
+- SaaS/enterprise software experience with focus on analytics, revenue/business operations, strategy consulting, or finance
+- Demonstrated ability to own cross-functional projects end-to-end in ambiguous, fast-moving environments
+- Proficiency with CRM platforms (Salesforce) and BI/analytics tools (Looker, BigQuery)
+- Strong communication skills: able to translate complex analyses into clear recommendations for senior stakeholders
+- Bachelor's degree required
 
-We raised a $50M Series A (April 2025) and a $150M Series B at a $1.25B valuation (February 2026), backed by Menlo Ventures, Lightspeed, Anthropic, B Capital, Salesforce Ventures, and Eric Schmidt.
-
-About This Application:
-This is a general interest application. We review all submissions and match strong candidates to roles as they open — including research engineering, product engineering, customer-facing technical roles, scientific partnerships, and go-to-market. If you're exceptional and aligned with our mission, we want to hear from you even if no exact match exists today.
-
-Minimum Requirements:
-- 2+ years of relevant experience in a field aligned with our work
-- Ability to work in-person at our San Francisco headquarters (5 days/week)
-
-Core Values — All Employees Must Embody:
-- Mission and team first: We put our team above ourselves and the mission above the team. Individual accolades come second.
-- Continuous improvement: We actively seek feedback, acknowledge mistakes, and improve — individually and as an organization.
-- Ownership and initiative: There are no bystanders here. Everyone takes responsibility for problems in their domain and proactively fixes what's broken.
-- Act with urgency: We move fast and make decisions with the information available. Speed and decisive action are core to how we operate.
-
-Benefits:
-- Market competitive salary and equity
-- Comprehensive benefits package
-- Opportunity to work at the frontier of AI interpretability with a world-class team
+Preferred Qualifications:
+- Advanced Excel/Google Sheets skills; SQL or Python strongly preferred
+- Experience with consumption-based or usage-based pricing models and associated analytics
+- Prior experience building scalable operational frameworks across multiple GTM teams
+- Background in high-growth AI/tech companies or top-tier strategy consulting
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -51,6 +51,18 @@ Benefits:
 // Add entries here whenever a previously-analyzed JD isn't yet represented.
 
 const HISTORICAL_JDS: Array<{ role: string; company: string; jd: string }> = [
+  {
+    role: 'Customer Engineer, Google Cloud Platform',
+    company: 'Google',
+    jd: `Customer Engineer, Google Cloud Platform — Google. San Francisco/Sunnyvale, CA. $153K-$222K base + bonus + equity. Advanced level.
+Key requirements: 10 years cloud-native architecture in customer-facing role. Cloud/on-prem engineering, virtualization, containerization. Programming, debugging, systems design, prototyping, demos, customer workshops. Technical and executive stakeholder communication. Preferred: cloud migration, security concepts (encryption, IAM, pen testing), networking (SDN, VPNs, load balancers). Partner with technical sales to differentiate Google Cloud, serve as trusted technical advisor, run proofs-of-concept, architect cross-pillar cloud solutions, drive new business workloads.`,
+  },
+  {
+    role: 'General Interest',
+    company: 'Goodfire',
+    jd: `General Interest — Goodfire. San Francisco, 5 days/week. $100K-$400K + equity.
+Key requirements: AI safety/interpretability research company. Matching strong candidates to roles as they open: research engineering, product engineering, customer-facing technical roles, scientific partnerships, GTM. 2+ years relevant experience. Mission-first culture, continuous improvement, ownership, urgency. Products: Ember (sparse autoencoder interpretability), Silico (model debugging). Customers: Mayo Clinic, Microsoft, Arc Institute. Series B at $1.25B valuation backed by Anthropic, Lightspeed, Menlo Ventures.`,
+  },
   {
     role: 'Technical Specialist, Claude Code',
     company: 'Anthropic',
@@ -127,6 +139,12 @@ You'll thrive in this role if you:
 - Own problems end-to-end and are willing to pick up whatever knowledge you're missing to get the job done.
 - Have a humble attitude, an eagerness to help your colleagues, and a desire to do whatever it takes to make the team succeed.
     `,
+  },
+  {
+    role: 'Solutions Architect',
+    company: 'Liquid AI',
+    jd: `Solutions Architect — Liquid AI. San Francisco; Boston. Full time, Hybrid.
+Key requirements: First SA hire building the function from scratch with Head of SA. Own customer engagements end-to-end from qualified opportunity through technical validation, go-live, and ongoing delivery. Build customer-specific demos and POCs using Liquid models (LEAP for fine-tuning, domain adaptation, evaluation). Lead technical discovery: map customer architectures, competitive positioning vs. open-source and incumbent models, quantify ROI. Co-own product-field feedback loop. Turn learnings into reusable assets: reference architectures, playbooks, vertical-specific patterns. Must-have: Applied ML skills in customer-facing contexts, pre-sales and post-sales end-to-end ownership, strong customer-facing communication, understanding of AI architectures and deployment tradeoffs (token efficiency, on-device vs. cloud, model size vs. latency). Nice-to-have: edge/on-device deployment, thought leadership content, model quantization/serving frameworks, evaluation design.`,
   },
   {
     role: 'GTM AI + Innovation Manager',

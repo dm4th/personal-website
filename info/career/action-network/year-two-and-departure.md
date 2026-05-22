@@ -42,7 +42,7 @@ Built with: SQL, Redshift, AWS, Airflow, Python, Google Sheets, Google Data Stud
 
 # Football Season 2022 and Deciding to Leave
 
-As the 2022 football season started, underperformance against outdated revenue targets forced a complete reforecast of our 3-5 year plan during our busiest period. I spent four weeks of 80-hour weeks building a state-by-state long-term revenue model through 2026. The model integrated three sub-models: state legalization to MAU, MAU to affiliate activations, and activations to LTV and revenue.
+As the 2022 football season started, underperformance against outdated revenue targets forced a complete reforecast of our 3-5 year plan during our busiest period. I spent four weeks of 80-hour weeks building the full business forecast through 2026: both a tops-down model (starting from total addressable market by state and working down to our projected share) and a bottoms-up model (building from individual partner relationships, content verticals, and user cohorts up to total revenue). Running both in parallel was the right call: the tops-down gave leadership a market-sizing anchor, the bottoms-up gave the operations team something they could actually manage against. The model integrated three sub-models: state legalization to MAU, MAU to affiliate activations, and activations to LTV and revenue.
 
 The finance team ultimately adjusted my projections upward without much reasoning, to my genuine frustration. But the exercise taught me a great deal about defending analytical conclusions to skeptical executives and about the limits of data in organizations where the political narrative sometimes overpowers the numbers.
 

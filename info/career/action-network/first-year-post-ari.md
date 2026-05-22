@@ -6,6 +6,8 @@ End: January, 2022
 
 # The First Year Post-Ari
 
+By the time of the Better Collective acquisition in mid-2021, I was Director of Analytics at Action Network, leading a four-person analytics team and a three-person data engineering team across web, app, subscriptions, and affiliate revenue streams. The team covered every major vertical of the business: product analytics, affiliate partner reporting, financial modeling, and the data infrastructure that connected them.
+
 The first months after the acquisition were a trial by fire. Much of our time was spent trying to understand our new European counterparts and integrate analytics processes. Communication challenges were formidable, and without a strong unifying leadership figure, we often found ourselves treading water. The struggle to unify metric definitions alone was surprisingly contentious, and we missed quick wins that should have come from an immediate synthesis of our data.
 
 The most important lesson from this period: strong, aligned leadership is the prerequisite for effective cross-functional collaboration. We had a lot of smart people and no alignment.
@@ -39,6 +41,16 @@ Built with: SQL, Redshift, Google Sheets, Google Apps Script, Google Analytics, 
 The teams at Better Collective in Denmark naturally approached me to gain access to our data. We didn't have a system fully ready for this, so I automated daily reporting to feed into their financial stack as a starting point. This early encounter with Better Collective gave me my first real taste of the contrast between a startup's "move fast" mentality and the more structured, deadline-driven approach of a scaled European media company. Both have value. They don't always fit together easily.
 
 Built with: SQL, Redshift, AWS, Google Sheets, Google Apps Script
+
+### C-Suite Reporting Infrastructure
+
+As Director of Analytics I owned the reporting layer that went to executive leadership. On a daily basis my team produced dashboards measuring performance against forecast across all revenue streams: affiliate activations by partner and state, subscription conversion rates, and content metrics tied to the Value Clicks north star. My role was to aggregate, synthesize, and present: turning the team's daily output into the weekly executive summary that went to the CEO, CFO, and leadership team.
+
+I built the infrastructure that made this possible: a set of Redshift tables and Google Sheets models that standardized how each revenue stream rolled up to a single business view, with consistent period-over-period comparisons and automated variance explanations. That infrastructure meant I did not have to rebuild the reporting package from scratch each week. It also meant that when the Better Collective finance team needed data, the format was already reconciled with how they reported.
+
+The discipline of owning a C-suite reporting cadence at the Director level taught me what actually matters in executive communication: one clear number, one clear trend, and one clear decision. The data behind it should be ready when they ask, not in the room when they are not.
+
+Built with: SQL, Redshift, Google Sheets, Google Data Studio, Python
 
 ### Affiliate Performance Reporting
 

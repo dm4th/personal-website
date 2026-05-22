@@ -1,0 +1,135 @@
+{
+  "id": "anthropic-gtm-strategy-ops",
+  "company": "Anthropic",
+  "role": "GTM Strategy & Operations, Special Projects",
+  "appliedDate": "2026-05-21",
+  "fitScore": 80,
+  "fitScoreNote": "Six years of dedicated revenue analytics (FanDuel, Action Network, Google) plus three years applying that foundation to GTM ops, plus being Anthropic's own customer ICP spending $2K+/month on tokens. Pipeline model scored 71; human-assessed score reflects what the keyword matcher cannot capture.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 8,
+      "rationale": "Direct documented experience with Salesforce CRM reporting, ICP scoring frameworks for account prioritization and capacity planning, SQL/Python analytics, consumption-based revenue modeling (Markov Chain Monte Carlo at FanDuel), cross-functional coordination across CEO/VP Sales/Product/Engineering, and career-long pattern of translating complex data into actionable insights for senior leadership. Primary gap is that this role is a pure GTM Strategy & Ops function within a large org — closest work is from the SE/solutions-engineering seat rather than a standalone ops function.",
+      "citations": [
+        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
+        { "label": "ICP Scoring (Smarter)", "path": "/info/career/smarter-technologies/icp-scoring" },
+        { "label": "AI SE Platform (Smarter)", "path": "/info/career/smarter-technologies/ai-se-platform" },
+        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
+        { "label": "FanDuel Early Years", "path": "/info/career/fanduel/early-years" },
+        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
+        { "label": "Google", "path": "/info/career/google/my-year-at-google" }
+      ]
+    },
+    "seniority": {
+      "score": 8,
+      "rationale": "Director of Analytics (7-person team at Action Network), Director SE (VP-scope at Smarter Technologies), VP of Solutions at AccessHealthcare. Owned C-suite reporting cadences at FanDuel, Google, and Action Network. Right level for this role. Residual gap is the specific organizational context: multi-segment GTM ops at Anthropic's scale is new territory even if the analytical and leadership seniority is real.",
+      "citations": [
+        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" },
+        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
+        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
+        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" }
+      ]
+    },
+    "technicalSkills": {
+      "score": 7,
+      "rationale": "Consumption-based Markov Chain forecasting (18 cohorts, 2% error), BigQuery/GoogleSQL at Google covering 500M users, Looker and Chartio dashboards, Salesforce CRM end-to-end, Redshift-based cohort analytics and retention modeling at FanDuel and Action Network, C-suite reporting cadences owned at Director level. Gaps: no territory design, no formal quota framework, no Clari.",
+      "citations": [
+        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
+        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
+        { "label": "FanDuel Early Years", "path": "/info/career/fanduel/early-years" },
+        { "label": "Google", "path": "/info/career/google/my-year-at-google" },
+        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
+        { "label": "Action Network Year 2", "path": "/info/career/action-network/year-two-and-departure" }
+      ]
+    },
+    "industryVertical": {
+      "score": 8,
+      "rationale": "Six years of dedicated revenue analytics across consumer SaaS (FanDuel), media/affiliate (Action Network), and enterprise SaaS (Google) before moving into GTM roles. Additionally, Dan is Anthropic's own customer ICP: $2K+/month in API tokens for four months, building production agentic systems on Claude, with firsthand experience of consumption-based pricing economics from the demand side and two years of field context on enterprise AI adoption.",
+      "citations": [
+        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
+        { "label": "ICP Scoring (Smarter)", "path": "/info/career/smarter-technologies/icp-scoring" },
+        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
+        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" }
+      ]
+    },
+    "logistics": {
+      "score": 10,
+      "rationale": "SF-based (Richmond neighborhood) matching hybrid 25% in-office requirement. B.S. Electrical & Computer Engineering from Bucknell University satisfies the degree requirement. No clearance, relocation, or language barriers.",
+      "citations": [
+        { "label": "San Francisco", "path": "/info/about-me/where-ive-lived/san-francisco" },
+        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" }
+      ]
+    }
+  },
+  "jobDescriptionUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5227856008",
+  "jobDescriptionText": "As a GTM Strategy & Operations Lead on the Special Projects team, you will operate as a strategic force multiplier across Anthropic's entire sales organization. Rather than embedding within a single segment, you'll tackle the highest-priority, cross-cutting initiatives that span our go-to-market motion—from Enterprise and Strategic Accounts to Startups, Commercial, Public Sector, and Partnerships. You'll lead analytical deep-dives, build frameworks that scale across segments, and drive projects from scoping through execution that directly shape how we grow revenue and serve customers.\n\nThis role is ideal for someone who thrives on variety and ambiguity—moving between a segmentation redesign one week, an AE performance analysis the next, and a cross-functional process overhaul after that. You'll report to the GTM Strategy & Operations lead and partner closely with segment Business Partners, Revenue Operations, and GTM leadership to ensure our fastest-growing sales organization operates with precision and speed.",
+  "strengths": [
+    {
+      "title": "Built and ran RevOps without the title",
+      "description": "At Smarter Technologies the RevOps function was thin in practice. I ran both SE and RevOps: pricing models for $250K to $40M deals, multi-year discount structures, Salesforce reporting for VP and CEO reviews, ICP scoring across 99 deals, and pipeline health analytics. Two people covered 62% of company pipeline through the system I built. The work is identical to what a dedicated RevOps lead produces.",
+      "citations": []
+    },
+    {
+      "title": "Consumption-based forecasting: Markov Chain model at FanDuel",
+      "description": "Daily fantasy sports is structurally identical to API token consumption: revenue is a function of activity volume, high-intensity users generate disproportionate revenue, and retention within spending cohorts determines the business. My Markov Chain Monte Carlo simulation modeled user-state transitions across 17 segments and reduced NFL season forecast error from 6-8% to within 2%. That is the same analytical framework as usage-based pricing analytics.",
+      "citations": []
+    },
+    {
+      "title": "BigQuery/GoogleSQL at 500M user scale at Google",
+      "description": "GoogleSQL is BigQuery's query language. I built P&L reporting suites, executive dashboards, and revenue forecasting models against BigQuery infrastructure at Google covering 500M+ GSuite users, improving top-line forecast accuracy by 7% with a machine learning model integrated into the automated SQL pipeline.",
+      "citations": []
+    },
+    {
+      "title": "Built the cross-functional north star metric at Action Network",
+      "description": "As Director of Analytics leading a 7-person team, I built the 'Value Clicks' metric from behavioral analytics, pitched it to content and product leadership, and watched both teams change their roadmap priorities based on a number that had not existed three months earlier. Both sides of the business aligned to the same KPI. Revenue grew 70%+ YoY.",
+      "citations": []
+    },
+    {
+      "title": "Field context on enterprise AI adoption",
+      "description": "Two years sitting across from the CISOs, CFOs, and clinical ops leaders evaluating AI in healthcare. I know what moves them from skeptical to convinced and what the reporting infrastructure needs to look like for them to trust the numbers. That field context is something a pure ops hire doesn't bring to the GTM strategy function.",
+      "citations": []
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No dedicated RevOps or GTM Strategy title",
+      "description": "GTM operations work has always been embedded within SE, analytics, or delivery roles rather than as a standalone function.",
+      "mitigation": "Name it directly: the companies I joined didn't have the function yet, so I built it. The output looks identical to what a RevOps lead produces. The org chart just looked different."
+    },
+    {
+      "title": "No formal territory design or quota framework experience",
+      "description": "ICP scoring and capacity planning served the same function, but formal territory modeling and quota design for a multi-segment org is a gap.",
+      "mitigation": "Own the distinction clearly: ICP scoring at Smarter was about prioritizing 99 deals by win probability and resource allocation, not designing rep territories. Territory design is the natural extension of the analytical framework I've already built, and I'd come in knowing the underlying work well."
+    },
+    {
+      "title": "No multi-segment GTM coordination at scale",
+      "description": "Experience is single-company SE rather than coordinating across Enterprise, Startups, Commercial, and Public Sector simultaneously at an Anthropic-scale organization.",
+      "mitigation": "Frame the analog: 61 deals across 10 healthcare verticals and 8 product lines concurrently requires the same prioritization and coverage logic. The segment taxonomy is different; the analytical muscle is the same."
+    }
+  ],
+  "referralBlurb": "I am referring Dan Mathieson for the GTM Strategy & Operations, Special Projects role. At Thoughtful AI, Dan was a delivery lead directing teams of 1-3 FDEs across up to 18 concurrent customer implementations in healthcare, owning the technical relationship with customers and translating build progress and accuracy milestones into business outcomes throughout. He built production Python analytics pipelines per customer deployment that eventually shipped as a core product feature. At Smarter Technologies he built a 23-skill, 5-agent Claude Code platform that ran on $31.8M in enterprise pipeline, and was the only non-Product/Engineering person retained after an 85% headcount reduction specifically because he can make complex AI systems legible to skeptical enterprise decision-makers. His FDE experience is real, just not always titled that way.",
+  "projects": [
+    {
+      "name": "Notion Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Pipeline intelligence system that extracts GTM insights from sales calls and surfaces them to relevant stakeholders - structurally identical to the meeting intelligence and pipeline diagnostic infrastructure a GTM Strategy & Operations team would build internally. Built the analytical layer that turns raw call data into prioritization signals."
+    },
+    {
+      "name": "Dental Eligibility Intelligence",
+      "path": "/projects/dental-eligibility",
+      "relevance": "Production multi-agent eligibility verification system built on Claude - the same consumption-based, high-volume API workload Anthropic's GTM team needs to model and quantify ROI for enterprise customers. Demonstrates firsthand understanding of the usage economics, cost optimization tradeoffs, and model selection decisions that show up in enterprise procurement conversations."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Multi-agent document processing platform built on Claude with streaming inference, structured extraction, and a full analytics layer. Demonstrates the kind of production AI system design and consumption-based usage patterns that directly inform how Anthropic's GTM team scopes, prices, and measures enterprise deployments."
+    }
+  ],
+  "applicationQuestions": [
+    {
+      "question": "Why do you want to work at Anthropic? (We value this response highly - great answers are often 200-400 words.)",
+      "answer": "With this now being the fourth time I've applied to Anthropic in the last four years, the reason I persist in wanting to join the mission remains the same. Namely, I believe Anthropic's mission of safe and reliable AI deployment throughout the economy is of the utmost importance, and that importance continues to grow with each successive application of mine. Dario said it best across multiple media appearances, the best way to ensure safe AI is to lead from the front and give the rest of the space no option but to follow. Claude Code, Cowork, managed agents, MCP, and the Claude SDK are all a direct manifestation of that thesis coming to life, and I'd love to help share the benefits that Anthropic's products have had on my life, both in my career and personal life, with people across the country and all over the world.\n\nThroughout my career, I've always been the \"go-to\" person for execs wanting to understand how the business is operating at a deeper level. This started from my very first day at my very first job post-graduation from college, staying late after work building pipelines to constantly improve the depth to which I could explain FanDuel's intricate business. GTM and Revenue analytics are a puzzle, and I enjoy finding the right pieces for everyone's mental image. I moved into customer-facing roles due to my fluency in technical areas and being able to explain them convincingly and accurately, but my heart has always been in finding puzzle pieces. At Anthropic, I'd continue to go deeper than anyone to find the many variable ways we can continue to lead from the front."
+    }
+  ],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

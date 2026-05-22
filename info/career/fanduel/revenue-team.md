@@ -42,6 +42,14 @@ The resulting model was meaningfully more accurate and produced better diagnosti
 
 Built with: SQL, Redshift, AWS, Python, Flask, Slack API/Webhooks, Chartio
 
+### Daily Fantasy as Consumption-Based Revenue
+
+Daily fantasy sports is structurally identical to consumption-based SaaS. Users don't pay a flat subscription for access. They pay per contest entry, and revenue is a direct function of entry volume: a power user entering 50 contests a week generates 50 times the revenue of someone entering one. Retention within high-spend cohorts, not total user count, is what drives the business.
+
+The Markov-Chain model I built for the 2019 NFL season was fundamentally a consumption forecasting model. I segmented users by spending level and sport preference, then modeled transition probabilities between those segments over time: how often does a high-spend user remain high-spend, drop to medium, or churn? What's the expected revenue from each cohort state in future periods? The structure is directly analogous to token-based API consumption analytics: a distribution of users with different usage intensities, where high-intensity users generate disproportionate revenue, and the forecast depends on retention within each usage cohort over time.
+
+That model reduced forecast error from 6-8% to materially better by treating consumption behavior as the fundamental unit of analysis, rather than aggregating it into simpler metrics. It's the same challenge any consumption-priced SaaS company faces when modeling forward revenue: you're forecasting a distribution, not a number, and the distribution's shape is what matters.
+
 # Leaving FanDuel
 
 Throughout my time at FanDuel, I was a committed, high-performing team member. But I wanted to grow into leadership and found that path uncertain. When Michael referred me to a role at Google (an opportunity I couldn't turn down), it was the right moment to move.

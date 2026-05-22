@@ -42,6 +42,16 @@ The dual-system approach (Salesforce for executive visibility, custom Git/Notion
 
 Built with: Salesforce, custom reports, pipeline dashboards
 
+### Pricing Analysis and RevOps Coverage
+
+Smarter Technologies had a RevOps function on paper, but in practice it was thin. When deals reached the pricing and structuring phase, I stepped in to fill the gap.
+
+I built deal-specific pricing models that incorporated product mix, EMR integration complexity, implementation scope, and customer size. The deal range required different approaches: a $250K behavioral health proof-of-concept has a fundamentally different risk profile than a $15M health system platform deal or a $40M design partnership. I worked directly with the VP of Sales and CEO to pressure-test pricing before it went to the customer, modeling scenarios across different structures: upfront vs. phased payments, multi-year discount curves, and what the customer-side economics looked like for each option.
+
+When pricing negotiations got contentious, I could show the analytical work behind our numbers: what components drove the price, what could be removed to hit a lower figure without breaking the economics, and how the long-term value calculation looked for both sides. This was a natural extension of the ICP and pipeline analytics I was already running. The person with the deepest understanding of each deal's technical scope and win probability was also the right person to build the pricing model for it.
+
+The boundary between SE and RevOps was functionally blurred at Smarter Technologies. I ran both functions for most of the time I was there.
+
 ### Tech Stack
 
-Notion (deal tracker databases, health indicators, status fields), Salesforce (CRM, executive reporting, deal flow), Git (version-controlled deal state and history), Python (schema validation, deal tracker audit scripts), Claude Code (automated field updates and briefing generation)
+Notion (deal tracker databases, health indicators, status fields), Salesforce (CRM, executive reporting, deal flow), Git (version-controlled deal state and history), Python (schema validation, deal tracker audit scripts, pricing scenario models), Claude Code (automated field updates and briefing generation)

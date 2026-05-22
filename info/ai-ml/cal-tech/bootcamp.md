@@ -83,3 +83,12 @@ Again, I had a great dataset for this project, so it seemed easier than any of t
 From the beginning I used tensorFlow and Keras to build a simple image classifier. The first iteration was actually not that bad, but even a 1% false positive rate for something like cancer is unacceptable. So we moved on to transfer learning.
 
 I'm still not sure what the difference between fine-tuning and tranfer lerarning are functionally with large models. I know it has a little to do with whether or not you replace the last layer of a model or just add a final layer at the end, but in the end it all feels the same. I fit models to Mobile Net and DenseNet and got much better perforamnce. I learned that I will not be building models myself anytime soon, but that I can be plenty dangerous fine-tuning open-source models myself.
+
+
+### Local Model Deployment: Quantization and Memory Constraints
+
+After the bootcamp, my curiosity kept pulling me toward the deployment side of the stack. A few months ago I spent about a month experimenting with running a Qwen 1.5B model locally using llama.cpp. I was initially trying to expand the model's usable context by leveraging swap file memory rather than fitting everything in RAM, which quickly introduced me to why quantization exists in the first place.
+
+I ended up downloading a pre-quantized INT4 GGUF version of the model through llama.cpp rather than quantizing it myself, which taught me something useful: quantization is not just about file size, it's a deliberate tradeoff between model fidelity and the memory and latency constraints of whatever hardware you're targeting. I read through documentation on INT4 and INT8 quantization formats during this stretch to understand why GGUF became the dominant portable format for local inference.
+
+The experience was honestly humbling. Running a small model at the application layer (RAG, embeddings, orchestration) is a very different discipline from reasoning about inference memory budgets, quantization tradeoffs, and hardware-specific optimization. I came away with a much clearer sense of the gap between "using a model via API" and "deploying a model in a constrained environment," which is a gap I'm actively working to close.

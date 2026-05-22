@@ -48,6 +48,14 @@ The philosophy behind this approach: do the consultative discovery work before t
 
 Personify Health's four-region deployment was scoped using a variant of this approach post-sale: a structured 9-step, 18-meeting process mapping engagement that mapped each region's payer mix, EMR configuration, and workflow specifics before any build work began. That level of scoping rigor is why a four-region deployment with four separate go-live timelines stayed on track.
 
+### PE-Backed Customer Engagements
+
+A significant portion of our pipeline at Smarter Technologies was PE-owned companies or PE-owned platforms. Private equity firms managing healthcare portfolios are among the most financially motivated buyers in the space — they're buying for margin compression and portfolio standardization before an exit or expansion, not for innovation. That framing shaped how I approached every deal where a PE firm was behind the buying decision.
+
+The clearest Smarter-era example was NextGen Healthcare, one of the largest EHR/EMR platforms in the market. NextGen had been taken private by Thoma Bravo, and Thoma Bravo was actively pushing them to expand their AI product offerings to remain competitive. We ran a roughly three-month pre-sales engagement with NextGen specifically because of that PE-driven mandate. The conversation was different from a typical enterprise sale: NextGen wasn't evaluating whether to adopt AI — Thoma Bravo had already made that call. The question was which vendor and which architecture would let them package AI capabilities for their installed customer base. That's a PE portfolio play, not a product decision. Understanding that dynamic — and speaking to the PE firm's investment logic rather than just the buyer's technical requirements — was what made those conversations productive.
+
+This PE buyer dynamic extended across the pipeline broadly. Our customer base at both Thoughtful and Smarter Technologies was substantially PE-backed healthcare providers under pressure from their financial sponsors to cut operational costs ahead of expansion or exit. Cost-per-transaction economics, FTE displacement projections, and payback period mattered more to those buyers than platform features. I learned to lead with PE-relevant financial framing first and get into the technical architecture second.
+
 ### What Made These Work
 
 Each of these deals required deep, deal-specific work. But the platform infrastructure underneath made that depth possible. Automated meeting analysis ensured I never lost track of what was said, what was promised, or what open questions remained. Version-controlled pricing documents meant every negotiation had a traceable history. Structured delivery scoping meant post-sale teams inherited real documentation rather than a handshake and a slide deck.

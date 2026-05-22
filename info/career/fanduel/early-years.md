@@ -45,3 +45,19 @@ Built with: SQL, Redshift, Python, Google Sheets, Google Slides
 This project involved building an accounting pipeline from scratch, my first time doing that kind of work. Accounting demands a different kind of discipline than business analytics: the margin for error is essentially zero, there's no one reviewing your SQL output for reasonableness, and the stakeholders have very specific format requirements. I built the pipeline carefully and learned to appreciate the value of meticulous process documentation when the consequences of mistakes are concrete and immediate.
 
 Built with: SQL, Redshift, Python, SQLAlchemy, Pandas
+
+### Revenue Cadence and C-Suite Reporting
+
+By Year Two I owned the revenue reporting cadence end-to-end. This meant automated daily email reports going directly to C-suite with performance against targets: contest entries, revenue, retention indicators, and early signals for the week ahead. It also meant owning the weekly revenue sync with senior leadership: preparing the report in advance, running the meeting, and presenting the reporting-versus-forecast delta with clear explanations for any variance.
+
+Owning the cadence also meant owning the underlying data structures that made it possible. I built and maintained the supplementary Redshift tables my team used as the foundation for their own forecasting work: standardized schemas for user segments, revenue attribution, and period-over-period comparisons. When someone on the team needed to build a new model, they started from the tables I owned and maintained. That infrastructure-first approach meant the whole team's output was consistent and reconcilable.
+
+Built with: SQL, Redshift, Python, SQLAlchemy, Chartio, Google Slides
+
+### Player Retention and Cohort Analytics
+
+FanDuel's revenue model meant retention was everything. A user who entered one contest per week was worth an order of magnitude less than a power user, and churn within high-value cohorts had outsized revenue impact. I built a full retention analytics layer: week-over-week retention metrics segmented by user type, and a cohort framework that cut the user base into 6 play-style cohorts across 3 contest-entry-fee bands, for 18 distinct user segments in total.
+
+That segmentation became the foundation for the bottoms-up revenue forecast: rather than forecasting a single aggregate revenue number, we forecast each cohort's expected entry volume and spend separately, then rolled up. It was also the input to the CRM team's engagement strategy: I surfaced which specific cohorts were showing early churn signals and built the analytics infrastructure they used to target lapsed players with re-engagement offers. Retention was not just a metric. It was an operational input.
+
+Built with: SQL, Redshift, Python, Pandas, Chartio, Looker
