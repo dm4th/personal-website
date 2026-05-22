@@ -1,6 +1,7 @@
 {
   "id": "c853795418c8",
   "company": "Anthropic",
+  "companyLogoUrl": "https://www.anthropic.com/favicon.ico",
   "role": "GTM Strategy & Operations, Special Projects",
   "appliedDate": "2026-05-21",
   "fitScore": 80,
@@ -10,53 +11,53 @@
       "score": 8,
       "rationale": "Direct documented experience with Salesforce CRM reporting, ICP scoring frameworks for account prioritization and capacity planning, SQL/Python analytics, consumption-based revenue modeling (Markov Chain Monte Carlo at FanDuel), cross-functional coordination across CEO/VP Sales/Product/Engineering, and career-long pattern of translating complex data into actionable insights for senior leadership. Primary gap is that this role is a pure GTM Strategy & Ops function within a large org — closest work is from the SE/solutions-engineering seat rather than a standalone ops function.",
       "citations": [
-        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
-        { "label": "ICP Scoring (Smarter)", "path": "/info/career/smarter-technologies/icp-scoring" },
-        { "label": "AI SE Platform (Smarter)", "path": "/info/career/smarter-technologies/ai-se-platform" },
-        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
-        { "label": "FanDuel Early Years", "path": "/info/career/fanduel/early-years" },
-        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
-        { "label": "Google", "path": "/info/career/google/my-year-at-google" }
+        "career/smarter-technologies/pipeline-management.md",
+        "career/smarter-technologies/icp-scoring.md",
+        "career/smarter-technologies/ai-se-platform.md",
+        "career/fanduel/revenue-team.md",
+        "career/fanduel/early-years.md",
+        "career/action-network/first-year-post-ari.md",
+        "career/google/my-year-at-google.md"
       ]
     },
     "seniority": {
       "score": 8,
       "rationale": "Director of Analytics (7-person team at Action Network), Director SE (VP-scope at Smarter Technologies), VP of Solutions at AccessHealthcare. Owned C-suite reporting cadences at FanDuel, Google, and Action Network. Right level for this role. Residual gap is the specific organizational context: multi-segment GTM ops at Anthropic's scale is new territory even if the analytical and leadership seniority is real.",
       "citations": [
-        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" },
-        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
-        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
-        { "label": "Smarter Technologies", "path": "/info/career/smarter-technologies" }
+        "about-me/career-metrics.md",
+        "career/smarter-technologies/pipeline-management.md",
+        "career/action-network/first-year-post-ari.md",
+        "career/smarter-technologies/index.md"
       ]
     },
     "technicalSkills": {
       "score": 7,
       "rationale": "Consumption-based Markov Chain forecasting (18 cohorts, 2% error), BigQuery/GoogleSQL at Google covering 500M users, Looker and Chartio dashboards, Salesforce CRM end-to-end, Redshift-based cohort analytics and retention modeling at FanDuel and Action Network, C-suite reporting cadences owned at Director level. Gaps: no territory design, no formal quota framework, no Clari.",
       "citations": [
-        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
-        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
-        { "label": "FanDuel Early Years", "path": "/info/career/fanduel/early-years" },
-        { "label": "Google", "path": "/info/career/google/my-year-at-google" },
-        { "label": "Action Network Year 1", "path": "/info/career/action-network/first-year-post-ari" },
-        { "label": "Action Network Year 2", "path": "/info/career/action-network/year-two-and-departure" }
+        "career/smarter-technologies/pipeline-management.md",
+        "career/fanduel/revenue-team.md",
+        "career/fanduel/early-years.md",
+        "career/google/my-year-at-google.md",
+        "career/action-network/first-year-post-ari.md",
+        "career/action-network/year-two-and-departure.md"
       ]
     },
     "industryVertical": {
       "score": 8,
       "rationale": "Six years of dedicated revenue analytics across consumer SaaS (FanDuel), media/affiliate (Action Network), and enterprise SaaS (Google) before moving into GTM roles. Additionally, Dan is Anthropic's own customer ICP: $2K+/month in API tokens for four months, building production agentic systems on Claude, with firsthand experience of consumption-based pricing economics from the demand side and two years of field context on enterprise AI adoption.",
       "citations": [
-        { "label": "Smarter Technologies Pipeline", "path": "/info/career/smarter-technologies/pipeline-management" },
-        { "label": "ICP Scoring (Smarter)", "path": "/info/career/smarter-technologies/icp-scoring" },
-        { "label": "FanDuel Revenue Team", "path": "/info/career/fanduel/revenue-team" },
-        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" }
+        "career/smarter-technologies/pipeline-management.md",
+        "career/smarter-technologies/icp-scoring.md",
+        "career/fanduel/revenue-team.md",
+        "about-me/career-metrics.md"
       ]
     },
     "logistics": {
       "score": 10,
       "rationale": "SF-based (Richmond neighborhood) matching hybrid 25% in-office requirement. B.S. Electrical & Computer Engineering from Bucknell University satisfies the degree requirement. No clearance, relocation, or language barriers.",
       "citations": [
-        { "label": "San Francisco", "path": "/info/about-me/where-ive-lived/san-francisco" },
-        { "label": "Career Metrics", "path": "/info/about-me/career-metrics" }
+        "about-me/where-ive-lived/san-francisco.md",
+        "about-me/career-metrics.md"
       ]
     }
   },
