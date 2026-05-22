@@ -141,9 +141,12 @@ export type TranscriptSample = {
   transcript: string;
 };
 
+/** The 5 non-summary agent results — used as input to the summary agent. */
+export type PartialAgentResults = Omit<AgentResults, 'summary'>;
+
 export type MeetingDemoState =
   | { status: 'idle' }
-  | { status: 'loading' }
+  | { status: 'loading'; agentsComplete?: number }
   | { status: 'success'; results: AgentResults; metadata: MeetingMetadata }
   | { status: 'error'; message: string };
 

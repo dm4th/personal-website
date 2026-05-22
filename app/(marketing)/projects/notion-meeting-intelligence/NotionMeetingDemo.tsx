@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import styles from './NotionMeetingDemo.module.css';
 import MeetingBanner from '@/components/projects/NotionMeeting/MeetingBanner';
@@ -9,12 +9,14 @@ import TranscriptLibrary from '@/components/projects/NotionMeeting/TranscriptLib
 import TranscriptInput from '@/components/projects/NotionMeeting/TranscriptInput';
 import AgentResultsTabs from '@/components/projects/NotionMeeting/AgentResultsTabs';
 import NotionConnectFlow from '@/components/projects/NotionMeeting/NotionConnectFlow';
+import { deriveMetadata } from '@/lib/projects/notion-meeting-intelligence/metadata';
+import type { AgentName } from '@/lib/projects/notion-meeting-intelligence/prompts';
 import type {
   TranscriptSample,
   MeetingDemoState,
   AgentResults,
   MeetingMetadata,
-  AgentAnalyzeResponse,
+  PartialAgentResults,
 } from '@/lib/projects/notion-meeting-intelligence/types';
 import type { NotionConfig } from '@/components/projects/NotionMeeting/NotionSetupPanel';
 import type { WorkspaceMode } from '@/components/projects/NotionMeeting/WorkspaceGate';
@@ -45,6 +47,19 @@ export default function NotionMeetingDemo({ samples }: Props) {
   const [lastResults, setLastResults] = useState<AgentResults | null>(null);
   const [lastMetadata, setLastMetadata] = useState<MeetingMetadata | null>(null);
   const [notionConfig, setNotionConfig] = useState<NotionConfig>(EMPTY_CONFIG);
+  const [agentPromptBodies, setAgentPromptBodies] = useState<Record<AgentName, string> | null>(null);
+
+  // Pre-fetch Notion agent prompts as soon as a workspace mode is selected,
+  // so they're ready before the user clicks "Run 6 Agents".
+  useEffect(() => {
+    if (!workspaceMode) return;
+    fetch('/api/projects/notion-meeting-intelligence/agent-prompts')
+      .then((r) => r.json())
+      .then((data: { promptBodies: Record<AgentName, string> | null }) => {
+        if (data.promptBodies) setAgentPromptBodies(data.promptBodies);
+      })
+      .catch(() => {/* silently fall back to hardcoded prompts */});
+  }, [workspaceMode]);
 
   function handleLoadSample(sample: TranscriptSample) {
     setTranscript(sample.transcript);
@@ -55,28 +70,71 @@ export default function NotionMeetingDemo({ samples }: Props) {
 
   async function handleSubmit() {
     if (transcript.trim().length < 50) return;
-    setDemoState({ status: 'loading' });
+    setDemoState({ status: 'loading', agentsComplete: 0 });
 
-    try {
-      const res = await fetch('/api/projects/notion-meeting-intelligence/analyze', {
+    const base = '/api/projects/notion-meeting-intelligence/agents';
+    const today = new Date().toISOString().slice(0, 10);
+
+    async function callAgent(agentKey: AgentName, extra?: object) {
+      const res = await fetch(`${base}/${agentKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transcript, meeting_type: meetingType }),
+        body: JSON.stringify({
+          transcript,
+          meeting_type: meetingType,
+          promptBody: agentPromptBodies?.[agentKey],
+          ...extra,
+        }),
       });
-
-      const data = await res.json();
-
       if (!res.ok) {
-        setDemoState({ status: 'error', message: data.error ?? 'Analysis failed. Please try again.' });
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error ?? `${agentKey} agent failed`);
+      }
+      return res.json();
+    }
+
+    try {
+      // Phase 1: fire all 5 non-summary agents in parallel
+      const [salesRes, commercialRes, deliveryRes, productRes, icpRes] =
+        await Promise.allSettled([
+          callAgent('sales'),
+          callAgent('commercial'),
+          callAgent('delivery'),
+          callAgent('product'),
+          callAgent('icp'),
+        ]);
+
+      const settled = [salesRes, commercialRes, deliveryRes, productRes, icpRes];
+      const failed = settled.find((r) => r.status === 'rejected');
+      if (failed) {
+        const reason = (failed as PromiseRejectedResult).reason;
+        const msg = reason instanceof Error ? reason.message : 'An agent failed. Please try again.';
+        setDemoState({ status: 'error', message: msg });
         return;
       }
 
-      const { results, metadata } = data as AgentAnalyzeResponse;
+      setDemoState({ status: 'loading', agentsComplete: 5 });
+
+      const partialResults: PartialAgentResults = {
+        sales: (salesRes as PromiseFulfilledResult<PartialAgentResults['sales']>).value,
+        commercial: (commercialRes as PromiseFulfilledResult<PartialAgentResults['commercial']>).value,
+        delivery: (deliveryRes as PromiseFulfilledResult<PartialAgentResults['delivery']>).value,
+        product: (productRes as PromiseFulfilledResult<PartialAgentResults['product']>).value,
+        icp: (icpRes as PromiseFulfilledResult<PartialAgentResults['icp']>).value,
+      };
+
+      // Phase 2: summary agent depends on all 5 results
+      const summary = await callAgent('summary', { partialResults });
+
+      // Phase 3: derive metadata client-side and update state
+      const results: AgentResults = { ...partialResults, summary };
+      const metadata = deriveMetadata(results, transcript, meetingType, today);
       setLastResults(results);
       setLastMetadata(metadata);
       setDemoState({ status: 'success', results, metadata });
-    } catch {
-      setDemoState({ status: 'error', message: 'Network error. Please check your connection.' });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Analysis failed. Please try again.';
+      setDemoState({ status: 'error', message });
     }
   }
 
