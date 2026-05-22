@@ -15,6 +15,8 @@ import type {
   MeetingDemoState,
   AgentResults,
   MeetingMetadata,
+  AgentName,
+  AgentStatus,
 } from '@/lib/projects/notion-meeting-intelligence/types';
 import type { NotionConfig } from '@/components/projects/NotionMeeting/NotionSetupPanel';
 import type { WorkspaceMode } from '@/components/projects/NotionMeeting/WorkspaceGate';
@@ -73,22 +75,40 @@ export default function NotionMeetingDemo({ samples }: Props) {
       const { sessionId } = startData;
       const today = new Date().toISOString().slice(0, 10);
 
-      // Phase 2: poll until ready, failed, or timeout (~2 minutes)
+      // Phase 2: poll for per-agent status (no results payload in this response)
       for (let i = 0; i < 40; i++) {
         await new Promise((r) => setTimeout(r, 3000));
         const statusRes = await fetch(
           `/api/projects/notion-meeting-intelligence/analyze-status?sessionId=${sessionId}`,
         );
-        const data = await statusRes.json() as { status: string; results?: AgentResults; error?: string };
+        const data = await statusRes.json() as {
+          status: string;
+          agentStatuses?: Partial<Record<AgentName, AgentStatus>>;
+          error?: string;
+        };
 
-        if (data.status === 'ready' && data.results) {
-          const results = data.results;
+        if (data.status === 'processing' || data.status === 'ready') {
+          setDemoState({ status: 'loading', agentStatuses: data.agentStatuses });
+        }
+
+        if (data.status === 'ready') {
+          // Phase 3: fetch full results in a separate call
+          const resultsRes = await fetch(
+            `/api/projects/notion-meeting-intelligence/analyze-results?sessionId=${sessionId}`,
+          );
+          const resultsData = await resultsRes.json() as { results?: AgentResults; error?: string };
+          if (!resultsRes.ok || !resultsData.results) {
+            setDemoState({ status: 'error', message: resultsData.error ?? 'Failed to fetch results.' });
+            return;
+          }
+          const results = resultsData.results;
           const metadata = deriveMetadata(results, transcript, meetingType, today);
           setLastResults(results);
           setLastMetadata(metadata);
           setDemoState({ status: 'success', results, metadata });
           return;
         }
+
         if (data.status === 'failed') {
           setDemoState({ status: 'error', message: data.error ?? 'Analysis failed. Please try again.' });
           return;

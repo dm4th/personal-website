@@ -11,9 +11,10 @@ async function handler(event) {
     if (!session) {
         return { statusCode: 404, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ error: 'Session not found or expired' }) };
     }
-    const body = session.status === 'ready' ? { status: 'ready', results: session.results } :
-        session.status === 'failed' ? { status: 'failed', error: session.error } :
-            { status: 'processing' };
+    const { agentStatuses } = session;
+    const body = session.status === 'ready' ? { status: 'ready', agentStatuses } :
+        session.status === 'failed' ? { status: 'failed', error: session.error, agentStatuses } :
+            { status: 'processing', agentStatuses };
     return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
 }
 //# sourceMappingURL=analyze-status.js.map

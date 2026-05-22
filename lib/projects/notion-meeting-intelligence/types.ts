@@ -144,9 +144,12 @@ export type TranscriptSample = {
 /** The 5 non-summary agent results — used as input to the summary agent. */
 export type PartialAgentResults = Omit<AgentResults, 'summary'>;
 
+export type AgentName = 'sales' | 'commercial' | 'delivery' | 'product' | 'icp' | 'summary';
+export type AgentStatus = 'pending' | 'processing' | 'ready' | 'failed';
+
 export type MeetingDemoState =
   | { status: 'idle' }
-  | { status: 'loading'; agentsComplete?: number }
+  | { status: 'loading'; agentStatuses?: Partial<Record<AgentName, AgentStatus>> }
   | { status: 'success'; results: AgentResults; metadata: MeetingMetadata }
   | { status: 'error'; message: string };
 

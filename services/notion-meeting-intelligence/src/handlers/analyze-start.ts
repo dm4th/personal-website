@@ -21,6 +21,20 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
     return { statusCode: 400, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ error: 'Missing required fields' }) };
   }
 
-  await saveSession({ sessionId, status: 'processing', transcript, meeting_type: meeting_type ?? 'Other', agentPrompts });
+  await saveSession({
+    sessionId,
+    status: 'processing',
+    transcript,
+    meeting_type: meeting_type ?? 'Other',
+    agentPrompts,
+    agentStatuses: {
+      sales: 'processing',
+      commercial: 'processing',
+      delivery: 'processing',
+      product: 'processing',
+      icp: 'processing',
+      summary: 'pending',
+    },
+  });
   return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sessionId }) };
 }

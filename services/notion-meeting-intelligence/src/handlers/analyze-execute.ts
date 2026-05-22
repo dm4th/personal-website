@@ -2,7 +2,7 @@
 // and stores the results in DynamoDB for the status route to return.
 import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import Anthropic from '@anthropic-ai/sdk';
-import { getSession, updateSession } from '../lib/dynamo';
+import { getSession, updateSession, updateAgentStatus } from '../lib/dynamo';
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const ok: APIGatewayProxyResult = { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ok: true }) };
@@ -37,16 +37,33 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
   const transcriptMsg = `Meeting transcript:\n\n${transcript}`;
 
   try {
-    // Phase 1: 5 parallel agents
-    const [sales, commercial, delivery, product, icp] = await Promise.all([
-      callClaude(agentPrompts['sales'], transcriptMsg),
-      callClaude(agentPrompts['commercial'], transcriptMsg),
-      callClaude(agentPrompts['delivery'], transcriptMsg),
-      callClaude(agentPrompts['product'], transcriptMsg),
-      callClaude(agentPrompts['icp'], transcriptMsg),
-    ]);
+    const agentNames = ['sales', 'commercial', 'delivery', 'product', 'icp'] as const;
 
-    // Phase 2: summary agent receives all 5 results
+    async function runTracked(name: string): Promise<unknown> {
+      try {
+        const result = await callClaude(agentPrompts[name], transcriptMsg);
+        await updateAgentStatus(sessionId, name, 'ready');
+        return result;
+      } catch (err) {
+        await updateAgentStatus(sessionId, name, 'failed');
+        throw err;
+      }
+    }
+
+    // Phase 1: 5 parallel agents — each writes its own status as it completes
+    const settled = await Promise.allSettled(agentNames.map(name => runTracked(name)));
+
+    const failedAgents = agentNames.filter((_, i) => settled[i].status === 'rejected');
+    if (failedAgents.length > 0) {
+      await updateSession(sessionId, { status: 'failed', error: `Agents failed: ${failedAgents.join(', ')}` });
+      return ok;
+    }
+
+    const [sales, commercial, delivery, product, icp] = settled.map(r => (r as PromiseFulfilledResult<unknown>).value);
+
+    // Phase 2: summary agent — mark processing before starting, ready/failed after
+    await updateAgentStatus(sessionId, 'summary', 'processing');
+
     const summaryMsg = [
       transcriptMsg, '---', 'Agent analysis results:',
       `SALES ANALYSIS:\n${JSON.stringify(sales, null, 2)}`,
@@ -55,12 +72,19 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
       `PRODUCT ANALYSIS:\n${JSON.stringify(product, null, 2)}`,
       `ICP ANALYSIS:\n${JSON.stringify(icp, null, 2)}`,
     ].join('\n\n');
-    const summary = await callClaude(agentPrompts['summary'], summaryMsg);
 
-    await updateSession(sessionId, { status: 'ready', results: { sales, commercial, delivery, product, icp, summary } });
+    try {
+      const summary = await callClaude(agentPrompts['summary'], summaryMsg);
+      await updateAgentStatus(sessionId, 'summary', 'ready');
+      await updateSession(sessionId, { status: 'ready', results: { sales, commercial, delivery, product, icp, summary } });
+    } catch (err) {
+      await updateAgentStatus(sessionId, 'summary', 'failed');
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      await updateSession(sessionId, { status: 'failed', error: `Summary failed: ${message}` });
+    }
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error';
-    await updateSession(sessionId, { status: 'failed', error: message });
+    try { await updateSession(sessionId, { status: 'failed', error: message }); } catch { /* best effort */ }
   }
 
   return ok;

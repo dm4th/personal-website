@@ -20,6 +20,20 @@ export async function getSession(sessionId: string): Promise<NotionAnalyzeSessio
   return (result.Item as NotionAnalyzeSession) ?? null;
 }
 
+export async function updateAgentStatus(
+  sessionId: string,
+  agentName: string,
+  status: 'processing' | 'ready' | 'failed',
+): Promise<void> {
+  await ddb.send(new UpdateCommand({
+    TableName: TABLE,
+    Key: { sessionId },
+    UpdateExpression: 'SET agentStatuses.#agent = :s',
+    ExpressionAttributeNames: { '#agent': agentName },
+    ExpressionAttributeValues: { ':s': status },
+  }));
+}
+
 export async function updateSession(
   sessionId: string,
   updates: { status: 'ready'; results: unknown } | { status: 'failed'; error: string },

@@ -36,15 +36,28 @@ async function handler(event) {
     const { transcript, agentPrompts } = session;
     const transcriptMsg = `Meeting transcript:\n\n${transcript}`;
     try {
-        // Phase 1: 5 parallel agents
-        const [sales, commercial, delivery, product, icp] = await Promise.all([
-            callClaude(agentPrompts['sales'], transcriptMsg),
-            callClaude(agentPrompts['commercial'], transcriptMsg),
-            callClaude(agentPrompts['delivery'], transcriptMsg),
-            callClaude(agentPrompts['product'], transcriptMsg),
-            callClaude(agentPrompts['icp'], transcriptMsg),
-        ]);
-        // Phase 2: summary agent receives all 5 results
+        const agentNames = ['sales', 'commercial', 'delivery', 'product', 'icp'];
+        async function runTracked(name) {
+            try {
+                const result = await callClaude(agentPrompts[name], transcriptMsg);
+                await (0, dynamo_1.updateAgentStatus)(sessionId, name, 'ready');
+                return result;
+            }
+            catch (err) {
+                await (0, dynamo_1.updateAgentStatus)(sessionId, name, 'failed');
+                throw err;
+            }
+        }
+        // Phase 1: 5 parallel agents — each writes its own status as it completes
+        const settled = await Promise.allSettled(agentNames.map(name => runTracked(name)));
+        const failedAgents = agentNames.filter((_, i) => settled[i].status === 'rejected');
+        if (failedAgents.length > 0) {
+            await (0, dynamo_1.updateSession)(sessionId, { status: 'failed', error: `Agents failed: ${failedAgents.join(', ')}` });
+            return ok;
+        }
+        const [sales, commercial, delivery, product, icp] = settled.map(r => r.value);
+        // Phase 2: summary agent — mark processing before starting, ready/failed after
+        await (0, dynamo_1.updateAgentStatus)(sessionId, 'summary', 'processing');
         const summaryMsg = [
             transcriptMsg, '---', 'Agent analysis results:',
             `SALES ANALYSIS:\n${JSON.stringify(sales, null, 2)}`,
@@ -53,12 +66,23 @@ async function handler(event) {
             `PRODUCT ANALYSIS:\n${JSON.stringify(product, null, 2)}`,
             `ICP ANALYSIS:\n${JSON.stringify(icp, null, 2)}`,
         ].join('\n\n');
-        const summary = await callClaude(agentPrompts['summary'], summaryMsg);
-        await (0, dynamo_1.updateSession)(sessionId, { status: 'ready', results: { sales, commercial, delivery, product, icp, summary } });
+        try {
+            const summary = await callClaude(agentPrompts['summary'], summaryMsg);
+            await (0, dynamo_1.updateAgentStatus)(sessionId, 'summary', 'ready');
+            await (0, dynamo_1.updateSession)(sessionId, { status: 'ready', results: { sales, commercial, delivery, product, icp, summary } });
+        }
+        catch (err) {
+            await (0, dynamo_1.updateAgentStatus)(sessionId, 'summary', 'failed');
+            const message = err instanceof Error ? err.message : 'Unknown error';
+            await (0, dynamo_1.updateSession)(sessionId, { status: 'failed', error: `Summary failed: ${message}` });
+        }
     }
     catch (err) {
         const message = err instanceof Error ? err.message : 'Unknown error';
-        await (0, dynamo_1.updateSession)(sessionId, { status: 'failed', error: message });
+        try {
+            await (0, dynamo_1.updateSession)(sessionId, { status: 'failed', error: message });
+        }
+        catch { /* best effort */ }
     }
     return ok;
 }

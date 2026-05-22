@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.saveSession = saveSession;
 exports.getSession = getSession;
+exports.updateAgentStatus = updateAgentStatus;
 exports.updateSession = updateSession;
 const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
@@ -19,6 +20,15 @@ async function saveSession(session) {
 async function getSession(sessionId) {
     const result = await ddb.send(new lib_dynamodb_1.GetCommand({ TableName: TABLE, Key: { sessionId } }));
     return result.Item ?? null;
+}
+async function updateAgentStatus(sessionId, agentName, status) {
+    await ddb.send(new lib_dynamodb_1.UpdateCommand({
+        TableName: TABLE,
+        Key: { sessionId },
+        UpdateExpression: 'SET agentStatuses.#agent = :s',
+        ExpressionAttributeNames: { '#agent': agentName },
+        ExpressionAttributeValues: { ':s': status },
+    }));
 }
 async function updateSession(sessionId, updates) {
     if (updates.status === 'ready') {

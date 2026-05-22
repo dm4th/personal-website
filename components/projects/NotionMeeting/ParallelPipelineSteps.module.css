@@ -103,3 +103,31 @@
   font-weight: 600;
   color: #22c55e;
 }
+
+.indicatorWrapper {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicatorPending {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.indicatorDone {
+  font-size: 12px;
+  line-height: 1;
+  color: #22c55e;
+}
+
+.indicatorFailed {
+  font-size: 12px;
+  line-height: 1;
+  color: #ef4444;
+}

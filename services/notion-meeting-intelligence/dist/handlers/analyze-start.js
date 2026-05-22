@@ -14,7 +14,21 @@ async function handler(event) {
     if (!sessionId || !transcript || !agentPrompts) {
         return { statusCode: 400, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ error: 'Missing required fields' }) };
     }
-    await (0, dynamo_1.saveSession)({ sessionId, status: 'processing', transcript, meeting_type: meeting_type ?? 'Other', agentPrompts });
+    await (0, dynamo_1.saveSession)({
+        sessionId,
+        status: 'processing',
+        transcript,
+        meeting_type: meeting_type ?? 'Other',
+        agentPrompts,
+        agentStatuses: {
+            sales: 'processing',
+            commercial: 'processing',
+            delivery: 'processing',
+            product: 'processing',
+            icp: 'processing',
+            summary: 'pending',
+        },
+    });
     return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sessionId }) };
 }
 //# sourceMappingURL=analyze-start.js.map

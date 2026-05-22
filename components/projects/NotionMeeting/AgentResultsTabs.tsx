@@ -194,7 +194,7 @@ export default function AgentResultsTabs({ state }: Props) {
   return (
     <div className={styles.container}>
       {state.status === 'idle' && <IdleState />}
-      {state.status === 'loading' && <ParallelPipelineSteps />}
+      {state.status === 'loading' && <ParallelPipelineSteps agentStatuses={state.agentStatuses} />}
       {state.status === 'error' && <ErrorState message={state.message} />}
       {state.status === 'success' && (
         <AgentAccordion rows={buildRows(state.results)} />

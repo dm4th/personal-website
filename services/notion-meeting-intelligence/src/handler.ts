@@ -2,6 +2,7 @@ import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { handler as analyzeStartHandler } from './handlers/analyze-start';
 import { handler as analyzeExecuteHandler } from './handlers/analyze-execute';
 import { handler as analyzeStatusHandler } from './handlers/analyze-status';
+import { handler as analyzeResultsHandler } from './handlers/analyze-results';
 
 const SECRET = process.env.NOTION_MEETING_SECRET ?? '';
 
@@ -17,6 +18,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
   if (path.endsWith('/analyze/start') && method === 'POST')   return analyzeStartHandler(event);
   if (path.endsWith('/analyze/execute') && method === 'POST') return analyzeExecuteHandler(event);
   if (path.endsWith('/analyze/status') && method === 'GET')   return analyzeStatusHandler(event);
+  if (path.endsWith('/analyze/results') && method === 'GET')  return analyzeResultsHandler(event);
 
   return { statusCode: 404, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ error: `Unknown path: ${path}` }) };
 }
