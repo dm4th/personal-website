@@ -179,7 +179,7 @@
     },
     {
       "name": "Personal Website Agent",
-      "path": "/projects/personal-website-agent",
+      "path": "/",
       "relevance": "This full-stack AI agent built on the Anthropic SDK with tool use, streaming, RAG pipeline, and multiple LLM backends demonstrates Dan's ability to design and ship end-to-end LLM-powered systems independently, across the full integration stack this role operates on."
     }
   ],

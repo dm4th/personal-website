@@ -167,7 +167,7 @@
     },
     {
       "name": "Personal Website Agent",
-      "path": "/projects/personal-website-agent",
+      "path": "/",
       "relevance": "This full-stack agent built on the Anthropic SDK with tool use, streaming, RAG pipeline, and multiple LLM backends is the closest analog to the multi-provider SDK demos and MCP starters the role requires me to ship for Perplexity's developer community."
     },
     {

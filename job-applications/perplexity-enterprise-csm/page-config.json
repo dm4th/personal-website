@@ -167,7 +167,7 @@
     },
     {
       "name": "Personal Website Agent",
-      "path": "/projects/personal-website-agent",
+      "path": "/",
       "relevance": "Building a full-stack AI agent with RAG, tool use, and multiple LLM backends to represent his own career demonstrates the hands-on AI fluency that makes a CSM credible when helping enterprise customers adopt and expand their use of a product like Perplexity."
     }
   ],
