@@ -1,0 +1,117 @@
+{
+  "id": "e57993e87bad",
+  "company": "AirOps",
+  "role": "Product Manager, Growth",
+  "appliedDate": "",
+  "fitScore": 46,
+  "fitScoreNote": "Analytics depth is genuinely strong and content/editorial product experience is real, but the role requires 2+ years of formal PLG ownership in B2B SaaS with specific tooling (Amplitude, Posthog, Statsig, Optimizely) that is absent. The gap is structural.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 5,
+      "rationale": "Strong analytics depth (A/B testing, cohort analysis, conversion funnel instrumentation, north star metric design) and genuine familiarity with content/editorial products. However, the role requires formal PLG PM ownership: onboarding/activation funnel management, trial-to-paid conversion, PQL definitions, experimentation program design. Dan's analytics work informed these functions; he has not owned them as a PM.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/action-network/first-year-post-ari",
+        "/info/career/fanduel/revenue-team"
+      ]
+    },
+    "seniority": {
+      "score": 4,
+      "rationale": "No formal Growth PM title or PLG role in his background. 2+ years of PLG-specific B2B SaaS PM experience required. Closest analog is Director of Analytics at Action Network, but that is analytics leadership, not product management.",
+      "citations": [
+        "/info/career/action-network/first-year-post-ari",
+        "/info/career/thoughtful/lead-tpm"
+      ]
+    },
+    "technicalSkills": {
+      "score": 4,
+      "rationale": "Strong SQL, Python, and funnel analytics from scratch. Claude Code and Git well-evidenced. However, zero evidence of the specific PLG tooling stack: Amplitude, Posthog, Statsig, Optimizely, Metabase, Figma. These are not tool gaps that can be closed with a quick ramp.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/smarter-technologies/ai-se-platform"
+      ]
+    },
+    "industryVertical": {
+      "score": 3,
+      "rationale": "AirOps targets content leaders and editorial teams with a PLG motion. Dan has no PLG PM background and has never owned onboarding flows, trial-to-paid conversion, or PQL definitions. His content analytics work at Action Network is adjacent but was a consumer media product, not B2B SaaS PLG.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/action-network/first-year-post-ari"
+      ]
+    },
+    "logistics": {
+      "score": 8,
+      "rationale": "SF-based, exact location match. No clearance, visa, or relocation gaps.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco"
+      ]
+    }
+  },
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/airops/c515d965-7671-46de-9f7f-d12065b1cd67",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "North star metric design and cross-functional alignment",
+      "description": "Built the Value Clicks model at Action Network: a probability-weighted conversion attribution score for every on-page user action. It became the company-wide north star metric. Both content and product aligned their roadmaps around it. That is exactly the kind of activation-defining, cross-team alignment work a Growth PM owns.",
+      "citations": []
+    },
+    {
+      "title": "End-to-end funnel instrumentation from scratch",
+      "description": "Built end-to-end acquisition, activation, and retention pipelines at Action Network using Redshift, Python, and Google Analytics. Instrumented web and app funnels, A/B tested content formats and distribution strategies, built subscriber cohort analytics and churn curves. The analytical infrastructure was built by hand, not configured from a dashboard.",
+      "citations": []
+    },
+    {
+      "title": "Content and editorial product expertise",
+      "description": "Embedded with the Action Network editorial org: weekly working sessions with the Chief Content Officer, direct coaching of editors on coverage calendars, individual writer coaching on SEO structure and headline strategy. AirOps serves content teams; Dan understands how those teams work and what value looks like to them day-to-day.",
+      "citations": []
+    },
+    {
+      "title": "SQL and analytics depth",
+      "description": "Expert-level SQL across Redshift, PostgreSQL, and BigQuery, backed by seven years of daily production use. Built Markov Chain Monte Carlo simulations at FanDuel forecasting revenue to within 2% error. These are not analyst skills; they are the analytics infrastructure underpinning everything.",
+      "citations": []
+    },
+    {
+      "title": "AI prototyping with Claude Code",
+      "description": "The JD calls out Claude Code as a prototyping tool. Dan is a power user: 943 commits in 7 months, 22 agentic skills, production RAG and multi-agent pipelines. Rapid prototyping of growth experiments is a native capability.",
+      "citations": []
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No formal Growth PM or PLG role",
+      "description": "The role requires 2+ years of PLG-focused PM work in B2B SaaS. Dan's funnel work has been from the analytics seat, not the PM seat.",
+      "mitigation": "The north star metric work, the cohort instrumentation, the A/B testing infrastructure: these were functionally growth PM decisions. I was making those calls as a Director of Analytics. The title gap is real; the skills behind it are not hypothetical."
+    },
+    {
+      "title": "PLG tooling stack absent",
+      "description": "Amplitude, Posthog, Statsig, Optimizely, and Metabase are not in Dan's toolkit.",
+      "mitigation": "I've built the equivalent capabilities from scratch: A/B frameworks, cohort retention pipelines, conversion dashboards in SQL and Redshift. The mental models transfer; I'd pick up any of those platforms in a few weeks."
+    },
+    {
+      "title": "No B2B SaaS onboarding or trial-to-paid ownership",
+      "description": "PLG motions, PQL definitions, and trial-to-paid conversion are B2B-specific constructs Dan has not owned.",
+      "mitigation": "Consumer funnel mechanics (acquisition, activation, habit formation, monetization) map surprisingly well to PLG. I haven't defined a PQL but I have defined what a high-LTV user looks like and instrumented the behaviors that predict it."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the PM, Growth role at AirOps. Dan's analytics depth is rare for a PM candidate: he built end-to-end acquisition, activation, and retention funnels from scratch at Action Network, designed the Value Clicks north star metric that unified content and product teams around a shared conversion definition, and drove 270% affiliate revenue growth in 12 months through data-to-decision translation. Earlier, at FanDuel, he built the entire revenue reporting infrastructure on Redshift and forecasted season revenue to within 2% error using a Markov Chain Monte Carlo simulation. He does not have a formal Growth PM title, and he will be direct about that. What he has is someone who can instrument a funnel at a level most PMs cannot and who genuinely understands how content teams think about value.",
+  "projects": [
+    {
+      "name": "Notion GTM AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Six-agent pipeline that analyzes meeting transcripts and writes structured deal intelligence into Notion. Built as an internal tool, then productized as a live demo with a template for external teams. A working example of the build-and-measure loop a Growth PM would design."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare AI document chat with RAG-powered retrieval and pixel-precise citations. Built from scratch, shipped to production, rebuilt twice on newer infrastructure. An example of instrumenting and iterating on a real product with real users."
+    },
+    {
+      "name": "Personal Website AI Agent",
+      "path": "/projects/personal-website",
+      "relevance": "The AI assistant on this site has gone through four architectural eras in two years: prompting blog, RAG virtual assistant, LLM guessing game, and full agent-first rewrite. A working demonstration of the rapid iteration and experimentation cadence a Growth PM needs."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

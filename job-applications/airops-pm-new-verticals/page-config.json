@@ -1,0 +1,117 @@
+{
+  "id": "75aa73c7ea93",
+  "company": "AirOps",
+  "role": "Product Manager, New Verticals",
+  "appliedDate": "",
+  "fitScore": 65,
+  "fitScoreNote": "Strong on the underlying PM skills (revenue accountability, zero-to-one product work, pricing architecture, AI prototyping) but no formal PM title with P&L ownership. The gap is structural: the work has been real, the badge has said TPM or SE.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 7,
+      "rationale": "Led full product lifecycle at Thoughtful AI as Lead TPM (drove 63% of net new ARR), designed five pricing architectures and commercial models at Smarter Technologies, and shipped a zero-to-one AI platform from scratch. Core PM instincts are present and documented; formal title history is the gap.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm",
+        "/info/career/smarter-technologies/commercial-innovation",
+        "/info/career/smarter-technologies/ai-se-platform"
+      ]
+    },
+    "seniority": {
+      "score": 6,
+      "rationale": "~8-9 years experience with strong revenue accountability and zero-to-one ownership, but no formal PM title with GTM planning or product launch responsibility. 5+ years formal PM required; Dan's closest analog is Lead TPM at Thoughtful.",
+      "citations": [
+        "/info/career/thoughtful/lead-tpm",
+        "/info/career/smarter-technologies"
+      ]
+    },
+    "technicalSkills": {
+      "score": 6,
+      "rationale": "Strong Claude Code and Git fluency (explicitly called out in JD), production Python/SQL, and real AI prototyping depth. Gaps: no Cursor IDE or Figma experience. Claude Code is well-evidenced; the other prototyping tools are rampable.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform",
+        "/info/career/action-network/year-two-and-departure"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "AirOps is expanding into SEO, ad tech, and martech verticals. Dan's Action Network content analytics work (Value Clicks model, CCO partnership, writer SEO coaching) is the closest domain overlap, but his primary career vertical is healthcare RCM.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/action-network/first-year-post-ari"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "SF-based, exact location match. No clearance, visa, or relocation gaps.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco"
+      ]
+    }
+  },
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/airops/b52cef06-1909-4c31-865a-5882af69c177",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Revenue accountability and zero-to-one ownership",
+      "description": "Implementations at Thoughtful AI drove 63% of net new ARR during a 3x growth year. Built an entire SE operating platform from zero infrastructure at Smarter Technologies: 22 skills, 57 integration scripts, a usage-feedback loop, and adoption expansion from personal tool to team-wide platform. That is zero-to-one product work with revenue consequences.",
+      "citations": []
+    },
+    {
+      "title": "Pricing architecture and commercial modeling",
+      "description": "Designed five distinct pricing architectures at Smarter Technologies (transaction-based, FTE cost-reduction, fixed+variable hybrid, volume step-down, contingency) on deals from $250K to $40M. Pressure-tested each model with the VP of Sales and CEO. This is the pricing and packaging ownership the PM New Verticals role requires.",
+      "citations": []
+    },
+    {
+      "title": "AI prototyping depth with Claude Code",
+      "description": "The JD explicitly calls out Claude Code as a prototyping tool. Dan is a power user: 943 commits in 7 months, 22 agentic skills, 57 Python integration scripts, hooks-based feedback loops. Not a casual user; an infrastructure builder.",
+      "citations": []
+    },
+    {
+      "title": "Content analytics and SEO domain overlap",
+      "description": "Built the Value Clicks model at Action Network, became the company north star, and worked directly with the Chief Content Officer and individual writers on SEO structure and content strategy. The closest bridge to AirOps's target new verticals.",
+      "citations": []
+    },
+    {
+      "title": "Cross-functional alignment under ambiguity",
+      "description": "96% pre-sales funnel pass-through rate and retention through an 85% RIF. The consistent throughline: ability to take an ambiguous customer problem, define what success looks like, get agreement from multiple stakeholders before committing resources, and deliver.",
+      "citations": []
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No formal PM title with P&L ownership",
+      "description": "The role requires 5+ years in product management. Dan's title history is TPM, SE, and Analytics Director. The work has been PM-adjacent; the badge has not.",
+      "mitigation": "The Lead TPM role at Thoughtful was product management in practice: build/prioritization decisions, full lifecycle ownership, revenue accountability. I'll be direct about the title gap and let the outcomes speak for themselves."
+    },
+    {
+      "title": "No Cursor or Figma experience",
+      "description": "JD calls out Cursor and Figma as prototyping tools. Dan has deep Claude Code experience (explicitly listed) but not the others.",
+      "mitigation": "Claude Code is well-evidenced and the JD calls it out first. Cursor is a two-day ramp. Figma is a week. These are tool gaps, not conceptual ones."
+    },
+    {
+      "title": "Primary vertical is healthcare, not SEO/martech",
+      "description": "AirOps's new verticals target is SEO, ad tech, and martech. Dan's career has been healthcare RCM and sports-media analytics.",
+      "mitigation": "The Action Network content-to-revenue attribution work is the closest bridge. I've never sold to SEO professionals, but I've built the analytical infrastructure that SEO teams rely on."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the Product Manager, New Verticals role at AirOps. Dan has been doing product management without the title for three years: making build and prioritization decisions, owning revenue outcomes (his implementations drove 63% of net new ARR at Thoughtful AI during a 3x growth year), and taking AI workflow ideas from zero infrastructure to team-wide adoption. He designed five pricing architectures at Smarter Technologies on deals from $250K to $40M and pressure-tested them directly with the CEO and VP of Sales. His deepest domain overlap with AirOps's target verticals is the Value Clicks model he built at Action Network, a content-to-revenue attribution system that became the company north star metric and drove 270% affiliate revenue growth. The formal PM title would be new. The accountability has been real.",
+  "projects": [
+    {
+      "name": "Notion GTM AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Six-agent parallel pipeline that turns a sales meeting transcript into structured deal intelligence and writes it into Notion. Built it for his own GTM team, then productized it as a live demo with a Notion template for external adoption. A concrete example of zero-to-one product work with a live user base."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare AI document chat built from scratch: OCR with AWS Textract, RAG-powered retrieval, pixel-precise citations, and a complete rebuild on the Anthropic SDK. An example of identifying a real problem, scoping the MVP, and shipping a working product."
+    },
+    {
+      "name": "Personal Website AI Agent",
+      "path": "/projects/personal-website",
+      "relevance": "The AI assistant on this site uses Claude Agent SDK, RAG over structured content, streaming SSE, and a multi-role prompt architecture. Four major architectural eras in two years: a working demonstration of the rapid iteration and product instinct the New Verticals PM role requires."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

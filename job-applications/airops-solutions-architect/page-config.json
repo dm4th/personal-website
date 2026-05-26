@@ -1,0 +1,122 @@
+{
+  "id": "be1df5e1c3b4",
+  "company": "AirOps",
+  "role": "AI Solutions Architect",
+  "appliedDate": "",
+  "fitScore": 83,
+  "fitScoreNote": "Strong match on the core builder motion and technical depth; industry/vertical gap is real (marketing/growth ICP is new) but the underlying AI workflow patterns and content analytics experience translate directly.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Near-exact match on the build-internally-productize-externally motion: built 22 agentic AI skills at Smarter Technologies and ported the highest-impact ones to a shared co-work interface for non-technical users. Deep LLM, RAG, prompt engineering, and workflow automation credentials all at production level.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform",
+        "/info/career/thoughtful/solutions-architect",
+        "/info/career/thoughtful/lead-tpm",
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/smarter-technologies/shutdown-and-retention"
+      ]
+    },
+    "seniority": {
+      "score": 8,
+      "rationale": "8-9 years total experience with strong hands-on AI building credentials. Slightly above the JD's 2-6 year target band but the depth and ownership mentality match the high-ownership IC seat description well. Director and VP titles followed output, not tenure.",
+      "citations": [
+        "/info/career/smarter-technologies",
+        "/info/ai-ml/cal-tech/bootcamp"
+      ]
+    },
+    "technicalSkills": {
+      "score": 9,
+      "rationale": "Production LLM/RAG experience (hybrid-RAG at Thoughtful, 22-skill Claude Code platform at Smarter), strong Python and SQL depth across every career stage, workflow automation via Make/Integromat in production clinical contexts, and JavaScript/Next.js at production level. No Zapier by name but Make is functionally equivalent.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform",
+        "/info/career/thoughtful/dental-eligibility-intelligence",
+        "/info/career/thoughtful/customer-engineer",
+        "/info/career/action-network/year-two-and-departure"
+      ]
+    },
+    "industryVertical": {
+      "score": 6,
+      "rationale": "AirOps's ICP is marketing and growth teams at B2B SaaS companies. Dan's career has been in healthcare enterprise and sports media analytics. The Action Network content analytics work (Value Clicks model, CCO weekly cadence, writer-level SEO coaching) is the closest domain overlap, but it was an internal analytics role rather than a customer-facing solutions function for that buyer type.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/action-network/first-year-post-ari",
+        "/info/career/smarter-technologies/ai-se-platform"
+      ]
+    },
+    "logistics": {
+      "score": 8,
+      "rationale": "SF-based, exact location match. No clearance, visa, or relocation gaps. Minor concern: JD's 2-6 year experience band may imply a comp range below senior IC market rate for Dan's level.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco"
+      ]
+    }
+  },
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/airops/0d24bc05-0145-4d9a-bb18-348bb9507edd",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Build internally, productize externally",
+      "description": "Built a 22-skill AI platform using Claude Code at Smarter Technologies, then ported the highest-impact skills to a shared co-work interface so non-technical teammates could run them without writing a prompt. Shipped 943 commits in 7 months while managing $31.8M in active pipeline. The internal-to-customer productization motion is the exact pattern AirOps describes.",
+      "citations": []
+    },
+    {
+      "title": "Content analytics to content strategy translation",
+      "description": "Built the Value Clicks model at Action Network, became the company north star metric, and worked weekly with the Chief Content Officer to translate data signals into editorial priorities. Coached individual writers on SEO structure and content strategy. Company grew affiliate revenue 270% in the 12 months following launch.",
+      "citations": []
+    },
+    {
+      "title": "Production RAG with eval engineering",
+      "description": "Built Thoughtful AI's first production GenAI system: a hybrid-RAG eligibility engine that hit 95% accuracy within 2 days. Built labeled holdout datasets, precision/recall tracking by failure category, and regression tests before every model or prompt change. The eval infrastructure was why accuracy held under real-world variation.",
+      "citations": []
+    },
+    {
+      "title": "Technical-to-non-technical translation at scale",
+      "description": "Retained as one of ~15% of employees through an 85% workforce reduction at Smarter Technologies. The stated reason: ability to take complex AI systems and make them legible to the people who need to adopt them. 96% of prospects moved to proposal stage within a month.",
+      "citations": []
+    },
+    {
+      "title": "Feedback loop architecture",
+      "description": "Built hooks-based feedback sampling into the AI platform: every skill invocation logged, 15-20% of runs prompted for ratings, signal routed directly back into skill iteration. A cluster of low ratings with notes about 'wrong context' told me exactly what to fix. That closed loop is what makes templates improve over time.",
+      "citations": []
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No marketing/growth-team buyer experience",
+      "description": "AirOps's ICP is marketing and growth orgs at B2B SaaS companies. Dan has sold to and built for healthcare enterprise buyers almost exclusively.",
+      "mitigation": "The buyer persona is new; the motion is not. I understand how to translate AI workflow value to non-technical decision-makers, scope what will and won't be built, and close the feedback loop from usage back to iteration. I learn verticals fast."
+    },
+    {
+      "title": "Zapier not named on resume",
+      "description": "JD uses Zapier as the primary workflow automation example. Dan's documented automation work is in Make/Integromat, Python pipelines, and GitHub Actions.",
+      "mitigation": "Zapier and Make share the same trigger-action-router architecture. I rebuilt broken Make automations in production clinical contexts and built bidirectional webhook integrations. I'd be productive in Zapier within a day."
+    },
+    {
+      "title": "Seniority band mismatch",
+      "description": "JD targets 2-6 years. Dan has ~9 years with Director and VP titles, which may create comp expectation gaps.",
+      "mitigation": "Drawn to this role for the hands-on building and customer proximity, not the title. The Director and VP titles followed output, not the other way around."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the AI Solutions Architect role at AirOps. Dan spent the last three years building production AI workflow systems from scratch: a 22-skill, 5-agent platform at Smarter Technologies that ran $31.8M in active enterprise pipeline, a hybrid-RAG system at Thoughtful AI that hit 95% accuracy in production within two days, and an internal-to-external productization motion he's repeated across every role. Earlier, at Action Network, he built the Value Clicks model that became the company north star metric and drove 270% revenue growth in 12 months, working directly with the Chief Content Officer and individual writers on SEO strategy. He's based in SF, ready to be in office, and already thinking in the terms AirOps uses.",
+  "projects": [
+    {
+      "name": "Notion GTM AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Six-agent parallel pipeline that turns a sales meeting transcript into structured deal intelligence and writes it directly into Notion. Built it for his own GTM team, then productized it as a live demo with a Notion template for external teams. Exactly the build-internally-productize-externally pattern the Solutions Architect role describes."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare AI document chat with pixel-precise citations powered by AWS Textract and RAG. Built from scratch, shipped to production, rebuilt twice on newer infrastructure. A concrete example of identifying a real user problem, scoping the retrieval architecture, and shipping something that works in the real world."
+    },
+    {
+      "name": "Personal Website AI Agent",
+      "path": "/projects/personal-website",
+      "relevance": "The AI assistant on this site is built on the Claude Agent SDK with RAG-powered search over structured content, streaming SSE responses, and a multi-role system prompt architecture. Four major architectural eras in two years: a working demonstration of the rapid iteration and feedback-loop thinking a Solutions Architect needs."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}

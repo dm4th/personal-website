@@ -11,39 +11,38 @@ import path from 'path';
 const _client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const JD = `
-GTM Strategy & Operations, Special Projects
-Company: Anthropic
-Location: San Francisco, CA
+Product Manager, Growth
+Company: AirOps
+Location: New York City or San Francisco (Onsite)
 Employment Type: Full time
-Location Type: Hybrid (minimum 25% in-office)
-Department: Go To Market
+Location Type: On-site
+Department: Product
 
 About the Role:
-As a GTM Strategy & Operations Lead on the Special Projects team, you will operate as a strategic force multiplier across Anthropic's entire sales organization. Rather than focusing on a single GTM segment, you will tackle cross-cutting initiatives spanning Enterprise, Strategic Accounts, Startups, Commercial, Public Sector, and Partnerships.
+AirOps is hiring a Growth Product Manager to own the product-led engine that brings content teams from first touch to early habit. You will map, measure, and improve the journey from discovery to activation to early retention, with a focus on delivering fast time-to-value and clear business outcomes in AI-driven search. This role sits at the intersection of product, data, marketing, and sales. You will define the growth strategy, build the experimentation program, and ship features that create repeatable loops across our insights, content operations, and publishing workflows.
 
 Key Responsibilities:
-- Lead analytical deep-dives on segmentation strategy, coverage models, resource allocation, and capacity planning that inform decisions across all GTM segments
-- Build scalable frameworks for account prioritization, territory design, and pipeline diagnostics
-- Own special projects end-to-end: from scoping and stakeholder alignment through execution and impact measurement
-- Design processes and operating rhythms that enable the GTM org to scale through hypergrowth phases
-- Collaborate with data science teams on predictive modeling, churn signals, and usage-based analytics
-- Build and maintain unified dashboards and reporting that surface actionable insights to sales leadership
-- Manage CRM data quality initiatives and pipeline hygiene across segments
-- Serve as a connective thread between Revenue Operations, Marketing, Partnerships, Product, and Engineering teams
-- Support leadership with ad-hoc strategic analysis and executive-level deliverables
+- Own the acquisition, onboarding, and activation funnel for AirOps, targeting content leaders and teams across mid-market and enterprise
+- Build and execute a product-led growth roadmap that balances quick wins with scalable bets tied to revenue impact
+- Design and run experiments across signup, packaging, onboarding flows, templates, prompts, in-product education, and lifecycle messaging
+- Create new growth loops such as shareable audit reports, scorecards, and template galleries that attract qualified teams and encourage word of mouth
+- Work closely with Growth and Marketing on self-serve acquisition programs, content diagnostics, and AEO/SEO-friendly experiences that attract high-intent users
+- Collaborate with Engineering and Design to scope, deliver, and iterate quickly
+- Align with Sales and Customer Success on trial-to-paid motions, PQL definitions, routing, and in-product moments that support sales-assisted conversions
 
-Required Qualifications:
-- SaaS/enterprise software experience with focus on analytics, revenue/business operations, strategy consulting, or finance
-- Demonstrated ability to own cross-functional projects end-to-end in ambiguous, fast-moving environments
-- Proficiency with CRM platforms (Salesforce) and BI/analytics tools (Looker, BigQuery)
-- Strong communication skills: able to translate complex analyses into clear recommendations for senior stakeholders
-- Bachelor's degree required
+Qualifications:
+- 5+ years in Product Management with 2+ years focused on growth or PLG in B2B SaaS
+- Track record improving activation and early retention for complex products, ideally used by content, SEO, or editorial teams
+- Proficiency in A/B testing and feature flagging tools such as Optimizely, Posthog, or Statsig
+- Strong analytics skills, including comfort with SQL and product analytics platforms like Amplitude, Posthog, or Metabase
+- Experience building onboarding systems, in-product guidance, and lifecycle programs that shorten time-to-value
+- Familiarity with content operations, SEO, and AI search dynamics
+- Fluency with modern prototyping tools (e.g. Cursor, Bolt, Claude Code) and comfort with design/collaboration environments like Figma and Git
+- Bias for action and comfort operating in a fast-moving environment
 
-Preferred Qualifications:
-- Advanced Excel/Google Sheets skills; SQL or Python strongly preferred
-- Experience with consumption-based or usage-based pricing models and associated analytics
-- Prior experience building scalable operational frameworks across multiple GTM teams
-- Background in high-growth AI/tech companies or top-tier strategy consulting
+Bonus:
+- Experience in content, SEO, or editorial products
+- PLG-specific tooling experience (Posthog, Amplitude, Statsig)
 `;
 
 // ─── Historical JDs to seed into the glossary ────────────────────────────────
@@ -145,6 +144,12 @@ You'll thrive in this role if you:
     company: 'Liquid AI',
     jd: `Solutions Architect — Liquid AI. San Francisco; Boston. Full time, Hybrid.
 Key requirements: First SA hire building the function from scratch with Head of SA. Own customer engagements end-to-end from qualified opportunity through technical validation, go-live, and ongoing delivery. Build customer-specific demos and POCs using Liquid models (LEAP for fine-tuning, domain adaptation, evaluation). Lead technical discovery: map customer architectures, competitive positioning vs. open-source and incumbent models, quantify ROI. Co-own product-field feedback loop. Turn learnings into reusable assets: reference architectures, playbooks, vertical-specific patterns. Must-have: Applied ML skills in customer-facing contexts, pre-sales and post-sales end-to-end ownership, strong customer-facing communication, understanding of AI architectures and deployment tradeoffs (token efficiency, on-device vs. cloud, model size vs. latency). Nice-to-have: edge/on-device deployment, thought leadership content, model quantization/serving frameworks, evaluation design.`,
+  },
+  {
+    role: 'GTM Strategy & Operations, Special Projects',
+    company: 'Anthropic',
+    jd: `GTM Strategy & Operations, Special Projects — Anthropic. San Francisco, CA. Hybrid 25% in-office. Full time.
+Key requirements: Strategic force multiplier across entire sales org. Cross-cutting initiatives spanning Enterprise, Strategic Accounts, Startups, Commercial, Public Sector, Partnerships. Lead analytical deep-dives on segmentation, coverage models, resource allocation, capacity planning. Build scalable frameworks for account prioritization, territory design, pipeline diagnostics. Own special projects end-to-end. Design operating rhythms for hypergrowth scaling. Collaborate with data science on predictive modeling, churn signals, usage-based analytics. Build unified dashboards for sales leadership. Manage CRM data quality. Serve as connective thread between RevOps, Marketing, Partnerships, Product, Engineering. SaaS/enterprise software experience in analytics, revenue/business operations, strategy consulting, or finance. Proficiency with Salesforce, Looker, BigQuery. SQL or Python preferred.`,
   },
   {
     role: 'GTM AI + Innovation Manager',

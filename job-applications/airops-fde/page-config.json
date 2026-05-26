@@ -1,0 +1,119 @@
+{
+  "id": "1d8f78f13563",
+  "company": "AirOps",
+  "role": "Forward Deployed Engineer",
+  "appliedDate": "",
+  "fitScore": 82,
+  "fitScoreNote": "Near-identical to the SA role in requirements and motion; strong match on the builder execution profile, production RAG and agentic AI experience, and the internal-to-external productization pattern. Industry/vertical gap (marketing/growth ICP) is the same structural gap.",
+  "dimensions": {
+    "coreJobFunction": {
+      "score": 9,
+      "rationale": "Near-exact match on the forward-deployed execution motion: build AI workflows internally, productize them for customers, ship in days, close the feedback loop. Built 22 agentic AI skills at Smarter Technologies and ported the highest-impact ones to a shared interface for non-technical users. Production RAG, multi-agent pipelines, and customer translation all documented at depth.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform",
+        "/info/career/thoughtful/customer-engineer",
+        "/info/career/thoughtful/dental-eligibility-intelligence",
+        "/info/career/smarter-technologies/shutdown-and-retention"
+      ]
+    },
+    "seniority": {
+      "score": 9,
+      "rationale": "~8-9 years total experience, slightly above the 2-6 year target, but the execution velocity and hands-on AI build depth match the high-ownership IC profile well. 943 commits in 7 months while running live pipeline is the clearest seniority signal.",
+      "citations": [
+        "/info/career/smarter-technologies",
+        "/info/ai-ml/cal-tech/bootcamp"
+      ]
+    },
+    "technicalSkills": {
+      "score": 8,
+      "rationale": "Production LLM/RAG, 22-skill Claude Code platform, Python and SQL expert-level, JavaScript/Next.js at production level, Make/Integromat in live clinical workflows. No Zapier by name but Make is functionally equivalent.",
+      "citations": [
+        "/info/career/smarter-technologies/ai-se-platform",
+        "/info/career/thoughtful/dental-eligibility-intelligence",
+        "/info/career/thoughtful/customer-engineer"
+      ]
+    },
+    "industryVertical": {
+      "score": 5,
+      "rationale": "AirOps's ICP is marketing and growth teams at B2B SaaS companies. Dan's AI workflow experience is healthcare-centric. Closest domain overlap is the Action Network content analytics and CCO partnership work, but that was an internal analytics role rather than forward-deployed customer work in the marketing vertical.",
+      "citations": [
+        "/info/career/action-network/year-two-and-departure",
+        "/info/career/action-network/first-year-post-ari"
+      ]
+    },
+    "logistics": {
+      "score": 9,
+      "rationale": "SF-based since 2020, exact location match. No clearance, visa, or relocation gaps.",
+      "citations": [
+        "/info/about-me/where-ive-lived/san-francisco"
+      ]
+    }
+  },
+  "jobDescriptionUrl": "https://jobs.ashbyhq.com/airops/a2583e53-e8e9-44c9-8660-43c75592ded9",
+  "jobDescriptionText": "",
+  "strengths": [
+    {
+      "title": "Ships fast, closes the feedback loop",
+      "description": "943 commits and 500+ PRs in seven months while simultaneously managing $31.8M in active enterprise pipeline. The build velocity and the execution velocity were the same job. Built pre/post tool-use hooks logging every AI skill invocation, surfacing ratings on 15-20% of runs, and routing signal directly back into skill iteration.",
+      "citations": []
+    },
+    {
+      "title": "Build internally, productize externally",
+      "description": "Built a 22-skill Claude Code AI platform for his own SE work, then ported the highest-impact skills to a shared co-work interface so non-technical teammates could run them without writing a prompt. That internal-to-external motion is the exact pattern the FDE role describes.",
+      "citations": []
+    },
+    {
+      "title": "Production RAG with eval engineering",
+      "description": "Built Thoughtful AI's first production GenAI system: a hybrid-RAG eligibility engine hitting 95% accuracy within 2 days on a live workflow. Built labeled holdout datasets, precision/recall tracking by failure category, and regression tests before every model or prompt change.",
+      "citations": []
+    },
+    {
+      "title": "Technical-to-non-technical translation at scale",
+      "description": "Retained as one of ~15% of employees through an 85% workforce reduction at Smarter Technologies. The stated reason: ability to take complex AI systems and make them legible to the people who need to adopt them. 96% of prospects moved to proposal stage within a month.",
+      "citations": []
+    },
+    {
+      "title": "Content analytics and editorial partnership",
+      "description": "Built the Value Clicks model at Action Network, became the company north star metric, worked weekly with the Chief Content Officer to translate data into editorial priorities, coached individual writers on SEO structure. Company grew affiliate revenue 270% in 12 months.",
+      "citations": []
+    }
+  ],
+  "weaknesses": [
+    {
+      "title": "No marketing/growth-team buyer experience",
+      "description": "AirOps's ICP is marketing and growth orgs at B2B SaaS companies. Dan has sold to and built for healthcare enterprise buyers almost exclusively.",
+      "mitigation": "The buyer persona is new; the motion is not. I understand how to translate AI workflow value to non-technical decision-makers. I learn verticals fast."
+    },
+    {
+      "title": "Zapier not named on resume",
+      "description": "JD uses Zapier as the primary workflow automation example. Dan's documented work is in Make/Integromat, Python pipelines, and GitHub Actions.",
+      "mitigation": "Zapier and Make share the same trigger-action-router architecture. I rebuilt broken Make automations in production clinical contexts. I'd be productive in Zapier within a day."
+    },
+    {
+      "title": "Seniority band mismatch",
+      "description": "JD targets 2-6 years. Dan has ~9 years with Director and VP titles.",
+      "mitigation": "Drawn to this role for the hands-on building and customer proximity. The Director and VP titles followed output, not the other way around."
+    }
+  ],
+  "referralBlurb": "I'm referring Dan Mathieson for the Forward Deployed Engineer role at AirOps. Dan is a builder who deploys fast and closes the feedback loop. He shipped 943 commits and 500+ PRs in seven months while simultaneously managing $31.8M in active enterprise pipeline: the platform and the execution were the same job. He built production RAG systems, multi-agent pipelines, and workflow automation from scratch, then productized the highest-impact tools so non-technical teammates could run them directly. He was retained through an 85% workforce reduction at Smarter Technologies specifically because he can take complex AI systems and make them legible to the people who need to adopt them. He's in SF and ready to be in the office.",
+  "projects": [
+    {
+      "name": "Notion GTM AI Meeting Intelligence",
+      "path": "/projects/notion-meeting-intelligence",
+      "relevance": "Six-agent parallel pipeline that turns a sales meeting transcript into structured deal intelligence and writes it directly into Notion. Built it for his own GTM team, then productized it as a live demo. Exactly the build-internally-productize-externally pattern the FDE role describes."
+    },
+    {
+      "name": "DocWow",
+      "path": "/projects/docwow",
+      "relevance": "Healthcare AI document chat with pixel-precise citations powered by AWS Textract and RAG. Production-grade retrieval engineering: the same system architecture Dan built at Thoughtful AI for the eligibility verification engine."
+    },
+    {
+      "name": "Personal Website AI Agent",
+      "path": "/projects/personal-website",
+      "relevance": "The AI assistant on this site is built on the Claude Agent SDK with RAG-powered search over structured content, streaming SSE responses, and a multi-role system prompt architecture. A working example of what Dan builds when given a weekend and a problem."
+    }
+  ],
+  "applicationQuestions": [],
+  "resumeFile": "Dan Mathieson Resume.pdf",
+  "coverLetterFile": "Dan Mathieson Cover Letter.pdf"
+}
