@@ -112,7 +112,7 @@
     },
     {
       "name": "Personal Website AI Agent",
-      "path": "/projects/personal-website",
+      "path": "/",
       "relevance": "The AI assistant on this site is built on the Claude Agent SDK with RAG-powered search over structured content, streaming SSE responses, and a multi-role system prompt architecture. Four major architectural eras in two years: a working demonstration of the rapid iteration and feedback-loop thinking a Solutions Architect needs."
     }
   ],

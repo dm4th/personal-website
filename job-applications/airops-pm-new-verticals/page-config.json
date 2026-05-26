@@ -107,7 +107,7 @@
     },
     {
       "name": "Personal Website AI Agent",
-      "path": "/projects/personal-website",
+      "path": "/",
       "relevance": "The AI assistant on this site uses Claude Agent SDK, RAG over structured content, streaming SSE, and a multi-role prompt architecture. Four major architectural eras in two years: a working demonstration of the rapid iteration and product instinct the New Verticals PM role requires."
     }
   ],

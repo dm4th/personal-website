@@ -107,7 +107,7 @@
     },
     {
       "name": "Personal Website AI Agent",
-      "path": "/projects/personal-website",
+      "path": "/",
       "relevance": "The AI assistant on this site has gone through four architectural eras in two years: prompting blog, RAG virtual assistant, LLM guessing game, and full agent-first rewrite. A working demonstration of the rapid iteration and experimentation cadence a Growth PM needs."
     }
   ],
