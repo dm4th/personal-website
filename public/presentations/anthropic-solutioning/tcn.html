@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Health Eligibility Automation: Dan Mathieson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+
+        /* === ANTHROPIC DESIGN TOKENS === */
+        :root {
+            --terracotta:    #C86A48;
+            --terracotta-bg: rgba(200,106,72,0.08);
+            --cream:         #F5EEE4;
+            --card:          #EAE4D9;
+            --card-border:   #D8D2C7;
+            --text:          #1A1A1A;
+            --text-muted:    #4A4440;
+            --stage-bg:      #111110;
+            --font:          'Plus Jakarta Sans', sans-serif;
+            --sz-cover:  94px; --sz-h1: 60px; --sz-h2: 44px;
+            --sz-body:   26px; --sz-sm: 22px; --sz-label: 17px; --sz-foot: 17px;
+            --pad: 80px;
+            --ease: cubic-bezier(0.16,1,0.3,1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        /* === VIEWPORT BASE === */
+        html, body { width:100%; height:100%; overflow:hidden; background:var(--stage-bg); }
+        .deck-viewport { position:fixed; inset:0; overflow:hidden; background:var(--stage-bg); }
+        .deck-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; transform-origin:0 0; }
+        .slide { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; display:block; visibility:hidden; opacity:0; pointer-events:none; }
+        .slide.active, .slide.visible { visibility:visible; opacity:1; pointer-events:auto; z-index:1; }
+        img,video,canvas,svg { max-width:100%; max-height:100%; }
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.2ms !important; } }
+        @media print {
+            html,body { width:1920px; height:auto; overflow:visible; background:#fff; }
+            .deck-viewport { position:static; overflow:visible; background:#fff; }
+            .deck-stage { position:static; width:auto; height:auto; transform:none !important; background:none; }
+            .slide { position:relative; display:block !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; width:1920px; height:1080px; break-after:page; page-break-after:always; }
+            .slide:last-child { break-after:auto; page-break-after:auto; }
+            .deck-nav,.edit-hotzone,.edit-toggle,.slide-counter { display:none !important; }
+        }
+
+        /* === TRANSITIONS + ANIMATIONS === */
+        .slide { transition: opacity 0.35s var(--ease); }
+        @keyframes arrowPulse { 0%,100% { opacity:0.55; } 50% { opacity:0.9; } }
+        @keyframes keyGlow { 0%,100% { box-shadow:0 0 0 0 rgba(200,106,72,0.5); } 50% { box-shadow:0 0 0 14px rgba(200,106,72,0); } }
+
+        /* === REVEAL (staggered fade+lift) === */
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.5s var(--ease),transform 0.5s var(--ease); }
+        .slide.visible .reveal { opacity:1; transform:translateY(0); }
+        .reveal:nth-child(1) { transition-delay:0.04s; } .reveal:nth-child(2) { transition-delay:0.10s; }
+        .reveal:nth-child(3) { transition-delay:0.16s; } .reveal:nth-child(4) { transition-delay:0.22s; }
+        .reveal:nth-child(5) { transition-delay:0.28s; } .reveal:nth-child(6) { transition-delay:0.34s; }
+
+        /* === FOOTER CHROME === */
+        .slide-footer { position:absolute; bottom:48px; left:var(--pad); right:var(--pad); display:flex; justify-content:space-between; align-items:center; }
+        .footer-mark { font-family:var(--font); font-size:var(--sz-foot); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); opacity:0.45; }
+        .footer-right { font-family:var(--font); font-size:var(--sz-foot); font-weight:500; letter-spacing:0.06em; color:var(--text); opacity:0.35; }
+
+        /* === SLIDE BACKGROUNDS === */
+        .slide-cover   { background:var(--terracotta); }
+        .slide-content { background:var(--cream); }
+
+        /* === COVER === */
+        .cover-name-mark { position:absolute; top:52px; left:var(--pad); font-family:var(--font); font-size:var(--sz-foot); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); opacity:0.6; }
+        .cover-title-area { position:absolute; bottom:148px; left:var(--pad); max-width:1000px; }
+        .cover-h1 { font-family:var(--font); font-size:var(--sz-cover); font-weight:800; line-height:1.02; letter-spacing:-0.025em; color:var(--text); margin-bottom:22px; }
+        .cover-meta { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; color:var(--text); opacity:0.6; }
+
+        /* === TWO-PANEL LAYOUT (slides 2, 4, appendix) === */
+        .panel-layout { position:absolute; inset:0; display:flex; }
+        .panel-left { width:38%; padding:var(--pad) 60px var(--pad) var(--pad); display:flex; flex-direction:column; justify-content:center; border-right:2px solid var(--card-border); background:rgba(200,106,72,0.04); }
+        .panel-right { flex:1; padding:var(--pad) var(--pad) var(--pad) 60px; display:flex; flex-direction:column; justify-content:center; }
+        .section-label { font-family:var(--font); font-size:var(--sz-label); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:20px; }
+        .panel-slide-title { font-family:var(--font); font-size:var(--sz-h1); font-weight:800; line-height:1.07; letter-spacing:-0.02em; color:var(--text); margin-bottom:24px; }
+        .panel-context { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; line-height:1.55; color:var(--text-muted); }
+
+        /* Labeled rows */
+        .info-row { display:flex; align-items:flex-start; padding:28px 0; border-bottom:1.5px solid var(--card-border); }
+        .info-row:first-child { border-top:1.5px solid var(--card-border); }
+        .row-label { font-family:var(--font); font-size:var(--sz-sm); font-weight:700; color:var(--text); min-width:200px; padding-top:2px; flex-shrink:0; }
+        .row-content { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; line-height:1.55; color:var(--text); }
+        .row-content strong { font-weight:700; }
+        .quote-key { color:var(--terracotta); font-style:italic; }
+        .metric-big { display:block; font-size:var(--sz-h2); font-weight:800; line-height:1; color:var(--terracotta); margin-bottom:5px; }
+        .status-badge { display:inline-block; background:var(--terracotta); color:var(--text); font-family:var(--font); font-size:15px; font-weight:700; letter-spacing:0.06em; padding:5px 16px; border-radius:100px; margin-bottom:22px; }
+        .appendix-tag { display:inline-block; font-family:var(--font); font-size:13px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:var(--text-muted); background:var(--card); border-radius:100px; padding:5px 16px; border:1.5px solid var(--card-border); margin-bottom:22px; }
+
+        /* === SOLUTION SLIDE LAYOUT === */
+        .solution-layout { position:absolute; top:var(--pad); left:var(--pad); right:var(--pad); bottom:100px; display:flex; flex-direction:column; }
+        .solution-heading { font-family:var(--font); font-size:var(--sz-h1); font-weight:800; letter-spacing:-0.02em; color:var(--text); margin-bottom:10px; }
+        .solution-sub { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; color:var(--text-muted); margin-bottom:28px; }
+        .solution-callout { display:flex; align-items:center; gap:20px; background:var(--terracotta); border-radius:12px; padding:22px 32px; margin-bottom:32px; align-self:stretch; }
+        .callout-headline { font-family:var(--font); font-size:var(--sz-body); font-weight:800; color:var(--text); flex-shrink:0; }
+        .callout-divider { width:2px; height:28px; background:var(--text); opacity:0.2; flex-shrink:0; }
+        .callout-detail { font-family:var(--font); font-size:var(--sz-body); font-weight:400; color:var(--text); opacity:0.75; }
+
+        /* === ARCHITECTURE DIAGRAM (FIXED: auto rows, 1fr agent) === */
+        .arch-diagram {
+            display: grid;
+            grid-template-columns: 140px 44px 1fr 44px 140px;
+            grid-template-rows: auto 32px auto;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .arch-ehr-start { grid-column:1; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:var(--card); border-radius:14px; border:2px solid var(--card-border); padding:20px 14px; }
+        .arch-ehr-end   { grid-column:5; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:var(--card); border-radius:14px; border:2px solid var(--card-border); padding:20px 14px; }
+        .arch-arrow-left  { grid-column:2; grid-row:1; display:flex; align-items:center; }
+        .arch-arrow-right { grid-column:4; grid-row:1; display:flex; align-items:center; }
+        /* Solid terracotta horizontal arrows with gentle pulse */
+        .arch-arrow-left::before, .arch-arrow-right::before { content:''; flex:1; height:3px; background:var(--terracotta); animation:arrowPulse 2.5s ease-in-out infinite; opacity:0.7; }
+        .arch-arrow-left::after, .arch-arrow-right::after { content:''; width:0; height:0; border-top:9px solid transparent; border-bottom:9px solid transparent; border-left:14px solid var(--terracotta); opacity:0.85; }
+        /* Agent boundary: dashed terracotta, fills the 1fr column */
+        .arch-agent { grid-column:3; grid-row:1; border:2.5px dashed var(--terracotta); border-radius:16px; padding:16px 20px; background:var(--terracotta-bg); display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .agent-label { font-family:var(--font); font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); }
+        .agent-steps { display:flex; align-items:center; gap:8px; width:100%; justify-content:center; }
+        .agent-step { flex:1; min-width:0; background:var(--cream); border:1.5px solid var(--card-border); border-radius:10px; padding:10px 12px; text-align:center; }
+        .agent-step.key { background:var(--terracotta); border-color:var(--terracotta); animation:keyGlow 2.5s ease-in-out 1.2s infinite; }
+        .agent-step.key .step-name, .agent-step.key .step-detail { color:var(--text); }
+        .step-name { font-family:var(--font); font-size:16px; font-weight:700; color:var(--text); line-height:1.25; white-space:nowrap; }
+        .step-detail { font-family:var(--font); font-size:12px; font-weight:400; color:var(--text-muted); margin-top:3px; white-space:normal; line-height:1.3; }
+        .step-sep { font-size:18px; color:var(--terracotta); opacity:0.65; flex-shrink:0; line-height:1; }
+        /* Shared node text */
+        .node-name { font-family:var(--font); font-size:20px; font-weight:800; color:var(--text); margin-bottom:6px; }
+        .node-detail { font-family:var(--font); font-size:15px; font-weight:400; color:var(--text-muted); line-height:1.4; text-align:center; }
+        /* Vertical connector (agent to portals) */
+        .arch-connector { grid-column:3; grid-row:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+        .v-line { width:3px; height:14px; background:var(--terracotta); animation:arrowPulse 2.5s ease-in-out 0.6s infinite; opacity:0.6; }
+        .v-label { font-family:var(--font); font-size:12px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; color:var(--text-muted); opacity:0.75; }
+        .v-arrow { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid var(--terracotta); opacity:0.65; }
+        /* Payer portals row */
+        .arch-portals { grid-column:3; grid-row:3; display:flex; gap:10px; }
+        .portal-node { flex:1; background:var(--card); border-radius:10px; border:1.5px solid var(--card-border); padding:12px 16px; text-align:center; }
+        .portal-name { font-family:var(--font); font-size:17px; font-weight:700; color:var(--text); }
+        .portal-vol  { font-family:var(--font); font-size:13px; font-weight:400; color:var(--text-muted); margin-top:3px; }
+
+        /* === WORKFLOW STRIP (observability / portals) === */
+        .portal-workflow { display:flex; align-items:center; background:var(--card); border:1.5px solid var(--card-border); border-radius:12px; padding:16px 24px; margin-top:16px; flex-shrink:0; }
+        .workflow-section-label { font-family:var(--font); font-size:13px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:var(--terracotta); white-space:nowrap; flex-shrink:0; padding-right:20px; margin-right:14px; border-right:1.5px solid var(--card-border); }
+        .workflow-steps { display:flex; align-items:center; gap:8px; flex:1; }
+        .workflow-step { flex:1; background:var(--cream); border-radius:8px; border:1.5px solid var(--card-border); padding:8px 10px; text-align:center; min-width:0; }
+        .workflow-step.key-step { background:var(--terracotta); border-color:var(--terracotta); }
+        .workflow-step.key-step .wf-name, .workflow-step.key-step .wf-detail { color:var(--text); }
+        .wf-name { font-family:var(--font); font-size:14px; font-weight:700; color:var(--text); line-height:1.2; }
+        .wf-detail { font-family:var(--font); font-size:11px; font-weight:400; color:var(--text-muted); margin-top:2px; white-space:normal; line-height:1.25; }
+        .wf-sep { font-size:18px; color:var(--terracotta); opacity:0.65; flex-shrink:0; }
+
+        /* === DECK NAVIGATION (viewport-fixed, right side) === */
+        .deck-nav { position:fixed; right:18px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; z-index:1000; background:rgba(15,12,10,0.22); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-radius:22px; padding:10px 7px; border:1px solid rgba(255,255,255,0.1); }
+        .nav-arrow { width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.28); color:rgba(255,255,255,0.7); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; flex-shrink:0; }
+        .nav-arrow:hover { background:rgba(255,255,255,0.22); color:rgba(255,255,255,0.95); }
+        .nav-dots { display:flex; flex-direction:column; align-items:center; gap:8px; padding:2px 0; }
+        .nav-dot-wrap { position:relative; display:flex; align-items:center; }
+        .nav-dot-label { position:absolute; right:calc(100% + 12px); top:50%; transform:translateY(-50%) translateX(6px); white-space:nowrap; font-family:var(--font); font-size:11px; font-weight:600; letter-spacing:0.04em; color:rgba(255,255,255,0.92); background:rgba(15,12,10,0.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:5px 11px; border-radius:8px; opacity:0; pointer-events:none; transition:opacity 0.18s ease,transform 0.18s ease; }
+        .nav-dot-wrap:hover .nav-dot-label { opacity:1; transform:translateY(-50%) translateX(0); }
+        .nav-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.5); border:none; cursor:pointer; transition:all 0.25s ease; padding:0; flex-shrink:0; }
+        .nav-dot:hover { background:rgba(255,255,255,0.75); }
+        .nav-dot.active { width:10px; height:10px; background:rgba(255,255,255,0.97); }
+        .nav-appendix-divider { display:flex; flex-direction:column; align-items:center; gap:3px; margin:2px 0; }
+        .nav-appendix-line { width:16px; height:1px; background:rgba(255,255,255,0.25); }
+        .nav-appendix-label { font-family:var(--font); font-size:7px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:rgba(255,255,255,0.45); white-space:nowrap; }
+        .nav-dot.appendix { background:rgba(200,106,72,0.5); }
+        .nav-dot.appendix:hover { background:rgba(200,106,72,0.75); }
+        .nav-dot.appendix.active { background:rgba(200,106,72,0.95); }
+        /* Appendix break slide */
+        .appendix-break-layout { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+        .appendix-break-rule { width:100px; height:2px; background:var(--terracotta); opacity:0.35; border-radius:1px; }
+        .appendix-break-content { display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center; }
+        .appendix-break-eyebrow { font-family:var(--font); font-size:var(--sz-label); font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); }
+        .appendix-break-title { font-family:var(--font); font-size:110px; font-weight:800; letter-spacing:-0.025em; line-height:1; color:var(--text); }
+        .appendix-break-sub { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; color:var(--text-muted); }
+
+        /* === INLINE EDIT MODE === */
+        .edit-hotzone { position:fixed; top:0; left:0; width:80px; height:80px; z-index:10000; cursor:pointer; }
+        .edit-toggle { position:fixed; top:14px; left:14px; background:rgba(255,255,255,0.9); border:none; border-radius:8px; padding:6px 12px; font-size:15px; cursor:pointer; z-index:10001; opacity:0; pointer-events:none; transition:opacity 0.25s ease; font-family:var(--font); font-weight:600; }
+        .edit-toggle.show, .edit-toggle.active { opacity:1; pointer-events:auto; }
+        [contenteditable="true"] { outline:2px solid var(--terracotta); outline-offset:3px; border-radius:4px; cursor:text; }
+        .slide-counter { position:fixed; bottom:18px; right:24px; font-family:var(--font); font-size:14px; font-weight:600; color:rgba(255,255,255,0.35); z-index:1000; letter-spacing:0.06em; }
+
+    </style>
+</head>
+<body>
+
+<!-- ===== PASSWORD GATE ===== -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#111110;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;">
+  <div style="background:#1C1B19;border:1px solid #2A2825;border-radius:16px;padding:48px 56px;width:400px;max-width:90vw;text-align:center;">
+    <div style="width:44px;height:44px;background:#C86A48;border-radius:10px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="5" y="10" width="12" height="9" rx="2" fill="white" opacity="0.92"/><path d="M8 10V7a3 3 0 016 0v3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p style="color:#F5EEE4;font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;">Interview Prep Materials</p>
+    <p style="color:#6A6460;font-size:13px;margin-bottom:32px;line-height:1.5;">Dan Mathieson &middot; Anthropic Applied AI</p>
+    <input id="gate-input" type="password" placeholder="Access code" autocomplete="off"
+      style="width:100%;background:#111110;border:1px solid #2A2825;border-radius:8px;padding:13px 16px;color:#F5EEE4;font-size:15px;font-family:inherit;outline:none;margin-bottom:10px;transition:border-color 0.2s;" />
+    <p id="gate-err" style="color:#C86A48;font-size:13px;min-height:18px;margin-bottom:10px;"></p>
+    <button id="gate-btn"
+      style="width:100%;background:#C86A48;border:none;border-radius:8px;padding:14px;color:white;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:-0.01em;">
+      View Presentation
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='solutioning-unlocked-v1';
+  var gate=document.getElementById('gate');
+  if(sessionStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  var inp=document.getElementById('gate-input');
+  var err=document.getElementById('gate-err');
+  var btn=document.getElementById('gate-btn');
+  function tryUnlock(){
+    if(inp.value==='solutioning'){
+      sessionStorage.setItem(KEY,'1');
+      gate.style.opacity='0';
+      gate.style.transition='opacity 0.3s ease';
+      setTimeout(function(){gate.style.display='none';},300);
+    } else {
+      err.textContent='Incorrect access code.';
+      inp.style.borderColor='#C86A48';
+      setTimeout(function(){err.textContent='';inp.style.borderColor='#2A2825';},2500);
+    }
+  }
+  btn.addEventListener('click',tryUnlock);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
+  inp.focus();
+})();
+</script>
+
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
+
+    <!-- SLIDE 1: COVER -->
+    <section class="slide slide-cover active" id="slide-1" aria-label="Cover">
+        <div class="cover-name-mark reveal">D.MATHIESON</div>
+        <div class="cover-title-area">
+            <h1 class="cover-h1 reveal">Behavioral Health<br>Eligibility<br>Automation</h1>
+            <p class="cover-meta reveal">Dan Mathieson &nbsp;·&nbsp; June 2026</p>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 1</span>
+        </footer>
+    </section>
+
+    <!-- SLIDE 2: CUSTOMER CHALLENGE -->
+    <section class="slide slide-content" id="slide-2" aria-label="Customer Challenge">
+        <div class="panel-layout">
+            <div class="panel-left">
+                <p class="section-label reveal">Customer Challenge</p>
+                <h2 class="panel-slide-title reveal">Eligibility checks<br>before every visit</h2>
+                <p class="panel-context reveal">
+                    A PE-backed multi-state outpatient behavioral
+                    health network. Every appointment required a
+                    fresh E&amp;B verification: active coverage,
+                    deductible status, copay amounts. No automation
+                    existed. The workflow was entirely manual,
+                    payer portal by portal, patient by patient.
+                </p>
+            </div>
+            <div class="panel-right">
+                <div class="info-row reveal">
+                    <span class="row-label">Situation</span>
+                    <span class="row-content">
+                        <strong>~1,500 clinicians. ~300,000 eligibility lookups per month.</strong>
+                        Staff verified coverage manually before each session: 7 minutes per patient,
+                        a different portal for every carrier. Coverage status determined whether
+                        the appointment happened at all. A failed check meant a missed session
+                        and lost revenue.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Landscape</span>
+                    <span class="row-content">
+                        Payer-by-payer feasibility analysis to find where
+                        <strong>80% of appointment volume lived.</strong>
+                        Dominant payer covered ~38%, enabling a phased rollout
+                        that targeted the highest ROI carriers first.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Constraint</span>
+                    <span class="row-content">
+                        Honest engineering estimate: <strong>6 months.</strong>
+                        Sales committed 4. The 2-month gap became the first
+                        architectural constraint we designed around.
+                        <span class="quote-key">Predictability under a fixed deadline
+                        matters more than probabilistic flexibility.</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 2</span>
+        </footer>
+    </section>
+
+    <!-- SLIDE 3: TECHNICAL SOLUTION -->
+    <section class="slide slide-content" id="slide-3" aria-label="Technical Solution">
+        <div class="solution-layout">
+            <h2 class="solution-heading reveal">Technical Solution</h2>
+            <p class="solution-sub reveal">Deterministic by design. EDI via Stedi for scale, portal RPA for coverage.</p>
+
+            <div class="solution-callout reveal">
+                <span class="callout-headline">~95% deterministic: RPA + EDI 270/271 via Stedi</span>
+                <div class="callout-divider"></div>
+                <span class="callout-detail">
+                    RPA for portal payers: predictable, auditable, debuggable under deadline &nbsp;·&nbsp;
+                    EDI via Stedi for supported payers: durable, no per-lookup fee &nbsp;·&nbsp;
+                    sequencing both calls is the architecture
+                </span>
+            </div>
+
+            <div class="arch-diagram reveal">
+                <div class="arch-ehr-start">
+                    <span class="node-name">PMS</span>
+                    <span class="node-detail">appointments<br>patient roster</span>
+                </div>
+                <div class="arch-arrow-left" aria-hidden="true"></div>
+                <div class="arch-agent">
+                    <span class="agent-label">Automation Agent</span>
+                    <div class="agent-steps">
+                        <div class="agent-step">
+                            <div class="step-name">Roster Load</div>
+                            <div class="step-detail">Appointments + patients</div>
+                        </div>
+                        <span class="step-sep" aria-hidden="true">→</span>
+                        <div class="agent-step">
+                            <div class="step-name">Route by Payer</div>
+                            <div class="step-detail">EDI vs portal RPA</div>
+                        </div>
+                        <span class="step-sep" aria-hidden="true">→</span>
+                        <div class="agent-step">
+                            <div class="step-name">Query + Scrape</div>
+                            <div class="step-detail">270 or web automation</div>
+                        </div>
+                        <span class="step-sep" aria-hidden="true">→</span>
+                        <div class="agent-step key">
+                            <div class="step-name">Validate + Write</div>
+                            <div class="step-detail">Observability gate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-arrow-right" aria-hidden="true"></div>
+                <div class="arch-ehr-end">
+                    <span class="node-name">PMS</span>
+                    <span class="node-detail">verified E&amp;B<br>results</span>
+                </div>
+                <div class="arch-connector" aria-hidden="true">
+                    <div class="v-line"></div>
+                    <span class="v-label">external</span>
+                    <div class="v-line"></div>
+                    <div class="v-arrow"></div>
+                </div>
+                <div class="arch-portals">
+                    <div class="portal-node">
+                        <div class="portal-name">EDI via Stedi</div>
+                        <div class="portal-vol">Medicare + supported payers</div>
+                    </div>
+                    <div class="portal-node">
+                        <div class="portal-name">Payer Portals</div>
+                        <div class="portal-vol">web RPA, remaining carriers</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portal-workflow reveal">
+                <span class="workflow-section-label">Observability Layer</span>
+                <div class="workflow-steps">
+                    <div class="workflow-step"><div class="wf-name">Pre-run Baseline</div><div class="wf-detail">PMS snapshot</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Post-run Diff</div><div class="wf-detail">Detect changes</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Anomaly Flag</div><div class="wf-detail">Unexpected writes</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Alert + Notify</div><div class="wf-detail">Customer team</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step key-step"><div class="wf-name">Permanent Product</div><div class="wf-detail">Crisis tool graduated</div></div>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 3</span>
+        </footer>
+    </section>
+
+    <!-- SLIDE 4: BUSINESS OUTCOME -->
+    <section class="slide slide-content" id="slide-4" aria-label="Business Outcome">
+        <div class="panel-layout">
+            <div class="panel-left">
+                <div class="status-badge reveal">Renewed · Expanded</div>
+                <h2 class="panel-slide-title reveal">Business<br>Outcome</h2>
+                <p class="panel-context reveal">
+                    The champion ran his own ROI study
+                    and shared it line by line, unprompted:
+                    <em>"Financially, this is still successful.
+                    A positive and tangible quantifiable ROI."</em>
+                    A buyer-built number beats anything we report.
+                </p>
+            </div>
+            <div class="panel-right">
+                <div class="info-row reveal">
+                    <span class="row-label">Champion's ROI Study</span>
+                    <span class="row-content">
+                        <strong class="metric-big">$650K</strong>
+                        annualized value vs ~$320-325K annual fees.
+                        Conservative 2:1 today, realistic <strong>3 to 3.5:1</strong>,
+                        projected 5-6:1 as remaining portals come online.
+                        <span class="quote-key">"You guys paid for yourself and some. It takes about half a year of you doing your thing to pay back what I pay."</span>
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Three Buckets</span>
+                    <span class="row-content">
+                        <strong>~$500K</strong> impactable eligibility-denial revenue
+                        (three earliest portals, ~50% of volume, Jan-Mar 2024 vs 2025 pre/post) &nbsp;·&nbsp;
+                        <strong>~$73K</strong> clearinghouse cost avoided: Waystar per-lookup fees
+                        stayed under the flat-fee cap &nbsp;·&nbsp;
+                        <strong>~$100K</strong> two back-office hires requested and never made
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Growth Unlocked</span>
+                    <span class="row-content">
+                        <strong>50 → 62 locations.</strong> Expanding into 2 new states
+                        without the staff they had originally planned to add.
+                        Eligibility stopped scaling with bodies.
+                        <span class="quote-key">"You don't do it with a transaction cost. Everybody else does, and that's garbage. You could grow infinitely without paying anymore."</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 4</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX BREAK: Section divider -->
+    <section class="slide slide-content" id="slide-appendix-break" aria-label="Appendix">
+        <div class="appendix-break-layout">
+            <div class="appendix-break-rule reveal"></div>
+            <div class="appendix-break-content">
+                <p class="appendix-break-eyebrow reveal">Additional Material</p>
+                <h2 class="appendix-break-title reveal">Appendix</h2>
+                <p class="appendix-break-sub reveal">Deep dives available for Q&amp;A</p>
+            </div>
+            <div class="appendix-break-rule reveal"></div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; App.</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX A: CHAMPION ROI DETAIL -->
+    <section class="slide slide-content" id="slide-5" aria-label="Champion ROI Detail">
+        <div class="panel-layout">
+            <div class="panel-left">
+                <span class="appendix-tag reveal">Appendix A</span>
+                <h2 class="panel-slide-title reveal">Champion<br>ROI Detail</h2>
+                <p class="panel-context reveal">
+                    The champion explicitly did not "juice"
+                    the number. He excluded copay recovery
+                    he knows is real but hasn't quantified,
+                    and only counted impactable denials:
+                    what they'd have written off for lack
+                    of staff, not gross denial dollars.
+                </p>
+            </div>
+            <div class="panel-right">
+                <div class="info-row reveal">
+                    <span class="row-label">Eligibility Denials (~$500K)</span>
+                    <span class="row-content">
+                        Pre/post comparison: Jan-Mar 2024 vs Jan-Mar 2025,
+                        on the <strong>three earliest-live portals (~50% of volume, ~30 health plans).</strong>
+                        Only the impactable slice counted: denials they'd realistically have written off
+                        for lack of staff to chase them. The other ~50% of volume
+                        is not yet in the measured figure.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Clearinghouse + FTE (~$173K)</span>
+                    <span class="row-content">
+                        <strong>~$73-74K/yr</strong> clearinghouse avoidance: incumbent deal was
+                        $6,823/month flat fee + $0.19/lookup, 65K included.
+                        Agent keeps volume under the cap, zero per-transaction overage.
+                        <em>"$73,000 of Waystar cost avoidance. That's material."</em>
+                        &nbsp;·&nbsp;
+                        <strong>~$100K/yr</strong> from two back-office hires requested and never made.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Integrity Labels</span>
+                    <span class="row-content">
+                        <strong>Measured today:</strong> ~$650K annualized / ~$320-325K fees /
+                        2:1 conservative, 3 to 3.5:1 realistic &nbsp;·&nbsp;
+                        <strong>Projected next year:</strong> 5-6:1 as remaining portals
+                        (~50% of volume still unmeasured) report.
+                        Bright line: never collapse these into one number.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; A</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX B: OBSERVABILITY ARCHITECTURE -->
+    <section class="slide slide-content" id="slide-6" aria-label="Observability Architecture">
+        <div class="panel-layout">
+            <div class="panel-left">
+                <span class="appendix-tag reveal">Appendix B</span>
+                <h2 class="panel-slide-title reveal">Observability<br>Architecture</h2>
+                <p class="panel-context reveal">
+                    Built in a 2-week recovery sprint after an
+                    undetected write error affected appointment records.
+                    The pre/post diff that found the scope of the problem
+                    became a permanent product capability.
+                </p>
+            </div>
+            <div class="panel-right">
+                <div class="info-row reveal">
+                    <span class="row-label">Pre-run snapshot</span>
+                    <span class="row-content">
+                        Before each overnight run: capture
+                        <strong>appointment count, coverage flags, and deductible fields</strong>
+                        for all patients in scope.
+                        Stored as a point-in-time baseline in the monitoring layer.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Post-run diff</span>
+                    <span class="row-content">
+                        After the run: compare PMS state against the baseline.
+                        <strong>Flag any unexpected deletions or overwrites.</strong>
+                        Alert threshold: any appointment record
+                        modified outside the expected E&amp;B fields.
+                    </span>
+                </div>
+                <div class="info-row reveal">
+                    <span class="row-label">Recovery value</span>
+                    <span class="row-content">
+                        The layer identified the scope of the write error within hours,
+                        enabling targeted reconciliation.
+                        <strong>~$45K in revenue recovered</strong> via the diff-identified records.
+                        Now runs on every overnight job as a standard health check.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; B</span>
+        </footer>
+    </section>
+
+</main>
+</div>
+
+<!-- Navigation progress indicator -->
+<nav class="deck-nav" id="deckNav" aria-label="Slide navigation">
+    <button class="nav-arrow" id="navPrev" aria-label="Previous slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 5L5 1L9 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="nav-dots" id="navDots"></div>
+    <button class="nav-arrow" id="navNext" aria-label="Next slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</nav>
+
+<div class="edit-hotzone" id="editHotzone"></div>
+<button class="edit-toggle" id="editToggle">&#9998; Edit</button>
+<div class="slide-counter" id="slideCounter">1 / 7</div>
+
+<script>
+    class SlidePresentation {
+        constructor() {
+            this.slides = Array.from(document.querySelectorAll('.slide'));
+            this.total  = this.slides.length;
+            this.current = 0;
+            this.stage   = document.getElementById('deckStage');
+            this.counter = document.getElementById('slideCounter');
+            this.mainSlideCount = 4;
+            this.navDots = [];
+
+            this.scaleStage();
+            window.addEventListener('resize', () => this.scaleStage());
+            this.setupKeyboard();
+            this.setupTouch();
+            this.setupWheel();
+            this.buildNav();
+            this.showSlide(0);
+        }
+
+        scaleStage() {
+            const f = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+            const x = (window.innerWidth  - 1920 * f) / 2;
+            const y = (window.innerHeight - 1080 * f) / 2;
+            this.stage.style.transform = `translate(${x}px,${y}px) scale(${f})`;
+        }
+
+        buildNav() {
+            const c = document.getElementById('navDots');
+            if (!c) return;
+            this.slides.forEach((slide, i) => {
+                if (i === this.mainSlideCount) {
+                    const d = document.createElement('div');
+                    d.className = 'nav-appendix-divider';
+                    d.innerHTML = '<div class="nav-appendix-line"></div><span class="nav-appendix-label">Appendix</span><div class="nav-appendix-line"></div>';
+                    c.appendChild(d);
+                }
+                const title = slide.getAttribute('aria-label') || ('Slide ' + (i + 1));
+                const wrap = document.createElement('div');
+                wrap.className = 'nav-dot-wrap';
+                const label = document.createElement('span');
+                label.className = 'nav-dot-label';
+                label.textContent = title;
+                const dot = document.createElement('button');
+                dot.className = 'nav-dot' + (i >= this.mainSlideCount ? ' appendix' : '');
+                dot.setAttribute('aria-label', title);
+                dot.addEventListener('click', () => this.showSlide(i));
+                wrap.appendChild(label);
+                wrap.appendChild(dot);
+                c.appendChild(wrap);
+                this.navDots.push(dot);
+            });
+            document.getElementById('navPrev')?.addEventListener('click', () => this.prev());
+            document.getElementById('navNext')?.addEventListener('click', () => this.next());
+        }
+
+        updateNav() {
+            this.navDots.forEach((d, i) => d.classList.toggle('active', i === this.current));
+        }
+
+        showSlide(index) {
+            this.current = Math.max(0, Math.min(index, this.total - 1));
+            this.slides.forEach((s, i) => {
+                s.classList.toggle('active',  i === this.current);
+                s.classList.toggle('visible', i === this.current);
+            });
+            if (this.counter) this.counter.textContent = (this.current + 1) + ' / ' + this.total;
+            this.updateNav();
+        }
+
+        next() { this.showSlide(this.current + 1); }
+        prev() { this.showSlide(this.current - 1); }
+
+        setupKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                if (e.target.getAttribute('contenteditable')) return;
+                switch (e.key) {
+                    case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); this.next(); break;
+                    case 'ArrowLeft':  case 'ArrowUp':              e.preventDefault(); this.prev(); break;
+                    case 'PageDown': this.next(); break;
+                    case 'PageUp':   this.prev(); break;
+                    case 'Home': this.showSlide(0); break;
+                    case 'End':  this.showSlide(this.total - 1); break;
+                    case 'e': case 'E': editor.toggleEditMode(); break;
+                }
+            });
+        }
+
+        setupTouch() {
+            let sx = 0, sy = 0;
+            document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+            document.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - sx;
+                const dy = e.changedTouches[0].clientY - sy;
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) dx < 0 ? this.next() : this.prev();
+            }, { passive: true });
+        }
+
+        setupWheel() {
+            let throttled = false;
+            document.addEventListener('wheel', e => {
+                if (throttled) return;
+                throttled = true;
+                setTimeout(() => { throttled = false; }, 600);
+                e.deltaY > 0 ? this.next() : this.prev();
+            }, { passive: true });
+        }
+    }
+
+    class InlineEditor {
+        constructor() {
+            this.isActive = false;
+            this.editableEls = [];
+            this.toggle  = document.getElementById('editToggle');
+            this.hotzone = document.getElementById('editHotzone');
+            this.hideTimeout = null;
+            this.hotzone.addEventListener('mouseenter', () => { clearTimeout(this.hideTimeout); this.toggle.classList.add('show'); });
+            this.hotzone.addEventListener('mouseleave', () => { this.hideTimeout = setTimeout(() => { if (!this.isActive) this.toggle.classList.remove('show'); }, 400); });
+            this.toggle.addEventListener('mouseenter', () => clearTimeout(this.hideTimeout));
+            this.toggle.addEventListener('mouseleave', () => { this.hideTimeout = setTimeout(() => { if (!this.isActive) this.toggle.classList.remove('show'); }, 400); });
+            this.hotzone.addEventListener('click', () => this.toggleEditMode());
+            this.toggle.addEventListener('click',  () => this.toggleEditMode());
+            document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); this.save(); } });
+        }
+        toggleEditMode() {
+            this.isActive = !this.isActive;
+            this.toggle.textContent = this.isActive ? '✓ Done' : '✎ Edit';
+            this.toggle.classList.toggle('active', this.isActive);
+            const sel = 'h1,h2,h3,p,span,.step-name,.step-detail,.node-name,.node-detail,.portal-name,.portal-vol,.metric-big';
+            if (this.isActive) {
+                this.editableEls = Array.from(document.querySelectorAll(sel)).filter(el => el.children.length === 0 || el.tagName === 'STRONG');
+                this.editableEls.forEach(el => el.setAttribute('contenteditable', 'true'));
+            } else {
+                this.editableEls.forEach(el => el.removeAttribute('contenteditable'));
+                this.editableEls = [];
+                this.save();
+            }
+        }
+        save() {
+            try { localStorage.setItem('tcn-deck-v4', document.getElementById('deckStage').innerHTML); } catch(e) {}
+        }
+    }
+
+    const deck   = new SlidePresentation();
+    const editor = new InlineEditor();
+
+    const saved = localStorage.getItem('tcn-deck-v4');
+    if (saved) {
+        document.getElementById('deckStage').innerHTML = saved;
+        deck.slides  = Array.from(document.querySelectorAll('.slide'));
+        deck.stage   = document.getElementById('deckStage');
+        deck.scaleStage();
+        deck.showSlide(0);
+    }
+</script>
+</body>
+</html>

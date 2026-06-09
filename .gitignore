@@ -33,3 +33,9 @@ yarn-error.log*
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# NDA: Anthropic interview prep (never commit)
+/projects/special-projects/
+
+# NDA: private interview rehearsal skill (loads its briefing from the gitignored prep dir)
+/.claude/skills/solutioning-rehearsal/

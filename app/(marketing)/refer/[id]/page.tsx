@@ -15,6 +15,8 @@ import ReferralBlurb from '@/components/refer/ReferralBlurb';
 import ApplicationQA from '@/components/refer/ApplicationQA';
 import ProjectCallouts from '@/components/refer/ProjectCallouts';
 import FitScoreDimensions from '@/components/refer/FitScoreDimensions';
+import SolutioningDecks from '@/components/refer/SolutioningDecks';
+import PasswordGate from '@/components/refer/PasswordGate';
 import CompanyOverviewPanel from '@/components/refer/CompanyOverviewPanel';
 import { getSortedInfo } from '@/lib/content/infoDocs';
 import styles from './page.module.css';
@@ -143,6 +145,7 @@ export default async function ReferPage({ params }: Props) {
   return (
     <>
       <SiteHeader allInfoData={allInfoData} />
+      {config.passwordGated && <PasswordGate />}
       <div className={styles.wrapper}>
 
         {/* ── Page header ─────────────────────────────────── */}
@@ -225,6 +228,12 @@ export default async function ReferPage({ params }: Props) {
           {config.projects.length > 0 && (
             <CollapsibleSection title="Relevant projects" defaultOpen>
               <ProjectCallouts projects={config.projects} />
+            </CollapsibleSection>
+          )}
+
+          {(config.solutioningDecks ?? []).length > 0 && (
+            <CollapsibleSection title="Interview prep materials" defaultOpen>
+              <SolutioningDecks decks={config.solutioningDecks!} />
             </CollapsibleSection>
           )}
 

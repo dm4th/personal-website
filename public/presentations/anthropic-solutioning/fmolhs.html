@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Prior-Auth &amp; Appeals Automation: Dan Mathieson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+
+        /* === ANTHROPIC DESIGN TOKENS === */
+        :root {
+            --terracotta:      #C86A48;
+            --terracotta-bg:   rgba(200, 106, 72, 0.08);
+            --cream:           #F5EEE4;
+            --card:            #EAE4D9;
+            --card-border:     #D8D2C7;
+            --text:            #1A1A1A;
+            --text-muted:      #4A4440;
+            --stage-bg:        #111110;
+            --font:            'Plus Jakarta Sans', sans-serif;
+
+            /* Type scale — authored at 1920x1080 */
+            --sz-cover:   94px;
+            --sz-h1:      60px;
+            --sz-h2:      44px;
+            --sz-body:    26px;
+            --sz-sm:      22px;
+            --sz-label:   17px;
+            --sz-foot:    17px;
+
+            /* Layout */
+            --pad:        80px;
+            --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* === RESET === */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ================================================
+           VIEWPORT-BASE.CSS — mandatory fixed-stage rules
+           ================================================ */
+        html, body {
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background: var(--stage-bg);
+        }
+        .deck-viewport {
+            position: fixed; inset: 0;
+            overflow: hidden;
+            background: var(--stage-bg);
+        }
+        /* Fixed 1920x1080 canvas; JS sets transform */
+        .deck-stage {
+            position: absolute; left: 0; top: 0;
+            width: 1920px; height: 1080px;
+            overflow: hidden;
+            transform-origin: 0 0;
+        }
+        /* Slides stack; visibility controlled by .active/.visible only */
+        .slide {
+            position: absolute; inset: 0;
+            width: 1920px; height: 1080px;
+            overflow: hidden;
+            display: block;
+            visibility: hidden; opacity: 0;
+            pointer-events: none;
+        }
+        .slide.active,
+        .slide.visible {
+            visibility: visible; opacity: 1;
+            pointer-events: auto; z-index: 1;
+        }
+        img, video, canvas, svg { max-width: 100%; max-height: 100%; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2ms !important;
+            }
+        }
+        @media print {
+            html, body { width: 1920px; height: auto; overflow: visible; background: #fff; }
+            .deck-viewport { position: static; overflow: visible; background: #fff; }
+            .deck-stage { position: static; width: auto; height: auto; transform: none !important; background: none; }
+            .slide {
+                position: relative; display: block !important;
+                visibility: visible !important; opacity: 1 !important;
+                pointer-events: auto !important;
+                width: 1920px; height: 1080px;
+                break-after: page; page-break-after: always;
+            }
+            .slide:last-child { break-after: auto; page-break-after: auto; }
+            .deck-controls { display: none !important; }
+        }
+        /* ================================================
+           END VIEWPORT-BASE.CSS
+           ================================================ */
+
+        /* === SLIDE TRANSITIONS === */
+        .slide {
+            transition: opacity 0.35s var(--ease);
+        }
+
+        /* === DIAGRAM FLOW ANIMATIONS === */
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.55; }
+            50%       { opacity: 0.9; }
+        }
+        @keyframes keyGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(200, 106, 72, 0.5); }
+            50%       { box-shadow: 0 0 0 14px rgba(200, 106, 72, 0); }
+        }
+
+        /* === REVEAL ANIMATIONS (staggered fade+lift) === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        }
+        .slide.visible .reveal { opacity: 1; transform: translateY(0); }
+        .reveal:nth-child(1) { transition-delay: 0.04s; }
+        .reveal:nth-child(2) { transition-delay: 0.10s; }
+        .reveal:nth-child(3) { transition-delay: 0.16s; }
+        .reveal:nth-child(4) { transition-delay: 0.22s; }
+        .reveal:nth-child(5) { transition-delay: 0.28s; }
+        .reveal:nth-child(6) { transition-delay: 0.34s; }
+
+        /* === SHARED FOOTER CHROME === */
+        .slide-footer {
+            position: absolute;
+            bottom: 48px;
+            left: var(--pad);
+            right: var(--pad);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-mark {
+            font-family: var(--font);
+            font-size: var(--sz-foot);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: 0.45;
+        }
+        .footer-right {
+            font-family: var(--font);
+            font-size: var(--sz-foot);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            opacity: 0.35;
+        }
+
+        /* ===========================================
+           SLIDE 1 — COVER
+           Full terracotta background; title anchored
+           bottom-left like the Anthropic template.
+           =========================================== */
+        .slide-cover   { background: var(--terracotta); }
+        .slide-content { background: var(--cream); }
+
+        .cover-name-mark {
+            position: absolute;
+            top: 52px; left: var(--pad);
+            font-family: var(--font);
+            font-size: var(--sz-foot);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: 0.6;
+        }
+        .cover-title-area {
+            position: absolute;
+            bottom: 148px;
+            left: var(--pad);
+            max-width: 960px;
+        }
+        .cover-h1 {
+            font-family: var(--font);
+            font-size: var(--sz-cover);
+            font-weight: 800;
+            line-height: 1.02;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 22px;
+        }
+        .cover-meta {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 400;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        /* ===========================================
+           SLIDES 2 + 4 — TWO-PANEL CASE STUDY LAYOUT
+           Left panel: context + heading
+           Right panel: labeled rows with dividers
+           =========================================== */
+        .panel-layout {
+            position: absolute; inset: 0;
+            display: flex;
+        }
+        .panel-left {
+            width: 38%;
+            padding: var(--pad) 60px var(--pad) var(--pad);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 2px solid var(--card-border);
+            background: rgba(200, 106, 72, 0.04);
+        }
+        .panel-right {
+            flex: 1;
+            padding: var(--pad) var(--pad) var(--pad) 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .section-label {
+            font-family: var(--font);
+            font-size: var(--sz-label);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+        .panel-slide-title {
+            font-family: var(--font);
+            font-size: var(--sz-h1);
+            font-weight: 800;
+            line-height: 1.07;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .panel-context {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 400;
+            line-height: 1.55;
+            color: var(--text-muted);
+        }
+
+        /* Labeled rows on right panel */
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px 0;
+            border-bottom: 1.5px solid var(--card-border);
+            gap: 0;
+        }
+        .info-row:first-child { border-top: 1.5px solid var(--card-border); }
+        .row-label {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 700;
+            color: var(--text);
+            min-width: 200px;
+            padding-top: 2px;
+            flex-shrink: 0;
+        }
+        .row-content {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 400;
+            line-height: 1.55;
+            color: var(--text);
+        }
+        .row-content strong { font-weight: 700; }
+        .quote-key { color: var(--terracotta); font-style: italic; }
+
+        /* Outcome-specific: large metric inside a row */
+        .metric-big {
+            display: block;
+            font-size: var(--sz-h2);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--terracotta);
+            margin-bottom: 5px;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 5px 16px;
+            border-radius: 100px;
+            margin-bottom: 22px;
+        }
+
+        /* Appendix section tag */
+        .appendix-tag {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid var(--terracotta);
+            color: var(--terracotta);
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 100px;
+            margin-bottom: 18px;
+        }
+
+        /* ===========================================
+           SLIDE 3 — TECHNICAL SOLUTION
+           Full-width layout: heading + callout + diagram
+           =========================================== */
+        .solution-layout {
+            position: absolute;
+            top: var(--pad);
+            left: var(--pad);
+            right: var(--pad);
+            bottom: 100px;
+            display: flex;
+            flex-direction: column;
+        }
+        .solution-heading {
+            font-family: var(--font);
+            font-size: var(--sz-h1);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        .solution-sub {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        /* Terracotta callout */
+        .solution-callout {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--terracotta);
+            border-radius: 12px;
+            padding: 22px 32px;
+            margin-bottom: 36px;
+            align-self: stretch;
+        }
+        .callout-headline {
+            font-family: var(--font);
+            font-size: var(--sz-body);
+            font-weight: 800;
+            color: var(--text);
+            flex-shrink: 0;
+        }
+        .callout-divider {
+            width: 2px;
+            height: 28px;
+            background: var(--text);
+            opacity: 0.2;
+            flex-shrink: 0;
+        }
+        .callout-detail {
+            font-family: var(--font);
+            font-size: var(--sz-body);
+            font-weight: 400;
+            color: var(--text);
+            opacity: 0.75;
+        }
+
+        /* ===========================================
+           ARCHITECTURE DIAGRAM — 7-column grid
+           Columns: EHR | arrow | Agent(1fr) | arrow | Phase1 | arrow | EHR
+           Rows: auto (main flow) | 32px (connector) | auto (portals)
+           align-items: center so arrows stay vertically centered
+           with the agent box regardless of its height.
+           =========================================== */
+        .arch-diagram {
+            display: grid;
+            grid-template-columns: 140px 44px 1fr 44px 180px 44px 140px;
+            grid-template-rows: auto 32px auto;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* EHR start node — no fixed height, auto-sizes to content */
+        .arch-ehr-start {
+            grid-column: 1; grid-row: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            background: var(--card);
+            border-radius: 14px;
+            border: 2px solid var(--card-border);
+            padding: 20px 14px;
+        }
+
+        /* EHR end node — no fixed height */
+        .arch-ehr-end {
+            grid-column: 7; grid-row: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            background: var(--card);
+            border-radius: 14px;
+            border: 2px solid var(--card-border);
+            padding: 20px 14px;
+        }
+
+        /* Arrow left (EHR to agent) — no fixed height; centers within its grid cell */
+        .arch-arrow-left {
+            grid-column: 2; grid-row: 1;
+            display: flex; align-items: center;
+        }
+        /* Arrow right (agent to phase 1 outputs) */
+        .arch-arrow-right {
+            grid-column: 4; grid-row: 1;
+            display: flex; align-items: center;
+        }
+        /* Arrow phase 1 outputs to Epic import */
+        .arch-arrow-phase1 {
+            grid-column: 6; grid-row: 1;
+            display: flex; align-items: center;
+        }
+
+        /* Solid terracotta arrows with gentle pulse */
+        .arch-arrow-left::before,
+        .arch-arrow-right::before,
+        .arch-arrow-phase1::before {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: var(--terracotta);
+            animation: arrowPulse 2.5s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        .arch-arrow-left::after,
+        .arch-arrow-right::after,
+        .arch-arrow-phase1::after {
+            content: '';
+            width: 0; height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 14px solid var(--terracotta);
+            opacity: 0.85;
+        }
+
+        /* Agent boundary — auto-sizes to its content */
+        .arch-agent {
+            grid-column: 3; grid-row: 1;
+            border: 2.5px dashed var(--terracotta);
+            border-radius: 16px;
+            padding: 14px 20px 16px;
+            background: var(--terracotta-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .agent-label {
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+        }
+        .agent-steps {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+        /* Equal-width distribution; text allowed to wrap */
+        .agent-step {
+            flex: 1;
+            min-width: 0;
+            background: var(--cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 10px;
+            padding: 10px 16px;
+            text-align: center;
+        }
+        /* The flat-file step is highlighted — it is the key decision */
+        .agent-step.key {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+            animation: keyGlow 2.5s ease-in-out 1.2s infinite;
+        }
+        .agent-step.key .step-name,
+        .agent-step.key .step-detail {
+            color: var(--text);
+        }
+        .step-name {
+            font-family: var(--font);
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .step-detail {
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 3px;
+            white-space: normal;
+            line-height: 1.3;
+        }
+        .step-sep {
+            font-size: 18px;
+            color: var(--terracotta);
+            opacity: 0.65;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        /* Arch node shared text styles */
+        .node-name {
+            font-family: var(--font);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .node-detail {
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Vertical connector: agent to portals */
+        .arch-connector {
+            grid-column: 3; grid-row: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .v-line {
+            width: 3px;
+            height: 10px;
+            background: var(--terracotta);
+            animation: arrowPulse 2.5s ease-in-out 0.6s infinite;
+            opacity: 0.6;
+        }
+        .v-label {
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            opacity: 0.75;
+        }
+        .v-arrow {
+            width: 0; height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 10px solid var(--terracotta);
+            opacity: 0.65;
+        }
+
+        /* Payer portals row */
+        .arch-portals {
+            grid-column: 3; grid-row: 3;
+            display: flex;
+            gap: 10px;
+        }
+        .portal-node {
+            flex: 1;
+            background: var(--card);
+            border-radius: 10px;
+            border: 1.5px solid var(--card-border);
+            padding: 12px 16px;
+            text-align: center;
+        }
+        .portal-name {
+            font-family: var(--font);
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .portal-vol {
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Phase 1 output block */
+        .phase1-block {
+            grid-column: 5; grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            gap: 7px;
+        }
+        .phase-tag {
+            font-family: var(--font);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            text-align: center;
+            margin-bottom: 2px;
+        }
+        .phase-tag.planned { color: var(--text-muted); font-size: 11px; }
+        .output-node {
+            background: var(--card);
+            border-radius: 9px;
+            border: 1.5px solid var(--card-border);
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .output-node .node-name { font-size: 15px; margin-bottom: 2px; }
+        .output-node .node-detail { font-size: 12px; }
+
+        /* Phase 2 indicator — planned, dashed, below Phase 1 */
+        .phase2-indicator {
+            grid-column: 5; grid-row: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px dashed var(--card-border);
+            border-radius: 9px;
+            padding: 8px 12px;
+            opacity: 0.55;
+            text-align: center;
+        }
+        .node-name-sm {
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* === Portal workflow detail strip === */
+        .portal-workflow {
+            display: flex;
+            align-items: center;
+            background: var(--card);
+            border: 1.5px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-top: 18px;
+            flex-shrink: 0;
+        }
+        .workflow-section-label {
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding-right: 20px;
+            margin-right: 14px;
+            border-right: 1.5px solid var(--card-border);
+        }
+        .workflow-steps {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        .workflow-step {
+            flex: 1;
+            background: var(--cream);
+            border-radius: 8px;
+            border: 1.5px solid var(--card-border);
+            padding: 8px 10px;
+            text-align: center;
+            min-width: 0;
+        }
+        .workflow-step.key-step {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        .workflow-step.key-step .wf-name,
+        .workflow-step.key-step .wf-detail { color: var(--text); }
+        .wf-name {
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .wf-detail {
+            font-family: var(--font);
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+        .wf-sep {
+            font-size: 18px;
+            color: var(--terracotta);
+            opacity: 0.65;
+            flex-shrink: 0;
+        }
+
+        /* ===========================================
+           APPENDIX SLIDES — Reliability + Commercial
+           =========================================== */
+
+        /* Reliability grid for Appendix A */
+        .reliability-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .rel-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--card);
+            border: 1.5px solid var(--card-border);
+            border-radius: 10px;
+            padding: 14px 18px;
+        }
+        .rel-row.highlight {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        .rel-row.highlight .rel-name,
+        .rel-row.highlight .rel-pct,
+        .rel-row.highlight .rel-note { color: var(--text); }
+        .rel-bar-wrap {
+            flex: 1;
+        }
+        .rel-name {
+            font-family: var(--font);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .rel-bar-track {
+            height: 6px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .rel-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: var(--terracotta);
+            opacity: 0.5;
+        }
+        .rel-row.highlight .rel-bar-track { background: rgba(255,255,255,0.2); }
+        .rel-row.highlight .rel-bar-fill  { background: rgba(255,255,255,0.7); opacity: 1; }
+        .rel-pct {
+            font-family: var(--font);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--terracotta);
+            min-width: 52px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .rel-note {
+            font-family: var(--font);
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Commercial breakdown table for Appendix B */
+        .commercial-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* ===========================================
+           RIGHT-SIDE NAVIGATION
+           Frosted glass container for visibility on both
+           cream and terracotta slide backgrounds.
+           Dot tooltips slide in from the right on hover.
+           =========================================== */
+        .deck-nav {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            z-index: 1000;
+            /* Frosted container: visible on cream AND dark/terracotta */
+            background: rgba(15, 12, 10, 0.22);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 22px;
+            padding: 10px 7px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-arrow {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+        .nav-arrow:hover {
+            background: rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.95);
+        }
+        .nav-dots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        /* Dot wrapper holds both the dot and its hover label */
+        .nav-dot-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        /* Slide title label: slides in from the right on hover */
+        .nav-dot-label {
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%) translateX(6px);
+            white-space: nowrap;
+            font-family: var(--font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: rgba(255,255,255,0.92);
+            background: rgba(15, 12, 10, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 5px 11px;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+        .nav-dot-wrap:hover .nav-dot-label {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        .nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            padding: 0;
+        }
+        .nav-dot:hover { background: rgba(255,255,255,0.75); }
+        .nav-dot.active {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.97);
+        }
+        .nav-appendix-divider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            margin: 2px 0;
+        }
+        .nav-appendix-line {
+            width: 16px;
+            height: 1px;
+            background: rgba(255,255,255,0.25);
+        }
+        .nav-appendix-label {
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            font-family: var(--font);
+        }
+        /* Appendix dots use terracotta accent instead of white */
+        .nav-dot.appendix { background: rgba(200,106,72,0.5); }
+        .nav-dot.appendix:hover { background: rgba(200,106,72,0.75); }
+        .nav-dot.appendix.active { background: rgba(200,106,72,0.95); }
+
+        /* ===========================================
+           APPENDIX BREAK SLIDE
+           Clean centered section divider between
+           main slides and appendix content.
+           =========================================== */
+        .appendix-break-layout {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        .appendix-break-rule {
+            width: 100px;
+            height: 2px;
+            background: var(--terracotta);
+            opacity: 0.35;
+            border-radius: 1px;
+        }
+        .appendix-break-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+        .appendix-break-eyebrow {
+            font-family: var(--font);
+            font-size: var(--sz-label);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+        }
+        .appendix-break-title {
+            font-family: var(--font);
+            font-size: 110px;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1;
+            color: var(--text);
+        }
+        .appendix-break-sub {
+            font-family: var(--font);
+            font-size: var(--sz-sm);
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* ===========================================
+           INLINE EDIT MODE
+           =========================================== */
+        .edit-hotzone {
+            position: fixed; top: 0; left: 0;
+            width: 80px; height: 80px;
+            z-index: 10000; cursor: pointer;
+        }
+        .edit-toggle {
+            position: fixed; top: 14px; left: 14px;
+            background: rgba(255,255,255,0.9);
+            border: none; border-radius: 8px;
+            padding: 6px 12px; font-size: 15px;
+            cursor: pointer; z-index: 10001;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.25s ease;
+            font-family: var(--font); font-weight: 600;
+        }
+        .edit-toggle.show,
+        .edit-toggle.active { opacity: 1; pointer-events: auto; }
+        [contenteditable="true"] {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 3px;
+            border-radius: 4px;
+            cursor: text;
+        }
+
+        /* Slide counter (outside stage) */
+        .slide-counter {
+            position: fixed;
+            bottom: 18px; right: 24px;
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+            z-index: 1000;
+            letter-spacing: 0.06em;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- ===== PASSWORD GATE ===== -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#111110;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;">
+  <div style="background:#1C1B19;border:1px solid #2A2825;border-radius:16px;padding:48px 56px;width:400px;max-width:90vw;text-align:center;">
+    <div style="width:44px;height:44px;background:#C86A48;border-radius:10px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="5" y="10" width="12" height="9" rx="2" fill="white" opacity="0.92"/><path d="M8 10V7a3 3 0 016 0v3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p style="color:#F5EEE4;font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;">Interview Prep Materials</p>
+    <p style="color:#6A6460;font-size:13px;margin-bottom:32px;line-height:1.5;">Dan Mathieson &middot; Anthropic Applied AI</p>
+    <input id="gate-input" type="password" placeholder="Access code" autocomplete="off"
+      style="width:100%;background:#111110;border:1px solid #2A2825;border-radius:8px;padding:13px 16px;color:#F5EEE4;font-size:15px;font-family:inherit;outline:none;margin-bottom:10px;transition:border-color 0.2s;" />
+    <p id="gate-err" style="color:#C86A48;font-size:13px;min-height:18px;margin-bottom:10px;"></p>
+    <button id="gate-btn"
+      style="width:100%;background:#C86A48;border:none;border-radius:8px;padding:14px;color:white;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:-0.01em;">
+      View Presentation
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='solutioning-unlocked-v1';
+  var gate=document.getElementById('gate');
+  if(sessionStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  var inp=document.getElementById('gate-input');
+  var err=document.getElementById('gate-err');
+  var btn=document.getElementById('gate-btn');
+  function tryUnlock(){
+    if(inp.value==='solutioning'){
+      sessionStorage.setItem(KEY,'1');
+      gate.style.opacity='0';
+      gate.style.transition='opacity 0.3s ease';
+      setTimeout(function(){gate.style.display='none';},300);
+    } else {
+      err.textContent='Incorrect access code.';
+      inp.style.borderColor='#C86A48';
+      setTimeout(function(){err.textContent='';inp.style.borderColor='#2A2825';},2500);
+    }
+  }
+  btn.addEventListener('click',tryUnlock);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
+  inp.focus();
+})();
+</script>
+
+<div class="deck-viewport">
+    <main class="deck-stage" id="deckStage">
+
+        <!-- =============================================
+             SLIDE 1 — COVER
+             ============================================= -->
+        <section class="slide slide-cover active" id="slide-1" aria-label="Cover slide">
+
+            <div class="cover-name-mark reveal">D.MATHIESON</div>
+
+            <div class="cover-title-area">
+                <h1 class="cover-h1 reveal">
+                    Epic Prior-Auth<br>&amp; Appeals<br>Automation
+                </h1>
+                <p class="cover-meta reveal">Dan Mathieson &nbsp;·&nbsp; June 2026</p>
+            </div>
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 1</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             SLIDE 2 — CUSTOMER CHALLENGE
+             ============================================= -->
+        <section class="slide slide-content" id="slide-2" aria-label="Customer Challenge">
+            <div class="panel-layout">
+
+                <!-- Left panel: context -->
+                <div class="panel-left">
+                    <p class="section-label reveal">Customer Challenge</p>
+                    <h2 class="panel-slide-title reveal">The bottleneck<br>moved downstream</h2>
+                    <p class="panel-context reveal">
+                        A multi-state health system running Epic,
+                        ~$1-2B net patient revenue, mid-way through a two-year
+                        revenue-cycle transformation. We already had a clinical-AI
+                        deployment live there: this was a proven partnership,
+                        not a cold sale.
+                    </p>
+                </div>
+
+                <!-- Right panel: labeled rows -->
+                <div class="panel-right">
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Situation</span>
+                        <span class="row-content">
+                            Clinical AI was generating denial-appeal letters
+                            faster than staff could file them.
+                            <strong>The bottleneck had moved downstream</strong> to manual
+                            portal submission: 8-10 minutes per appeal,
+                            312 appeals a month.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Volume</span>
+                        <span class="row-content">
+                            <strong>312 appeals/month</strong> requiring manual payer-portal
+                            login, form completion, PDF upload, and confirmation
+                            capture back into Epic. Parallel prior-auth team:
+                            500-600 checks/day against a 4,000-account backlog.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Constraint</span>
+                        <span class="row-content">
+                            Direct Epic write-back required write permissions:
+                            the single largest IT gate. The RCM leader said it
+                            plainly: <strong class="quote-key">"I don't trust easily."</strong>
+                            That sentence became the real specification.
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 2</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             SLIDE 3 — TECHNICAL SOLUTION
+             ============================================= -->
+        <section class="slide slide-content" id="slide-3" aria-label="Technical Solution">
+            <div class="solution-layout">
+
+                <h2 class="solution-heading reveal">Technical Solution</h2>
+                <p class="solution-sub reveal">One routing decision. Three problems solved.</p>
+
+                <!-- Key insight callout (terracotta) -->
+                <div class="solution-callout reveal">
+                    <span class="callout-headline">Flat file over Epic write-back</span>
+                    <div class="callout-divider"></div>
+                    <span class="callout-detail">
+                        Removed the IT gate &nbsp;·&nbsp;
+                        de-risked the weakest sub-process (71% to near-100% reliable) &nbsp;·&nbsp;
+                        built trust by keeping humans in the loop on day one
+                    </span>
+                </div>
+
+                <!-- Main pipeline: EHR to Agent to Phase 1 flat files to Epic import -->
+                <div class="arch-diagram reveal">
+
+                    <!-- EHR start -->
+                    <div class="arch-ehr-start">
+                        <span class="node-name">Epic EHR</span>
+                        <span class="node-detail">work queues<br>appeal letters</span>
+                    </div>
+
+                    <!-- Arrow left: EHR to Agent -->
+                    <div class="arch-arrow-left" aria-hidden="true"></div>
+
+                    <!-- Automation Agent boundary -->
+                    <div class="arch-agent">
+                        <span class="agent-label">Automation Agent</span>
+                        <div class="agent-steps">
+                            <div class="agent-step">
+                                <div class="step-name">Portal Login</div>
+                                <div class="step-detail">+ SMS 2FA</div>
+                            </div>
+                            <span class="step-sep" aria-hidden="true">→</span>
+                            <div class="agent-step">
+                                <div class="step-name">Form + PDF</div>
+                                <div class="step-detail">Upload</div>
+                            </div>
+                            <span class="step-sep" aria-hidden="true">→</span>
+                            <div class="agent-step key">
+                                <div class="step-name">Flat File</div>
+                                <div class="step-detail">Human review buffer</div>
+                            </div>
+                            <span class="step-sep" aria-hidden="true">→</span>
+                            <div class="agent-step">
+                                <div class="step-name">Confirmation</div>
+                                <div class="step-detail">ID capture</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow right: Agent to Phase 1 outputs -->
+                    <div class="arch-arrow-right" aria-hidden="true"></div>
+
+                    <!-- Phase 1: flat file output -->
+                    <div class="phase1-block">
+                        <div class="phase-tag">Phase 1</div>
+                        <div class="output-node">
+                            <div class="node-name">Output Flat File</div>
+                            <div class="node-detail">IDs + denial status</div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow: Phase 1 flat files to Epic import -->
+                    <div class="arch-arrow-phase1" aria-hidden="true"></div>
+
+                    <!-- EHR end: manual import today -->
+                    <div class="arch-ehr-end">
+                        <span class="node-name">Epic EHR</span>
+                        <span class="node-detail">manual import<br>today</span>
+                    </div>
+
+                    <!-- Vertical connector: agent row to portals row -->
+                    <div class="arch-connector" aria-hidden="true">
+                        <div class="v-line"></div>
+                        <span class="v-label">external</span>
+                        <div class="v-line"></div>
+                        <div class="v-arrow"></div>
+                    </div>
+
+                    <!-- Payer portals (external, under agent) -->
+                    <div class="arch-portals">
+                        <div class="portal-node">
+                            <div class="portal-name">Major Payer</div>
+                            <div class="portal-vol">~70% of volume</div>
+                        </div>
+                        <div class="portal-node">
+                            <div class="portal-name">Regional Blues</div>
+                            <div class="portal-vol">~15% of volume</div>
+                        </div>
+                        <div class="portal-node">
+                            <div class="portal-name">National Payer</div>
+                            <div class="portal-vol">~10% of volume</div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 indicator (planned, dashed, below Phase 1) -->
+                    <div class="phase2-indicator">
+                        <div class="phase-tag planned">Phase 2 (planned)</div>
+                        <div class="node-name-sm">Direct API write-back</div>
+                    </div>
+
+                </div><!-- /arch-diagram -->
+
+                <!-- Portal workflow detail strip -->
+                <div class="portal-workflow reveal">
+                    <span class="workflow-section-label">Inside the Portal</span>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="wf-name">Authenticate</div>
+                            <div class="wf-detail">Login + SMS 2FA</div>
+                        </div>
+                        <span class="wf-sep" aria-hidden="true">→</span>
+                        <div class="workflow-step">
+                            <div class="wf-name">Locate Case</div>
+                            <div class="wf-detail">By claim ID</div>
+                        </div>
+                        <span class="wf-sep" aria-hidden="true">→</span>
+                        <div class="workflow-step">
+                            <div class="wf-name">Fill Form</div>
+                            <div class="wf-detail">From appeal letter</div>
+                        </div>
+                        <span class="wf-sep" aria-hidden="true">→</span>
+                        <div class="workflow-step">
+                            <div class="wf-name">Upload PDF</div>
+                            <div class="wf-detail">Supporting docs</div>
+                        </div>
+                        <span class="wf-sep" aria-hidden="true">→</span>
+                        <div class="workflow-step">
+                            <div class="wf-name">Submit</div>
+                            <div class="wf-detail">Appeal filed</div>
+                        </div>
+                        <span class="wf-sep" aria-hidden="true">→</span>
+                        <div class="workflow-step key-step">
+                            <div class="wf-name">Flat File</div>
+                            <div class="wf-detail">IDs + denials written</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /solution-layout -->
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 3</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             SLIDE 4 — BUSINESS OUTCOME
+             ============================================= -->
+        <section class="slide slide-content" id="slide-4" aria-label="Business Outcome">
+            <div class="panel-layout">
+
+                <!-- Left panel -->
+                <div class="panel-left">
+                    <div class="status-badge reveal">Achieved · Jan 2026</div>
+                    <h2 class="panel-slide-title reveal">Business<br>Outcome</h2>
+                    <p class="panel-context reveal">
+                        Closed-won, transaction-priced SOW under an existing
+                        master agreement. Extended a multi-SOW partnership
+                        where our prior clinical-AI deployment had already
+                        delivered $20M+ in net patient lift.
+                    </p>
+                </div>
+
+                <!-- Right panel: outcome metrics -->
+                <div class="panel-right">
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Per-appeal time</span>
+                        <span class="row-content">
+                            <strong class="metric-big">70-80%</strong>
+                            8-10 minutes down to under 2 minutes.
+                            35-46 hours/month of capacity returned
+                            with no added headcount.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Automation rate</span>
+                        <span class="row-content">
+                            <strong>166 of 224 daily records</strong> fully automated
+                            end to end. Six of eight sub-processes 90%+ automatable;
+                            the weakest (71%) is exactly why the flat-file
+                            routing decision was right.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Commercial</span>
+                        <span class="row-content">
+                            <strong class="metric-big">~$1M/yr</strong>
+                            $2.50/submission · $0.50/follow-up action.
+                            Prior-auth expansion in evaluation:
+                            12,500 checks/month, 85-90% automatable.
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; 4</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             APPENDIX BREAK — Section divider
+             ============================================= -->
+        <section class="slide slide-content" id="slide-appendix-break" aria-label="Appendix">
+            <div class="appendix-break-layout">
+                <div class="appendix-break-rule reveal"></div>
+                <div class="appendix-break-content">
+                    <p class="appendix-break-eyebrow reveal">Additional Material</p>
+                    <h2 class="appendix-break-title reveal">Appendix</h2>
+                    <p class="appendix-break-sub reveal">Deep dives available for Q&amp;A</p>
+                </div>
+                <div class="appendix-break-rule reveal"></div>
+            </div>
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; App.</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             APPENDIX A — Sub-process Reliability Breakdown
+             Why the flat-file routing was architecturally correct.
+             ============================================= -->
+        <section class="slide slide-content" id="slide-5" aria-label="Reliability Breakdown">
+            <div class="panel-layout">
+
+                <div class="panel-left">
+                    <div class="appendix-tag reveal">Appendix A</div>
+                    <h2 class="panel-slide-title reveal">Why flat-file?<br>The reliability<br>case</h2>
+                    <p class="panel-context reveal">
+                        Eight sub-processes were measured across 224 daily records.
+                        Six cleared 90%+. The flat-file buffer converts the one
+                        problematic step from a silent failure into a human-auditable
+                        queue. Phase 2 direct write-back only makes sense after
+                        confirmation capture crosses ~95%.
+                    </p>
+                </div>
+
+                <div class="panel-right" style="justify-content: flex-start; padding-top: 72px;">
+                    <div class="reliability-grid reveal">
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Portal Authentication</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:97%"></div>
+                                </div>
+                                <div class="rel-note">Credential management stable</div>
+                            </div>
+                            <div class="rel-pct">97%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Case Location</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:99%"></div>
+                                </div>
+                                <div class="rel-note">Deterministic by claim ID</div>
+                            </div>
+                            <div class="rel-pct">99%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Form Population</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:95%"></div>
+                                </div>
+                                <div class="rel-note">Template-driven, high fidelity</div>
+                            </div>
+                            <div class="rel-pct">95%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">2FA Resolution</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:82%"></div>
+                                </div>
+                                <div class="rel-note">SMS timing variability</div>
+                            </div>
+                            <div class="rel-pct">82%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">PDF Upload</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:94%"></div>
+                                </div>
+                                <div class="rel-note">File size/type dependent</div>
+                            </div>
+                            <div class="rel-pct">94%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Appeal Submission</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:98%"></div>
+                                </div>
+                                <div class="rel-note">Portal flow well-mapped</div>
+                            </div>
+                            <div class="rel-pct">98%</div>
+                        </div>
+
+                        <!-- Key highlighted row: the weakest step -->
+                        <div class="rel-row highlight">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Confirmation Capture</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:71%"></div>
+                                </div>
+                                <div class="rel-note">Portal display inconsistency — KEY</div>
+                            </div>
+                            <div class="rel-pct">71%</div>
+                        </div>
+
+                        <div class="rel-row">
+                            <div class="rel-bar-wrap">
+                                <div class="rel-name">Flat File Write</div>
+                                <div class="rel-bar-track">
+                                    <div class="rel-bar-fill" style="width:99%"></div>
+                                </div>
+                                <div class="rel-note">Fully deterministic</div>
+                            </div>
+                            <div class="rel-pct">99%</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; A1</span>
+            </footer>
+        </section>
+
+
+        <!-- =============================================
+             APPENDIX B — Commercial Model Detail
+             Pricing structure and path to ~$1M/yr.
+             ============================================= -->
+        <section class="slide slide-content" id="slide-6" aria-label="Commercial Model">
+            <div class="panel-layout">
+
+                <div class="panel-left">
+                    <div class="appendix-tag reveal">Appendix B</div>
+                    <h2 class="panel-slide-title reveal">Commercial<br>model detail</h2>
+                    <p class="panel-context reveal">
+                        Transaction pricing aligns incentives: we get paid per
+                        successful automated submission. The appeals SOW is live
+                        and generating revenue today. Prior-auth is the next phase
+                        and the primary driver of the ~$1M/yr projection.
+                    </p>
+                </div>
+
+                <div class="panel-right">
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Pricing unit</span>
+                        <span class="row-content">
+                            <strong>$2.50 per automated submission</strong> (appeals and prior-auth checks).
+                            $0.50 per follow-up action (status polling, resubmission).
+                            No seat licenses, no minimums: pure transaction model.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Live SOW today</span>
+                        <span class="row-content">
+                            <strong>312 appeals/month</strong> automated at $2.50 each.
+                            Full prior-auth backlog: 4,000 accounts, 500-600 checks/day.
+                            At 85-90% automation rate, that is ~450-540 automated checks daily.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Prior-auth at scale</span>
+                        <span class="row-content">
+                            <strong>12,500 checks/month in evaluation scope.</strong>
+                            At $2.50 and 87% automation: 10,875 automated checks/month.
+                            Annual run rate on prior-auth alone: <strong>~$326K/yr.</strong>
+                            Combined with appeals and follow-up actions: path to $1M/yr
+                            includes expansion to additional sites and service lines.
+                        </span>
+                    </div>
+
+                    <div class="info-row reveal">
+                        <span class="row-label">Strategic value</span>
+                        <span class="row-content">
+                            Transaction pricing with a customer already at <strong>$20M+ net patient lift</strong>
+                            from prior clinical-AI. Each new SOW extends the partnership footprint
+                            rather than requiring a fresh trust cycle.
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <span class="footer-mark">D.Mathieson</span>
+                <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; A2</span>
+            </footer>
+        </section>
+
+    </main><!-- /deck-stage -->
+</div><!-- /deck-viewport -->
+
+
+<!-- Right-side navigation: progress dots + prev/next arrows -->
+<nav class="deck-nav" id="deckNav" aria-label="Slide navigation">
+    <button class="nav-arrow" id="navPrev" aria-label="Previous slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <path d="M1 5L5 1L9 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <div class="nav-dots" id="navDots"></div>
+    <button class="nav-arrow" id="navNext" aria-label="Next slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+</nav>
+
+
+<!-- Edit hotzone and toggle (top-left corner) -->
+<div class="edit-hotzone" id="editHotzone" title="Edit mode (hover or press E)"></div>
+<button class="edit-toggle" id="editToggle" title="Toggle edit mode (E)">Edit</button>
+
+<!-- Slide counter (outside stage, viewport-fixed) -->
+<div class="slide-counter" id="slideCounter">1 / 7</div>
+
+
+<script>
+    /* === SLIDE PRESENTATION CONTROLLER === */
+    class SlidePresentation {
+        constructor() {
+            this.slides  = Array.from(document.querySelectorAll('.slide'));
+            this.total   = this.slides.length;
+            this.current = 0;
+            this.stage   = document.getElementById('deckStage');
+            this.counter = document.getElementById('slideCounter');
+            this.mainSlideCount = 4; // slides before the appendix separator
+            this.navDots = [];
+
+            this.scaleStage();
+            window.addEventListener('resize', () => this.scaleStage());
+
+            this.setupKeyboard();
+            this.setupTouch();
+            this.setupWheel();
+            this.buildNav();
+
+            this.showSlide(0);
+        }
+
+        /* Scale the 1920x1080 stage to fill the viewport uniformly */
+        scaleStage() {
+            const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+            const x = (window.innerWidth  - 1920 * factor) / 2;
+            const y = (window.innerHeight - 1080 * factor) / 2;
+            this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+        }
+
+        /* Build the right-side dot navigation programmatically.
+           Each dot gets a wrapper with a hover label showing the slide title
+           (read from the slide's aria-label attribute). */
+        buildNav() {
+            const container = document.getElementById('navDots');
+            if (!container) return;
+
+            this.slides.forEach((slide, i) => {
+                /* Insert appendix divider before the first appendix slide */
+                if (i === this.mainSlideCount) {
+                    const divider = document.createElement('div');
+                    divider.className = 'nav-appendix-divider';
+                    divider.innerHTML = '<div class="nav-appendix-line"></div><span class="nav-appendix-label">Appendix</span><div class="nav-appendix-line"></div>';
+                    container.appendChild(divider);
+                }
+
+                const title = slide.getAttribute('aria-label') || ('Slide ' + (i + 1));
+
+                const wrap = document.createElement('div');
+                wrap.className = 'nav-dot-wrap';
+
+                const label = document.createElement('span');
+                label.className = 'nav-dot-label';
+                label.textContent = title;
+
+                const dot = document.createElement('button');
+                dot.className = 'nav-dot' + (i >= this.mainSlideCount ? ' appendix' : '');
+                dot.setAttribute('aria-label', title);
+                dot.addEventListener('click', () => this.showSlide(i));
+
+                wrap.appendChild(label);
+                wrap.appendChild(dot);
+                container.appendChild(wrap);
+                this.navDots.push(dot);
+            });
+
+            document.getElementById('navPrev')?.addEventListener('click', () => this.prev());
+            document.getElementById('navNext')?.addEventListener('click', () => this.next());
+        }
+
+        /* Sync dot active states to current slide */
+        updateNav() {
+            this.navDots.forEach((dot, i) => dot.classList.toggle('active', i === this.current));
+        }
+
+        showSlide(index) {
+            this.current = Math.max(0, Math.min(index, this.total - 1));
+            this.slides.forEach((slide, i) => {
+                slide.classList.toggle('active',  i === this.current);
+                slide.classList.toggle('visible', i === this.current);
+            });
+            if (this.counter) {
+                this.counter.textContent = `${this.current + 1} / ${this.total}`;
+            }
+            this.updateNav();
+        }
+
+        next() { this.showSlide(this.current + 1); }
+        prev() { this.showSlide(this.current - 1); }
+
+        setupKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                if (e.target.getAttribute('contenteditable')) return;
+                switch (e.key) {
+                    case 'ArrowRight': case 'ArrowDown': case ' ':
+                        e.preventDefault(); this.next(); break;
+                    case 'ArrowLeft': case 'ArrowUp':
+                        e.preventDefault(); this.prev(); break;
+                    case 'PageDown': this.next(); break;
+                    case 'PageUp':   this.prev(); break;
+                    case 'Home': this.showSlide(0); break;
+                    case 'End':  this.showSlide(this.total - 1); break;
+                    case 'e': case 'E': editor.toggleEditMode(); break;
+                }
+            });
+        }
+
+        setupTouch() {
+            let startX = 0, startY = 0;
+            document.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+            document.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - startX;
+                const dy = e.changedTouches[0].clientY - startY;
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                    dx < 0 ? this.next() : this.prev();
+                }
+            }, { passive: true });
+        }
+
+        setupWheel() {
+            let throttled = false;
+            document.addEventListener('wheel', (e) => {
+                if (throttled) return;
+                throttled = true;
+                setTimeout(() => { throttled = false; }, 600);
+                e.deltaY > 0 ? this.next() : this.prev();
+            }, { passive: true });
+        }
+    }
+
+    /* === INLINE EDITOR === */
+    class InlineEditor {
+        constructor() {
+            this.isActive = false;
+            this.editableEls = [];
+            this.toggle   = document.getElementById('editToggle');
+            this.hotzone  = document.getElementById('editHotzone');
+            this.hideTimeout = null;
+
+            this.hotzone.addEventListener('mouseenter', () => {
+                clearTimeout(this.hideTimeout);
+                this.toggle.classList.add('show');
+            });
+            this.hotzone.addEventListener('mouseleave', () => {
+                this.hideTimeout = setTimeout(() => {
+                    if (!this.isActive) this.toggle.classList.remove('show');
+                }, 400);
+            });
+            this.toggle.addEventListener('mouseenter', () => clearTimeout(this.hideTimeout));
+            this.toggle.addEventListener('mouseleave', () => {
+                this.hideTimeout = setTimeout(() => {
+                    if (!this.isActive) this.toggle.classList.remove('show');
+                }, 400);
+            });
+            this.hotzone.addEventListener('click', () => this.toggleEditMode());
+            this.toggle.addEventListener('click',  () => this.toggleEditMode());
+
+            /* Auto-save on Ctrl+S / Cmd+S */
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault();
+                    this.save();
+                }
+            });
+        }
+
+        toggleEditMode() {
+            this.isActive = !this.isActive;
+            this.toggle.textContent = this.isActive ? 'Done' : 'Edit';
+            this.toggle.classList.toggle('active', this.isActive);
+
+            const selectors = 'h1, h2, h3, p, span, .step-name, .step-detail, .node-name, .node-detail, .portal-name, .portal-vol, .metric-big, .rel-name, .rel-note, .rel-pct';
+            if (this.isActive) {
+                this.editableEls = Array.from(document.querySelectorAll(selectors))
+                    .filter(el => el.children.length === 0 || el.tagName === 'STRONG');
+                this.editableEls.forEach(el => el.setAttribute('contenteditable', 'true'));
+            } else {
+                this.editableEls.forEach(el => el.removeAttribute('contenteditable'));
+                this.editableEls = [];
+                this.save();
+            }
+        }
+
+        save() {
+            try {
+                localStorage.setItem('fmolhs-deck-v4', document.getElementById('deckStage').innerHTML);
+                console.log('Deck saved to localStorage.');
+            } catch (e) { /* storage full */ }
+        }
+    }
+
+    const deck   = new SlidePresentation();
+    const editor = new InlineEditor();
+
+    /* Restore saved edits if present (v4 key; earlier saves are ignored) */
+    const saved = localStorage.getItem('fmolhs-deck-v4');
+    if (saved) {
+        document.getElementById('deckStage').innerHTML = saved;
+        /* Re-bind after DOM replacement */
+        deck.slides  = Array.from(document.querySelectorAll('.slide'));
+        deck.stage   = document.getElementById('deckStage');
+        deck.scaleStage();
+        deck.showSlide(0);
+    }
+</script>
+</body>
+</html>

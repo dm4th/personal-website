@@ -38,6 +38,13 @@ export type JobProject = {
   relevance: string;
 };
 
+export type SolutioningDeck = {
+  title: string;
+  scenario: string;
+  description: string;
+  path: string;
+};
+
 export type JobApplicationQuestion = {
   question: string;
   answer: string;
@@ -52,6 +59,7 @@ export type JobApplicationConfig = {
   fitScore: number;
   fitScoreNote: string;
   hidden?: boolean;
+  passwordGated?: boolean;
   dimensions?: JobFitDimensions;
   summary?: string[];
   jobDescriptionUrl: string;
@@ -60,6 +68,7 @@ export type JobApplicationConfig = {
   weaknesses: JobWeakness[];
   referralBlurb: string;
   projects: JobProject[];
+  solutioningDecks?: SolutioningDeck[];
   applicationQuestions: JobApplicationQuestion[];
   resumeFile: string;
   coverLetterFile: string;
