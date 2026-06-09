@@ -148,21 +148,21 @@
   "solutioningDecks": [
     {
       "title": "Eligibility Automation",
-      "scenario": "TCN",
+      "scenario": "Behavioral Health",
       "description": "A PE-backed behavioral health network with ~1,500 clinicians and ~300K lookups a month. End-to-end ownership: pre-sales feasibility, architecture, a data-loss crisis I fixed at the system level, then renewal and expansion. The customer champion ran his own ROI study: ~$650K annualized, 3 to 3.5:1 realistic.",
-      "path": "/presentations/anthropic-solutioning/tcn.html"
+      "path": "/presentations/anthropic-solutioning/behavioral-health-eligibility.html"
     },
     {
       "title": "Epic Prior-Auth and Appeals Automation",
-      "scenario": "FMOLHS",
+      "scenario": "Health System",
       "description": "A large hospital system running Epic. The key architecture decision - flat-file routing instead of direct API integration - solved IT access constraints and front-line staff trust in a single move. The cleanest win of the three: clear technical rationale, measurable throughput improvement.",
-      "path": "/presentations/anthropic-solutioning/fmolhs.html"
+      "path": "/presentations/anthropic-solutioning/prior-auth-appeals.html"
     },
     {
       "title": "Agentic Denial Management via EHR Partnership",
-      "scenario": "NextGen",
+      "scenario": "EHR Platform",
       "description": "A platform partnership with a major EHR vendor, building denial management across their ~80 customer base. The platform had no native denial object - the design reconstructed denial encounters from source data, becoming the reusable foundation for every customer on the platform.",
-      "path": "/presentations/anthropic-solutioning/nextgen.html"
+      "path": "/presentations/anthropic-solutioning/ehr-denial-management.html"
     }
   ],
   "applicationQuestions": [
