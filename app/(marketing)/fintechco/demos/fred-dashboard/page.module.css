@@ -1,0 +1,132 @@
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--ftc-text-muted);
+  text-decoration: none;
+  margin-bottom: 1.75rem;
+}
+
+.backLink:hover {
+  color: var(--ftc-terracotta);
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.teamBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ftc-terracotta);
+  background: var(--ftc-terracotta-bg);
+  border: 1px solid var(--ftc-terracotta);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ftc-text);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.framing {
+  font-size: 1rem;
+  color: var(--ftc-text-muted);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ftc-text);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ftc-card-border);
+}
+
+.artifactNote {
+  font-size: 0.875rem;
+  color: var(--ftc-text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.dashboardFrame {
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ftc-card);
+}
+
+.dashboardIframe {
+  display: block;
+  width: 100%;
+  height: 640px;
+  border: none;
+}
+
+.memo {
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ftc-text);
+}
+
+.memo h1,
+.memo h2,
+.memo h3 {
+  color: var(--ftc-text);
+  margin-top: 1.5rem;
+}
+
+.memo h1:first-child,
+.memo h2:first-child,
+.memo h3:first-child {
+  margin-top: 0;
+}
+
+.memo p {
+  color: var(--ftc-text-muted);
+  margin: 0.5rem 0;
+}
+
+.memo strong {
+  color: var(--ftc-text);
+}
+
+.memo hr {
+  border: none;
+  border-top: 1px solid var(--ftc-card-border);
+  margin: 1.25rem 0;
+}
+
+.memo ul,
+.memo ol {
+  padding-left: 1.5rem;
+  color: var(--ftc-text-muted);
+}
+
+.memo li {
+  margin-bottom: 0.25rem;
+}

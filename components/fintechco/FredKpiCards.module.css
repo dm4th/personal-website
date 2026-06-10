@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cardAlert {
+  border-color: var(--ftc-terracotta);
+  background: var(--ftc-terracotta-bg);
+}
+
+.value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ftc-text);
+  line-height: 1;
+}
+
+.cardAlert .value {
+  color: var(--ftc-terracotta);
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ftc-text);
+  margin-top: 0.35rem;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: var(--ftc-text-muted);
+}

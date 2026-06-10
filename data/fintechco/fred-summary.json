@@ -1,0 +1,653 @@
+{
+  "as_of": "2024Q4",
+  "series": [
+    {
+      "quarter": "2000Q1",
+      "fedfunds": 5.6767,
+      "unrate": 4.0333,
+      "delinquency": 3.42
+    },
+    {
+      "quarter": "2000Q2",
+      "fedfunds": 6.2767,
+      "unrate": 3.9333,
+      "delinquency": 3.39
+    },
+    {
+      "quarter": "2000Q3",
+      "fedfunds": 6.52,
+      "unrate": 4.0,
+      "delinquency": 3.42
+    },
+    {
+      "quarter": "2000Q4",
+      "fedfunds": 6.4733,
+      "unrate": 3.9,
+      "delinquency": 3.49
+    },
+    {
+      "quarter": "2001Q1",
+      "fedfunds": 5.5933,
+      "unrate": 4.2333,
+      "delinquency": 3.76
+    },
+    {
+      "quarter": "2001Q2",
+      "fedfunds": 4.3267,
+      "unrate": 4.4,
+      "delinquency": 3.9
+    },
+    {
+      "quarter": "2001Q3",
+      "fedfunds": 3.4967,
+      "unrate": 4.8333,
+      "delinquency": 4.12
+    },
+    {
+      "quarter": "2001Q4",
+      "fedfunds": 2.1333,
+      "unrate": 5.5,
+      "delinquency": 4.46
+    },
+    {
+      "quarter": "2002Q1",
+      "fedfunds": 1.7367,
+      "unrate": 5.7,
+      "delinquency": 4.65
+    },
+    {
+      "quarter": "2002Q2",
+      "fedfunds": 1.75,
+      "unrate": 5.8333,
+      "delinquency": 4.66
+    },
+    {
+      "quarter": "2002Q3",
+      "fedfunds": 1.74,
+      "unrate": 5.7333,
+      "delinquency": 4.67
+    },
+    {
+      "quarter": "2002Q4",
+      "fedfunds": 1.4433,
+      "unrate": 5.8667,
+      "delinquency": 4.75
+    },
+    {
+      "quarter": "2003Q1",
+      "fedfunds": 1.25,
+      "unrate": 5.8667,
+      "delinquency": 4.93
+    },
+    {
+      "quarter": "2003Q2",
+      "fedfunds": 1.2467,
+      "unrate": 6.1333,
+      "delinquency": 5.01
+    },
+    {
+      "quarter": "2003Q3",
+      "fedfunds": 1.0167,
+      "unrate": 6.1333,
+      "delinquency": 4.89
+    },
+    {
+      "quarter": "2003Q4",
+      "fedfunds": 0.9967,
+      "unrate": 5.8333,
+      "delinquency": 4.71
+    },
+    {
+      "quarter": "2004Q1",
+      "fedfunds": 1.0033,
+      "unrate": 5.7,
+      "delinquency": 4.5
+    },
+    {
+      "quarter": "2004Q2",
+      "fedfunds": 1.01,
+      "unrate": 5.6,
+      "delinquency": 4.33
+    },
+    {
+      "quarter": "2004Q3",
+      "fedfunds": 1.4333,
+      "unrate": 5.4333,
+      "delinquency": 4.16
+    },
+    {
+      "quarter": "2004Q4",
+      "fedfunds": 1.95,
+      "unrate": 5.4333,
+      "delinquency": 4.01
+    },
+    {
+      "quarter": "2005Q1",
+      "fedfunds": 2.47,
+      "unrate": 5.3,
+      "delinquency": 3.87
+    },
+    {
+      "quarter": "2005Q2",
+      "fedfunds": 2.9433,
+      "unrate": 5.1,
+      "delinquency": 3.78
+    },
+    {
+      "quarter": "2005Q3",
+      "fedfunds": 3.46,
+      "unrate": 4.9667,
+      "delinquency": 3.63
+    },
+    {
+      "quarter": "2005Q4",
+      "fedfunds": 3.98,
+      "unrate": 4.9667,
+      "delinquency": 3.62
+    },
+    {
+      "quarter": "2006Q1",
+      "fedfunds": 4.4567,
+      "unrate": 4.7333,
+      "delinquency": 3.63
+    },
+    {
+      "quarter": "2006Q2",
+      "fedfunds": 4.93,
+      "unrate": 4.6333,
+      "delinquency": 3.52
+    },
+    {
+      "quarter": "2006Q3",
+      "fedfunds": 5.2467,
+      "unrate": 4.6333,
+      "delinquency": 3.5
+    },
+    {
+      "quarter": "2006Q4",
+      "fedfunds": 5.2467,
+      "unrate": 4.4333,
+      "delinquency": 3.46
+    },
+    {
+      "quarter": "2007Q1",
+      "fedfunds": 5.2567,
+      "unrate": 4.5,
+      "delinquency": 3.37
+    },
+    {
+      "quarter": "2007Q2",
+      "fedfunds": 5.25,
+      "unrate": 4.5,
+      "delinquency": 3.41
+    },
+    {
+      "quarter": "2007Q3",
+      "fedfunds": 5.0733,
+      "unrate": 4.6667,
+      "delinquency": 3.5
+    },
+    {
+      "quarter": "2007Q4",
+      "fedfunds": 4.55,
+      "unrate": 4.8,
+      "delinquency": 3.8
+    },
+    {
+      "quarter": "2008Q1",
+      "fedfunds": 3.1767,
+      "unrate": 5.0,
+      "delinquency": 4.21
+    },
+    {
+      "quarter": "2008Q2",
+      "fedfunds": 2.0933,
+      "unrate": 5.3333,
+      "delinquency": 4.83
+    },
+    {
+      "quarter": "2008Q3",
+      "fedfunds": 1.94,
+      "unrate": 6.0,
+      "delinquency": 5.47
+    },
+    {
+      "quarter": "2008Q4",
+      "fedfunds": 0.52,
+      "unrate": 6.8667,
+      "delinquency": 6.36
+    },
+    {
+      "quarter": "2009Q1",
+      "fedfunds": 0.1833,
+      "unrate": 8.2667,
+      "delinquency": 7.11
+    },
+    {
+      "quarter": "2009Q2",
+      "fedfunds": 0.18,
+      "unrate": 9.3,
+      "delinquency": 7.63
+    },
+    {
+      "quarter": "2009Q3",
+      "fedfunds": 0.1567,
+      "unrate": 9.6333,
+      "delinquency": 7.99
+    },
+    {
+      "quarter": "2009Q4",
+      "fedfunds": 0.12,
+      "unrate": 9.9333,
+      "delinquency": 8.1
+    },
+    {
+      "quarter": "2010Q1",
+      "fedfunds": 0.1333,
+      "unrate": 9.8333,
+      "delinquency": 7.96
+    },
+    {
+      "quarter": "2010Q2",
+      "fedfunds": 0.1933,
+      "unrate": 9.6333,
+      "delinquency": 7.71
+    },
+    {
+      "quarter": "2010Q3",
+      "fedfunds": 0.1867,
+      "unrate": 9.5,
+      "delinquency": 7.33
+    },
+    {
+      "quarter": "2010Q4",
+      "fedfunds": 0.1933,
+      "unrate": 9.5667,
+      "delinquency": 6.89
+    },
+    {
+      "quarter": "2011Q1",
+      "fedfunds": 0.1567,
+      "unrate": 9.0333,
+      "delinquency": 6.52
+    },
+    {
+      "quarter": "2011Q2",
+      "fedfunds": 0.0933,
+      "unrate": 9.1,
+      "delinquency": 6.13
+    },
+    {
+      "quarter": "2011Q3",
+      "fedfunds": 0.0833,
+      "unrate": 9.1,
+      "delinquency": 5.8
+    },
+    {
+      "quarter": "2011Q4",
+      "fedfunds": 0.0733,
+      "unrate": 8.7,
+      "delinquency": 5.5
+    },
+    {
+      "quarter": "2012Q1",
+      "fedfunds": 0.1,
+      "unrate": 8.2667,
+      "delinquency": 5.22
+    },
+    {
+      "quarter": "2012Q2",
+      "fedfunds": 0.16,
+      "unrate": 8.2,
+      "delinquency": 4.97
+    },
+    {
+      "quarter": "2012Q3",
+      "fedfunds": 0.1467,
+      "unrate": 8.0333,
+      "delinquency": 4.72
+    },
+    {
+      "quarter": "2012Q4",
+      "fedfunds": 0.16,
+      "unrate": 7.8333,
+      "delinquency": 4.54
+    },
+    {
+      "quarter": "2013Q1",
+      "fedfunds": 0.1433,
+      "unrate": 7.7333,
+      "delinquency": 4.36
+    },
+    {
+      "quarter": "2013Q2",
+      "fedfunds": 0.1167,
+      "unrate": 7.5333,
+      "delinquency": 4.17
+    },
+    {
+      "quarter": "2013Q3",
+      "fedfunds": 0.0833,
+      "unrate": 7.2667,
+      "delinquency": 3.99
+    },
+    {
+      "quarter": "2013Q4",
+      "fedfunds": 0.0867,
+      "unrate": 6.9667,
+      "delinquency": 3.82
+    },
+    {
+      "quarter": "2014Q1",
+      "fedfunds": 0.0733,
+      "unrate": 6.6667,
+      "delinquency": 3.65
+    },
+    {
+      "quarter": "2014Q2",
+      "fedfunds": 0.0933,
+      "unrate": 6.2,
+      "delinquency": 3.52
+    },
+    {
+      "quarter": "2014Q3",
+      "fedfunds": 0.09,
+      "unrate": 6.0667,
+      "delinquency": 3.38
+    },
+    {
+      "quarter": "2014Q4",
+      "fedfunds": 0.1,
+      "unrate": 5.7,
+      "delinquency": 3.26
+    },
+    {
+      "quarter": "2015Q1",
+      "fedfunds": 0.11,
+      "unrate": 5.5667,
+      "delinquency": 3.16
+    },
+    {
+      "quarter": "2015Q2",
+      "fedfunds": 0.1233,
+      "unrate": 5.4,
+      "delinquency": 3.09
+    },
+    {
+      "quarter": "2015Q3",
+      "fedfunds": 0.1367,
+      "unrate": 5.1667,
+      "delinquency": 3.0
+    },
+    {
+      "quarter": "2015Q4",
+      "fedfunds": 0.16,
+      "unrate": 5.0,
+      "delinquency": 2.92
+    },
+    {
+      "quarter": "2016Q1",
+      "fedfunds": 0.36,
+      "unrate": 4.9333,
+      "delinquency": 2.87
+    },
+    {
+      "quarter": "2016Q2",
+      "fedfunds": 0.3733,
+      "unrate": 4.8667,
+      "delinquency": 2.84
+    },
+    {
+      "quarter": "2016Q3",
+      "fedfunds": 0.3967,
+      "unrate": 4.9333,
+      "delinquency": 2.8
+    },
+    {
+      "quarter": "2016Q4",
+      "fedfunds": 0.45,
+      "unrate": 4.7333,
+      "delinquency": 2.78
+    },
+    {
+      "quarter": "2017Q1",
+      "fedfunds": 0.7033,
+      "unrate": 4.6667,
+      "delinquency": 2.77
+    },
+    {
+      "quarter": "2017Q2",
+      "fedfunds": 0.9533,
+      "unrate": 4.3667,
+      "delinquency": 2.76
+    },
+    {
+      "quarter": "2017Q3",
+      "fedfunds": 1.1533,
+      "unrate": 4.3,
+      "delinquency": 2.74
+    },
+    {
+      "quarter": "2017Q4",
+      "fedfunds": 1.2067,
+      "unrate": 4.1333,
+      "delinquency": 2.72
+    },
+    {
+      "quarter": "2018Q1",
+      "fedfunds": 1.4467,
+      "unrate": 4.1,
+      "delinquency": 2.69
+    },
+    {
+      "quarter": "2018Q2",
+      "fedfunds": 1.7367,
+      "unrate": 3.9,
+      "delinquency": 2.68
+    },
+    {
+      "quarter": "2018Q3",
+      "fedfunds": 1.9233,
+      "unrate": 3.8,
+      "delinquency": 2.62
+    },
+    {
+      "quarter": "2018Q4",
+      "fedfunds": 2.22,
+      "unrate": 3.8,
+      "delinquency": 2.6
+    },
+    {
+      "quarter": "2019Q1",
+      "fedfunds": 2.4033,
+      "unrate": 3.8667,
+      "delinquency": 2.6
+    },
+    {
+      "quarter": "2019Q2",
+      "fedfunds": 2.3967,
+      "unrate": 3.6333,
+      "delinquency": 2.57
+    },
+    {
+      "quarter": "2019Q3",
+      "fedfunds": 2.19,
+      "unrate": 3.6333,
+      "delinquency": 2.56
+    },
+    {
+      "quarter": "2019Q4",
+      "fedfunds": 1.6433,
+      "unrate": 3.5333,
+      "delinquency": 2.57
+    },
+    {
+      "quarter": "2020Q1",
+      "fedfunds": 1.26,
+      "unrate": 3.8,
+      "delinquency": 2.57
+    },
+    {
+      "quarter": "2020Q2",
+      "fedfunds": 0.06,
+      "unrate": 13.0333,
+      "delinquency": 2.46
+    },
+    {
+      "quarter": "2020Q3",
+      "fedfunds": 0.0933,
+      "unrate": 8.8333,
+      "delinquency": 2.27
+    },
+    {
+      "quarter": "2020Q4",
+      "fedfunds": 0.09,
+      "unrate": 6.7667,
+      "delinquency": 2.01
+    },
+    {
+      "quarter": "2021Q1",
+      "fedfunds": 0.08,
+      "unrate": 6.2,
+      "delinquency": 1.88
+    },
+    {
+      "quarter": "2021Q2",
+      "fedfunds": 0.07,
+      "unrate": 5.9,
+      "delinquency": 1.74
+    },
+    {
+      "quarter": "2021Q3",
+      "fedfunds": 0.09,
+      "unrate": 5.1333,
+      "delinquency": 1.65
+    },
+    {
+      "quarter": "2021Q4",
+      "fedfunds": 0.08,
+      "unrate": 4.2333,
+      "delinquency": 1.62
+    },
+    {
+      "quarter": "2022Q1",
+      "fedfunds": 0.12,
+      "unrate": 3.8,
+      "delinquency": 1.57
+    },
+    {
+      "quarter": "2022Q2",
+      "fedfunds": 0.77,
+      "unrate": 3.6,
+      "delinquency": 1.58
+    },
+    {
+      "quarter": "2022Q3",
+      "fedfunds": 2.19,
+      "unrate": 3.5667,
+      "delinquency": 1.66
+    },
+    {
+      "quarter": "2022Q4",
+      "fedfunds": 3.6533,
+      "unrate": 3.6,
+      "delinquency": 1.81
+    },
+    {
+      "quarter": "2023Q1",
+      "fedfunds": 4.5167,
+      "unrate": 3.5,
+      "delinquency": 2.0
+    },
+    {
+      "quarter": "2023Q2",
+      "fedfunds": 4.99,
+      "unrate": 3.5667,
+      "delinquency": 2.19
+    },
+    {
+      "quarter": "2023Q3",
+      "fedfunds": 5.26,
+      "unrate": 3.7,
+      "delinquency": 2.4
+    },
+    {
+      "quarter": "2023Q4",
+      "fedfunds": 5.33,
+      "unrate": 3.7667,
+      "delinquency": 2.62
+    },
+    {
+      "quarter": "2024Q1",
+      "fedfunds": 5.33,
+      "unrate": 3.8,
+      "delinquency": 2.82
+    },
+    {
+      "quarter": "2024Q2",
+      "fedfunds": 5.33,
+      "unrate": 4.0,
+      "delinquency": 3.03
+    },
+    {
+      "quarter": "2024Q3",
+      "fedfunds": 5.1633,
+      "unrate": 4.2,
+      "delinquency": 3.22
+    },
+    {
+      "quarter": "2024Q4",
+      "fedfunds": 4.58,
+      "unrate": 4.1667,
+      "delinquency": 3.38
+    }
+  ],
+  "lag_correlations": {
+    "FEDFUNDS": {
+      "by_lag": {
+        "0": -0.2677,
+        "1": -0.2034,
+        "2": -0.126,
+        "3": -0.0374,
+        "4": 0.061,
+        "5": 0.1631,
+        "6": 0.2673,
+        "7": 0.368,
+        "8": 0.4578
+      },
+      "peak_lag_quarters": 8,
+      "peak_correlation": 0.4578
+    },
+    "UNRATE": {
+      "by_lag": {
+        "0": 0.7163,
+        "1": 0.6584,
+        "2": 0.5861,
+        "3": 0.5077,
+        "4": 0.4238,
+        "5": 0.3404,
+        "6": 0.2595,
+        "7": 0.1831,
+        "8": 0.1165
+      },
+      "peak_lag_quarters": 0,
+      "peak_correlation": 0.7163
+    }
+  },
+  "ols_model": {
+    "intercept": 0.2234,
+    "beta_fedfunds": 0.6479,
+    "beta_unrate": 0.4351,
+    "r_squared": 0.4031,
+    "n_obs": 92,
+    "lag_quarters": 8
+  },
+  "kpis": {
+    "current_delinquency_rate": 3.38,
+    "delinquency_trend": "rising",
+    "fedfunds_peak_lead_quarters": 8,
+    "fedfunds_peak_correlation": 0.4578,
+    "unrate_peak_lead_quarters": 0,
+    "model_r_squared": 0.4031
+  }
+}
