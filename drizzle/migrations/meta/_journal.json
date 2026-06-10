@@ -15,6 +15,20 @@
       "when": 1746576000000,
       "tag": "0001_add_notion_configs",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746576000001,
+      "tag": "0002_add_notion_config_extra_dbs",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1781106028072,
+      "tag": "0003_add_discovery_responses",
+      "breakpoints": true
     }
   ]
 }

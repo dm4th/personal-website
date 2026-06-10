@@ -8,7 +8,18 @@ import styles from './DiscoveryConversation.module.css';
 const PERSONA_ORDER: DiscoveryPersona[] = ['cto', 'head_of_dt', 'other'];
 
 export default function DiscoveryConversation() {
-  const { persona, messages, isStreaming, completed, selectPersona, send } = useFintechcoDiscoveryStore();
+  const {
+    persona,
+    messages,
+    isStreaming,
+    completed,
+    visitorLabel,
+    submitted,
+    selectPersona,
+    send,
+    setVisitorLabel,
+    submitResponse,
+  } = useFintechcoDiscoveryStore();
   const [input, setInput] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
@@ -74,8 +85,25 @@ export default function DiscoveryConversation() {
         <div ref={endRef} />
       </div>
       {completed ? (
-        <div className={styles.done}>
-          Thanks for sharing your perspective! We&apos;ll use this to shape the session.
+        <div className={styles.details}>
+          {submitted ? (
+            <div className={styles.done}>
+              Thanks for sharing your perspective! We&apos;ll use this to shape the session.
+            </div>
+          ) : (
+            <div className={styles.detailsInput}>
+              <input
+                type="text"
+                className={styles.nameInput}
+                placeholder="Your name (optional)"
+                value={visitorLabel}
+                onChange={(e) => setVisitorLabel(e.target.value)}
+              />
+              <button className={styles.doneBtn} onClick={submitResponse}>
+                Done
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles.composer}>

@@ -167,6 +167,50 @@
   font-size: 15px;
 }
 
+.details {
+  padding: 20px 0 56px;
+}
+
+.detailsInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nameInput {
+  flex: 1;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 10px;
+  color: var(--ftc-text);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 12px 14px;
+  height: 48px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.nameInput:focus {
+  border-color: var(--ftc-terracotta);
+}
+
+.doneBtn {
+  background: var(--ftc-terracotta);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 48px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 @media (max-width: 640px) {
   .chooser,
   .conversation {

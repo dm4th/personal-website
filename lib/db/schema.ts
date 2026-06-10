@@ -159,6 +159,17 @@ export const notionConfigs = pgTable('notion_configs', {
   updatedAt: timestamp('updated_at').default(sql`now()`).notNull(),
 });
 
+// ─── discovery_responses (FinTechCo pre-meeting discovery) ───────────────────
+
+export const discoveryResponses = pgTable('discovery_responses', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  persona: text('persona', { enum: ['cto', 'head_of_dt', 'other'] }).notNull(),
+  visitorLabel: text('visitor_label'),
+  transcript: jsonb('transcript').notNull(),
+  messages: jsonb('messages').notNull(),
+  createdAt: timestamp('created_at').default(sql`now()`).notNull(),
+});
+
 // ─── relations ────────────────────────────────────────────────────────────────
 
 export const usersRelations = relations(users, ({ many, one }) => ({

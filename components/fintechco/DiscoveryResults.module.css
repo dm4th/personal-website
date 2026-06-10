@@ -1,0 +1,162 @@
+.gate {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  text-align: center;
+}
+
+.results {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--ftc-text);
+}
+
+.intro {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ftc-text-muted);
+  margin: 0 0 28px;
+}
+
+.input {
+  width: 100%;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  padding: 13px 16px;
+  color: var(--ftc-text);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.error {
+  color: var(--ftc-terracotta);
+  font-size: 13px;
+  min-height: 18px;
+  margin: 0 0 10px;
+}
+
+.unlockBtn {
+  width: 100%;
+  background: var(--ftc-terracotta);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.unlockBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.card {
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.persona {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ftc-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.visitorLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ftc-text);
+}
+
+.timestamp {
+  font-size: 12px;
+  color: var(--ftc-text-muted);
+  margin-left: auto;
+}
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.qa {
+  border-left: 2px solid var(--ftc-card-border);
+  padding-left: 14px;
+}
+
+.question {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ftc-text-muted);
+  margin: 0 0 4px;
+}
+
+.answer {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ftc-text);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.rawToggle {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  color: var(--ftc-terracotta);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.raw {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ftc-card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rawMessage {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ftc-text-muted);
+  white-space: pre-wrap;
+}
+
+.rawRole {
+  font-weight: 700;
+  color: var(--ftc-text);
+  text-transform: capitalize;
+}

@@ -20,6 +20,10 @@ type DiscoveryState = {
   questionIndex: number;
   isStreaming: boolean;
   completed: boolean;
+  visitorLabel: string;
+  submitted: boolean;
+  setVisitorLabel: (label: string) => void;
+  submitResponse: () => Promise<void>;
   selectPersona: (persona: DiscoveryPersona) => Promise<void>;
   send: (text: string) => Promise<void>;
 };
@@ -76,9 +80,38 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
   questionIndex: 0,
   isStreaming: false,
   completed: false,
+  visitorLabel: '',
+  submitted: false,
+
+  setVisitorLabel: (label) => set({ visitorLabel: label }),
+
+  submitResponse: async () => {
+    const { persona, transcript, messages, visitorLabel, submitted } = get();
+    if (!persona || submitted) return;
+
+    set({ submitted: true });
+    try {
+      const res = await fetch('/api/fintechco/discovery/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ persona, visitorLabel: visitorLabel || undefined, transcript, messages }),
+      });
+      if (!res.ok) set({ submitted: false });
+    } catch {
+      set({ submitted: false });
+    }
+  },
 
   selectPersona: async (persona) => {
-    set({ persona, messages: [], transcript: [], questionIndex: 0, completed: false, isStreaming: true });
+    set({
+      persona,
+      messages: [],
+      transcript: [],
+      questionIndex: 0,
+      completed: false,
+      submitted: false,
+      isStreaming: true,
+    });
 
     const assistantId = crypto.randomUUID();
     set({ messages: [{ id: assistantId, role: 'assistant', text: '' }] });
