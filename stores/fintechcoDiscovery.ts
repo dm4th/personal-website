@@ -6,6 +6,8 @@ export type DiscoveryMessage = {
   id: string;
   role: 'user' | 'assistant';
   text: string;
+  /** Subject marker the assistant message arrived with ('0', '1', ... or 'done'). */
+  marker?: string;
 };
 
 export type TranscriptEntry = {
@@ -17,7 +19,7 @@ type DiscoveryState = {
   persona: DiscoveryPersona | null;
   messages: DiscoveryMessage[];
   transcript: TranscriptEntry[];
-  questionIndex: number;
+  currentSubject: number;
   isStreaming: boolean;
   completed: boolean;
   visitorLabel: string;
@@ -28,10 +30,52 @@ type DiscoveryState = {
   send: (text: string) => Promise<void>;
 };
 
+/**
+ * Strips the leading [S:n] / [S:done] protocol marker from a streaming
+ * assistant message. Deltas are buffered only until the marker is resolved
+ * (closing bracket seen, or the text clearly is not a marker), then text
+ * flows through untouched.
+ */
+function createMarkerParser(onText: (t: string) => void, onMarker: (m: string) => void) {
+  let buf = '';
+  let resolved = false;
+
+  const resolve = (marker: string | null, rest: string) => {
+    resolved = true;
+    if (marker !== null) onMarker(marker);
+    const text = marker !== null ? rest.replace(/^\s+/, '') : rest;
+    if (text) onText(text);
+  };
+
+  return {
+    push(delta: string) {
+      if (resolved) {
+        onText(delta);
+        return;
+      }
+      buf += delta;
+      const trimmed = buf.trimStart();
+      const end = buf.indexOf(']');
+      if (end !== -1) {
+        const match = buf.slice(0, end + 1).match(/^\s*\[S:([a-z0-9]+)\]$/i);
+        if (match) resolve(match[1].toLowerCase(), buf.slice(end + 1));
+        else resolve(null, buf);
+      } else if (buf.length > 16 || (trimmed.length > 0 && !trimmed.startsWith('['))) {
+        // No closing bracket and either too long or clearly not a marker.
+        resolve(null, buf);
+      }
+    },
+    flush() {
+      if (!resolved && buf) resolve(null, buf);
+    },
+  };
+}
+
 async function streamTurn(
   persona: DiscoveryPersona,
   history: { role: 'user' | 'assistant'; content: string }[],
   onDelta: (delta: string) => void,
+  onMarker: (marker: string) => void,
 ): Promise<void> {
   const res = await fetch('/api/fintechco/discovery', {
     method: 'POST',
@@ -41,6 +85,7 @@ async function streamTurn(
 
   if (!res.ok || !res.body) throw new Error('Discovery stream failed');
 
+  const parser = createMarkerParser(onDelta, onMarker);
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
   let buffer = '';
@@ -64,20 +109,26 @@ async function streamTurn(
         continue;
       }
 
-      if (event.type === 'text_delta') onDelta(event.delta);
+      if (event.type === 'text_delta') parser.push(event.delta);
     }
   }
+  parser.flush();
 }
 
+// The model must see its own prior markers or it stops emitting them, so
+// history re-prefixes each assistant message; display text stays stripped.
 function toHistory(messages: DiscoveryMessage[]): { role: 'user' | 'assistant'; content: string }[] {
-  return messages.map((m) => ({ role: m.role, content: m.text }));
+  return messages.map((m) => ({
+    role: m.role,
+    content: m.role === 'assistant' && m.marker ? `[S:${m.marker}] ${m.text}` : m.text,
+  }));
 }
 
 export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) => ({
   persona: null,
   messages: [],
   transcript: [],
-  questionIndex: 0,
+  currentSubject: 0,
   isStreaming: false,
   completed: false,
   visitorLabel: '',
@@ -107,7 +158,7 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
       persona,
       messages: [],
       transcript: [],
-      questionIndex: 0,
+      currentSubject: 0,
       completed: false,
       submitted: false,
       isStreaming: true,
@@ -117,22 +168,29 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
     set({ messages: [{ id: assistantId, role: 'assistant', text: '' }] });
 
     try {
-      await streamTurn(persona, [], (delta) => {
-        set((state) => ({
-          messages: state.messages.map((m) => (m.id === assistantId ? { ...m, text: m.text + delta } : m)),
-        }));
-      });
+      await streamTurn(
+        persona,
+        [],
+        (delta) => {
+          set((state) => ({
+            messages: state.messages.map((m) => (m.id === assistantId ? { ...m, text: m.text + delta } : m)),
+          }));
+        },
+        (marker) => applyMarker(marker, assistantId),
+      );
     } finally {
       set({ isStreaming: false });
     }
   },
 
   send: async (text) => {
-    const { persona, messages, transcript, questionIndex } = get();
+    const { persona, messages } = get();
     if (!persona) throw new Error('No persona selected');
     if (get().isStreaming) throw new Error('Already streaming');
     if (get().completed) throw new Error('Conversation completed');
-    if (questionIndex >= DISCOVERY_PERSONAS[persona].questions.length) throw new Error('No more questions');
+
+    const subjects = DISCOVERY_PERSONAS[persona].questionSubjects;
+    const subjectLabel = subjects[Math.min(get().currentSubject, subjects.length - 1)].subject;
 
     const userId = crypto.randomUUID();
     const assistantId = crypto.randomUUID();
@@ -141,20 +199,36 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
       { id: userId, role: 'user', text },
       { id: assistantId, role: 'assistant', text: '' },
     ];
-    set({ messages: updatedMessages, isStreaming: true });
+    set((state) => ({
+      messages: updatedMessages,
+      transcript: [...state.transcript, { question: subjectLabel, answer: text }],
+      isStreaming: true,
+    }));
 
-    await streamTurn(persona, toHistory(updatedMessages), (delta) => {
-      set((state) => ({
-        messages: state.messages.map((m) => (m.id === assistantId ? { ...m, text: m.text + delta } : m)),
-      }));
-    });
-
-    const newIndex = questionIndex + 1;
-    set({
-      isStreaming: false,
-      transcript: [...transcript, { question: DISCOVERY_PERSONAS[persona].questions[questionIndex], answer: text }],
-      questionIndex: newIndex,
-      completed: newIndex >= DISCOVERY_PERSONAS[persona].questions.length,
-    });
+    try {
+      await streamTurn(
+        persona,
+        toHistory(updatedMessages.slice(0, -1)),
+        (delta) => {
+          set((state) => ({
+            messages: state.messages.map((m) => (m.id === assistantId ? { ...m, text: m.text + delta } : m)),
+          }));
+        },
+        (marker) => applyMarker(marker, assistantId),
+      );
+    } finally {
+      set({ isStreaming: false });
+    }
   },
 }));
+
+function applyMarker(marker: string, assistantId: string) {
+  useFintechcoDiscoveryStore.setState((state) => ({
+    messages: state.messages.map((m) => (m.id === assistantId ? { ...m, marker } : m)),
+    ...(marker === 'done'
+      ? { completed: true }
+      : Number.isInteger(Number(marker))
+        ? { currentSubject: Number(marker) }
+        : {}),
+  }));
+}

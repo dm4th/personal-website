@@ -33,23 +33,24 @@ export async function POST(req: Request) {
     emit({ type: 'message_start', messageId });
 
     try {
-      const response = await client.messages.create({
+      const stream = client.messages.stream({
         model: process.env.AGENT_MODEL ?? 'claude-sonnet-4-6',
         max_tokens: 1024,
         system: buildDiscoverySystemPrompt(persona),
         messages,
-        stream: false,
       });
 
-      for (const block of response.content) {
-        if (block.type === 'text') {
-          for (let i = 0; i < block.text.length; i += 16) {
-            emit({ type: 'text_delta', delta: block.text.slice(i, i + 16) });
+      for await (const event of stream) {
+        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+          // API chunks can be coarse; re-split for smooth client rendering.
+          for (let i = 0; i < event.delta.text.length; i += 16) {
+            emit({ type: 'text_delta', delta: event.delta.text.slice(i, i + 16) });
           }
         }
       }
 
-      emit({ type: 'message_stop', stopReason: response.stop_reason ?? 'end_turn' });
+      const final = await stream.finalMessage();
+      emit({ type: 'message_stop', stopReason: final.stop_reason ?? 'end_turn' });
     } catch (err) {
       emit({ type: 'error', code: 'discovery_error', message: err instanceof Error ? err.message : 'Unknown error' });
     } finally {
