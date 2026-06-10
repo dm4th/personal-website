@@ -3,86 +3,73 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Build & Development Commands
-- `npm run dev` - Start development server
+- `npm run dev` - Start development server (Next.js)
 - `npm run build` - Build production version
 - `npm run start` - Start production server
-- `npx eslint [file]` - Lint specific file
-- `node scripts/generate_embeddings.mjs` - Generate embeddings from Markdown files
-- `node scripts/generate_embeddings.mjs --refresh` - Refresh all embeddings (clears and regenerates all)
-- `python scripts/convert_pdf_to_md.py` - Convert PDFs in `/pdfs` to Markdown
-- `npx supabase start` - Start local Supabase stack (requires Docker)
-- `npx supabase functions serve` - Serve edge functions locally
-- `npx supabase db diff -f <migration_name>` - Generate a new migration from local schema changes
-- `npx supabase functions deploy <function_name>` - Deploy a single edge function
+- `npm run typecheck` - Type-check the project (`tsc --noEmit`)
+- `npx eslint [file]` - Lint a specific file
+- `npm run db:generate` - Generate a Drizzle migration from schema changes in `lib/db/schema.ts`
+- `npm run db:migrate` - Apply pending Drizzle migrations to the Neon database
+- `npm run db:studio` - Open Drizzle Studio against the database
+- `npm run jobs:process` - Run the job-opportunity batch processor (`scripts/process_opportunities.ts`); `jobs:dry-run`, `jobs:reprocess`, `jobs:clean` are variants
 
-**Note:** No test framework is configured. There are no test files, no test runner, and no test scripts in package.json.
+**Note:** No unit-test framework is configured (no test runner, no test scripts in package.json). Playwright is available as a dev dependency for browser automation / smoke checks, but there is no formal test suite.
 
 ## Architecture Overview
 
-This is a personal website with an AI-powered RAG chat system. Users can chat with a virtual assistant grounded in content from the `/info` directory. The site supports multiple LLM backends (GPT-4, Claude, Llama) and includes a "guess the model" game mode.
+This is a personal website built as an **agent-first application**: the centerpiece is a Claude-powered assistant that visitors converse with, grounded in Dan's content under `/info`, with a set of first-class tools (job-fit analysis, email drafting, meeting scheduling, application-material generation). The site is **Next.js 15 (App Router)** with **React 18**, written in **TypeScript**, deployed on **Vercel**.
 
-### Data Flow: Content → Embeddings → Chat
-1. **Content authoring**: Markdown files in `/info` (organized by topic: `about-me/`, `career/`, `projects/`, `ai-ml/`, `blockchain/`)
-2. **Embedding generation**: `scripts/generate_embeddings.mjs` reads markdown, chunks by H1/H3 sections (max 1500 words), generates OpenAI `text-embedding-3-small` embeddings, stores in Supabase with SHA-256 checksums for change detection
-3. **Chat query**: User prompt is embedded, searched against `page_embedding` table via `document_similarity` RPC (cosine similarity, threshold 0.4, top 10 results), context assembled with chat history and role-specific system prompt
-4. **LLM response**: Streamed back via Server-Sent Events
+> Historical note: an earlier version of this site was a Pages-Router RAG chat over Supabase + pgvector with multiple LLM backends and a "guess the model" game. That stack has been fully replaced by the agent-first App Router design described below. There are no Supabase edge functions or LangChain dependencies anymore.
 
-### Two Chat Tiers
+### The agent loop
+- **`lib/agent/runAgent.ts`** - the core multi-turn tool loop. Calls the Anthropic Messages API (`@anthropic-ai/sdk`), model from the `AGENT_MODEL` env var (default `claude-sonnet-4-6`), up to `MAX_TURNS` (10) turns. The Anthropic call is non-streaming; the resulting text is re-chunked into ~16-char `text_delta` events so it feels live on the client.
+- **`lib/agent/streamProtocol.ts`** - the SSE event protocol (`message_start`, `text_delta`, `tool_use_start`, `tool_result`, `dimension_score`, `auth_required`, `message_stop`, etc.) shared by server and client.
+- **`lib/agent/systemPrompt.ts`** - `buildSystemPrompt()`, the single system prompt for the assistant.
+- **`lib/agent/tools/`** - the tool implementations: `searchContent` (retrieval over `/info`), `analyzeJdFit`, `composeEmail`, `generateApplicationMaterials`, `scheduleMeeting`, `submitJobLead`, registered via `index.ts` (`TOOL_DEFINITIONS` + `runTool`). Some tools are auth-gated (e.g. `send_email_to_danny`, `confirm_meeting`, `generate_application_materials`) and require a signed-in `userId`.
+- **`app/api/agent/stream/route.ts`** - the SSE endpoint that drives `runAgent`. Related routes under `app/api/agent/` handle session, message history, and tool confirmations (`tools/confirm-meeting`, `tools/send-email`).
+- **`stores/agent.ts`** - the client Zustand store that POSTs to the stream route, reads the SSE body, parses events, and updates chat state. Agent UI lives in `components/agent/*`.
 
-**Supabase Edge Functions** (`/supabase/functions/`) — Full RAG pipeline with database storage:
-- `chat-intro/` and `chat-employer/` — Role-specific endpoints with moderation, history, embedding search, and chat persistence
-- `chat-claude/`, `chat-gpt4/`, `chat-llama/` — Model-specific variants
-- Shared logic in `_shared/`: `promptTemplates.ts` (system prompts per role), `chatHelpers.ts` (history summarization), `supabaseClient.ts`
-- Uses LangChain (`langchain@0.0.171`) on Deno runtime — imports use `esm.sh` URLs, not npm
-- Shared imports mapped via `supabase/functions/import_map.json`
+### Routing (App Router)
+- `app/layout.tsx`, `app/page.tsx` - root layout and homepage.
+- `app/(marketing)/` - public content: `info/` (markdown/PDF content pages), `projects/` (interactive project demos + listing), `prompting/` (Contentful-sourced blog posts), `refer/` (password-gated referral / job-application pages).
+- `app/(app)/` - authenticated app surface (e.g. `account/`).
+- `app/api/` - route handlers: `agent/`, `projects/`, `refer/`, `memos/`, `user/`, `voice-memo/`, `webhooks/`.
+- `app/sign-in/`, `app/sign-up/` - Clerk auth pages.
 
-**Next.js API Route Proxies** (`/pages/api/chat-*/`) — SSE proxy layer:
-- `chat-claude/`, `chat-gpt4/`, `chat-llama/` — Forward client requests to Supabase edge functions and relay SSE streams back
-- Exist so the frontend calls same-origin endpoints instead of cross-origin Supabase URLs
+### Database (Neon Postgres + Drizzle ORM)
+- Client in `lib/db/client.ts` (`@neondatabase/serverless`, `NEON_DATABASE_URL`); schema in `lib/db/schema.ts`; migrations in `drizzle/migrations/` (generate/apply with `npm run db:generate` / `db:migrate`).
+- Tables: `users` (Clerk-linked), `sessions` (guest + authenticated), `messages` (jsonb content parts), `tool_calls`, `drafted_emails`, `meetings`, `memos`, `google_oauth_tokens` (app-layer AES-256-GCM encrypted), `notion_configs` (encrypted integration tokens + DB ids).
 
-**Next.js API Routes** (`/pages/api/`) — Lightweight, no database:
-- `claude.js` — Direct Anthropic API streaming (10-char chunks)
-- `llama.js` — Replicate polling (60s timeout)
-- Used for game mode parallel requests (bypass Supabase edge functions entirely)
+### Auth & integrations
+- **Clerk** (`@clerk/nextjs`) for authentication; webhooks under `app/api/webhooks/`.
+- **Resend** for transactional email (drafted-email send flow).
+- **Google APIs** (`googleapis`) for calendar/meeting scheduling; OAuth tokens stored encrypted.
+- **Notion** (`@notionhq/client`) for the meeting-intelligence / job-tracking integrations.
+- **Contentful** for the `prompting/` blog posts.
 
-### Key Components
-- `ChatInterface.js` — Main orchestrator. Handles single-model and game mode, manages streaming via `@microsoft/fetch-event-source`, parallel LLM calls in game mode
-- `LlmGuessGame.js` / `GuessHistory.js` — Game mode UI where users guess which model produced a response
-- `SourceReferences.js` — Displays RAG source citations with similarity scores
-- `SupaContextProvider.js` (`/lib`) — React Context for auth state, user profiles, chat roles (intro/employer), chat session management
-
-### Database (Supabase + pgvector)
-- `page` / `page_embedding` — Content storage and vector embeddings (service role access only)
-- `chats` / `chat_history` / `chat_roles` — Conversation persistence with RLS per user
-- `profiles` — User accounts (public read, self-write)
-- `document_similarity` — RPC function for vector similarity search
-- Migrations in `/supabase/migrations/`
-
-### Content Pages
-- `pages/index.js` — Homepage with ChatInterface
-- `pages/info/[...filePath].js` — Dynamic route rendering markdown/PDF content from `/info`
-- `pages/prompting/[id].js` — Blog posts (sourced from Contentful via `lib/promptingBlogs.js`)
+### Interactive project demos
+Project demos under `app/(marketing)/projects/<slug>/` follow a consistent shape: a server `page.tsx` (metadata + sample data) renders a client `<Demo>` orchestrator; UI components live in `components/projects/<Name>/`; backend handlers in `app/api/projects/<slug>/`; types in `lib/projects/<slug>/`; sample fixtures in `data/`. Demos are registered in the `DEMOS` array in `app/(marketing)/projects/page.tsx` and the `PROJECTS` array in `app/page.tsx` (homepage carousel). See `docwow` for a representative example.
 
 ### Deployment
-- Hosted on **Vercel** with default Next.js settings (no `vercel.json`)
-- Supabase edge functions deployed separately via `npx supabase functions deploy`
-- Next.js 15 with React 18, uses Pages Router (not App Router)
+- Hosted on **Vercel** (Next.js App Router defaults).
+- Database is **Neon Postgres**; migrations are applied via Drizzle, not through the deploy pipeline automatically.
 
-## Content Writing Guidelines for Embeddings
-- Store content in `/info` directory with proper subdirectory organization
-- Include YAML front matter at the top of each Markdown file with `---` delimiters
-- Use `# Heading` for main sections (H1) and `### Subheading` for subsections (H3)
-- **Do not use H2 (`##`) or H4 (`####`)** — the embedding script only splits on H1 and H3
-- Keep sections under 1500 words for optimal embedding chunking
-- Use descriptive section titles that clearly indicate the content's topic
+## Content Writing Guidelines (`/info`)
+- Store content in the `/info` directory with proper subdirectory organization (e.g. `about-me/`, `career/`, `projects/`, `ai-ml/`).
+- Include YAML front matter at the top of each Markdown file with `---` delimiters.
+- Use `# Heading` for main sections (H1) and `### Subheading` for subsections (H3).
+- Keep sections focused and reasonably sized so retrieval surfaces clean, self-contained chunks.
+- Use descriptive section titles that clearly indicate the content's topic.
 
 ## Environment Variables
-- `OPENAI_API_KEY`, `OPENAI_ORG_KEY` — OpenAI (embeddings + GPT models)
-- `ANTHROPIC_API_KEY` — Claude API
-- `REPLICATE_API_KEY` — Llama via Replicate
-- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase client
-- `SERVICE_ROLE_KEY` — Supabase server-side (full access, used in embedding script)
-- `NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL` — Edge functions endpoint
+- `ANTHROPIC_API_KEY` - Claude API (the agent loop)
+- `AGENT_MODEL` - overrides the default agent model (`claude-sonnet-4-6`)
+- `NEON_DATABASE_URL` - Neon Postgres connection string (Drizzle)
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY` - Clerk auth
+- `RESEND_API_KEY` - Resend email
+- `TOKEN_ENC_KEY` - AES-256-GCM key for encrypting stored OAuth / Notion tokens
+- Google OAuth + Contentful + Notion credentials as required by their respective integrations
+- `OPENAI_API_KEY` - present for any OpenAI-backed utilities still in use
 
 ## Tone and Communication Guidelines
 - **Voice**: Friendly and conversational while maintaining professionalism
@@ -102,6 +89,6 @@ This is a personal website with an AI-powered RAG chat system. Users can chat wi
 - **Components**: Functional components with hooks
 - **Naming**: PascalCase for components, camelCase for variables/functions
 - **CSS**: CSS Modules with `componentName.module.css` naming convention
-- **Error Handling**: try/catch for async operations, especially Supabase calls
-- **State Management**: React hooks + SupaContextProvider context
+- **Error Handling**: try/catch for async operations, especially database and external-API calls
+- **State Management**: React hooks + Zustand stores (e.g. `stores/agent.ts`)
 - **Path Aliases**: Use `@/` prefix for absolute imports from project root
