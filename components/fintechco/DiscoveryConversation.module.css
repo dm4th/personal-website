@@ -111,14 +111,78 @@
   color: var(--ftc-text);
 }
 
+/* ── Thinking indicator ───────────────────────────────────────── */
+
+.thinkingDots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ftc-text-muted);
+  animation: pulse 1.3s ease-in-out infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.18s; }
+.dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Streaming cursor ─────────────────────────────────────────── */
+
+.streamCursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: var(--ftc-terracotta);
+  border-radius: 1px;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  opacity: 0.7;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0; }
+}
+
+/* ── Composer ─────────────────────────────────────────────────── */
+
 .composer {
   position: sticky;
   bottom: 0;
   display: flex;
-  align-items: flex-end;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
   padding: 16px 0 24px;
   background: var(--ftc-cream);
+}
+
+/* Subtle active-state border when the assistant is responding */
+.composerStreaming .textarea {
+  border-color: var(--ftc-terracotta-bg);
+  color: var(--ftc-text-muted);
+}
+
+.composerRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .textarea {
@@ -135,12 +199,18 @@
   overflow-y: hidden;
   outline: none;
   font-family: inherit;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
   box-sizing: border-box;
 }
 
 .textarea:focus {
   border-color: var(--ftc-terracotta);
+}
+
+/* Override browser's grey-out; disabled state reads as "waiting", not broken */
+.textarea:disabled {
+  opacity: 1;
+  cursor: default;
 }
 
 .sendBtn {
@@ -159,6 +229,37 @@
   opacity: 0.5;
   cursor: default;
 }
+
+/* ── Wrap-up affordance ───────────────────────────────────────── */
+
+.wrapUp {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapUpBtn {
+  background: none;
+  border: none;
+  color: var(--ftc-text-muted);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.wrapUpBtn:hover:not(:disabled) {
+  color: var(--ftc-text);
+  background: var(--ftc-card);
+}
+
+.wrapUpBtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── Completion ───────────────────────────────────────────────── */
 
 .done {
   padding: 20px 0 56px;
@@ -210,6 +311,21 @@
   cursor: pointer;
   flex-shrink: 0;
 }
+
+/* ── Reduced motion ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+    opacity: 0.6;
+  }
+  .streamCursor {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .chooser,

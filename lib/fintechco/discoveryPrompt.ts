@@ -1,5 +1,12 @@
 export type DiscoveryPersona = 'cto' | 'head_of_dt' | 'other';
 
+export type MeddpiccEntry = {
+  dimension: string;
+  finding: string;
+  evidence: string;
+  confidence: 'strong' | 'partial' | 'missing';
+};
+
 export interface PersonaConfig {
   key: DiscoveryPersona;
   label: string;
@@ -353,5 +360,5 @@ How to run the conversation:
 - When subject ${lastIndex} is covered (or its questions are exhausted), send the closing message: marker [S:done], thank them warmly, and tell them this will directly shape the session. Do not summarize their answers back to them, and do not promise follow-ups.
 - Stay inside the agenda: probes dig deeper on the current subject, they never introduce new subjects or agenda items.
 
-Style: conversational and concise, two to four sentences per message, plain language, no corporate filler. Do not use em-dashes; use commas, colons, or separate sentences instead.`;
+Style: conversational and concise, two to four sentences per message, plain language, no corporate filler. Do not use em-dashes or double hyphens as punctuation; use commas, colons, or separate sentences instead.`;
 }

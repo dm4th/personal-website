@@ -6,11 +6,13 @@ import { DISCOVERY_PERSONAS, type DiscoveryPersona } from '@/lib/fintechco/disco
 import styles from './DiscoveryConversation.module.css';
 
 const PERSONA_ORDER: DiscoveryPersona[] = ['cto', 'head_of_dt', 'other'];
+const WRAP_UP_MESSAGE = "I need to wrap up now, thanks.";
 
 export default function DiscoveryConversation() {
   const {
     persona,
     messages,
+    transcript,
     isStreaming,
     completed,
     visitorLabel,
@@ -28,12 +30,20 @@ export default function DiscoveryConversation() {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // ID of the message currently being streamed: empty text means still thinking
+  const activeMessageId = isStreaming ? messages[messages.length - 1]?.id : undefined;
+
   const handleSubmit = () => {
     const trimmed = input.trim();
     if (!trimmed || isStreaming || completed) return;
     send(trimmed);
     setInput('');
     if (textareaRef.current) textareaRef.current.style.height = 'auto';
+  };
+
+  const handleWrapUp = () => {
+    if (isStreaming || completed) return;
+    send(WRAP_UP_MESSAGE);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -77,11 +87,29 @@ export default function DiscoveryConversation() {
   return (
     <div className={styles.conversation}>
       <div className={styles.messages}>
-        {messages.map((m) => (
-          <div key={m.id} className={m.role === 'user' ? styles.userBubble : styles.assistantBubble}>
-            {m.text}
-          </div>
-        ))}
+        {messages.map((m) => {
+          const isActive = m.id === activeMessageId;
+          const isThinking = isActive && m.text === '';
+          return (
+            <div
+              key={m.id}
+              className={m.role === 'user' ? styles.userBubble : styles.assistantBubble}
+            >
+              {isThinking ? (
+                <span className={styles.thinkingDots} aria-label="Thinking">
+                  <span className={styles.dot} />
+                  <span className={styles.dot} />
+                  <span className={styles.dot} />
+                </span>
+              ) : (
+                <>
+                  {m.text}
+                  {isActive && <span className={styles.streamCursor} aria-hidden />}
+                </>
+              )}
+            </div>
+          );
+        })}
         <div ref={endRef} />
       </div>
       {completed ? (
@@ -106,25 +134,38 @@ export default function DiscoveryConversation() {
           )}
         </div>
       ) : (
-        <div className={styles.composer}>
-          <textarea
-            ref={textareaRef}
-            className={styles.textarea}
-            value={input}
-            onChange={handleInput}
-            onKeyDown={handleKeyDown}
-            placeholder="Type your answer..."
-            disabled={isStreaming}
-            rows={2}
-          />
-          <button
-            className={styles.sendBtn}
-            onClick={handleSubmit}
-            disabled={isStreaming || !input.trim()}
-            aria-label="Send"
-          >
-            ↑
-          </button>
+        <div className={`${styles.composer} ${isStreaming ? styles.composerStreaming : ''}`}>
+          <div className={styles.composerRow}>
+            <textarea
+              ref={textareaRef}
+              className={styles.textarea}
+              value={input}
+              onChange={handleInput}
+              onKeyDown={handleKeyDown}
+              placeholder={isStreaming ? 'Responding…' : 'Type your answer…'}
+              disabled={isStreaming}
+              rows={2}
+            />
+            <button
+              className={styles.sendBtn}
+              onClick={handleSubmit}
+              disabled={isStreaming || !input.trim()}
+              aria-label="Send"
+            >
+              ↑
+            </button>
+          </div>
+          {transcript.length > 0 && (
+            <div className={styles.wrapUp}>
+              <button
+                className={styles.wrapUpBtn}
+                onClick={handleWrapUp}
+                disabled={isStreaming}
+              >
+                Wrap up early
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
