@@ -1,7 +1,23 @@
 .wrapper {
   max-width: 980px;
   margin: 0 auto;
-  padding: 72px 32px 96px;
+  padding: 40px 32px 96px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ftc-text-muted);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.15s ease;
+}
+
+.backLink:hover {
+  color: var(--ftc-terracotta);
 }
 
 .header {
@@ -101,6 +117,36 @@ a.card:hover {
   margin: 0;
 }
 
+.emailLink {
+  color: var(--ftc-terracotta);
+  text-decoration: none;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+.comingSoon {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px dashed var(--ftc-card-border);
+}
+
+.comingSoonHeading {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ftc-text-muted);
+  margin: 0 0 20px;
+}
+
+.comingSoonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
 .footer {
   margin-top: 56px;
   padding-top: 24px;
@@ -126,7 +172,7 @@ a.card:hover {
 
 @media (max-width: 640px) {
   .wrapper {
-    padding: 48px 20px 64px;
+    padding: 28px 20px 64px;
   }
   .title {
     font-size: 34px;

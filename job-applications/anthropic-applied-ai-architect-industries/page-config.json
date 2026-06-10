@@ -147,6 +147,12 @@
   ],
   "solutioningDecks": [
     {
+      "title": "FinTechCo Prospect Portal",
+      "scenario": "Financial Services",
+      "description": "A live prospect portal for a fictional payments and banking company: pre-meeting discovery agent, a security-first Claude Code briefing deck, and team demos. Access code shared separately.",
+      "path": "/fintechco"
+    },
+    {
       "title": "Eligibility Automation",
       "scenario": "Behavioral Health",
       "description": "A PE-backed behavioral health network with ~1,500 clinicians and ~300K lookups a month. End-to-end ownership: pre-sales feasibility, architecture, a data-loss crisis I fixed at the system level, then renewal and expansion. The customer champion ran his own ROI study: ~$650K annualized, 3 to 3.5:1 realistic.",

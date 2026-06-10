@@ -25,29 +25,52 @@ function Card({ card, tag }: { card: HubCard; tag?: string }) {
 export default function FintechcoHub() {
   const { deck, discovery, demos, availableOnRequest } = HUB_CONFIG;
 
+  // Discovery first, then deck, then demos; preserves HUB_CONFIG as source of truth
+  const allItems = [
+    { card: discovery, tag: 'Before we meet' },
+    { card: deck, tag: 'Presentation' },
+    ...demos.map((d) => ({
+      card: { title: d.title, blurb: d.blurb, href: d.href, live: d.live },
+      tag: d.team,
+    })),
+  ];
+  const liveItems = allItems.filter((item) => item.card.live);
+  const soonItems = allItems.filter((item) => !item.card.live);
+
   return (
     <main className={styles.wrapper}>
+      <Link href="/" className={styles.backLink}>&#8592; Back to Dan&#39;s Website</Link>
+
       <header className={styles.header}>
-        <span className={styles.kicker}>FinTechCo · Claude Code</span>
-        <h1 className={styles.title}>Workspace</h1>
+        <h1 className={styles.title}>FinTechCo · Anthropic | Claude Code Discovery &amp; Solutions</h1>
         <p className={styles.intro}>
-          Materials prepared for the FinTechCo engineering organization: the main
-          walkthrough, one demo per team, and a short discovery conversation to
-          shape the session around your priorities.
+          Welcome FinTechCo! You can find all of the relevant presentation materials here on your
+          prospect portal. If you have any questions, please feel free to reach out to your
+          Solutions Architect Dan at{' '}
+          <a href="mailto:danny.mathieson233@gmail.com" className={styles.emailLink}>
+            danny.mathieson233@gmail.com
+          </a>.
         </p>
       </header>
 
-      <section className={styles.grid}>
-        <Card card={deck} tag="Presentation" />
-        <Card card={discovery} tag="Before we meet" />
-        {demos.map((demo) => (
-          <Card
-            key={demo.key}
-            card={{ title: demo.title, blurb: demo.blurb, href: demo.href, live: demo.live }}
-            tag={demo.team}
-          />
-        ))}
-      </section>
+      {liveItems.length > 0 && (
+        <section className={styles.grid}>
+          {liveItems.map((item) => (
+            <Card key={item.card.title} card={item.card} tag={item.tag} />
+          ))}
+        </section>
+      )}
+
+      {soonItems.length > 0 && (
+        <section className={styles.comingSoon}>
+          <h2 className={styles.comingSoonHeading}>Coming Soon</h2>
+          <div className={styles.comingSoonGrid}>
+            {soonItems.map((item) => (
+              <Card key={item.card.title} card={item.card} tag={item.tag} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <footer className={styles.footer}>
         <h3 className={styles.footerHeading}>Also available on request</h3>

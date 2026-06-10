@@ -3,8 +3,8 @@ import AccessGate from '@/components/fintechco/AccessGate';
 import { FINTECHCO_THEME as T } from '@/lib/fintechco/theme';
 
 export const metadata: Metadata = {
-  title: 'FinTechCo Workspace',
-  description: 'A shared workspace prepared by Dan Mathieson.',
+  title: 'FinTechCo · Anthropic | Claude Code Discovery & Solutions',
+  description: 'A prospect portal prepared by Dan Mathieson, Solutions Architect.',
   robots: { index: false, follow: false },
 };
 
