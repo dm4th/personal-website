@@ -1,0 +1,281 @@
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--ftc-text-muted);
+  text-decoration: none;
+  margin-bottom: 1.75rem;
+}
+
+.backLink:hover {
+  color: var(--ftc-terracotta);
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.teamBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ftc-terracotta);
+  background: var(--ftc-terracotta-bg);
+  border: 1px solid var(--ftc-terracotta);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ftc-text);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.kpiRow {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.kpiCard {
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  min-width: 160px;
+}
+
+.kpiValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ftc-terracotta);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.kpiLabel {
+  font-size: 0.75rem;
+  color: var(--ftc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.framing {
+  font-size: 1rem;
+  color: var(--ftc-text-muted);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0.75rem 0 0;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ftc-text);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ftc-card-border);
+}
+
+.artifactNote {
+  font-size: 0.875rem;
+  color: var(--ftc-text-muted);
+  margin: 0 0 0.75rem;
+}
+
+/* Markdown content blocks */
+.markdownBlock {
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ftc-text);
+}
+
+.markdownBlock h1,
+.markdownBlock h2,
+.markdownBlock h3 {
+  color: var(--ftc-text);
+  margin-top: 1.5rem;
+}
+
+.markdownBlock h1:first-child,
+.markdownBlock h2:first-child,
+.markdownBlock h3:first-child {
+  margin-top: 0;
+}
+
+.markdownBlock p {
+  color: var(--ftc-text-muted);
+  margin: 0.5rem 0;
+}
+
+.markdownBlock strong {
+  color: var(--ftc-text);
+}
+
+.markdownBlock hr {
+  border: none;
+  border-top: 1px solid var(--ftc-card-border);
+  margin: 1.25rem 0;
+}
+
+.markdownBlock ul,
+.markdownBlock ol {
+  padding-left: 1.5rem;
+  color: var(--ftc-text-muted);
+}
+
+.markdownBlock li {
+  margin-bottom: 0.25rem;
+}
+
+.markdownBlock table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 0.75rem 0;
+}
+
+.markdownBlock th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ftc-text);
+  border-bottom: 2px solid var(--ftc-card-border);
+  padding: 0.4rem 0.75rem;
+}
+
+.markdownBlock td {
+  color: var(--ftc-text-muted);
+  border-bottom: 1px solid var(--ftc-card-border);
+  padding: 0.4rem 0.75rem;
+}
+
+.markdownBlock pre {
+  background: #0d1117;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #e6edf3;
+  margin: 0.75rem 0;
+}
+
+.markdownBlock code {
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+}
+
+/* Diff card */
+.diffCard {
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.8rem;
+}
+
+.diffHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--ftc-card);
+  border-bottom: 1px solid var(--ftc-card-border);
+}
+
+.diffLabel {
+  font-weight: 600;
+  color: var(--ftc-text);
+  font-size: 0.8rem;
+}
+
+.diffMeta {
+  font-size: 0.75rem;
+  color: var(--ftc-text-muted);
+}
+
+.diffBody {
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  overflow-x: auto;
+}
+
+.diffLine {
+  display: flex;
+  align-items: baseline;
+  padding: 0 0.75rem;
+  min-height: 1.4em;
+  line-height: 1.4;
+  white-space: pre;
+}
+
+.diffPrefix {
+  width: 1em;
+  flex-shrink: 0;
+  user-select: none;
+  color: #8b949e;
+}
+
+.diffPlain {
+  color: #e6edf3;
+}
+
+.diffAdded {
+  background: rgba(63, 185, 80, 0.1);
+}
+
+.diffAdded .diffPrefix {
+  color: #3fb950;
+}
+
+.diffRemoved {
+  background: rgba(248, 81, 73, 0.1);
+}
+
+.diffRemoved .diffPrefix {
+  color: #f85149;
+}
+
+.diffHunkHeader {
+  background: rgba(79, 140, 201, 0.1);
+}
+
+.diffHunkHeader .diffPlain {
+  color: #79c0ff;
+}
+
+.diffHunkHeader .diffPrefix {
+  color: #79c0ff;
+}
+
+.diffFileHeader {
+  background: #161b22;
+}
+
+.diffFileHeader .diffPlain {
+  color: #8b949e;
+}
+
+.diffContext .diffPlain {
+  color: #c9d1d9;
+}

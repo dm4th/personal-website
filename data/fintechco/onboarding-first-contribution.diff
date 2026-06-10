@@ -1,0 +1,52 @@
+diff --git a/src/__tests__/validator.test.ts b/src/__tests__/validator.test.ts
+index 4157ce0..ed5b510 100644
+--- a/src/__tests__/validator.test.ts
++++ b/src/__tests__/validator.test.ts
+@@ -30,4 +30,23 @@ describe('validatePayment', () => {
+     expect(result.valid).toBe(true);
+     expect(result.errors).toHaveLength(0);
+   });
++
++  it('rejects when currency is missing', () => {
++    const result = validatePayment({ id: 'pay_1', amount: 50, customerId: 'cust_1' });
++    expect(result.valid).toBe(false);
++    expect(result.errors).toContain('Currency is required');
++  });
++
++  it('rejects an unsupported currency', () => {
++    const result = validatePayment({ id: 'pay_1', amount: 50, currency: 'XBT', customerId: 'cust_1' });
++    expect(result.valid).toBe(false);
++    expect(result.errors.some((e) => e.includes('Currency must be one of'))).toBe(true);
++  });
++
++  it('accepts all supported currencies', () => {
++    for (const currency of ['USD', 'EUR', 'GBP', 'CAD']) {
++      const result = validatePayment({ id: 'pay_1', amount: 50, currency, customerId: 'cust_1' });
++      expect(result.valid).toBe(true);
++    }
++  });
+ });
+diff --git a/src/payments-core/validator.ts b/src/payments-core/validator.ts
+index bb5cf6a..1f04b36 100644
+--- a/src/payments-core/validator.ts
++++ b/src/payments-core/validator.ts
+@@ -1,5 +1,5 @@
+ import { Payment, ValidationResult } from '../shared/types';
+-import { MAX_TRANSACTION_AMOUNT, MIN_TRANSACTION_AMOUNT } from '../shared/constants';
++import { MAX_TRANSACTION_AMOUNT, MIN_TRANSACTION_AMOUNT, SUPPORTED_CURRENCIES } from '../shared/constants';
+ 
+ // TODO: Add idempotency key validation to prevent duplicate submissions (#FIN-9041)
+ export function validatePayment(payment: Partial<Payment>): ValidationResult {
+@@ -17,6 +17,12 @@ export function validatePayment(payment: Partial<Payment>): ValidationResult {
+     errors.push(`Amount must not exceed ${MAX_TRANSACTION_AMOUNT}`);
+   }
+ 
++  if (!payment.currency) {
++    errors.push('Currency is required');
++  } else if (!(SUPPORTED_CURRENCIES as readonly string[]).includes(payment.currency)) {
++    errors.push(`Currency must be one of: ${SUPPORTED_CURRENCIES.join(', ')}`);
++  }
++
+   if (!payment.customerId) {
+     errors.push('Customer ID is required');
+   }
