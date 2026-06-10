@@ -160,3 +160,119 @@
   color: var(--ftc-text);
   text-transform: capitalize;
 }
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.badgeComplete {
+  background: rgba(45, 120, 80, 0.12);
+  color: #2d7850;
+}
+
+.badgePartial {
+  background: rgba(180, 120, 40, 0.12);
+  color: #b47828;
+}
+
+.meddpicc {
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.meddpiccTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ftc-terracotta);
+  margin: 0 0 12px;
+}
+
+.dimension {
+  padding: 8px 0;
+  border-top: 1px solid var(--ftc-card-border);
+}
+
+.dimension:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.dimensionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.dimensionName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ftc-text);
+}
+
+.confidenceBadge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+
+.strong {
+  background: rgba(45, 120, 80, 0.12);
+  color: #2d7850;
+}
+
+.partial {
+  background: rgba(180, 120, 40, 0.12);
+  color: #b47828;
+}
+
+.missing {
+  background: rgba(100, 100, 100, 0.08);
+  color: var(--ftc-text-muted);
+}
+
+.dimensionFinding {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ftc-text);
+  margin: 0 0 3px;
+}
+
+.dimensionEvidence {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ftc-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.subjectGroup {
+  padding: 10px 0 10px 14px;
+  border-left: 2px solid var(--ftc-card-border);
+  margin-bottom: 10px;
+}
+
+.subjectGroup:last-child {
+  margin-bottom: 0;
+}
+
+.subjectLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ftc-text-muted);
+  margin: 0 0 6px;
+}

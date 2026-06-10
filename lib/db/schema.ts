@@ -5,6 +5,7 @@ import {
   timestamp,
   jsonb,
   integer,
+  boolean,
   index,
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
@@ -163,10 +164,13 @@ export const notionConfigs = pgTable('notion_configs', {
 
 export const discoveryResponses = pgTable('discovery_responses', {
   id: uuid('id').defaultRandom().primaryKey(),
+  conversationId: uuid('conversation_id').notNull().unique(),
   persona: text('persona', { enum: ['cto', 'head_of_dt', 'other'] }).notNull(),
   visitorLabel: text('visitor_label'),
   transcript: jsonb('transcript').notNull(),
   messages: jsonb('messages').notNull(),
+  completed: boolean('completed').notNull().default(false),
+  meddpicc: jsonb('meddpicc'),
   createdAt: timestamp('created_at').default(sql`now()`).notNull(),
 });
 

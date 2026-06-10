@@ -17,6 +17,7 @@ export type TranscriptEntry = {
 
 type DiscoveryState = {
   persona: DiscoveryPersona | null;
+  conversationId: string | null;
   messages: DiscoveryMessage[];
   transcript: TranscriptEntry[];
   currentSubject: number;
@@ -124,8 +125,26 @@ function toHistory(messages: DiscoveryMessage[]): { role: 'user' | 'assistant'; 
   }));
 }
 
+async function persistDraft() {
+  // Runs after the marker is processed, so `completed` reflects [S:done]: a
+  // visitor who finishes the conversation but never clicks Done still gets a
+  // complete badge; Done's only remaining job is attaching the name.
+  const { conversationId, persona, transcript, messages, completed } = useFintechcoDiscoveryStore.getState();
+  if (!conversationId || !persona) return;
+  try {
+    await fetch('/api/fintechco/discovery/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ conversationId, persona, transcript, messages, completed }),
+    });
+  } catch {
+    // fire-and-forget: swallow errors silently
+  }
+}
+
 export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) => ({
   persona: null,
+  conversationId: null,
   messages: [],
   transcript: [],
   currentSubject: 0,
@@ -137,15 +156,15 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
   setVisitorLabel: (label) => set({ visitorLabel: label }),
 
   submitResponse: async () => {
-    const { persona, transcript, messages, visitorLabel, submitted } = get();
-    if (!persona || submitted) return;
+    const { conversationId, persona, transcript, messages, visitorLabel, submitted } = get();
+    if (!persona || !conversationId || submitted) return;
 
     set({ submitted: true });
     try {
       const res = await fetch('/api/fintechco/discovery/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ persona, visitorLabel: visitorLabel || undefined, transcript, messages }),
+        body: JSON.stringify({ conversationId, persona, visitorLabel: visitorLabel || undefined, transcript, messages, completed: true }),
       });
       if (!res.ok) set({ submitted: false });
     } catch {
@@ -156,6 +175,7 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
   selectPersona: async (persona) => {
     set({
       persona,
+      conversationId: crypto.randomUUID(),
       messages: [],
       transcript: [],
       currentSubject: 0,
@@ -219,6 +239,10 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
     } finally {
       set({ isStreaming: false });
     }
+
+    // Fire-and-forget persist after every completed turn; captures partial responses
+    // even if the visitor closes the tab before clicking Done.
+    void persistDraft();
   },
 }));
 

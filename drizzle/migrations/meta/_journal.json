@@ -29,6 +29,13 @@
       "when": 1781106028072,
       "tag": "0003_add_discovery_responses",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1781119847830,
+      "tag": "0004_broad_switch",
+      "breakpoints": true
     }
   ]
 }
