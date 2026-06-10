@@ -18,7 +18,7 @@ export const HUB_CONFIG: HubConfig = {
     blurb:
       'A short, role-aware conversation. Pick your seat at the table and answer a few questions so the session is built around your priorities.',
     href: '/fintechco/discovery',
-    live: false,
+    live: true,
   },
   demos: [
     {

@@ -1,0 +1,179 @@
+.chooser {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 72px 32px 96px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ftc-terracotta);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  color: var(--ftc-text);
+}
+
+.intro {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ftc-text-muted);
+  margin: 0 0 40px;
+  max-width: 560px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+}
+
+.cardTitle {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  color: var(--ftc-text);
+}
+
+.cardBlurb {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ftc-text-muted);
+  margin: 0;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 32px 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.userBubble,
+.assistantBubble {
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 80%;
+  white-space: pre-wrap;
+}
+
+.userBubble {
+  align-self: flex-end;
+  background: var(--ftc-terracotta);
+  color: white;
+}
+
+.assistantBubble {
+  align-self: flex-start;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  color: var(--ftc-text);
+}
+
+.composer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 16px 0 24px;
+  background: var(--ftc-cream);
+}
+
+.textarea {
+  flex: 1;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 10px;
+  color: var(--ftc-text);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 12px 14px;
+  min-height: 48px;
+  resize: none;
+  overflow-y: hidden;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  border-color: var(--ftc-terracotta);
+}
+
+.sendBtn {
+  background: var(--ftc-terracotta);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.done {
+  padding: 20px 0 56px;
+  text-align: center;
+  color: var(--ftc-text-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 640px) {
+  .chooser,
+  .conversation {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .title {
+    font-size: 32px;
+  }
+}
