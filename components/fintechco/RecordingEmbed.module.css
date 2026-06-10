@@ -1,0 +1,41 @@
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ftc-card, #EAE4D9);
+  border: 1px solid var(--ftc-card-border, #D8D2C7);
+}
+
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ftc-text-muted, #4A4440);
+  font-size: 15px;
+}
+
+.placeholderIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ftc-terracotta-bg, rgba(200, 106, 72, 0.08));
+  color: var(--ftc-terracotta, #C86A48);
+  font-size: 18px;
+}
