@@ -1,0 +1,10 @@
+--- a/services/gateway/config.py
++++ b/services/gateway/config.py
+@@ -5,7 +5,7 @@ Gateway service configuration.
+
+ CHECKOUT_TIMEOUT_MS = 5000
+-FRAUD_CHECK_TIMEOUT_MS = 800
++FRAUD_CHECK_TIMEOUT_MS = 4500
+ FRAUD_CHECK_RETRIES = 3
+ FRAUD_CHECK_BASE_URL = "http://fraud-check:8002"
+ CHECKOUT_BASE_URL = "http://checkout:8001"

@@ -30,7 +30,7 @@ export const HUB_CONFIG: HubConfig = {
       href: '/fintechco/demos/fred-dashboard',
       recordingUrl: undefined,
       artifactPath: '/presentations/fintechco/fred-dashboard.html',
-      live: false,
+      live: true,
     },
     {
       key: 'onboarding',
@@ -40,7 +40,7 @@ export const HUB_CONFIG: HubConfig = {
         'Onboard a new member of the SWE team with a guided, secure, and efficient first contribution. Claude Code becomes the trusted foundation for future contributions.',
       href: '/fintechco/demos/onboarding-accelerator',
       recordingUrl: undefined,
-      live: false,
+      live: true,
     },
     {
       key: 'sre',
@@ -50,7 +50,7 @@ export const HUB_CONFIG: HubConfig = {
         'A critical service is experiencing latency spikes after a deploy. Use Claude Code to trace root cause, ship the fix, and update the runbook to prevent future incidents.',
       href: '/fintechco/demos/sre-triage',
       recordingUrl: undefined,
-      live: false,
+      live: true,
     },
   ],
   availableOnRequest: [
