@@ -43,6 +43,7 @@ export type SolutioningDeck = {
   scenario: string;
   description: string;
   path: string;
+  linkLabel?: string;
 };
 
 export type JobApplicationQuestion = {

@@ -16,7 +16,7 @@ export default function SolutioningDecks({ decks }: Props) {
             </div>
             <p className={styles.description}>{deck.description}</p>
             <a href={deck.path} target="_blank" rel="noopener noreferrer" className={styles.link}>
-              View deck ↗
+              {deck.linkLabel ?? 'View deck'} ↗
             </a>
           </div>
         ))}
