@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sql } from 'drizzle-orm';
 import { db } from '@/lib/db/client';
 import { discoveryResponses } from '@/lib/db/schema';
-import type { DiscoveryPersona } from '@/lib/fintechco/discoveryPrompt';
+import { DISCOVERY_PERSONAS, type DiscoveryPersona } from '@/lib/fintechco/discoveryPrompt';
 import type { DiscoveryMessage, TranscriptEntry } from '@/stores/fintechcoDiscovery';
 
-const VALID_PERSONAS: DiscoveryPersona[] = ['cto', 'head_of_dt', 'other'];
+// Derived from the persona registry so new personas never need a second edit here.
+const VALID_PERSONAS = Object.keys(DISCOVERY_PERSONAS) as DiscoveryPersona[];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function POST(req: NextRequest) {

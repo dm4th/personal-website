@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { StreamEvent } from '@/lib/agent/streamProtocol';
-import { DISCOVERY_PERSONAS, type DiscoveryPersona } from '@/lib/fintechco/discoveryPrompt';
+import { DISCOVERY_INTRO_MESSAGE, DISCOVERY_PERSONAS, type DiscoveryPersona } from '@/lib/fintechco/discoveryPrompt';
 
 export type DiscoveryMessage = {
   id: string;
@@ -8,6 +8,8 @@ export type DiscoveryMessage = {
   text: string;
   /** Subject marker the assistant message arrived with ('0', '1', ... or 'done'). */
   marker?: string;
+  /** Client-only message (the static welcome): shown and persisted, but never sent to the model. */
+  local?: boolean;
 };
 
 export type TranscriptEntry = {
@@ -29,6 +31,7 @@ type DiscoveryState = {
   submitResponse: () => Promise<void>;
   selectPersona: (persona: DiscoveryPersona) => Promise<void>;
   send: (text: string) => Promise<void>;
+  reset: () => void;
 };
 
 /**
@@ -118,11 +121,14 @@ async function streamTurn(
 
 // The model must see its own prior markers or it stops emitting them, so
 // history re-prefixes each assistant message; display text stays stripped.
+// Client-only messages (the static welcome) never reach the model.
 function toHistory(messages: DiscoveryMessage[]): { role: 'user' | 'assistant'; content: string }[] {
-  return messages.map((m) => ({
-    role: m.role,
-    content: m.role === 'assistant' && m.marker ? `[S:${m.marker}] ${m.text}` : m.text,
-  }));
+  return messages
+    .filter((m) => !m.local)
+    .map((m) => ({
+      role: m.role,
+      content: m.role === 'assistant' && m.marker ? `[S:${m.marker}] ${m.text}` : m.text,
+    }));
 }
 
 async function persistDraft() {
@@ -181,11 +187,19 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
       currentSubject: 0,
       completed: false,
       submitted: false,
+      visitorLabel: '',
       isStreaming: true,
     });
 
+    // Two-message opener: a static welcome lands instantly, then the model's
+    // first question streams in as a separate bubble.
     const assistantId = crypto.randomUUID();
-    set({ messages: [{ id: assistantId, role: 'assistant', text: '' }] });
+    set({
+      messages: [
+        { id: crypto.randomUUID(), role: 'assistant', text: DISCOVERY_INTRO_MESSAGE, local: true },
+        { id: assistantId, role: 'assistant', text: '' },
+      ],
+    });
 
     try {
       await streamTurn(
@@ -244,6 +258,21 @@ export const useFintechcoDiscoveryStore = create<DiscoveryState>()((set, get) =>
     // even if the visitor closes the tab before clicking Done.
     void persistDraft();
   },
+
+  // Clears the conversation so a return visit starts fresh at the persona
+  // chooser. Called after navigating back to the portal.
+  reset: () =>
+    set({
+      persona: null,
+      conversationId: null,
+      messages: [],
+      transcript: [],
+      currentSubject: 0,
+      isStreaming: false,
+      completed: false,
+      visitorLabel: '',
+      submitted: false,
+    }),
 }));
 
 function applyMarker(marker: string, assistantId: string) {

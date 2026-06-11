@@ -165,7 +165,7 @@ export const notionConfigs = pgTable('notion_configs', {
 export const discoveryResponses = pgTable('discovery_responses', {
   id: uuid('id').defaultRandom().primaryKey(),
   conversationId: uuid('conversation_id').notNull().unique(),
-  persona: text('persona', { enum: ['cto', 'head_of_dt', 'other'] }).notNull(),
+  persona: text('persona', { enum: ['cto', 'cto_delegate', 'head_of_dt', 'head_of_dt_delegate', 'other'] }).notNull(),
   visitorLabel: text('visitor_label'),
   transcript: jsonb('transcript').notNull(),
   messages: jsonb('messages').notNull(),

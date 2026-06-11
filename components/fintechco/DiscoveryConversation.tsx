@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useFintechcoDiscoveryStore } from '@/stores/fintechcoDiscovery';
 import { DISCOVERY_PERSONAS, type DiscoveryPersona } from '@/lib/fintechco/discoveryPrompt';
 import styles from './DiscoveryConversation.module.css';
 
-const PERSONA_ORDER: DiscoveryPersona[] = ['cto', 'head_of_dt', 'other'];
+const PERSONA_ORDER: DiscoveryPersona[] = ['cto', 'head_of_dt', 'cto_delegate', 'head_of_dt_delegate', 'other'];
 const WRAP_UP_MESSAGE = "I need to wrap up now, thanks.";
 
 export default function DiscoveryConversation() {
@@ -21,14 +22,43 @@ export default function DiscoveryConversation() {
     send,
     setVisitorLabel,
     submitResponse,
+    reset,
   } = useFintechcoDiscoveryStore();
   const [input, setInput] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [navigating, setNavigating] = useState(false);
+  const router = useRouter();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
+
+  // A finished conversation from a previous visit clears on mount, so a
+  // return trip to this page starts fresh at the persona chooser. Mid-flight
+  // conversations survive navigation on purpose.
+  useEffect(() => {
+    if (useFintechcoDiscoveryStore.getState().completed) reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // Pop the thank-you modal a beat after the closing message finishes
+  // streaming, so the visitor sees the assistant sign off first.
+  useEffect(() => {
+    if (!completed || isStreaming) return;
+    const t = setTimeout(() => setShowModal(true), 900);
+    return () => clearTimeout(t);
+  }, [completed, isStreaming]);
+
+  const handleBackToPortal = async () => {
+    if (navigating) return;
+    setNavigating(true);
+    // Attach the optional name before leaving; the transcript itself is
+    // already persisted turn by turn, so a failure here loses nothing vital.
+    await submitResponse();
+    router.push('/fintechco');
+  };
 
   // ID of the message currently being streamed: empty text means still thinking
   const activeMessageId = isStreaming ? messages[messages.length - 1]?.id : undefined;
@@ -113,26 +143,7 @@ export default function DiscoveryConversation() {
         <div ref={endRef} />
       </div>
       {completed ? (
-        <div className={styles.details}>
-          {submitted ? (
-            <div className={styles.done}>
-              Thanks for sharing your perspective! We&apos;ll use this to shape the session.
-            </div>
-          ) : (
-            <div className={styles.detailsInput}>
-              <input
-                type="text"
-                className={styles.nameInput}
-                placeholder="Your name (optional)"
-                value={visitorLabel}
-                onChange={(e) => setVisitorLabel(e.target.value)}
-              />
-              <button className={styles.doneBtn} onClick={submitResponse}>
-                Done
-              </button>
-            </div>
-          )}
-        </div>
+        <div className={styles.details} />
       ) : (
         <div className={`${styles.composer} ${isStreaming ? styles.composerStreaming : ''}`}>
           <div className={styles.composerRow}>
@@ -166,6 +177,32 @@ export default function DiscoveryConversation() {
               </button>
             </div>
           )}
+        </div>
+      )}
+      {showModal && (
+        <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-labelledby="discovery-thanks-title">
+          <div className={styles.modal}>
+            <h2 id="discovery-thanks-title" className={styles.modalTitle}>
+              Thank you!
+            </h2>
+            <p className={styles.modalBody}>
+              Your answers are on their way to Dan and will directly shape the session. Leave your
+              name below if you&apos;d like him to know who they came from.
+            </p>
+            {!submitted && (
+              <input
+                type="text"
+                className={styles.nameInput}
+                placeholder="Your name (optional)"
+                value={visitorLabel}
+                onChange={(e) => setVisitorLabel(e.target.value)}
+                disabled={navigating}
+              />
+            )}
+            <button className={styles.doneBtn} onClick={handleBackToPortal} disabled={navigating}>
+              {navigating ? 'Heading back…' : 'Back to Portal'}
+            </button>
+          </div>
         </div>
       )}
     </div>
