@@ -77,12 +77,57 @@ a.card:hover {
   opacity: 0.72;
 }
 
+/* ── Primary focus (deal-stage highlight) ─────────────────────── */
+
+.cardFeatured {
+  border: 2px solid var(--ftc-terracotta);
+  padding: 23px; /* keep content footprint identical to the 1px-border cards */
+  box-shadow: 0 6px 20px rgba(200, 106, 72, 0.16);
+}
+
+.focusChip {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--ftc-terracotta);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.focusNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ftc-terracotta);
+  font-weight: 600;
+  margin: 12px 0 0;
+}
+
 .cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 14px;
+}
+
+.cardTopGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dateChip {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ftc-text);
+  background: var(--ftc-cream);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
 }
 
 .tag {
@@ -147,6 +192,84 @@ a.card:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+}
+
+/* ── Resource sections (deal workspace) ───────────────────────── */
+
+.sectionBlurb {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ftc-text-muted);
+  margin: -8px 0 20px;
+  max-width: 560px;
+}
+
+.resourceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resourceRow,
+.resourceRowLink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--ftc-card);
+  border: 1px solid var(--ftc-card-border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.resourceRowLink {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.resourceRowLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(26, 26, 26, 0.07);
+}
+
+.resourceText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resourceTitle {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ftc-text);
+}
+
+.resourceRowLink .resourceTitle {
+  color: var(--ftc-terracotta);
+}
+
+.resourceNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ftc-text-muted);
+}
+
+.resourceStatus {
+  font-size: 12px;
+  color: var(--ftc-text-muted);
+  white-space: nowrap;
+}
+
+.resourceEmpty {
+  font-size: 14px;
+  color: var(--ftc-text-muted);
+  font-style: italic;
+  margin: 0;
 }
 
 .footer {

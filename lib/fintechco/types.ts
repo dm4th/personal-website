@@ -16,6 +16,8 @@ export interface DemoConfig {
   live: boolean;
   /** Soft gate: label the card Coming Soon while keeping the link active. */
   comingSoon?: boolean;
+  /** Short display date rendered verbatim on the card, e.g. "June 16" or "By June 15". */
+  date?: string;
 }
 
 export interface HubCard {
@@ -25,12 +27,43 @@ export interface HubCard {
   live: boolean;
   /** Soft gate: label the card Coming Soon while keeping the link active. */
   comingSoon?: boolean;
+  /** Short display date rendered verbatim on the card, e.g. "June 16" or "By June 15". */
+  date?: string;
+}
+
+export type ResourceStatus = 'live' | 'coming-soon' | 'on-request';
+
+export interface ResourceItem {
+  title: string;
+  note?: string;
+  status: ResourceStatus;
+  /** Rendered as a link only when status is 'live'. */
+  href?: string;
+}
+
+export interface ResourceSection {
+  heading: string;
+  blurb?: string;
+  items: ResourceItem[];
+}
+
+export interface PrimaryFocus {
+  /** Which tile deserves attention right now; tracks the deal stage. */
+  target: 'discovery' | 'deck' | DemoKey;
+  /** Short chip text on the highlighted tile, e.g. "Start here". */
+  label: string;
+  /** One-line nudge rendered inside the highlighted tile. */
+  note?: string;
 }
 
 export interface HubConfig {
   deck: HubCard;
   discovery: HubCard;
   demos: DemoConfig[];
+  /** Exactly one highlighted tile; move this as the conversation advances. */
+  primaryFocus?: PrimaryFocus;
+  /** Deal-workspace sections below the tiles (legal, references, case studies). */
+  resourceSections: ResourceSection[];
   /** Back-pocket demos surfaced as text only, never links. */
   availableOnRequest: string[];
 }

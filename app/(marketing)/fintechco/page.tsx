@@ -1,33 +1,85 @@
 import Link from 'next/link';
 import { HUB_CONFIG } from '@/lib/fintechco/config';
-import type { HubCard } from '@/lib/fintechco/types';
+import type { HubCard, PrimaryFocus, ResourceSection } from '@/lib/fintechco/types';
 import styles from './page.module.css';
 
-function Card({ card, tag }: { card: HubCard; tag?: string }) {
+function Card({ card, tag, focus }: { card: HubCard; tag?: string; focus?: PrimaryFocus }) {
   // comingSoon is a soft gate: the label discourages clicking, the link stays live
   const soon = !card.live || card.comingSoon;
   const body = (
     <>
-      {(tag || soon) && (
+      {(tag || soon || focus || card.date) && (
         <div className={styles.cardTop}>
-          {tag && <span className={styles.tag}>{tag}</span>}
-          {soon && <span className={styles.soon}>Coming soon</span>}
+          <span className={styles.cardTopGroup}>
+            {focus && <span className={styles.focusChip}>{focus.label}</span>}
+            {tag && <span className={styles.tag}>{tag}</span>}
+          </span>
+          <span className={styles.cardTopGroup}>
+            {soon && <span className={styles.soon}>Coming soon</span>}
+            {card.date && <span className={styles.dateChip}>{card.date}</span>}
+          </span>
         </div>
       )}
       <h2 className={styles.cardTitle}>{card.title}</h2>
       <p className={styles.cardBlurb}>{card.blurb}</p>
+      {focus?.note && <p className={styles.focusNote}>{focus.note}</p>}
     </>
   );
 
+  const featured = focus ? styles.cardFeatured : '';
   return card.live ? (
     <Link
       href={card.href}
-      className={`${styles.card} ${card.comingSoon ? styles.cardSoon : ''}`}
+      className={`${styles.card} ${featured} ${card.comingSoon ? styles.cardSoon : ''}`}
     >
       {body}
     </Link>
   ) : (
-    <div className={`${styles.card} ${styles.cardDisabled}`}>{body}</div>
+    <div className={`${styles.card} ${featured} ${styles.cardDisabled}`}>{body}</div>
+  );
+}
+
+const RESOURCE_STATUS_LABEL = { 'coming-soon': 'Coming soon', 'on-request': 'Available on request' } as const;
+
+function Resources({ section }: { section: ResourceSection }) {
+  return (
+    <section className={styles.section}>
+      <h2 className={styles.sectionHeading}>{section.heading}</h2>
+      {section.blurb && <p className={styles.sectionBlurb}>{section.blurb}</p>}
+      {section.items.length === 0 ? (
+        <p className={styles.resourceEmpty}>Items appear here as our conversation progresses.</p>
+      ) : (
+        <ul className={styles.resourceList}>
+          {section.items.map((item) => {
+            const inner = (
+              <>
+                <span className={styles.resourceText}>
+                  <span className={styles.resourceTitle}>
+                    {item.title}
+                    {item.status === 'live' && <span aria-hidden> &#8599;</span>}
+                  </span>
+                  {item.note && <span className={styles.resourceNote}>{item.note}</span>}
+                </span>
+                {item.status !== 'live' && (
+                  <span className={styles.resourceStatus}>{RESOURCE_STATUS_LABEL[item.status]}</span>
+                )}
+              </>
+            );
+            return (
+              <li key={item.title}>
+                {item.status === 'live' && item.href ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className={styles.resourceRowLink}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div className={styles.resourceRow}>{inner}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </section>
   );
 }
 
@@ -41,10 +93,15 @@ function Section({ heading, children }: { heading: React.ReactNode; children: Re
 }
 
 export default function FintechcoHub() {
-  const { deck, discovery, demos, availableOnRequest } = HUB_CONFIG;
+  const { deck, discovery, demos, primaryFocus, resourceSections, availableOnRequest } = HUB_CONFIG;
 
-  const demoCards: { card: HubCard; tag: string }[] = demos.map((d) => ({
-    card: { title: d.title, blurb: d.blurb, href: d.href, live: d.live, comingSoon: d.comingSoon },
+  // Exactly one tile carries the focus treatment, chosen by deal stage in config
+  const focusFor = (target: PrimaryFocus['target']) =>
+    primaryFocus?.target === target ? primaryFocus : undefined;
+
+  const demoCards = demos.map((d) => ({
+    key: d.key,
+    card: { title: d.title, blurb: d.blurb, href: d.href, live: d.live, comingSoon: d.comingSoon, date: d.date },
     tag: d.team,
   }));
 
@@ -65,18 +122,22 @@ export default function FintechcoHub() {
       </header>
 
       <Section heading="Before We Meet">
-        <Card card={discovery} />
+        <Card card={discovery} focus={focusFor('discovery')} />
       </Section>
 
       <Section heading="Presentation">
-        <Card card={deck} />
+        <Card card={deck} focus={focusFor('deck')} />
       </Section>
 
       <Section heading={<>Live &amp; Recorded Demos</>}>
         {demoCards.map((item) => (
-          <Card key={item.card.title} card={item.card} tag={item.tag} />
+          <Card key={item.key} card={item.card} tag={item.tag} focus={focusFor(item.key)} />
         ))}
       </Section>
+
+      {resourceSections.map((section) => (
+        <Resources key={section.heading} section={section} />
+      ))}
 
       <footer className={styles.footer}>
         <h3 className={styles.footerHeading}>Also available on request</h3>

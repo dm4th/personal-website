@@ -12,6 +12,7 @@ export const HUB_CONFIG: HubConfig = {
       'The main walkthrough: a security-first look at rolling out one agentic coding tool across all three engineering teams.',
     href: '/fintechco/deck',
     live: false,
+    date: 'June 16',
   },
   discovery: {
     title: 'Pre-Meeting Discovery',
@@ -19,6 +20,7 @@ export const HUB_CONFIG: HubConfig = {
       'A short, role-aware conversation. Pick your seat at the table and answer a few questions so the session is built around your priorities.',
     href: '/fintechco/discovery',
     live: true,
+    date: 'By June 15',
   },
   demos: [
     {
@@ -32,6 +34,7 @@ export const HUB_CONFIG: HubConfig = {
       artifactPath: '/presentations/fintechco/fred-dashboard.html',
       live: true,
       comingSoon: true,
+      date: 'June 16',
     },
     {
       key: 'onboarding',
@@ -43,6 +46,7 @@ export const HUB_CONFIG: HubConfig = {
       recordingUrl: undefined,
       live: true,
       comingSoon: true,
+      date: 'June 16',
     },
     {
       key: 'sre',
@@ -54,6 +58,92 @@ export const HUB_CONFIG: HubConfig = {
       recordingUrl: undefined,
       live: true,
       comingSoon: true,
+      date: 'June 16',
+    },
+  ],
+  // Move this pointer as the conversation advances: discovery before the
+  // session, 'deck' the week of the meeting, a demo key during the pilot.
+  primaryFocus: {
+    target: 'discovery',
+    label: 'Start here',
+    note: 'Ten minutes here before we meet shapes the whole session around your priorities.',
+  },
+  resourceSections: [
+    {
+      heading: 'Contracting & Legal',
+      blurb: 'Everything your security and procurement teams will ask for, in one place.',
+      items: [
+        {
+          title: 'Anthropic Trust Center',
+          note: 'Security documentation, compliance certifications, and the subprocessor list.',
+          status: 'live',
+          href: 'https://trust.anthropic.com',
+        },
+        {
+          title: 'SOC 2 Type II report',
+          note: 'Shared under NDA through the Trust Center.',
+          status: 'on-request',
+        },
+        {
+          title: 'Enterprise order form & data processing addendum',
+          note: 'Drafted once we scope the pilot together.',
+          status: 'coming-soon',
+        },
+      ],
+    },
+    {
+      heading: 'Referenceable Communications',
+      blurb: 'Conversations with people who have walked this road before you.',
+      items: [
+        {
+          title: 'Reference call: payments-platform engineering leader',
+          note: 'A peer who rolled Claude Code out across a regulated engineering org.',
+          status: 'on-request',
+        },
+        {
+          title: 'Security architecture session with the Anthropic team',
+          note: 'A working session for your security leads, scheduled when you are ready.',
+          status: 'on-request',
+        },
+      ],
+    },
+    {
+      heading: 'Requested Case Studies',
+      blurb: 'Written stories from teams that look like yours, added as you ask for them.',
+      items: [
+        {
+          title: 'Stripe',
+          note: 'How Stripe ships with Claude across its engineering org.',
+          status: 'live',
+          href: 'https://claude.com/customers/stripe',
+        },
+        {
+          title: 'PwC',
+          note: 'Quality assurance and delivery work, accelerated with Claude.',
+          status: 'live',
+          href: 'https://claude.com/customers/pwc-qa',
+        },
+        {
+          title: 'AIG',
+          note: 'AI in a regulated insurance underwriting environment.',
+          status: 'on-request',
+        },
+        {
+          title: "Moody's",
+          note: 'Financial research and analysis workflows.',
+          status: 'on-request',
+        },
+        {
+          title: 'CRED',
+          note: 'A fintech engineering team building with Claude.',
+          status: 'on-request',
+        },
+        {
+          title: 'Rocket Mortgage',
+          note: 'AI-assisted lending and homeownership workflows.',
+          status: 'on-request',
+        },
+      ],
     },
   ],
   availableOnRequest: [
