@@ -80,12 +80,17 @@ export const HUB_CONFIG: HubConfig = {
           href: 'https://trust.anthropic.com',
         },
         {
-          title: 'SOC 2 Type II report',
+          title: 'SOC 2 Type II Report',
           note: 'Shared under NDA through the Trust Center.',
           status: 'on-request',
         },
         {
-          title: 'Enterprise order form & data processing addendum',
+          title: 'Security Architecture Session with the Anthropic Team',
+          note: 'A working session for your security leads, scheduled when you are ready.',
+          status: 'on-request',
+        },
+        {
+          title: 'Enterprise Order Form & Data Processing Addendum',
           note: 'Drafted once we scope the pilot together.',
           status: 'coming-soon',
         },
@@ -96,13 +101,13 @@ export const HUB_CONFIG: HubConfig = {
       blurb: 'Conversations with people who have walked this road before you.',
       items: [
         {
-          title: 'Reference call: payments-platform engineering leader',
+          title: 'Reference Call: Payments-Platform Engineering Leader',
           note: 'A peer who rolled Claude Code out across a regulated engineering org.',
           status: 'on-request',
         },
         {
-          title: 'Security architecture session with the Anthropic team',
-          note: 'A working session for your security leads, scheduled when you are ready.',
+          title: 'Reference Call: Head of Platform Security at a Digital Bank',
+          note: 'The security-side perspective on evaluating and approving agentic tooling.',
           status: 'on-request',
         },
       ],
@@ -147,7 +152,15 @@ export const HUB_CONFIG: HubConfig = {
     },
   ],
   availableOnRequest: [
-    'Governance and guardrails: the same repo before and after enterprise controls',
-    'Legacy modernization: a contained, test-protected slice of a crusty service',
+    {
+      title: 'Governance & Guardrails',
+      note: 'The same repo before and after enterprise controls.',
+      status: 'on-request',
+    },
+    {
+      title: 'Legacy Modernization',
+      note: 'A contained, test-protected slice of a crusty legacy service.',
+      status: 'on-request',
+    },
   ],
 };

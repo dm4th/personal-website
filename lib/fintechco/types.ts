@@ -64,6 +64,6 @@ export interface HubConfig {
   primaryFocus?: PrimaryFocus;
   /** Deal-workspace sections below the tiles (legal, references, case studies). */
   resourceSections: ResourceSection[];
-  /** Back-pocket demos surfaced as text only, never links. */
-  availableOnRequest: string[];
+  /** Back-pocket demos, shown as on-request rows inside the demos section. */
+  availableOnRequest: ResourceItem[];
 }
