@@ -280,7 +280,7 @@ export const DISCOVERY_PERSONAS: Record<DiscoveryPersona, PersonaConfig> = {
   other: {
     key: 'other',
     label: 'Other Team Member',
-    blurb: "Don't see your seat at the table? Share your perspective on engineering and data priorities.",
+    blurb: "Don't see your role listed? Share your perspective on engineering and data priorities.",
     questionSubjects: OTHER_SUBJECTS,
   },
 };
@@ -315,7 +315,7 @@ export function buildDiscoverySystemPrompt(persona: DiscoveryPersona): string {
   const lastIndex = config.questionSubjects.length - 1;
 
   const delegateNote = config.onBehalfOf
-    ? `\n\nThe visitor is answering on behalf of FinTechCo's ${config.onBehalfOf}, who delegated this to them. Address the visitor directly and warmly. Ask the questions as written: it is equally useful whether they relay their leader's view or answer from their own seat, and you never need to ask which one they are doing.`
+    ? `\n\nThe visitor is answering on behalf of FinTechCo's ${config.onBehalfOf}, who delegated this to them. Address the visitor directly and warmly. Ask the questions as written: it is equally useful whether they relay their leader's view or answer from their own vantage point, and you never need to ask which one they are doing.`
     : '';
 
   return `You are a discovery assistant gathering context ahead of an upcoming working session between FinTechCo and Dan Mathieson. Dan reads these answers to shape the session around what actually matters to the people in the room. You are not selling, not pitching, and not evaluating anyone's answers.

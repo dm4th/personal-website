@@ -17,7 +17,7 @@ export const HUB_CONFIG: HubConfig = {
   discovery: {
     title: 'Pre-Meeting Discovery',
     blurb:
-      'A short, role-aware conversation. Pick your seat at the table and answer a few questions so the session is built around your priorities.',
+      'A short, role-aware conversation. Pick your role and answer a few questions so the session is built around your priorities.',
     href: '/fintechco/discovery',
     live: true,
     date: 'By June 15',

@@ -96,7 +96,7 @@ export default function DiscoveryConversation() {
         <span className={styles.kicker}>FinTechCo · Before we meet</span>
         <h1 className={styles.title}>Pre-Meeting Discovery</h1>
         <p className={styles.intro}>
-          Pick the seat that&apos;s closest to yours. We&apos;ll ask a handful of quick
+          Pick the role that&apos;s closest to yours. We&apos;ll ask a handful of quick
           questions so the session is shaped around your priorities.
         </p>
         <div className={styles.cards}>
