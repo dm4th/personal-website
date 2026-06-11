@@ -31,6 +31,7 @@ export const HUB_CONFIG: HubConfig = {
       recordingUrl: undefined,
       artifactPath: '/presentations/fintechco/fred-dashboard.html',
       live: true,
+      comingSoon: true,
     },
     {
       key: 'onboarding',
@@ -41,6 +42,7 @@ export const HUB_CONFIG: HubConfig = {
       href: '/fintechco/demos/onboarding-accelerator',
       recordingUrl: undefined,
       live: true,
+      comingSoon: true,
     },
     {
       key: 'sre',
@@ -51,6 +53,7 @@ export const HUB_CONFIG: HubConfig = {
       href: '/fintechco/demos/sre-triage',
       recordingUrl: undefined,
       live: true,
+      comingSoon: true,
     },
   ],
   availableOnRequest: [

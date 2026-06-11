@@ -50,12 +50,6 @@
   margin: 0;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -76,6 +70,11 @@ a.card:hover {
 .cardDisabled {
   opacity: 0.72;
   cursor: default;
+}
+
+/* Soft gate: reads as not-quite-ready, but the link still works */
+.cardSoon {
+  opacity: 0.72;
 }
 
 .cardTop {
@@ -126,13 +125,16 @@ a.card:hover {
   text-decoration: underline;
 }
 
-.comingSoon {
-  margin-top: 48px;
+.section {
   padding-top: 32px;
   border-top: 2px dashed var(--ftc-card-border);
 }
 
-.comingSoonHeading {
+.section + .section {
+  margin-top: 48px;
+}
+
+.sectionHeading {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -141,7 +143,7 @@ a.card:hover {
   margin: 0 0 20px;
 }
 
-.comingSoonGrid {
+.sectionGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;

@@ -14,6 +14,8 @@ export interface DemoConfig {
   artifactPath?: string;
   /** Flipped to true by the hub-wiring pass once the page exists. */
   live: boolean;
+  /** Soft gate: label the card Coming Soon while keeping the link active. */
+  comingSoon?: boolean;
 }
 
 export interface HubCard {
@@ -21,6 +23,8 @@ export interface HubCard {
   blurb: string;
   href: string;
   live: boolean;
+  /** Soft gate: label the card Coming Soon while keeping the link active. */
+  comingSoon?: boolean;
 }
 
 export interface HubConfig {

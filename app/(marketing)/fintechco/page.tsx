@@ -4,38 +4,49 @@ import type { HubCard } from '@/lib/fintechco/types';
 import styles from './page.module.css';
 
 function Card({ card, tag }: { card: HubCard; tag?: string }) {
+  // comingSoon is a soft gate: the label discourages clicking, the link stays live
+  const soon = !card.live || card.comingSoon;
   const body = (
     <>
-      <div className={styles.cardTop}>
-        {tag && <span className={styles.tag}>{tag}</span>}
-        {!card.live && <span className={styles.soon}>Coming soon</span>}
-      </div>
+      {(tag || soon) && (
+        <div className={styles.cardTop}>
+          {tag && <span className={styles.tag}>{tag}</span>}
+          {soon && <span className={styles.soon}>Coming soon</span>}
+        </div>
+      )}
       <h2 className={styles.cardTitle}>{card.title}</h2>
       <p className={styles.cardBlurb}>{card.blurb}</p>
     </>
   );
 
   return card.live ? (
-    <Link href={card.href} className={styles.card}>{body}</Link>
+    <Link
+      href={card.href}
+      className={`${styles.card} ${card.comingSoon ? styles.cardSoon : ''}`}
+    >
+      {body}
+    </Link>
   ) : (
     <div className={`${styles.card} ${styles.cardDisabled}`}>{body}</div>
+  );
+}
+
+function Section({ heading, children }: { heading: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <section className={styles.section}>
+      <h2 className={styles.sectionHeading}>{heading}</h2>
+      <div className={styles.sectionGrid}>{children}</div>
+    </section>
   );
 }
 
 export default function FintechcoHub() {
   const { deck, discovery, demos, availableOnRequest } = HUB_CONFIG;
 
-  // Discovery first, then deck, then demos; preserves HUB_CONFIG as source of truth
-  const allItems = [
-    { card: discovery, tag: 'Before we meet' },
-    { card: deck, tag: 'Presentation' },
-    ...demos.map((d) => ({
-      card: { title: d.title, blurb: d.blurb, href: d.href, live: d.live },
-      tag: d.team,
-    })),
-  ];
-  const liveItems = allItems.filter((item) => item.card.live);
-  const soonItems = allItems.filter((item) => !item.card.live);
+  const demoCards: { card: HubCard; tag: string }[] = demos.map((d) => ({
+    card: { title: d.title, blurb: d.blurb, href: d.href, live: d.live, comingSoon: d.comingSoon },
+    tag: d.team,
+  }));
 
   return (
     <main className={styles.wrapper}>
@@ -53,24 +64,19 @@ export default function FintechcoHub() {
         </p>
       </header>
 
-      {liveItems.length > 0 && (
-        <section className={styles.grid}>
-          {liveItems.map((item) => (
-            <Card key={item.card.title} card={item.card} tag={item.tag} />
-          ))}
-        </section>
-      )}
+      <Section heading="Before We Meet">
+        <Card card={discovery} />
+      </Section>
 
-      {soonItems.length > 0 && (
-        <section className={styles.comingSoon}>
-          <h2 className={styles.comingSoonHeading}>Coming Soon</h2>
-          <div className={styles.comingSoonGrid}>
-            {soonItems.map((item) => (
-              <Card key={item.card.title} card={item.card} tag={item.tag} />
-            ))}
-          </div>
-        </section>
-      )}
+      <Section heading="Presentation">
+        <Card card={deck} />
+      </Section>
+
+      <Section heading={<>Live &amp; Recorded Demos</>}>
+        {demoCards.map((item) => (
+          <Card key={item.card.title} card={item.card} tag={item.tag} />
+        ))}
+      </Section>
 
       <footer className={styles.footer}>
         <h3 className={styles.footerHeading}>Also available on request</h3>
