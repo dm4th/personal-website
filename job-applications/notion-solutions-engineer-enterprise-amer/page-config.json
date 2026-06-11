@@ -5,6 +5,11 @@
   "role": "Solutions Engineer - Enterprise - AMER",
   "appliedDate": "",
   "fitScore": 85,
+  "passwordGated": true,
+  "password": "agents",
+  "passwordGateTitle": "Round 1 Submission",
+  "passwordGateSubtitle": "Dan Mathieson · Notion Solutions Engineering",
+  "solutioningDecksTitle": "Round 1 submission",
   "fitScoreNote": "I've spent the last two years as the technical voice in every enterprise deal my companies ran, and I've been building on the Notion API in my own work long enough that I can prototype solutions in the field rather than promising to follow up. This is the SE motion I want to do well, and Notion is the product I'd be proud to sell.",
   "dimensions": {
     "coreJobFunction": {
@@ -181,6 +186,15 @@
       "name": "Personal Website Agent",
       "path": "/",
       "relevance": "An agent-first site built on the Claude Agent SDK with live career search, job description analysis, and meeting scheduling. Shows full-stack production engineering and the kind of agentic systems thinking that enterprise prospects increasingly want to understand from their SE."
+    }
+  ],
+  "solutioningDecks": [
+    {
+      "title": "Arcline EPD Weekly Digest",
+      "scenario": "Round 1 Submission",
+      "description": "Full walkthrough of the EPD solution built for Arcline Technologies to automatically create weekly readouts for VP-Level stakeholders. Truthfulness of the summarized claims are checked by humans and AI alike to ensure nothing is missed or hallucinated.",
+      "path": "/presentations/notion-se/submission.html",
+      "linkLabel": "View submission"
     }
   ],
   "applicationQuestions": [],

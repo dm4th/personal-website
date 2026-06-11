@@ -61,6 +61,12 @@ export type JobApplicationConfig = {
   fitScoreNote: string;
   hidden?: boolean;
   passwordGated?: boolean;
+  // Per-page gate overrides; defaults preserve the original Anthropic solutioning gate.
+  password?: string;
+  passwordGateTitle?: string;
+  passwordGateSubtitle?: string;
+  // Overrides the "Interview prep materials" section heading when decks are present.
+  solutioningDecksTitle?: string;
   dimensions?: JobFitDimensions;
   summary?: string[];
   jobDescriptionUrl: string;

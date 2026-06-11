@@ -2,24 +2,34 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const STORAGE_KEY = 'solutioning-unlocked-v1';
+type Props = {
+  password?: string;
+  title?: string;
+  subtitle?: string;
+  storageKey?: string;
+};
 
-export default function PasswordGate() {
+export default function PasswordGate({
+  password = 'solutioning',
+  title = 'Interview Prep Materials',
+  subtitle = 'Dan Mathieson · Anthropic Applied AI',
+  storageKey = 'solutioning-unlocked-v1',
+}: Props) {
   const [locked, setLocked] = useState<boolean | null>(null);
   const [error, setError] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setLocked(sessionStorage.getItem(STORAGE_KEY) !== '1');
-  }, []);
+    setLocked(sessionStorage.getItem(storageKey) !== '1');
+  }, [storageKey]);
 
   useEffect(() => {
     if (locked) inputRef.current?.focus();
   }, [locked]);
 
   function tryUnlock() {
-    if (inputRef.current?.value === 'solutioning') {
-      sessionStorage.setItem(STORAGE_KEY, '1');
+    if (inputRef.current?.value === password) {
+      sessionStorage.setItem(storageKey, '1');
       setLocked(false);
     } else {
       setError('Incorrect access code.');
@@ -52,10 +62,10 @@ export default function PasswordGate() {
           </svg>
         </div>
         <p style={{ color: 'var(--foreground)', fontSize: 18, fontWeight: 700, margin: '0 0 6px', letterSpacing: '-0.01em' }}>
-          Interview Prep Materials
+          {title}
         </p>
         <p style={{ color: 'var(--subtle)', fontSize: 13, margin: '0 0 32px', lineHeight: 1.5 }}>
-          Dan Mathieson &middot; Anthropic Applied AI
+          {subtitle}
         </p>
         <input
           ref={inputRef}

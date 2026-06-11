@@ -145,7 +145,14 @@ export default async function ReferPage({ params }: Props) {
   return (
     <>
       <SiteHeader allInfoData={allInfoData} />
-      {config.passwordGated && <PasswordGate />}
+      {config.passwordGated && (
+        <PasswordGate
+          password={config.password}
+          title={config.passwordGateTitle}
+          subtitle={config.passwordGateSubtitle}
+          storageKey={`refer-unlocked-${config.id}`}
+        />
+      )}
       <div className={styles.wrapper}>
 
         {/* ── Page header ─────────────────────────────────── */}
@@ -232,7 +239,7 @@ export default async function ReferPage({ params }: Props) {
           )}
 
           {(config.solutioningDecks ?? []).length > 0 && (
-            <CollapsibleSection title="Interview prep materials" defaultOpen>
+            <CollapsibleSection title={config.solutioningDecksTitle ?? 'Interview prep materials'} defaultOpen>
               <SolutioningDecks decks={config.solutioningDecks!} />
             </CollapsibleSection>
           )}
