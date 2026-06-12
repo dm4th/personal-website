@@ -30,10 +30,10 @@ export const HUB_CONFIG: HubConfig = {
       blurb:
         'Your data science team has a unique insight about Fed policy and portfolio signals. Let\'s have Claude Code build a prototype in minutes within your secure environment to test the hypothesis.',
       href: '/fintechco/demos/fred-dashboard',
-      recordingUrl: undefined,
+      recordingUrl: 'https://youtu.be/u1Vgz9kGSHA',
       artifactPath: '/presentations/fintechco/fred-dashboard.html',
       live: true,
-      comingSoon: true,
+      comingSoon: false,
       date: 'June 16',
     },
     {
