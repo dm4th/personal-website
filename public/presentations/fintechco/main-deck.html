@@ -115,7 +115,7 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
         page-break-after: always;
     }
     .slide:last-child { break-after: auto; page-break-after: auto; }
-    .deck-controls { display: none !important; }
+    .deck-controls, .deck-nav, .counter, .edit-hotzone, .edit-toggle { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -386,6 +386,29 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
     padding: 8px 14px; cursor: pointer;
 }
 .edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
+[contenteditable="true"] { outline: 2px solid var(--terracotta); outline-offset: 3px; border-radius: 4px; cursor: text; }
+
+/* === Key-element pulse (matches solutioning deck) === */
+@keyframes keyGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(200,106,72,0.5); } 50% { box-shadow: 0 0 0 14px rgba(200,106,72,0); } }
+.pulse { animation: keyGlow 2.6s ease-in-out 0.8s infinite; }
+
+/* === DECK NAVIGATION (viewport-fixed, right side) === */
+.deck-nav { position:fixed; right:18px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; z-index:1000; background:rgba(15,12,10,0.22); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-radius:22px; padding:10px 7px; border:1px solid rgba(255,255,255,0.1); }
+.nav-arrow { width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.28); color:rgba(255,255,255,0.7); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; flex-shrink:0; }
+.nav-arrow:hover { background:rgba(255,255,255,0.22); color:rgba(255,255,255,0.95); }
+.nav-dots { display:flex; flex-direction:column; align-items:center; gap:8px; padding:2px 0; }
+.nav-dot-wrap { position:relative; display:flex; align-items:center; }
+.nav-dot-label { position:absolute; right:calc(100% + 12px); top:50%; transform:translateY(-50%) translateX(6px); white-space:nowrap; font-family:var(--font); font-size:11px; font-weight:600; letter-spacing:0.04em; color:rgba(255,255,255,0.92); background:rgba(15,12,10,0.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:5px 11px; border-radius:8px; opacity:0; pointer-events:none; transition:opacity 0.18s ease,transform 0.18s ease; }
+.nav-dot-wrap:hover .nav-dot-label { opacity:1; transform:translateY(-50%) translateX(0); }
+.nav-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.5); border:none; cursor:pointer; transition:all 0.25s ease; padding:0; flex-shrink:0; }
+.nav-dot:hover { background:rgba(255,255,255,0.75); }
+.nav-dot.active { width:10px; height:10px; background:rgba(255,255,255,0.97); }
+.nav-appendix-divider { display:flex; flex-direction:column; align-items:center; gap:3px; margin:2px 0; }
+.nav-appendix-line { width:16px; height:1px; background:rgba(255,255,255,0.25); }
+.nav-appendix-label { font-family:var(--font); font-size:7px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:rgba(255,255,255,0.45); white-space:nowrap; }
+.nav-dot.appendix { background:rgba(200,106,72,0.5); }
+.nav-dot.appendix:hover { background:rgba(200,106,72,0.75); }
+.nav-dot.appendix.active { background:rgba(200,106,72,0.95); }
 </style>
 </head>
 <body>
@@ -397,7 +420,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 1 · COVER ============ -->
 <!-- timing: 1 min -->
-<section class="slide dark active" data-section="cover">
+<section class="slide dark active" data-section="cover" aria-label="Cover">
     <div class="cover-wrap">
         <div class="cover-rule reveal"></div>
         <h1 class="cover-title reveal">Claude Code at FinTechCo</h1>
@@ -409,7 +432,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 2 · AGENDA ============ -->
 <!-- timing: 2 min -->
-<section class="slide dark" data-section="agenda">
+<section class="slide dark" data-section="agenda" aria-label="Agenda">
     <span class="kicker reveal">25 minutes, held tightly</span>
     <h2 class="reveal">Today&rsquo;s meeting arc</h2>
     <div class="reveal" style="display:flex; gap:10px; align-items:stretch; margin-top:28px;">
@@ -431,7 +454,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Why Claude Code at FinTechCo</div>
         </div>
         <div style="display:flex; align-items:center; font-size:26px; color:var(--terracotta); padding:0 2px;">&rarr;</div>
-        <div style="flex:8; background:var(--terracotta-bg); border:2px solid var(--terracotta); border-radius:14px; padding:28px 22px;">
+        <div class="pulse" style="flex:8; background:var(--terracotta-bg); border:2px solid var(--terracotta); border-radius:14px; padding:28px 22px;">
             <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">8</div>
             <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,238,228,0.6);">min</div>
             <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Live demo</div>
@@ -449,7 +472,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 3 · DISCOVERY ============ -->
 <!-- timing: 5 min -->
-<section class="slide" data-section="discovery">
+<section class="slide" data-section="discovery" aria-label="Discovery">
     <span class="kicker reveal">Live in-room discovery</span>
     <h2 class="reveal">Two lenses, six questions</h2>
     <div class="cards c2" style="margin-top: 22px;">
@@ -494,7 +517,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 4 · ZERO TRUST / LEAST AGENCY ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="zero-trust">
+<section class="slide" data-section="zero-trust" aria-label="Zero Trust / Least Agency">
     <span class="kicker reveal">Principles before products</span>
     <h2 class="reveal">Zero trust, extended to agents: least agency</h2>
     <div class="cards c3" style="margin-top: 26px;">
@@ -518,11 +541,11 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 5 · SECURITY JOURNEY ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="security-journey">
+<section class="slide" data-section="security-journey" aria-label="Security Journey">
     <span class="kicker reveal">A partnership, not a prerequisite</span>
     <h2 class="reveal">The security journey: Foundation now, Enterprise next, Advanced over time</h2>
     <div class="tiers reveal" style="margin-top: 10px;">
-        <div class="tier now">
+        <div class="tier now pulse">
             <h3>Foundation</h3>
             <div class="when">Target: before pilot</div>
             <ul>
@@ -567,7 +590,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 6 · WHAT CLAUDE CODE IS ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="what-it-is">
+<section class="slide" data-section="what-it-is" aria-label="What Claude Code Is">
     <span class="kicker reveal">Now the capabilities</span>
     <h2 class="reveal">What Claude Code is: an agent that does the work, where your engineers already work</h2>
     <div class="split" style="margin-top: 16px;">
@@ -590,7 +613,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 7 · COMPETITIVE LANDSCAPE ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="competitive">
+<section class="slide" data-section="competitive" aria-label="Competitive Landscape">
     <span class="kicker reveal">The field you are evaluating</span>
     <h2 class="reveal">Competitive landscape</h2>
     <table class="grid reveal" style="margin-top: 8px;">
@@ -635,7 +658,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 8 · DEPLOYMENT OPTIONS ============ -->
 <!-- timing: 1 min -->
-<section class="slide" data-section="deployment">
+<section class="slide" data-section="deployment" aria-label="Deployment Options">
     <span class="kicker reveal">Your cloud, your call</span>
     <h2 class="reveal">Deployment options for an AWS + GCP shop</h2>
     <div class="cards c3" style="margin-top: 22px;">
@@ -662,11 +685,11 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 9 · DEMO PIVOT ============ -->
 <!-- timing: 8 min (the demo itself) -->
-<section class="slide" data-section="demo-pivot">
+<section class="slide" data-section="demo-pivot" aria-label="Live Demo">
     <span class="kicker reveal">Now the live work</span>
     <h2 class="reveal">What we will show today</h2>
     <div style="display:grid; grid-template-columns:3fr 2fr; gap:28px; margin-top:18px;" class="reveal">
-        <div class="cardx" style="border:2px solid var(--terracotta); padding:36px;">
+        <div class="cardx pulse" style="border:2px solid var(--terracotta); padding:36px;">
             <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px;">Primary demo</div>
             <h3 style="font-size:30px; margin-bottom:16px;">Data Science: FRED to dashboard</h3>
             <p style="margin-bottom:20px; font-size:20px;">Ingest Federal Reserve data, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo, in one sitting. Jupyter, pandas, and scikit-learn throughout.</p>
@@ -693,7 +716,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 10 · MEASURE AND ROLL OUT (merged ROI + rollout) ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="measure-rollout">
+<section class="slide" data-section="measure-rollout" aria-label="Measure + Roll Out">
     <span class="kicker reveal">Accountable to numbers, gated by evidence</span>
     <h2 class="reveal">Measure and roll out: harder signals, phase gates</h2>
     <div class="split" style="margin-top: 14px;">
@@ -744,7 +767,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 11 · THREE COMMITMENTS ============ -->
 <!-- timing: 1.5 min -->
-<section class="slide" data-section="wrap">
+<section class="slide" data-section="wrap" aria-label="Three Commitments">
     <span class="kicker reveal">Where this goes next</span>
     <h2 class="reveal">Three commitments before we leave the room</h2>
     <div class="rows" style="margin-top: 18px;">
@@ -766,7 +789,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 12 · CLOSING ============ -->
 <!-- timing: close -->
-<section class="slide dark" data-section="closing">
+<section class="slide dark" data-section="closing" aria-label="Close">
     <div class="cover-wrap">
         <div class="cover-rule reveal"></div>
         <h1 class="cover-title reveal" style="font-size: 76px;">Secure first. Fast everywhere.</h1>
@@ -777,7 +800,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 13 · APPENDIX DIVIDER ============ -->
-<section class="slide dark" data-section="appendix">
+<section class="slide dark" data-section="appendix" aria-label="Appendix">
     <div class="divider-wrap">
         <div class="divider-kicker reveal">Appendix</div>
         <div class="divider-title reveal" style="color: var(--cream);">Reference material for the questions you should ask</div>
@@ -788,7 +811,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 14 · A1: OBJECTION PLAYBOOK ============ -->
-<section class="slide" data-section="objections">
+<section class="slide" data-section="objections" aria-label="A1 · Objection Playbook">
     <span class="kicker reveal">Appendix A1</span>
     <h2 class="reveal" style="font-size: 46px;">Objection playbook</h2>
     <table class="grid reveal" style="font-size: 19px;">
@@ -807,7 +830,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 15 · A2: SECURITY PRO-TIPS / HOOKS ============ -->
-<section class="slide" data-section="security-protips">
+<section class="slide" data-section="security-protips" aria-label="A2 · Security Pro-Tips">
     <span class="kicker reveal">Appendix A2</span>
     <h2 class="reveal" style="font-size: 46px;">Claude Code security pro-tips: determinism where it counts</h2>
     <div class="cards c2" style="margin-top: 14px;">
@@ -834,7 +857,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 16 · A3: JIT ACCESS ============ -->
-<section class="slide" data-section="jit">
+<section class="slide" data-section="jit" aria-label="A3 · JIT Access">
     <span class="kicker reveal">Appendix A3</span>
     <h2 class="reveal" style="font-size: 46px;">Just-in-time access: the Enterprise-tier keystone</h2>
     <div class="rows" style="margin-top: 14px;">
@@ -847,7 +870,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 17 · A4: SECURITY DISCOVERY QUESTIONS ============ -->
-<section class="slide" data-section="security-questions">
+<section class="slide" data-section="security-questions" aria-label="A4 · Security Discovery">
     <span class="kicker reveal">Appendix A4</span>
     <h2 class="reveal" style="font-size: 46px;">What we need from you for the security deep-dive</h2>
     <div class="cards c2" style="margin-top: 14px;">
@@ -874,7 +897,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 18 · A5: COMPETITIVE DEEP DIVE 1 ============ -->
-<section class="slide" data-section="competitive-deep-1">
+<section class="slide" data-section="competitive-deep-1" aria-label="A5 · Copilot + Cursor">
     <span class="kicker reveal">Appendix A5</span>
     <h2 class="reveal" style="font-size: 46px;">Deep dive: GitHub Copilot and Cursor</h2>
     <div class="cards c2" style="margin-top: 14px;">
@@ -895,7 +918,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 19 · A6: COMPETITIVE DEEP DIVE 2 ============ -->
-<section class="slide" data-section="competitive-deep-2">
+<section class="slide" data-section="competitive-deep-2" aria-label="A6 · Codex + Cognition">
     <span class="kicker reveal">Appendix A6</span>
     <h2 class="reveal" style="font-size: 46px;">Deep dive: OpenAI Codex and Cognition</h2>
     <div class="cards c2" style="margin-top: 14px;">
@@ -916,7 +939,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 20 · A7: DEPLOYMENT DEEP DIVE ============ -->
-<section class="slide" data-section="deployment-deep">
+<section class="slide" data-section="deployment-deep" aria-label="A7 · Deployment Detail">
     <span class="kicker reveal">Appendix A7</span>
     <h2 class="reveal" style="font-size: 46px;">Deployment detail: choosing per workload, not per slogan</h2>
     <table class="grid reveal" style="font-size: 19px; margin-top: 8px;">
@@ -936,7 +959,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 21 · A8: BACKGROUND ============ -->
-<section class="slide" data-section="rcm">
+<section class="slide" data-section="rcm" aria-label="A8 · Presenter Background">
     <span class="kicker reveal">Appendix A8 &middot; Presenter background</span>
     <h2 class="reveal" style="font-size: 46px;">Why a healthcare revenue-cycle veteran is standing in a fintech room</h2>
     <div class="split" style="margin-top: 14px;">
@@ -955,7 +978,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 22 · A9: WHY SECURITY LEADS (formerly slide 2) ============ -->
-<section class="slide dark" data-section="shift">
+<section class="slide dark" data-section="shift" aria-label="A9 · Why Security Leads">
     <span class="kicker reveal">Appendix A9 &middot; Why security leads this conversation</span>
     <div style="height: 26px;"></div>
     <p class="statement reveal" style="color: var(--cream);">Attacks that used to be <em>tedious</em> are becoming <em>impossible to ignore</em>: agents make persistence cheap.</p>
@@ -965,7 +988,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 23 · A10: FIVE THREATS (formerly slide 4) ============ -->
-<section class="slide" data-section="threats">
+<section class="slide" data-section="threats" aria-label="A10 · Threat Model">
     <span class="kicker reveal">Appendix A10</span>
     <h2 class="reveal">Five threats every agentic deployment must answer for</h2>
     <div class="cards c5" style="margin-top: 30px;">
@@ -981,7 +1004,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 24 · A11: PLANS AND TIERS (formerly slide 8) ============ -->
-<section class="slide" data-section="plans">
+<section class="slide" data-section="plans" aria-label="A11 · Plans + Tiers">
     <span class="kicker reveal">Appendix A11</span>
     <h2 class="reveal">Plans and tiers</h2>
     <table class="grid reveal" style="margin-top: 8px;">
@@ -1021,7 +1044,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 25 · A12: TEAM: SOFTWARE ENGINEERS (formerly slide 10) ============ -->
-<section class="slide" data-section="team-swe">
+<section class="slide" data-section="team-swe" aria-label="A12 · SWE Pilot">
     <span class="kicker reveal">Appendix A12 &middot; 120 software engineers</span>
     <h2 class="reveal">Software Engineering: shrink time-to-first-PR</h2>
     <div class="split" style="margin-top: 12px;">
@@ -1054,7 +1077,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 26 · A13: TEAM: DATA SCIENTISTS (formerly slide 11) ============ -->
-<section class="slide" data-section="team-ds">
+<section class="slide" data-section="team-ds" aria-label="A13 · Data Science Pilot">
     <span class="kicker reveal">Appendix A13 &middot; 40 data scientists</span>
     <h2 class="reveal">Data Science: from question to decision artifact in one sitting</h2>
     <div class="split" style="margin-top: 12px;">
@@ -1087,7 +1110,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 27 · A14: TEAM: SRE (formerly slide 12) ============ -->
-<section class="slide" data-section="team-sre">
+<section class="slide" data-section="team-sre" aria-label="A14 · SRE Pilot">
     <span class="kicker reveal">Appendix A14 &middot; 20 SREs</span>
     <h2 class="reveal">SRE: cut MTTR, then reinvest the hours in resilience</h2>
     <div class="split" style="margin-top: 12px;">
@@ -1120,7 +1143,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 28 · A15: 14-WEEK ROLLOUT DETAIL (formerly slide 14) ============ -->
-<section class="slide" data-section="rollout">
+<section class="slide" data-section="rollout" aria-label="A15 · 14-Week Rollout">
     <span class="kicker reveal">Appendix A15</span>
     <h2 class="reveal">A 14-week rollout where every phase earns the next</h2>
     <div class="gantt reveal" style="margin-top: 6px;">
@@ -1148,7 +1171,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 29 · A16: PROOF IN FINANCIAL SERVICES (formerly slide 15) ============ -->
-<section class="slide" data-section="proof">
+<section class="slide" data-section="proof" aria-label="A16 · Proof in FinServ">
     <span class="kicker reveal">Appendix A16</span>
     <h2 class="reveal">The same technology already runs inside financial services</h2>
     <div class="quotes" style="margin-top: 16px;">
@@ -1179,6 +1202,20 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </main>
 </div>
 
+<!-- Navigation progress indicator -->
+<nav class="deck-nav" id="deckNav" aria-label="Slide navigation">
+    <button class="nav-arrow" id="navPrev" aria-label="Previous slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 5L5 1L9 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="nav-dots" id="navDots"></div>
+    <button class="nav-arrow" id="navNext" aria-label="Next slide">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="nav-arrow" id="navFull" aria-label="Toggle fullscreen (F)" title="Fullscreen (F)">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 4V1h3M7 1h3v3M10 7v3H7M4 10H1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</nav>
+
 <div class="counter" id="counter">1 / 29</div>
 
 <script>
@@ -1193,12 +1230,54 @@ class SlidePresentation {
         this.current = 0;
         this.stage = document.getElementById('deckStage');
         this.counter = document.getElementById('counter');
+        this.mainSlideCount = 12; // slides after this index render as appendix dots
+        this.navDots = [];
         this.scaleStage();
         window.addEventListener('resize', () => this.scaleStage());
         this.setupKeyboard();
         this.setupTouch();
         this.setupWheel();
+        this.buildNav();
         this.showSlide(0);
+    }
+
+    buildNav() {
+        const c = document.getElementById('navDots');
+        if (!c) return;
+        this.slides.forEach((slide, i) => {
+            if (i === this.mainSlideCount) {
+                const d = document.createElement('div');
+                d.className = 'nav-appendix-divider';
+                d.innerHTML = '<div class="nav-appendix-line"></div><span class="nav-appendix-label">Appendix</span><div class="nav-appendix-line"></div>';
+                c.appendChild(d);
+            }
+            const title = slide.getAttribute('aria-label') || ('Slide ' + (i + 1));
+            const wrap = document.createElement('div');
+            wrap.className = 'nav-dot-wrap';
+            const label = document.createElement('span');
+            label.className = 'nav-dot-label';
+            label.textContent = title;
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i >= this.mainSlideCount ? ' appendix' : '');
+            dot.setAttribute('aria-label', title);
+            dot.addEventListener('click', () => this.showSlide(i));
+            wrap.appendChild(label);
+            wrap.appendChild(dot);
+            c.appendChild(wrap);
+            this.navDots.push(dot);
+        });
+        document.getElementById('navPrev')?.addEventListener('click', () => this.prev());
+        document.getElementById('navNext')?.addEventListener('click', () => this.next());
+        document.getElementById('navFull')?.addEventListener('click', () => this.toggleFullscreen());
+    }
+
+    updateNav() {
+        this.navDots.forEach((d, i) => d.classList.toggle('active', i === this.current));
+    }
+
+    toggleFullscreen() {
+        if (document.fullscreenElement) { document.exitFullscreen(); }
+        else { document.documentElement.requestFullscreen?.(); }
     }
 
     scaleStage() {
@@ -1215,6 +1294,7 @@ class SlidePresentation {
             slide.classList.toggle('visible', i === this.current);
         });
         if (this.counter) this.counter.textContent = `${this.current + 1} / ${this.total}`;
+        this.updateNav();
     }
 
     next() { this.showSlide(this.current + 1); }
@@ -1233,6 +1313,7 @@ class SlidePresentation {
                 case 'Home': this.showSlide(0); break;
                 case 'End':  this.showSlide(this.total - 1); break;
                 case 'e': case 'E': editor.toggleEditMode(); break;
+                case 'f': case 'F': this.toggleFullscreen(); break;
             }
         });
     }
@@ -1320,7 +1401,7 @@ class InlineEditor {
 
     save() {
         try {
-            localStorage.setItem('fintechco-deck-v1', document.getElementById('deckStage').innerHTML);
+            localStorage.setItem('fintechco-deck-v2', document.getElementById('deckStage').innerHTML);
             console.log('Deck saved to localStorage.');
         } catch (e) { /* storage full */ }
     }
@@ -1330,7 +1411,7 @@ const deck   = new SlidePresentation();
 const editor = new InlineEditor();
 
 /* Restore saved edits if present */
-const saved = localStorage.getItem('fintechco-deck-v1');
+const saved = localStorage.getItem('fintechco-deck-v2');
 if (saved) {
     document.getElementById('deckStage').innerHTML = saved;
     deck.slides = Array.from(document.querySelectorAll('.slide'));
