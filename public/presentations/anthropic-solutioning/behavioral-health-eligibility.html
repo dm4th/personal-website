@@ -83,11 +83,40 @@
         /* Labeled rows */
         .info-row { display:flex; align-items:flex-start; padding:28px 0; border-bottom:1.5px solid var(--card-border); }
         .info-row:first-child { border-top:1.5px solid var(--card-border); }
-        .row-label { font-family:var(--font); font-size:var(--sz-sm); font-weight:700; color:var(--text); min-width:200px; padding-top:2px; flex-shrink:0; }
+        .row-label { font-family:var(--font); font-size:var(--sz-sm); font-weight:700; color:var(--text); min-width:215px; padding-top:4px; padding-right:24px; flex-shrink:0; line-height:1.3; }
         .row-content { font-family:var(--font); font-size:var(--sz-sm); font-weight:400; line-height:1.55; color:var(--text); }
         .row-content strong { font-weight:700; }
         .quote-key { color:var(--terracotta); font-style:italic; }
-        .metric-big { display:block; font-size:var(--sz-h2); font-weight:800; line-height:1; color:var(--terracotta); margin-bottom:5px; }
+        .metric-big { display:block; font-size:var(--sz-h2); font-weight:800; line-height:1.05; color:var(--terracotta); margin:4px 0 14px; }
+
+        /* === QUOTE CALLOUTS (customer quotes, slide 4) === */
+        .quote-callout { display:block; margin-top:14px; padding:13px 20px; background:var(--terracotta-bg); border-left:4px solid var(--terracotta); border-radius:0 10px 10px 0; font-family:var(--font); font-size:20px; font-weight:500; font-style:italic; line-height:1.45; color:var(--text); }
+        .quote-attr { display:block; margin-top:7px; font-size:13px; font-weight:700; font-style:normal; letter-spacing:0.09em; text-transform:uppercase; color:var(--terracotta); }
+
+        /* === STAT CARDS (appendix slides) === */
+        .roi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:22px; }
+        .roi-card { background:var(--card); border:1.5px solid var(--card-border); border-top:6px solid var(--terracotta); border-radius:14px; padding:24px 22px; }
+        .roi-card-metric { font-family:var(--font); font-size:50px; font-weight:800; line-height:1; color:var(--terracotta); margin-bottom:10px; }
+        .roi-card-name { font-family:var(--font); font-size:18px; font-weight:700; color:var(--text); margin-bottom:10px; }
+        .roi-card-detail { font-family:var(--font); font-size:16px; font-weight:400; line-height:1.5; color:var(--text-muted); }
+        .roi-card-detail strong { color:var(--text); font-weight:700; }
+        .roi-math { display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--terracotta); border-radius:12px; padding:20px 28px; margin-bottom:18px; }
+        .roi-math-total { font-family:var(--font); font-size:30px; font-weight:800; color:var(--text); white-space:nowrap; }
+        .roi-math-detail { font-family:var(--font); font-size:19px; font-weight:500; color:var(--text); opacity:0.85; text-align:right; line-height:1.4; }
+        .roi-note { font-family:var(--font); font-size:16px; font-weight:400; line-height:1.55; color:var(--text-muted); }
+        .roi-note strong { color:var(--text); }
+        /* compact stat-card variant (content slides) */
+        .roi-grid.tight { gap:14px; margin:18px 0 6px; }
+        .roi-card.sm { padding:16px 18px; border-top-width:5px; }
+        .roi-card.sm .roi-card-metric { font-size:36px; margin-bottom:6px; }
+        .roi-card.sm .roi-card-name { font-size:16px; margin-bottom:6px; }
+        .roi-card.sm .roi-card-detail { font-size:14px; line-height:1.45; }
+        /* taller workflow strips (analytics appendix) */
+        .portal-workflow.tall .workflow-step { padding:18px 12px; }
+        .portal-workflow.tall .wf-name { font-size:16px; }
+        .portal-workflow.tall .wf-detail { font-size:13px; margin-top:4px; }
+        /* honest-size chips (Where is the AI slide) */
+        .ai-chip { display:inline-block; font-family:var(--font); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:4px 14px; margin-bottom:12px; }
         .status-badge { display:inline-block; background:var(--terracotta); color:var(--text); font-family:var(--font); font-size:15px; font-weight:700; letter-spacing:0.06em; padding:5px 16px; border-radius:100px; margin-bottom:22px; }
         .appendix-tag { display:inline-block; font-family:var(--font); font-size:13px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:var(--text-muted); background:var(--card); border-radius:100px; padding:5px 16px; border:1.5px solid var(--card-border); margin-bottom:22px; }
 
@@ -100,14 +129,17 @@
         .callout-divider { width:2px; height:28px; background:var(--text); opacity:0.2; flex-shrink:0; }
         .callout-detail { font-family:var(--font); font-size:var(--sz-body); font-weight:400; color:var(--text); opacity:0.75; }
 
-        /* === ARCHITECTURE DIAGRAM (FIXED: auto rows, 1fr agent) === */
+        /* === ARCHITECTURE DIAGRAM (fills remaining height, content vertically centered) === */
         .arch-diagram {
             display: grid;
-            grid-template-columns: 140px 44px 1fr 44px 140px;
-            grid-template-rows: auto 32px auto;
+            grid-template-columns: 150px 44px 1fr 44px 150px;
+            grid-template-rows: auto 72px auto;
             justify-content: center;
             align-items: center;
+            align-content: center;
             width: 100%;
+            flex: 1;
+            min-height: 0;
         }
         .arch-ehr-start { grid-column:1; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:var(--card); border-radius:14px; border:2px solid var(--card-border); padding:20px 14px; }
         .arch-ehr-end   { grid-column:5; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:var(--card); border-radius:14px; border:2px solid var(--card-border); padding:20px 14px; }
@@ -117,10 +149,10 @@
         .arch-arrow-left::before, .arch-arrow-right::before { content:''; flex:1; height:3px; background:var(--terracotta); animation:arrowPulse 2.5s ease-in-out infinite; opacity:0.7; }
         .arch-arrow-left::after, .arch-arrow-right::after { content:''; width:0; height:0; border-top:9px solid transparent; border-bottom:9px solid transparent; border-left:14px solid var(--terracotta); opacity:0.85; }
         /* Agent boundary: dashed terracotta, fills the 1fr column */
-        .arch-agent { grid-column:3; grid-row:1; border:2.5px dashed var(--terracotta); border-radius:16px; padding:16px 20px; background:var(--terracotta-bg); display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .arch-agent { grid-column:3; grid-row:1; border:2.5px dashed var(--terracotta); border-radius:16px; padding:22px 22px; background:var(--terracotta-bg); display:flex; flex-direction:column; align-items:center; gap:14px; }
         .agent-label { font-family:var(--font); font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); }
         .agent-steps { display:flex; align-items:center; gap:8px; width:100%; justify-content:center; }
-        .agent-step { flex:1; min-width:0; background:var(--cream); border:1.5px solid var(--card-border); border-radius:10px; padding:10px 12px; text-align:center; }
+        .agent-step { flex:1; min-width:0; background:var(--cream); border:1.5px solid var(--card-border); border-radius:10px; padding:14px 12px; text-align:center; }
         .agent-step.key { background:var(--terracotta); border-color:var(--terracotta); animation:keyGlow 2.5s ease-in-out 1.2s infinite; }
         .agent-step.key .step-name, .agent-step.key .step-detail { color:var(--text); }
         .step-name { font-family:var(--font); font-size:16px; font-weight:700; color:var(--text); line-height:1.25; white-space:nowrap; }
@@ -130,13 +162,15 @@
         .node-name { font-family:var(--font); font-size:20px; font-weight:800; color:var(--text); margin-bottom:6px; }
         .node-detail { font-family:var(--font); font-size:15px; font-weight:400; color:var(--text-muted); line-height:1.4; text-align:center; }
         /* Vertical connector (agent to portals) */
-        .arch-connector { grid-column:3; grid-row:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
-        .v-line { width:3px; height:14px; background:var(--terracotta); animation:arrowPulse 2.5s ease-in-out 0.6s infinite; opacity:0.6; }
+        .arch-connector { grid-column:3; grid-row:2; align-self:stretch; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:6px 0; }
+        .v-line { width:3px; flex:1; min-height:10px; background:var(--terracotta); animation:arrowPulse 2.5s ease-in-out 0.6s infinite; opacity:0.6; }
         .v-label { font-family:var(--font); font-size:12px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; color:var(--text-muted); opacity:0.75; }
         .v-arrow { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid var(--terracotta); opacity:0.65; }
         /* Payer portals row */
         .arch-portals { grid-column:3; grid-row:3; display:flex; gap:10px; }
-        .portal-node { flex:1; background:var(--card); border-radius:10px; border:1.5px solid var(--card-border); padding:12px 16px; text-align:center; }
+        .portal-node { flex:1; background:var(--card); border-radius:10px; border:1.5px solid var(--card-border); padding:16px 14px; text-align:center; }
+        .portal-node.key-portal { border-color:var(--terracotta); border-width:2px; background:var(--terracotta-bg); }
+        .portal-node.key-portal .portal-name { color:var(--terracotta); }
         .portal-name { font-family:var(--font); font-size:17px; font-weight:700; color:var(--text); }
         .portal-vol  { font-family:var(--font); font-size:13px; font-weight:400; color:var(--text-muted); margin-top:3px; }
 
@@ -255,38 +289,94 @@
                 <p class="panel-context reveal">
                     A PE-backed multi-state outpatient behavioral
                     health network. Every appointment required a
-                    fresh E&amp;B verification: active coverage,
-                    deductible status, copay amounts. No automation
-                    existed. The workflow was entirely manual,
-                    payer portal by portal, patient by patient.
+                    fresh E&amp;B verification: not generic medical
+                    benefits, but <strong>mental-health and telehealth
+                    specific coverage</strong> that every payer encodes
+                    differently: visit limits, telehealth parity,
+                    behavioral carve-outs, copay, deductible.
+                    No automation existed. The workflow was entirely
+                    manual, payer portal by portal, patient by patient.
                 </p>
             </div>
             <div class="panel-right">
+                <div class="roi-grid tight reveal">
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">~300K</div>
+                        <div class="roi-card-name">Lookups per month</div>
+                        <div class="roi-card-detail">Today's agent-run volume across ~1,500 clinicians; the champion's own April figure.</div>
+                    </div>
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">80%</div>
+                        <div class="roi-card-name">Of volume in scope</div>
+                        <div class="roi-card-detail">Coverage target set by the feasibility model: which carriers, in what order.</div>
+                    </div>
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">4 mo</div>
+                        <div class="roi-card-name">Given, vs 9 needed</div>
+                        <div class="roi-card-detail">Sales committed 4 months against a 9-month engineering instinct.</div>
+                    </div>
+                </div>
                 <div class="info-row reveal">
                     <span class="row-label">Situation</span>
                     <span class="row-content">
-                        <strong>~1,500 clinicians. ~300,000 eligibility lookups per month.</strong>
-                        Staff verified coverage manually before each session: 7 minutes per patient,
-                        a different portal for every carrier. Coverage status determined whether
-                        the appointment happened at all. A failed check meant a missed session
-                        and lost revenue.
+                        Staff verified coverage manually before each session: <strong>~7 minutes
+                        per check</strong>, a different portal for every carrier. Plus a proactive
+                        first-of-month sweep of every Medicaid patient with an upcoming
+                        appointment, catching coverage changes before they became denials.
                     </span>
                 </div>
                 <div class="info-row reveal">
                     <span class="row-label">Landscape</span>
                     <span class="row-content">
-                        Payer-by-payer feasibility analysis to find where
-                        <strong>80% of appointment volume lived.</strong>
-                        Dominant payer covered ~38%, enabling a phased rollout
-                        that targeted the highest ROI carriers first.
+                        Feasibility modeled from claims counts: payers map many-to-one onto
+                        portals, and the cumulative curve crossed <strong>80% at seven
+                        portals</strong>, with Availity alone at <strong>~38%</strong>.
+                        That curve was the rollout plan.
+                        <svg viewBox="0 0 960 196" style="display:block; width:100%; margin-top:14px;" role="img" aria-label="Portal coverage Pareto chart">
+                            <!-- 80% target line -->
+                            <line x1="56" y1="48" x2="904" y2="48" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.55"/>
+                            <text x="904" y="40" text-anchor="end" font-family="Plus Jakarta Sans" font-size="13" font-weight="700" fill="var(--text-muted)">80% coverage target</text>
+                            <!-- baseline -->
+                            <line x1="56" y1="160" x2="904" y2="160" stroke="var(--card-border)" stroke-width="2"/>
+                            <!-- bars (per-portal share) -->
+                            <rect x="84"  y="47"  width="72" height="113" rx="6" fill="var(--terracotta)"/>
+                            <rect x="204" y="123" width="72" height="37"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <rect x="324" y="136" width="72" height="24"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <rect x="444" y="136" width="72" height="24"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <rect x="564" y="144" width="72" height="16"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <rect x="684" y="145" width="72" height="15"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <rect x="804" y="148" width="72" height="12"  rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <!-- cumulative line -->
+                            <polyline points="120,107 240,90 360,79 480,68 600,60 720,53 840,47" fill="none" stroke="var(--terracotta)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+                            <circle cx="120" cy="107" r="5" fill="var(--terracotta)"/>
+                            <circle cx="240" cy="90"  r="4" fill="var(--terracotta)"/>
+                            <circle cx="360" cy="79"  r="4" fill="var(--terracotta)"/>
+                            <circle cx="480" cy="68"  r="4" fill="var(--terracotta)"/>
+                            <circle cx="600" cy="60"  r="4" fill="var(--terracotta)"/>
+                            <circle cx="720" cy="53"  r="4" fill="var(--terracotta)"/>
+                            <circle cx="840" cy="47"  r="5" fill="var(--terracotta)"/>
+                            <!-- endpoint annotations -->
+                            <text x="120" y="92"  text-anchor="middle" font-family="Plus Jakarta Sans" font-size="14" font-weight="800" fill="var(--terracotta)">38%</text>
+                            <text x="852" y="68"  text-anchor="end"    font-family="Plus Jakarta Sans" font-size="14" font-weight="800" fill="var(--terracotta)">81% cumulative</text>
+                            <!-- bar labels -->
+                            <text x="120" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13.5" font-weight="800" fill="var(--terracotta)">Availity</text>
+                            <text x="240" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 2</text>
+                            <text x="360" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 3</text>
+                            <text x="480" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 4</text>
+                            <text x="600" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 5</text>
+                            <text x="720" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 6</text>
+                            <text x="840" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" fill="var(--text-muted)">Portal 7</text>
+                        </svg>
                     </span>
                 </div>
                 <div class="info-row reveal">
                     <span class="row-label">Constraint</span>
                     <span class="row-content">
-                        Honest engineering estimate: <strong>6 months.</strong>
-                        Sales committed 4. The 2-month gap became the first
-                        architectural constraint we designed around.
+                        Engineering instinct: <strong>9 months.</strong> Negotiated to 6.
+                        Sales committed <strong>4</strong>, and the deal's lead seller was
+                        <strong>our CEO</strong>: not a line I could hold from below.
+                        That compression became the first architectural constraint
+                        we designed around.
                         <span class="quote-key">Predictability under a fixed deadline
                         matters more than probabilistic flexibility.</span>
                     </span>
@@ -303,15 +393,16 @@
     <section class="slide slide-content" id="slide-3" aria-label="Technical Solution">
         <div class="solution-layout">
             <h2 class="solution-heading reveal">Technical Solution</h2>
-            <p class="solution-sub reveal">Deterministic by design. EDI via Stedi for scale, portal RPA for coverage.</p>
+            <p class="solution-sub reveal">Deterministic core where correctness is sacred. An LLM on the long-tail formats. EDI for scale.</p>
 
             <div class="solution-callout reveal">
-                <span class="callout-headline">~95% deterministic: RPA + EDI 270/271 via Stedi</span>
+                <span class="callout-headline">Deterministic core + an LLM on the long tail</span>
                 <div class="callout-divider"></div>
                 <span class="callout-detail">
-                    RPA for portal payers: predictable, auditable, debuggable under deadline &nbsp;·&nbsp;
-                    EDI via Stedi for supported payers: durable, no per-lookup fee &nbsp;·&nbsp;
-                    sequencing both calls is the architecture
+                    Deterministic RPA for known payers and formats: predictable, auditable, debuggable under deadline &nbsp;·&nbsp;
+                    LLM parses net-new formats, HITL then auto-accepted in prod &nbsp;·&nbsp;
+                    EDI 270/271 + voice agents complete the coverage, no per-lookup fees &nbsp;·&nbsp;
+                    the sequencing is the architecture
                 </span>
             </div>
 
@@ -326,17 +417,17 @@
                     <div class="agent-steps">
                         <div class="agent-step">
                             <div class="step-name">Roster Load</div>
-                            <div class="step-detail">Appointments + patients</div>
+                            <div class="step-detail">Nightly + 1st-of-month Medicaid sweep</div>
                         </div>
                         <span class="step-sep" aria-hidden="true">→</span>
                         <div class="agent-step">
-                            <div class="step-name">Route by Payer</div>
-                            <div class="step-detail">EDI vs portal RPA</div>
+                            <div class="step-name">Route by Portal</div>
+                            <div class="step-detail">Many payers map to one portal</div>
                         </div>
                         <span class="step-sep" aria-hidden="true">→</span>
                         <div class="agent-step">
-                            <div class="step-name">Query + Scrape</div>
-                            <div class="step-detail">270 or web automation</div>
+                            <div class="step-name">Query + Parse</div>
+                            <div class="step-detail">270, web RPA, LLM on new formats</div>
                         </div>
                         <span class="step-sep" aria-hidden="true">→</span>
                         <div class="agent-step key">
@@ -357,14 +448,37 @@
                     <div class="v-arrow"></div>
                 </div>
                 <div class="arch-portals">
+                    <div class="portal-node key-portal">
+                        <div class="portal-name">Availity</div>
+                        <div class="portal-vol">~38% of patients · largest aggregator</div>
+                    </div>
                     <div class="portal-node">
-                        <div class="portal-name">EDI via Stedi</div>
+                        <div class="portal-name">Long-Tail Portals</div>
+                        <div class="portal-vol">web RPA · per-portal builds</div>
+                    </div>
+                    <div class="portal-node">
+                        <div class="portal-name">EDI 270/271</div>
                         <div class="portal-vol">Medicare + supported payers</div>
                     </div>
                     <div class="portal-node">
-                        <div class="portal-name">Payer Portals</div>
-                        <div class="portal-vol">web RPA, remaining carriers</div>
+                        <div class="portal-name">Voice Agents</div>
+                        <div class="portal-vol">phone E&amp;B · smallest payers</div>
                     </div>
+                </div>
+            </div>
+
+            <div class="portal-workflow reveal">
+                <span class="workflow-section-label">LLM Long-Tail Path</span>
+                <div class="workflow-steps">
+                    <div class="workflow-step"><div class="wf-name">Unknown Format</div><div class="wf-detail">Net-new payer or page</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">LLM Parse</div><div class="wf-detail">HTML → copay, coins, deductible, OOP</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Exception Raised</div><div class="wf-detail">Fields pre-filled + screenshot</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Ops Verify</div><div class="wf-detail">Human in the loop</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step key-step"><div class="wf-name">Auto-Accept</div><div class="wf-detail">Graduated to production</div></div>
                 </div>
             </div>
 
@@ -411,26 +525,42 @@
                         annualized value vs ~$320-325K annual fees.
                         Conservative 2:1 today, realistic <strong>3 to 3.5:1</strong>,
                         projected 5-6:1 as remaining portals come online.
-                        <span class="quote-key">"You guys paid for yourself and some. It takes about half a year of you doing your thing to pay back what I pay."</span>
+                        <svg viewBox="0 0 820 74" style="display:block; width:100%; max-width:820px; margin-top:12px;" role="img" aria-label="Annualized value versus fees bar comparison">
+                            <rect x="150" y="6"  width="620" height="24" rx="6" fill="var(--terracotta)"/>
+                            <text x="142" y="23" text-anchor="end" font-family="Plus Jakarta Sans" font-size="14.5" font-weight="700" fill="var(--text)">Value / yr</text>
+                            <text x="762" y="23" text-anchor="end" font-family="Plus Jakarta Sans" font-size="14.5" font-weight="800" fill="var(--cream)">~$650K</text>
+                            <rect x="150" y="40" width="310" height="24" rx="6" fill="var(--card)" stroke="var(--card-border)" stroke-width="1.5"/>
+                            <text x="142" y="57" text-anchor="end" font-family="Plus Jakarta Sans" font-size="14.5" font-weight="700" fill="var(--text)">Fees / yr</text>
+                            <text x="452" y="57" text-anchor="end" font-family="Plus Jakarta Sans" font-size="14.5" font-weight="800" fill="var(--text-muted)">~$325K</text>
+                        </svg>
+                        <span class="quote-callout">"You guys paid for yourself and some. It takes about half a year of you doing your thing to pay back what I pay."<span class="quote-attr">VP Operator · The Champion's Own Study</span></span>
                     </span>
                 </div>
-                <div class="info-row reveal">
-                    <span class="row-label">Three Buckets</span>
-                    <span class="row-content">
-                        <strong>~$500K</strong> impactable eligibility-denial revenue
-                        (three earliest portals, ~50% of volume, Jan-Mar 2024 vs 2025 pre/post) &nbsp;·&nbsp;
-                        <strong>~$73K</strong> clearinghouse cost avoided: Waystar per-lookup fees
-                        stayed under the flat-fee cap &nbsp;·&nbsp;
-                        <strong>~$100K</strong> two back-office hires requested and never made
-                    </span>
+                <div class="roi-grid tight reveal">
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">~$500K</div>
+                        <div class="roi-card-name">Denial revenue impacted</div>
+                        <div class="roi-card-detail">Real pre/post, Jan-Mar 2024 vs 2025, on the three earliest portals (~50% of volume).</div>
+                    </div>
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">~$73K</div>
+                        <div class="roi-card-name">Clearinghouse avoided</div>
+                        <div class="roi-card-detail">Per-lookup fees stayed under the flat-fee cap. "That's material."</div>
+                    </div>
+                    <div class="roi-card sm">
+                        <div class="roi-card-metric">~$100K</div>
+                        <div class="roi-card-name">Hires never made</div>
+                        <div class="roi-card-detail">Two back-office roles requested, never hired; the team chases exceptions instead.</div>
+                    </div>
                 </div>
                 <div class="info-row reveal">
                     <span class="row-label">Growth Unlocked</span>
                     <span class="row-content">
                         <strong>50 → 62 locations.</strong> Expanding into 2 new states
                         without the staff they had originally planned to add.
-                        Eligibility stopped scaling with bodies.
-                        <span class="quote-key">"You don't do it with a transaction cost. Everybody else does, and that's garbage. You could grow infinitely without paying anymore."</span>
+                        Eligibility stopped scaling with bodies. And on our side:
+                        the <strong>most profitable engagement in company history</strong> to date.
+                        <span class="quote-callout">"You don't do it with a transaction cost. Everybody else does, and that's garbage. You could grow infinitely without paying anymore."<span class="quote-attr">VP Operator · On The Differentiator</span></span>
                     </span>
                 </div>
             </div>
@@ -458,11 +588,73 @@
         </footer>
     </section>
 
-    <!-- APPENDIX A: CHAMPION ROI DETAIL -->
+    <!-- APPENDIX A: WHERE IS THE AI -->
+    <section class="slide slide-content" id="slide-appendix-ai" aria-label="Where Is the AI">
+        <div class="solution-layout">
+            <h2 class="solution-heading reveal">Where Is the AI?</h2>
+            <p class="solution-sub reveal">Four surfaces, each sized honestly. The judgment is knowing where the model earns its place.</p>
+
+            <div class="solution-callout reveal">
+                <span class="callout-headline">Deterministic where correctness is sacred</span>
+                <div class="callout-divider"></div>
+                <span class="callout-detail">
+                    AI where variation defeats rules &nbsp;·&nbsp;
+                    human-gated until proven in production &nbsp;·&nbsp;
+                    never oversold: the build's value is the system, the AI is placed surgically inside it
+                </span>
+            </div>
+
+            <div class="roi-grid reveal" style="grid-template-columns:repeat(2,1fr); flex:1; align-content:center; margin-bottom:0;">
+                <div class="roi-card">
+                    <span class="ai-chip">Foundational · Build-Time</span>
+                    <div class="roi-card-name">Code Generation</div>
+                    <div class="roi-card-detail">
+                        LLMs wrote much of the <strong>deterministic business logic</strong> itself.
+                        Going deterministic under a 4-month clock was only viable because
+                        AI-assisted codegen made the rules-based spine fast to build.
+                    </div>
+                </div>
+                <div class="roi-card">
+                    <span class="ai-chip">Shipped to Prod · ~2pt Lift</span>
+                    <div class="roi-card-name">LLM Parsing, Long Tail</div>
+                    <div class="roi-card-detail">
+                        Net-new payer responses parsed from raw HTML into
+                        <strong>copay / coinsurance / deductible / OOP</strong>.
+                        Raised human-in-the-loop with pre-filled fields + screenshot,
+                        then <strong>graduated to auto-accept in production</strong>.
+                    </div>
+                </div>
+                <div class="roi-card">
+                    <span class="ai-chip">Smallest Slice</span>
+                    <div class="roi-card-name">Voice Agents</div>
+                    <div class="roi-card-detail">
+                        Phone-based E&amp;B checks for the long-tail payers with
+                        <strong>no usable portal at all</strong>. A small share of volume,
+                        and the honest answer for the last mile of coverage.
+                    </div>
+                </div>
+                <div class="roi-card">
+                    <span class="ai-chip">Recovery-Born</span>
+                    <div class="roi-card-name">Building the Exception Analytics</div>
+                    <div class="roi-card-detail">
+                        The observability + exception-analytics product was scaffolded
+                        <strong>AI-assisted inside the 2-week recovery sprint</strong>:
+                        from incident response to an embedded, customer-facing product in weeks.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; A</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX B: CHAMPION ROI DETAIL -->
     <section class="slide slide-content" id="slide-5" aria-label="Champion ROI Detail">
         <div class="panel-layout">
             <div class="panel-left">
-                <span class="appendix-tag reveal">Appendix A</span>
+                <span class="appendix-tag reveal">Appendix B</span>
                 <h2 class="panel-slide-title reveal">Champion<br>ROI Detail</h2>
                 <p class="panel-context reveal">
                     The champion explicitly did not "juice"
@@ -474,50 +666,61 @@
                 </p>
             </div>
             <div class="panel-right">
-                <div class="info-row reveal">
-                    <span class="row-label">Eligibility Denials (~$500K)</span>
-                    <span class="row-content">
-                        Pre/post comparison: Jan-Mar 2024 vs Jan-Mar 2025,
-                        on the <strong>three earliest-live portals (~50% of volume, ~30 health plans).</strong>
-                        Only the impactable slice counted: denials they'd realistically have written off
-                        for lack of staff to chase them. The other ~50% of volume
-                        is not yet in the measured figure.
+                <div class="roi-grid reveal">
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$500K</div>
+                        <div class="roi-card-name">Impactable denial revenue</div>
+                        <div class="roi-card-detail">
+                            Real pre/post: Jan-Mar 2024 vs 2025 on the
+                            <strong>three earliest-live portals</strong> (~50% of volume, ~30 plans).
+                            Only denials they'd have written off for lack of staff.
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$73K</div>
+                        <div class="roi-card-name">Clearinghouse avoided</div>
+                        <div class="roi-card-detail">
+                            Incumbent deal: $6,823/mo flat + $0.19/lookup past 65K included.
+                            The agent keeps volume under the cap: zero overage.
+                            <strong>"That's material."</strong>
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$100K</div>
+                        <div class="roi-card-name">Hires never made</div>
+                        <div class="roi-card-detail">
+                            Two back-office roles requested by the eligibility lead,
+                            <strong>never hired</strong>. The team chases exceptions
+                            instead of doing the work.
+                        </div>
+                    </div>
+                </div>
+                <div class="roi-math reveal">
+                    <span class="roi-math-total">~$650K / yr</span>
+                    <span class="roi-math-detail">
+                        vs ~$320-325K annual fees &nbsp;·&nbsp; 2:1 conservative &nbsp;·&nbsp;
+                        <strong>3-3.5:1 realistic</strong> &nbsp;·&nbsp; 5-6:1 projected next year
                     </span>
                 </div>
-                <div class="info-row reveal">
-                    <span class="row-label">Clearinghouse + FTE (~$173K)</span>
-                    <span class="row-content">
-                        <strong>~$73-74K/yr</strong> clearinghouse avoidance: incumbent deal was
-                        $6,823/month flat fee + $0.19/lookup, 65K included.
-                        Agent keeps volume under the cap, zero per-transaction overage.
-                        <em>"$73,000 of Waystar cost avoidance. That's material."</em>
-                        &nbsp;·&nbsp;
-                        <strong>~$100K/yr</strong> from two back-office hires requested and never made.
-                    </span>
-                </div>
-                <div class="info-row reveal">
-                    <span class="row-label">Integrity Labels</span>
-                    <span class="row-content">
-                        <strong>Measured today:</strong> ~$650K annualized / ~$320-325K fees /
-                        2:1 conservative, 3 to 3.5:1 realistic &nbsp;·&nbsp;
-                        <strong>Projected next year:</strong> 5-6:1 as remaining portals
-                        (~50% of volume still unmeasured) report.
-                        Bright line: never collapse these into one number.
-                    </span>
-                </div>
+                <p class="roi-note reveal">
+                    <strong>Integrity line:</strong> measured figures are the champion's own study;
+                    the 5-6:1 is his projection as the remaining ~50% of portals report.
+                    Copay recovery excluded to stay conservative. Never collapse measured
+                    and projected into one number.
+                </p>
             </div>
         </div>
         <footer class="slide-footer">
             <span class="footer-mark">D.Mathieson</span>
-            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; A</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; B</span>
         </footer>
     </section>
 
-    <!-- APPENDIX B: OBSERVABILITY ARCHITECTURE -->
+    <!-- APPENDIX C: OBSERVABILITY ARCHITECTURE -->
     <section class="slide slide-content" id="slide-6" aria-label="Observability Architecture">
         <div class="panel-layout">
             <div class="panel-left">
-                <span class="appendix-tag reveal">Appendix B</span>
+                <span class="appendix-tag reveal">Appendix C</span>
                 <h2 class="panel-slide-title reveal">Observability<br>Architecture</h2>
                 <p class="panel-context reveal">
                     Built in a 2-week recovery sprint after an
@@ -527,38 +730,115 @@
                 </p>
             </div>
             <div class="panel-right">
-                <div class="info-row reveal">
-                    <span class="row-label">Pre-run snapshot</span>
-                    <span class="row-content">
-                        Before each overnight run: capture
-                        <strong>appointment count, coverage flags, and deductible fields</strong>
-                        for all patients in scope.
-                        Stored as a point-in-time baseline in the monitoring layer.
+                <div class="roi-grid reveal">
+                    <div class="roi-card">
+                        <div class="roi-card-name">Pre-Run Snapshot</div>
+                        <div class="roi-card-detail">
+                            Before each overnight run: capture
+                            <strong>appointment count, coverage flags, and deductible fields</strong>
+                            for all patients in scope. Stored as a point-in-time baseline.
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-name">Post-Run Diff</div>
+                        <div class="roi-card-detail">
+                            Compare PMS state against the baseline.
+                            <strong>Flag any unexpected deletion or overwrite</strong>:
+                            any appointment record modified outside the expected E&amp;B fields alerts.
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$45K</div>
+                        <div class="roi-card-name">Revenue recovered</div>
+                        <div class="roi-card-detail">
+                            The diff found the write error's scope <strong>within hours</strong>,
+                            enabling targeted reconciliation of the affected records.
+                        </div>
+                    </div>
+                </div>
+                <div class="roi-math reveal">
+                    <span class="roi-math-total">Every overnight run</span>
+                    <span class="roi-math-detail">
+                        standard health check &nbsp;·&nbsp; alerts on any unexpected write &nbsp;·&nbsp;
+                        <strong>graduated from crisis tool to permanent product</strong>
                     </span>
                 </div>
-                <div class="info-row reveal">
-                    <span class="row-label">Post-run diff</span>
-                    <span class="row-content">
-                        After the run: compare PMS state against the baseline.
-                        <strong>Flag any unexpected deletions or overwrites.</strong>
-                        Alert threshold: any appointment record
-                        modified outside the expected E&amp;B fields.
-                    </span>
-                </div>
-                <div class="info-row reveal">
-                    <span class="row-label">Recovery value</span>
-                    <span class="row-content">
-                        The layer identified the scope of the write error within hours,
-                        enabling targeted reconciliation.
-                        <strong>~$45K in revenue recovered</strong> via the diff-identified records.
-                        Now runs on every overnight job as a standard health check.
-                    </span>
-                </div>
+                <p class="roi-note reveal">
+                    Built in the 2-week recovery sprint; the same instrumentation seeded the
+                    analytics product in Appendix D.
+                </p>
             </div>
         </div>
         <footer class="slide-footer">
             <span class="footer-mark">D.Mathieson</span>
-            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; B</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; C</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX D: ANALYTICS PRODUCT -->
+    <section class="slide slide-content" id="slide-7" aria-label="Analytics Product">
+        <div class="solution-layout">
+            <h2 class="solution-heading reveal">Analytics Product</h2>
+            <p class="solution-sub reveal">Born in the crisis recovery. Instrumented every check. Shipped to every customer.</p>
+
+            <div class="solution-callout reveal">
+                <span class="callout-headline">Manual daily reporting → self-serve analytics</span>
+                <div class="callout-divider"></div>
+                <span class="callout-detail">
+                    Every eligibility check instrumented at four points &nbsp;·&nbsp;
+                    dashboards embedded natively in the product &nbsp;·&nbsp;
+                    rolled out to all customers going forward, not just this one
+                </span>
+            </div>
+
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:space-evenly; min-height:0;">
+            <div class="portal-workflow tall reveal">
+                <span class="workflow-section-label">Captured Per Check</span>
+                <div class="workflow-steps">
+                    <div class="workflow-step"><div class="wf-name">EHR Read</div><div class="wf-detail">Patient + record data at intake</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Portal Navigation</div><div class="wf-detail">Step timings, errors, retries</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Benefit Retrieval</div><div class="wf-detail">Returned coverage values</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step key-step"><div class="wf-name">Write-Back Diff</div><div class="wf-detail">Prior vs written, highlighted when changed</div></div>
+                </div>
+            </div>
+
+            <div class="portal-workflow tall reveal">
+                <span class="workflow-section-label">Data Pipeline</span>
+                <div class="workflow-steps">
+                    <div class="workflow-step"><div class="wf-name">JSON Blobs</div><div class="wf-detail">One per check</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Amazon S3</div><div class="wf-detail">Raw event store</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">Athena</div><div class="wf-detail">Lakehouse queries</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step"><div class="wf-name">QuickSight</div><div class="wf-detail">Dashboards + visuals</div></div>
+                    <span class="wf-sep" aria-hidden="true">→</span>
+                    <div class="workflow-step key-step"><div class="wf-name">Embedded In-Product</div><div class="wf-detail">Native iframe, customer-facing</div></div>
+                </div>
+            </div>
+
+            <div class="roi-grid reveal" style="margin:0;">
+                <div class="roi-card">
+                    <div class="roi-card-name">Patient Lookup</div>
+                    <div class="roi-card-detail">Staff self-serve any specific patient's check history: what was read, what came back, what was written.</div>
+                </div>
+                <div class="roi-card">
+                    <div class="roi-card-name">Exception Reporting</div>
+                    <div class="roi-card-detail">The customer's team works a live exception queue from the dashboard instead of waiting on our reports.</div>
+                </div>
+                <div class="roi-card">
+                    <div class="roi-card-name">Self-Serve, Platform-Wide</div>
+                    <div class="roi-card-detail">Replaced manual daily run-reporting, then became the analytics layer for <strong>every customer going forward</strong>.</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; D</span>
         </footer>
     </section>
 
@@ -578,7 +858,7 @@
 
 <div class="edit-hotzone" id="editHotzone"></div>
 <button class="edit-toggle" id="editToggle">&#9998; Edit</button>
-<div class="slide-counter" id="slideCounter">1 / 7</div>
+<div class="slide-counter" id="slideCounter">1 / 9</div>
 
 <script>
     class SlidePresentation {
@@ -719,14 +999,14 @@
             }
         }
         save() {
-            try { localStorage.setItem('tcn-deck-v4', document.getElementById('deckStage').innerHTML); } catch(e) {}
+            try { localStorage.setItem('tcn-deck-v7', document.getElementById('deckStage').innerHTML); } catch(e) {}
         }
     }
 
     const deck   = new SlidePresentation();
     const editor = new InlineEditor();
 
-    const saved = localStorage.getItem('tcn-deck-v4');
+    const saved = localStorage.getItem('tcn-deck-v7');
     if (saved) {
         document.getElementById('deckStage').innerHTML = saved;
         deck.slides  = Array.from(document.querySelectorAll('.slide'));
