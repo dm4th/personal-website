@@ -688,26 +688,24 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <section class="slide" data-section="demo-pivot" aria-label="Live Demo">
     <span class="kicker reveal">Now the live work</span>
     <h2 class="reveal">What we will show today</h2>
-    <div style="display:grid; grid-template-columns:3fr 2fr; gap:28px; margin-top:18px;" class="reveal">
-        <div class="cardx pulse" style="border:2px solid var(--terracotta); padding:36px;">
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px;">Primary demo</div>
-            <h3 style="font-size:30px; margin-bottom:16px;">Data Science: FRED to dashboard</h3>
-            <p style="margin-bottom:20px; font-size:20px;">Ingest Federal Reserve data, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo, in one sitting. Jupyter, pandas, and scikit-learn throughout.</p>
-            <div style="font-size:18px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.08em;">Core KPI: time from question to decision artifact</div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:18px; align-items:stretch;" class="reveal">
+        <div class="cardx" style="padding:30px;">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Site Reliability</div>
+            <h3 style="font-size:24px; margin-bottom:12px;">SRE: incident to runbook</h3>
+            <p style="font-size:18px; margin-bottom:18px;">Given an alert, logs, and a service map, Claude Code builds a hypothesis tree, finds root cause, and ships the fix behind a human approval gate, leaving the runbook better than found.</p>
+            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">MTTR 28 &rarr; 9 min</div>
         </div>
-        <div style="display:flex; flex-direction:column; gap:22px;">
-            <div class="cardx">
-                <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px;">Also ready today, where the conversation leads</div>
-                <h3 style="font-size:22px; margin-bottom:10px;">SWE Onboarding</h3>
-                <p style="font-size:19px;">New-engineer accelerator: Claude Code reads a service, explains the architecture, and guides a safe first contribution with tests.</p>
-                <div style="margin-top:12px; font-size:17px; font-weight:700; color:var(--terracotta-deep);">Time-to-first-PR</div>
-            </div>
-            <div class="cardx">
-                <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px;">Also ready today, where the conversation leads</div>
-                <h3 style="font-size:22px; margin-bottom:10px;">SRE Triage</h3>
-                <p style="font-size:19px;">Incident to runbook: hypothesis tree, root cause, fix and rollback plan, runbook left better than found.</p>
-                <div style="margin-top:12px; font-size:17px; font-weight:700; color:var(--terracotta-deep);">MTTR 28 &rarr; 9 min</div>
-            </div>
+        <div class="cardx" style="padding:30px;">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Data Science</div>
+            <h3 style="font-size:24px; margin-bottom:12px;">Data Science: FRED to dashboard</h3>
+            <p style="font-size:18px; margin-bottom:18px;">Ingest Federal Reserve data, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo, in one sitting.</p>
+            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">Question to decision artifact</div>
+        </div>
+        <div class="cardx" style="padding:30px;">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Software Engineering</div>
+            <h3 style="font-size:24px; margin-bottom:12px;">SWE: onboarding accelerator</h3>
+            <p style="font-size:18px; margin-bottom:18px;">A new engineer's first days: Claude Code reads a service, explains the architecture, and guides a safe first contribution with tests.</p>
+            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">Time-to-first-PR</div>
         </div>
     </div>
     <p class="lede reveal" style="margin-top:20px; font-size:19px;">Governance and legacy-modernization walkthroughs are available on request.</p>
