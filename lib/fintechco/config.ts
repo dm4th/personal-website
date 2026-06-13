@@ -55,9 +55,9 @@ export const HUB_CONFIG: HubConfig = {
       blurb:
         'A critical service is experiencing latency spikes after a deploy. Use Claude Code to trace root cause, ship the fix, and update the runbook to prevent future incidents.',
       href: '/fintechco/demos/sre-triage',
-      recordingUrl: undefined,
+      recordingUrl: 'https://youtu.be/JKn4nyheJh8',
       live: true,
-      comingSoon: true,
+      comingSoon: false,
       date: 'June 16',
     },
   ],
