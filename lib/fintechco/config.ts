@@ -43,9 +43,9 @@ export const HUB_CONFIG: HubConfig = {
       blurb:
         'Onboard a new member of the SWE team with a guided, secure, and efficient first contribution. Claude Code becomes the trusted foundation for future contributions.',
       href: '/fintechco/demos/onboarding-accelerator',
-      recordingUrl: undefined,
+      recordingUrl: 'https://youtu.be/tBq8tEv6LcQ',
       live: true,
-      comingSoon: true,
+      comingSoon: false,
       date: 'June 16',
     },
     {
