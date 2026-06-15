@@ -64,9 +64,9 @@ export const HUB_CONFIG: HubConfig = {
   // Move this pointer as the conversation advances: discovery before the
   // session, 'deck' the week of the meeting, a demo key during the pilot.
   primaryFocus: {
-    target: 'deck',
+    target: 'discovery',
     label: 'Start here',
-    note: 'The full walkthrough we will present, security-first and end to end. Open it any time before or after we meet.',
+    note: 'Ten minutes here before we meet shapes the whole session around your priorities.',
   },
   resourceSections: [
     {
