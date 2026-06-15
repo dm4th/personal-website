@@ -409,6 +409,80 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 .nav-dot.appendix { background:rgba(200,106,72,0.5); }
 .nav-dot.appendix:hover { background:rgba(200,106,72,0.75); }
 .nav-dot.appendix.active { background:rgba(200,106,72,0.95); }
+
+/* ===========================================
+   TERRACOTTA BOOKENDS (cover + closing)
+   Matches the solutioning-deck cover: warm
+   ground, dark ink type. Replaces the old .dark
+   treatment so the deck reads as one cream body
+   between two intentional warm bookends.
+   =========================================== */
+.slide-cover { background: var(--terracotta); color: var(--text); }
+.slide-cover .cover-title { color: var(--text); }
+.slide-cover .cover-sub   { color: rgba(26,26,26,0.74); }
+.slide-cover .cover-meta  { color: rgba(26,26,26,0.55); }
+.slide-cover .cover-rule  { background: var(--cream); }
+.slide-cover .foot        { color: rgba(26,26,26,0.5); }
+
+/* 4-up card grid */
+.cards.c4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Terracotta conviction bar (zero-trust, deployment) */
+.callout { display:flex; align-items:center; gap:24px; background: var(--terracotta); border-radius:14px; padding:24px 34px; }
+.callout .ch { font-size:24px; font-weight:800; color:var(--text); flex-shrink:0; max-width:340px; line-height:1.15; }
+.callout .cd { width:2px; align-self:stretch; background:rgba(26,26,26,0.22); flex-shrink:0; }
+.callout .cp { font-size:21px; font-weight:500; line-height:1.45; color:rgba(26,26,26,0.86); }
+
+/* Cited source quote (security journey) */
+.srcquote { background: var(--terracotta-bg); border-left:5px solid var(--terracotta); border-radius:0 14px 14px 0; padding:22px 30px; }
+.srcquote p { font-size:23px; line-height:1.5; font-style:italic; font-weight:500; color:var(--text); }
+.srcquote .cite { display:block; margin-top:12px; font-size:15px; font-weight:700; font-style:normal; letter-spacing:0.08em; text-transform:uppercase; color:var(--terracotta-deep); }
+
+/* Demo tiles: icon badge + hard metric */
+.demo-ico { width:56px; height:56px; border-radius:14px; background:var(--terracotta-bg); border:1.5px solid var(--terracotta); display:flex; align-items:center; justify-content:center; font-size:30px; margin-bottom:16px; }
+.demo-metric { font-size:34px; font-weight:800; color:var(--terracotta); letter-spacing:-0.02em; line-height:1; }
+.demo-metric small { display:block; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-top:7px; }
+
+/* Discovery: primary callouts + backup chips */
+.qbig { background: var(--card); border:1px solid var(--card-border); border-left:6px solid var(--terracotta); border-radius:16px; padding:26px 32px; display:flex; flex-direction:column; justify-content:center; }
+.qbig .qlabel { font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px; }
+.qbig .qtext { font-size:26px; font-weight:600; line-height:1.3; color:var(--text); }
+.qsmall { background: var(--card); border:1px solid var(--card-border); border-radius:12px; padding:26px 26px; font-size:20px; line-height:1.5; color:var(--text-muted); display:flex; align-items:center; min-height:150px; }
+.qsmall strong { color:var(--text); font-weight:700; }
+
+/* Office-hours booking link */
+.booklink { display:inline-flex; align-items:center; gap:8px; margin-top:10px; background:var(--terracotta); color:#fff; font-size:17px; font-weight:700; text-decoration:none; padding:9px 18px; border-radius:10px; letter-spacing:0.01em; }
+.booklink:hover { background:var(--terracotta-deep); }
+
+/* Team-size reference chips */
+.teamref { display:flex; gap:12px; margin-top:14px; }
+.teamref .tr { flex:1; background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 18px; }
+.teamref .tr .trn { font-size:30px; font-weight:800; color:var(--terracotta); line-height:1; }
+.teamref .tr .trl { font-size:15px; font-weight:600; color:var(--text-muted); margin-top:5px; }
+
+/* Head-to-head competitor comparison (appendix deep-dives) */
+.vsgrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
+.vscol .vh { font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px; }
+.vscol.win { background:var(--terracotta-bg); border:1px solid var(--terracotta); border-radius:12px; padding:18px 20px; }
+.vscol.win .vh { color:var(--terracotta-deep); }
+.vscol.strong { padding:18px 6px; }
+.vscol.strong .vh { color:var(--text-muted); }
+.vscol ul { list-style:none; }
+.vscol li { font-size:16px; line-height:1.4; padding-left:20px; position:relative; margin-bottom:9px; color:var(--text-muted); }
+.vscol li:last-child { margin-bottom:0; }
+.vscol li::before { content:''; position:absolute; left:0; top:7px; width:8px; height:8px; border-radius:2px; }
+.vscol.strong li::before { background:var(--card-border); }
+.vscol.win li { color:var(--text); }
+.vscol.win li::before { background:var(--terracotta); }
+
+/* KPI category cards (measure + roll out) */
+.kpi { background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px 22px; }
+.kpi .kh { font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px; }
+.kpi ul { list-style:none; }
+.kpi li { font-size:18px; line-height:1.4; color:var(--text-muted); padding-left:20px; position:relative; margin-bottom:7px; }
+.kpi li:last-child { margin-bottom:0; }
+.kpi li::before { content:''; position:absolute; left:0; top:8px; width:8px; height:8px; border-radius:2px; background:var(--terracotta); }
+.kpi li strong { color:var(--text); font-weight:700; }
 </style>
 </head>
 <body>
@@ -420,7 +494,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 1 · COVER ============ -->
 <!-- timing: 1 min -->
-<section class="slide dark active" data-section="cover" aria-label="Cover">
+<section class="slide slide-cover active" data-section="cover" aria-label="Cover">
     <div class="cover-wrap">
         <div class="cover-rule reveal"></div>
         <h1 class="cover-title reveal">Claude Code at FinTechCo</h1>
@@ -432,120 +506,201 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 
 <!-- ============ 2 · AGENDA ============ -->
 <!-- timing: 2 min -->
-<section class="slide dark" data-section="agenda" aria-label="Agenda">
+<section class="slide" data-section="agenda" aria-label="Agenda">
     <span class="kicker reveal">25 minutes, held tightly</span>
-    <h2 class="reveal">Today&rsquo;s meeting arc</h2>
-    <div class="reveal" style="display:flex; gap:10px; align-items:stretch; margin-top:28px;">
-        <div style="flex:3; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:28px 22px;">
-            <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">3</div>
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#8E877C;">min</div>
-            <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Intros + agenda</div>
+    <h2 class="reveal">Today&rsquo;s Meeting Arc</h2>
+    <div class="reveal" style="height:660px; display:flex; flex-direction:column; justify-content:center; gap:52px; margin-top:8px;">
+      <div style="display:flex; gap:14px; align-items:stretch;">
+        <div style="flex:2; background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:22px 20px;">
+            <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">2</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:5px;">min</div>
+            <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Intros</div>
         </div>
-        <div style="display:flex; align-items:center; font-size:26px; color:var(--terracotta); padding:0 2px;">&rarr;</div>
-        <div style="flex:5; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:28px 22px;">
-            <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">5</div>
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#8E877C;">min</div>
-            <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Discovery</div>
+        <div style="display:flex; align-items:center; font-size:28px; color:var(--terracotta);">&rarr;</div>
+        <div style="flex:7; background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:22px 20px;">
+            <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">7</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:5px;">min</div>
+            <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Discovery</div>
         </div>
-        <div style="display:flex; align-items:center; font-size:26px; color:var(--terracotta); padding:0 2px;">&rarr;</div>
-        <div style="flex:5; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:28px 22px;">
-            <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">5</div>
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#8E877C;">min</div>
-            <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Why Claude Code at FinTechCo</div>
+        <div style="display:flex; align-items:center; font-size:28px; color:var(--terracotta);">&rarr;</div>
+        <div style="flex:5; background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:22px 20px;">
+            <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">5</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:5px;">min</div>
+            <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Why Claude Code</div>
         </div>
-        <div style="display:flex; align-items:center; font-size:26px; color:var(--terracotta); padding:0 2px;">&rarr;</div>
-        <div class="pulse" style="flex:8; background:var(--terracotta-bg); border:2px solid var(--terracotta); border-radius:14px; padding:28px 22px;">
-            <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">8</div>
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,238,228,0.6);">min</div>
-            <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Live demo</div>
+        <div style="display:flex; align-items:center; font-size:28px; color:var(--terracotta);">&rarr;</div>
+        <div class="pulse" style="flex:7; background:var(--terracotta-bg); border:2px solid var(--terracotta); border-radius:14px; padding:22px 20px;">
+            <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">7</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta-deep); margin-top:5px;">min</div>
+            <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Live demo</div>
         </div>
-        <div style="display:flex; align-items:center; font-size:26px; color:var(--terracotta); padding:0 2px;">&rarr;</div>
-        <div style="flex:4; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:28px 22px;">
-            <div style="font-size:52px; font-weight:800; color:var(--terracotta); line-height:1; margin-bottom:4px;">4</div>
-            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#8E877C;">min</div>
-            <div style="font-size:18px; font-weight:700; color:var(--cream); margin-top:10px; line-height:1.3;">Next steps</div>
+        <div style="display:flex; align-items:center; font-size:28px; color:var(--terracotta);">&rarr;</div>
+        <div style="flex:4; background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:22px 20px;">
+            <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">4</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-top:5px;">min</div>
+            <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Next steps</div>
         </div>
+      </div>
+      <div class="callout">
+        <span class="ch">25 minutes programmed, the rest is yours</span>
+        <span class="cd"></span>
+        <span class="cp">We have built roughly 25 minutes of material and expect your questions to fill the remaining time. Please ask throughout, not just at the end: this session is yours, to learn exactly what Claude Code can do for FinTechCo.</span>
+      </div>
     </div>
-    <p class="lede reveal" style="color:var(--cream); margin-top:30px; font-size:22px;">I will hold us here. Time management is the highest-leverage thing I can do for you in this room.</p>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>02 &middot; Agenda</span></div>
 </section>
 
-<!-- ============ 3 · DISCOVERY ============ -->
+<!-- ============ 3 · THE REALITY (SHADOW AI HOOK) ============ -->
+<!-- timing: 1.5 min -->
+<section class="slide" data-section="shadow-hook" aria-label="The Reality: Shadow AI">
+    <div style="height:100%; display:flex; flex-direction:column; justify-content:space-between; padding-bottom:30px;">
+      <div>
+        <span class="kicker reveal">Before we dive in</span>
+        <h2 class="reveal" style="margin-bottom:0; max-width:1600px;">The Data Shows: AI Agents Are Likely Already Working at FinTechCo</h2>
+      </div>
+      <div>
+        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">What the industry research says</p>
+        <div class="cards c4 reveal">
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:24px 26px; display:flex; flex-direction:column;">
+                <div style="font-size:62px; font-weight:800; color:var(--terracotta); line-height:0.95;">84%</div>
+                <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:12px; line-height:1.3;">of developers already use or plan to use AI coding tools</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:auto; padding-top:14px; line-height:1.35;"><a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Stack Overflow 2025 Developer Survey, 49,000+ respondents &#8599;</a></div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:24px 26px; display:flex; flex-direction:column;">
+                <div style="font-size:62px; font-weight:800; color:var(--terracotta); line-height:0.95;">47%</div>
+                <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:12px; line-height:1.3;">are on personal accounts their employer does not oversee <span style="font-weight:500; color:var(--text-muted);">(down from 78% a year earlier)</span></div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:auto; padding-top:14px; line-height:1.35;"><a href="https://www.netskope.com/resources/cloud-and-threat-reports/cloud-and-threat-report-shadow-ai-and-agentic-ai-2025" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Netskope Cloud and Threat Report 2026 &#8599;</a></div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:24px 26px; display:flex; flex-direction:column;">
+                <div style="font-size:62px; font-weight:800; color:var(--terracotta); line-height:0.95;">223<span style="font-size:28px;">/mo</span></div>
+                <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:12px; line-height:1.3;">sensitive-data-to-AI incidents at the average company, doubled year over year</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:auto; padding-top:14px; line-height:1.35;"><a href="https://www.netskope.com/resources/cloud-and-threat-reports/cloud-and-threat-report-shadow-ai-and-agentic-ai-2025" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Netskope Cloud and Threat Report 2026 &#8599;</a></div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:24px 26px; display:flex; flex-direction:column;">
+                <div style="font-size:62px; font-weight:800; color:var(--terracotta); line-height:0.95;">29%</div>
+                <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:12px; line-height:1.3;">of developers actually trust AI output; 81% flag security and privacy risk</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:auto; padding-top:14px; line-height:1.35;"><a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Stack Overflow 2025 Developer Survey &#8599;</a></div>
+            </div>
+        </div>
+      </div>
+      <p class="reveal" style="margin:0; font-size:21px; line-height:1.5; color:var(--text); max-width:1640px;">And the tools driving these numbers, Copilot, Cursor, Claude Code, are <strong style="color:var(--terracotta-deep);">agentic by default now</strong>. This is no longer chat in a browser tab. It is autonomous code, running against repositories, mostly on accounts you cannot see.</p>
+      <div class="callout reveal">
+        <span class="ch">The only question is whether it happens in the light</span>
+        <span class="cd"></span>
+        <span class="cp">The decision in front of you is not whether AI touches FinTechCo&rsquo;s code. The data says it already does. It is whether that happens inside infrastructure you govern, or outside it, on accounts you cannot audit.</span>
+      </div>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>03 &middot; The reality</span></div>
+</section>
+
+<!-- ============ 4 · DISCOVERY ============ -->
 <!-- timing: 5 min -->
 <section class="slide" data-section="discovery" aria-label="Discovery">
-    <span class="kicker reveal">Live in-room discovery</span>
-    <h2 class="reveal">Two lenses, six questions</h2>
-    <div class="cards c2" style="margin-top: 22px;">
-        <div class="cardx reveal">
-            <h3>Security and platform</h3>
-            <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:16px;">
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    Which regulatory frameworks govern your engineering org: PCI-DSS, SOC 2, GLBA, or others?
-                </li>
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    Where would you place your zero-trust posture today: SSO, MFA type, secrets management coverage?
-                </li>
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    What security bar would Claude Code need to clear before you would consider broader rollout?
-                </li>
-            </ul>
+    <div style="height:100%; display:flex; flex-direction:column; justify-content:space-between; padding-bottom:30px;">
+      <div>
+        <span class="kicker reveal">Discovery</span>
+        <h2 class="reveal" style="margin-bottom:0;">We Started From Your Brief</h2>
+      </div>
+      <div>
+        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">What we heard</p>
+        <div class="cards c4 reveal">
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:20px 22px; font-size:17px; line-height:1.4; color:var(--text); display:flex; gap:10px;"><span style="color:var(--terracotta); font-weight:800; flex-shrink:0;">&#10003;</span><span>One agentic coding tool across all 180 engineers, live within months, from zero today.</span></div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:20px 22px; font-size:17px; line-height:1.4; color:var(--text); display:flex; gap:10px;"><span style="color:var(--terracotta); font-weight:800; flex-shrink:0;">&#10003;</span><span>The goal is developer productivity and shipping product, cost-conscious but not cost-driven.</span></div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:20px 22px; font-size:17px; line-height:1.4; color:var(--text); display:flex; gap:10px;"><span style="color:var(--terracotta); font-weight:800; flex-shrink:0;">&#10003;</span><span>It must clear a security-first, regulated bar: PCI, SOX, two clouds, a skeptical eye.</span></div>
+            <div style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:20px 22px; font-size:17px; line-height:1.4; color:var(--text); display:flex; gap:10px;"><span style="color:var(--terracotta); font-weight:800; flex-shrink:0;">&#10003;</span><span>You need clear ROI, a believable timeline, and business impact you can measure.</span></div>
         </div>
-        <div class="cardx reveal">
-            <h3>Transformation and value</h3>
-            <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:16px;">
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    Where do you see the biggest AI opportunity today: legacy modernization, faster delivery, data workflows, or SRE toil?
-                </li>
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    If we ran a four to six week pilot, what would a win look like, and which teams or workflows would you put in the first cohort?
-                </li>
-                <li style="font-size:21px; line-height:1.45; color:var(--text-muted); padding-left:22px; position:relative;">
-                    <span style="position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:3px; background:var(--terracotta); display:block;"></span>
-                    What signals would you want to see move if this is working: cycle time, MTTR, onboarding time, experiment velocity, or defect rates?
-                </li>
-            </ul>
+      </div>
+      <div>
+        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">Two questions to go deeper, live</p>
+        <div class="cards c2">
+            <div class="qbig reveal">
+                <div class="qlabel">For the Head of Digital Transformation</div>
+                <div class="qtext">Where does engineering slow down or break today, and what is that costing you in delivery speed, hiring, or risk?</div>
+            </div>
+            <div class="qbig reveal">
+                <div class="qlabel">For the CTO</div>
+                <div class="qtext">What would Claude Code need to prove to earn a broader rollout, and who else are you weighing it against?</div>
+            </div>
         </div>
+      </div>
+      <div>
+        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">Four more if we have the time</p>
+        <div class="cards c4">
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Where does your zero-trust posture stand today: SSO, MFA type, secrets management coverage?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Which regulatory frameworks govern your engineering org: PCI-DSS, SOC 2, GLBA, or others?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Where is change riskiest in your stack today: payments rails, core banking, or the data platform?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">What is the timeline and the approval path for a pilot decision?</div>
+        </div>
+      </div>
+      <p class="lede reveal" style="margin:0; font-size: 18px;">This came from your brief, not a form you had to fill out. The fastest way to make today count is to tell us where we have it wrong.</p>
     </div>
-    <p class="lede reveal" style="margin-top: 24px; font-size: 20px;">If you filled out the discovery conversation we sent, we will build on it.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>03 &middot; Discovery</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>04 &middot; Discovery</span></div>
 </section>
 
 <!-- ============ 4 · ZERO TRUST / LEAST AGENCY ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="zero-trust" aria-label="Zero Trust / Least Agency">
     <span class="kicker reveal">Principles before products</span>
-    <h2 class="reveal">Zero trust, extended to agents: least agency</h2>
-    <div class="cards c3" style="margin-top: 26px;">
+    <h2 class="reveal">Zero Trust, Extended to Agents: Least Agency</h2>
+    <div class="callout reveal" style="margin-top: 20px;">
+        <span class="ch">Not optional for an agent rollout</span>
+        <span class="cd"></span>
+        <span class="cp">Federal frameworks and finance regulators are already converging here, and an agent is a new, persistent principal inside your systems. Running agents across 180 engineers without zero trust is not a corner we will help you cut. We feel strongly: this is the floor the rest of the rollout stands on.</span>
+    </div>
+    <div class="cards c4" style="margin-top: 28px;">
         <div class="cardx reveal">
-            <h3>Verify every actor</h3>
+            <h3>Verify Every Actor</h3>
             <p>Humans, services, and now agents authenticate the same way: strong identity, phishing-resistant MFA, no standing credentials. An agent is a principal, not a plugin.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Least privilege, finer grained</h3>
-            <p>Least agency is least privilege applied at the level of individual tools and actions: an agent gets exactly the capabilities a task needs, for exactly as long as it needs them.</p>
+            <h3>Least Agency</h3>
+            <p>Least privilege at the level of individual tools and actions: an agent gets exactly the capabilities a task needs, for exactly as long as it needs them.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Assume compromise</h3>
-            <p>Design so that a hijacked prompt or poisoned context is contained by scope, not by hope: bounded tools, reviewed actions, audited everything.</p>
+            <h3>Assume Compromise</h3>
+            <p>Design so a hijacked prompt or poisoned context is contained by scope, not by hope: bounded tools, reviewed actions, blast radius capped.</p>
+        </div>
+        <div class="cardx reveal">
+            <h3>Audit Everything</h3>
+            <p>Every agent action lands in one queryable trail, so a regulator&rsquo;s question becomes a lookup instead of an investigation.</p>
         </div>
     </div>
-    <div style="height: 36px;"></div>
-    <p class="lede reveal">This is the bar regulators and federal frameworks are converging on. The honest tension: zero trust trades a little speed for a lot of safety. The rest of this briefing shows how you keep the productivity win anyway.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>04 &middot; Zero trust</span></div>
+    <div class="srcquote reveal" style="margin-top: 26px;">
+        <p>&ldquo;Zero Trust replaces perimeter-based security with a simple premise: trust nothing, verify everything, assume breach has already occurred. When in doubt, prefer a control that removes a capability over one that throttles it.&rdquo;</p>
+        <span class="cite"><a href="https://claude.com/blog/zero-trust-for-ai-agents" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Anthropic &middot; Zero Trust for AI Agents &#8599;</a></span>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>05 &middot; Zero trust</span></div>
 </section>
 
-<!-- ============ 5 · SECURITY JOURNEY ============ -->
+<!-- ============ 5 · FIVE THREATS (promoted from appendix) ============ -->
+<!-- timing: 1 min -->
+<section class="slide" data-section="threats-body" aria-label="Threat Model">
+    <span class="kicker reveal">What the principles defend against</span>
+    <h2 class="reveal">Five Threats Every Agentic Deployment Must Answer For</h2>
+    <div class="cards c5" style="margin-top: 36px;">
+        <div class="cardx reveal"><div class="num">1</div><h3 style="font-size:23px;">Prompt Injection</h3><p>Untrusted content steering the agent&rsquo;s actions.</p></div>
+        <div class="cardx reveal"><div class="num">2</div><h3 style="font-size:23px;">Tool Hijacking</h3><p>Abusing the tools and resources an agent can reach.</p></div>
+        <div class="cardx reveal"><div class="num">3</div><h3 style="font-size:23px;">Privilege Abuse</h3><p>Identity and access misuse through the agent&rsquo;s permissions.</p></div>
+        <div class="cardx reveal"><div class="num">4</div><h3 style="font-size:23px;">Context Poisoning</h3><p>Corrupting the memory or context the agent relies on.</p></div>
+        <div class="cardx reveal"><div class="num">5</div><h3 style="font-size:23px;">Supply Chain</h3><p>Compromised packages, models, or extensions upstream.</p></div>
+    </div>
+    <div style="height: 44px;"></div>
+    <div class="callout reveal">
+        <span class="ch">A dynamic commitment, not a one-time certification</span>
+        <span class="cd"></span>
+        <span class="cp">These surfaces are only months old and still moving. The right response is not a frozen checklist but a security culture that expects the attack surface to evolve as fast as the technology underneath it, and re-verifies its controls on that cadence.</span>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>06 &middot; Threat model</span></div>
+</section>
+
+<!-- ============ 6 · SECURITY JOURNEY ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="security-journey" aria-label="Security Journey">
     <span class="kicker reveal">A partnership, not a prerequisite</span>
-    <h2 class="reveal">The security journey: Foundation now, Enterprise next, Advanced over time</h2>
-    <div class="tiers reveal" style="margin-top: 10px;">
-        <div class="tier now pulse">
+    <h2 class="reveal">The Security Journey: Foundation Now, Enterprise Next, Advanced Over Time</h2>
+    <p class="lede reveal" style="font-size:20px; margin-bottom:12px;">Enterprise is where serious engineering adoption needs you to be, and this is not a certificate you earn once: we expect today&rsquo;s Advanced controls to become tomorrow&rsquo;s Foundation.</p>
+    <div class="tiers reveal" style="margin-top: 4px;">
+        <div class="tier">
             <h3>Foundation</h3>
             <div class="when">Target: before pilot</div>
             <ul>
@@ -555,9 +710,9 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             </ul>
         </div>
         <div class="tier-arrow">&rarr;</div>
-        <div class="tier">
+        <div class="tier now pulse">
             <h3>Enterprise</h3>
-            <div class="when">Target: before broad rollout</div>
+            <div class="when">Where adoption needs you</div>
             <ul>
                 <li>Just-in-time, expiring access</li>
                 <li>Egress controls + continuous monitoring</li>
@@ -567,7 +722,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         <div class="tier-arrow">&rarr;</div>
         <div class="tier">
             <h3>Advanced</h3>
-            <div class="when">Adopt selectively, expect to need more</div>
+            <div class="when">Selective now, expected later</div>
             <ul>
                 <li>Cryptographic attestation of actions</li>
                 <li>Behavioral policies per agent class</li>
@@ -575,235 +730,362 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             </ul>
         </div>
     </div>
-    <div style="height: 30px;"></div>
-    <div class="assumption reveal" data-discovery-slot="security-posture">
-        <span class="chip">Working assumption</span>
-        FinTechCo has SSO and MFA broadly deployed, partial secrets management, and early zero-trust adoption. We will calibrate this journey to your actual posture in the security deep-dive session.
+    <div class="callout reveal" style="margin-top: 24px;">
+        <span class="ch">A working session with your security team</span>
+        <span class="cd"></span>
+        <span class="cp">One of the first next steps we will propose: a focused two-hour session with your security leads to map your posture, your zero-trust status, and exactly where Claude Code fits your development plans. A good place to start: <a href="https://www.anthropic.com/product/security" target="_blank" rel="noopener" style="color:var(--text); text-decoration:underline; text-underline-offset:3px;">anthropic.com/product/security</a>.</span>
     </div>
-    <div style="height: 16px;"></div>
-    <div class="assumption reveal" data-discovery-slot="regulatory-scope">
-        <span class="chip">Working assumption</span>
-        Regulatory scope: PCI DSS for payments, SOC 2 commitments, GLBA safeguards, and state privacy regimes. Confirming this list reshapes the controls we prioritize first.
+    <div class="srcquote reveal" style="margin-top: 20px;">
+        <p>&ldquo;Start at Foundation, validate your controls, and advance the tiers as your deployments scale. Treat the &lsquo;impossible vs. tedious&rsquo; test as a standing design review question. The threats will evolve. So should your defenses.&rdquo;</p>
+        <span class="cite"><a href="https://claude.com/blog/zero-trust-for-ai-agents" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Anthropic &middot; Zero Trust for AI Agents &#8599;</a></span>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>05 &middot; Security journey</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>07 &middot; Security journey</span></div>
 </section>
 
 <!-- ============ 6 · WHAT CLAUDE CODE IS ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="what-it-is" aria-label="What Claude Code Is">
     <span class="kicker reveal">Now the capabilities</span>
-    <h2 class="reveal">What Claude Code is: an agent that does the work, where your engineers already work</h2>
-    <div class="split" style="margin-top: 16px;">
-        <div class="rows reveal">
-            <div class="rowx"><div class="n">1</div><div><h3>Plans before it edits</h3><p>Reads the codebase, proposes a plan, then executes it step by step with your approval boundaries in force.</p></div></div>
-            <div class="rowx"><div class="n">2</div><div><h3>Works across the whole task</h3><p>Code, tests, shell, configs, docs, and pull requests in one loop, not autocomplete fragments.</p></div></div>
-            <div class="rowx"><div class="n">3</div><div><h3>Learns your standards</h3><p>CLAUDE.md files, hooks, and managed policies turn team conventions into enforced behavior.</p></div></div>
+    <h2 class="reveal">What Claude Code Is: An Agent That Does the Work, Where Your Engineers Already Work</h2>
+    <div class="reveal" style="height:660px; display:flex; align-items:center; margin-top:8px;">
+      <div class="split" style="width:100%; gap:56px;">
+        <div class="rows">
+            <div class="rowx" style="padding:28px 32px;"><div class="n">1</div><div><h3 style="font-size:28px;">Plans Before It Edits</h3><p style="font-size:22px;">Reads the codebase, proposes a plan, then executes it step by step with your approval boundaries in force.</p></div></div>
+            <div class="rowx" style="padding:28px 32px;"><div class="n">2</div><div><h3 style="font-size:28px;">Works Across the Whole Task</h3><p style="font-size:22px;">Code, tests, shell, configs, docs, and pull requests in one loop, not autocomplete fragments.</p></div></div>
+            <div class="rowx" style="padding:28px 32px;"><div class="n">3</div><div><h3 style="font-size:28px;">Learns Your Standards</h3><p style="font-size:22px;">CLAUDE.md files, hooks, and managed policies turn team conventions into enforced behavior.</p></div></div>
         </div>
-        <div class="reveal">
-            <div class="cardx" style="height: auto;">
-                <h3>Where it runs</h3>
-                <p style="margin-bottom: 14px;">Terminal-first, with the desktop app and IDE integrations (VS Code, JetBrains) as first-class surfaces. Engineers, data scientists, and SREs each meet it in their own environment.</p>
-                <p style="margin-bottom: 14px;">The same agent and controls everywhere: one governance model across 180 people, not three tools with three policies.</p>
-                <p>Built by Anthropic, the company whose researchers publish the safety playbook the rest of the industry cites.</p>
+        <div>
+            <div class="cardx" style="height:auto; padding:38px 40px;">
+                <div style="display:flex; align-items:center; gap:16px; margin-bottom:18px;">
+                    <svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true">
+                        <g stroke="var(--terracotta)" stroke-width="3.2" stroke-linecap="round">
+                            <line x1="4" y1="24" x2="44" y2="24"/>
+                            <line x1="24" y1="4" x2="24" y2="44"/>
+                            <line x1="6.7" y1="14" x2="41.3" y2="34"/>
+                            <line x1="14" y1="6.7" x2="34" y2="41.3"/>
+                            <line x1="34" y1="6.7" x2="14" y2="41.3"/>
+                            <line x1="41.3" y1="14" x2="6.7" y2="34"/>
+                        </g>
+                    </svg>
+                    <h3 style="font-size:30px; margin-bottom:0;">Where It Runs</h3>
+                </div>
+                <p style="margin-bottom: 16px; font-size:22px;">Terminal-first, with the desktop app and IDE integrations (VS Code, JetBrains) as first-class surfaces. Engineers, data scientists, and SREs each meet it in their own environment.</p>
+                <p style="margin-bottom: 16px; font-size:22px;">The same agent and controls everywhere: one governance model across 180 people, not three tools with three policies.</p>
+                <p style="font-size:22px;">Built by Anthropic, the company whose researchers publish the safety playbook the rest of the industry cites.</p>
             </div>
         </div>
+      </div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>06 &middot; What it is</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>08 &middot; What it is</span></div>
 </section>
 
-<!-- ============ 7 · COMPETITIVE LANDSCAPE ============ -->
+<!-- ============ 8 · DEMO PIVOT (moved up: proof right after the concept) ============ -->
+<!-- timing: 7 min (the demo itself) -->
+<section class="slide" data-section="demo-pivot" aria-label="Live Demo">
+    <span class="kicker reveal">Now the live work</span>
+    <h2 class="reveal">What We Will Show Today</h2>
+    <div class="reveal" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:26px; height:610px; align-items:stretch;">
+        <div class="cardx" style="display:flex; flex-direction:column;">
+            <div style="font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px;">Site Reliability &middot; 20 SREs</div>
+            <h3 style="font-size:30px; margin-bottom:16px;">Incident to Runbook</h3>
+            <p style="font-size:21px; line-height:1.5; margin-bottom:auto;">Given an alert, logs, and a service map, Claude Code builds a hypothesis tree, finds root cause, and ships the fix behind a human approval gate, leaving the runbook better than found.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border);">
+                <div class="demo-metric">28 &rarr; 9 min<small>MTTR on triaged incidents</small></div>
+            </div>
+            <p style="font-size:16px; line-height:1.45; color:var(--text-muted); margin-top:16px;"><strong style="color:var(--terracotta-deep);">Watch:</strong> a hook blocks the agent from self-approving its own production fix.</p>
+        </div>
+        <div class="cardx" style="display:flex; flex-direction:column;">
+            <div style="font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px;">Data Science &middot; 40 scientists</div>
+            <h3 style="font-size:30px; margin-bottom:16px;">FRED to Dashboard</h3>
+            <p style="font-size:21px; line-height:1.5; margin-bottom:auto;">Ingest Federal Reserve data, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo, in one sitting.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border);">
+                <div class="demo-metric">~2 days &rarr; 1 sitting<small>Question to decision artifact</small></div>
+            </div>
+            <p style="font-size:16px; line-height:1.45; color:var(--text-muted); margin-top:16px;"><strong style="color:var(--terracotta-deep);">Watch:</strong> runs entirely inside your boundary, with a re-runnable pipeline.</p>
+        </div>
+        <div class="cardx" style="display:flex; flex-direction:column;">
+            <div style="font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px;">Software Engineering &middot; 120 engineers</div>
+            <h3 style="font-size:30px; margin-bottom:16px;">Onboarding Accelerator</h3>
+            <p style="font-size:21px; line-height:1.5; margin-bottom:auto;">A new engineer&rsquo;s first days: Claude Code reads a service, explains the architecture, and guides a safe first contribution with tests.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border);">
+                <div class="demo-metric">~6 wks &rarr; day 3<small>Time to first meaningful PR</small></div>
+            </div>
+            <p style="font-size:16px; line-height:1.45; color:var(--text-muted); margin-top:16px;"><strong style="color:var(--terracotta-deep);">Watch:</strong> scoped to one service, with tests gating every change.</p>
+        </div>
+    </div>
+    <p class="lede reveal" style="margin-top:18px; font-size:18px;">Governance and legacy-modernization walkthroughs are available on request.</p>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>09 &middot; Demo</span></div>
+</section>
+
+<!-- ============ 9 · WHAT FINTECHCO GETS (value / WIIFM, right after the proof) ============ -->
+<!-- timing: 1 min -->
+<section class="slide" data-section="value" aria-label="What FinTechCo Gets">
+    <span class="kicker reveal">The payoff</span>
+    <h2 class="reveal">What FinTechCo Gets</h2>
+    <div class="reveal" style="height:660px; display:flex; flex-direction:column; justify-content:center; gap:22px; margin-top:8px;">
+        <div class="cards c2">
+            <div class="cardx" style="padding:32px 34px;">
+                <span style="display:inline-block; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:4px 14px;">For the CTO</span>
+                <h3 style="font-size:28px; margin:16px 0 12px;">Say Yes, Safely</h3>
+                <p style="font-size:19px; line-height:1.5; color:var(--text-muted);">Give your engineers the boost they have already gone looking for, inside infrastructure you can trust: <strong style="color:var(--terracotta-deep);">one governed agent, hooks and policy-as-code, full audit.</strong> You move the shadow usage we opened with into the light, on accounts you can see, and clear your PCI and SOX review at the same time.</p>
+            </div>
+            <div class="cardx" style="padding:32px 34px;">
+                <span style="display:inline-block; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:4px 14px;">For the Head of Digital Transformation</span>
+                <h3 style="font-size:28px; margin:16px 0 12px;">Velocity You Can Point To</h3>
+                <p style="font-size:19px; line-height:1.5; color:var(--text-muted);">Faster delivery, safer modernization, and measurable momentum across all three teams, software engineering, data science, and SRE, without adding headcount to get it. The pilot gives you a visible, defensible win to bring to the board.</p>
+            </div>
+        </div>
+        <div class="cardx" style="padding:28px 34px; background:var(--terracotta-bg); border:1.5px solid var(--terracotta); display:flex; align-items:center; gap:30px;">
+            <div style="flex-shrink:0; max-width:320px;">
+                <span style="display:inline-block; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:var(--terracotta); border-radius:100px; padding:4px 14px;">For FinTechCo</span>
+                <h3 style="font-size:26px; margin-top:12px; line-height:1.16;">One Agent, One Governance Model, 180 Engineers</h3>
+            </div>
+            <div style="width:1.5px; align-self:stretch; background:var(--terracotta); opacity:0.4;"></div>
+            <p style="font-size:20px; line-height:1.5; color:var(--text);">Standardize the productivity your teams are already chasing onto a single secure platform, then ship faster and modernize with less risk as you scale. The banks that pull ahead will be the ones whose engineers move at AI speed without giving up control, and that is exactly where this puts you.</p>
+        </div>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>10 &middot; What you get</span></div>
+</section>
+
+<!-- ============ 10 · COMPETITIVE LANDSCAPE ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="competitive" aria-label="Competitive Landscape">
     <span class="kicker reveal">The field you are evaluating</span>
-    <h2 class="reveal">Competitive landscape</h2>
-    <table class="grid reveal" style="margin-top: 8px;">
+    <h2 class="reveal">Competitive Landscape</h2>
+    <p class="lede reveal" style="font-size:20px; margin-bottom:18px;">In finance the deciding axis is not raw capability, it is governance. The published analyses agree: getting agents working in the enterprise is mostly a security and governance problem, not an AI-maturity one.</p>
+    <table class="grid reveal" style="margin-top: 4px; font-size:18px;">
         <thead>
-            <tr><th style="width:190px;">Tool</th><th>Approach</th><th>Agentic depth</th><th>Security control surface</th><th>Best fit</th></tr>
+            <tr><th style="width:170px;">Tool</th><th style="width:240px;">Market position</th><th>Agentic depth</th><th>Security &amp; governance for finance</th><th style="width:230px;">Best fit</th></tr>
         </thead>
         <tbody>
             <tr class="hl">
                 <td class="lead">Claude Code</td>
-                <td>Agent in terminal, desktop, IDE</td>
+                <td>Autonomous-workflow leader &middot; ~10-12% &middot; $1B ARR in under a year</td>
                 <td>Full-task loop: plan, edit, test, ship</td>
-                <td>Hooks, scoped tools, managed policies, audit</td>
-                <td>Org-wide rollout under real governance</td>
+                <td>Compliance API for real-time audit, in-boundary via Bedrock / Vertex, OS-level sandboxing, IP indemnity on Enterprise</td>
+                <td>Org-wide rollout under SOX / SEC-grade governance</td>
             </tr>
             <tr>
                 <td class="lead">GitHub Copilot</td>
-                <td>Autocomplete + assistant in IDE</td>
+                <td>Enterprise default &middot; ~42% &middot; 90% of Fortune 100</td>
                 <td>Strong completion, shallower autonomy</td>
-                <td>Org settings; less configurable enforcement</td>
-                <td>Incremental lift inside the GitHub estate</td>
+                <td>FedRAMP Moderate path, Copyright Commitment, DLP / SIEM via Purview</td>
+                <td>Microsoft-first shops extending an EA</td>
             </tr>
             <tr>
                 <td class="lead">Cursor</td>
-                <td>AI-native IDE fork</td>
-                <td>Fast in-editor agent flows</td>
-                <td>Editor-scoped; mixed model routing</td>
-                <td>Individual power users in the editor</td>
+                <td>Capability challenger &middot; ~18-20% &middot; Gartner Vision leader</td>
+                <td>Fastest in-editor agent flows</td>
+                <td>Code transits vendor servers, no IP indemnity, cloud-only</td>
+                <td>Power users on non-regulated work</td>
+            </tr>
+            <tr>
+                <td class="lead">Amazon Q Developer</td>
+                <td>AWS-native &middot; ~5-8%</td>
+                <td>Solid autonomy inside AWS</td>
+                <td>Code stays in your AWS account, native PCI scanning, FedRAMP High via GovCloud</td>
+                <td>AWS-native regulated workloads</td>
             </tr>
             <tr>
                 <td class="lead">OpenAI Codex</td>
-                <td>Cloud-delegated coding tasks</td>
-                <td>Async task execution off-machine</td>
-                <td>Platform-level; less local-env control</td>
+                <td>Gartner Leader &middot; growing</td>
+                <td>Async cloud task execution</td>
+                <td>Executes off-machine, no standard IP indemnity</td>
                 <td>Bounded task delegation to the cloud</td>
             </tr>
         </tbody>
     </table>
-    <div style="height: 22px;"></div>
-    <p class="lede reveal" style="font-size: 20px;">Also in the field: Cognition (Devin), an autonomous-agent service worth a look for narrow outsourced tasks; deep-dive cards for all four are in the appendix. The honest note: most of Claude Code&rsquo;s gains begin after adoption, as your context and controls teach it your systems, which is why the rollout plan matters as much as the tool.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>07 &middot; Competitive landscape</span></div>
+    <div class="callout reveal" style="margin-top: 22px;">
+        <span class="ch">The honest read</span>
+        <span class="cd"></span>
+        <span class="cp">Copilot is the safe incumbent default. Cursor wins developer love but its security posture trails its capability: your code transits its servers, with no IP indemnity. Claude Code is the challenger built for your constraint, the audit trail and in-boundary deployment a regulated shop actually needs. We are not the default yet. We are the best fit for a security-first rollout.</span>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>11 &middot; Competitive landscape</span></div>
 </section>
 
 <!-- ============ 8 · DEPLOYMENT OPTIONS ============ -->
 <!-- timing: 1 min -->
 <section class="slide" data-section="deployment" aria-label="Deployment Options">
     <span class="kicker reveal">Your cloud, your call</span>
-    <h2 class="reveal">Deployment options for an AWS + GCP shop</h2>
-    <div class="cards c3" style="margin-top: 22px;">
-        <div class="cardx reveal">
-            <h3>Anthropic-managed (Enterprise)</h3>
-            <p style="margin-bottom: 12px;"><strong>Fastest to value.</strong> Anthropic runs the models; you get SSO, managed policies, audit, and zero training on your data.</p>
-            <p>Tradeoff: model traffic terminates at Anthropic, governed by enterprise terms.</p>
+    <h2 class="reveal">Deployment Options for an AWS + GCP Shop</h2>
+    <div class="reveal" style="height:640px; display:flex; flex-direction:column; justify-content:center; gap:34px; margin-top:8px;">
+      <div class="cards c3" style="align-items:stretch;">
+        <div class="cardx" style="display:flex; flex-direction:column; padding:36px;">
+            <span style="display:inline-block; align-self:flex-start; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:5px 16px; margin-bottom:18px;">Fastest to value</span>
+            <h3 style="font-size:28px;">Anthropic-Managed (Enterprise)</h3>
+            <p style="margin-bottom:14px; font-size:20px;">Anthropic runs the models; you get SSO, managed policies, audit, and zero training on your data.</p>
+            <p style="margin-bottom:auto; font-size:20px;">Best when speed to a working pilot matters more than where inference runs.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border); font-size:18px; color:var(--text-muted);"><strong style="color:var(--terracotta-deep);">Tradeoff:</strong> model traffic terminates at Anthropic, under enterprise terms.</div>
         </div>
-        <div class="cardx reveal">
-            <h3>AWS Bedrock</h3>
-            <p style="margin-bottom: 12px;"><strong>Inside your AWS boundary.</strong> IAM-native access, VPC controls, regional residency, existing AWS procurement.</p>
-            <p>Tradeoff: model versions and features can land later than the Anthropic-managed path.</p>
+        <div class="cardx" style="display:flex; flex-direction:column; padding:36px;">
+            <span style="display:inline-block; align-self:flex-start; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:5px 16px; margin-bottom:18px;">In your AWS boundary</span>
+            <h3 style="font-size:28px;">AWS Bedrock</h3>
+            <p style="margin-bottom:14px; font-size:20px;">IAM-native access, VPC controls, regional residency, and your existing AWS procurement path.</p>
+            <p style="margin-bottom:auto; font-size:20px;">Your source never leaves the AWS account your security team already governs.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border); font-size:18px; color:var(--text-muted);"><strong style="color:var(--terracotta-deep);">Tradeoff:</strong> model versions and features can land later than the managed path.</div>
         </div>
-        <div class="cardx reveal">
-            <h3>GCP Vertex AI</h3>
-            <p style="margin-bottom: 12px;"><strong>Inside your GCP boundary.</strong> Same Claude models through Google Cloud&rsquo;s controls, billing, and residency story.</p>
-            <p>Tradeoff: same feature-lag consideration; two-cloud governance needs one owner.</p>
+        <div class="cardx" style="display:flex; flex-direction:column; padding:36px;">
+            <span style="display:inline-block; align-self:flex-start; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); background:var(--terracotta-bg); border:1.5px solid var(--terracotta); border-radius:100px; padding:5px 16px; margin-bottom:18px;">In your GCP boundary</span>
+            <h3 style="font-size:28px;">GCP Vertex AI</h3>
+            <p style="margin-bottom:14px; font-size:20px;">The same Claude models through Google Cloud&rsquo;s controls, billing, and residency story.</p>
+            <p style="margin-bottom:auto; font-size:20px;">One Claude, two clouds: prove the same governance model inside both boundaries.</p>
+            <div style="margin-top:20px; padding-top:18px; border-top:1px solid var(--card-border); font-size:18px; color:var(--text-muted);"><strong style="color:var(--terracotta-deep);">Tradeoff:</strong> same feature-lag; two-cloud governance needs one owner.</div>
         </div>
+      </div>
+      <div class="callout">
+        <span class="ch">Your two clouds are an advantage, not a tax</span>
+        <span class="cd"></span>
+        <span class="cp">Start the pilot on Anthropic-managed Enterprise for speed, then run a Bedrock or Vertex track in parallel. Proving the same governance model inside both AWS and GCP is exactly what a regulator wants to see, and it keeps you from concentrating platform risk in any single provider.</span>
+      </div>
     </div>
-    <div style="height: 30px;"></div>
-    <p class="lede reveal">A pragmatic pattern we see in financial services: start the pilot on Anthropic-managed Enterprise for speed, run a Bedrock or Vertex track in parallel for the workloads your regulators care most about, and let the evidence pick the steady state.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>08 &middot; Deployment</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>12 &middot; Deployment</span></div>
 </section>
 
-<!-- ============ 9 · DEMO PIVOT ============ -->
-<!-- timing: 8 min (the demo itself) -->
-<section class="slide" data-section="demo-pivot" aria-label="Live Demo">
-    <span class="kicker reveal">Now the live work</span>
-    <h2 class="reveal">What we will show today</h2>
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:18px; align-items:stretch;" class="reveal">
-        <div class="cardx" style="padding:30px;">
-            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Site Reliability</div>
-            <h3 style="font-size:24px; margin-bottom:12px;">SRE: incident to runbook</h3>
-            <p style="font-size:18px; margin-bottom:18px;">Given an alert, logs, and a service map, Claude Code builds a hypothesis tree, finds root cause, and ships the fix behind a human approval gate, leaving the runbook better than found.</p>
-            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">MTTR 28 &rarr; 9 min</div>
-        </div>
-        <div class="cardx" style="padding:30px;">
-            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Data Science</div>
-            <h3 style="font-size:24px; margin-bottom:12px;">Data Science: FRED to dashboard</h3>
-            <p style="font-size:18px; margin-bottom:18px;">Ingest Federal Reserve data, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo, in one sitting.</p>
-            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">Question to decision artifact</div>
-        </div>
-        <div class="cardx" style="padding:30px;">
-            <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px;">Software Engineering</div>
-            <h3 style="font-size:24px; margin-bottom:12px;">SWE: onboarding accelerator</h3>
-            <p style="font-size:18px; margin-bottom:18px;">A new engineer's first days: Claude Code reads a service, explains the architecture, and guides a safe first contribution with tests.</p>
-            <div style="font-size:16px; font-weight:700; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.06em;">Time-to-first-PR</div>
-        </div>
-    </div>
-    <p class="lede reveal" style="margin-top:20px; font-size:19px;">Governance and legacy-modernization walkthroughs are available on request.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>09 &middot; Demo</span></div>
-</section>
-
-<!-- ============ 10 · MEASURE AND ROLL OUT (merged ROI + rollout) ============ -->
+<!-- ============ MEASURE AND ROLL OUT (merged ROI + rollout) ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="measure-rollout" aria-label="Measure + Roll Out">
     <span class="kicker reveal">Accountable to numbers, gated by evidence</span>
-    <h2 class="reveal">Measure and roll out: harder signals, phase gates</h2>
-    <div class="split" style="margin-top: 14px;">
-        <div class="reveal">
-            <div style="display:flex; flex-direction:column; gap:18px;">
-                <div class="cardx">
-                    <h3>PR merge time</h3>
-                    <p>Median time from PR open to merge. Direct, hard to game, visible in the tools you already run.</p>
-                </div>
-                <div class="cardx">
-                    <h3>Cost per PR</h3>
-                    <p>All-in tool spend divided by merged PRs. Puts the invoice and the output on the same line.</p>
-                </div>
-                <div class="cardx">
-                    <h3>Cost per PR-cycle-minute</h3>
-                    <p>Spend, cycle count, and speed in one number. Cannot be gamed by recycling PRs.</p>
-                </div>
-            </div>
+    <h2 class="reveal">Measure What Matters, Gate Every Phase</h2>
+    <div class="cards c4 reveal" style="margin-top: 18px;">
+        <div class="kpi">
+            <div class="kh">Velocity</div>
+            <ul>
+                <li><strong>PR cycle time</strong> open to merge</li>
+                <li><strong>MTTR</strong> on triaged incidents</li>
+                <li><strong>Time-to-first-PR</strong> for new hires</li>
+            </ul>
         </div>
-        <div class="reveal">
-            <div class="rows" style="max-width:none;">
-                <div class="rowx">
-                    <div class="n" style="font-size:16px; flex-shrink:0;">0</div>
-                    <div><h3>Security foundation</h3><p><span class="gate">Gate</span>Foundation checklist signed off before pilot.</p></div>
-                </div>
-                <div class="rowx">
-                    <div class="n" style="font-size:16px; flex-shrink:0;">1</div>
-                    <div><h3>Pilot, 20 engineers</h3><p><span class="gate">Gate</span>60%+ weekly active, PR cycle -20%, zero security incidents.</p></div>
-                </div>
-                <div class="rowx">
-                    <div class="n" style="font-size:16px; flex-shrink:0;">2</div>
-                    <div><h3>Expand to 80</h3><p><span class="gate">Gate</span>Signals hold at scale, cost per PR within target.</p></div>
-                </div>
-                <div class="rowx">
-                    <div class="n" style="font-size:16px; flex-shrink:0;">3</div>
-                    <div><h3>Company-wide, 180</h3><p><span class="gate">Gate</span>Enterprise security tier reached, steady-state ownership named.</p></div>
-                </div>
-            </div>
+        <div class="kpi">
+            <div class="kh">Quality</div>
+            <ul>
+                <li><strong>Change-failure rate</strong></li>
+                <li><strong>Review pass rate</strong> first time</li>
+                <li><strong>Defects</strong> per change shipped</li>
+            </ul>
+        </div>
+        <div class="kpi">
+            <div class="kh">Adoption</div>
+            <ul>
+                <li><strong>Weekly active</strong> share of seats</li>
+                <li><strong>PRs agent-assisted</strong></li>
+                <li><strong>Experiment velocity</strong> (DS)</li>
+            </ul>
+        </div>
+        <div class="kpi">
+            <div class="kh">Economics</div>
+            <ul>
+                <li><strong>Cost per merged PR</strong></li>
+                <li><strong>Cost per PR-cycle-minute</strong></li>
+                <li><strong>Hours redirected</strong> to higher work</li>
+            </ul>
         </div>
     </div>
-    <div style="height: 18px;"></div>
-    <div class="assumption reveal" data-discovery-slot="roi-baseline">
-        <span class="chip">Working assumption</span>
-        Current median PR cycle time is 2 to 4 days with meaningful variance across the three stacks. We will pull the real baseline from your repos before the pilot starts, with your approval.
+    <div style="height: 26px;"></div>
+    <div class="gantt reveal">
+        <div class="grow">
+            <div class="glabel">Phase 0 &middot; Security foundation<small><span class="gate">Gate</span>Foundation checklist signed off</small></div>
+            <div class="gtrack"><div class="gbar" style="left:0%; width:14%;">Wk 0-2</div></div>
+        </div>
+        <div class="grow">
+            <div class="glabel">Phase 1 &middot; Pilot, first cohort<small><span class="gate">Gate</span>Adoption + velocity move &middot; zero security incidents</small></div>
+            <div class="gtrack"><div class="gbar" style="left:14%; width:29%;">Wk 2-6</div></div>
+        </div>
+        <div class="grow">
+            <div class="glabel">Phase 2 &middot; Expand across teams<small><span class="gate">Gate</span>Signals hold at scale &middot; economics within target</small></div>
+            <div class="gtrack"><div class="gbar" style="left:43%; width:28%;">Wk 6-10</div></div>
+        </div>
+        <div class="grow">
+            <div class="glabel">Phase 3 &middot; Company-wide, all 180<small><span class="gate">Gate</span>Enterprise security tier &middot; steady-state owner named</small></div>
+            <div class="gtrack"><div class="gbar" style="left:71%; width:29%;">Wk 10-14</div></div>
+        </div>
+        <div class="gweeks"><div></div><div class="gscale"><span>Week 0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>10 &middot; Measure and roll out</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>13 &middot; Measure and roll out</span></div>
 </section>
 
 <!-- ============ 11 · THREE COMMITMENTS ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="wrap" aria-label="Three Commitments">
     <span class="kicker reveal">Where this goes next</span>
-    <h2 class="reveal">Three commitments before we leave the room</h2>
-    <div class="rows" style="margin-top: 18px;">
+    <h2 class="reveal">Three Commitments Before We Leave the Room</h2>
+    <div class="rows" style="margin-top: 16px; max-width:1400px;">
         <div class="rowx reveal">
             <div class="n">1</div>
-            <div><h3>Security deep-dive session, scheduled this week</h3><p>Your security leads + our team, two hours: posture review against the Foundation checklist, regulatory mapping, and the controls plan for the pilot. The appendix lists exactly what we need from you.</p></div>
+            <div><h3>Security Deep-Dive Session, Scheduled This Week</h3><p>Your security leads + our team, two hours: posture review against the Foundation checklist, regulatory mapping, and the controls plan for the pilot. The appendix lists exactly what we need from you.</p></div>
         </div>
         <div class="rowx reveal">
             <div class="n">2</div>
-            <div><h3>Pilot charter for 20 engineers</h3><p>Named cohort across the three stacks, the baseline pull, and the Phase 1 gate definitions, ready for signature inside two weeks.</p></div>
+            <div><h3>Pilot Charter for Your First Cohort</h3><p>A named cohort, sized to whichever team we build with first, plus the baseline pull and the Phase 1 gate definitions, ready for signature inside two weeks.</p><p style="margin-top:10px;"><strong style="color:var(--terracotta-deep);">The question we will answer together:</strong> if we ran a four-to-six-week pilot, what would a win look like, and which team goes first?</p></div>
         </div>
         <div class="rowx reveal">
             <div class="n">3</div>
-            <div><h3>Office hours start now</h3><p>Weekly, open to all 180 engineers, before any contract. You should see how we work before you commit to it.</p></div>
+            <div style="width:100%;">
+                <h3>See How We Work, Before You Commit</h3>
+                <p>Two ways in, both before any contract:</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
+                    <div style="background:var(--cream); border:1px solid var(--card-border); border-radius:12px; padding:16px 20px; display:flex; flex-direction:column;">
+                        <div style="font-weight:700; font-size:20px; margin-bottom:4px;">Weekly office hours</div>
+                        <div style="font-size:17px; color:var(--text-muted); margin-bottom:auto;">Open to all 180 engineers, remote, starting now.</div>
+                        <a class="booklink" style="margin-top:14px; align-self:flex-start;" href="https://calendar.app.google/iGPtvwaGsLTK5Bh69" target="_blank" rel="noopener">Book office hours &rarr;</a>
+                    </div>
+                    <div style="background:var(--cream); border:1px solid var(--card-border); border-radius:12px; padding:16px 20px;">
+                        <div style="font-weight:700; font-size:20px; margin-bottom:4px;">On-site pilot workshop</div>
+                        <div style="font-size:17px; color:var(--text-muted);">A hands-on day on-site with your teams to scope the first cohort and run Claude Code against your real code. Pre-sale, on request.</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>11 &middot; Next steps</span></div>
+    <div class="teamref reveal" style="margin-top:18px; max-width:1400px;">
+        <div class="tr"><div class="trn">120</div><div class="trl">Software engineers</div></div>
+        <div class="tr"><div class="trn">40</div><div class="trl">Data scientists</div></div>
+        <div class="tr"><div class="trn">20</div><div class="trl">SREs</div></div>
+        <div class="tr"><div class="trn">180</div><div class="trl">Total engineers</div></div>
+    </div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>14 &middot; Next steps</span></div>
 </section>
 
 <!-- ============ 12 · CLOSING ============ -->
 <!-- timing: close -->
-<section class="slide dark" data-section="closing" aria-label="Close">
-    <div class="cover-wrap">
+<section class="slide slide-cover" data-section="closing" aria-label="Close">
+    <div style="height:100%; display:flex; flex-direction:column; justify-content:center;">
         <div class="cover-rule reveal"></div>
-        <h1 class="cover-title reveal" style="font-size: 76px;">Secure first. Fast everywhere.</h1>
-        <p class="cover-sub reveal">Thank you. Questions welcome, hard ones especially.</p>
-        <p class="cover-meta reveal">Dan Mathieson &middot; FinTechCo &times; Claude Code</p>
+        <h1 class="cover-title reveal" style="font-size: 70px;">Secure first. Fast everywhere.</h1>
+        <p class="cover-sub reveal" style="margin-top:18px;">Thank you! Questions are welcome, please feel free to reach out any time. The same technology already runs inside financial services:</p>
+        <div class="reveal" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:38px;">
+            <div style="background:var(--cream); border-radius:14px; padding:24px 26px;">
+                <p style="font-size:18px; line-height:1.45; color:var(--text); margin-bottom:14px;">Underwriting review timelines compressed roughly five-fold, accuracy improving alongside speed.</p>
+                <div style="font-size:16px; font-weight:800; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.05em;">AIG</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:3px;">Insurance underwriting, public Anthropic case study</div>
+            </div>
+            <div style="background:var(--cream); border-radius:14px; padding:24px 26px;">
+                <p style="font-size:18px; line-height:1.45; color:var(--text); margin-bottom:14px;">Productivity gains of around 20 percent across the fund, cited publicly by its chief executive.</p>
+                <div style="font-size:16px; font-weight:800; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.05em;">Norges Bank IM</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:3px;">World&rsquo;s largest sovereign wealth fund</div>
+            </div>
+            <div style="background:var(--cream); border-radius:14px; padding:24px 26px;">
+                <p style="font-size:18px; line-height:1.45; color:var(--text); margin-bottom:14px;">Engineering teams shipping measurably faster with Claude in the development loop.</p>
+                <div style="font-size:16px; font-weight:800; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.05em;">CRED</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:3px;">Fintech engineering velocity, publicly shared</div>
+            </div>
+            <div style="background:var(--cream); border-radius:14px; padding:24px 26px;">
+                <p style="font-size:18px; line-height:1.45; color:var(--text); margin-bottom:14px;">Agentic workflows deployed into research and analysis pipelines under financial-grade controls.</p>
+                <div style="font-size:16px; font-weight:800; color:var(--terracotta-deep); text-transform:uppercase; letter-spacing:0.05em;">Across the sector</div>
+                <div style="font-size:13px; color:var(--text-muted); margin-top:3px;">Banking, ratings, and mortgage leaders</div>
+            </div>
+        </div>
+        <p class="cover-meta reveal" style="margin-top:40px;">Dan Mathieson &middot; FinTechCo &times; Claude Code</p>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>12 &middot; Close</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>15 &middot; Close</span></div>
 </section>
 
 <!-- ============ 13 · APPENDIX DIVIDER ============ -->
-<section class="slide dark" data-section="appendix" aria-label="Appendix">
+<section class="slide" data-section="appendix" aria-label="Appendix">
     <div class="divider-wrap">
         <div class="divider-kicker reveal">Appendix</div>
-        <div class="divider-title reveal" style="color: var(--cream);">Reference material for the questions you should ask</div>
+        <div class="divider-title reveal">Reference Material for the Questions You Should Ask</div>
         <div style="height: 36px;"></div>
-        <p class="lede reveal">Objection playbook &middot; Security pro-tips and hooks &middot; JIT access &middot; Security discovery questions &middot; Competitor deep dives &middot; Deployment detail &middot; Background &middot; Security story &middot; Threat model &middot; Plans and tiers &middot; Team detail (SWE, DS, SRE) &middot; Rollout detail &middot; Proof</p>
+        <p class="lede reveal">Objection playbook &middot; Security pro-tips and hooks &middot; JIT access &middot; Security discovery questions &middot; Competitor deep dives &middot; Deployment detail &middot; Background &middot; Security story &middot; Plans and tiers &middot; Team detail (SWE, DS, SRE)</p>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>Appendix</span></div>
 </section>
@@ -811,7 +1093,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 14 · A1: OBJECTION PLAYBOOK ============ -->
 <section class="slide" data-section="objections" aria-label="A1 · Objection Playbook">
     <span class="kicker reveal">Appendix A1</span>
-    <h2 class="reveal" style="font-size: 46px;">Objection playbook</h2>
+    <h2 class="reveal" style="font-size: 46px;">Objection Playbook</h2>
     <table class="grid reveal" style="font-size: 19px;">
         <thead><tr><th style="width:420px;">Objection</th><th>Response</th></tr></thead>
         <tbody>
@@ -830,24 +1112,24 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 15 · A2: SECURITY PRO-TIPS / HOOKS ============ -->
 <section class="slide" data-section="security-protips" aria-label="A2 · Security Pro-Tips">
     <span class="kicker reveal">Appendix A2</span>
-    <h2 class="reveal" style="font-size: 46px;">Claude Code security pro-tips: determinism where it counts</h2>
+    <h2 class="reveal" style="font-size: 46px;">Claude Code Security Pro-Tips: Determinism Where It Counts</h2>
     <div class="cards c2" style="margin-top: 14px;">
         <div class="cardx reveal">
-            <h3>Hooks: policy as code</h3>
+            <h3>Hooks: Policy as Code</h3>
             <p style="margin-bottom: 10px;"><strong>PreToolUse</strong> hooks run before any tool call: block writes to protected paths, require passing tests or lint before sensitive actions, verify signatures on artifacts.</p>
             <p><strong>PostToolUse / session hooks</strong> feed audit pipelines, so review happens on evidence rather than memory.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Scoped capability</h3>
+            <h3>Scoped Capability</h3>
             <p style="margin-bottom: 10px;"><strong>Allowed-tools and permission modes</strong> define exactly what an agent may do in each repo; a sandbox area and a production-like area carry different scopes.</p>
             <p><strong>CLAUDE.md</strong> turns team conventions into instructions the agent follows on every run.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Managed at the org, not the laptop</h3>
+            <h3>Managed at the Org, Not the Laptop</h3>
             <p>Centrally managed policy settings push the same security configuration to all 180 engineers; individual machines cannot quietly drift below the bar.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Observable by default</h3>
+            <h3>Observable by Default</h3>
             <p>Telemetry export (OpenTelemetry-compatible) into your existing SIEM and dashboards: usage, actions, and spend, the same way you watch any other production system.</p>
         </div>
     </div>
@@ -857,12 +1139,12 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 16 · A3: JIT ACCESS ============ -->
 <section class="slide" data-section="jit" aria-label="A3 · JIT Access">
     <span class="kicker reveal">Appendix A3</span>
-    <h2 class="reveal" style="font-size: 46px;">Just-in-time access: the Enterprise-tier keystone</h2>
+    <h2 class="reveal" style="font-size: 46px;">Just-in-Time Access: The Enterprise-Tier Keystone</h2>
     <div class="rows" style="margin-top: 14px;">
-        <div class="rowx reveal"><div class="n">1</div><div><h3>No standing credentials</h3><p>Agents and engineers request access scoped to a task; grants are short-lived and expire on their own. A leaked credential that dies in minutes is a contained event, not an incident.</p></div></div>
-        <div class="rowx reveal"><div class="n">2</div><div><h3>Approval matched to blast radius</h3><p>Low-risk scopes auto-approve against policy; sensitive scopes require a named human approver. The approval path is the policy, written down and enforced.</p></div></div>
-        <div class="rowx reveal"><div class="n">3</div><div><h3>Every grant audited</h3><p>Who asked, what for, who approved, what was done with it: one queryable trail that turns regulator questions into lookups instead of investigations.</p></div></div>
-        <div class="rowx reveal"><div class="n">4</div><div><h3>Phased adoption</h3><p>Start with the agent&rsquo;s credentials in the pilot (smallest blast radius, newest principal type), then extend the same machinery to service and human identities on the Enterprise timeline.</p></div></div>
+        <div class="rowx reveal"><div class="n">1</div><div><h3>No Standing Credentials</h3><p>Agents and engineers request access scoped to a task; grants are short-lived and expire on their own. A leaked credential that dies in minutes is a contained event, not an incident.</p></div></div>
+        <div class="rowx reveal"><div class="n">2</div><div><h3>Approval Matched to Blast Radius</h3><p>Low-risk scopes auto-approve against policy; sensitive scopes require a named human approver. The approval path is the policy, written down and enforced.</p></div></div>
+        <div class="rowx reveal"><div class="n">3</div><div><h3>Every Grant Audited</h3><p>Who asked, what for, who approved, what was done with it: one queryable trail that turns regulator questions into lookups instead of investigations.</p></div></div>
+        <div class="rowx reveal"><div class="n">4</div><div><h3>Phased Adoption</h3><p>Start with the agent&rsquo;s credentials in the pilot (smallest blast radius, newest principal type), then extend the same machinery to service and human identities on the Enterprise timeline.</p></div></div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A3 &middot; JIT access</span></div>
 </section>
@@ -870,14 +1152,14 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 17 · A4: SECURITY DISCOVERY QUESTIONS ============ -->
 <section class="slide" data-section="security-questions" aria-label="A4 · Security Discovery">
     <span class="kicker reveal">Appendix A4</span>
-    <h2 class="reveal" style="font-size: 46px;">What we need from you for the security deep-dive</h2>
+    <h2 class="reveal" style="font-size: 46px;">What We Need From You for the Security Deep-Dive</h2>
     <div class="cards c2" style="margin-top: 14px;">
         <div class="cardx reveal">
             <h3>Posture</h3>
             <p>Current IdP and MFA types in force (and any SMS stragglers) &middot; secrets management coverage &middot; where zero-trust adoption actually stands versus the roadmap slide.</p>
         </div>
         <div class="cardx reveal">
-            <h3>Regulatory scope</h3>
+            <h3>Regulatory Scope</h3>
             <p>The authoritative list: PCI DSS scope boundaries, SOC 2 commitments, GLBA safeguards, state privacy regimes, and any examiner findings that touch engineering tooling.</p>
         </div>
         <div class="cardx reveal">
@@ -897,19 +1179,55 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 18 · A5: COMPETITIVE DEEP DIVE 1 ============ -->
 <section class="slide" data-section="competitive-deep-1" aria-label="A5 · Copilot + Cursor">
     <span class="kicker reveal">Appendix A5</span>
-    <h2 class="reveal" style="font-size: 46px;">Deep dive: GitHub Copilot and Cursor</h2>
+    <h2 class="reveal" style="font-size: 46px;">Deep Dive: GitHub Copilot and Cursor</h2>
     <div class="cards c2" style="margin-top: 14px;">
-        <div class="cardx reveal">
-            <h3>GitHub Copilot</h3>
-            <p style="margin-bottom: 10px;"><strong>Strengths:</strong> enormous install base, frictionless inside the GitHub estate, strong autocomplete, familiar procurement.</p>
-            <p style="margin-bottom: 10px;"><strong>Limits for FinTechCo:</strong> shallower autonomous depth on multi-file, cross-service tasks; security configuration is broader-brush than hook-level policy enforcement; agent behaviors are newer and less battle-tested.</p>
-            <p><strong>Where it wins:</strong> if the goal were marginal autocomplete lift only, Copilot is the path of least resistance.</p>
+        <div class="cardx reveal" style="padding:28px 30px;">
+            <h3 style="margin-bottom:4px;">GitHub Copilot</h3>
+            <p style="font-size:16px; color:var(--text-muted);">Enterprise default &middot; ~42% share &middot; 90% of Fortune 100</p>
+            <div class="vsgrid">
+                <div class="vscol strong">
+                    <div class="vh">Where Copilot wins</div>
+                    <ul>
+                        <li>Enormous install base, frictionless in the GitHub estate</li>
+                        <li>Familiar Microsoft EA procurement</li>
+                        <li>Strong autocomplete + Copyright Commitment IP indemnity</li>
+                        <li>FedRAMP Moderate path</li>
+                    </ul>
+                </div>
+                <div class="vscol win">
+                    <div class="vh">Where Claude Code wins</div>
+                    <ul>
+                        <li>Deeper full-task autonomy: plan, edit, test, ship</li>
+                        <li>Hook-level policy enforcement, not broad org settings</li>
+                        <li>Compliance API for real-time SOX / SEC audit trails</li>
+                        <li>Agentic depth where developer momentum is heading</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="cardx reveal">
-            <h3>Cursor</h3>
-            <p style="margin-bottom: 10px;"><strong>Strengths:</strong> excellent in-editor agent UX, fast iteration, popular with individual power users; routes across multiple model providers.</p>
-            <p style="margin-bottom: 10px;"><strong>Limits for FinTechCo:</strong> an IDE fork to standardize and patch across 180 people; governance surface is editor-scoped; multi-provider routing complicates the data-flow story your regulators will ask about.</p>
-            <p><strong>Where it wins:</strong> individual developer delight, especially for engineers who live entirely in the editor.</p>
+        <div class="cardx reveal" style="padding:28px 30px;">
+            <h3 style="margin-bottom:4px;">Cursor</h3>
+            <p style="font-size:16px; color:var(--text-muted);">Capability challenger &middot; ~18-20% &middot; Gartner Vision leader</p>
+            <div class="vsgrid">
+                <div class="vscol strong">
+                    <div class="vh">Where Cursor wins</div>
+                    <ul>
+                        <li>Best-in-class editor experience</li>
+                        <li>Fastest in-editor agent flows</li>
+                        <li>Strong multi-file refactoring</li>
+                        <li>Loved by individual power users</li>
+                    </ul>
+                </div>
+                <div class="vscol win">
+                    <div class="vh">Where Claude Code wins</div>
+                    <ul>
+                        <li>Code stays in your boundary via Bedrock / Vertex</li>
+                        <li>Cursor routes your code through its own servers</li>
+                        <li>IP indemnity on Enterprise; Cursor offers none</li>
+                        <li>Org-wide governance vs editor-scoped controls</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A5 &middot; Competitive detail</span></div>
@@ -918,19 +1236,53 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 19 · A6: COMPETITIVE DEEP DIVE 2 ============ -->
 <section class="slide" data-section="competitive-deep-2" aria-label="A6 · Codex + Cognition">
     <span class="kicker reveal">Appendix A6</span>
-    <h2 class="reveal" style="font-size: 46px;">Deep dive: OpenAI Codex and Cognition</h2>
+    <h2 class="reveal" style="font-size: 46px;">Deep Dive: OpenAI Codex and Cognition</h2>
     <div class="cards c2" style="margin-top: 14px;">
-        <div class="cardx reveal">
-            <h3>OpenAI Codex</h3>
-            <p style="margin-bottom: 10px;"><strong>Strengths:</strong> clean delegation of bounded tasks to cloud agents; parallel task fan-out; OpenAI&rsquo;s model quality.</p>
-            <p style="margin-bottom: 10px;"><strong>Limits for FinTechCo:</strong> work executes off-machine in OpenAI&rsquo;s environment, which inverts your data-boundary preference; less control over the local toolchain; weaker fit for the in-terminal SRE and notebook workflows.</p>
-            <p><strong>Where it wins:</strong> teams comfortable shipping queues of well-specified tasks to a hosted agent.</p>
+        <div class="cardx reveal" style="padding:28px 30px;">
+            <h3 style="margin-bottom:4px;">OpenAI Codex</h3>
+            <p style="font-size:16px; color:var(--text-muted);">Gartner Leader &middot; cloud-delegated task execution</p>
+            <div class="vsgrid">
+                <div class="vscol strong">
+                    <div class="vh">Where Codex wins</div>
+                    <ul>
+                        <li>Clean delegation of bounded tasks to the cloud</li>
+                        <li>Parallel task fan-out</li>
+                        <li>OpenAI model quality</li>
+                    </ul>
+                </div>
+                <div class="vscol win">
+                    <div class="vh">Where Claude Code wins</div>
+                    <ul>
+                        <li>Runs in your environment, not off-machine</li>
+                        <li>Codex executes in OpenAI&rsquo;s cloud, inverting your data boundary</li>
+                        <li>No standard IP indemnity for Codex</li>
+                        <li>Stronger fit for in-terminal SRE and notebook work</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="cardx reveal">
-            <h3>Cognition (Devin)</h3>
-            <p style="margin-bottom: 10px;"><strong>Strengths:</strong> the most autonomous posture in the field; compelling for narrow, outsourced ticket-to-PR work.</p>
-            <p style="margin-bottom: 10px;"><strong>Limits for FinTechCo:</strong> autonomy-first is the opposite of a controls-first rollout; per-seat economics and the services-like engagement model fit point solutions better than a 180-engineer platform decision.</p>
-            <p><strong>Where it wins:</strong> a contained backlog you would otherwise outsource entirely.</p>
+        <div class="cardx reveal" style="padding:28px 30px;">
+            <h3 style="margin-bottom:4px;">Cognition (Devin)</h3>
+            <p style="font-size:16px; color:var(--text-muted);">Most autonomous posture &middot; ticket-to-PR service</p>
+            <div class="vsgrid">
+                <div class="vscol strong">
+                    <div class="vh">Where Devin wins</div>
+                    <ul>
+                        <li>The most autonomous posture in the field</li>
+                        <li>Compelling for narrow, outsourced ticket-to-PR work</li>
+                        <li>FedRAMP High ceiling via the Windsurf line</li>
+                    </ul>
+                </div>
+                <div class="vscol win">
+                    <div class="vh">Where Claude Code wins</div>
+                    <ul>
+                        <li>Controls-first fits a regulated rollout; Devin is autonomy-first</li>
+                        <li>A platform for 180 engineers, not a point solution</li>
+                        <li>Vendor stability; Devin&rsquo;s ownership churned repeatedly in a year</li>
+                        <li>Human-in-the-loop governance throughout</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A6 &middot; Competitive detail</span></div>
@@ -939,7 +1291,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 20 · A7: DEPLOYMENT DEEP DIVE ============ -->
 <section class="slide" data-section="deployment-deep" aria-label="A7 · Deployment Detail">
     <span class="kicker reveal">Appendix A7</span>
-    <h2 class="reveal" style="font-size: 46px;">Deployment detail: choosing per workload, not per slogan</h2>
+    <h2 class="reveal" style="font-size: 46px;">Deployment Detail: Choosing Per Workload, Not Per Slogan</h2>
     <table class="grid reveal" style="font-size: 19px; margin-top: 8px;">
         <thead><tr><th style="width:300px;"></th><th>Anthropic-managed</th><th>AWS Bedrock</th><th>GCP Vertex AI</th></tr></thead>
         <tbody>
@@ -959,15 +1311,15 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 21 · A8: BACKGROUND ============ -->
 <section class="slide" data-section="rcm" aria-label="A8 · Presenter Background">
     <span class="kicker reveal">Appendix A8 &middot; Presenter background</span>
-    <h2 class="reveal" style="font-size: 46px;">Why a healthcare revenue-cycle veteran is standing in a fintech room</h2>
+    <h2 class="reveal" style="font-size: 46px;">Why a Healthcare Revenue-Cycle Veteran Is Standing in a Fintech Room</h2>
     <div class="split" style="margin-top: 14px;">
         <div class="cardx reveal">
-            <h3>The same problem, different regulator</h3>
+            <h3>The Same Problem, Different Regulator</h3>
             <p style="margin-bottom: 12px;">Healthcare revenue cycle is high-volume transaction processing inside heavy compliance: eligibility checks, claims, denials, appeals. Swap HIPAA for PCI and GLBA and the architecture conversations rhyme.</p>
             <p>Deploying agents there meant the same fights you face: data boundaries, auditability, human accountability, and proving ROI to skeptical operators.</p>
         </div>
         <div class="cardx reveal">
-            <h3>What carried over</h3>
+            <h3>What Carried Over</h3>
             <p style="margin-bottom: 12px;">Hundreds of thousands of automated transactions per month in production, renewal decisions made on measured outcomes rather than demos, and one hard-won lesson: the deployment is the product.</p>
             <p>The rollout plan in this deck is that lesson, applied to coding agents.</p>
         </div>
@@ -976,35 +1328,19 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 </section>
 
 <!-- ============ 22 · A9: WHY SECURITY LEADS (formerly slide 2) ============ -->
-<section class="slide dark" data-section="shift" aria-label="A9 · Why Security Leads">
+<section class="slide" data-section="shift" aria-label="A9 · Why Security Leads">
     <span class="kicker reveal">Appendix A9 &middot; Why security leads this conversation</span>
     <div style="height: 26px;"></div>
-    <p class="statement reveal" style="color: var(--cream);">Attacks that used to be <em>tedious</em> are becoming <em>impossible to ignore</em>: agents make persistence cheap.</p>
+    <p class="statement reveal">Attacks that used to be <em>tedious</em> are becoming <em>impossible to ignore</em>: agents make persistence cheap.</p>
     <div style="height: 48px;"></div>
     <p class="lede reveal">The defining change is not attacker cleverness, it is attacker stamina. Autonomous systems do not get bored, and neither do the threats targeting them. So security stops being a static posture you certify once a year and becomes a dynamic commitment you operate every week.</p>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A9 &middot; Security story</span></div>
 </section>
 
-<!-- ============ 23 · A10: FIVE THREATS (formerly slide 4) ============ -->
-<section class="slide" data-section="threats" aria-label="A10 · Threat Model">
-    <span class="kicker reveal">Appendix A10</span>
-    <h2 class="reveal">Five threats every agentic deployment must answer for</h2>
-    <div class="cards c5" style="margin-top: 30px;">
-        <div class="cardx reveal"><div class="num">1</div><h3 style="font-size:22px;">Prompt injection</h3><p>Untrusted content steering the agent&rsquo;s actions.</p></div>
-        <div class="cardx reveal"><div class="num">2</div><h3 style="font-size:22px;">Tool hijacking</h3><p>Abusing the tools and resources an agent can reach.</p></div>
-        <div class="cardx reveal"><div class="num">3</div><h3 style="font-size:22px;">Privilege abuse</h3><p>Identity and access misuse through the agent&rsquo;s permissions.</p></div>
-        <div class="cardx reveal"><div class="num">4</div><h3 style="font-size:22px;">Context poisoning</h3><p>Corrupting memory or context the agent relies on.</p></div>
-        <div class="cardx reveal"><div class="num">5</div><h3 style="font-size:22px;">Supply chain</h3><p>Compromised packages, models, or extensions upstream.</p></div>
-    </div>
-    <div style="height: 40px;"></div>
-    <p class="lede reveal">These surfaces are months old and still moving. The right response is not a frozen checklist; it is a security culture that expects the attack surface to evolve as fast as the technology underneath it, and re-verifies its controls on that cadence.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A10 &middot; Threat model</span></div>
-</section>
-
-<!-- ============ 24 · A11: PLANS AND TIERS (formerly slide 8) ============ -->
+<!-- ============ A11: PLANS AND TIERS ============ -->
 <section class="slide" data-section="plans" aria-label="A11 · Plans + Tiers">
     <span class="kicker reveal">Appendix A11</span>
-    <h2 class="reveal">Plans and tiers</h2>
+    <h2 class="reveal">Plans and Tiers</h2>
     <table class="grid reveal" style="margin-top: 8px;">
         <thead>
             <tr><th style="width:240px;">Tier</th><th style="width:260px;">Indicative list</th><th>What it adds</th><th>Right for</th></tr>
@@ -1044,11 +1380,11 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 25 · A12: TEAM: SOFTWARE ENGINEERS (formerly slide 10) ============ -->
 <section class="slide" data-section="team-swe" aria-label="A12 · SWE Pilot">
     <span class="kicker reveal">Appendix A12 &middot; 120 software engineers</span>
-    <h2 class="reveal">Software Engineering: shrink time-to-first-PR</h2>
+    <h2 class="reveal">Software Engineering: Shrink Time-to-First-PR</h2>
     <div class="split" style="margin-top: 12px;">
         <div class="reveal">
             <div class="cardx">
-                <h3>The pilot</h3>
+                <h3>The Pilot</h3>
                 <p style="margin-bottom: 12px;">New-engineer onboarding accelerator: Claude Code reads a partially documented service, explains the architecture, and guides a safe first contribution with tests.</p>
                 <p>Python, TypeScript, and Java are all first-class; the pilot should use your messiest real service, not a toy.</p>
             </div>
@@ -1060,7 +1396,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
         <div class="reveal">
             <div class="cardx">
-                <h3>The question we will ask in the room</h3>
+                <h3>The Question We Will Ask in the Room</h3>
                 <p style="margin-bottom: 12px;">"What do hiring plans look like for the next 6 months, and how long does a new hire take to contribute today, by system?"</p>
                 <p>Legacy Java migration is the held alternative if tech debt outranks ramp time on your roadmap.</p>
             </div>
@@ -1077,11 +1413,11 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 26 · A13: TEAM: DATA SCIENTISTS (formerly slide 11) ============ -->
 <section class="slide" data-section="team-ds" aria-label="A13 · Data Science Pilot">
     <span class="kicker reveal">Appendix A13 &middot; 40 data scientists</span>
-    <h2 class="reveal">Data Science: from question to decision artifact in one sitting</h2>
+    <h2 class="reveal">Data Science: From Question to Decision Artifact in One Sitting</h2>
     <div class="split" style="margin-top: 12px;">
         <div class="reveal">
             <div class="cardx">
-                <h3>The pilot</h3>
+                <h3>The Pilot</h3>
                 <p style="margin-bottom: 12px;">A macro-to-portfolio workflow: ingest Federal Reserve data, clean it, model the relationship that matters to a lender, and emit an interactive dashboard plus an executive memo.</p>
                 <p>Jupyter, pandas, scikit-learn, TensorFlow: Claude Code works in the notebook and beyond it.</p>
             </div>
@@ -1093,7 +1429,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
         <div class="reveal">
             <div class="cardx">
-                <h3>The question we will ask in the room</h3>
+                <h3>The Question We Will Ask in the Room</h3>
                 <p style="margin-bottom: 12px;">"Where does the DS team spend the most time today, and what is the analysis you have wanted for a year but never staffed?"</p>
                 <p>That unstaffed analysis is the perfect pilot: high value, zero disruption to current commitments.</p>
             </div>
@@ -1110,11 +1446,11 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 27 · A14: TEAM: SRE (formerly slide 12) ============ -->
 <section class="slide" data-section="team-sre" aria-label="A14 · SRE Pilot">
     <span class="kicker reveal">Appendix A14 &middot; 20 SREs</span>
-    <h2 class="reveal">SRE: cut MTTR, then reinvest the hours in resilience</h2>
+    <h2 class="reveal">SRE: Cut MTTR, Then Reinvest the Hours in Resilience</h2>
     <div class="split" style="margin-top: 12px;">
         <div class="reveal">
             <div class="cardx">
-                <h3>The pilot</h3>
+                <h3>The Pilot</h3>
                 <p style="margin-bottom: 12px;">Incident triage to runbook: given logs, alerts, and a service map, Claude Code builds a hypothesis tree, finds root cause, drafts the fix and rollback plan, and leaves the runbook better than it found it.</p>
                 <p>Python, shell, and Go across code, configs, and docs in one flow.</p>
             </div>
@@ -1126,7 +1462,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
         <div class="reveal">
             <div class="cardx">
-                <h3>The question we will ask in the room</h3>
+                <h3>The Question We Will Ask in the Room</h3>
                 <p style="margin-bottom: 12px;">"How often does the team run incident-response testing, and how many scenarios per exercise?"</p>
                 <p>The human stays accountable throughout: every action narrated, approved, and logged. That is the SRE culture fit.</p>
             </div>
@@ -1138,63 +1474,6 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A14 &middot; SRE</span></div>
-</section>
-
-<!-- ============ 28 · A15: 14-WEEK ROLLOUT DETAIL (formerly slide 14) ============ -->
-<section class="slide" data-section="rollout" aria-label="A15 · 14-Week Rollout">
-    <span class="kicker reveal">Appendix A15</span>
-    <h2 class="reveal">A 14-week rollout where every phase earns the next</h2>
-    <div class="gantt reveal" style="margin-top: 6px;">
-        <div class="grow">
-            <div class="glabel">Phase 0 &middot; Security foundation<small><span class="gate">Gate</span>Foundation checklist signed off</small></div>
-            <div class="gtrack"><div class="gbar" style="left:0%; width:14%;">Wk 0-2</div></div>
-        </div>
-        <div class="grow">
-            <div class="glabel">Phase 1 &middot; Pilot, 20 engineers<small><span class="gate">Gate</span>60%+ weekly active &middot; PR cycle -20% &middot; zero security incidents</small></div>
-            <div class="gtrack"><div class="gbar" style="left:14%; width:29%;">Wk 2-6</div></div>
-        </div>
-        <div class="grow">
-            <div class="glabel">Phase 2 &middot; Expand to 80<small><span class="gate">Gate</span>Signals hold at scale &middot; cost per PR within target</small></div>
-            <div class="gtrack"><div class="gbar" style="left:43%; width:28%;">Wk 6-10</div></div>
-        </div>
-        <div class="grow">
-            <div class="glabel">Phase 3 &middot; Company-wide, 180<small><span class="gate">Gate</span>Enterprise security tier reached &middot; steady-state ownership named</small></div>
-            <div class="gtrack"><div class="gbar" style="left:71%; width:29%;">Wk 10-14</div></div>
-        </div>
-        <div class="gweeks"><div></div><div class="gscale"><span>Week 0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div>
-    </div>
-    <div style="height: 26px;"></div>
-    <p class="lede reveal">Change management is not optional garnish: I will run weekly office hours with your engineers starting now, before anything is signed. Adoption is taught, and the teams that treat it that way keep their gains.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A15 &middot; Rollout detail</span></div>
-</section>
-
-<!-- ============ 29 · A16: PROOF IN FINANCIAL SERVICES (formerly slide 15) ============ -->
-<section class="slide" data-section="proof" aria-label="A16 · Proof in FinServ">
-    <span class="kicker reveal">Appendix A16</span>
-    <h2 class="reveal">The same technology already runs inside financial services</h2>
-    <div class="quotes" style="margin-top: 16px;">
-        <div class="quote reveal">
-            <p>Underwriting review timelines compressed roughly five-fold, with accuracy improving alongside speed.</p>
-            <div class="who">AIG</div>
-            <div class="what">Publicly shared Anthropic case study, insurance underwriting</div>
-        </div>
-        <div class="quote reveal">
-            <p>Productivity gains of around 20 percent across the fund, cited publicly by its chief executive.</p>
-            <div class="who">Norges Bank Investment Management</div>
-            <div class="what">The world&rsquo;s largest sovereign wealth fund, on Claude-powered workflows</div>
-        </div>
-        <div class="quote reveal">
-            <p>Engineering teams shipping measurably faster with Claude in the development loop.</p>
-            <div class="who">CRED</div>
-            <div class="what">Fintech, publicly shared engineering-velocity results</div>
-        </div>
-        <div class="quote reveal">
-            <p>Agentic workflows deployed into research and analysis pipelines under financial-grade controls.</p>
-            <div class="who">Across the sector</div>
-            <div class="what">Banking, ratings, and mortgage leaders in Anthropic&rsquo;s public customer roster</div>
-        </div>
-    </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A16 &middot; Proof</span></div>
 </section>
 
 </main>

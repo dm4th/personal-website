@@ -11,7 +11,7 @@ export const HUB_CONFIG: HubConfig = {
     blurb:
       'The main walkthrough: a security-first look at rolling out one agentic coding tool across all three engineering teams.',
     href: '/fintechco/deck',
-    live: false,
+    live: true,
     date: 'June 16',
   },
   discovery: {
@@ -64,9 +64,9 @@ export const HUB_CONFIG: HubConfig = {
   // Move this pointer as the conversation advances: discovery before the
   // session, 'deck' the week of the meeting, a demo key during the pilot.
   primaryFocus: {
-    target: 'discovery',
+    target: 'deck',
     label: 'Start here',
-    note: 'Ten minutes here before we meet shapes the whole session around your priorities.',
+    note: 'The full walkthrough we will present, security-first and end to end. Open it any time before or after we meet.',
   },
   resourceSections: [
     {
