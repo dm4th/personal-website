@@ -836,11 +836,79 @@
         </footer>
     </section>
 
-    <!-- APPENDIX C: OBSERVABILITY ARCHITECTURE -->
-    <section class="slide slide-content" id="slide-6" aria-label="Observability Architecture">
+    <!-- APPENDIX C: RETURN TO THE BUSINESS (vendor economics) -->
+    <section class="slide slide-content" id="slide-vendor-roi" aria-label="Return to the Business">
         <div class="panel-layout">
             <div class="panel-left">
                 <span class="appendix-tag reveal">Appendix C</span>
+                <h2 class="panel-slide-title reveal">Return to<br>the Business</h2>
+                <p class="panel-context reveal">
+                    The champion's study is the customer's half of the ROI.
+                    This is ours: a single fixed-fee build the internal finance
+                    review scored the <strong>most profitable single project in
+                    the company's history</strong> at the time, with margin that
+                    compounds as the deterministic system amortizes.
+                </p>
+            </div>
+            <div class="panel-right">
+                <div class="roi-grid reveal">
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$81K</div>
+                        <div class="roi-card-name">Year-one profit</div>
+                        <div class="roi-card-detail">
+                            On a single fixed-fee subscription, delivered under a compressed
+                            timeline. No services drag, no per-lookup overage: <strong>a clean P&amp;L</strong>.
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~2x</div>
+                        <div class="roi-card-name">Projected forward profit</div>
+                        <div class="roi-card-detail">
+                            The build is a one-time cost. With only support spend left,
+                            annual profit roughly doubles to <strong>~$160K</strong>. <em>Projected.</em>
+                        </div>
+                    </div>
+                    <div class="roi-card">
+                        <div class="roi-card-metric">~$0</div>
+                        <div class="roi-card-name">Marginal cost per check</div>
+                        <div class="roi-card-detail">
+                            Fixed fee, not per-transaction. As the customer scales sites and
+                            volume, our cost stays flat: <strong>every new location is near-pure margin</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal" style="margin-bottom:14px;">
+                    <svg viewBox="0 0 900 150" style="display:block; width:100%;" role="img" aria-label="Year-one profit versus projected forward profit">
+                        <line x1="120" y1="124" x2="820" y2="124" stroke="var(--card-border)" stroke-width="2"/>
+                        <rect x="240" y="79" width="180" height="45" rx="6" fill="var(--terracotta)"/>
+                        <text x="330" y="70" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="18" font-weight="800" fill="var(--terracotta)">~$81K</text>
+                        <text x="330" y="144" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13.5" font-weight="700" fill="var(--text)">Year 1 · Achieved</text>
+                        <rect x="520" y="34" width="180" height="90" rx="6" fill="var(--terracotta-bg)" stroke="var(--terracotta)" stroke-width="2.5" stroke-dasharray="8 6"/>
+                        <text x="610" y="26" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="18" font-weight="800" fill="var(--terracotta)">~$160K</text>
+                        <text x="610" y="144" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13.5" font-weight="700" fill="var(--text)">Forward · Projected</text>
+                        <path d="M 426 75 Q 474 40 516 40" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" opacity="0.7"/>
+                        <text x="474" y="32" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" font-weight="800" fill="var(--terracotta)">~2x</text>
+                    </svg>
+                </div>
+                <span class="quote-callout reveal">"Green across customer, political, and technical health. A model account for operational excellence."<span class="quote-attr">Internal Portfolio Review</span></span>
+                <p class="roi-note reveal">
+                    <strong>Achieved vs Projected:</strong> the $81K and the "most profitable single project"
+                    standing are the internal finance review's numbers. The ~2x forward profit is my estimate
+                    once the deterministic build is fully amortized.
+                </p>
+            </div>
+        </div>
+        <footer class="slide-footer">
+            <span class="footer-mark">D.Mathieson</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; C</span>
+        </footer>
+    </section>
+
+    <!-- APPENDIX D: OBSERVABILITY ARCHITECTURE -->
+    <section class="slide slide-content" id="slide-6" aria-label="Observability Architecture">
+        <div class="panel-layout">
+            <div class="panel-left">
+                <span class="appendix-tag reveal">Appendix D</span>
                 <h2 class="panel-slide-title reveal">Observability<br>Architecture</h2>
                 <p class="panel-context reveal">
                     Built in a 2-week recovery sprint after an
@@ -894,17 +962,17 @@
                 </div>
                 <p class="roi-note reveal">
                     Built in the 2-week recovery sprint; the same instrumentation seeded the
-                    analytics product in Appendix D.
+                    analytics product in Appendix E.
                 </p>
             </div>
         </div>
         <footer class="slide-footer">
             <span class="footer-mark">D.Mathieson</span>
-            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; C</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; D</span>
         </footer>
     </section>
 
-    <!-- APPENDIX D: ANALYTICS PRODUCT -->
+    <!-- APPENDIX E: ANALYTICS PRODUCT -->
     <section class="slide slide-content" id="slide-7" aria-label="Analytics Product">
         <div class="solution-layout">
             <h2 class="solution-heading reveal">Analytics Product</h2>
@@ -967,7 +1035,7 @@
         </div>
         <footer class="slide-footer">
             <span class="footer-mark">D.Mathieson</span>
-            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; D</span>
+            <span class="footer-right">CONFIDENTIAL &nbsp;·&nbsp; E</span>
         </footer>
     </section>
 
@@ -990,7 +1058,7 @@
 
 <div class="edit-hotzone" id="editHotzone"></div>
 <button class="edit-toggle" id="editToggle">&#9998; Edit</button>
-<div class="slide-counter" id="slideCounter">1 / 10</div>
+<div class="slide-counter" id="slideCounter">1 / 11</div>
 
 <script>
     class SlidePresentation {
@@ -1138,14 +1206,14 @@
             }
         }
         save() {
-            try { localStorage.setItem('bhe-deck-v9', document.getElementById('deckStage').innerHTML); } catch(e) {}
+            try { localStorage.setItem('bhe-deck-v10', document.getElementById('deckStage').innerHTML); } catch(e) {}
         }
     }
 
     const deck   = new SlidePresentation();
     const editor = new InlineEditor();
 
-    const saved = localStorage.getItem('bhe-deck-v9');
+    const saved = localStorage.getItem('bhe-deck-v10');
     if (saved) {
         document.getElementById('deckStage').innerHTML = saved;
         deck.slides  = Array.from(document.querySelectorAll('.slide'));
