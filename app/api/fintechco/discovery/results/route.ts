@@ -6,6 +6,12 @@ import { desc, eq } from 'drizzle-orm';
 import { DISCOVERY_PERSONAS, type DiscoveryPersona, type MeddpiccEntry } from '@/lib/fintechco/discoveryPrompt';
 import type { DiscoveryMessage, TranscriptEntry } from '@/stores/fintechcoDiscovery';
 
+// The GET handler lazily runs a Claude analysis per un-analyzed response, so the
+// first load after new submissions needs headroom beyond Vercel's short default.
+// 60s matches the working ceiling already proven by app/api/agent/stream.
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
 const anthropic = new Anthropic();
 
 const ANALYSIS_TOOL: Anthropic.Tool = {
