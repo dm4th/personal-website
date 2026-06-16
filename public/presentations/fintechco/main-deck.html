@@ -1507,7 +1507,7 @@ class SlidePresentation {
         this.current = 0;
         this.stage = document.getElementById('deckStage');
         this.counter = document.getElementById('counter');
-        this.mainSlideCount = 12; // slides after this index render as appendix dots
+        this.mainSlideCount = 15; // index of the first appendix slide; dots at/after it render as appendix
         this.navDots = [];
         this.scaleStage();
         window.addEventListener('resize', () => this.scaleStage());
