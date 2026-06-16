@@ -624,12 +624,14 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
       </div>
       <div>
-        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">Four more if we have the time</p>
-        <div class="cards c4">
-            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Where does your zero-trust posture stand today: SSO, MFA type, secrets management coverage?</div>
-            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Which regulatory frameworks govern your engineering org: PCI-DSS, SOC 2, GLBA, or others?</div>
-            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">Where is change riskiest in your stack today: payments rails, core banking, or the data platform?</div>
-            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:18px 20px; font-size:15px; line-height:1.36; color:var(--text-muted);">What is the timeline and the approval path for a pilot decision?</div>
+        <p class="reveal" style="font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 16px;">Six more if we have the time</p>
+        <div class="cards c3" style="gap:16px;">
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">Does your policy allow proprietary source to transit a vendor&rsquo;s cloud, or must it stay inside your own AWS or GCP boundary?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">For SOX and SEC, do you need every agent action in a real-time, queryable audit trail, or is periodic logging enough?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">How do you vet the agent&rsquo;s own attack surface: which subprocessors see code, whether extensions are signature-verified, what it may connect to?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">Where does IP indemnification for AI-generated code sit on your procurement checklist?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">How much weight does vendor and roadmap stability carry: who owns the product in two years?</div>
+            <div class="reveal" style="background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; font-size:14.5px; line-height:1.34; color:var(--text-muted);">What is the timeline and the approval path for a pilot decision?</div>
         </div>
       </div>
       <p class="lede reveal" style="margin:0; font-size: 18px;">This came from your brief, not a form you had to fill out. The fastest way to make today count is to tell us where we have it wrong.</p>
@@ -876,15 +878,15 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
                 <td class="lead">Cursor</td>
                 <td>Capability challenger &middot; ~18-20% &middot; Gartner Vision leader</td>
                 <td>Fastest in-editor agent flows</td>
-                <td>Code transits vendor servers, no IP indemnity, cloud-only</td>
+                <td>Code transits vendor servers, 13+ subprocessors see code, no IP indemnity, cloud-only</td>
                 <td>Power users on non-regulated work</td>
             </tr>
             <tr>
-                <td class="lead">Amazon Q Developer</td>
-                <td>AWS-native &middot; ~5-8%</td>
-                <td>Solid autonomy inside AWS</td>
-                <td>Code stays in your AWS account, native PCI scanning, FedRAMP High via GovCloud</td>
-                <td>AWS-native regulated workloads</td>
+                <td class="lead">Cognition (Devin)</td>
+                <td>Highest compliance ceiling &middot; ownership in flux</td>
+                <td>Most autonomous: ticket to PR</td>
+                <td>FedRAMP High, DoD IL4-6, VPC deploy, Snyk-native; but three owners in a year</td>
+                <td>Outsourced ticket-to-PR, not an org-wide platform</td>
             </tr>
             <tr>
                 <td class="lead">OpenAI Codex</td>
@@ -895,10 +897,10 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             </tr>
         </tbody>
     </table>
-    <div class="callout reveal" style="margin-top: 22px;">
+    <div class="callout reveal" style="margin-top: 12px;">
         <span class="ch">The honest read</span>
         <span class="cd"></span>
-        <span class="cp">Copilot is the safe incumbent default. Cursor wins developer love but its security posture trails its capability: your code transits its servers, with no IP indemnity. Claude Code is the challenger built for your constraint, the audit trail and in-boundary deployment a regulated shop actually needs. We are not the default yet. We are the best fit for a security-first rollout.</span>
+        <span class="cp">Copilot is the safe incumbent default. Cursor wins developer love but its security posture trails its capability: your code transits its servers through a dozen-plus subprocessors, with no IP indemnity. Cognition carries the highest compliance ceiling on paper, but it changed hands three times this year and is autonomy-first where you need controls-first. Claude Code is the challenger built for your constraint, the audit trail and in-boundary deployment a regulated shop actually needs. We are not the default yet. We are the best fit for a security-first rollout.</span>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>11 &middot; Competitive landscape</span></div>
 </section>
@@ -1188,22 +1190,23 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
                 <div class="vscol strong">
                     <div class="vh">Where Copilot wins</div>
                     <ul>
-                        <li>Enormous install base, frictionless in the GitHub estate</li>
-                        <li>Familiar Microsoft EA procurement</li>
-                        <li>Strong autocomplete + Copyright Commitment IP indemnity</li>
-                        <li>FedRAMP Moderate path</li>
+                        <li>Enormous install base, frictionless across the GitHub estate</li>
+                        <li>One Microsoft EA covers procurement, identity, and billing</li>
+                        <li>Strong autocomplete plus the Copyright Commitment IP indemnity</li>
+                        <li>FedRAMP Moderate path; Purview DLP and SIEM integration</li>
                     </ul>
                 </div>
                 <div class="vscol win">
                     <div class="vh">Where Claude Code wins</div>
                     <ul>
-                        <li>Deeper full-task autonomy: plan, edit, test, ship</li>
-                        <li>Hook-level policy enforcement, not broad org settings</li>
+                        <li>Deeper full-task autonomy: plan, edit, test, ship, not just completion</li>
+                        <li>Hook-level PreToolUse policy enforcement, not broad org toggles</li>
                         <li>Compliance API for real-time SOX / SEC audit trails</li>
-                        <li>Agentic depth where developer momentum is heading</li>
+                        <li>Stronger long-context work on large, legacy codebases</li>
                     </ul>
                 </div>
             </div>
+            <p style="margin-top:16px; font-size:15px; line-height:1.45; color:var(--text);"><strong style="color:var(--terracotta-deep);">In finance:</strong> the safe incumbent, but autonomy is shallower. For an agentic rollout you audit in real time, the hooks and Compliance API are the edge.</p>
         </div>
         <div class="cardx reveal" style="padding:28px 30px;">
             <h3 style="margin-bottom:4px;">Cursor</h3>
@@ -1212,22 +1215,24 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
                 <div class="vscol strong">
                     <div class="vh">Where Cursor wins</div>
                     <ul>
-                        <li>Best-in-class editor experience</li>
-                        <li>Fastest in-editor agent flows</li>
-                        <li>Strong multi-file refactoring</li>
-                        <li>Loved by individual power users</li>
+                        <li>Furthest on Gartner Completeness of Vision; top autocomplete acceptance</li>
+                        <li>Fastest in-editor agent flows, strongest multi-file refactoring</li>
+                        <li>SOC 2 Type II, GDPR / CCPA, SAML SSO and SCIM provisioning</li>
+                        <li>Privacy Mode plus zero-data-retention deals with model providers</li>
                     </ul>
                 </div>
                 <div class="vscol win">
                     <div class="vh">Where Claude Code wins</div>
                     <ul>
-                        <li>Code stays in your boundary via Bedrock / Vertex</li>
-                        <li>Cursor routes your code through its own servers</li>
-                        <li>IP indemnity on Enterprise; Cursor offers none</li>
-                        <li>Org-wide governance vs editor-scoped controls</li>
+                        <li>Cursor routes all code through its own AWS, even with your keys; Claude Code stays in your boundary via Bedrock / Vertex</li>
+                        <li>No BAA and no data-residency SLA; standard ToS is the only commitment</li>
+                        <li>13+ subprocessors can see code; obfuscated embeddings still risk reversal</li>
+                        <li>Extension signatures unverified by default; MCP configs can reach prod databases</li>
+                        <li>IP indemnity on Enterprise; Cursor offers none; cloud-only, no VPC or on-prem</li>
                     </ul>
                 </div>
             </div>
+            <p style="margin-top:16px; font-size:15px; line-height:1.45; color:var(--text);"><strong style="color:var(--terracotta-deep);">In finance:</strong> cloud-only, code transiting third-party servers, and no BAA or residency SLA is a procurement blocker for code that cannot leave your boundary.</p>
         </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A5 &middot; Competitive detail</span></div>
@@ -1245,44 +1250,47 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
                 <div class="vscol strong">
                     <div class="vh">Where Codex wins</div>
                     <ul>
-                        <li>Clean delegation of bounded tasks to the cloud</li>
-                        <li>Parallel task fan-out</li>
-                        <li>OpenAI model quality</li>
+                        <li>Clean delegation of bounded tasks to the cloud, parallel fan-out</li>
+                        <li>OpenAI model quality, rapid enterprise innovation cycle</li>
+                        <li>Sandboxing, managed network policies, OpenTelemetry audit trails</li>
+                        <li>Codex Security adds native SAST: threat models, sandboxed repro, inline fixes</li>
                     </ul>
                 </div>
                 <div class="vscol win">
                     <div class="vh">Where Claude Code wins</div>
                     <ul>
-                        <li>Runs in your environment, not off-machine</li>
-                        <li>Codex executes in OpenAI&rsquo;s cloud, inverting your data boundary</li>
-                        <li>No standard IP indemnity for Codex</li>
-                        <li>Stronger fit for in-terminal SRE and notebook work</li>
+                        <li>Runs in your environment; Codex executes off-machine, inverting your data boundary</li>
+                        <li>No standard IP indemnity; copyright liability for generated code rests with you</li>
+                        <li>Terminal-native fit for SRE and notebook work, not only bounded delegation</li>
+                        <li>Compliance API and hooks enforce policy, not just record telemetry</li>
                     </ul>
                 </div>
             </div>
+            <p style="margin-top:16px; font-size:15px; line-height:1.45; color:var(--text);"><strong style="color:var(--terracotta-deep);">In finance:</strong> strong audit telemetry and built-in SAST, but off-machine execution and no IP indemnity are the gaps a regulated shop feels first.</p>
         </div>
         <div class="cardx reveal" style="padding:28px 30px;">
             <h3 style="margin-bottom:4px;">Cognition (Devin)</h3>
-            <p style="font-size:16px; color:var(--text-muted);">Most autonomous posture &middot; ticket-to-PR service</p>
+            <p style="font-size:16px; color:var(--text-muted);">Highest compliance ceiling &middot; ownership in flux</p>
             <div class="vsgrid">
                 <div class="vscol strong">
                     <div class="vh">Where Devin wins</div>
                     <ul>
-                        <li>The most autonomous posture in the field</li>
-                        <li>Compelling for narrow, outsourced ticket-to-PR work</li>
-                        <li>FedRAMP High ceiling via the Windsurf line</li>
+                        <li>The most autonomous posture in the field, strong for outsourced ticket-to-PR</li>
+                        <li>Tops the field on compliance: FedRAMP High, DoD IL4-6, ITAR, HIPAA</li>
+                        <li>VPC deployment keeps code in your environment; Snyk-native scanning</li>
                     </ul>
                 </div>
                 <div class="vscol win">
                     <div class="vh">Where Claude Code wins</div>
                     <ul>
+                        <li>Vendor stability: the line changed owners three times in a year; founders left for Google</li>
                         <li>Controls-first fits a regulated rollout; Devin is autonomy-first</li>
-                        <li>A platform for 180 engineers, not a point solution</li>
-                        <li>Vendor stability; Devin&rsquo;s ownership churned repeatedly in a year</li>
-                        <li>Human-in-the-loop governance throughout</li>
+                        <li>A platform for 180 engineers, not a point solution for delegated tickets</li>
+                        <li>Human-in-the-loop governance throughout, not after the fact</li>
                     </ul>
                 </div>
             </div>
+            <p style="margin-top:16px; font-size:15px; line-height:1.45; color:var(--text);"><strong style="color:var(--terracotta-deep);">In finance:</strong> the best compliance ceiling on paper, but vendor stability is the real exposure. If the founders left, who owns the roadmap in two years?</p>
         </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>A6 &middot; Competitive detail</span></div>
