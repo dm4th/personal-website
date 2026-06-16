@@ -507,9 +507,9 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
 <!-- ============ 2 · AGENDA ============ -->
 <!-- timing: 2 min -->
 <section class="slide" data-section="agenda" aria-label="Agenda">
-    <span class="kicker reveal">25 minutes, held tightly</span>
+    <span class="kicker reveal">Built to be interrupted</span>
     <h2 class="reveal">Today&rsquo;s Meeting Arc</h2>
-    <div class="reveal" style="height:660px; display:flex; flex-direction:column; justify-content:center; gap:52px; margin-top:8px;">
+    <div class="reveal" style="height:660px; display:flex; flex-direction:column; justify-content:center; gap:34px; margin-top:8px;">
       <div style="display:flex; gap:14px; align-items:stretch;">
         <div style="flex:2; background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:22px 20px;">
             <div style="font-size:44px; font-weight:800; color:var(--terracotta); line-height:0.9;">2</div>
@@ -541,10 +541,14 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             <div style="font-size:18px; font-weight:700; color:var(--text); margin-top:14px; line-height:1.2;">Next steps</div>
         </div>
       </div>
+      <div style="background:var(--terracotta-bg); border:2px dashed var(--terracotta); border-radius:14px; padding:18px 28px; display:flex; align-items:center; gap:20px;">
+        <span style="font-size:23px; font-weight:800; color:var(--terracotta-deep); white-space:nowrap;">Ask anytime &harr;</span>
+        <span style="font-size:18px; font-weight:600; color:var(--text); line-height:1.32;">Every box above is a fine place to jump in. Please interrupt the moment a question lands, do not save them for the end.</span>
+      </div>
       <div class="callout">
-        <span class="ch">25 minutes programmed, the rest is yours</span>
+        <span class="ch">This is your meeting</span>
         <span class="cd"></span>
-        <span class="cp">We have built roughly 25 minutes of material and expect your questions to fill the remaining time. Please ask throughout, not just at the end: this session is yours, to learn exactly what Claude Code can do for FinTechCo.</span>
+        <span class="cp">We programmed about 25 minutes and deliberately left the rest open for your questions. The best version of today is a conversation, so ask the moment something occurs to you, at any point, not only at the end. Every question makes the session more useful to FinTechCo.</span>
       </div>
     </div>
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>02 &middot; Agenda</span></div>
@@ -674,28 +678,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
     <div class="foot"><span>FinTechCo &times; Claude Code</span><span>05 &middot; Zero trust</span></div>
 </section>
 
-<!-- ============ 5 · FIVE THREATS (promoted from appendix) ============ -->
-<!-- timing: 1 min -->
-<section class="slide" data-section="threats-body" aria-label="Threat Model">
-    <span class="kicker reveal">What the principles defend against</span>
-    <h2 class="reveal">Five Threats Every Agentic Deployment Must Answer For</h2>
-    <div class="cards c5" style="margin-top: 36px;">
-        <div class="cardx reveal"><div class="num">1</div><h3 style="font-size:23px;">Prompt Injection</h3><p>Untrusted content steering the agent&rsquo;s actions.</p></div>
-        <div class="cardx reveal"><div class="num">2</div><h3 style="font-size:23px;">Tool Hijacking</h3><p>Abusing the tools and resources an agent can reach.</p></div>
-        <div class="cardx reveal"><div class="num">3</div><h3 style="font-size:23px;">Privilege Abuse</h3><p>Identity and access misuse through the agent&rsquo;s permissions.</p></div>
-        <div class="cardx reveal"><div class="num">4</div><h3 style="font-size:23px;">Context Poisoning</h3><p>Corrupting the memory or context the agent relies on.</p></div>
-        <div class="cardx reveal"><div class="num">5</div><h3 style="font-size:23px;">Supply Chain</h3><p>Compromised packages, models, or extensions upstream.</p></div>
-    </div>
-    <div style="height: 44px;"></div>
-    <div class="callout reveal">
-        <span class="ch">A dynamic commitment, not a one-time certification</span>
-        <span class="cd"></span>
-        <span class="cp">These surfaces are only months old and still moving. The right response is not a frozen checklist but a security culture that expects the attack surface to evolve as fast as the technology underneath it, and re-verifies its controls on that cadence.</span>
-    </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>06 &middot; Threat model</span></div>
-</section>
-
-<!-- ============ 6 · SECURITY JOURNEY ============ -->
+<!-- ============ 5 · SECURITY JOURNEY ============ -->
 <!-- timing: 1.5 min -->
 <section class="slide" data-section="security-journey" aria-label="Security Journey">
     <span class="kicker reveal">A partnership, not a prerequisite</span>
@@ -741,7 +724,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         <p>&ldquo;Start at Foundation, validate your controls, and advance the tiers as your deployments scale. Treat the &lsquo;impossible vs. tedious&rsquo; test as a standing design review question. The threats will evolve. So should your defenses.&rdquo;</p>
         <span class="cite"><a href="https://claude.com/blog/zero-trust-for-ai-agents" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Anthropic &middot; Zero Trust for AI Agents &#8599;</a></span>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>07 &middot; Security journey</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>06 &middot; Security journey</span></div>
 </section>
 
 <!-- ============ 6 · WHAT CLAUDE CODE IS ============ -->
@@ -778,7 +761,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
       </div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>08 &middot; What it is</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>07 &middot; What it is</span></div>
 </section>
 
 <!-- ============ 8 · DEMO PIVOT (moved up: proof right after the concept) ============ -->
@@ -816,7 +799,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
     </div>
     <p class="lede reveal" style="margin-top:18px; font-size:18px;">Governance and legacy-modernization walkthroughs are available on request.</p>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>09 &middot; Demo</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>08 &middot; Demo</span></div>
 </section>
 
 <!-- ============ 9 · WHAT FINTECHCO GETS (value / WIIFM, right after the proof) ============ -->
@@ -846,7 +829,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
             <p style="font-size:20px; line-height:1.5; color:var(--text);">Standardize the productivity your teams are already chasing onto a single secure platform, then ship faster and modernize with less risk as you scale. The banks that pull ahead will be the ones whose engineers move at AI speed without giving up control, and that is exactly where this puts you.</p>
         </div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>10 &middot; What you get</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>09 &middot; What you get</span></div>
 </section>
 
 <!-- ============ 10 · COMPETITIVE LANDSCAPE ============ -->
@@ -902,7 +885,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         <span class="cd"></span>
         <span class="cp">Copilot is the safe incumbent default. Cursor wins developer love but its security posture trails its capability: your code transits its servers through a dozen-plus subprocessors, with no IP indemnity. Cognition carries the highest compliance ceiling on paper, but it changed hands three times this year and is autonomy-first where you need controls-first. Claude Code is the challenger built for your constraint, the audit trail and in-boundary deployment a regulated shop actually needs. We are not the default yet. We are the best fit for a security-first rollout.</span>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>11 &middot; Competitive landscape</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>10 &middot; Competitive landscape</span></div>
 </section>
 
 <!-- ============ 8 · DEPLOYMENT OPTIONS ============ -->
@@ -940,7 +923,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         <span class="cp">Start the pilot on Anthropic-managed Enterprise for speed, then run a Bedrock or Vertex track in parallel. Proving the same governance model inside both AWS and GCP is exactly what a regulator wants to see, and it keeps you from concentrating platform risk in any single provider.</span>
       </div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>12 &middot; Deployment</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>11 &middot; Deployment</span></div>
 </section>
 
 <!-- ============ MEASURE AND ROLL OUT (merged ROI + rollout) ============ -->
@@ -1002,7 +985,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
         <div class="gweeks"><div></div><div class="gscale"><span>Week 0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>13 &middot; Measure and roll out</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>12 &middot; Measure and roll out</span></div>
 </section>
 
 <!-- ============ 11 · THREE COMMITMENTS ============ -->
@@ -1044,7 +1027,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         <div class="tr"><div class="trn">20</div><div class="trl">SREs</div></div>
         <div class="tr"><div class="trn">180</div><div class="trl">Total engineers</div></div>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>14 &middot; Next steps</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>13 &middot; Next steps</span></div>
 </section>
 
 <!-- ============ 12 · CLOSING ============ -->
@@ -1078,7 +1061,7 @@ table.grid tr.hl td { background: var(--terracotta-bg); }
         </div>
         <p class="cover-meta reveal" style="margin-top:40px;">Dan Mathieson &middot; FinTechCo &times; Claude Code</p>
     </div>
-    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>15 &middot; Close</span></div>
+    <div class="foot"><span>FinTechCo &times; Claude Code</span><span>14 &middot; Close</span></div>
 </section>
 
 <!-- ============ 13 · APPENDIX DIVIDER ============ -->
@@ -1515,7 +1498,7 @@ class SlidePresentation {
         this.current = 0;
         this.stage = document.getElementById('deckStage');
         this.counter = document.getElementById('counter');
-        this.mainSlideCount = 15; // index of the first appendix slide; dots at/after it render as appendix
+        this.mainSlideCount = 14; // index of the first appendix slide; dots at/after it render as appendix
         this.navDots = [];
         this.scaleStage();
         window.addEventListener('resize', () => this.scaleStage());
