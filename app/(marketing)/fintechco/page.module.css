@@ -146,6 +146,18 @@ a.card:hover {
   color: var(--ftc-text-muted);
 }
 
+/* Hard gate: the discovery window has closed, the card is inert */
+.closed {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ftc-text-muted);
+  background: var(--ftc-card-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
 .cardTitle {
   font-size: 19px;
   font-weight: 700;

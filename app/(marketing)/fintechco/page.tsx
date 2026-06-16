@@ -4,30 +4,35 @@ import type { HubCard, PrimaryFocus, ResourceItem, ResourceSection } from '@/lib
 import styles from './page.module.css';
 
 function Card({ card, tag, focus }: { card: HubCard; tag?: string; focus?: PrimaryFocus }) {
-  // comingSoon is a soft gate: the label discourages clicking, the link stays live
-  const soon = !card.live || card.comingSoon;
+  // closed is a hard gate (grayed-out, non-clickable); comingSoon is a soft gate
+  // (the label discourages clicking, the link stays live). A closed card never
+  // carries focus and never reads as "coming soon".
+  const isClosed = !!card.closed;
+  const eFocus = isClosed ? undefined : focus;
+  const soon = !isClosed && (!card.live || card.comingSoon);
   const body = (
     <>
-      {(tag || soon || focus || card.date) && (
+      {(tag || soon || isClosed || eFocus || (card.date && !isClosed)) && (
         <div className={styles.cardTop}>
           <span className={styles.cardTopGroup}>
-            {focus && <span className={styles.focusChip}>{focus.label}</span>}
+            {eFocus && <span className={styles.focusChip}>{eFocus.label}</span>}
             {tag && <span className={styles.tag}>{tag}</span>}
           </span>
           <span className={styles.cardTopGroup}>
+            {isClosed && <span className={styles.closed}>Closed</span>}
             {soon && <span className={styles.soon}>Coming soon</span>}
-            {card.date && <span className={styles.dateChip}>{card.date}</span>}
+            {card.date && !isClosed && <span className={styles.dateChip}>{card.date}</span>}
           </span>
         </div>
       )}
       <h2 className={styles.cardTitle}>{card.title}</h2>
       <p className={styles.cardBlurb}>{card.blurb}</p>
-      {focus?.note && <p className={styles.focusNote}>{focus.note}</p>}
+      {eFocus?.note && <p className={styles.focusNote}>{eFocus.note}</p>}
     </>
   );
 
-  const featured = focus ? styles.cardFeatured : '';
-  return card.live ? (
+  const featured = eFocus ? styles.cardFeatured : '';
+  return card.live && !isClosed ? (
     <Link
       href={card.href}
       className={`${styles.card} ${featured} ${card.comingSoon ? styles.cardSoon : ''}`}
@@ -136,10 +141,6 @@ export default function FintechcoHub() {
         </p>
       </header>
 
-      <Section heading="Before We Meet">
-        <Card card={discovery} focus={focusFor('discovery')} />
-      </Section>
-
       <Section heading="Presentation">
         <Card card={deck} focus={focusFor('deck')} />
       </Section>
@@ -156,6 +157,10 @@ export default function FintechcoHub() {
         {demoCards.map((item) => (
           <Card key={item.key} card={item.card} tag={item.tag} focus={focusFor(item.key)} />
         ))}
+      </Section>
+
+      <Section heading="Before We Meet">
+        <Card card={discovery} focus={focusFor('discovery')} />
       </Section>
 
       {resourceSections.map((section) => (

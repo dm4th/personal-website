@@ -17,10 +17,10 @@ export const HUB_CONFIG: HubConfig = {
   discovery: {
     title: 'Pre-Meeting Discovery',
     blurb:
-      'A short, role-aware conversation. Pick your role and answer a few questions so the session is built around your priorities.',
+      'The pre-meeting discovery window has closed. Thank you to everyone who shared input: the session is built around what you told us.',
     href: '/fintechco/discovery',
     live: true,
-    date: 'By June 15',
+    closed: true,
   },
   demos: [
     {
@@ -64,9 +64,9 @@ export const HUB_CONFIG: HubConfig = {
   // Move this pointer as the conversation advances: discovery before the
   // session, 'deck' the week of the meeting, a demo key during the pilot.
   primaryFocus: {
-    target: 'discovery',
+    target: 'deck',
     label: 'Start here',
-    note: 'Ten minutes here before we meet shapes the whole session around your priorities.',
+    note: 'The full security-first walkthrough of rolling Claude Code out across your engineering teams.',
   },
   resourceSections: [
     {

@@ -27,6 +27,8 @@ export interface HubCard {
   live: boolean;
   /** Soft gate: label the card Coming Soon while keeping the link active. */
   comingSoon?: boolean;
+  /** Hard gate: render grayed-out and non-clickable with a "Closed" badge. */
+  closed?: boolean;
   /** Short display date rendered verbatim on the card, e.g. "June 16" or "By June 15". */
   date?: string;
 }
