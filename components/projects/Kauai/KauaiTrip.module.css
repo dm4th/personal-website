@@ -1,0 +1,581 @@
+/* Self-contained tropical theme for /projects/kauai.
+   No site shell — this owns the full viewport, so we set our own light
+   background that covers the app's dark body. */
+
+.page {
+  --ocean: #0e7490;
+  --ocean-soft: #0891b2;
+  --coral: #ea580c;
+  --palm: #15803d;
+  --sand: #fff8ee;
+  --sand-2: #fdeed8;
+  --ink: #1f2933;
+  --muted: #5b6b73;
+  --plumeria: #e84393;
+
+  min-height: 100vh;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #fde7c7 0%, var(--sand) 38%) no-repeat,
+    var(--sand);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: clamp(3rem, 9vw, 6rem) 1.5rem 5.5rem;
+  text-align: center;
+  background:
+    linear-gradient(160deg, #38bdf8 0%, #0891b2 45%, #0e7490 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.kicker {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+  opacity: 0.95;
+}
+
+.title {
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin: 0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.18);
+}
+
+.subtitle {
+  font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+  font-weight: 600;
+  margin: 0.6rem 0 1.2rem;
+  color: #fef3c7;
+}
+
+.lede {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Soft scalloped "wave" at the bottom of the hero. */
+.heroWave {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -1px;
+  height: 56px;
+  background: var(--sand);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+/* ---------- Body ---------- */
+.body {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+/* ---------- Legend ---------- */
+.legend {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: center;
+  margin: -1.5rem auto 2.5rem;
+  padding: 0.85rem 1.25rem;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 30px rgba(14, 116, 144, 0.12);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lodging .swatch { background: var(--ocean); }
+.scheduled .swatch { background: var(--coral); }
+.flexible .swatch { background: var(--palm); }
+.diningLegend .swatch { background: var(--plumeria); }
+
+/* ---------- Sections ---------- */
+.section {
+  margin: 3rem 0;
+}
+
+.sectionTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+  color: var(--ocean);
+}
+
+.sectionSub {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.mapLoading {
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #e0f2fe;
+  color: var(--ocean);
+  font-weight: 600;
+}
+
+/* ---------- Lodging cards ---------- */
+.lodgeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.lodgeCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.1rem 1.1rem 1.1rem 1rem;
+  background: #fff;
+  border-radius: 16px;
+  border-left: 6px solid var(--ocean);
+  box-shadow: 0 6px 22px rgba(14, 116, 144, 0.1);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lodgeCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(14, 116, 144, 0.18);
+}
+
+/* Region tints on the accent stripe. */
+.region_south { border-left-color: var(--coral); }
+.region_east { border-left-color: var(--ocean); }
+.region_north { border-left-color: var(--palm); }
+
+.lodgeNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--ocean);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.lodgeBody { flex: 1; }
+
+.lodgeName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+}
+
+.lodgeArea {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.lodgeDates {
+  margin: 0.4rem 0 0;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ocean);
+}
+
+.lodgeNote {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.lodgeArrow {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.95rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* ---------- Map controls (day filter) ---------- */
+.mapControls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.controlLabel {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.daySelect {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid #e8c89a;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.daySelect:focus {
+  outline: none;
+  border-color: var(--ocean);
+}
+
+.clearBtn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ocean);
+  background: #e0f2fe;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.clearBtn:hover { background: #c7e9fb; }
+
+/* ---------- Day-by-day feed (timeline) ---------- */
+.feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* The vertical timeline rail. */
+.feed::before {
+  content: '';
+  position: absolute;
+  left: 58px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(var(--ocean), var(--palm));
+  opacity: 0.35;
+}
+
+.feedItem {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0.85rem;
+  align-items: stretch;
+  margin-bottom: 0.9rem;
+}
+
+.feedRail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0.9rem;
+  text-align: center;
+  z-index: 1;
+}
+
+/* The node sits ON the timeline thread (right edge of the rail), clear of the
+   date text so the weekday isn't crowded against it. */
+.feedRail::after {
+  content: '';
+  position: absolute;
+  left: 58px;
+  top: 1.5rem;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--coral);
+  border: 3px solid var(--sand);
+  z-index: 2;
+}
+
+.railWeekday {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+
+.railDay {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.railMonth {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.feedBody {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 6px 20px rgba(31, 41, 51, 0.07);
+  border: 1px solid #f1e4cf;
+}
+
+.feedItemActive .feedBody {
+  border: 1.5px solid var(--ocean);
+  box-shadow: 0 8px 26px rgba(14, 116, 144, 0.18);
+}
+
+.feedHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedDate {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.mapBtn {
+  flex-shrink: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ocean);
+  background: #e0f2fe;
+  border: none;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s ease;
+}
+
+.mapBtn:hover { background: #c7e9fb; }
+
+.mapBtnActive {
+  color: #fff;
+  background: var(--ocean);
+}
+
+.milestone {
+  margin: 0 0 0.55rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--plumeria);
+}
+
+.feedLodge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.feedLodge a {
+  color: var(--ocean);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.feedLodge a:hover { text-decoration: underline; }
+
+/* Colored dots reused inline in the calendar. */
+.dotLodging,
+.dotScheduled,
+.dotFlexible {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.dotLodging { background: var(--ocean); }
+.dotScheduled { background: var(--coral); }
+.dotFlexible { background: var(--palm); }
+
+.scheduledRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.55rem 0;
+  padding: 0.55rem 0.6rem;
+  background: #fff4ed;
+  border-radius: 10px;
+}
+
+.scheduledRow .dotScheduled { margin-top: 6px; }
+
+.scheduledTitle {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--coral);
+  text-decoration: none;
+}
+
+.scheduledTitle:hover { text-decoration: underline; }
+
+.time {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--coral);
+  padding: 0.05rem 0.45rem;
+  border-radius: 6px;
+  vertical-align: middle;
+}
+
+.scheduledBlurb {
+  margin: 0.25rem 0 0;
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.flexChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #14532d;
+  background: #eafaef;
+  border: 1px solid #c9eed6;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+
+a.flexChip:hover { background: #d4f5e0; }
+
+/* ---------- Photos ---------- */
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.9rem;
+}
+
+.photoSlot {
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  border: 2px dashed #e8c89a;
+  background: repeating-linear-gradient(
+    45deg,
+    #fffdf8,
+    #fffdf8 12px,
+    #fdf3e2 12px,
+    #fdf3e2 24px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b08642;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #e8c89a;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 540px) {
+  .lodgeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tighten the timeline rail on small screens. */
+  .feedItem {
+    grid-template-columns: 52px 1fr;
+    gap: 0.6rem;
+  }
+
+  .feed::before {
+    left: 46px;
+  }
+
+  .feedRail::after {
+    left: 46px;
+  }
+
+  .railDay {
+    font-size: 1.25rem;
+  }
+
+  .feedBody {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .feedHead {
+    flex-wrap: wrap;
+  }
+}

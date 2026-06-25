@@ -1,0 +1,167 @@
+/* Inherits the tropical CSS variables (--ocean, --coral, --muted, etc.) from
+   the parent .page scope — custom properties cascade down. */
+
+.dining {
+  margin: 3rem 0;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: var(--ocean);
+}
+
+.intro {
+  margin: 0 0 1.1rem;
+  color: var(--ink);
+  font-size: 0.98rem;
+  max-width: 70ch;
+}
+
+.intro strong {
+  color: var(--plumeria);
+}
+
+/* GF score legend + the per-card badges share one pill style. */
+.scoreLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.gfBadge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #fff;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.gf5 { background: #0e7490; } /* celiac-safe — ocean */
+.gf4 { background: #15803d; } /* great — palm */
+.gf3 { background: #d97706; } /* friendly — amber */
+.gf2 { background: #dc2626; } /* verify — red */
+
+.regionBlock {
+  margin-bottom: 1.75rem;
+}
+
+.regionTitle {
+  font-size: 1.12rem;
+  font-weight: 800;
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px dashed #e8c89a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  display: block;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 0 5px 18px rgba(31, 41, 51, 0.07);
+  border: 1px solid #f1e4cf;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(232, 67, 147, 0.16);
+}
+
+.cardActive {
+  border: 1.5px solid var(--plumeria);
+  box-shadow: 0 10px 26px rgba(232, 67, 147, 0.2);
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ocean);
+  text-decoration: none;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.mapBtn {
+  margin-top: 0.75rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--plumeria);
+  background: #fde7f1;
+  border: none;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.mapBtn:hover {
+  background: #fbd0e4;
+}
+
+.mapBtnActive {
+  color: #fff;
+  background: var(--plumeria);
+}
+
+.meta {
+  margin: 0 0 0.45rem;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.tag {
+  margin: 0 0 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--plumeria);
+}
+
+.why {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.disclaimer {
+  margin: 1.5rem 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+@media (max-width: 540px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
