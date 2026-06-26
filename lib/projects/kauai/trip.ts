@@ -47,16 +47,16 @@ const ACTIVITIES: Record<string, Activity> = {
     url: 'https://dlnr.hawaii.gov/dsp/parks/kauai/napali-coast-state-wilderness-park/park-info/',
     coords: [22.2218, -159.5825], // Keʻe Beach trailhead
   },
-  'merrimans-dinner': {
-    id: 'merrimans-dinner',
-    title: "Dinner at Merriman's Poʻipū",
+  'hukilau-dinner': {
+    id: 'hukilau-dinner',
+    title: 'Dinner at Hukilau Lanai',
     kind: 'scheduled',
-    // No coords on purpose: Merriman's already shows as a pink dining pin, so we
-    // don't double up the map. This entry just puts the reservation on the calendar.
-    blurb: 'The celiac-safe pick (the chef has celiac). In Poʻipū, so head to Poʻipū Beach for fireworks after.',
+    // No coords on purpose: Hukilau Lanai already shows as a pink dining pin, so
+    // we don't double up the map. This entry just puts the reservation on the calendar.
+    blurb: 'Big separate gluten-free menu and knowledgeable staff, minutes from the Fern Grotto home-base in Kapaʻa.',
     date: '2026-07-04',
     time: '5:15 PM',
-    url: 'https://www.merrimanshawaii.com/poipu/',
+    url: 'https://www.hukilaukauai.com/',
   },
 
   // --- Flexible ideas (South Shore) ---
@@ -257,7 +257,7 @@ export const TRIP: Trip = {
     {
       date: '2026-07-04',
       lodgingId: 'fern-grotto',
-      scheduled: ['merrimans-dinner'],
+      scheduled: ['hukilau-dinner'],
       flexible: ['waimea-canyon', 'poipu-fireworks'],
       milestone: '4th of July',
     },
